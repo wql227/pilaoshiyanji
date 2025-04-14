@@ -117,6 +117,14 @@ namespace DoPE10Net_CSharpDemo
         readonly double[] Values = new double[25];
         readonly Stopwatch Stopwatch = Stopwatch.StartNew();
 
+        decimal[] array_display1 = new decimal[150];         //波形显示数据1
+        decimal[] array_display2 = new decimal[150];         //波形显示数据2
+        decimal[] array_display3 = new decimal[150];         //波形显示数据3，数据显示太多，先屏蔽数据3
+
+        decimal data_display1 ;
+        decimal data_display2 ;
+        decimal data_display3 ;
+        decimal data_displayEnable = 0;
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -281,6 +289,15 @@ namespace DoPE10Net_CSharpDemo
         ///----------------------------------------------------------------------
         private void guiOn_Click(object sender, EventArgs e)
         {
+            OnEDC();
+        }
+
+
+        /// <summary>
+        /// 激活EDC
+        /// </summary>
+        private void OnEDC()
+        {
             try
             {
                 DoPE.ERR error = MyEdc.Move.On();
@@ -294,10 +311,20 @@ namespace DoPE10Net_CSharpDemo
             }
         }
 
+
         ///----------------------------------------------------------------------
         /// <summary>Deactivates the EDC's drive.</summary>
         ///----------------------------------------------------------------------
         private void guiOff_Click(object sender, EventArgs e)
+        {
+            OffEDC();
+        }
+
+
+        /// <summary>
+        /// 取消EDC
+        /// </summary>
+        private void OffEDC()
         {
             try
             {
@@ -309,7 +336,6 @@ namespace DoPE10Net_CSharpDemo
                 Display(CommandFailedString);
             }
         }
-
         ///----------------------------------------------------------------------
         /// <summary>Sends a move-command with direction "up" to the EDC.</summary>
         ///----------------------------------------------------------------------
@@ -446,6 +472,7 @@ namespace DoPE10Net_CSharpDemo
                 guiTime.Text = text;
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
                 guiPosition.Text = text;
+                data_display1 = decimal.Parse(text);
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
                 guiLoad.Text = text;
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
@@ -640,7 +667,10 @@ namespace DoPE10Net_CSharpDemo
 
             //formsPlot1.Plot.A
 
-           // superTabControl1.SelectedTabIndex = 1;
+            // superTabControl1.SelectedTabIndex = 1;
+
+            timer_UpdateData.Interval = 1000;
+            timer_UpdateData.Start();
 
         }
 
@@ -694,6 +724,91 @@ namespace DoPE10Net_CSharpDemo
         {
             //formsPlot1.Plot.AxisSet(0, .05, -1.1, 1.1); // we know what the limits should be
             StartCommunicationWithEdcTimer.Enabled = true; // start automatic updates
+        }
+
+        private void btn_DisconnectEDC_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (bConnected)
+            {
+                OffEDC();
+            }
+        }
+
+        static int startUp = 0; //波形显示上电先显示零零，保证波形显示框显示出来
+
+        private void timer_UpdateData_Tick(object sender, EventArgs e)
+        {
+            if (!bConnected)
+            {
+                return;
+            }
+
+            try
+            {
+                int countX;
+                int LengthX = 10;                   //X轴显示长度，长度不能大于 array_display1 数组长度，最大140
+                Random rd = new Random();           //产生随机函数
+
+                if (startUp == 0)                     //上电第一次显示波形零，让波形表格呈现出来,只执行一次
+                {
+                    startUp = 1;
+                    for (countX = 1; countX < LengthX; countX++)
+                    {
+                        chart1.Series[0].Points.AddXY(0, 99);        //X0~50,Y99，先勾画出框图表格
+                        chart1.Series[1].Points.AddXY(0, 99);
+                        chart1.Series[2].Points.AddXY(0, 99);
+                    }
+                }
+
+                data_displayEnable = 1;                  //模拟始终更新数据，串口显示时屏蔽此处
+                if (data_displayEnable == 1)                //更新数据标志为1 更新数据，数据为0不更新数据
+                {
+
+                    //原始显示方法
+                    //chart1.Series[0].Points.AddXY(countX + 1, rd.Next(1, 100));
+                    //chart1.Series[1].Points.AddXY(countX + 1, rd.Next(1, 100));
+
+                    //串口接收数据显示
+                    //data_display1 = rd.Next(1, 100);                   //内部产生随机值，模拟数据
+                    //data_display2 = rd.Next(1, 100);
+                    //data_display3 = rd.Next(1, 100);
+
+                    data_displayEnable = 0;                             //清零标志,串口收到数据后再更新数据
+                    chart1.Series[0].Points.Clear();                    //清除显示点，数组重新滑动后显示
+                    chart1.Series[1].Points.Clear();
+                    chart1.Series[2].Points.Clear();
+
+                    array_display1[LengthX - 1] = data_display1;        //将数据复制到显示数组中
+                    array_display2[LengthX - 1] = data_display2;
+                    array_display3[LengthX - 1] = data_display3;
+
+                    for (countX = 0; countX < LengthX; countX++)
+                    {
+                        array_display1[countX] = array_display1[countX + 1];
+                        array_display2[countX] = array_display2[countX + 1];
+                        array_display3[countX] = array_display3[countX + 1];
+                    }
+
+                    for (countX = 1; countX < LengthX; countX++)
+                    {
+                        chart1.Series[0].Points.AddXY(countX, array_display1[countX]);
+                        chart1.Series[1].Points.AddXY(countX, array_display2[countX]);
+                        chart1.Series[2].Points.AddXY(countX, array_display3[countX]);
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("波形显示错误！");                 //调试软件后台打印
+                return;
+            }
         }
     }
 }
