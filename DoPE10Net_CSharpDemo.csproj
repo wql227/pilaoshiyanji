@@ -68,6 +68,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ReferenceAssembly\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="DoPE10x64Net, Version=10.23.0.0, Culture=neutral, PublicKeyToken=c82e33ffce8aa572, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceAssembly\DoPE10x64Net.dll</HintPath>
+    </Reference>
     <Reference Include="HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>packages\HarfBuzzSharp.7.3.0.3\lib\net462\HarfBuzzSharp.dll</HintPath>
     </Reference>
@@ -192,11 +196,6 @@
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <Reference Include="DoPE10Net">
-      <HintPath>$(OutDir)DoPE10x64Net.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64'">
     <Reference Include="DoPE10Net">
       <HintPath>$(OutDir)DoPE10x64Net.dll</HintPath>

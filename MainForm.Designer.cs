@@ -29,14 +29,47 @@
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
+            this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chart_DrawGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btn_DisconnectEDC = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.guiHalt = new System.Windows.Forms.Button();
+            this.lblDestinationUnit = new System.Windows.Forms.Label();
+            this.guiOn = new System.Windows.Forms.Button();
+            this.lblSpeedUnit = new System.Windows.Forms.Label();
+            this.guiOff = new System.Windows.Forms.Button();
+            this.guiDestination = new System.Windows.Forms.TextBox();
+            this.guiUp = new System.Windows.Forms.Button();
+            this.lblDestination = new System.Windows.Forms.Label();
+            this.guiDown = new System.Windows.Forms.Button();
+            this.lblSpeed = new System.Windows.Forms.Label();
+            this.guiPos = new System.Windows.Forms.Button();
+            this.lblControl = new System.Windows.Forms.Label();
+            this.guiSpeed = new System.Windows.Forms.TextBox();
+            this.guiControl = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.lblExtension = new System.Windows.Forms.Label();
+            this.lblLoad = new System.Windows.Forms.Label();
+            this.guiPosition = new System.Windows.Forms.TextBox();
+            this.guiExtension = new System.Windows.Forms.TextBox();
+            this.lblPosition = new System.Windows.Forms.Label();
+            this.guiTime = new System.Windows.Forms.TextBox();
+            this.guiLoad = new System.Windows.Forms.TextBox();
+            this.guiDebug = new System.Windows.Forms.RichTextBox();
+            this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx7 = new DevComponents.DotNetBar.PanelEx();
@@ -129,37 +162,6 @@
             this.panelEx5 = new DevComponents.DotNetBar.PanelEx();
             this.superTabItem5 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btn_DisconnectEDC = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.guiHalt = new System.Windows.Forms.Button();
-            this.lblDestinationUnit = new System.Windows.Forms.Label();
-            this.guiOn = new System.Windows.Forms.Button();
-            this.lblSpeedUnit = new System.Windows.Forms.Label();
-            this.guiOff = new System.Windows.Forms.Button();
-            this.guiDestination = new System.Windows.Forms.TextBox();
-            this.guiUp = new System.Windows.Forms.Button();
-            this.lblDestination = new System.Windows.Forms.Label();
-            this.guiDown = new System.Windows.Forms.Button();
-            this.lblSpeed = new System.Windows.Forms.Label();
-            this.guiPos = new System.Windows.Forms.Button();
-            this.lblControl = new System.Windows.Forms.Label();
-            this.guiSpeed = new System.Windows.Forms.TextBox();
-            this.guiControl = new System.Windows.Forms.ComboBox();
-            this.guiDebug = new System.Windows.Forms.RichTextBox();
-            this.guiExtension = new System.Windows.Forms.TextBox();
-            this.guiTime = new System.Windows.Forms.TextBox();
-            this.guiLoad = new System.Windows.Forms.TextBox();
-            this.lblPosition = new System.Windows.Forms.Label();
-            this.guiPosition = new System.Windows.Forms.TextBox();
-            this.lblLoad = new System.Windows.Forms.Label();
-            this.lblExtension = new System.Windows.Forms.Label();
-            this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -180,10 +182,15 @@
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
+            this.superTabControlPanel2.SuspendLayout();
+            this.panelEx1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_DrawGraph)).BeginInit();
+            this.panel1.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx6.SuspendLayout();
@@ -201,12 +208,8 @@
             this.groupPanel2.SuspendLayout();
             this.superTabControlPanel4.SuspendLayout();
             this.superTabControlPanel5.SuspendLayout();
-            this.superTabControlPanel2.SuspendLayout();
-            this.panelEx1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // StartCommunicationWithEdcTimer
@@ -252,6 +255,444 @@
             this.superTabItem2,
             this.superTabItem1});
             this.superTabControl1.Text = "superTabControl1";
+            // 
+            // superTabControlPanel2
+            // 
+            this.superTabControlPanel2.Controls.Add(this.panelEx1);
+            this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 52);
+            this.superTabControlPanel2.Name = "superTabControlPanel2";
+            this.superTabControlPanel2.Size = new System.Drawing.Size(1417, 602);
+            this.superTabControlPanel2.TabIndex = 0;
+            this.superTabControlPanel2.TabItem = this.superTabItem2;
+            // 
+            // panelEx1
+            // 
+            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.panel2);
+            this.panelEx1.Controls.Add(this.panel1);
+            this.panelEx1.Controls.Add(this.guiDebug);
+            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx1.Location = new System.Drawing.Point(0, 0);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Size = new System.Drawing.Size(1417, 602);
+            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx1.Style.GradientAngle = 90;
+            this.panelEx1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1126, 502);
+            this.panel2.TabIndex = 57;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.chart_DrawGraph);
+            this.groupBox1.Controls.Add(this.btn_DisconnectEDC);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.guiHalt);
+            this.groupBox1.Controls.Add(this.lblDestinationUnit);
+            this.groupBox1.Controls.Add(this.guiOn);
+            this.groupBox1.Controls.Add(this.lblSpeedUnit);
+            this.groupBox1.Controls.Add(this.guiOff);
+            this.groupBox1.Controls.Add(this.guiDestination);
+            this.groupBox1.Controls.Add(this.guiUp);
+            this.groupBox1.Controls.Add(this.lblDestination);
+            this.groupBox1.Controls.Add(this.guiDown);
+            this.groupBox1.Controls.Add(this.lblSpeed);
+            this.groupBox1.Controls.Add(this.guiPos);
+            this.groupBox1.Controls.Add(this.lblControl);
+            this.groupBox1.Controls.Add(this.guiSpeed);
+            this.groupBox1.Controls.Add(this.guiControl);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1126, 502);
+            this.groupBox1.TabIndex = 55;
+            this.groupBox1.TabStop = false;
+            // 
+            // chart_DrawGraph
+            // 
+            this.chart_DrawGraph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea3.Name = "ChartArea1";
+            this.chart_DrawGraph.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart_DrawGraph.Legends.Add(legend3);
+            this.chart_DrawGraph.Location = new System.Drawing.Point(9, 16);
+            this.chart_DrawGraph.Name = "chart_DrawGraph";
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series7.Legend = "Legend1";
+            series7.LegendText = "位移";
+            series7.Name = "Series1";
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series8.Legend = "Legend1";
+            series8.LegendText = "力反馈";
+            series8.Name = "Series2";
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series9.Legend = "Legend1";
+            series9.LegendText = "拉伸";
+            series9.Name = "Series3";
+            this.chart_DrawGraph.Series.Add(series7);
+            this.chart_DrawGraph.Series.Add(series8);
+            this.chart_DrawGraph.Series.Add(series9);
+            this.chart_DrawGraph.Size = new System.Drawing.Size(959, 497);
+            this.chart_DrawGraph.TabIndex = 56;
+            this.chart_DrawGraph.Text = "chart1";
+            // 
+            // btn_DisconnectEDC
+            // 
+            this.btn_DisconnectEDC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_DisconnectEDC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_DisconnectEDC.Image = ((System.Drawing.Image)(resources.GetObject("btn_DisconnectEDC.Image")));
+            this.btn_DisconnectEDC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_DisconnectEDC.Location = new System.Drawing.Point(976, 65);
+            this.btn_DisconnectEDC.Name = "btn_DisconnectEDC";
+            this.btn_DisconnectEDC.Size = new System.Drawing.Size(93, 39);
+            this.btn_DisconnectEDC.TabIndex = 55;
+            this.btn_DisconnectEDC.Text = "断开";
+            this.btn_DisconnectEDC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_DisconnectEDC.UseVisualStyleBackColor = true;
+            this.btn_DisconnectEDC.Click += new System.EventHandler(this.btn_DisconnectEDC_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(976, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 39);
+            this.button1.TabIndex = 55;
+            this.button1.Text = "连接";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // guiHalt
+            // 
+            this.guiHalt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guiHalt.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.guiHalt.Image = ((System.Drawing.Image)(resources.GetObject("guiHalt.Image")));
+            this.guiHalt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.guiHalt.Location = new System.Drawing.Point(976, 156);
+            this.guiHalt.Name = "guiHalt";
+            this.guiHalt.Size = new System.Drawing.Size(93, 40);
+            this.guiHalt.TabIndex = 43;
+            this.guiHalt.Text = "停止";
+            this.guiHalt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.guiHalt.UseVisualStyleBackColor = true;
+            this.guiHalt.Click += new System.EventHandler(this.guiHalt_Click);
+            // 
+            // lblDestinationUnit
+            // 
+            this.lblDestinationUnit.AutoSize = true;
+            this.lblDestinationUnit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblDestinationUnit.Location = new System.Drawing.Point(879, 506);
+            this.lblDestinationUnit.Name = "lblDestinationUnit";
+            this.lblDestinationUnit.Size = new System.Drawing.Size(23, 16);
+            this.lblDestinationUnit.TabIndex = 54;
+            this.lblDestinationUnit.Text = "mm";
+            // 
+            // guiOn
+            // 
+            this.guiOn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guiOn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.guiOn.Image = ((System.Drawing.Image)(resources.GetObject("guiOn.Image")));
+            this.guiOn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.guiOn.Location = new System.Drawing.Point(976, 247);
+            this.guiOn.Name = "guiOn";
+            this.guiOn.Size = new System.Drawing.Size(93, 40);
+            this.guiOn.TabIndex = 21;
+            this.guiOn.Text = "激活";
+            this.guiOn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.guiOn.UseVisualStyleBackColor = true;
+            this.guiOn.Click += new System.EventHandler(this.guiOn_Click);
+            // 
+            // lblSpeedUnit
+            // 
+            this.lblSpeedUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSpeedUnit.AutoSize = true;
+            this.lblSpeedUnit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblSpeedUnit.Location = new System.Drawing.Point(1082, 456);
+            this.lblSpeedUnit.Name = "lblSpeedUnit";
+            this.lblSpeedUnit.Size = new System.Drawing.Size(39, 16);
+            this.lblSpeedUnit.TabIndex = 53;
+            this.lblSpeedUnit.Text = "mm/s";
+            // 
+            // guiOff
+            // 
+            this.guiOff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guiOff.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.guiOff.Image = ((System.Drawing.Image)(resources.GetObject("guiOff.Image")));
+            this.guiOff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.guiOff.Location = new System.Drawing.Point(976, 293);
+            this.guiOff.Name = "guiOff";
+            this.guiOff.Size = new System.Drawing.Size(93, 40);
+            this.guiOff.TabIndex = 22;
+            this.guiOff.Text = "停用";
+            this.guiOff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.guiOff.UseVisualStyleBackColor = true;
+            this.guiOff.Click += new System.EventHandler(this.guiOff_Click);
+            // 
+            // guiDestination
+            // 
+            this.guiDestination.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.guiDestination.Location = new System.Drawing.Point(769, 503);
+            this.guiDestination.Name = "guiDestination";
+            this.guiDestination.Size = new System.Drawing.Size(100, 26);
+            this.guiDestination.TabIndex = 51;
+            this.guiDestination.Text = "0";
+            this.guiDestination.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // guiUp
+            // 
+            this.guiUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guiUp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.guiUp.Image = ((System.Drawing.Image)(resources.GetObject("guiUp.Image")));
+            this.guiUp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.guiUp.Location = new System.Drawing.Point(976, 110);
+            this.guiUp.Name = "guiUp";
+            this.guiUp.Size = new System.Drawing.Size(93, 40);
+            this.guiUp.TabIndex = 42;
+            this.guiUp.Text = "向上";
+            this.guiUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.guiUp.UseVisualStyleBackColor = true;
+            this.guiUp.Click += new System.EventHandler(this.guiUp_Click);
+            // 
+            // lblDestination
+            // 
+            this.lblDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDestination.AutoSize = true;
+            this.lblDestination.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblDestination.Location = new System.Drawing.Point(974, 484);
+            this.lblDestination.Name = "lblDestination";
+            this.lblDestination.Size = new System.Drawing.Size(95, 16);
+            this.lblDestination.TabIndex = 50;
+            this.lblDestination.Text = "Destination";
+            // 
+            // guiDown
+            // 
+            this.guiDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guiDown.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.guiDown.Image = ((System.Drawing.Image)(resources.GetObject("guiDown.Image")));
+            this.guiDown.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.guiDown.Location = new System.Drawing.Point(976, 201);
+            this.guiDown.Name = "guiDown";
+            this.guiDown.Size = new System.Drawing.Size(93, 40);
+            this.guiDown.TabIndex = 44;
+            this.guiDown.Text = "向下";
+            this.guiDown.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.guiDown.UseVisualStyleBackColor = true;
+            this.guiDown.Click += new System.EventHandler(this.guiDown_Click);
+            // 
+            // lblSpeed
+            // 
+            this.lblSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSpeed.AutoSize = true;
+            this.lblSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblSpeed.Location = new System.Drawing.Point(974, 434);
+            this.lblSpeed.Name = "lblSpeed";
+            this.lblSpeed.Size = new System.Drawing.Size(47, 16);
+            this.lblSpeed.TabIndex = 49;
+            this.lblSpeed.Text = "Speed";
+            // 
+            // guiPos
+            // 
+            this.guiPos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guiPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiPos.Image = ((System.Drawing.Image)(resources.GetObject("guiPos.Image")));
+            this.guiPos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.guiPos.Location = new System.Drawing.Point(976, 339);
+            this.guiPos.Name = "guiPos";
+            this.guiPos.Size = new System.Drawing.Size(93, 40);
+            this.guiPos.TabIndex = 45;
+            this.guiPos.Text = "Pos";
+            this.guiPos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.guiPos.UseVisualStyleBackColor = true;
+            this.guiPos.Click += new System.EventHandler(this.guiPos_Click);
+            // 
+            // lblControl
+            // 
+            this.lblControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblControl.AutoSize = true;
+            this.lblControl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblControl.Location = new System.Drawing.Point(974, 382);
+            this.lblControl.Name = "lblControl";
+            this.lblControl.Size = new System.Drawing.Size(63, 16);
+            this.lblControl.TabIndex = 48;
+            this.lblControl.Text = "Control";
+            // 
+            // guiSpeed
+            // 
+            this.guiSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guiSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.guiSpeed.Location = new System.Drawing.Point(976, 453);
+            this.guiSpeed.Name = "guiSpeed";
+            this.guiSpeed.Size = new System.Drawing.Size(100, 26);
+            this.guiSpeed.TabIndex = 46;
+            this.guiSpeed.Text = "5";
+            this.guiSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // guiControl
+            // 
+            this.guiControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guiControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guiControl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.guiControl.FormattingEnabled = true;
+            this.guiControl.Items.AddRange(new object[] {
+            "Position",
+            "Load",
+            "Extension"});
+            this.guiControl.Location = new System.Drawing.Point(976, 407);
+            this.guiControl.MaxDropDownItems = 16;
+            this.guiControl.Name = "guiControl";
+            this.guiControl.Size = new System.Drawing.Size(99, 24);
+            this.guiControl.TabIndex = 47;
+            this.guiControl.SelectedIndexChanged += new System.EventHandler(this.guiControl_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblTime);
+            this.panel1.Controls.Add(this.lblExtension);
+            this.panel1.Controls.Add(this.lblLoad);
+            this.panel1.Controls.Add(this.guiPosition);
+            this.panel1.Controls.Add(this.guiExtension);
+            this.panel1.Controls.Add(this.lblPosition);
+            this.panel1.Controls.Add(this.guiTime);
+            this.panel1.Controls.Add(this.guiLoad);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1126, 100);
+            this.panel1.TabIndex = 56;
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Location = new System.Drawing.Point(68, 20);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(77, 13);
+            this.lblTime.TabIndex = 26;
+            this.lblTime.Text = "运行时间 [s]";
+            // 
+            // lblExtension
+            // 
+            this.lblExtension.AutoSize = true;
+            this.lblExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExtension.Location = new System.Drawing.Point(505, 20);
+            this.lblExtension.Name = "lblExtension";
+            this.lblExtension.Size = new System.Drawing.Size(92, 13);
+            this.lblExtension.TabIndex = 32;
+            this.lblExtension.Text = "Extension [mm]";
+            // 
+            // lblLoad
+            // 
+            this.lblLoad.AutoSize = true;
+            this.lblLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoad.Location = new System.Drawing.Point(370, 20);
+            this.lblLoad.Name = "lblLoad";
+            this.lblLoad.Size = new System.Drawing.Size(56, 13);
+            this.lblLoad.TabIndex = 30;
+            this.lblLoad.Text = "Load [N]";
+            // 
+            // guiPosition
+            // 
+            this.guiPosition.BackColor = System.Drawing.Color.Black;
+            this.guiPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiPosition.ForeColor = System.Drawing.Color.Lime;
+            this.guiPosition.Location = new System.Drawing.Point(171, 38);
+            this.guiPosition.Name = "guiPosition";
+            this.guiPosition.Size = new System.Drawing.Size(145, 29);
+            this.guiPosition.TabIndex = 39;
+            this.guiPosition.Text = "0.000";
+            this.guiPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // guiExtension
+            // 
+            this.guiExtension.BackColor = System.Drawing.Color.Black;
+            this.guiExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiExtension.ForeColor = System.Drawing.Color.Lime;
+            this.guiExtension.Location = new System.Drawing.Point(475, 38);
+            this.guiExtension.Name = "guiExtension";
+            this.guiExtension.Size = new System.Drawing.Size(145, 29);
+            this.guiExtension.TabIndex = 41;
+            this.guiExtension.Text = "0.000";
+            this.guiExtension.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblPosition
+            // 
+            this.lblPosition.AutoSize = true;
+            this.lblPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPosition.Location = new System.Drawing.Point(209, 20);
+            this.lblPosition.Name = "lblPosition";
+            this.lblPosition.Size = new System.Drawing.Size(82, 13);
+            this.lblPosition.TabIndex = 28;
+            this.lblPosition.Text = "Position [mm]";
+            // 
+            // guiTime
+            // 
+            this.guiTime.BackColor = System.Drawing.Color.Black;
+            this.guiTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiTime.ForeColor = System.Drawing.Color.Lime;
+            this.guiTime.Location = new System.Drawing.Point(20, 38);
+            this.guiTime.Name = "guiTime";
+            this.guiTime.Size = new System.Drawing.Size(145, 29);
+            this.guiTime.TabIndex = 25;
+            this.guiTime.Text = "0.000";
+            this.guiTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // guiLoad
+            // 
+            this.guiLoad.BackColor = System.Drawing.Color.Black;
+            this.guiLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiLoad.ForeColor = System.Drawing.Color.Lime;
+            this.guiLoad.Location = new System.Drawing.Point(322, 38);
+            this.guiLoad.Name = "guiLoad";
+            this.guiLoad.Size = new System.Drawing.Size(145, 29);
+            this.guiLoad.TabIndex = 40;
+            this.guiLoad.Text = "0.000";
+            this.guiLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // guiDebug
+            // 
+            this.guiDebug.Dock = System.Windows.Forms.DockStyle.Right;
+            this.guiDebug.HideSelection = false;
+            this.guiDebug.Location = new System.Drawing.Point(1126, 0);
+            this.guiDebug.Name = "guiDebug";
+            this.guiDebug.ReadOnly = true;
+            this.guiDebug.Size = new System.Drawing.Size(291, 602);
+            this.guiDebug.TabIndex = 0;
+            this.guiDebug.Text = "Starting Communication\n";
+            // 
+            // superTabItem2
+            // 
+            this.superTabItem2.AttachedControl = this.superTabControlPanel2;
+            this.superTabItem2.GlobalItem = false;
+            this.superTabItem2.Name = "superTabItem2";
+            this.superTabItem2.Text = "控制器实时曲线";
             // 
             // superTabControlPanel1
             // 
@@ -1687,364 +2128,6 @@
             this.superTabItem1.Name = "superTabItem1";
             this.superTabItem1.Text = "试验数据";
             // 
-            // superTabControlPanel2
-            // 
-            this.superTabControlPanel2.Controls.Add(this.panelEx1);
-            this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 52);
-            this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(1417, 602);
-            this.superTabControlPanel2.TabIndex = 0;
-            this.superTabControlPanel2.TabItem = this.superTabItem2;
-            // 
-            // panelEx1
-            // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.chart1);
-            this.panelEx1.Controls.Add(this.lblTime);
-            this.panelEx1.Controls.Add(this.groupBox1);
-            this.panelEx1.Controls.Add(this.guiDebug);
-            this.panelEx1.Controls.Add(this.guiExtension);
-            this.panelEx1.Controls.Add(this.guiTime);
-            this.panelEx1.Controls.Add(this.guiLoad);
-            this.panelEx1.Controls.Add(this.lblPosition);
-            this.panelEx1.Controls.Add(this.guiPosition);
-            this.panelEx1.Controls.Add(this.lblLoad);
-            this.panelEx1.Controls.Add(this.lblExtension);
-            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1417, 602);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 0;
-            // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(87, 12);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(52, 13);
-            this.lblTime.TabIndex = 26;
-            this.lblTime.Text = "Time [s]";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.btn_DisconnectEDC);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.guiHalt);
-            this.groupBox1.Controls.Add(this.lblDestinationUnit);
-            this.groupBox1.Controls.Add(this.guiOn);
-            this.groupBox1.Controls.Add(this.lblSpeedUnit);
-            this.groupBox1.Controls.Add(this.guiOff);
-            this.groupBox1.Controls.Add(this.guiDestination);
-            this.groupBox1.Controls.Add(this.guiUp);
-            this.groupBox1.Controls.Add(this.lblDestination);
-            this.groupBox1.Controls.Add(this.guiDown);
-            this.groupBox1.Controls.Add(this.lblSpeed);
-            this.groupBox1.Controls.Add(this.guiPos);
-            this.groupBox1.Controls.Add(this.lblControl);
-            this.groupBox1.Controls.Add(this.guiSpeed);
-            this.groupBox1.Controls.Add(this.guiControl);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Location = new System.Drawing.Point(12, 71);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(909, 150);
-            this.groupBox1.TabIndex = 55;
-            this.groupBox1.TabStop = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(603, 68);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 56;
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(522, 68);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 56;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // btn_DisconnectEDC
-            // 
-            this.btn_DisconnectEDC.Location = new System.Drawing.Point(603, 33);
-            this.btn_DisconnectEDC.Name = "btn_DisconnectEDC";
-            this.btn_DisconnectEDC.Size = new System.Drawing.Size(75, 23);
-            this.btn_DisconnectEDC.TabIndex = 55;
-            this.btn_DisconnectEDC.Text = "断开EDC";
-            this.btn_DisconnectEDC.UseVisualStyleBackColor = true;
-            this.btn_DisconnectEDC.Click += new System.EventHandler(this.btn_DisconnectEDC_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(522, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 55;
-            this.button1.Text = "连接EDC";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // guiHalt
-            // 
-            this.guiHalt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiHalt.Location = new System.Drawing.Point(68, 58);
-            this.guiHalt.Name = "guiHalt";
-            this.guiHalt.Size = new System.Drawing.Size(43, 40);
-            this.guiHalt.TabIndex = 43;
-            this.guiHalt.Text = "Halt";
-            this.guiHalt.UseVisualStyleBackColor = true;
-            this.guiHalt.Click += new System.EventHandler(this.guiHalt_Click);
-            // 
-            // lblDestinationUnit
-            // 
-            this.lblDestinationUnit.AutoSize = true;
-            this.lblDestinationUnit.Location = new System.Drawing.Point(428, 72);
-            this.lblDestinationUnit.Name = "lblDestinationUnit";
-            this.lblDestinationUnit.Size = new System.Drawing.Size(17, 12);
-            this.lblDestinationUnit.TabIndex = 54;
-            this.lblDestinationUnit.Text = "mm";
-            // 
-            // guiOn
-            // 
-            this.guiOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiOn.Location = new System.Drawing.Point(16, 19);
-            this.guiOn.Name = "guiOn";
-            this.guiOn.Size = new System.Drawing.Size(43, 40);
-            this.guiOn.TabIndex = 21;
-            this.guiOn.Text = "On";
-            this.guiOn.UseVisualStyleBackColor = true;
-            this.guiOn.Click += new System.EventHandler(this.guiOn_Click);
-            // 
-            // lblSpeedUnit
-            // 
-            this.lblSpeedUnit.AutoSize = true;
-            this.lblSpeedUnit.Location = new System.Drawing.Point(428, 50);
-            this.lblSpeedUnit.Name = "lblSpeedUnit";
-            this.lblSpeedUnit.Size = new System.Drawing.Size(29, 12);
-            this.lblSpeedUnit.TabIndex = 53;
-            this.lblSpeedUnit.Text = "mm/s";
-            // 
-            // guiOff
-            // 
-            this.guiOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiOff.Location = new System.Drawing.Point(16, 58);
-            this.guiOff.Name = "guiOff";
-            this.guiOff.Size = new System.Drawing.Size(43, 40);
-            this.guiOff.TabIndex = 22;
-            this.guiOff.Text = "Off";
-            this.guiOff.UseVisualStyleBackColor = true;
-            this.guiOff.Click += new System.EventHandler(this.guiOff_Click);
-            // 
-            // guiDestination
-            // 
-            this.guiDestination.Location = new System.Drawing.Point(318, 69);
-            this.guiDestination.Name = "guiDestination";
-            this.guiDestination.Size = new System.Drawing.Size(100, 21);
-            this.guiDestination.TabIndex = 51;
-            this.guiDestination.Text = "0";
-            this.guiDestination.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // guiUp
-            // 
-            this.guiUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiUp.Location = new System.Drawing.Point(68, 19);
-            this.guiUp.Name = "guiUp";
-            this.guiUp.Size = new System.Drawing.Size(43, 40);
-            this.guiUp.TabIndex = 42;
-            this.guiUp.Text = "Up";
-            this.guiUp.UseVisualStyleBackColor = true;
-            this.guiUp.Click += new System.EventHandler(this.guiUp_Click);
-            // 
-            // lblDestination
-            // 
-            this.lblDestination.AutoSize = true;
-            this.lblDestination.Location = new System.Drawing.Point(251, 72);
-            this.lblDestination.Name = "lblDestination";
-            this.lblDestination.Size = new System.Drawing.Size(71, 12);
-            this.lblDestination.TabIndex = 50;
-            this.lblDestination.Text = "Destination";
-            // 
-            // guiDown
-            // 
-            this.guiDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiDown.Location = new System.Drawing.Point(68, 97);
-            this.guiDown.Name = "guiDown";
-            this.guiDown.Size = new System.Drawing.Size(43, 40);
-            this.guiDown.TabIndex = 44;
-            this.guiDown.Text = "Down";
-            this.guiDown.UseVisualStyleBackColor = true;
-            this.guiDown.Click += new System.EventHandler(this.guiDown_Click);
-            // 
-            // lblSpeed
-            // 
-            this.lblSpeed.AutoSize = true;
-            this.lblSpeed.Location = new System.Drawing.Point(251, 50);
-            this.lblSpeed.Name = "lblSpeed";
-            this.lblSpeed.Size = new System.Drawing.Size(35, 12);
-            this.lblSpeed.TabIndex = 49;
-            this.lblSpeed.Text = "Speed";
-            // 
-            // guiPos
-            // 
-            this.guiPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiPos.Location = new System.Drawing.Point(167, 19);
-            this.guiPos.Name = "guiPos";
-            this.guiPos.Size = new System.Drawing.Size(43, 40);
-            this.guiPos.TabIndex = 45;
-            this.guiPos.Text = "Pos";
-            this.guiPos.UseVisualStyleBackColor = true;
-            this.guiPos.Click += new System.EventHandler(this.guiPos_Click);
-            // 
-            // lblControl
-            // 
-            this.lblControl.AutoSize = true;
-            this.lblControl.Location = new System.Drawing.Point(251, 25);
-            this.lblControl.Name = "lblControl";
-            this.lblControl.Size = new System.Drawing.Size(47, 12);
-            this.lblControl.TabIndex = 48;
-            this.lblControl.Text = "Control";
-            // 
-            // guiSpeed
-            // 
-            this.guiSpeed.Location = new System.Drawing.Point(319, 47);
-            this.guiSpeed.Name = "guiSpeed";
-            this.guiSpeed.Size = new System.Drawing.Size(99, 21);
-            this.guiSpeed.TabIndex = 46;
-            this.guiSpeed.Text = "5";
-            this.guiSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // guiControl
-            // 
-            this.guiControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guiControl.FormattingEnabled = true;
-            this.guiControl.Items.AddRange(new object[] {
-            "Position",
-            "Load",
-            "Extension"});
-            this.guiControl.Location = new System.Drawing.Point(319, 22);
-            this.guiControl.MaxDropDownItems = 16;
-            this.guiControl.Name = "guiControl";
-            this.guiControl.Size = new System.Drawing.Size(99, 20);
-            this.guiControl.TabIndex = 47;
-            this.guiControl.SelectedIndexChanged += new System.EventHandler(this.guiControl_SelectedIndexChanged);
-            // 
-            // guiDebug
-            // 
-            this.guiDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.guiDebug.HideSelection = false;
-            this.guiDebug.Location = new System.Drawing.Point(927, 30);
-            this.guiDebug.Name = "guiDebug";
-            this.guiDebug.ReadOnly = true;
-            this.guiDebug.Size = new System.Drawing.Size(478, 560);
-            this.guiDebug.TabIndex = 0;
-            this.guiDebug.Text = "Starting Communication\n";
-            // 
-            // guiExtension
-            // 
-            this.guiExtension.BackColor = System.Drawing.Color.Black;
-            this.guiExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiExtension.ForeColor = System.Drawing.Color.Lime;
-            this.guiExtension.Location = new System.Drawing.Point(494, 30);
-            this.guiExtension.Name = "guiExtension";
-            this.guiExtension.Size = new System.Drawing.Size(145, 29);
-            this.guiExtension.TabIndex = 41;
-            this.guiExtension.Text = "0.000";
-            this.guiExtension.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // guiTime
-            // 
-            this.guiTime.BackColor = System.Drawing.Color.Black;
-            this.guiTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiTime.ForeColor = System.Drawing.Color.Lime;
-            this.guiTime.Location = new System.Drawing.Point(39, 30);
-            this.guiTime.Name = "guiTime";
-            this.guiTime.Size = new System.Drawing.Size(145, 29);
-            this.guiTime.TabIndex = 25;
-            this.guiTime.Text = "0.000";
-            this.guiTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // guiLoad
-            // 
-            this.guiLoad.BackColor = System.Drawing.Color.Black;
-            this.guiLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiLoad.ForeColor = System.Drawing.Color.Lime;
-            this.guiLoad.Location = new System.Drawing.Point(341, 30);
-            this.guiLoad.Name = "guiLoad";
-            this.guiLoad.Size = new System.Drawing.Size(145, 29);
-            this.guiLoad.TabIndex = 40;
-            this.guiLoad.Text = "0.000";
-            this.guiLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblPosition
-            // 
-            this.lblPosition.AutoSize = true;
-            this.lblPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPosition.Location = new System.Drawing.Point(228, 12);
-            this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(82, 13);
-            this.lblPosition.TabIndex = 28;
-            this.lblPosition.Text = "Position [mm]";
-            // 
-            // guiPosition
-            // 
-            this.guiPosition.BackColor = System.Drawing.Color.Black;
-            this.guiPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiPosition.ForeColor = System.Drawing.Color.Lime;
-            this.guiPosition.Location = new System.Drawing.Point(190, 30);
-            this.guiPosition.Name = "guiPosition";
-            this.guiPosition.Size = new System.Drawing.Size(145, 29);
-            this.guiPosition.TabIndex = 39;
-            this.guiPosition.Text = "0.000";
-            this.guiPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblLoad
-            // 
-            this.lblLoad.AutoSize = true;
-            this.lblLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoad.Location = new System.Drawing.Point(389, 12);
-            this.lblLoad.Name = "lblLoad";
-            this.lblLoad.Size = new System.Drawing.Size(56, 13);
-            this.lblLoad.TabIndex = 30;
-            this.lblLoad.Text = "Load [N]";
-            // 
-            // lblExtension
-            // 
-            this.lblExtension.AutoSize = true;
-            this.lblExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtension.Location = new System.Drawing.Point(524, 12);
-            this.lblExtension.Name = "lblExtension";
-            this.lblExtension.Size = new System.Drawing.Size(92, 13);
-            this.lblExtension.TabIndex = 32;
-            this.lblExtension.Text = "Extension [mm]";
-            // 
-            // superTabItem2
-            // 
-            this.superTabItem2.AttachedControl = this.superTabControlPanel2;
-            this.superTabItem2.GlobalItem = false;
-            this.superTabItem2.Name = "superTabItem2";
-            this.superTabItem2.Text = "superTabItem2";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -2201,36 +2284,6 @@
             this.contextMenuBar1.TabStop = false;
             this.contextMenuBar1.Text = "contextMenuBar1";
             // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(80, 227);
-            this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.LegendText = "数据1";
-            series4.Name = "Series1";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Legend = "Legend1";
-            series5.LegendText = "数据2";
-            series5.Name = "Series2";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Legend = "Legend1";
-            series6.LegendText = "数据3";
-            series6.Name = "Series3";
-            this.chart1.Series.Add(series4);
-            this.chart1.Series.Add(series5);
-            this.chart1.Series.Add(series6);
-            this.chart1.Size = new System.Drawing.Size(717, 262);
-            this.chart1.TabIndex = 56;
-            this.chart1.Text = "chart1";
-            // 
             // timer_UpdateData
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
@@ -2250,6 +2303,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
             this.superTabControl1.PerformLayout();
+            this.superTabControlPanel2.ResumeLayout(false);
+            this.panelEx1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_DrawGraph)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.superTabControlPanel1.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
             this.panelEx6.ResumeLayout(false);
@@ -2267,15 +2328,9 @@
             this.groupPanel2.ResumeLayout(false);
             this.superTabControlPanel4.ResumeLayout(false);
             this.superTabControlPanel5.ResumeLayout(false);
-            this.superTabControlPanel2.ResumeLayout(false);
-            this.panelEx1.ResumeLayout(false);
-            this.panelEx1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
     }
@@ -2293,9 +2348,7 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button guiHalt;
-        private System.Windows.Forms.Label lblDestinationUnit;
         private System.Windows.Forms.Button guiOn;
-        private System.Windows.Forms.Label lblSpeedUnit;
         private System.Windows.Forms.Button guiOff;
         private System.Windows.Forms.TextBox guiDestination;
         private System.Windows.Forms.Button guiUp;
@@ -2426,10 +2479,12 @@
         private DevComponents.DotNetBar.ButtonX buttonX13;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_DisconnectEDC;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_DrawGraph;
         private System.Windows.Forms.Timer timer_UpdateData;
+        private System.Windows.Forms.Label lblDestinationUnit;
+        private System.Windows.Forms.Label lblSpeedUnit;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
