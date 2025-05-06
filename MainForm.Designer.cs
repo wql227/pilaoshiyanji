@@ -29,12 +29,12 @@
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -42,20 +42,20 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bntX_GUIPos = new DevComponents.DotNetBar.ButtonX();
+            this.bntX_GUIOff = new DevComponents.DotNetBar.ButtonX();
+            this.bntX_GUIOn = new DevComponents.DotNetBar.ButtonX();
+            this.bntX_MoveDown = new DevComponents.DotNetBar.ButtonX();
+            this.bntX_MoveHalt = new DevComponents.DotNetBar.ButtonX();
+            this.bntX_MoveUp = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_Disconnect = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_Connect = new DevComponents.DotNetBar.ButtonX();
             this.chart_DrawGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btn_DisconnectEDC = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.guiHalt = new System.Windows.Forms.Button();
             this.lblDestinationUnit = new System.Windows.Forms.Label();
-            this.guiOn = new System.Windows.Forms.Button();
             this.lblSpeedUnit = new System.Windows.Forms.Label();
-            this.guiOff = new System.Windows.Forms.Button();
             this.guiDestination = new System.Windows.Forms.TextBox();
-            this.guiUp = new System.Windows.Forms.Button();
             this.lblDestination = new System.Windows.Forms.Label();
-            this.guiDown = new System.Windows.Forms.Button();
             this.lblSpeed = new System.Windows.Forms.Label();
-            this.guiPos = new System.Windows.Forms.Button();
             this.lblControl = new System.Windows.Forms.Label();
             this.guiSpeed = new System.Windows.Forms.TextBox();
             this.guiControl = new System.Windows.Forms.ComboBox();
@@ -183,6 +183,12 @@
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
+            this.btn_ConState = new System.Windows.Forms.Button();
+            this.btnX_MoveQuickUp = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_QuickMoveDown = new DevComponents.DotNetBar.ButtonX();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lbX_EDCName = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -248,7 +254,7 @@
             this.superTabControl1.ReorderTabsEnabled = true;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl1.SelectedTabIndex = -1;
-            this.superTabControl1.Size = new System.Drawing.Size(1417, 654);
+            this.superTabControl1.Size = new System.Drawing.Size(1418, 702);
             this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl1.TabIndex = 57;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -262,7 +268,7 @@
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel2.Location = new System.Drawing.Point(0, 52);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(1417, 602);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(1418, 650);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItem2;
             // 
@@ -277,7 +283,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1417, 602);
+            this.panelEx1.Size = new System.Drawing.Size(1418, 650);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -291,27 +297,32 @@
             // 
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Location = new System.Drawing.Point(0, 74);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1126, 502);
+            this.panel2.Size = new System.Drawing.Size(1127, 576);
             this.panel2.TabIndex = 57;
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.lbX_EDCName);
+            this.groupBox1.Controls.Add(this.btn_ConState);
+            this.groupBox1.Controls.Add(this.bntX_GUIPos);
+            this.groupBox1.Controls.Add(this.bntX_GUIOff);
+            this.groupBox1.Controls.Add(this.bntX_GUIOn);
+            this.groupBox1.Controls.Add(this.btnX_QuickMoveDown);
+            this.groupBox1.Controls.Add(this.bntX_MoveDown);
+            this.groupBox1.Controls.Add(this.bntX_MoveHalt);
+            this.groupBox1.Controls.Add(this.btnX_MoveQuickUp);
+            this.groupBox1.Controls.Add(this.bntX_MoveUp);
+            this.groupBox1.Controls.Add(this.btnX_Disconnect);
+            this.groupBox1.Controls.Add(this.btnX_Connect);
             this.groupBox1.Controls.Add(this.chart_DrawGraph);
-            this.groupBox1.Controls.Add(this.btn_DisconnectEDC);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.guiHalt);
             this.groupBox1.Controls.Add(this.lblDestinationUnit);
-            this.groupBox1.Controls.Add(this.guiOn);
             this.groupBox1.Controls.Add(this.lblSpeedUnit);
-            this.groupBox1.Controls.Add(this.guiOff);
             this.groupBox1.Controls.Add(this.guiDestination);
-            this.groupBox1.Controls.Add(this.guiUp);
             this.groupBox1.Controls.Add(this.lblDestination);
-            this.groupBox1.Controls.Add(this.guiDown);
             this.groupBox1.Controls.Add(this.lblSpeed);
-            this.groupBox1.Controls.Add(this.guiPos);
             this.groupBox1.Controls.Add(this.lblControl);
             this.groupBox1.Controls.Add(this.guiSpeed);
             this.groupBox1.Controls.Add(this.guiControl);
@@ -319,226 +330,238 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1126, 502);
+            this.groupBox1.Size = new System.Drawing.Size(1127, 576);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
+            // 
+            // bntX_GUIPos
+            // 
+            this.bntX_GUIPos.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bntX_GUIPos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntX_GUIPos.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bntX_GUIPos.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bntX_GUIPos.Image = ((System.Drawing.Image)(resources.GetObject("bntX_GUIPos.Image")));
+            this.bntX_GUIPos.Location = new System.Drawing.Point(998, 506);
+            this.bntX_GUIPos.Name = "bntX_GUIPos";
+            this.bntX_GUIPos.Size = new System.Drawing.Size(123, 39);
+            this.bntX_GUIPos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.bntX_GUIPos.TabIndex = 57;
+            this.bntX_GUIPos.Text = " P  O  S";
+            this.bntX_GUIPos.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.bntX_GUIPos.Click += new System.EventHandler(this.bntX_GUIPos_Click);
+            // 
+            // bntX_GUIOff
+            // 
+            this.bntX_GUIOff.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bntX_GUIOff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntX_GUIOff.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bntX_GUIOff.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bntX_GUIOff.Image = ((System.Drawing.Image)(resources.GetObject("bntX_GUIOff.Image")));
+            this.bntX_GUIOff.Location = new System.Drawing.Point(998, 460);
+            this.bntX_GUIOff.Name = "bntX_GUIOff";
+            this.bntX_GUIOff.Size = new System.Drawing.Size(123, 39);
+            this.bntX_GUIOff.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.bntX_GUIOff.TabIndex = 57;
+            this.bntX_GUIOff.Text = "停    用";
+            this.bntX_GUIOff.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.bntX_GUIOff.Click += new System.EventHandler(this.bntX_GUIOff_Click);
+            // 
+            // bntX_GUIOn
+            // 
+            this.bntX_GUIOn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bntX_GUIOn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntX_GUIOn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bntX_GUIOn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bntX_GUIOn.Image = ((System.Drawing.Image)(resources.GetObject("bntX_GUIOn.Image")));
+            this.bntX_GUIOn.Location = new System.Drawing.Point(998, 414);
+            this.bntX_GUIOn.Name = "bntX_GUIOn";
+            this.bntX_GUIOn.Size = new System.Drawing.Size(123, 39);
+            this.bntX_GUIOn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.bntX_GUIOn.TabIndex = 57;
+            this.bntX_GUIOn.Text = "激    活";
+            this.bntX_GUIOn.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.bntX_GUIOn.Click += new System.EventHandler(this.bntX_GUIOn_Click);
+            // 
+            // bntX_MoveDown
+            // 
+            this.bntX_MoveDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bntX_MoveDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntX_MoveDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bntX_MoveDown.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bntX_MoveDown.Image = ((System.Drawing.Image)(resources.GetObject("bntX_MoveDown.Image")));
+            this.bntX_MoveDown.Location = new System.Drawing.Point(998, 324);
+            this.bntX_MoveDown.Name = "bntX_MoveDown";
+            this.bntX_MoveDown.Size = new System.Drawing.Size(123, 39);
+            this.bntX_MoveDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.bntX_MoveDown.TabIndex = 57;
+            this.bntX_MoveDown.Text = "向    下";
+            this.bntX_MoveDown.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.bntX_MoveDown.Click += new System.EventHandler(this.bntX_MoveDown_Click);
+            // 
+            // bntX_MoveHalt
+            // 
+            this.bntX_MoveHalt.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bntX_MoveHalt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntX_MoveHalt.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bntX_MoveHalt.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bntX_MoveHalt.Image = ((System.Drawing.Image)(resources.GetObject("bntX_MoveHalt.Image")));
+            this.bntX_MoveHalt.Location = new System.Drawing.Point(998, 279);
+            this.bntX_MoveHalt.Name = "bntX_MoveHalt";
+            this.bntX_MoveHalt.Size = new System.Drawing.Size(123, 39);
+            this.bntX_MoveHalt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.bntX_MoveHalt.TabIndex = 57;
+            this.bntX_MoveHalt.Text = "保    持";
+            this.bntX_MoveHalt.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.bntX_MoveHalt.Click += new System.EventHandler(this.bntX_MoveHalt_Click);
+            // 
+            // bntX_MoveUp
+            // 
+            this.bntX_MoveUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bntX_MoveUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntX_MoveUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bntX_MoveUp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bntX_MoveUp.Image = ((System.Drawing.Image)(resources.GetObject("bntX_MoveUp.Image")));
+            this.bntX_MoveUp.Location = new System.Drawing.Point(998, 234);
+            this.bntX_MoveUp.Name = "bntX_MoveUp";
+            this.bntX_MoveUp.Size = new System.Drawing.Size(123, 39);
+            this.bntX_MoveUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.bntX_MoveUp.TabIndex = 57;
+            this.bntX_MoveUp.Text = "向    上";
+            this.bntX_MoveUp.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.bntX_MoveUp.Click += new System.EventHandler(this.bntX_MoveUp_Click);
+            // 
+            // btnX_Disconnect
+            // 
+            this.btnX_Disconnect.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_Disconnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_Disconnect.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_Disconnect.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnX_Disconnect.Image = ((System.Drawing.Image)(resources.GetObject("btnX_Disconnect.Image")));
+            this.btnX_Disconnect.Location = new System.Drawing.Point(998, 144);
+            this.btnX_Disconnect.Name = "btnX_Disconnect";
+            this.btnX_Disconnect.Size = new System.Drawing.Size(123, 39);
+            this.btnX_Disconnect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_Disconnect.TabIndex = 57;
+            this.btnX_Disconnect.Text = "断    开";
+            this.btnX_Disconnect.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnX_Disconnect.Click += new System.EventHandler(this.btnX_Disconnect_Click);
+            // 
+            // btnX_Connect
+            // 
+            this.btnX_Connect.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_Connect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_Connect.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_Connect.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnX_Connect.Image = ((System.Drawing.Image)(resources.GetObject("btnX_Connect.Image")));
+            this.btnX_Connect.Location = new System.Drawing.Point(998, 99);
+            this.btnX_Connect.Name = "btnX_Connect";
+            this.btnX_Connect.Size = new System.Drawing.Size(123, 39);
+            this.btnX_Connect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_Connect.TabIndex = 57;
+            this.btnX_Connect.Text = "连    接";
+            this.btnX_Connect.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnX_Connect.Click += new System.EventHandler(this.btnX_Connect_Click);
             // 
             // chart_DrawGraph
             // 
             this.chart_DrawGraph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea1";
-            this.chart_DrawGraph.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart_DrawGraph.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 94F;
+            chartArea1.Position.Width = 80.88372F;
+            chartArea1.Position.X = 3F;
+            chartArea1.Position.Y = 3F;
+            this.chart_DrawGraph.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart_DrawGraph.Legends.Add(legend1);
             this.chart_DrawGraph.Location = new System.Drawing.Point(9, 16);
             this.chart_DrawGraph.Name = "chart_DrawGraph";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series7.Legend = "Legend1";
-            series7.LegendText = "位移";
-            series7.Name = "Series1";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series8.Legend = "Legend1";
-            series8.LegendText = "力反馈";
-            series8.Name = "Series2";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series9.Legend = "Legend1";
-            series9.LegendText = "拉伸";
-            series9.Name = "Series3";
-            this.chart_DrawGraph.Series.Add(series7);
-            this.chart_DrawGraph.Series.Add(series8);
-            this.chart_DrawGraph.Series.Add(series9);
-            this.chart_DrawGraph.Size = new System.Drawing.Size(959, 497);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.Legend = "Legend1";
+            series1.LegendText = "位移";
+            series1.Name = "Series1";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.Legend = "Legend1";
+            series2.LegendText = "力反馈";
+            series2.Name = "Series2";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series3.Legend = "Legend1";
+            series3.LegendText = "拉伸";
+            series3.Name = "Series3";
+            this.chart_DrawGraph.Series.Add(series1);
+            this.chart_DrawGraph.Series.Add(series2);
+            this.chart_DrawGraph.Series.Add(series3);
+            this.chart_DrawGraph.Size = new System.Drawing.Size(861, 571);
             this.chart_DrawGraph.TabIndex = 56;
             this.chart_DrawGraph.Text = "chart1";
-            // 
-            // btn_DisconnectEDC
-            // 
-            this.btn_DisconnectEDC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_DisconnectEDC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_DisconnectEDC.Image = ((System.Drawing.Image)(resources.GetObject("btn_DisconnectEDC.Image")));
-            this.btn_DisconnectEDC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_DisconnectEDC.Location = new System.Drawing.Point(976, 65);
-            this.btn_DisconnectEDC.Name = "btn_DisconnectEDC";
-            this.btn_DisconnectEDC.Size = new System.Drawing.Size(93, 39);
-            this.btn_DisconnectEDC.TabIndex = 55;
-            this.btn_DisconnectEDC.Text = "断开";
-            this.btn_DisconnectEDC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_DisconnectEDC.UseVisualStyleBackColor = true;
-            this.btn_DisconnectEDC.Click += new System.EventHandler(this.btn_DisconnectEDC_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(976, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 39);
-            this.button1.TabIndex = 55;
-            this.button1.Text = "连接";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // guiHalt
-            // 
-            this.guiHalt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guiHalt.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.guiHalt.Image = ((System.Drawing.Image)(resources.GetObject("guiHalt.Image")));
-            this.guiHalt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.guiHalt.Location = new System.Drawing.Point(976, 156);
-            this.guiHalt.Name = "guiHalt";
-            this.guiHalt.Size = new System.Drawing.Size(93, 40);
-            this.guiHalt.TabIndex = 43;
-            this.guiHalt.Text = "停止";
-            this.guiHalt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.guiHalt.UseVisualStyleBackColor = true;
-            this.guiHalt.Click += new System.EventHandler(this.guiHalt_Click);
             // 
             // lblDestinationUnit
             // 
             this.lblDestinationUnit.AutoSize = true;
             this.lblDestinationUnit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblDestinationUnit.Location = new System.Drawing.Point(879, 506);
+            this.lblDestinationUnit.Location = new System.Drawing.Point(972, 258);
             this.lblDestinationUnit.Name = "lblDestinationUnit";
             this.lblDestinationUnit.Size = new System.Drawing.Size(23, 16);
             this.lblDestinationUnit.TabIndex = 54;
             this.lblDestinationUnit.Text = "mm";
-            // 
-            // guiOn
-            // 
-            this.guiOn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guiOn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.guiOn.Image = ((System.Drawing.Image)(resources.GetObject("guiOn.Image")));
-            this.guiOn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.guiOn.Location = new System.Drawing.Point(976, 247);
-            this.guiOn.Name = "guiOn";
-            this.guiOn.Size = new System.Drawing.Size(93, 40);
-            this.guiOn.TabIndex = 21;
-            this.guiOn.Text = "激活";
-            this.guiOn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.guiOn.UseVisualStyleBackColor = true;
-            this.guiOn.Click += new System.EventHandler(this.guiOn_Click);
             // 
             // lblSpeedUnit
             // 
             this.lblSpeedUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSpeedUnit.AutoSize = true;
             this.lblSpeedUnit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblSpeedUnit.Location = new System.Drawing.Point(1082, 456);
+            this.lblSpeedUnit.Location = new System.Drawing.Point(928, 210);
             this.lblSpeedUnit.Name = "lblSpeedUnit";
             this.lblSpeedUnit.Size = new System.Drawing.Size(39, 16);
             this.lblSpeedUnit.TabIndex = 53;
             this.lblSpeedUnit.Text = "mm/s";
             // 
-            // guiOff
-            // 
-            this.guiOff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guiOff.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.guiOff.Image = ((System.Drawing.Image)(resources.GetObject("guiOff.Image")));
-            this.guiOff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.guiOff.Location = new System.Drawing.Point(976, 293);
-            this.guiOff.Name = "guiOff";
-            this.guiOff.Size = new System.Drawing.Size(93, 40);
-            this.guiOff.TabIndex = 22;
-            this.guiOff.Text = "停用";
-            this.guiOff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.guiOff.UseVisualStyleBackColor = true;
-            this.guiOff.Click += new System.EventHandler(this.guiOff_Click);
-            // 
             // guiDestination
             // 
             this.guiDestination.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.guiDestination.Location = new System.Drawing.Point(769, 503);
+            this.guiDestination.Location = new System.Drawing.Point(878, 277);
             this.guiDestination.Name = "guiDestination";
             this.guiDestination.Size = new System.Drawing.Size(100, 26);
             this.guiDestination.TabIndex = 51;
             this.guiDestination.Text = "0";
             this.guiDestination.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // guiUp
-            // 
-            this.guiUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guiUp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.guiUp.Image = ((System.Drawing.Image)(resources.GetObject("guiUp.Image")));
-            this.guiUp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.guiUp.Location = new System.Drawing.Point(976, 110);
-            this.guiUp.Name = "guiUp";
-            this.guiUp.Size = new System.Drawing.Size(93, 40);
-            this.guiUp.TabIndex = 42;
-            this.guiUp.Text = "向上";
-            this.guiUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.guiUp.UseVisualStyleBackColor = true;
-            this.guiUp.Click += new System.EventHandler(this.guiUp_Click);
-            // 
             // lblDestination
             // 
             this.lblDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDestination.AutoSize = true;
             this.lblDestination.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblDestination.Location = new System.Drawing.Point(974, 484);
+            this.lblDestination.Location = new System.Drawing.Point(877, 258);
             this.lblDestination.Name = "lblDestination";
             this.lblDestination.Size = new System.Drawing.Size(95, 16);
             this.lblDestination.TabIndex = 50;
             this.lblDestination.Text = "Destination";
-            // 
-            // guiDown
-            // 
-            this.guiDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guiDown.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.guiDown.Image = ((System.Drawing.Image)(resources.GetObject("guiDown.Image")));
-            this.guiDown.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.guiDown.Location = new System.Drawing.Point(976, 201);
-            this.guiDown.Name = "guiDown";
-            this.guiDown.Size = new System.Drawing.Size(93, 40);
-            this.guiDown.TabIndex = 44;
-            this.guiDown.Text = "向下";
-            this.guiDown.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.guiDown.UseVisualStyleBackColor = true;
-            this.guiDown.Click += new System.EventHandler(this.guiDown_Click);
             // 
             // lblSpeed
             // 
             this.lblSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSpeed.AutoSize = true;
             this.lblSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblSpeed.Location = new System.Drawing.Point(974, 434);
+            this.lblSpeed.Location = new System.Drawing.Point(875, 210);
             this.lblSpeed.Name = "lblSpeed";
             this.lblSpeed.Size = new System.Drawing.Size(47, 16);
             this.lblSpeed.TabIndex = 49;
             this.lblSpeed.Text = "Speed";
-            // 
-            // guiPos
-            // 
-            this.guiPos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guiPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiPos.Image = ((System.Drawing.Image)(resources.GetObject("guiPos.Image")));
-            this.guiPos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.guiPos.Location = new System.Drawing.Point(976, 339);
-            this.guiPos.Name = "guiPos";
-            this.guiPos.Size = new System.Drawing.Size(93, 40);
-            this.guiPos.TabIndex = 45;
-            this.guiPos.Text = "Pos";
-            this.guiPos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.guiPos.UseVisualStyleBackColor = true;
-            this.guiPos.Click += new System.EventHandler(this.guiPos_Click);
             // 
             // lblControl
             // 
             this.lblControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblControl.AutoSize = true;
             this.lblControl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblControl.Location = new System.Drawing.Point(974, 382);
+            this.lblControl.Location = new System.Drawing.Point(876, 158);
             this.lblControl.Name = "lblControl";
             this.lblControl.Size = new System.Drawing.Size(63, 16);
             this.lblControl.TabIndex = 48;
@@ -548,7 +571,7 @@
             // 
             this.guiSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guiSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.guiSpeed.Location = new System.Drawing.Point(976, 453);
+            this.guiSpeed.Location = new System.Drawing.Point(877, 229);
             this.guiSpeed.Name = "guiSpeed";
             this.guiSpeed.Size = new System.Drawing.Size(100, 26);
             this.guiSpeed.TabIndex = 46;
@@ -565,10 +588,10 @@
             "Position",
             "Load",
             "Extension"});
-            this.guiControl.Location = new System.Drawing.Point(976, 407);
+            this.guiControl.Location = new System.Drawing.Point(878, 183);
             this.guiControl.MaxDropDownItems = 16;
             this.guiControl.Name = "guiControl";
-            this.guiControl.Size = new System.Drawing.Size(99, 24);
+            this.guiControl.Size = new System.Drawing.Size(94, 24);
             this.guiControl.TabIndex = 47;
             this.guiControl.SelectedIndexChanged += new System.EventHandler(this.guiControl_SelectedIndexChanged);
             // 
@@ -585,14 +608,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1126, 100);
+            this.panel1.Size = new System.Drawing.Size(1127, 74);
             this.panel1.TabIndex = 56;
             // 
             // lblTime
             // 
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(68, 20);
+            this.lblTime.Location = new System.Drawing.Point(57, 20);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(77, 13);
             this.lblTime.TabIndex = 26;
@@ -680,10 +703,10 @@
             // 
             this.guiDebug.Dock = System.Windows.Forms.DockStyle.Right;
             this.guiDebug.HideSelection = false;
-            this.guiDebug.Location = new System.Drawing.Point(1126, 0);
+            this.guiDebug.Location = new System.Drawing.Point(1127, 0);
             this.guiDebug.Name = "guiDebug";
             this.guiDebug.ReadOnly = true;
-            this.guiDebug.Size = new System.Drawing.Size(291, 602);
+            this.guiDebug.Size = new System.Drawing.Size(291, 650);
             this.guiDebug.TabIndex = 0;
             this.guiDebug.Text = "Starting Communication\n";
             // 
@@ -701,7 +724,7 @@
             this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel1.Location = new System.Drawing.Point(0, 52);
             this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(1417, 602);
+            this.superTabControlPanel1.Size = new System.Drawing.Size(1418, 650);
             this.superTabControlPanel1.TabIndex = 0;
             this.superTabControlPanel1.TabItem = this.superTabItem1;
             // 
@@ -716,7 +739,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(1417, 602);
+            this.panelEx2.Size = new System.Drawing.Size(1418, 650);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -734,7 +757,7 @@
             this.panelEx7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx7.Location = new System.Drawing.Point(0, 0);
             this.panelEx7.Name = "panelEx7";
-            this.panelEx7.Size = new System.Drawing.Size(1114, 442);
+            this.panelEx7.Size = new System.Drawing.Size(1115, 490);
             this.panelEx7.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx7.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx7.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -784,9 +807,9 @@
             this.panelEx6.Controls.Add(this.labelX1);
             this.panelEx6.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx6.Location = new System.Drawing.Point(0, 442);
+            this.panelEx6.Location = new System.Drawing.Point(0, 490);
             this.panelEx6.Name = "panelEx6";
-            this.panelEx6.Size = new System.Drawing.Size(1114, 160);
+            this.panelEx6.Size = new System.Drawing.Size(1115, 160);
             this.panelEx6.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx6.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx6.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1442,12 +1465,12 @@
             this.superTabControl2.Controls.Add(this.superTabControlPanel4);
             this.superTabControl2.Controls.Add(this.superTabControlPanel5);
             this.superTabControl2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.superTabControl2.Location = new System.Drawing.Point(1114, 0);
+            this.superTabControl2.Location = new System.Drawing.Point(1115, 0);
             this.superTabControl2.Name = "superTabControl2";
             this.superTabControl2.ReorderTabsEnabled = true;
             this.superTabControl2.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl2.SelectedTabIndex = 0;
-            this.superTabControl2.Size = new System.Drawing.Size(303, 602);
+            this.superTabControl2.Size = new System.Drawing.Size(303, 650);
             this.superTabControl2.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl2.TabIndex = 0;
             this.superTabControl2.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -1461,9 +1484,9 @@
             // 
             this.superTabControlPanel3.Controls.Add(this.panelEx3);
             this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 25);
+            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(303, 577);
+            this.superTabControlPanel3.Size = new System.Drawing.Size(303, 622);
             this.superTabControlPanel3.TabIndex = 1;
             this.superTabControlPanel3.TabItem = this.superTabItem3;
             // 
@@ -1487,7 +1510,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 0);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(303, 577);
+            this.panelEx3.Size = new System.Drawing.Size(303, 622);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1529,7 +1552,7 @@
             this.superTabControl3.ControlBox.CloseBox});
             this.superTabControl3.Controls.Add(this.superTabControlPanel6);
             this.superTabControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.superTabControl3.Location = new System.Drawing.Point(0, 467);
+            this.superTabControl3.Location = new System.Drawing.Point(0, 512);
             this.superTabControl3.Name = "superTabControl3";
             this.superTabControl3.ReorderTabsEnabled = false;
             this.superTabControl3.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
@@ -1548,7 +1571,7 @@
             this.superTabControlPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel6.Location = new System.Drawing.Point(0, 0);
             this.superTabControlPanel6.Name = "superTabControlPanel6";
-            this.superTabControlPanel6.Size = new System.Drawing.Size(303, 85);
+            this.superTabControlPanel6.Size = new System.Drawing.Size(303, 82);
             this.superTabControlPanel6.TabIndex = 1;
             this.superTabControlPanel6.TabItem = this.superTabItem6;
             // 
@@ -1566,7 +1589,7 @@
             this.panelEx8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx8.Location = new System.Drawing.Point(0, 0);
             this.panelEx8.Name = "panelEx8";
-            this.panelEx8.Size = new System.Drawing.Size(303, 85);
+            this.panelEx8.Size = new System.Drawing.Size(303, 82);
             this.panelEx8.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx8.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx8.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -2139,7 +2162,7 @@
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1417, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1418, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -2267,7 +2290,7 @@
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
@@ -2288,11 +2311,79 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
+            // btn_ConState
+            // 
+            this.btn_ConState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_ConState.Enabled = false;
+            this.btn_ConState.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_ConState.Location = new System.Drawing.Point(998, 51);
+            this.btn_ConState.Name = "btn_ConState";
+            this.btn_ConState.Size = new System.Drawing.Size(123, 42);
+            this.btn_ConState.TabIndex = 58;
+            this.btn_ConState.Text = "OFFLINE";
+            this.btn_ConState.UseVisualStyleBackColor = true;
+            // 
+            // btnX_MoveQuickUp
+            // 
+            this.btnX_MoveQuickUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_MoveQuickUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_MoveQuickUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_MoveQuickUp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnX_MoveQuickUp.Image = ((System.Drawing.Image)(resources.GetObject("btnX_MoveQuickUp.Image")));
+            this.btnX_MoveQuickUp.Location = new System.Drawing.Point(998, 189);
+            this.btnX_MoveQuickUp.Name = "btnX_MoveQuickUp";
+            this.btnX_MoveQuickUp.Size = new System.Drawing.Size(123, 39);
+            this.btnX_MoveQuickUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_MoveQuickUp.TabIndex = 57;
+            this.btnX_MoveQuickUp.Text = "快速向上";
+            this.btnX_MoveQuickUp.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            this.btnX_MoveQuickUp.Click += new System.EventHandler(this.bntX_MoveUp_Click);
+            // 
+            // btnX_QuickMoveDown
+            // 
+            this.btnX_QuickMoveDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_QuickMoveDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_QuickMoveDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_QuickMoveDown.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnX_QuickMoveDown.Image = ((System.Drawing.Image)(resources.GetObject("btnX_QuickMoveDown.Image")));
+            this.btnX_QuickMoveDown.Location = new System.Drawing.Point(998, 369);
+            this.btnX_QuickMoveDown.Name = "btnX_QuickMoveDown";
+            this.btnX_QuickMoveDown.Size = new System.Drawing.Size(123, 39);
+            this.btnX_QuickMoveDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_QuickMoveDown.TabIndex = 57;
+            this.btnX_QuickMoveDown.Text = "快速向下";
+            this.btnX_QuickMoveDown.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
+            // lbX_EDCName
+            // 
+            this.lbX_EDCName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbX_EDCName.BackColor = System.Drawing.Color.LightSkyBlue;
+            // 
+            // 
+            // 
+            this.lbX_EDCName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbX_EDCName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbX_EDCName.Location = new System.Drawing.Point(998, 16);
+            this.lbX_EDCName.Name = "lbX_EDCName";
+            this.lbX_EDCName.Size = new System.Drawing.Size(123, 29);
+            this.lbX_EDCName.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
+            this.lbX_EDCName.TabIndex = 59;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1417, 654);
+            this.ClientSize = new System.Drawing.Size(1418, 702);
             this.Controls.Add(this.superTabControl1);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -2347,15 +2438,9 @@
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button guiHalt;
-        private System.Windows.Forms.Button guiOn;
-        private System.Windows.Forms.Button guiOff;
         private System.Windows.Forms.TextBox guiDestination;
-        private System.Windows.Forms.Button guiUp;
         private System.Windows.Forms.Label lblDestination;
-        private System.Windows.Forms.Button guiDown;
         private System.Windows.Forms.Label lblSpeed;
-        private System.Windows.Forms.Button guiPos;
         private System.Windows.Forms.Label lblControl;
         private System.Windows.Forms.TextBox guiSpeed;
         private System.Windows.Forms.ComboBox guiControl;
@@ -2477,14 +2562,26 @@
         private DevComponents.DotNetBar.LabelX labelX29;
         private DevComponents.DotNetBar.ButtonX buttonX14;
         private DevComponents.DotNetBar.ButtonX buttonX13;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btn_DisconnectEDC;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_DrawGraph;
         private System.Windows.Forms.Timer timer_UpdateData;
         private System.Windows.Forms.Label lblDestinationUnit;
         private System.Windows.Forms.Label lblSpeedUnit;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private DevComponents.DotNetBar.ButtonX btnX_Connect;
+        private DevComponents.DotNetBar.ButtonX btnX_Disconnect;
+        private DevComponents.DotNetBar.ButtonX bntX_MoveDown;
+        private DevComponents.DotNetBar.ButtonX bntX_MoveHalt;
+        private DevComponents.DotNetBar.ButtonX bntX_MoveUp;
+        private DevComponents.DotNetBar.ButtonX bntX_GUIPos;
+        private DevComponents.DotNetBar.ButtonX bntX_GUIOff;
+        private DevComponents.DotNetBar.ButtonX bntX_GUIOn;
+        private System.Windows.Forms.Button btn_ConState;
+        private DevComponents.DotNetBar.ButtonX btnX_MoveQuickUp;
+        private DevComponents.DotNetBar.ButtonX btnX_QuickMoveDown;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private DevComponents.DotNetBar.LabelX lbX_EDCName;
     }
 }
 

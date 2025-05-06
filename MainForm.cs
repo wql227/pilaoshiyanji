@@ -78,6 +78,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Doli.DoPE10;
 using System.Diagnostics;
+using DevComponents.DotNetBar;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DoPE10Net_CSharpDemo
 {
@@ -119,7 +121,7 @@ namespace DoPE10Net_CSharpDemo
 
         decimal[] array_display1 = new decimal[150];         //波形显示数据1
         decimal[] array_display2 = new decimal[150];         //波形显示数据2
-        decimal[] array_display3 = new decimal[150];         //波形显示数据3，数据显示太多，先屏蔽数据3
+        decimal[] array_display3 = new decimal[150];         //波形显示数据3
 
         //位移
         decimal data_display1 ;
@@ -157,6 +159,8 @@ namespace DoPE10Net_CSharpDemo
             // Set the control-combobox to "position".
             guiControl.SelectedIndex = (int)DoPE.CTRL.POS;
 
+            EnableButton();
+
             // Connect to EDC
             ConnectToEdc();
         }
@@ -176,7 +180,7 @@ namespace DoPE10Net_CSharpDemo
                 return;
             }
 
-            Cursor.Current = Cursors.WaitCursor;
+            this.Cursor = Cursors.WaitCursor;
 
             try
             {
@@ -188,12 +192,14 @@ namespace DoPE10Net_CSharpDemo
                 if (MyEdc != null)
                 {
                     Display("连接成功，Name:" + MyEdc.ModuleInfo.Name + "; DeviceId = " + MyEdc.ModuleInfo.DeviceID + "; FunctionId = " + MyEdc.ModuleInfo.DeviceID + "; SerNr = " + MyEdc.ModuleInfo.SerNr + "\n");
-                    //return;
+
+                    lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
+
                 }
 
                 bConnected = true;
-                //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);
-                //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
+
+                EnableButton();
 
                 //DoPEcheck dope_block = new DoPEcheck(MyEdc);
 
@@ -260,7 +266,7 @@ namespace DoPE10Net_CSharpDemo
             //    Display(string.Format("{0}\n", ex));
             //}
 
-            Cursor.Current = Cursors.Default;
+            this.Cursor = Cursors.Default;
 
         }
         #endregion
@@ -277,8 +283,11 @@ namespace DoPE10Net_CSharpDemo
         private void DisplayError(DoPE.ERR error, string Text)
         {
             if (error != DoPE.ERR.NOERROR)
+            {
                 Display(Text + " Error: " + error + "\n");
+            }
         }
+
 
         ///----------------------------------------------------------------------
         /// <summary>Display debug text</summary>
@@ -287,14 +296,6 @@ namespace DoPE10Net_CSharpDemo
         {
             guiDebug.AppendText(Text);
             Refresh();
-        }
-
-        ///----------------------------------------------------------------------
-        /// <summary>Activates the EDC's drive.</summary>
-        ///----------------------------------------------------------------------
-        private void guiOn_Click(object sender, EventArgs e)
-        {
-            OnEDC();
         }
 
 
@@ -322,7 +323,6 @@ namespace DoPE10Net_CSharpDemo
         ///----------------------------------------------------------------------
         private void guiOff_Click(object sender, EventArgs e)
         {
-            OffEDC();
         }
 
 
@@ -341,9 +341,7 @@ namespace DoPE10Net_CSharpDemo
                 Display(CommandFailedString);
             }
         }
-        ///----------------------------------------------------------------------
-        /// <summary>Sends a move-command with direction "up" to the EDC.</summary>
-        ///----------------------------------------------------------------------
+
         private void guiUp_Click(object sender, EventArgs e)
         {
             double speed;
@@ -361,41 +359,6 @@ namespace DoPE10Net_CSharpDemo
             }
         }
 
-        ///----------------------------------------------------------------------
-        /// <summary>Sends a halt-command to the EDC.</summary>
-        ///----------------------------------------------------------------------
-        private void guiHalt_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                DisplayError(error, "Halt");
-            }
-            catch (NullReferenceException)
-            {
-                Display(CommandFailedString);
-            }
-        }
-
-        ///----------------------------------------------------------------------
-        /// <summary>Sends a move-command with direction "down" to the EDC.</summary>
-        ///----------------------------------------------------------------------
-        private void guiDown_Click(object sender, EventArgs e)
-        {
-            double speed;
-
-            try
-            {
-                speed = Convert.ToDouble(guiSpeed.Text);
-
-                DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
-                DisplayError(error, "FDPoti");
-            }
-            catch (NullReferenceException)
-            {
-                Display(CommandFailedString);
-            }
-        }
 
         ///----------------------------------------------------------------------
         /// <summary>
@@ -436,21 +399,29 @@ namespace DoPE10Net_CSharpDemo
             switch (control)
             {
                 case DoPE.CTRL.POS:
-                    lblSpeedUnit.Text = "mm/s";
-                    lblDestinationUnit.Text = "mm";
-                    break;
+                    {
+                        lblSpeedUnit.Text = "mm/s";
+                        lblDestinationUnit.Text = "mm";
+                        break;
+                    }
                 case DoPE.CTRL.LOAD:
-                    lblSpeedUnit.Text = "N/s";
-                    lblDestinationUnit.Text = "N";
-                    break;
+                    {
+                        lblSpeedUnit.Text = "N/s";
+                        lblDestinationUnit.Text = "N";
+                        break;
+                    }
                 case DoPE.CTRL.EXTENSION:
-                    lblSpeedUnit.Text = "mm/s";
-                    lblDestinationUnit.Text = "mm";
-                    break;
+                    {
+                        lblSpeedUnit.Text = "mm/s";
+                        lblDestinationUnit.Text = "mm";
+                        break;
+                    }
                 default:
-                    lblSpeedUnit.Text = "Unit/s";
-                    lblDestinationUnit.Text = "Unit";
-                    break;
+                    {
+                        lblSpeedUnit.Text = "Unit/s";
+                        lblDestinationUnit.Text = "Unit";
+                        break;
+                    }
             }
         }
 
@@ -461,6 +432,22 @@ namespace DoPE10Net_CSharpDemo
         private int OnLine(DoPE.LineState LineState, object Parameter)
         {
             Display(string.Format("OnLine: {0}\n", LineState));
+
+            if (LineState == DoPE.LineState.OFFLINE)
+            {
+                btn_ConState.BackColor = Color.Red;
+                btn_ConState.Text = "OFFLINE";
+            }
+            else if (LineState == DoPE.LineState.ONLINE)
+            {
+                btn_ConState.BackColor = Color.Lime;
+                btn_ConState.Text = "ONLINE";
+            }
+            else if (LineState == DoPE.LineState.RESTART)
+            {
+                btn_ConState.BackColor = Color.Yellow;
+                btn_ConState.Text = "RESTART";
+            }
 
             return 0;
         }
@@ -679,6 +666,8 @@ namespace DoPE10Net_CSharpDemo
             timer_UpdateData.Interval = 300;
             timer_UpdateData.Start();
 
+            btn_ConState.BackColor = Color.Red;
+
             //取消平滑
             chart_DrawGraph.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
 
@@ -699,10 +688,46 @@ namespace DoPE10Net_CSharpDemo
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        public void EnableButton()
+        {
+            if (bConnected)
+            {
+                //btnX_Connect.Enabled = true;
+                btnX_Disconnect.Enabled = true;
+                btnX_MoveQuickUp.Enabled = true;
+                bntX_MoveUp.Enabled = true;
+                bntX_MoveHalt.Enabled = true;
+                bntX_MoveDown.Enabled = true;
+                btnX_QuickMoveDown.Enabled = true;
+                bntX_GUIOn.Enabled = true;
+                bntX_GUIOff.Enabled = true;
+                bntX_GUIPos.Enabled = true;
+            }
+            else
+            {
+                //btnX_Connect.Enabled = true;
+                btnX_Disconnect.Enabled = false;
+                btnX_MoveQuickUp.Enabled = false;
+                bntX_MoveUp.Enabled = false;
+                bntX_MoveHalt.Enabled = false;
+                bntX_MoveDown.Enabled = false;
+                btnX_QuickMoveDown.Enabled = false;
+                bntX_GUIOn.Enabled = false;
+                bntX_GUIOff.Enabled = false;
+                bntX_GUIPos.Enabled = false;
+            }
+        }
+
+
+        /// <summary>
+        /// 连接到EDC控制器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_Connect_Click(object sender, EventArgs e)
         {
             ConnectToEdc();
-
 
         }
 
@@ -736,9 +761,19 @@ namespace DoPE10Net_CSharpDemo
             StartCommunicationWithEdcTimer.Enabled = true; // start automatic updates
         }
 
-        private void btn_DisconnectEDC_Click(object sender, EventArgs e)
-        {
 
+        /// <summary>
+        /// 断开EDC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_Disconnect_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                MyEdc.Dispose();
+                bConnected = false;
+            }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -758,11 +793,15 @@ namespace DoPE10Net_CSharpDemo
                 return;
             }
 
+            EnableButton();
+
             try
             {
                 int countX;
                 int LengthX = 20;                   //X轴显示长度，长度不能大于 array_display1 数组长度，最大140
                 //Random rd = new Random();           //产生随机函数
+
+                chart_DrawGraph.ResetAutoValues();
 
                 //if (startUp == 0)                     //上电第一次显示波形零，让波形表格呈现出来,只执行一次
                 {
@@ -817,6 +856,137 @@ namespace DoPE10Net_CSharpDemo
             {
                 Console.WriteLine("波形显示错误！");                 //调试软件后台打印
                 return;
+            }
+        }
+
+
+        /// <summary>
+        /// 向上
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Sends a move-command with direction "up" to the EDC.</summary>
+        ///----------------------------------------------------------------------
+        private void bntX_MoveUp_Click(object sender, EventArgs e)
+        {
+            double speed;
+
+            try
+            {
+                speed = Convert.ToDouble(guiSpeed.Text);
+
+                DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
+                DisplayError(error, "FDPoti");
+            }
+            catch (NullReferenceException)
+            {
+                Display(CommandFailedString);
+            }
+        }
+
+
+        /// <summary>
+        /// 保持
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Sends a halt-command to the EDC.</summary>
+        ///----------------------------------------------------------------------
+        private void bntX_MoveHalt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                DisplayError(error, "Halt");
+            }
+            catch (NullReferenceException)
+            {
+                Display(CommandFailedString);
+            }
+        }
+
+
+        /// <summary>
+        /// 向下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Sends a move-command with direction "down" to the EDC.</summary>
+        ///----------------------------------------------------------------------
+        private void bntX_MoveDown_Click(object sender, EventArgs e)
+        {
+            double speed;
+
+            try
+            {
+                speed = Convert.ToDouble(guiSpeed.Text);
+
+                DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                DisplayError(error, "FDPoti");
+            }
+            catch (NullReferenceException)
+            {
+                Display(CommandFailedString);
+            }
+        }
+
+
+        /// <summary>
+        /// 激活
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Activates the EDC's drive.</summary>
+        ///----------------------------------------------------------------------
+        private void bntX_GUIOn_Click(object sender, EventArgs e)
+        {
+            OnEDC();
+        }
+
+
+        /// <summary>
+        /// 停用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Activates the EDC's drive.</summary>
+        ///----------------------------------------------------------------------
+        private void bntX_GUIOff_Click(object sender, EventArgs e)
+        {
+            OffEDC();
+        }
+
+
+        /// <summary>
+        /// 移动
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bntX_GUIPos_Click(object sender, EventArgs e)
+        {
+            DoPE.CTRL control;
+            double speed;
+            double destination;
+
+            try
+            {
+                control = (DoPE.CTRL)guiControl.SelectedIndex;
+                speed = Convert.ToDouble(guiSpeed.Text);
+                destination = Convert.ToDouble(guiDestination.Text);
+
+                DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
+                //formsPlot1.
+
+                DisplayError(error, "Pos");
+            }
+            catch (NullReferenceException)
+            {
+                Display(CommandFailedString);
             }
         }
     }
