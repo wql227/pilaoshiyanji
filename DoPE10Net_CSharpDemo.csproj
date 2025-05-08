@@ -56,6 +56,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Arction.DirectX, Version=10.0.1.4001, Culture=neutral, PublicKeyToken=6484d7bb14b95dd3" />
+    <Reference Include="Arction.Licensing, Version=2.1.0.0, Culture=neutral, PublicKeyToken=6484d7bb14b95dd3" />
+    <Reference Include="Arction.RenderingDefinitions, Version=10.0.1.4001, Culture=neutral, PublicKeyToken=6484d7bb14b95dd3" />
+    <Reference Include="Arction.RenderingEngine, Version=10.0.1.4001, Culture=neutral, PublicKeyToken=6484d7bb14b95dd3" />
+    <Reference Include="Arction.RenderingEngine11, Version=10.0.1.4001, Culture=neutral, PublicKeyToken=6484d7bb14b95dd3" />
+    <Reference Include="Arction.RenderingEngine9, Version=10.0.1.4001, Culture=neutral, PublicKeyToken=6484d7bb14b95dd3" />
+    <Reference Include="Arction.WinForms.Charting.LightningChart, Version=10.0.1.4001, Culture=neutral, PublicKeyToken=6484d7bb14b95dd3, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar.Layout, Version=14.1.0.37, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ReferenceAssembly\DevComponents.DotNetBar.Layout.dll</HintPath>
@@ -75,12 +82,14 @@
     <Reference Include="HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>packages\HarfBuzzSharp.7.3.0.3\lib\net462\HarfBuzzSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK.GLControl, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>packages\OpenTK.GLControl.3.1.0\lib\net20\OpenTK.GLControl.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="ScottPlot, Version=5.0.54.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
       <HintPath>packages\ScottPlot.5.0.54\lib\net462\ScottPlot.dll</HintPath>
     </Reference>
@@ -103,6 +112,7 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Drawing.Common.4.7.3\lib\net461\System.Drawing.Common.dll</HintPath>

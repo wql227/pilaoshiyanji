@@ -80,6 +80,11 @@ using Doli.DoPE10;
 using System.Diagnostics;
 using DevComponents.DotNetBar;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Threading;
+using Arction.WinForms.Charting;
+using Arction.WinForms.Charting.Axes;
+using Arction.WinForms.Charting.SeriesXY;
+using System.Threading.Tasks;
 
 namespace DoPE10Net_CSharpDemo
 {
@@ -115,6 +120,16 @@ namespace DoPE10Net_CSharpDemo
         /// </summary>
         private bool bConnected = false;
 
+        /// <summary>
+        /// 数据线程
+        /// </summary>
+        private Thread _thread = null;
+
+        /// <summary>
+        /// Random value generator.
+        /// </summary>
+        private Random[] _rand;
+
 
         readonly double[] Values = new double[25];
         readonly Stopwatch Stopwatch = Stopwatch.StartNew();
@@ -133,6 +148,32 @@ namespace DoPE10Net_CSharpDemo
         decimal data_display3 ;
         decimal data_displayEnable = 0;
 
+
+        double _pointsPerSec = 1000;    // Data rate for each channel
+        int _channelCount = 0;          // Channel count.
+        double _xLength = 0;            // X axis length.
+        double _previousX = 0;          // Latest X value on axis.
+        long _startTicks;               // Controls timing.
+        double _pointsOutput;
+        long _renderingTime;
+
+        // Constants
+        const double YMin = -50;       // Minimal y-value.
+        const double YMax = 50;        // Maximal y-value.
+
+        private volatile bool _stop;    // Stops thread work.
+        private bool _bFormClosing = false;
+
+        double[] _previousTemperature;
+
+        /// <summary>
+        /// Boolean for random data
+        /// </summary>
+        public bool randomdata = false;
+
+        //Stopwatch for controlling the timing 
+        Stopwatch _stopWatch;
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -140,6 +181,12 @@ namespace DoPE10Net_CSharpDemo
         {
             // Initialize graphical-user-interface.
             InitializeComponent();
+
+            _stop = false;
+            _thread = null;
+            _stopWatch = new Stopwatch();
+            _stopWatch.Start();
+
         }
 
         ///----------------------------------------------------------------------
@@ -163,7 +210,41 @@ namespace DoPE10Net_CSharpDemo
 
             // Connect to EDC
             ConnectToEdc();
+
+            //设置lightningchart参数
+            CreateChart();
         }
+
+
+        private void CreateChart()
+        {
+            //Disable rendering.
+            lightningChart1.BeginUpdate();
+
+            //Set V-Sync to prevent 'tearing'
+            lightningChart1.RenderOptions.WaitForVSync = true;
+
+            // Change axis layout.
+            lightningChart1.ViewXY.AxisLayout.YAxesLayout = YAxesLayout.Stacked;
+            lightningChart1.ViewXY.AxisLayout.SegmentsGap = 10;
+
+            lightningChart1.ViewXY.DropOldSeriesData = true; // Drop old data, increase preformance.
+
+            // Zooming and panning horizontal mode.
+            lightningChart1.ViewXY.ZoomPanOptions.RectangleZoomMode = RectangleZoomMode.Horizontal;
+            lightningChart1.ViewXY.ZoomPanOptions.PanDirection = PanDirection.Horizontal;
+
+            // Configure x-axis
+            lightningChart1.ViewXY.XAxes[0].ScrollPosition = 0;
+            lightningChart1.ViewXY.XAxes[0].ScrollMode = XAxisScrollMode.Scrolling;
+            //Configure legend
+            lightningChart1.ViewXY.LegendBoxes[0].Visible = false;
+            lightningChart1.ViewXY.AxisLayout.AutoAdjustMargins = false;
+
+            //Allow rendering.
+            lightningChart1.EndUpdate();
+        }
+
 
         ///----------------------------------------------------------------------
         /// <summary>Connect to EDC</summary>
@@ -669,8 +750,9 @@ namespace DoPE10Net_CSharpDemo
             btn_ConState.BackColor = Color.Red;
 
             //取消平滑
-            chart_DrawGraph.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            //chart_DrawGraph.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
 
+            lightningChart1.ColorTheme = ColorTheme.SkyBlue;
         }
 
         private void textBoxX6_TextChanged(object sender, EventArgs e)
@@ -773,6 +855,8 @@ namespace DoPE10Net_CSharpDemo
             {
                 MyEdc.Dispose();
                 bConnected = false;
+
+                EnableButton();
             }
         }
 
@@ -795,68 +879,68 @@ namespace DoPE10Net_CSharpDemo
 
             EnableButton();
 
-            try
-            {
-                int countX;
-                int LengthX = 20;                   //X轴显示长度，长度不能大于 array_display1 数组长度，最大140
-                //Random rd = new Random();           //产生随机函数
+            //try
+            //{
+            //    int countX;
+            //    int LengthX = 20;                   //X轴显示长度，长度不能大于 array_display1 数组长度，最大140
+            //    //Random rd = new Random();           //产生随机函数
 
-                chart_DrawGraph.ResetAutoValues();
+            //    chart_DrawGraph.ResetAutoValues();
 
-                //if (startUp == 0)                     //上电第一次显示波形零，让波形表格呈现出来,只执行一次
-                {
-                  //  startUp = 1;
-                    for (countX = 1; countX < LengthX; countX++)
-                    {
-                        chart_DrawGraph.Series[0].Points.AddXY(0, 99);        //X0~50,Y99，先勾画出框图表格
-                        chart_DrawGraph.Series[1].Points.AddXY(0, 99);
-                        chart_DrawGraph.Series[2].Points.AddXY(0, 99);
-                    }
-                }
+            //    //if (startUp == 0)                     //上电第一次显示波形零，让波形表格呈现出来,只执行一次
+            //    {
+            //      //  startUp = 1;
+            //        for (countX = 1; countX < LengthX; countX++)
+            //        {
+            //            chart_DrawGraph.Series[0].Points.AddXY(0, 99);        //X0~50,Y99，先勾画出框图表格
+            //            chart_DrawGraph.Series[1].Points.AddXY(0, 99);
+            //            chart_DrawGraph.Series[2].Points.AddXY(0, 99);
+            //        }
+            //    }
 
-                data_displayEnable = 1;                  //模拟始终更新数据，串口显示时屏蔽此处
-                if (data_displayEnable == 1)                //更新数据标志为1 更新数据，数据为0不更新数据
-                {
-                    //原始显示方法
-                    //chart1.Series[0].Points.AddXY(countX + 1, rd.Next(1, 100));
-                    //chart1.Series[1].Points.AddXY(countX + 1, rd.Next(1, 100));
+            //    data_displayEnable = 1;                  //模拟始终更新数据，串口显示时屏蔽此处
+            //    if (data_displayEnable == 1)                //更新数据标志为1 更新数据，数据为0不更新数据
+            //    {
+            //        //原始显示方法
+            //        //chart1.Series[0].Points.AddXY(countX + 1, rd.Next(1, 100));
+            //        //chart1.Series[1].Points.AddXY(countX + 1, rd.Next(1, 100));
 
-                    //串口接收数据显示
-                    //data_display1 = rd.Next(1, 100);                   //内部产生随机值，模拟数据
-                    //data_display2 = rd.Next(1, 100);
-                    //data_display3 = rd.Next(1, 100);
+            //        //串口接收数据显示
+            //        //data_display1 = rd.Next(1, 100);                   //内部产生随机值，模拟数据
+            //        //data_display2 = rd.Next(1, 100);
+            //        //data_display3 = rd.Next(1, 100);
 
-                    data_displayEnable = 0;                             //清零标志,串口收到数据后再更新数据
-                    chart_DrawGraph.Series[0].Points.Clear();                    //清除显示点，数组重新滑动后显示
-                    chart_DrawGraph.Series[1].Points.Clear();
-                    chart_DrawGraph.Series[2].Points.Clear();
+            //        data_displayEnable = 0;                             //清零标志,串口收到数据后再更新数据
+            //        chart_DrawGraph.Series[0].Points.Clear();                    //清除显示点，数组重新滑动后显示
+            //        chart_DrawGraph.Series[1].Points.Clear();
+            //        chart_DrawGraph.Series[2].Points.Clear();
 
-                    array_display1[LengthX - 1] = data_display1;        //将数据复制到显示数组中
-                    array_display2[LengthX - 1] = data_display2;
-                    array_display3[LengthX - 1] = data_display3;
+            //        array_display1[LengthX - 1] = data_display1;        //将数据复制到显示数组中
+            //        array_display2[LengthX - 1] = data_display2;
+            //        array_display3[LengthX - 1] = data_display3;
 
-                    for (countX = 0; countX < LengthX; countX++)
-                    {
-                        array_display1[countX] = array_display1[countX + 1];
-                        array_display2[countX] = array_display2[countX + 1];
-                        array_display3[countX] = array_display3[countX + 1];
-                    }
+            //        for (countX = 0; countX < LengthX; countX++)
+            //        {
+            //            array_display1[countX] = array_display1[countX + 1];
+            //            array_display2[countX] = array_display2[countX + 1];
+            //            array_display3[countX] = array_display3[countX + 1];
+            //        }
 
-                    for (countX = 1; countX < LengthX; countX++)
-                    {
-                        chart_DrawGraph.Series[0].Points.AddXY(countX, array_display1[countX]);
-                        chart_DrawGraph.Series[1].Points.AddXY(countX, array_display2[countX]);
-                        chart_DrawGraph.Series[2].Points.AddXY(countX, array_display3[countX]);
-                    }
+            //        for (countX = 1; countX < LengthX; countX++)
+            //        {
+            //            chart_DrawGraph.Series[0].Points.AddXY(countX, array_display1[countX]);
+            //            chart_DrawGraph.Series[1].Points.AddXY(countX, array_display2[countX]);
+            //            chart_DrawGraph.Series[2].Points.AddXY(countX, array_display3[countX]);
+            //        }
 
-                }
+            //    }
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("波形显示错误！");                 //调试软件后台打印
-                return;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("波形显示错误！");                 //调试软件后台打印
+            //    return;
+            //}
         }
 
 
@@ -870,18 +954,52 @@ namespace DoPE10Net_CSharpDemo
         ///----------------------------------------------------------------------
         private void bntX_MoveUp_Click(object sender, EventArgs e)
         {
-            double speed;
-
-            try
+            if (bConnected)
             {
-                speed = Convert.ToDouble(guiSpeed.Text);
+                double speed;
 
-                DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
-                DisplayError(error, "FDPoti");
+                try
+                {
+                    speed = Convert.ToDouble(guiSpeed.Text) * 10;
+
+                    DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
+                    DisplayError(error, "FDPoti");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
             }
-            catch (NullReferenceException)
+        }
+
+
+        /// <summary>
+        /// 快速向上
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Sends a move-command with direction "up" to the EDC.</summary>
+        ///----------------------------------------------------------------------
+        private void btnX_MoveQuickUp_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
             {
-                Display(CommandFailedString);
+                double speed;
+
+                try
+                {
+                    speed = Convert.ToDouble(300);
+
+                    //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
+                    //DisplayError(error, "FDPoti");
+                    DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                    DisplayError(error, "FMove_A");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
             }
         }
 
@@ -896,14 +1014,17 @@ namespace DoPE10Net_CSharpDemo
         ///----------------------------------------------------------------------
         private void bntX_MoveHalt_Click(object sender, EventArgs e)
         {
-            try
+            if (bConnected)
             {
-                DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                DisplayError(error, "Halt");
-            }
-            catch (NullReferenceException)
-            {
-                Display(CommandFailedString);
+                try
+                {
+                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DisplayError(error, "Halt");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
             }
         }
 
@@ -918,18 +1039,53 @@ namespace DoPE10Net_CSharpDemo
         ///----------------------------------------------------------------------
         private void bntX_MoveDown_Click(object sender, EventArgs e)
         {
-            double speed;
-
-            try
+            if (bConnected)
             {
-                speed = Convert.ToDouble(guiSpeed.Text);
+                double speed;
 
-                DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
-                DisplayError(error, "FDPoti");
+                try
+                {
+                    speed = Convert.ToDouble(guiSpeed.Text);
+
+                    DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                    DisplayError(error, "FDPoti");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
             }
-            catch (NullReferenceException)
+        }
+
+
+        /// <summary>
+        /// 向下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Sends a move-command with direction "down" to the EDC.</summary>
+        ///----------------------------------------------------------------------
+        private void btnX_QuickMoveDown_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
             {
-                Display(CommandFailedString);
+                double speed;
+
+                try
+                {
+                    speed = Convert.ToDouble(3000);
+
+                    //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                    //DisplayError(error, "FDPoti");
+
+                    DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                    DisplayError(error, "FMove_A");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
             }
         }
 
@@ -969,25 +1125,255 @@ namespace DoPE10Net_CSharpDemo
         /// <param name="e"></param>
         private void bntX_GUIPos_Click(object sender, EventArgs e)
         {
-            DoPE.CTRL control;
-            double speed;
-            double destination;
-
-            try
+            if (bConnected)
             {
-                control = (DoPE.CTRL)guiControl.SelectedIndex;
-                speed = Convert.ToDouble(guiSpeed.Text);
-                destination = Convert.ToDouble(guiDestination.Text);
+                DoPE.CTRL control;
+                double speed;
+                double destination;
 
-                DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
-                //formsPlot1.
+                try
+                {
+                    control = (DoPE.CTRL)guiControl.SelectedIndex;
+                    speed = Convert.ToDouble(guiSpeed.Text);
+                    destination = Convert.ToDouble(guiDestination.Text);
 
-                DisplayError(error, "Pos");
-            }
-            catch (NullReferenceException)
-            {
-                Display(CommandFailedString);
+                    DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
+                    //formsPlot1.
+
+                    DisplayError(error, "Pos");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
             }
         }
+
+        private void buttonX15_Click(object sender, EventArgs e)
+        {
+            if (_thread == null)
+            {
+                //Start 
+
+                //buttonStartStop.Text = "Stop";
+                //textBoxSamplingFrequency.Enabled = false;
+                //textBoxChannelCount.Enabled = false;
+
+                _previousX = 0;
+
+                //Read channel count
+                try
+                {
+                    _channelCount = int.Parse("1");
+                    _rand = new Random[_channelCount];
+                    _previousTemperature = new double[_channelCount];
+                    //Every channel needs own random otherwise with high data generation random will break it self
+                    for (int i = 0; i < _rand.Length; i++)
+                    {
+                        _rand[i] = new Random((int)DateTime.Now.Ticks + i);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Invalid channel count text input");
+                    return;
+                }
+
+                //Read sampling frequency
+                try
+                {
+                    _pointsPerSec = double.Parse("1000");
+                }
+                catch
+                {
+                    MessageBox.Show("Invalid sampling frequency text input");
+                    return;
+                }
+
+                //Read X axis length
+                try
+                {
+                    _xLength = double.Parse("1000");
+                }
+                catch
+                {
+                    MessageBox.Show("Invalid X-Axis length text input");
+                    return;
+                }
+
+                //Disable rendering
+                lightningChart1.BeginUpdate();
+
+                int newPointsCount = _channelCount * (int)_pointsPerSec; //Amount of new generated points per second
+
+                lightningChart1.Title.Text = "Real-time data feeding from a thread, " + _channelCount.ToString() + " * " + _pointsPerSec.ToString("0") + " Hz = " + newPointsCount.ToString() + " new data points per sec";
+
+                lightningChart1.ViewXY.YAxes.Clear(); //Remove existing y-axes
+                lightningChart1.ViewXY.PointLineSeries.Clear(); //Remove existing PointlineSEries
+
+                //Add Y axis and SampleDataSeries for each channel 
+                for (int channelIndex = 0; channelIndex < _channelCount; channelIndex++)
+                {
+                    AxisY axisY = new AxisY(lightningChart1.ViewXY);
+                    axisY.SetRange(YMin, YMax);
+                    axisY.Title.Font = new Font("Segoe UI", 8.0f, FontStyle.Regular);
+                    axisY.Title.Text = string.Format("Ch {0}", channelIndex + 1);
+                    axisY.Title.Angle = 0;
+                    axisY.Units.Visible = false;
+                    axisY.AutoDivSeparationPercent = 10;
+                    axisY.MinorGrid.Visible = false;
+                    axisY.MajorGrid.Visible = false;
+                    lightningChart1.ViewXY.YAxes.Add(axisY);
+
+                    PointLineSeries series = new PointLineSeries(lightningChart1.ViewXY, lightningChart1.ViewXY.XAxes[0], axisY);
+                    series.LineStyle.Color = DefaultColors.SeriesForBlackBackground[channelIndex % DefaultColors.SeriesForBlackBackground.Length];
+                    series.LineStyle.Width = 1.5f;
+                    series.LineStyle.AntiAliasing = LineAntialias.Normal;
+                    series.ScrollingStabilizing = false;
+                    series.AllowUserInteraction = false;
+                    series.UsePalette = false;
+
+                    lightningChart1.ViewXY.PointLineSeries.Add(series);
+                }
+
+                lightningChart1.ViewXY.XAxes[0].SetRange(0, _xLength);
+
+                //Allow rendering
+                lightningChart1.EndUpdate();
+
+                _pointsOutput = 0;
+
+                //buttonStartStop.Click -= buttonStart_Click;
+                //buttonStartStop.Click += buttonStop_Click;
+
+                _startTicks = _stopWatch.ElapsedTicks;
+
+                _stop = false;
+
+                _thread = new Thread(new ThreadStart(ThreadLoop));
+                _thread.Start();
+            }
+        }
+
+
+        private void ThreadLoop()
+        {
+            while (_stop == false)
+            {
+                _renderingTime = _stopWatch.ElapsedTicks;
+
+                long currentPointIndex =
+                          (long)(TimeSpan.FromTicks(_renderingTime - _startTicks).TotalSeconds * _pointsPerSec);
+
+                int pointPacksToGenerate = (int)(currentPointIndex - _pointsOutput);
+
+                if (pointPacksToGenerate > 0)
+                {
+                    SeriesPoint[][] multiChannelData = new SeriesPoint[_channelCount][];
+
+                    //if (randomdata)
+                    //{
+                    //    Parallel.For(0, _channelCount, (channelIndex) =>
+                    //    {
+                    //        multiChannelData[channelIndex] = new SeriesPoint[pointPacksToGenerate];
+
+                    //        //Generate random data
+                    //        for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
+                    //        {
+                    //            multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
+                    //            multiChannelData[channelIndex][pointIndex].Y = CalculateYValue(channelIndex); // generating y value (using random in this point is way too heavy with multiple channels
+                    //        }
+                    //    });
+                    //}
+                    //else
+                    {
+                        Parallel.For(0, _channelCount, (channelIndex) =>
+                        {
+                            multiChannelData[channelIndex] = new SeriesPoint[pointPacksToGenerate];
+
+                            //Generate random data
+                            for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
+                            {
+                                multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
+                                //multiChannelData[channelIndex][pointIndex].Y = Decimal.ToDouble(data_display1); // generating y value (using random in this point is way too heavy with multiple channels
+                                multiChannelData[channelIndex][pointIndex].Y = Math.Sin((double)(_pointsOutput + pointIndex) / 150.0) * 50; // generating y value (using random in this point is way too heavy with multiple channels
+                            }
+                        });
+                    }
+                    _pointsOutput += pointPacksToGenerate;
+
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        FeedNewDataToChart(multiChannelData);
+                    });
+
+
+                }
+                else
+                {
+                    Thread.Sleep(0);
+                }
+
+            }
+            _thread = null;
+            if (_bFormClosing == true)  // close form from Main UI thread
+            {
+                this.Invoke((MethodInvoker)delegate { Close(); });
+            }
+        }
+
+
+        /// <summary>
+        /// Calculate Y value for random data
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        private double CalculateYValue(int i)
+        {
+            // Use the latest value and generate some difference to it.
+            double nextY = _previousTemperature[i] + (_rand[i].NextDouble() - 0.5) * 8;
+
+            // Limit the value between 100...
+            if (nextY > 50)
+            {
+                nextY = 50;
+            }
+
+            // ... and 0.
+            if (nextY < -50)
+            {
+                nextY = -50;
+            }
+
+            // Update the latest values.
+            _previousTemperature[i] = nextY;
+
+            return nextY;
+        }
+
+
+        private void FeedNewDataToChart(SeriesPoint[][] multiChannelData)
+        {
+            // Disable rendering to update properties.
+            lightningChart1.BeginUpdate();
+
+            if (lightningChart1 == null)
+            {
+                return;
+            }
+
+            Parallel.For(0, _channelCount, channelIndex =>
+            {
+                lightningChart1.ViewXY.PointLineSeries[channelIndex].AddPoints(multiChannelData[channelIndex], false);
+            });
+            _previousX = _pointsOutput;
+            lightningChart1.ViewXY.XAxes[0].ScrollPosition = _previousX;
+
+            // Allow rendering.
+            lightningChart1.EndUpdate();
+
+
+        }
+
     }
 }
