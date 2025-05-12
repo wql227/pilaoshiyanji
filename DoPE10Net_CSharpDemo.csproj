@@ -140,6 +140,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDynCtrl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDynCtrl.Designer.cs">
+      <DependentUpon>FrmDynCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmOperationOptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,12 @@
     <Compile Include="FrmAbout.Designer.cs">
       <DependentUpon>FrmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPos.Designer.cs">
+      <DependentUpon>FrmPos.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +178,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmDynCtrl.resx">
+      <DependentUpon>FrmDynCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmOperationOptions.resx">
       <DependentUpon>FrmOperationOptions.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPos.resx">
+      <DependentUpon>FrmPos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

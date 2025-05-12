@@ -85,6 +85,7 @@ using Arction.WinForms.Charting;
 using Arction.WinForms.Charting.Axes;
 using Arction.WinForms.Charting.SeriesXY;
 using System.Threading.Tasks;
+using ScottPlot.Colormaps;
 
 namespace DoPE10Net_CSharpDemo
 {
@@ -95,12 +96,20 @@ namespace DoPE10Net_CSharpDemo
     {
         #region Initialization
 
+
+        public static MainForm mainform;
+
         /// <summary>
         /// Represents one EDC.
         /// This object is needed to perform DoPE tasks.
         /// (Similar to the DoPE-handle in C++.)
         /// </summary>
         private Edc MyEdc;
+
+        /// <summary>
+        /// 查询所有EDC
+        /// </summary>
+        public EdcList MyEdcList;
 
         /// <summary>
         /// TAN number assigned to a DoPE command.
@@ -213,6 +222,10 @@ namespace DoPE10Net_CSharpDemo
 
             //设置lightningchart参数
             CreateChart();
+
+            //传递当前实例
+            mainform = this;
+
         }
 
 
@@ -266,9 +279,12 @@ namespace DoPE10Net_CSharpDemo
             try
             {
                 DoPE.ERR error;
-
+                //DoPE.IgnoreTcpIpNIC(true);
                 // open the first EDC found on this PC
-                MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);
+                //打开edc列表
+                MyEdcList = new EdcList(32);
+                MyEdc = MyEdcList[0];
+                //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);
                 //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
                 if (MyEdc != null)
                 {
@@ -278,7 +294,9 @@ namespace DoPE10Net_CSharpDemo
 
                 }
 
-                bConnected = true;
+       
+
+                bConnected = MyEdc.IsConnected();
 
                 EnableButton();
 
@@ -331,21 +349,19 @@ namespace DoPE10Net_CSharpDemo
 
                 MyEdc.Rmc.Enable(-1, -1);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                Display(string.Format("{0}\n", ex));
-            }
-
-
-            //catch (DoPEException ex)
+            //catch (Exception ex)
             //{
-            //    // During the initialization and the
-            //    // shut-down phase a DoPE Exception can arise.
-            //    // Other errors are reported by the DoPE
-            //    // error return codes.
+            //    Console.WriteLine(ex.ToString());
             //    Display(string.Format("{0}\n", ex));
             //}
+            catch (DoPEException ex)
+            {
+                // During the initialization and the
+                // shut-down phase a DoPE Exception can arise.
+                // Other errors are reported by the DoPE
+                // error return codes.
+                Display(string.Format("{0}\n", ex));
+            }
 
             this.Cursor = Cursors.Default;
 
@@ -1139,6 +1155,7 @@ namespace DoPE10Net_CSharpDemo
 
                     DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
                     //formsPlot1.
+                    //bool aaaa = MyEdc.IsConnected();
 
                     DisplayError(error, "Pos");
                 }
@@ -1182,7 +1199,7 @@ namespace DoPE10Net_CSharpDemo
                 //Read sampling frequency
                 try
                 {
-                    _pointsPerSec = double.Parse("1000");
+                    _pointsPerSec = double.Parse("20");
                 }
                 catch
                 {
@@ -1375,5 +1392,45 @@ namespace DoPE10Net_CSharpDemo
 
         }
 
+        public void MovePos(DoPE.CTRL control, double speed, double destination)
+        {
+            DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
+
+        }
+
+
+        public void MoveDynCycles(DoPE.CTRL control, double speed, double destination)
+        {
+            //DoPE.ERR error = MyEdc.Move.DynCycles(control, speed, destination, ref MyTan);
+
+        }
+
+        private void posToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                FrmPos frmPos = new FrmPos();
+                frmPos.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
+
+        private void dynCtrlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                FrmDynCtrl frmDynCtrl = new FrmDynCtrl();
+                frmDynCtrl.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
     }
 }
