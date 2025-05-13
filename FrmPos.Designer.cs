@@ -30,18 +30,26 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPos));
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.cmbX_EDC = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cmbX_Pos__EDC = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.comboBoxEx3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboBoxEx4 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.tbX_Pos_SpeedCtrl = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cmbX_Pos_MoveCtrl = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.tbX_Pos_Destnation = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cmbX_Pos_SpeedUnit = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cmbX_Pos_Destnation = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.panelEx_POS = new DevComponents.DotNetBar.PanelEx();
             this.btnX_PosSend = new DevComponents.DotNetBar.ButtonX();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
+            this.comboItem5 = new DevComponents.Editors.ComboItem();
+            this.comboItem6 = new DevComponents.Editors.ComboItem();
+            this.comboItem7 = new DevComponents.Editors.ComboItem();
+            this.comboItem8 = new DevComponents.Editors.ComboItem();
+            this.comboItem9 = new DevComponents.Editors.ComboItem();
             this.panelEx_POS.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,23 +64,27 @@
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(80, 23);
             this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "EDC";
+            this.labelX1.Text = "控制器";
             // 
-            // cmbX_EDC
+            // cmbX_Pos__EDC
             // 
-            this.cmbX_EDC.DisplayMember = "Text";
-            this.cmbX_EDC.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbX_EDC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbX_EDC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbX_EDC.FormattingEnabled = true;
-            this.cmbX_EDC.ItemHeight = 21;
-            this.cmbX_EDC.Items.AddRange(new object[] {
+            this.cmbX_Pos__EDC.DisplayMember = "Text";
+            this.cmbX_Pos__EDC.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Pos__EDC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbX_Pos__EDC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_Pos__EDC.FormattingEnabled = true;
+            this.cmbX_Pos__EDC.ItemHeight = 21;
+            this.cmbX_Pos__EDC.Items.AddRange(new object[] {
             this.comboItem1});
-            this.cmbX_EDC.Location = new System.Drawing.Point(97, 35);
-            this.cmbX_EDC.Name = "cmbX_EDC";
-            this.cmbX_EDC.Size = new System.Drawing.Size(196, 27);
-            this.cmbX_EDC.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbX_EDC.TabIndex = 1;
+            this.cmbX_Pos__EDC.Location = new System.Drawing.Point(97, 35);
+            this.cmbX_Pos__EDC.Name = "cmbX_Pos__EDC";
+            this.cmbX_Pos__EDC.Size = new System.Drawing.Size(196, 27);
+            this.cmbX_Pos__EDC.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_Pos__EDC.TabIndex = 1;
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "EDC0";
             // 
             // labelX2
             // 
@@ -113,72 +125,84 @@
             this.labelX4.TabIndex = 0;
             this.labelX4.Text = "目的地";
             // 
-            // textBoxX1
+            // tbX_Pos_SpeedCtrl
             // 
             // 
             // 
             // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX1.Location = new System.Drawing.Point(97, 101);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(101, 26);
-            this.textBoxX1.TabIndex = 2;
+            this.tbX_Pos_SpeedCtrl.Border.Class = "TextBoxBorder";
+            this.tbX_Pos_SpeedCtrl.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_Pos_SpeedCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbX_Pos_SpeedCtrl.Location = new System.Drawing.Point(97, 101);
+            this.tbX_Pos_SpeedCtrl.Name = "tbX_Pos_SpeedCtrl";
+            this.tbX_Pos_SpeedCtrl.PreventEnterBeep = true;
+            this.tbX_Pos_SpeedCtrl.Size = new System.Drawing.Size(101, 26);
+            this.tbX_Pos_SpeedCtrl.TabIndex = 2;
+            this.tbX_Pos_SpeedCtrl.Text = "10";
             // 
-            // comboBoxEx2
+            // cmbX_Pos_MoveCtrl
             // 
-            this.comboBoxEx2.DisplayMember = "Text";
-            this.comboBoxEx2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxEx2.FormattingEnabled = true;
-            this.comboBoxEx2.ItemHeight = 21;
-            this.comboBoxEx2.Location = new System.Drawing.Point(97, 68);
-            this.comboBoxEx2.Name = "comboBoxEx2";
-            this.comboBoxEx2.Size = new System.Drawing.Size(101, 27);
-            this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx2.TabIndex = 1;
+            this.cmbX_Pos_MoveCtrl.DisplayMember = "Text";
+            this.cmbX_Pos_MoveCtrl.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Pos_MoveCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_Pos_MoveCtrl.FormattingEnabled = true;
+            this.cmbX_Pos_MoveCtrl.ItemHeight = 21;
+            this.cmbX_Pos_MoveCtrl.Location = new System.Drawing.Point(97, 68);
+            this.cmbX_Pos_MoveCtrl.Name = "cmbX_Pos_MoveCtrl";
+            this.cmbX_Pos_MoveCtrl.Size = new System.Drawing.Size(101, 27);
+            this.cmbX_Pos_MoveCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_Pos_MoveCtrl.TabIndex = 1;
             // 
-            // textBoxX2
-            // 
-            // 
+            // tbX_Pos_Destnation
             // 
             // 
-            this.textBoxX2.Border.Class = "TextBoxBorder";
-            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX2.Location = new System.Drawing.Point(97, 133);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.PreventEnterBeep = true;
-            this.textBoxX2.Size = new System.Drawing.Size(101, 26);
-            this.textBoxX2.TabIndex = 2;
             // 
-            // comboBoxEx3
             // 
-            this.comboBoxEx3.DisplayMember = "Text";
-            this.comboBoxEx3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxEx3.FormattingEnabled = true;
-            this.comboBoxEx3.ItemHeight = 21;
-            this.comboBoxEx3.Location = new System.Drawing.Point(204, 100);
-            this.comboBoxEx3.Name = "comboBoxEx3";
-            this.comboBoxEx3.Size = new System.Drawing.Size(89, 27);
-            this.comboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx3.TabIndex = 1;
+            this.tbX_Pos_Destnation.Border.Class = "TextBoxBorder";
+            this.tbX_Pos_Destnation.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_Pos_Destnation.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbX_Pos_Destnation.Location = new System.Drawing.Point(97, 133);
+            this.tbX_Pos_Destnation.Name = "tbX_Pos_Destnation";
+            this.tbX_Pos_Destnation.PreventEnterBeep = true;
+            this.tbX_Pos_Destnation.Size = new System.Drawing.Size(101, 26);
+            this.tbX_Pos_Destnation.TabIndex = 2;
+            this.tbX_Pos_Destnation.Text = "10";
             // 
-            // comboBoxEx4
+            // cmbX_Pos_SpeedUnit
             // 
-            this.comboBoxEx4.DisplayMember = "Text";
-            this.comboBoxEx4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxEx4.FormattingEnabled = true;
-            this.comboBoxEx4.ItemHeight = 21;
-            this.comboBoxEx4.Location = new System.Drawing.Point(204, 133);
-            this.comboBoxEx4.Name = "comboBoxEx4";
-            this.comboBoxEx4.Size = new System.Drawing.Size(89, 27);
-            this.comboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx4.TabIndex = 1;
+            this.cmbX_Pos_SpeedUnit.DisplayMember = "Text";
+            this.cmbX_Pos_SpeedUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Pos_SpeedUnit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_Pos_SpeedUnit.FormattingEnabled = true;
+            this.cmbX_Pos_SpeedUnit.ItemHeight = 21;
+            this.cmbX_Pos_SpeedUnit.Items.AddRange(new object[] {
+            this.comboItem2,
+            this.comboItem3,
+            this.comboItem4,
+            this.comboItem5,
+            this.comboItem6});
+            this.cmbX_Pos_SpeedUnit.Location = new System.Drawing.Point(204, 100);
+            this.cmbX_Pos_SpeedUnit.Name = "cmbX_Pos_SpeedUnit";
+            this.cmbX_Pos_SpeedUnit.Size = new System.Drawing.Size(89, 27);
+            this.cmbX_Pos_SpeedUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_Pos_SpeedUnit.TabIndex = 1;
+            // 
+            // cmbX_Pos_Destnation
+            // 
+            this.cmbX_Pos_Destnation.DisplayMember = "Text";
+            this.cmbX_Pos_Destnation.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Pos_Destnation.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_Pos_Destnation.FormattingEnabled = true;
+            this.cmbX_Pos_Destnation.ItemHeight = 21;
+            this.cmbX_Pos_Destnation.Items.AddRange(new object[] {
+            this.comboItem7,
+            this.comboItem8,
+            this.comboItem9});
+            this.cmbX_Pos_Destnation.Location = new System.Drawing.Point(204, 133);
+            this.cmbX_Pos_Destnation.Name = "cmbX_Pos_Destnation";
+            this.cmbX_Pos_Destnation.Size = new System.Drawing.Size(89, 27);
+            this.cmbX_Pos_Destnation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_Pos_Destnation.TabIndex = 1;
             // 
             // panelEx_POS
             // 
@@ -213,9 +237,37 @@
             this.btnX_PosSend.Text = "发送";
             this.btnX_PosSend.Click += new System.EventHandler(this.btnX_PosSend_Click);
             // 
-            // comboItem1
+            // comboItem2
             // 
-            this.comboItem1.Text = "EDC0";
+            this.comboItem2.Text = "mm/min";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "mm/s";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "μm/s";
+            // 
+            // comboItem5
+            // 
+            this.comboItem5.Text = "μm/min";
+            // 
+            // comboItem6
+            // 
+            this.comboItem6.Text = "m/s";
+            // 
+            // comboItem7
+            // 
+            this.comboItem7.Text = "mm";
+            // 
+            // comboItem8
+            // 
+            this.comboItem8.Text = "μm";
+            // 
+            // comboItem9
+            // 
+            this.comboItem9.Text = "m";
             // 
             // FrmPos
             // 
@@ -223,12 +275,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 173);
             this.Controls.Add(this.panelEx_POS);
-            this.Controls.Add(this.textBoxX2);
-            this.Controls.Add(this.textBoxX1);
-            this.Controls.Add(this.comboBoxEx4);
-            this.Controls.Add(this.comboBoxEx3);
-            this.Controls.Add(this.comboBoxEx2);
-            this.Controls.Add(this.cmbX_EDC);
+            this.Controls.Add(this.tbX_Pos_Destnation);
+            this.Controls.Add(this.tbX_Pos_SpeedCtrl);
+            this.Controls.Add(this.cmbX_Pos_Destnation);
+            this.Controls.Add(this.cmbX_Pos_SpeedUnit);
+            this.Controls.Add(this.cmbX_Pos_MoveCtrl);
+            this.Controls.Add(this.cmbX_Pos__EDC);
             this.Controls.Add(this.labelX4);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.labelX2);
@@ -244,17 +296,25 @@
         #endregion
 
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_EDC;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Pos__EDC;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX4;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx3;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx4;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_Pos_SpeedCtrl;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Pos_MoveCtrl;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_Pos_Destnation;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Pos_SpeedUnit;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Pos_Destnation;
         private DevComponents.DotNetBar.PanelEx panelEx_POS;
         private DevComponents.DotNetBar.ButtonX btnX_PosSend;
         private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
+        private DevComponents.Editors.ComboItem comboItem4;
+        private DevComponents.Editors.ComboItem comboItem5;
+        private DevComponents.Editors.ComboItem comboItem6;
+        private DevComponents.Editors.ComboItem comboItem7;
+        private DevComponents.Editors.ComboItem comboItem8;
+        private DevComponents.Editors.ComboItem comboItem9;
     }
 }

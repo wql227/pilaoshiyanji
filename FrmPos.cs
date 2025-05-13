@@ -18,9 +18,24 @@ namespace DoPE10Net_CSharpDemo
         {
             InitializeComponent();
 
-            //MainForm.mainform.
+            //默认选中第一个选项
+            if (cmbX_Pos__EDC.Items.Count >= 1)
+            {
+                cmbX_Pos__EDC.SelectedIndex = 0;
+            }
 
-            comboBoxEx2.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+            if (cmbX_Pos_SpeedUnit.Items.Count >= 1)
+            {
+                cmbX_Pos_SpeedUnit.SelectedIndex = 0;
+            }
+
+            if (cmbX_Pos_Destnation.Items.Count >= 1)
+            {
+                cmbX_Pos_Destnation.SelectedIndex = 0;
+            }
+
+            //初始化移动控制选项
+            cmbX_Pos_MoveCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
         }
 
@@ -32,7 +47,7 @@ namespace DoPE10Net_CSharpDemo
         /// <param name="e"></param>
         private void btnX_PosSend_Click(object sender, EventArgs e)
         {
-            MainForm.mainform.MovePos(0, double.Parse("50"), double.Parse("-15"));
+            MainForm.mainform.MovePos(0, double.Parse(tbX_Pos_SpeedCtrl.Text), double.Parse(tbX_Pos_Destnation.Text));
 
         }
     }
