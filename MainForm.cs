@@ -85,7 +85,6 @@ using Arction.WinForms.Charting;
 using Arction.WinForms.Charting.Axes;
 using Arction.WinForms.Charting.SeriesXY;
 using System.Threading.Tasks;
-using ScottPlot.Colormaps;
 
 namespace DoPE10Net_CSharpDemo
 {
@@ -158,7 +157,7 @@ namespace DoPE10Net_CSharpDemo
         decimal data_displayEnable = 0;
 
 
-        double _pointsPerSec = 1000;    // Data rate for each channel
+        double _pointsPerSec = 2000;    // Data rate for each channel
         int _channelCount = 0;          // Channel count.
         double _xLength = 0;            // X axis length.
         double _previousX = 0;          // Latest X value on axis.
@@ -167,8 +166,8 @@ namespace DoPE10Net_CSharpDemo
         long _renderingTime;
 
         // Constants
-        const double YMin = -50;       // Minimal y-value.
-        const double YMax = 50;        // Maximal y-value.
+        const double YMin = -20;       // Minimal y-value.
+        const double YMax = 20;        // Maximal y-value.
 
         private volatile bool _stop;    // Stops thread work.
         private bool _bFormClosing = false;
@@ -291,10 +290,7 @@ namespace DoPE10Net_CSharpDemo
                     Display("连接成功，Name:" + MyEdc.ModuleInfo.Name + "; DeviceId = " + MyEdc.ModuleInfo.DeviceID + "; FunctionId = " + MyEdc.ModuleInfo.DeviceID + "; SerNr = " + MyEdc.ModuleInfo.SerNr + "\n");
 
                     lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
-
                 }
-
-       
 
                 bConnected = MyEdc.IsConnected();
 
@@ -568,6 +564,17 @@ namespace DoPE10Net_CSharpDemo
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
                 guiExtension.Text = text;
                 data_display3 = decimal.Parse(guiExtension.Text);
+
+                string aaa = String.Format("{0}", Sample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
+
+
+                //for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
+                //{
+                //    multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
+                //    multiChannelData[channelIndex][pointIndex].Y = Decimal.ToDouble(data_display1); // generating y value (using random in this point is way too heavy with multiple channels
+                //                                                                                    //multiChannelData[channelIndex][pointIndex].Y = Math.Sin((double)(_pointsOutput + pointIndex) / 150.0) * 50; // generating y value (using random in this point is way too heavy with multiple channels
+                //}
+
             }
             return 0;
         }
@@ -1171,14 +1178,9 @@ namespace DoPE10Net_CSharpDemo
             if (_thread == null)
             {
                 //Start 
-
-                //buttonStartStop.Text = "Stop";
-                //textBoxSamplingFrequency.Enabled = false;
-                //textBoxChannelCount.Enabled = false;
-
                 _previousX = 0;
 
-                //Read channel count
+                //波形通道数量
                 try
                 {
                     _channelCount = int.Parse("1");
@@ -1199,7 +1201,7 @@ namespace DoPE10Net_CSharpDemo
                 //Read sampling frequency
                 try
                 {
-                    _pointsPerSec = double.Parse("20");
+                    _pointsPerSec = double.Parse("10");
                 }
                 catch
                 {
@@ -1210,7 +1212,7 @@ namespace DoPE10Net_CSharpDemo
                 //Read X axis length
                 try
                 {
-                    _xLength = double.Parse("1000");
+                    _xLength = double.Parse("15");
                 }
                 catch
                 {
@@ -1277,59 +1279,60 @@ namespace DoPE10Net_CSharpDemo
         {
             while (_stop == false)
             {
-                _renderingTime = _stopWatch.ElapsedTicks;
+                //_renderingTime = _stopWatch.ElapsedTicks;
 
-                long currentPointIndex =
-                          (long)(TimeSpan.FromTicks(_renderingTime - _startTicks).TotalSeconds * _pointsPerSec);
+                //long currentPointIndex =
+                //          (long)(TimeSpan.FromTicks(_renderingTime - _startTicks).TotalSeconds * _pointsPerSec);
 
-                int pointPacksToGenerate = (int)(currentPointIndex - _pointsOutput);
+                //int pointPacksToGenerate = (int)(currentPointIndex - _pointsOutput);
 
-                if (pointPacksToGenerate > 0)
-                {
-                    SeriesPoint[][] multiChannelData = new SeriesPoint[_channelCount][];
+                //if (pointPacksToGenerate > 0)
+                //{
+                //    SeriesPoint[][] multiChannelData = new SeriesPoint[_channelCount][];
 
-                    //if (randomdata)
-                    //{
-                    //    Parallel.For(0, _channelCount, (channelIndex) =>
-                    //    {
-                    //        multiChannelData[channelIndex] = new SeriesPoint[pointPacksToGenerate];
+                //    //if (randomdata)
+                //    //{
+                //    //    Parallel.For(0, _channelCount, (channelIndex) =>
+                //    //    {
+                //    //        multiChannelData[channelIndex] = new SeriesPoint[pointPacksToGenerate];
 
-                    //        //Generate random data
-                    //        for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
-                    //        {
-                    //            multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
-                    //            multiChannelData[channelIndex][pointIndex].Y = CalculateYValue(channelIndex); // generating y value (using random in this point is way too heavy with multiple channels
-                    //        }
-                    //    });
-                    //}
-                    //else
-                    {
-                        Parallel.For(0, _channelCount, (channelIndex) =>
-                        {
-                            multiChannelData[channelIndex] = new SeriesPoint[pointPacksToGenerate];
+                //    //        //Generate random data
+                //    //        for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
+                //    //        {
+                //    //            multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
+                //    //            multiChannelData[channelIndex][pointIndex].Y = CalculateYValue(channelIndex); // generating y value (using random in this point is way too heavy with multiple channels
+                //    //        }
+                //    //    });
+                //    //}
+                //    //else
+                //    {
+                //        Parallel.For(0, _channelCount, (channelIndex) =>
+                //        {
+                //            multiChannelData[channelIndex] = new SeriesPoint[pointPacksToGenerate];
 
-                            //Generate random data
-                            for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
-                            {
-                                multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
-                                //multiChannelData[channelIndex][pointIndex].Y = Decimal.ToDouble(data_display1); // generating y value (using random in this point is way too heavy with multiple channels
-                                multiChannelData[channelIndex][pointIndex].Y = Math.Sin((double)(_pointsOutput + pointIndex) / 150.0) * 50; // generating y value (using random in this point is way too heavy with multiple channels
-                            }
-                        });
-                    }
-                    _pointsOutput += pointPacksToGenerate;
+                //            //Generate random data
+                //            for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
+                //            {
+                //                multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
+                //                //multiChannelData[channelIndex][pointIndex].Y = Decimal.ToDouble(data_display1); // generating y value (using random in this point is way too heavy with multiple channels
+                //                multiChannelData[channelIndex][pointIndex].Y = ((double)(data_display1 + pointIndex) / 10 ); // generating y value (using random in this point is way too heavy with multiple channels
+                //                //multiChannelData[channelIndex][pointIndex].Y = Math.Sin((double)(_pointsOutput + pointIndex) / 150.0) * 500; // generating y value (using random in this point is way too heavy with multiple channels
+                //            }
+                //        });
+                //    }
+                //    _pointsOutput += pointPacksToGenerate;
 
-                    this.Invoke((MethodInvoker)delegate
-                    {
-                        FeedNewDataToChart(multiChannelData);
-                    });
+                //    this.Invoke((MethodInvoker)delegate
+                //    {
+                //        FeedNewDataToChart(multiChannelData);
+                //    });
 
 
-                }
-                else
-                {
-                    Thread.Sleep(0);
-                }
+                //}
+                //else
+                //{
+                //    Thread.Sleep(0);
+                //}
 
             }
             _thread = null;
@@ -1348,7 +1351,7 @@ namespace DoPE10Net_CSharpDemo
         private double CalculateYValue(int i)
         {
             // Use the latest value and generate some difference to it.
-            double nextY = _previousTemperature[i] + (_rand[i].NextDouble() - 0.5) * 8;
+            double nextY = (_previousTemperature[i] + (_rand[i].NextDouble() - 0.5)) / 1000 /** 8*/;
 
             // Limit the value between 100...
             if (nextY > 50)
@@ -1392,6 +1395,13 @@ namespace DoPE10Net_CSharpDemo
 
         }
 
+
+        /// <summary>
+        /// Move.POS
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="speed"></param>
+        /// <param name="destination"></param>
         public void MovePos(DoPE.CTRL control, double speed, double destination)
         {
             DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
@@ -1399,9 +1409,34 @@ namespace DoPE10Net_CSharpDemo
         }
 
 
-        public void MoveDynCycles(DoPE.CTRL control, double speed, double destination)
+        /// <summary>
+        /// Move.POS_A
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="speed"></param>
+        /// <param name="destination"></param>
+        public void MovePos_A(DoPE.CTRL control, double acc, double speed, double dec, double destination)
         {
-            //DoPE.ERR error = MyEdc.Move.DynCycles(control, speed, destination, ref MyTan);
+            DoPE.ERR error = MyEdc.Move.Pos_A(control, acc, speed, dec, destination, ref MyTan);
+
+        }
+
+        //public void MoveDynCtrl(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl, bool RelativeDestination, 
+        //    Double SpeedToStart, Double Offset, Double Amplitude, Double HaltAtPlusAmplitude, Double HaltAtMinusAmplitude, Double Frequency, 
+        //    Int32 HalfCycles, Double SpeedToDestination, Double Destination, DoPE.DYN_SWEEP SweepFrequencyMode, Double SweepEndFrequency, 
+        //    Double SweepFrequencyTime, Int32 SweepFrequencyCount, DoPE.DYN_SWEEP SweepOffsetMode, Double SweepEndOffset, Double SweepOffsetTime, 
+        //    Int32 SweepOffsetCount, DoPE.DYN_SWEEP SweepAmplitudeMode, Double SweepEndAmplitude, Double SweepAmplitudeTime, Int32 SweepAmplitudeCount,
+        //    DoPE.DYN_SUPERPOS SuperpositionMode, Double SuperpositionFrequency, Double SuperpositionAmplitude, DoPE.DYN_BIMODAL BimodalCtrlMode, 
+        //    DoPE.SENSOR BimodalCtrlSensor, Double BimodalValue1, Double BimodalValue2, Double BimodalScale, ref Int16 Tan)
+        //{
+        //    //DoPE.ERR error = MyEdc.Move.DynCycles(control, speed, destination, ref MyTan);
+
+        //}
+
+
+        public void MoveDynCycles(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl, bool RelativeDestination, double SpeedToStart, double Offset, double Amplitude, double HaltAtPlusAmplitude, double HaltAtMinusAmplitude, double Frequency, int HalfCycles, double SpeedToDestination, double Destination, DoPE.DYN_SWEEP SweepFrequencyMode)
+        {
+            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0, 0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
 
         }
 
@@ -1424,12 +1459,37 @@ namespace DoPE10Net_CSharpDemo
             if (bConnected)
             {
                 FrmDynCtrl frmDynCtrl = new FrmDynCtrl();
-                frmDynCtrl.ShowDialog();
+                frmDynCtrl.Show();
             }
             else
             {
                 MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+        }
+
+        private void Pos_AtoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                FrmPos_A frmPos = new FrmPos_A();
+                frmPos.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
+
+        private void comboBoxEx7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lightningChart1 != null)
+            {
+                if (cmbX_ScrollMode.SelectedIndex >= 0)
+                {
+                    lightningChart1.ViewXY.XAxes[0].ScrollMode = (XAxisScrollMode)cmbX_ScrollMode.SelectedIndex;
+                }
             }
         }
     }

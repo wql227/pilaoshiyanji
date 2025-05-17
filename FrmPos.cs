@@ -19,9 +19,9 @@ namespace DoPE10Net_CSharpDemo
             InitializeComponent();
 
             //默认选中第一个选项
-            if (cmbX_Pos__EDC.Items.Count >= 1)
+            if (cmbX_Pos_EDC.Items.Count >= 1)
             {
-                cmbX_Pos__EDC.SelectedIndex = 0;
+                cmbX_Pos_EDC.SelectedIndex = 0;
             }
 
             if (cmbX_Pos_SpeedUnit.Items.Count >= 1)

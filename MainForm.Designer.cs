@@ -218,6 +218,14 @@
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
+            this.Pos_AtoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbX_ScrollMode = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
+            this.comboItem5 = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -334,6 +342,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cmbX_ScrollMode);
             this.groupBox1.Controls.Add(this.lightningChart1);
             this.groupBox1.Controls.Add(this.lbX_EDCName);
             this.groupBox1.Controls.Add(this.btn_ConState);
@@ -353,6 +362,7 @@
             this.groupBox1.Controls.Add(this.guiDestination);
             this.groupBox1.Controls.Add(this.lblDestination);
             this.groupBox1.Controls.Add(this.lblSpeed);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lblControl);
             this.groupBox1.Controls.Add(this.guiSpeed);
             this.groupBox1.Controls.Add(this.guiControl);
@@ -373,6 +383,7 @@
             this.lightningChart1.BackColor = System.Drawing.Color.Gray;
             this.lightningChart1.Background = ((Arction.WinForms.Charting.Fill)(resources.GetObject("lightningChart1.Background")));
             this.lightningChart1.ChartManager = null;
+            this.lightningChart1.ColorTheme = Arction.WinForms.Charting.ColorTheme.SkyBlue;
             this.lightningChart1.Location = new System.Drawing.Point(6, 51);
             this.lightningChart1.MinimumSize = new System.Drawing.Size(110, 90);
             this.lightningChart1.Name = "lightningChart1";
@@ -690,6 +701,7 @@
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.commandsToolStripMenuItem,
             this.posToolStripMenuItem,
+            this.Pos_AtoolStripMenuItem1,
             this.dynCtrlToolStripMenuItem,
             this.pIDToolStripMenuItem,
             this.setBitToolStripMenuItem});
@@ -740,7 +752,7 @@
             this.toolStripSeparator8,
             this.synchronizeMoveToolStripMenuItem});
             this.moveToolStripMenuItem.Name = "moveToolStripMenuItem";
-            this.moveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.moveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.moveToolStripMenuItem.Text = "Move";
             // 
             // posAToolStripMenuItem
@@ -2649,6 +2661,65 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
+            // Pos_AtoolStripMenuItem1
+            // 
+            this.Pos_AtoolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("Pos_AtoolStripMenuItem1.Image")));
+            this.Pos_AtoolStripMenuItem1.Name = "Pos_AtoolStripMenuItem1";
+            this.Pos_AtoolStripMenuItem1.Size = new System.Drawing.Size(70, 21);
+            this.Pos_AtoolStripMenuItem1.Text = "Pos_A";
+            this.Pos_AtoolStripMenuItem1.Click += new System.EventHandler(this.Pos_AtoolStripMenuItem1_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(865, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 16);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "滚动模式";
+            // 
+            // cmbX_ScrollMode
+            // 
+            this.cmbX_ScrollMode.DisplayMember = "Text";
+            this.cmbX_ScrollMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_ScrollMode.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_ScrollMode.FormattingEnabled = true;
+            this.cmbX_ScrollMode.ItemHeight = 21;
+            this.cmbX_ScrollMode.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2,
+            this.comboItem3,
+            this.comboItem4,
+            this.comboItem5});
+            this.cmbX_ScrollMode.Location = new System.Drawing.Point(865, 70);
+            this.cmbX_ScrollMode.Name = "cmbX_ScrollMode";
+            this.cmbX_ScrollMode.Size = new System.Drawing.Size(121, 27);
+            this.cmbX_ScrollMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_ScrollMode.TabIndex = 62;
+            this.cmbX_ScrollMode.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx7_SelectedIndexChanged);
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "None";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "Scrolling";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "Stepping";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "Sweeping";
+            // 
+            // comboItem5
+            // 
+            this.comboItem5.Text = "Triggered";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2888,6 +2959,14 @@
         private System.Windows.Forms.ToolStripMenuItem dynCtrlToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pIDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setBitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Pos_AtoolStripMenuItem1;
+        private System.Windows.Forms.Label label1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_ScrollMode;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
+        private DevComponents.Editors.ComboItem comboItem4;
+        private DevComponents.Editors.ComboItem comboItem5;
     }
 }
 

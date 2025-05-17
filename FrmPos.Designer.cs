@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPos));
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.cmbX_Pos__EDC = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cmbX_Pos_EDC = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
@@ -39,17 +39,17 @@
             this.cmbX_Pos_MoveCtrl = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.tbX_Pos_Destnation = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cmbX_Pos_SpeedUnit = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.cmbX_Pos_Destnation = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.panelEx_POS = new DevComponents.DotNetBar.PanelEx();
-            this.btnX_PosSend = new DevComponents.DotNetBar.ButtonX();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.comboItem6 = new DevComponents.Editors.ComboItem();
+            this.cmbX_Pos_Destnation = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem7 = new DevComponents.Editors.ComboItem();
             this.comboItem8 = new DevComponents.Editors.ComboItem();
             this.comboItem9 = new DevComponents.Editors.ComboItem();
+            this.panelEx_POS = new DevComponents.DotNetBar.PanelEx();
+            this.btnX_PosSend = new DevComponents.DotNetBar.ButtonX();
             this.panelEx_POS.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,21 +66,21 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "控制器";
             // 
-            // cmbX_Pos__EDC
+            // cmbX_Pos_EDC
             // 
-            this.cmbX_Pos__EDC.DisplayMember = "Text";
-            this.cmbX_Pos__EDC.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbX_Pos__EDC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbX_Pos__EDC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbX_Pos__EDC.FormattingEnabled = true;
-            this.cmbX_Pos__EDC.ItemHeight = 21;
-            this.cmbX_Pos__EDC.Items.AddRange(new object[] {
+            this.cmbX_Pos_EDC.DisplayMember = "Text";
+            this.cmbX_Pos_EDC.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Pos_EDC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbX_Pos_EDC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_Pos_EDC.FormattingEnabled = true;
+            this.cmbX_Pos_EDC.ItemHeight = 21;
+            this.cmbX_Pos_EDC.Items.AddRange(new object[] {
             this.comboItem1});
-            this.cmbX_Pos__EDC.Location = new System.Drawing.Point(97, 35);
-            this.cmbX_Pos__EDC.Name = "cmbX_Pos__EDC";
-            this.cmbX_Pos__EDC.Size = new System.Drawing.Size(196, 27);
-            this.cmbX_Pos__EDC.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbX_Pos__EDC.TabIndex = 1;
+            this.cmbX_Pos_EDC.Location = new System.Drawing.Point(97, 35);
+            this.cmbX_Pos_EDC.Name = "cmbX_Pos_EDC";
+            this.cmbX_Pos_EDC.Size = new System.Drawing.Size(196, 27);
+            this.cmbX_Pos_EDC.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_Pos_EDC.TabIndex = 1;
             // 
             // comboItem1
             // 
@@ -187,6 +187,26 @@
             this.cmbX_Pos_SpeedUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbX_Pos_SpeedUnit.TabIndex = 1;
             // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "mm/min";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "mm/s";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "μm/s";
+            // 
+            // comboItem5
+            // 
+            this.comboItem5.Text = "μm/min";
+            // 
+            // comboItem6
+            // 
+            this.comboItem6.Text = "m/s";
+            // 
             // cmbX_Pos_Destnation
             // 
             this.cmbX_Pos_Destnation.DisplayMember = "Text";
@@ -203,6 +223,18 @@
             this.cmbX_Pos_Destnation.Size = new System.Drawing.Size(89, 27);
             this.cmbX_Pos_Destnation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbX_Pos_Destnation.TabIndex = 1;
+            // 
+            // comboItem7
+            // 
+            this.comboItem7.Text = "mm";
+            // 
+            // comboItem8
+            // 
+            this.comboItem8.Text = "μm";
+            // 
+            // comboItem9
+            // 
+            this.comboItem9.Text = "m";
             // 
             // panelEx_POS
             // 
@@ -237,38 +269,6 @@
             this.btnX_PosSend.Text = "发送";
             this.btnX_PosSend.Click += new System.EventHandler(this.btnX_PosSend_Click);
             // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "mm/min";
-            // 
-            // comboItem3
-            // 
-            this.comboItem3.Text = "mm/s";
-            // 
-            // comboItem4
-            // 
-            this.comboItem4.Text = "μm/s";
-            // 
-            // comboItem5
-            // 
-            this.comboItem5.Text = "μm/min";
-            // 
-            // comboItem6
-            // 
-            this.comboItem6.Text = "m/s";
-            // 
-            // comboItem7
-            // 
-            this.comboItem7.Text = "mm";
-            // 
-            // comboItem8
-            // 
-            this.comboItem8.Text = "μm";
-            // 
-            // comboItem9
-            // 
-            this.comboItem9.Text = "m";
-            // 
             // FrmPos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -280,7 +280,7 @@
             this.Controls.Add(this.cmbX_Pos_Destnation);
             this.Controls.Add(this.cmbX_Pos_SpeedUnit);
             this.Controls.Add(this.cmbX_Pos_MoveCtrl);
-            this.Controls.Add(this.cmbX_Pos__EDC);
+            this.Controls.Add(this.cmbX_Pos_EDC);
             this.Controls.Add(this.labelX4);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.labelX2);
@@ -296,7 +296,7 @@
         #endregion
 
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Pos__EDC;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Pos_EDC;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX4;
