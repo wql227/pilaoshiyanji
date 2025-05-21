@@ -108,6 +108,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IniFileHelper.cs" />
     <Compile Include="FrmDynCtrl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,7 +187,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="OpenTK.dll.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -201,11 +201,6 @@
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64'">
-    <Reference Include="DoPE10Net">
-      <HintPath>$(OutDir)DoPE10x64Net.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86'">
     <Reference Include="DoPE10Net">
       <HintPath>$(OutDir)DoPE10Net.dll</HintPath>
@@ -219,21 +214,4 @@
   <ItemGroup>
     <Content Include="ICON.ico" />
   </ItemGroup>
-  <Import Project="packages\HarfBuzzSharp.NativeAssets.macOS.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.macOS.targets" Condition="Exists('packages\HarfBuzzSharp.NativeAssets.macOS.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.macOS.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\HarfBuzzSharp.NativeAssets.macOS.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.macOS.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\HarfBuzzSharp.NativeAssets.macOS.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.macOS.targets'))" />
-    <Error Condition="!Exists('packages\HarfBuzzSharp.NativeAssets.Win32.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\HarfBuzzSharp.NativeAssets.Win32.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Win32.targets'))" />
-    <Error Condition="!Exists('packages\SkiaSharp.NativeAssets.macOS.2.88.9\build\net462\SkiaSharp.NativeAssets.macOS.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SkiaSharp.NativeAssets.macOS.2.88.9\build\net462\SkiaSharp.NativeAssets.macOS.targets'))" />
-    <Error Condition="!Exists('packages\SkiaSharp.NativeAssets.Win32.2.88.9\build\net462\SkiaSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SkiaSharp.NativeAssets.Win32.2.88.9\build\net462\SkiaSharp.NativeAssets.Win32.targets'))" />
-    <Error Condition="!Exists('packages\HarfBuzzSharp.NativeAssets.Linux.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Linux.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\HarfBuzzSharp.NativeAssets.Linux.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Linux.targets'))" />
-    <Error Condition="!Exists('packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.9\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.9\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets'))" />
-  </Target>
-  <Import Project="packages\HarfBuzzSharp.NativeAssets.Win32.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Win32.targets" Condition="Exists('packages\HarfBuzzSharp.NativeAssets.Win32.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Win32.targets')" />
-  <Import Project="packages\SkiaSharp.NativeAssets.macOS.2.88.9\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('packages\SkiaSharp.NativeAssets.macOS.2.88.9\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />
-  <Import Project="packages\SkiaSharp.NativeAssets.Win32.2.88.9\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('packages\SkiaSharp.NativeAssets.Win32.2.88.9\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />
-  <Import Project="packages\HarfBuzzSharp.NativeAssets.Linux.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Linux.targets" Condition="Exists('packages\HarfBuzzSharp.NativeAssets.Linux.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Linux.targets')" />
-  <Import Project="packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.9\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets" Condition="Exists('packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.9\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" />
 </Project>

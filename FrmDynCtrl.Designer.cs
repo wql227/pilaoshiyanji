@@ -53,7 +53,7 @@
             this.comboItem8 = new DevComponents.Editors.ComboItem();
             this.comboItem9 = new DevComponents.Editors.ComboItem();
             this.cbX_Dyn_PeakCtrl = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbX_Dyn_FadeInOut = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.tbX_Dyn_PeakCtrl = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -347,19 +347,19 @@
             this.cbX_Dyn_PeakCtrl.Text = "0..100%";
             this.cbX_Dyn_PeakCtrl.CheckedChanged += new System.EventHandler(this.cbX_PeakCtrl_CheckedChanged);
             // 
-            // checkBoxX2
+            // cbX_Dyn_FadeInOut
             // 
             // 
             // 
             // 
-            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxX2.Location = new System.Drawing.Point(226, 219);
-            this.checkBoxX2.Name = "checkBoxX2";
-            this.checkBoxX2.Size = new System.Drawing.Size(100, 23);
-            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX2.TabIndex = 3;
-            this.checkBoxX2.Text = "FadeInOut";
+            this.cbX_Dyn_FadeInOut.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_Dyn_FadeInOut.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbX_Dyn_FadeInOut.Location = new System.Drawing.Point(226, 219);
+            this.cbX_Dyn_FadeInOut.Name = "cbX_Dyn_FadeInOut";
+            this.cbX_Dyn_FadeInOut.Size = new System.Drawing.Size(100, 23);
+            this.cbX_Dyn_FadeInOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_Dyn_FadeInOut.TabIndex = 3;
+            this.cbX_Dyn_FadeInOut.Text = "FadeInOut";
             // 
             // labelX8
             // 
@@ -841,7 +841,7 @@
             this.Controls.Add(this.btnX_Dyn_Amplitude_P1);
             this.Controls.Add(this.btnX_Dyn_Offset_P1);
             this.Controls.Add(this.btnX_Dyn_Offset_S1);
-            this.Controls.Add(this.checkBoxX2);
+            this.Controls.Add(this.cbX_Dyn_FadeInOut);
             this.Controls.Add(this.cbX_Dyn_PeakCtrl);
             this.Controls.Add(this.tbX_Dyn_Frequency);
             this.Controls.Add(this.tbX_Dyn_Amplitude);
@@ -894,7 +894,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_Dyn_StartSpeed;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Dyn_MoveCtrl_Unit;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbX_Dyn_PeakCtrl;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX2;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_Dyn_FadeInOut;
         private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_Dyn_PeakCtrl;

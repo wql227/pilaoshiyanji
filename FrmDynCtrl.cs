@@ -18,6 +18,9 @@ namespace DoPE10Net_CSharpDemo
     public partial class FrmDynCtrl : Form
     {
 
+        /// <summary>
+        /// 加减系数枚举
+        /// </summary>
         public enum AddSubScale
         {
             None = -1,
@@ -27,6 +30,9 @@ namespace DoPE10Net_CSharpDemo
         }
 
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public FrmDynCtrl()
         {
             InitializeComponent();
@@ -36,35 +42,35 @@ namespace DoPE10Net_CSharpDemo
                 cmbX_Dyn_EDC.SelectedIndex = 0;
             }
 
-            if (cmbX_Dyn_StartCtrl.Items.Count >= 1)
-            {
-                cmbX_Dyn_StartCtrl.SelectedIndex = 0;
-            }
+            //if (cmbX_Dyn_StartCtrl.Items.Count >= 1)
+            //{
+            //    cmbX_Dyn_StartCtrl.SelectedIndex = 0;
+            //}
 
-            if (cmbX_Dyn_StartSpeed_Unit.Items.Count >= 1)
-            {
-                cmbX_Dyn_StartSpeed_Unit.SelectedIndex = 0;
-            }
+            //if (cmbX_Dyn_StartSpeed_Unit.Items.Count >= 1)
+            //{
+            //    cmbX_Dyn_StartSpeed_Unit.SelectedIndex = 0;
+            //}
 
-            if (cmbX_Dyn_MoveCtrl.Items.Count >= 1)
-            {
-                cmbX_Dyn_MoveCtrl.SelectedIndex = 0;
-            }
+            //if (cmbX_Dyn_MoveCtrl.Items.Count >= 1)
+            //{
+            //    cmbX_Dyn_MoveCtrl.SelectedIndex = 0;
+            //}
 
-            if (cmbX_Dyn_MoveCtrl_Unit.Items.Count >= 1)
-            {
-                cmbX_Dyn_MoveCtrl_Unit.SelectedIndex = 0;
-            }
+            //if (cmbX_Dyn_MoveCtrl_Unit.Items.Count >= 1)
+            //{
+            //    cmbX_Dyn_MoveCtrl_Unit.SelectedIndex = 0;
+            //}
 
-            if (cmbX_Dyn_WaveFrom.Items.Count >= 1)
-            {
-                cmbX_Dyn_WaveFrom.SelectedIndex = 0;
-            }
+            //if (cmbX_Dyn_WaveFrom.Items.Count >= 1)
+            //{
+            //    cmbX_Dyn_WaveFrom.SelectedIndex = 0;
+            //}
 
-            if (cmbX_Dyn_PeakCtrl.Items.Count >= 1)
-            {
-                cmbX_Dyn_PeakCtrl.SelectedIndex = 0;
-            }
+            //if (cmbX_Dyn_PeakCtrl.Items.Count >= 1)
+            //{
+            //    cmbX_Dyn_PeakCtrl.SelectedIndex = 0;
+            //}
 
             cmbX_Dyn_PeakCtrl.Visible = false;
 
@@ -74,14 +80,15 @@ namespace DoPE10Net_CSharpDemo
 
             cmbX_Dyn_MoveCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
-            tbX_Dyn_StartSpeed.Text = "20";
+            //tbX_Dyn_StartSpeed.Text = "20";
 
-            tbX_Cycles.Text = "50";
-            tbX_Dyn_PeakCtrl.Text = "0";
-            tbX_Dyn_Offset.Text = "-10";
-            tbX_Dyn_Amplitude.Text = "3";
-            tbX_Dyn_Frequency.Text = "2";
+            //tbX_Cycles.Text = "50";
+            //tbX_Dyn_PeakCtrl.Text = "0";
+            //tbX_Dyn_Offset.Text = "-10";
+            //tbX_Dyn_Amplitude.Text = "3";
+            //tbX_Dyn_Frequency.Text = "2";
 
+            LoadIni();
         }
 
         private void cbX_PeakCtrl_CheckedChanged(object sender, EventArgs e)
@@ -106,6 +113,12 @@ namespace DoPE10Net_CSharpDemo
         /// <param name="e"></param>
         private void btnX_Dyn_Send_Click(object sender, EventArgs e)
         {
+            if (!MainForm.mainform.bActivated)
+            {
+                MessageBox.Show("请先激活控制器！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             DoPE.DYN_WAVEFORM WaveForm;
             bool Modify;
             DoPE.DYN_PEAKCTRL PeakCtrl;
@@ -149,6 +162,7 @@ namespace DoPE10Net_CSharpDemo
 
             MainForm.mainform.MoveDynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination, SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode);
 
+            WriteIni();
         }
 
 
@@ -157,18 +171,6 @@ namespace DoPE10Net_CSharpDemo
         /// </summary>
         private double OffsetAddSub(double dOffset, AddSubScale addSubScale, bool isadd )
         {
-            //string input = "123.45";
-            //bool isNumber = Regex.IsMatch(input, @"^-?\d+(\.\d+)?$");
-
-            //if (isNumber)
-            //{
-            //    Console.WriteLine("这是一个数字或小数。");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("这不是一个数字或小数。");
-            //}
-
             double Offset = dOffset;
 
             if (addSubScale == AddSubScale.Deci)
@@ -296,6 +298,112 @@ namespace DoPE10Net_CSharpDemo
 
             // 不符合要求的字符禁止输入
             e.Handled = true;
+        }
+
+
+        /// <summary>
+        /// 加载配置文件参数
+        /// </summary>
+        public void LoadIni()
+        {
+            IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
+            StringBuilder strTmp = new StringBuilder(255);
+            IniFileHelper.GetIniString("DynCtrl", "StartCtrl", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_StartCtrl.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("DynCtrl", "StartSpeed", "0", strTmp, strTmp.Capacity);
+            tbX_Dyn_StartSpeed.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("DynCtrl", "StartSpeedUnit", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_StartSpeed_Unit.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("DynCtrl", "MoveCtrl", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_MoveCtrl.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("DynCtrl", "MoveCtrlUnit", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_MoveCtrl_Unit.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("DynCtrl", "WaveFrom", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_WaveFrom.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("DynCtrl", "PeakCtrl", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_PeakCtrl.SelectedIndex = int.Parse(strTmp.ToString());
+
+            tbX_Dyn_PeakCtrl.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("DynCtrl", "PeakCtrlCheck", "0", strTmp, strTmp.Capacity);
+            cbX_Dyn_PeakCtrl.Checked = strTmp.ToString() == "1";
+
+            IniFileHelper.GetIniString("DynCtrl", "Cycles", "0", strTmp, strTmp.Capacity);
+            tbX_Cycles.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("DynCtrl", "FadeInOut", "0", strTmp, strTmp.Capacity);
+            cbX_Dyn_FadeInOut.Checked = strTmp.ToString() == "1";
+
+            IniFileHelper.GetIniString("DynCtrl", "OffSet", "0", strTmp, strTmp.Capacity);
+            tbX_Dyn_Offset.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("DynCtrl", "Amplitude", "0", strTmp, strTmp.Capacity);
+            tbX_Dyn_Amplitude.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("DynCtrl", "Frequency", "0", strTmp, strTmp.Capacity);
+            tbX_Dyn_Frequency.Text = strTmp.ToString();
+        }
+
+
+        /// <summary>
+        /// 保存配置文件参数
+        /// </summary>
+        public void WriteIni()
+        {
+            IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
+            string strTmp = "";
+            strTmp = cmbX_Dyn_StartCtrl.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "StartCtrl", strTmp);
+
+            strTmp = tbX_Dyn_StartSpeed.Text;
+            IniFileHelper.WriteIniString("DynCtrl", "StartSpeed", strTmp);
+
+            strTmp = cmbX_Dyn_StartSpeed_Unit.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "StartSpeedUnit", strTmp);
+
+            strTmp = cmbX_Dyn_MoveCtrl.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "MoveCtrl", strTmp);
+
+            strTmp = cmbX_Dyn_MoveCtrl_Unit.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "MoveCtrlUnit", strTmp);
+
+            strTmp = cmbX_Dyn_WaveFrom.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "WaveFrom", strTmp);
+
+            if (cbX_Dyn_PeakCtrl.Checked)
+            {
+                strTmp = cmbX_Dyn_PeakCtrl.SelectedIndex.ToString();
+                IniFileHelper.WriteIniString("DynCtrl", "PeakCtrl", strTmp);
+            }
+            else
+            {
+                strTmp = tbX_Dyn_PeakCtrl.Text;
+                IniFileHelper.WriteIniString("DynCtrl", "PeakCtrl", strTmp);
+            }
+
+            strTmp = cbX_Dyn_PeakCtrl.Checked.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "PeakCtrlCheck", strTmp);
+
+            strTmp = tbX_Cycles.Text;
+            IniFileHelper.WriteIniString("DynCtrl", "Cycles", strTmp);
+
+            strTmp = cbX_Dyn_FadeInOut.Checked.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "FadeInOut", strTmp);
+
+            strTmp = tbX_Dyn_Offset.Text;
+            IniFileHelper.WriteIniString("DynCtrl", "OffSet", strTmp);
+
+            strTmp = tbX_Dyn_Amplitude.Text;
+            IniFileHelper.WriteIniString("DynCtrl", "Amplitude", strTmp);
+
+            strTmp = tbX_Dyn_Frequency.Text;
+            IniFileHelper.WriteIniString("DynCtrl", "Frequency", strTmp);
         }
     }
 }

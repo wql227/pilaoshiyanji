@@ -408,7 +408,7 @@
             chartArea1.AxisX.Interval = 1D;
             chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
             chartArea1.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisX.Maximum = 20D;
+            chartArea1.AxisX.Maximum = 10D;
             chartArea1.AxisX.Minimum = 0D;
             chartArea1.AxisX.Title = "时间(s)";
             chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
@@ -425,7 +425,7 @@
             this.chart_machine.Location = new System.Drawing.Point(6, 51);
             this.chart_machine.Name = "chart_machine";
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
             series1.Name = "位移";
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
@@ -699,7 +699,7 @@
             this.lblDestinationUnit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblDestinationUnit.Location = new System.Drawing.Point(972, 258);
             this.lblDestinationUnit.Name = "lblDestinationUnit";
-            this.lblDestinationUnit.Size = new System.Drawing.Size(23, 16);
+            this.lblDestinationUnit.Size = new System.Drawing.Size(24, 16);
             this.lblDestinationUnit.TabIndex = 54;
             this.lblDestinationUnit.Text = "mm";
             // 
@@ -710,7 +710,7 @@
             this.lblSpeedUnit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblSpeedUnit.Location = new System.Drawing.Point(928, 210);
             this.lblSpeedUnit.Name = "lblSpeedUnit";
-            this.lblSpeedUnit.Size = new System.Drawing.Size(39, 16);
+            this.lblSpeedUnit.Size = new System.Drawing.Size(40, 16);
             this.lblSpeedUnit.TabIndex = 53;
             this.lblSpeedUnit.Text = "mm/s";
             // 
@@ -732,7 +732,7 @@
             this.lblDestination.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblDestination.Location = new System.Drawing.Point(877, 258);
             this.lblDestination.Name = "lblDestination";
-            this.lblDestination.Size = new System.Drawing.Size(95, 16);
+            this.lblDestination.Size = new System.Drawing.Size(96, 16);
             this.lblDestination.TabIndex = 50;
             this.lblDestination.Text = "Destination";
             // 
@@ -743,7 +743,7 @@
             this.lblSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblSpeed.Location = new System.Drawing.Point(875, 210);
             this.lblSpeed.Name = "lblSpeed";
-            this.lblSpeed.Size = new System.Drawing.Size(47, 16);
+            this.lblSpeed.Size = new System.Drawing.Size(48, 16);
             this.lblSpeed.TabIndex = 49;
             this.lblSpeed.Text = "Speed";
             // 
@@ -754,7 +754,7 @@
             this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(877, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 16);
+            this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 48;
             this.label1.Text = "滚动模式";
             // 
@@ -765,7 +765,7 @@
             this.lblControl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblControl.Location = new System.Drawing.Point(876, 158);
             this.lblControl.Name = "lblControl";
-            this.lblControl.Size = new System.Drawing.Size(63, 16);
+            this.lblControl.Size = new System.Drawing.Size(64, 16);
             this.lblControl.TabIndex = 48;
             this.lblControl.Text = "Control";
             // 
@@ -1094,7 +1094,7 @@
             this.cb_TareExt.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cb_TareExt.Location = new System.Drawing.Point(788, 4);
             this.cb_TareExt.Name = "cb_TareExt";
-            this.cb_TareExt.Size = new System.Drawing.Size(34, 20);
+            this.cb_TareExt.Size = new System.Drawing.Size(35, 20);
             this.cb_TareExt.TabIndex = 42;
             this.cb_TareExt.Text = "T";
             this.cb_TareExt.UseVisualStyleBackColor = true;
@@ -1106,7 +1106,7 @@
             this.cb_TareLoad.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cb_TareLoad.Location = new System.Drawing.Point(481, 4);
             this.cb_TareLoad.Name = "cb_TareLoad";
-            this.cb_TareLoad.Size = new System.Drawing.Size(34, 20);
+            this.cb_TareLoad.Size = new System.Drawing.Size(35, 20);
             this.cb_TareLoad.TabIndex = 42;
             this.cb_TareLoad.Text = "T";
             this.cb_TareLoad.UseVisualStyleBackColor = true;
@@ -1118,7 +1118,7 @@
             this.cb_TarePos.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cb_TarePos.Location = new System.Drawing.Point(174, 2);
             this.cb_TarePos.Name = "cb_TarePos";
-            this.cb_TarePos.Size = new System.Drawing.Size(34, 20);
+            this.cb_TarePos.Size = new System.Drawing.Size(35, 20);
             this.cb_TarePos.TabIndex = 42;
             this.cb_TarePos.Text = "T";
             this.cb_TarePos.UseVisualStyleBackColor = true;
@@ -1183,7 +1183,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(978, 2);
+            this.label8.Location = new System.Drawing.Point(979, 2);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(94, 20);
             this.label8.TabIndex = 26;
@@ -1451,7 +1451,6 @@
             this.panelEx7.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx7.Style.GradientAngle = 90;
             this.panelEx7.TabIndex = 6;
-            this.panelEx7.Click += new System.EventHandler(this.panelEx7_Click);
             // 
             // panelEx6
             // 
@@ -1697,7 +1696,6 @@
             this.textBoxX7.PreventEnterBeep = true;
             this.textBoxX7.Size = new System.Drawing.Size(60, 23);
             this.textBoxX7.TabIndex = 4;
-            this.textBoxX7.TextChanged += new System.EventHandler(this.textBoxX6_TextChanged);
             // 
             // textBoxX6
             // 
@@ -1712,7 +1710,6 @@
             this.textBoxX6.PreventEnterBeep = true;
             this.textBoxX6.Size = new System.Drawing.Size(90, 23);
             this.textBoxX6.TabIndex = 4;
-            this.textBoxX6.TextChanged += new System.EventHandler(this.textBoxX6_TextChanged);
             // 
             // textBoxX5
             // 
@@ -2684,7 +2681,6 @@
             this.labelX28.Size = new System.Drawing.Size(44, 23);
             this.labelX28.TabIndex = 0;
             this.labelX28.Text = "100.0";
-            this.labelX28.Click += new System.EventHandler(this.labelX28_Click);
             // 
             // labelX27
             // 
@@ -2858,26 +2854,26 @@
             this.试验数据回访ToolStripMenuItem,
             this.退出ToolStripMenuItem});
             this.操作ToolStripMenuItem.Name = "操作ToolStripMenuItem";
-            this.操作ToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.操作ToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.操作ToolStripMenuItem.Text = "操作";
             // 
             // 登录ToolStripMenuItem
             // 
             this.登录ToolStripMenuItem.Name = "登录ToolStripMenuItem";
-            this.登录ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.登录ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.登录ToolStripMenuItem.Text = "登录";
             this.登录ToolStripMenuItem.Click += new System.EventHandler(this.登录ToolStripMenuItem_Click);
             // 
             // 试验数据回访ToolStripMenuItem
             // 
             this.试验数据回访ToolStripMenuItem.Name = "试验数据回访ToolStripMenuItem";
-            this.试验数据回访ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.试验数据回访ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.试验数据回访ToolStripMenuItem.Text = "试验数据回放";
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             // 
             // 参数设置ToolStripMenuItem
@@ -2887,25 +2883,25 @@
             this.系统保护选项ToolStripMenuItem,
             this.绘图选项ToolStripMenuItem});
             this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
-            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.参数设置ToolStripMenuItem.Text = "参数设置";
             // 
             // 试验操作选项ToolStripMenuItem
             // 
             this.试验操作选项ToolStripMenuItem.Name = "试验操作选项ToolStripMenuItem";
-            this.试验操作选项ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.试验操作选项ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.试验操作选项ToolStripMenuItem.Text = "试验操作选项";
             // 
             // 系统保护选项ToolStripMenuItem
             // 
             this.系统保护选项ToolStripMenuItem.Name = "系统保护选项ToolStripMenuItem";
-            this.系统保护选项ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.系统保护选项ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.系统保护选项ToolStripMenuItem.Text = "系统保护选项";
             // 
             // 绘图选项ToolStripMenuItem
             // 
             this.绘图选项ToolStripMenuItem.Name = "绘图选项ToolStripMenuItem";
-            this.绘图选项ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.绘图选项ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.绘图选项ToolStripMenuItem.Text = "绘图选项";
             // 
             // 试验数据ToolStripMenuItem
@@ -2916,31 +2912,31 @@
             this.toolStripSeparator1,
             this.保存当前曲线ToolStripMenuItem});
             this.试验数据ToolStripMenuItem.Name = "试验数据ToolStripMenuItem";
-            this.试验数据ToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.试验数据ToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.试验数据ToolStripMenuItem.Text = "试验数据";
             // 
             // 打开数据文件ToolStripMenuItem
             // 
             this.打开数据文件ToolStripMenuItem.Name = "打开数据文件ToolStripMenuItem";
-            this.打开数据文件ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.打开数据文件ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.打开数据文件ToolStripMenuItem.Text = "打开数据文件";
             // 
             // 保存数据问题及ToolStripMenuItem
             // 
             this.保存数据问题及ToolStripMenuItem.Name = "保存数据问题及ToolStripMenuItem";
-            this.保存数据问题及ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.保存数据问题及ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.保存数据问题及ToolStripMenuItem.Text = "保存数据文件";
             this.保存数据问题及ToolStripMenuItem.Click += new System.EventHandler(this.保存数据问题及ToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(167, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
             // 
             // 保存当前曲线ToolStripMenuItem
             // 
             this.保存当前曲线ToolStripMenuItem.Name = "保存当前曲线ToolStripMenuItem";
-            this.保存当前曲线ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.保存当前曲线ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.保存当前曲线ToolStripMenuItem.Text = "保存当前曲线";
             // 
             // 试验结果ToolStripMenuItem
@@ -2949,19 +2945,19 @@
             this.拷贝当前曲线ToolStripMenuItem,
             this.打印当前曲线ToolStripMenuItem});
             this.试验结果ToolStripMenuItem.Name = "试验结果ToolStripMenuItem";
-            this.试验结果ToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.试验结果ToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.试验结果ToolStripMenuItem.Text = "试验结果";
             // 
             // 拷贝当前曲线ToolStripMenuItem
             // 
             this.拷贝当前曲线ToolStripMenuItem.Name = "拷贝当前曲线ToolStripMenuItem";
-            this.拷贝当前曲线ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.拷贝当前曲线ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.拷贝当前曲线ToolStripMenuItem.Text = "拷贝当前曲线";
             // 
             // 打印当前曲线ToolStripMenuItem
             // 
             this.打印当前曲线ToolStripMenuItem.Name = "打印当前曲线ToolStripMenuItem";
-            this.打印当前曲线ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.打印当前曲线ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.打印当前曲线ToolStripMenuItem.Text = "打印当前曲线";
             // 
             // 帮助ToolStripMenuItem
@@ -2969,13 +2965,13 @@
             this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.关于ToolStripMenuItem});
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.帮助ToolStripMenuItem.Text = "帮助";
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 

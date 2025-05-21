@@ -124,7 +124,12 @@ namespace DoPE10Net_CSharpDemo
         /// <summary>
         /// 是否已经连接控制器
         /// </summary>
-        private bool bConnected = false;
+        public bool bConnected = false;
+
+        /// <summary>
+        /// 是否已经激活控制器
+        /// </summary>
+        public bool bActivated = false;
 
         /// <summary>
         /// 数据线程
@@ -428,7 +433,7 @@ namespace DoPE10Net_CSharpDemo
             try
             {
                 DoPE.ERR error = MyEdc.Move.On();
-
+                bActivated = true;
                 StartCommunicationWithEdcTimer.Start();
                 DisplayError(error, "On");
             }
@@ -455,6 +460,7 @@ namespace DoPE10Net_CSharpDemo
             try
             {
                 DoPE.ERR error = MyEdc.Move.Off();
+                bActivated = true;
                 DisplayError(error, "Off");
             }
             catch (NullReferenceException)
@@ -598,7 +604,7 @@ namespace DoPE10Net_CSharpDemo
                 //波形图
                 //if (Block.Data.Length > 0)
                 {
-                  //  if (ware)
+                    if (bConnected && bActivated)
                     {
                         ShowWave(Block);
                     }
@@ -813,21 +819,6 @@ namespace DoPE10Net_CSharpDemo
             //lightningChart1.ColorTheme = ColorTheme.SkyBlue;
         }
 
-        private void textBoxX6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelEx7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelX28_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         public void EnableButton()
         {
@@ -884,107 +875,126 @@ namespace DoPE10Net_CSharpDemo
         /// <param name="Block"></param>
         private async void ShowWave(DoPE.OnDataBlock Block)
         {
-            if (MyEdc.IsConnected())
+            try
             {
-                for (int i = 50; Block.Data.Length > i; i += 100)
+                //if (MyEdc.IsConnected() && bConnected)
+                if (chart_machine != null)
                 {
-                    //绘制Position
-                    double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
-                    x_Position += 0.1;
-                    if (chart_machine.Series[0] != null)
+                    for (int i = 50; Block.Data.Length > i; i += 100)
                     {
-                        chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
-                        if (chart_machine.Series[0].Points.Count - 1 == 100)
-                        {
-                            //chart1.Series[0].Points.AddXY(10.0, y);
-                            chart_machine.Series[0].Points.Clear();
-                            // 异步更新图表数据
-                            //await chart1.InvokeAsync(() =>
-                            //{
-                            //    chartControl.Series[0].Points.AddXY(.0, y);
-                            //});
+                        //绘制Position
+                        double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
+                        x_Position += 0.05;
 
-                            chart_machine.Series[0].Points.AddXY(0.0, y_Position);
-                            x_Position = 0.0;
-                        }
-                        /*if (x >= 10.0)
+                        if (chart_machine.Series != null)
                         {
-                            x = 0.0;
-                            chart1.Series[0].Points.Clear();
-                            chart1.Series[0].Points.AddXY(-1.0, y);
-                        }*/
+                            if (chart_machine.Series[0] != null)
+                            {
+                                chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
+                                if (chart_machine.Series[0].Points.Count - 1 == 100)
+                                {
+                                    //chart1.Series[0].Points.AddXY(10.0, y);
+                                    chart_machine.Series[0].Points.Clear();
+                                    // 异步更新图表数据
+                                    //await chart1.InvokeAsync(() =>
+                                    //{
+                                    //    chartControl.Series[0].Points.AddXY(.0, y);
+                                    //});
+
+                                    chart_machine.Series[0].Points.AddXY(0.0, y_Position);
+                                    x_Position = 0.0;
+                                }
+                                /*if (x >= 10.0)
+                                {
+                                    x = 0.0;
+                                    chart1.Series[0].Points.Clear();
+                                    chart1.Series[0].Points.AddXY(-1.0, y);
+                                }*/
+                            }
+                        }
+
+                        //绘制Load
+                        double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
+                        x_Load += 0.05;
+                        if (chart_machine.Series[1] != null)
+                        {
+                            chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
+                            if (chart_machine.Series[1].Points.Count - 1 == 100)
+                            {
+                                //chart1.Series[0].Points.AddXY(10.0, y);
+                                chart_machine.Series[1].Points.Clear();
+
+                                chart_machine.Series[1].Points.AddXY(0.0, y_Load);
+                                x_Load = 0.0;
+                            }
+                            /*if (x >= 10.0)
+                            {
+                                x = 0.0;
+                                chart1.Series[0].Points.Clear();
+                                chart1.Series[0].Points.AddXY(-1.0, y);
+                            }*/
+                        }
                     }
 
-                    //绘制Load
-                    double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
-                    x_Load += 0.1;
-                    if (chart_machine.Series[1] != null)
+
+
+
+                    //计算Position 峰谷值
+                    if (maxPos < float.Parse(guiPosition.Text))
                     {
-                        chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
-                        if (chart_machine.Series[1].Points.Count - 1 == 100)
-                        {
-                            //chart1.Series[0].Points.AddXY(10.0, y);
-                            chart_machine.Series[1].Points.Clear();
-
-                            chart_machine.Series[1].Points.AddXY(0.0, y_Load);
-                            x_Load = 0.0;
-                        }
-                        /*if (x >= 10.0)
-                        {
-                            x = 0.0;
-                            chart1.Series[0].Points.Clear();
-                            chart1.Series[0].Points.AddXY(-1.0, y);
-                        }*/
+                        maxPos = float.Parse(guiPosition.Text);
+                        tb_MaxPos.Text = maxPos.ToString();
                     }
-                }
 
-                //计算Position 峰谷值
-                if (maxPos < float.Parse(guiPosition.Text))
-                {
-                    maxPos = float.Parse(guiPosition.Text);
-                    tb_MaxPos.Text = maxPos.ToString();
-                }
+                    if (minPos > float.Parse(guiPosition.Text))
+                    {
+                        minPos = float.Parse(guiPosition.Text);
+                        tb_MinPos.Text = minPos.ToString();
+                    }
 
-                if (minPos > float.Parse(guiPosition.Text))
-                {
-                    minPos = float.Parse(guiPosition.Text);
-                    tb_MinPos.Text = minPos.ToString();
-                }
+                    //计算Load 峰谷值
+                    if (maxLoad < float.Parse(guiLoad.Text))
+                    {
+                        maxLoad = float.Parse(guiLoad.Text);
+                        tb_MaxLoad.Text = maxLoad.ToString();
+                    }
 
-                //计算Load 峰谷值
-                if (maxLoad < float.Parse(guiLoad.Text))
-                {
-                    maxLoad = float.Parse(guiLoad.Text);
-                    tb_MaxLoad.Text = maxLoad.ToString();
-                }
+                    if (minLoad > float.Parse(guiLoad.Text))
+                    {
+                        minLoad = float.Parse(guiLoad.Text);
+                        tb_MinLoad.Text = minLoad.ToString();
+                    }
 
-                if (minLoad > float.Parse(guiLoad.Text))
-                {
-                    minLoad = float.Parse(guiLoad.Text);
-                    tb_MinLoad.Text = minLoad.ToString();
-                }
+                    //计算Extension 峰谷值
+                    if (maxExt < float.Parse(guiExtension.Text))
+                    {
+                        maxExt = float.Parse(guiExtension.Text);
+                        tb_MaxLoad.Text = maxExt.ToString();
+                    }
 
-                //计算Extension 峰谷值
-                if (maxExt < float.Parse(guiExtension.Text))
-                {
-                    maxExt = float.Parse(guiExtension.Text);
-                    tb_MaxLoad.Text = maxExt.ToString();
-                }
+                    if (minExt > float.Parse(guiExtension.Text))
+                    {
+                        minExt = float.Parse(guiExtension.Text);
+                        tb_MinExt.Text = minExt.ToString();
+                    }
 
-                if (minExt > float.Parse(guiExtension.Text))
-                {
-                    minExt = float.Parse(guiExtension.Text);
-                    tb_MinExt.Text = minExt.ToString();
-                }
+                    nTestCount++;
 
-                nTestCount++;
+                    if (nTestCount > 0)
+                    {
 
-                if (nTestCount > 0)
-                {
+                    }
 
                 }
 
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return;
+            }
+
+
             //max_label.Text = max.ToString();
             //min_label.Text = min.ToString();
 
@@ -1019,15 +1029,21 @@ namespace DoPE10Net_CSharpDemo
         }
 
 
-
-
-
         /// <summary>
         /// 断开EDC
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnX_Disconnect_Click(object sender, EventArgs e)
+        {
+            Disconnect();
+        }
+
+
+        /// <summary>
+        /// 断开设备连接
+        /// </summary>
+        private void Disconnect()
         {
             if (bConnected)
             {
@@ -1280,7 +1296,7 @@ namespace DoPE10Net_CSharpDemo
         {
             OnEDC();
 
-            if (MyEdc.IsConnected())
+            if (MyEdc.IsConnected() && bActivated)
             {
                 //位移
                 chart_machine.Series[0].Points.Clear();
@@ -1306,6 +1322,7 @@ namespace DoPE10Net_CSharpDemo
         private void bntX_GUIOff_Click(object sender, EventArgs e)
         {
             OffEDC();
+
         }
 
 
