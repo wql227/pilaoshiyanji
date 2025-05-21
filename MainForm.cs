@@ -81,10 +81,8 @@ using System.Diagnostics;
 using DevComponents.DotNetBar;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Threading;
-using Arction.WinForms.Charting;
-using Arction.WinForms.Charting.Axes;
-using Arction.WinForms.Charting.SeriesXY;
 using System.Threading.Tasks;
+using static Doli.DoPE10.DoPE;
 
 namespace DoPE10Net_CSharpDemo
 {
@@ -175,6 +173,36 @@ namespace DoPE10Net_CSharpDemo
         double[] _previousTemperature;
 
         /// <summary>
+        /// 
+        /// </summary>
+        double x_Position = 0.0;
+        double x_Load = 0.0;
+
+        /// <summary>
+        /// Position 峰谷值
+        /// </summary>
+        float maxPos = 0.0F;
+        float minPos = 0.0F;
+
+        /// <summary>
+        /// Load 峰谷值
+        /// </summary>
+        float maxLoad = 0.0F;
+        float minLoad = 0.0F;
+
+        /// <summary>
+        /// Load 峰谷值
+        /// </summary>
+        float maxExt = 0.0F;
+        float minExt = 0.0F;
+
+        /// <summary>
+        /// 记录试验次数
+        /// </summary>
+        int nTestCount = 0;
+
+
+        /// <summary>
         /// Boolean for random data
         /// </summary>
         public bool randomdata = false;
@@ -230,31 +258,31 @@ namespace DoPE10Net_CSharpDemo
 
         private void CreateChart()
         {
-            //Disable rendering.
-            lightningChart1.BeginUpdate();
+        //    //Disable rendering.
+        //    lightningChart1.BeginUpdate();
 
-            //Set V-Sync to prevent 'tearing'
-            lightningChart1.RenderOptions.WaitForVSync = true;
+        //    //Set V-Sync to prevent 'tearing'
+        //    lightningChart1.RenderOptions.WaitForVSync = true;
 
-            // Change axis layout.
-            lightningChart1.ViewXY.AxisLayout.YAxesLayout = YAxesLayout.Stacked;
-            lightningChart1.ViewXY.AxisLayout.SegmentsGap = 10;
+        //    // Change axis layout.
+        //    lightningChart1.ViewXY.AxisLayout.YAxesLayout = YAxesLayout.Stacked;
+        //    lightningChart1.ViewXY.AxisLayout.SegmentsGap = 10;
 
-            lightningChart1.ViewXY.DropOldSeriesData = true; // Drop old data, increase preformance.
+        //    lightningChart1.ViewXY.DropOldSeriesData = true; // Drop old data, increase preformance.
 
-            // Zooming and panning horizontal mode.
-            lightningChart1.ViewXY.ZoomPanOptions.RectangleZoomMode = RectangleZoomMode.Horizontal;
-            lightningChart1.ViewXY.ZoomPanOptions.PanDirection = PanDirection.Horizontal;
+        //    // Zooming and panning horizontal mode.
+        //    lightningChart1.ViewXY.ZoomPanOptions.RectangleZoomMode = RectangleZoomMode.Horizontal;
+        //    lightningChart1.ViewXY.ZoomPanOptions.PanDirection = PanDirection.Horizontal;
 
-            // Configure x-axis
-            lightningChart1.ViewXY.XAxes[0].ScrollPosition = 0;
-            lightningChart1.ViewXY.XAxes[0].ScrollMode = XAxisScrollMode.Scrolling;
-            //Configure legend
-            lightningChart1.ViewXY.LegendBoxes[0].Visible = false;
-            lightningChart1.ViewXY.AxisLayout.AutoAdjustMargins = false;
+        //    // Configure x-axis
+        //    lightningChart1.ViewXY.XAxes[0].ScrollPosition = 0;
+        //    lightningChart1.ViewXY.XAxes[0].ScrollMode = XAxisScrollMode.Scrolling;
+        //    //Configure legend
+        //    lightningChart1.ViewXY.LegendBoxes[0].Visible = false;
+        //    lightningChart1.ViewXY.AxisLayout.AutoAdjustMargins = false;
 
-            //Allow rendering.
-            lightningChart1.EndUpdate();
+        //    //Allow rendering.
+        //    lightningChart1.EndUpdate();
         }
 
 
@@ -567,7 +595,14 @@ namespace DoPE10Net_CSharpDemo
 
                 string aaa = String.Format("{0}", Sample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
 
-
+                //波形图
+                //if (Block.Data.Length > 0)
+                {
+                  //  if (ware)
+                    {
+                        ShowWave(Block);
+                    }
+                }
                 //for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
                 //{
                 //    multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
@@ -775,7 +810,7 @@ namespace DoPE10Net_CSharpDemo
             //取消平滑
             //chart_DrawGraph.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
 
-            lightningChart1.ColorTheme = ColorTheme.SkyBlue;
+            //lightningChart1.ColorTheme = ColorTheme.SkyBlue;
         }
 
         private void textBoxX6_TextChanged(object sender, EventArgs e)
@@ -842,6 +877,123 @@ namespace DoPE10Net_CSharpDemo
             //formsPlot1.Render();
         }
 
+
+        /// <summary>
+        /// 示波
+        /// </summary>
+        /// <param name="Block"></param>
+        private async void ShowWave(DoPE.OnDataBlock Block)
+        {
+            if (MyEdc.IsConnected())
+            {
+                for (int i = 50; Block.Data.Length > i; i += 100)
+                {
+                    //绘制Position
+                    double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
+                    x_Position += 0.1;
+                    if (chart_machine.Series[0] != null)
+                    {
+                        chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
+                        if (chart_machine.Series[0].Points.Count - 1 == 100)
+                        {
+                            //chart1.Series[0].Points.AddXY(10.0, y);
+                            chart_machine.Series[0].Points.Clear();
+                            // 异步更新图表数据
+                            //await chart1.InvokeAsync(() =>
+                            //{
+                            //    chartControl.Series[0].Points.AddXY(.0, y);
+                            //});
+
+                            chart_machine.Series[0].Points.AddXY(0.0, y_Position);
+                            x_Position = 0.0;
+                        }
+                        /*if (x >= 10.0)
+                        {
+                            x = 0.0;
+                            chart1.Series[0].Points.Clear();
+                            chart1.Series[0].Points.AddXY(-1.0, y);
+                        }*/
+                    }
+
+                    //绘制Load
+                    double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
+                    x_Load += 0.1;
+                    if (chart_machine.Series[1] != null)
+                    {
+                        chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
+                        if (chart_machine.Series[1].Points.Count - 1 == 100)
+                        {
+                            //chart1.Series[0].Points.AddXY(10.0, y);
+                            chart_machine.Series[1].Points.Clear();
+
+                            chart_machine.Series[1].Points.AddXY(0.0, y_Load);
+                            x_Load = 0.0;
+                        }
+                        /*if (x >= 10.0)
+                        {
+                            x = 0.0;
+                            chart1.Series[0].Points.Clear();
+                            chart1.Series[0].Points.AddXY(-1.0, y);
+                        }*/
+                    }
+                }
+
+                //计算Position 峰谷值
+                if (maxPos < float.Parse(guiPosition.Text))
+                {
+                    maxPos = float.Parse(guiPosition.Text);
+                    tb_MaxPos.Text = maxPos.ToString();
+                }
+
+                if (minPos > float.Parse(guiPosition.Text))
+                {
+                    minPos = float.Parse(guiPosition.Text);
+                    tb_MinPos.Text = minPos.ToString();
+                }
+
+                //计算Load 峰谷值
+                if (maxLoad < float.Parse(guiLoad.Text))
+                {
+                    maxLoad = float.Parse(guiLoad.Text);
+                    tb_MaxLoad.Text = maxLoad.ToString();
+                }
+
+                if (minLoad > float.Parse(guiLoad.Text))
+                {
+                    minLoad = float.Parse(guiLoad.Text);
+                    tb_MinLoad.Text = minLoad.ToString();
+                }
+
+                //计算Extension 峰谷值
+                if (maxExt < float.Parse(guiExtension.Text))
+                {
+                    maxExt = float.Parse(guiExtension.Text);
+                    tb_MaxLoad.Text = maxExt.ToString();
+                }
+
+                if (minExt > float.Parse(guiExtension.Text))
+                {
+                    minExt = float.Parse(guiExtension.Text);
+                    tb_MinExt.Text = minExt.ToString();
+                }
+
+                nTestCount++;
+
+                if (nTestCount > 0)
+                {
+
+                }
+
+            }
+            //max_label.Text = max.ToString();
+            //min_label.Text = min.ToString();
+
+        }
+
+
+
+
+
         public void UpdateValues()
         {
             //double phase = Stopwatch.Elapsed.TotalSeconds;
@@ -865,6 +1017,9 @@ namespace DoPE10Net_CSharpDemo
             //formsPlot1.Plot.AxisSet(0, .05, -1.1, 1.1); // we know what the limits should be
             StartCommunicationWithEdcTimer.Enabled = true; // start automatic updates
         }
+
+
+
 
 
         /// <summary>
@@ -1124,6 +1279,19 @@ namespace DoPE10Net_CSharpDemo
         private void bntX_GUIOn_Click(object sender, EventArgs e)
         {
             OnEDC();
+
+            if (MyEdc.IsConnected())
+            {
+                //位移
+                chart_machine.Series[0].Points.Clear();
+                x_Position = 0.0;
+                chart_machine.Series[0].Points.AddXY(0.0, 0.0);
+
+                //试验力
+                chart_machine.Series[1].Points.Clear();
+                x_Load = 0.0;
+                chart_machine.Series[1].Points.AddXY(0.0, 0.0);
+            }
         }
 
 
@@ -1175,103 +1343,103 @@ namespace DoPE10Net_CSharpDemo
 
         private void buttonX15_Click(object sender, EventArgs e)
         {
-            if (_thread == null)
-            {
-                //Start 
-                _previousX = 0;
+            //if (_thread == null)
+            //{
+            //    //Start 
+            //    _previousX = 0;
 
-                //波形通道数量
-                try
-                {
-                    _channelCount = int.Parse("1");
-                    _rand = new Random[_channelCount];
-                    _previousTemperature = new double[_channelCount];
-                    //Every channel needs own random otherwise with high data generation random will break it self
-                    for (int i = 0; i < _rand.Length; i++)
-                    {
-                        _rand[i] = new Random((int)DateTime.Now.Ticks + i);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Invalid channel count text input");
-                    return;
-                }
+            //    //波形通道数量
+            //    try
+            //    {
+            //        _channelCount = int.Parse("1");
+            //        _rand = new Random[_channelCount];
+            //        _previousTemperature = new double[_channelCount];
+            //        //Every channel needs own random otherwise with high data generation random will break it self
+            //        for (int i = 0; i < _rand.Length; i++)
+            //        {
+            //            _rand[i] = new Random((int)DateTime.Now.Ticks + i);
+            //        }
+            //    }
+            //    catch
+            //    {
+            //        MessageBox.Show("Invalid channel count text input");
+            //        return;
+            //    }
 
-                //Read sampling frequency
-                try
-                {
-                    _pointsPerSec = double.Parse("10");
-                }
-                catch
-                {
-                    MessageBox.Show("Invalid sampling frequency text input");
-                    return;
-                }
+            //    //Read sampling frequency
+            //    try
+            //    {
+            //        _pointsPerSec = double.Parse("10");
+            //    }
+            //    catch
+            //    {
+            //        MessageBox.Show("Invalid sampling frequency text input");
+            //        return;
+            //    }
 
-                //Read X axis length
-                try
-                {
-                    _xLength = double.Parse("15");
-                }
-                catch
-                {
-                    MessageBox.Show("Invalid X-Axis length text input");
-                    return;
-                }
+            //    //Read X axis length
+            //    try
+            //    {
+            //        _xLength = double.Parse("15");
+            //    }
+            //    catch
+            //    {
+            //        MessageBox.Show("Invalid X-Axis length text input");
+            //        return;
+            //    }
 
-                //Disable rendering
-                lightningChart1.BeginUpdate();
+            //    //Disable rendering
+            //    lightningChart1.BeginUpdate();
 
-                int newPointsCount = _channelCount * (int)_pointsPerSec; //Amount of new generated points per second
+            //    int newPointsCount = _channelCount * (int)_pointsPerSec; //Amount of new generated points per second
 
-                lightningChart1.Title.Text = "Real-time data feeding from a thread, " + _channelCount.ToString() + " * " + _pointsPerSec.ToString("0") + " Hz = " + newPointsCount.ToString() + " new data points per sec";
+            //    lightningChart1.Title.Text = "Real-time data feeding from a thread, " + _channelCount.ToString() + " * " + _pointsPerSec.ToString("0") + " Hz = " + newPointsCount.ToString() + " new data points per sec";
 
-                lightningChart1.ViewXY.YAxes.Clear(); //Remove existing y-axes
-                lightningChart1.ViewXY.PointLineSeries.Clear(); //Remove existing PointlineSEries
+            //    lightningChart1.ViewXY.YAxes.Clear(); //Remove existing y-axes
+            //    lightningChart1.ViewXY.PointLineSeries.Clear(); //Remove existing PointlineSEries
 
-                //Add Y axis and SampleDataSeries for each channel 
-                for (int channelIndex = 0; channelIndex < _channelCount; channelIndex++)
-                {
-                    AxisY axisY = new AxisY(lightningChart1.ViewXY);
-                    axisY.SetRange(YMin, YMax);
-                    axisY.Title.Font = new Font("Segoe UI", 8.0f, FontStyle.Regular);
-                    axisY.Title.Text = string.Format("Ch {0}", channelIndex + 1);
-                    axisY.Title.Angle = 0;
-                    axisY.Units.Visible = false;
-                    axisY.AutoDivSeparationPercent = 10;
-                    axisY.MinorGrid.Visible = false;
-                    axisY.MajorGrid.Visible = false;
-                    lightningChart1.ViewXY.YAxes.Add(axisY);
+            //    //Add Y axis and SampleDataSeries for each channel 
+            //    for (int channelIndex = 0; channelIndex < _channelCount; channelIndex++)
+            //    {
+            //        AxisY axisY = new AxisY(lightningChart1.ViewXY);
+            //        axisY.SetRange(YMin, YMax);
+            //        axisY.Title.Font = new Font("Segoe UI", 8.0f, FontStyle.Regular);
+            //        axisY.Title.Text = string.Format("Ch {0}", channelIndex + 1);
+            //        axisY.Title.Angle = 0;
+            //        axisY.Units.Visible = false;
+            //        axisY.AutoDivSeparationPercent = 10;
+            //        axisY.MinorGrid.Visible = false;
+            //        axisY.MajorGrid.Visible = false;
+            //        lightningChart1.ViewXY.YAxes.Add(axisY);
 
-                    PointLineSeries series = new PointLineSeries(lightningChart1.ViewXY, lightningChart1.ViewXY.XAxes[0], axisY);
-                    series.LineStyle.Color = DefaultColors.SeriesForBlackBackground[channelIndex % DefaultColors.SeriesForBlackBackground.Length];
-                    series.LineStyle.Width = 1.5f;
-                    series.LineStyle.AntiAliasing = LineAntialias.Normal;
-                    series.ScrollingStabilizing = false;
-                    series.AllowUserInteraction = false;
-                    series.UsePalette = false;
+            //        PointLineSeries series = new PointLineSeries(lightningChart1.ViewXY, lightningChart1.ViewXY.XAxes[0], axisY);
+            //        series.LineStyle.Color = DefaultColors.SeriesForBlackBackground[channelIndex % DefaultColors.SeriesForBlackBackground.Length];
+            //        series.LineStyle.Width = 1.5f;
+            //        series.LineStyle.AntiAliasing = LineAntialias.Normal;
+            //        series.ScrollingStabilizing = false;
+            //        series.AllowUserInteraction = false;
+            //        series.UsePalette = false;
 
-                    lightningChart1.ViewXY.PointLineSeries.Add(series);
-                }
+            //        lightningChart1.ViewXY.PointLineSeries.Add(series);
+            //    }
 
-                lightningChart1.ViewXY.XAxes[0].SetRange(0, _xLength);
+            //    lightningChart1.ViewXY.XAxes[0].SetRange(0, _xLength);
 
-                //Allow rendering
-                lightningChart1.EndUpdate();
+            //    //Allow rendering
+            //    lightningChart1.EndUpdate();
 
-                _pointsOutput = 0;
+            //    _pointsOutput = 0;
 
-                //buttonStartStop.Click -= buttonStart_Click;
-                //buttonStartStop.Click += buttonStop_Click;
+            //    //buttonStartStop.Click -= buttonStart_Click;
+            //    //buttonStartStop.Click += buttonStop_Click;
 
-                _startTicks = _stopWatch.ElapsedTicks;
+            //    _startTicks = _stopWatch.ElapsedTicks;
 
-                _stop = false;
+            //    _stop = false;
 
-                _thread = new Thread(new ThreadStart(ThreadLoop));
-                _thread.Start();
-            }
+            //    _thread = new Thread(new ThreadStart(ThreadLoop));
+            //    _thread.Start();
+            //}
         }
 
 
@@ -1372,28 +1540,28 @@ namespace DoPE10Net_CSharpDemo
         }
 
 
-        private void FeedNewDataToChart(SeriesPoint[][] multiChannelData)
-        {
-            // Disable rendering to update properties.
-            lightningChart1.BeginUpdate();
+        //private void FeedNewDataToChart(SeriesPoint[][] multiChannelData)
+        //{
+        //    // Disable rendering to update properties.
+        //    lightningChart1.BeginUpdate();
 
-            if (lightningChart1 == null)
-            {
-                return;
-            }
+        //    if (lightningChart1 == null)
+        //    {
+        //        return;
+        //    }
 
-            Parallel.For(0, _channelCount, channelIndex =>
-            {
-                lightningChart1.ViewXY.PointLineSeries[channelIndex].AddPoints(multiChannelData[channelIndex], false);
-            });
-            _previousX = _pointsOutput;
-            lightningChart1.ViewXY.XAxes[0].ScrollPosition = _previousX;
+        //    Parallel.For(0, _channelCount, channelIndex =>
+        //    {
+        //        lightningChart1.ViewXY.PointLineSeries[channelIndex].AddPoints(multiChannelData[channelIndex], false);
+        //    });
+        //    _previousX = _pointsOutput;
+        //    lightningChart1.ViewXY.XAxes[0].ScrollPosition = _previousX;
 
-            // Allow rendering.
-            lightningChart1.EndUpdate();
+        //    // Allow rendering.
+        //    lightningChart1.EndUpdate();
 
 
-        }
+        //}
 
 
         /// <summary>
@@ -1484,12 +1652,63 @@ namespace DoPE10Net_CSharpDemo
 
         private void comboBoxEx7_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lightningChart1 != null)
+            //if (lightningChart1 != null)
+            //{
+            //    if (cmbX_ScrollMode.SelectedIndex >= 0)
+            //    {
+            //        lightningChart1.ViewXY.XAxes[0].ScrollMode = (XAxisScrollMode)cmbX_ScrollMode.SelectedIndex;
+            //    }
+            //}
+        }
+
+        private void lblTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_TarePos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_TarePos.Checked)
             {
-                if (cmbX_ScrollMode.SelectedIndex >= 0)
-                {
-                    lightningChart1.ViewXY.XAxes[0].ScrollMode = (XAxisScrollMode)cmbX_ScrollMode.SelectedIndex;
-                }
+                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, true);
+
+
+            }
+            else
+            {
+                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, false);
+
+
+            }
+        }
+
+        private void cb_TareLoad_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_TareLoad.Checked)
+            {
+                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, true);
+
+
+            }
+            else
+            {
+                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, false);
+
+
+            }
+        }
+
+        private void cb_TareExt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_TareExt.Checked)
+            {
+                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, true);
+
+            }
+            else
+            {
+                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, false);
+
             }
         }
     }

@@ -426,6 +426,7 @@
             this.btnX_Dyn_Offset_S1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Offset_S1.TabIndex = 4;
             this.btnX_Dyn_Offset_S1.Text = "-";
+            this.btnX_Dyn_Offset_S1.Click += new System.EventHandler(this.btnX_Dyn_Offset_S1_Click);
             // 
             // tbX_Dyn_Offset
             // 
@@ -440,6 +441,7 @@
             this.tbX_Dyn_Offset.PreventEnterBeep = true;
             this.tbX_Dyn_Offset.Size = new System.Drawing.Size(103, 26);
             this.tbX_Dyn_Offset.TabIndex = 2;
+            this.tbX_Dyn_Offset.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbX_Dyn_Offset_KeyPress);
             // 
             // btnX_Dyn_Offset_S2
             // 
@@ -452,6 +454,7 @@
             this.btnX_Dyn_Offset_S2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Offset_S2.TabIndex = 4;
             this.btnX_Dyn_Offset_S2.Text = "--";
+            this.btnX_Dyn_Offset_S2.Click += new System.EventHandler(this.btnX_Dyn_Offset_S2_Click);
             // 
             // btnX_Dyn_Offset_S3
             // 
@@ -464,6 +467,7 @@
             this.btnX_Dyn_Offset_S3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Offset_S3.TabIndex = 4;
             this.btnX_Dyn_Offset_S3.Text = "---";
+            this.btnX_Dyn_Offset_S3.Click += new System.EventHandler(this.btnX_Dyn_Offset_S3_Click);
             // 
             // labelX10
             // 
@@ -542,6 +546,7 @@
             this.btnX_Dyn_Offset_P1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Offset_P1.TabIndex = 4;
             this.btnX_Dyn_Offset_P1.Text = "+";
+            this.btnX_Dyn_Offset_P1.Click += new System.EventHandler(this.btnX_Dyn_Offset_P1_Click);
             // 
             // btnX_Dyn_Offset_P2
             // 
@@ -554,6 +559,7 @@
             this.btnX_Dyn_Offset_P2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Offset_P2.TabIndex = 4;
             this.btnX_Dyn_Offset_P2.Text = "++";
+            this.btnX_Dyn_Offset_P2.Click += new System.EventHandler(this.btnX_Dyn_Offset_P2_Click);
             // 
             // btnX_Dyn_Offset_P3
             // 
@@ -566,6 +572,7 @@
             this.btnX_Dyn_Offset_P3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Offset_P3.TabIndex = 4;
             this.btnX_Dyn_Offset_P3.Text = "+++";
+            this.btnX_Dyn_Offset_P3.Click += new System.EventHandler(this.btnX_Dyn_Offset_P3_Click);
             // 
             // btnX_Dyn_Amplitude_S1
             // 
@@ -578,6 +585,7 @@
             this.btnX_Dyn_Amplitude_S1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Amplitude_S1.TabIndex = 4;
             this.btnX_Dyn_Amplitude_S1.Text = "-";
+            this.btnX_Dyn_Amplitude_S1.Click += new System.EventHandler(this.btnX_Dyn_Amplitude_S1_Click);
             // 
             // btnX_Dyn_Amplitude_S2
             // 
@@ -590,6 +598,7 @@
             this.btnX_Dyn_Amplitude_S2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Amplitude_S2.TabIndex = 4;
             this.btnX_Dyn_Amplitude_S2.Text = "--";
+            this.btnX_Dyn_Amplitude_S2.Click += new System.EventHandler(this.btnX_Dyn_Amplitude_S2_Click);
             // 
             // btnX_Dyn_Amplitude_S3
             // 
@@ -602,6 +611,7 @@
             this.btnX_Dyn_Amplitude_S3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Amplitude_S3.TabIndex = 4;
             this.btnX_Dyn_Amplitude_S3.Text = "---";
+            this.btnX_Dyn_Amplitude_S3.Click += new System.EventHandler(this.btnX_Dyn_Amplitude_S3_Click);
             // 
             // btnX_Dyn_Amplitude_P1
             // 
@@ -614,6 +624,7 @@
             this.btnX_Dyn_Amplitude_P1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Amplitude_P1.TabIndex = 4;
             this.btnX_Dyn_Amplitude_P1.Text = "+";
+            this.btnX_Dyn_Amplitude_P1.Click += new System.EventHandler(this.btnX_Dyn_Amplitude_P1_Click);
             // 
             // btnX_Dyn_Amplitude_P2
             // 
@@ -626,6 +637,7 @@
             this.btnX_Dyn_Amplitude_P2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Amplitude_P2.TabIndex = 4;
             this.btnX_Dyn_Amplitude_P2.Text = "++";
+            this.btnX_Dyn_Amplitude_P2.Click += new System.EventHandler(this.btnX_Dyn_Amplitude_P2_Click);
             // 
             // btnX_Dyn_Amplitude_P3
             // 
@@ -638,6 +650,7 @@
             this.btnX_Dyn_Amplitude_P3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Amplitude_P3.TabIndex = 4;
             this.btnX_Dyn_Amplitude_P3.Text = "+++";
+            this.btnX_Dyn_Amplitude_P3.Click += new System.EventHandler(this.btnX_Dyn_Amplitude_P3_Click);
             // 
             // tbX_Dyn_Frequency
             // 

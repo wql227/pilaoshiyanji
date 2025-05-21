@@ -29,6 +29,12 @@
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
@@ -37,7 +43,13 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lightningChart1 = new Arction.WinForms.Charting.LightningChart();
+            this.chart_machine = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.cmbX_ScrollMode = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
+            this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.lbX_EDCName = new DevComponents.DotNetBar.LabelX();
             this.btn_ConState = new System.Windows.Forms.Button();
             this.buttonX15 = new DevComponents.DotNetBar.ButtonX();
@@ -56,6 +68,7 @@
             this.guiDestination = new System.Windows.Forms.TextBox();
             this.lblDestination = new System.Windows.Forms.Label();
             this.lblSpeed = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblControl = new System.Windows.Forms.Label();
             this.guiSpeed = new System.Windows.Forms.TextBox();
             this.guiControl = new System.Windows.Forms.ComboBox();
@@ -91,13 +104,32 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.synchronizeMoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.posToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Pos_AtoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dynCtrlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setBitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pl_DataShow = new System.Windows.Forms.Panel();
+            this.cb_TareExt = new System.Windows.Forms.CheckBox();
+            this.cb_TareLoad = new System.Windows.Forms.CheckBox();
+            this.cb_TarePos = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
+            this.tb_MinExt = new System.Windows.Forms.TextBox();
             this.lblExtension = new System.Windows.Forms.Label();
+            this.tb_MinLoad = new System.Windows.Forms.TextBox();
+            this.tb_MaxExt = new System.Windows.Forms.TextBox();
             this.lblLoad = new System.Windows.Forms.Label();
+            this.tb_MaxLoad = new System.Windows.Forms.TextBox();
+            this.tb_MinPos = new System.Windows.Forms.TextBox();
+            this.tb_MaxPos = new System.Windows.Forms.TextBox();
             this.guiPosition = new System.Windows.Forms.TextBox();
             this.guiExtension = new System.Windows.Forms.TextBox();
             this.lblPosition = new System.Windows.Forms.Label();
@@ -218,22 +250,15 @@
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
-            this.Pos_AtoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbX_ScrollMode = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
-            this.comboItem2 = new DevComponents.Editors.ComboItem();
-            this.comboItem3 = new DevComponents.Editors.ComboItem();
-            this.comboItem4 = new DevComponents.Editors.ComboItem();
-            this.comboItem5 = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_machine)).BeginInit();
             this.menuStrip2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pl_DataShow.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx6.SuspendLayout();
@@ -314,7 +339,7 @@
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx1.Controls.Add(this.panel2);
-            this.panelEx1.Controls.Add(this.panel1);
+            this.panelEx1.Controls.Add(this.pl_DataShow);
             this.panelEx1.Controls.Add(this.guiDebug);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -334,16 +359,16 @@
             // 
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 55);
+            this.panel2.Location = new System.Drawing.Point(0, 81);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1127, 595);
+            this.panel2.Size = new System.Drawing.Size(1127, 569);
             this.panel2.TabIndex = 57;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.chart_machine);
             this.groupBox1.Controls.Add(this.cmbX_ScrollMode);
-            this.groupBox1.Controls.Add(this.lightningChart1);
             this.groupBox1.Controls.Add(this.lbX_EDCName);
             this.groupBox1.Controls.Add(this.btn_ConState);
             this.groupBox1.Controls.Add(this.buttonX15);
@@ -371,33 +396,98 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1127, 595);
+            this.groupBox1.Size = new System.Drawing.Size(1127, 569);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             // 
-            // lightningChart1
+            // chart_machine
             // 
-            this.lightningChart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.chart_machine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lightningChart1.BackColor = System.Drawing.Color.Gray;
-            this.lightningChart1.Background = ((Arction.WinForms.Charting.Fill)(resources.GetObject("lightningChart1.Background")));
-            this.lightningChart1.ChartManager = null;
-            this.lightningChart1.ColorTheme = Arction.WinForms.Charting.ColorTheme.SkyBlue;
-            this.lightningChart1.Location = new System.Drawing.Point(6, 51);
-            this.lightningChart1.MinimumSize = new System.Drawing.Size(110, 90);
-            this.lightningChart1.Name = "lightningChart1";
-            this.lightningChart1.Options = ((Arction.WinForms.Charting.ChartOptions)(resources.GetObject("lightningChart1.Options")));
-            this.lightningChart1.OutputStream = null;
-            this.lightningChart1.RenderOptions = ((Arction.WinForms.Charting.Views.RenderOptionsCommon)(resources.GetObject("lightningChart1.RenderOptions")));
-            this.lightningChart1.Size = new System.Drawing.Size(853, 538);
-            this.lightningChart1.TabIndex = 60;
-            this.lightningChart1.Title = ((Arction.WinForms.Charting.Titles.ChartTitle)(resources.GetObject("lightningChart1.Title")));
-            this.lightningChart1.View3D = ((Arction.WinForms.Charting.Views.View3D.View3D)(resources.GetObject("lightningChart1.View3D")));
-            this.lightningChart1.ViewPie3D = ((Arction.WinForms.Charting.Views.ViewPie3D.ViewPie3D)(resources.GetObject("lightningChart1.ViewPie3D")));
-            this.lightningChart1.ViewPolar = ((Arction.WinForms.Charting.Views.ViewPolar.ViewPolar)(resources.GetObject("lightningChart1.ViewPolar")));
-            this.lightningChart1.ViewSmith = ((Arction.WinForms.Charting.Views.ViewSmith.ViewSmith)(resources.GetObject("lightningChart1.ViewSmith")));
-            this.lightningChart1.ViewXY = ((Arction.WinForms.Charting.Views.ViewXY.ViewXY)(resources.GetObject("lightningChart1.ViewXY")));
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisX.Maximum = 20D;
+            chartArea1.AxisX.Minimum = 0D;
+            chartArea1.AxisX.Title = "时间(s)";
+            chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisY.Maximum = 20D;
+            chartArea1.AxisY.Minimum = -20D;
+            chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Stacked;
+            chartArea1.AxisY.Title = "Position";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.Name = "ChartArea1";
+            this.chart_machine.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart_machine.Legends.Add(legend1);
+            this.chart_machine.Location = new System.Drawing.Point(6, 51);
+            this.chart_machine.Name = "chart_machine";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "位移";
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "试验力";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Legend = "Legend1";
+            series3.Name = "拉伸";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "命令";
+            this.chart_machine.Series.Add(series1);
+            this.chart_machine.Series.Add(series2);
+            this.chart_machine.Series.Add(series3);
+            this.chart_machine.Series.Add(series4);
+            this.chart_machine.Size = new System.Drawing.Size(863, 526);
+            this.chart_machine.TabIndex = 63;
+            this.chart_machine.Text = "chart1";
+            // 
+            // cmbX_ScrollMode
+            // 
+            this.cmbX_ScrollMode.DisplayMember = "Text";
+            this.cmbX_ScrollMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_ScrollMode.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_ScrollMode.FormattingEnabled = true;
+            this.cmbX_ScrollMode.ItemHeight = 21;
+            this.cmbX_ScrollMode.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2,
+            this.comboItem3,
+            this.comboItem4,
+            this.comboItem5});
+            this.cmbX_ScrollMode.Location = new System.Drawing.Point(875, 70);
+            this.cmbX_ScrollMode.Name = "cmbX_ScrollMode";
+            this.cmbX_ScrollMode.Size = new System.Drawing.Size(111, 27);
+            this.cmbX_ScrollMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_ScrollMode.TabIndex = 62;
+            this.cmbX_ScrollMode.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx7_SelectedIndexChanged);
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "None";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "Scrolling";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "Stepping";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "Sweeping";
+            // 
+            // comboItem5
+            // 
+            this.comboItem5.Text = "Triggered";
             // 
             // lbX_EDCName
             // 
@@ -656,6 +746,17 @@
             this.lblSpeed.Size = new System.Drawing.Size(47, 16);
             this.lblSpeed.TabIndex = 49;
             this.lblSpeed.Text = "Speed";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(877, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 16);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "滚动模式";
             // 
             // lblControl
             // 
@@ -924,6 +1025,14 @@
             this.posToolStripMenuItem.Text = "Pos";
             this.posToolStripMenuItem.Click += new System.EventHandler(this.posToolStripMenuItem_Click);
             // 
+            // Pos_AtoolStripMenuItem1
+            // 
+            this.Pos_AtoolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("Pos_AtoolStripMenuItem1.Image")));
+            this.Pos_AtoolStripMenuItem1.Name = "Pos_AtoolStripMenuItem1";
+            this.Pos_AtoolStripMenuItem1.Size = new System.Drawing.Size(70, 21);
+            this.Pos_AtoolStripMenuItem1.Text = "Pos_A";
+            this.Pos_AtoolStripMenuItem1.Click += new System.EventHandler(this.Pos_AtoolStripMenuItem1_Click);
+            // 
             // dynCtrlToolStripMenuItem
             // 
             this.dynCtrlToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("dynCtrlToolStripMenuItem.Image")));
@@ -945,60 +1054,286 @@
             this.setBitToolStripMenuItem.Size = new System.Drawing.Size(53, 21);
             this.setBitToolStripMenuItem.Text = "SetBit";
             // 
-            // panel1
+            // pl_DataShow
             // 
-            this.panel1.Controls.Add(this.lblTime);
-            this.panel1.Controls.Add(this.lblExtension);
-            this.panel1.Controls.Add(this.lblLoad);
-            this.panel1.Controls.Add(this.guiPosition);
-            this.panel1.Controls.Add(this.guiExtension);
-            this.panel1.Controls.Add(this.lblPosition);
-            this.panel1.Controls.Add(this.guiTime);
-            this.panel1.Controls.Add(this.guiLoad);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1127, 55);
-            this.panel1.TabIndex = 56;
+            this.pl_DataShow.Controls.Add(this.cb_TareExt);
+            this.pl_DataShow.Controls.Add(this.cb_TareLoad);
+            this.pl_DataShow.Controls.Add(this.cb_TarePos);
+            this.pl_DataShow.Controls.Add(this.label10);
+            this.pl_DataShow.Controls.Add(this.label7);
+            this.pl_DataShow.Controls.Add(this.label4);
+            this.pl_DataShow.Controls.Add(this.label9);
+            this.pl_DataShow.Controls.Add(this.label6);
+            this.pl_DataShow.Controls.Add(this.label8);
+            this.pl_DataShow.Controls.Add(this.label5);
+            this.pl_DataShow.Controls.Add(this.label3);
+            this.pl_DataShow.Controls.Add(this.label2);
+            this.pl_DataShow.Controls.Add(this.lblTime);
+            this.pl_DataShow.Controls.Add(this.tb_MinExt);
+            this.pl_DataShow.Controls.Add(this.lblExtension);
+            this.pl_DataShow.Controls.Add(this.tb_MinLoad);
+            this.pl_DataShow.Controls.Add(this.tb_MaxExt);
+            this.pl_DataShow.Controls.Add(this.lblLoad);
+            this.pl_DataShow.Controls.Add(this.tb_MaxLoad);
+            this.pl_DataShow.Controls.Add(this.tb_MinPos);
+            this.pl_DataShow.Controls.Add(this.tb_MaxPos);
+            this.pl_DataShow.Controls.Add(this.guiPosition);
+            this.pl_DataShow.Controls.Add(this.guiExtension);
+            this.pl_DataShow.Controls.Add(this.lblPosition);
+            this.pl_DataShow.Controls.Add(this.guiTime);
+            this.pl_DataShow.Controls.Add(this.guiLoad);
+            this.pl_DataShow.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pl_DataShow.Location = new System.Drawing.Point(0, 0);
+            this.pl_DataShow.Name = "pl_DataShow";
+            this.pl_DataShow.Size = new System.Drawing.Size(1127, 81);
+            this.pl_DataShow.TabIndex = 56;
+            // 
+            // cb_TareExt
+            // 
+            this.cb_TareExt.AutoSize = true;
+            this.cb_TareExt.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cb_TareExt.Location = new System.Drawing.Point(788, 4);
+            this.cb_TareExt.Name = "cb_TareExt";
+            this.cb_TareExt.Size = new System.Drawing.Size(34, 20);
+            this.cb_TareExt.TabIndex = 42;
+            this.cb_TareExt.Text = "T";
+            this.cb_TareExt.UseVisualStyleBackColor = true;
+            this.cb_TareExt.CheckedChanged += new System.EventHandler(this.cb_TareExt_CheckedChanged);
+            // 
+            // cb_TareLoad
+            // 
+            this.cb_TareLoad.AutoSize = true;
+            this.cb_TareLoad.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cb_TareLoad.Location = new System.Drawing.Point(481, 4);
+            this.cb_TareLoad.Name = "cb_TareLoad";
+            this.cb_TareLoad.Size = new System.Drawing.Size(34, 20);
+            this.cb_TareLoad.TabIndex = 42;
+            this.cb_TareLoad.Text = "T";
+            this.cb_TareLoad.UseVisualStyleBackColor = true;
+            this.cb_TareLoad.CheckedChanged += new System.EventHandler(this.cb_TareLoad_CheckedChanged);
+            // 
+            // cb_TarePos
+            // 
+            this.cb_TarePos.AutoSize = true;
+            this.cb_TarePos.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cb_TarePos.Location = new System.Drawing.Point(174, 2);
+            this.cb_TarePos.Name = "cb_TarePos";
+            this.cb_TarePos.Size = new System.Drawing.Size(34, 20);
+            this.cb_TarePos.TabIndex = 42;
+            this.cb_TarePos.Text = "T";
+            this.cb_TarePos.UseVisualStyleBackColor = true;
+            this.cb_TarePos.CheckedChanged += new System.EventHandler(this.cb_TarePos_CheckedChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(951, 52);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 17);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "谷值";
+            this.label10.Click += new System.EventHandler(this.lblTime_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(644, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 17);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "谷值";
+            this.label7.Click += new System.EventHandler(this.lblTime_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(337, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 17);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "谷值";
+            this.label4.Click += new System.EventHandler(this.lblTime_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(951, 28);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(38, 17);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "峰值";
+            this.label9.Click += new System.EventHandler(this.lblTime_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(644, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 17);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "峰值";
+            this.label6.Click += new System.EventHandler(this.lblTime_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(978, 2);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(94, 20);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "拉伸峰谷值";
+            this.label8.Click += new System.EventHandler(this.lblTime_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(671, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 20);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "试验力峰谷值";
+            this.label5.Click += new System.EventHandler(this.lblTime_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(337, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 17);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "峰值";
+            this.label3.Click += new System.EventHandler(this.lblTime_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(381, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 20);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "位移峰谷值";
+            this.label2.Click += new System.EventHandler(this.lblTime_Click);
             // 
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(53, 2);
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Location = new System.Drawing.Point(55, 2);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(77, 13);
+            this.lblTime.Size = new System.Drawing.Size(101, 20);
             this.lblTime.TabIndex = 26;
             this.lblTime.Text = "运行时间 [s]";
+            this.lblTime.Click += new System.EventHandler(this.lblTime_Click);
+            // 
+            // tb_MinExt
+            // 
+            this.tb_MinExt.BackColor = System.Drawing.Color.Black;
+            this.tb_MinExt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_MinExt.ForeColor = System.Drawing.Color.Lime;
+            this.tb_MinExt.Location = new System.Drawing.Point(995, 49);
+            this.tb_MinExt.Name = "tb_MinExt";
+            this.tb_MinExt.Size = new System.Drawing.Size(94, 23);
+            this.tb_MinExt.TabIndex = 39;
+            this.tb_MinExt.Text = "0.000";
+            this.tb_MinExt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblExtension
             // 
             this.lblExtension.AutoSize = true;
-            this.lblExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtension.Location = new System.Drawing.Point(501, 2);
+            this.lblExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExtension.Location = new System.Drawing.Point(862, 4);
             this.lblExtension.Name = "lblExtension";
-            this.lblExtension.Size = new System.Drawing.Size(92, 13);
+            this.lblExtension.Size = new System.Drawing.Size(86, 20);
             this.lblExtension.TabIndex = 32;
-            this.lblExtension.Text = "Extension [mm]";
+            this.lblExtension.Text = "拉伸 [mm]";
+            // 
+            // tb_MinLoad
+            // 
+            this.tb_MinLoad.BackColor = System.Drawing.Color.Black;
+            this.tb_MinLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_MinLoad.ForeColor = System.Drawing.Color.Lime;
+            this.tb_MinLoad.Location = new System.Drawing.Point(688, 49);
+            this.tb_MinLoad.Name = "tb_MinLoad";
+            this.tb_MinLoad.Size = new System.Drawing.Size(94, 23);
+            this.tb_MinLoad.TabIndex = 39;
+            this.tb_MinLoad.Text = "0.000";
+            this.tb_MinLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tb_MaxExt
+            // 
+            this.tb_MaxExt.BackColor = System.Drawing.Color.Black;
+            this.tb_MaxExt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_MaxExt.ForeColor = System.Drawing.Color.Lime;
+            this.tb_MaxExt.Location = new System.Drawing.Point(995, 25);
+            this.tb_MaxExt.Name = "tb_MaxExt";
+            this.tb_MaxExt.Size = new System.Drawing.Size(94, 23);
+            this.tb_MaxExt.TabIndex = 39;
+            this.tb_MaxExt.Text = "0.000";
+            this.tb_MaxExt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblLoad
             // 
             this.lblLoad.AutoSize = true;
-            this.lblLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoad.Location = new System.Drawing.Point(366, 2);
+            this.lblLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoad.Location = new System.Drawing.Point(551, 1);
             this.lblLoad.Name = "lblLoad";
-            this.lblLoad.Size = new System.Drawing.Size(56, 13);
+            this.lblLoad.Size = new System.Drawing.Size(87, 20);
             this.lblLoad.TabIndex = 30;
-            this.lblLoad.Text = "Load [N]";
+            this.lblLoad.Text = "试验力 [N]";
+            // 
+            // tb_MaxLoad
+            // 
+            this.tb_MaxLoad.BackColor = System.Drawing.Color.Black;
+            this.tb_MaxLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_MaxLoad.ForeColor = System.Drawing.Color.Lime;
+            this.tb_MaxLoad.Location = new System.Drawing.Point(688, 25);
+            this.tb_MaxLoad.Name = "tb_MaxLoad";
+            this.tb_MaxLoad.Size = new System.Drawing.Size(94, 23);
+            this.tb_MaxLoad.TabIndex = 39;
+            this.tb_MaxLoad.Text = "0.000";
+            this.tb_MaxLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tb_MinPos
+            // 
+            this.tb_MinPos.BackColor = System.Drawing.Color.Black;
+            this.tb_MinPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_MinPos.ForeColor = System.Drawing.Color.Lime;
+            this.tb_MinPos.Location = new System.Drawing.Point(381, 49);
+            this.tb_MinPos.Name = "tb_MinPos";
+            this.tb_MinPos.Size = new System.Drawing.Size(94, 23);
+            this.tb_MinPos.TabIndex = 39;
+            this.tb_MinPos.Text = "0.000";
+            this.tb_MinPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tb_MaxPos
+            // 
+            this.tb_MaxPos.BackColor = System.Drawing.Color.Black;
+            this.tb_MaxPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_MaxPos.ForeColor = System.Drawing.Color.Lime;
+            this.tb_MaxPos.Location = new System.Drawing.Point(381, 25);
+            this.tb_MaxPos.Name = "tb_MaxPos";
+            this.tb_MaxPos.Size = new System.Drawing.Size(94, 23);
+            this.tb_MaxPos.TabIndex = 39;
+            this.tb_MaxPos.Text = "0.000";
+            this.tb_MaxPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // guiPosition
             // 
             this.guiPosition.BackColor = System.Drawing.Color.Black;
-            this.guiPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guiPosition.ForeColor = System.Drawing.Color.Lime;
-            this.guiPosition.Location = new System.Drawing.Point(167, 20);
+            this.guiPosition.Location = new System.Drawing.Point(174, 25);
             this.guiPosition.Name = "guiPosition";
-            this.guiPosition.Size = new System.Drawing.Size(145, 29);
+            this.guiPosition.Size = new System.Drawing.Size(157, 47);
             this.guiPosition.TabIndex = 39;
             this.guiPosition.Text = "0.000";
             this.guiPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1006,11 +1341,11 @@
             // guiExtension
             // 
             this.guiExtension.BackColor = System.Drawing.Color.Black;
-            this.guiExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guiExtension.ForeColor = System.Drawing.Color.Lime;
-            this.guiExtension.Location = new System.Drawing.Point(471, 20);
+            this.guiExtension.Location = new System.Drawing.Point(788, 25);
             this.guiExtension.Name = "guiExtension";
-            this.guiExtension.Size = new System.Drawing.Size(145, 29);
+            this.guiExtension.Size = new System.Drawing.Size(157, 47);
             this.guiExtension.TabIndex = 41;
             this.guiExtension.Text = "0.000";
             this.guiExtension.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1018,21 +1353,21 @@
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPosition.Location = new System.Drawing.Point(205, 2);
+            this.lblPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPosition.Location = new System.Drawing.Point(245, 2);
             this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(82, 13);
+            this.lblPosition.Size = new System.Drawing.Size(86, 20);
             this.lblPosition.TabIndex = 28;
-            this.lblPosition.Text = "Position [mm]";
+            this.lblPosition.Text = "位移 [mm]";
             // 
             // guiTime
             // 
             this.guiTime.BackColor = System.Drawing.Color.Black;
-            this.guiTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guiTime.ForeColor = System.Drawing.Color.Lime;
-            this.guiTime.Location = new System.Drawing.Point(16, 20);
+            this.guiTime.Location = new System.Drawing.Point(11, 25);
             this.guiTime.Name = "guiTime";
-            this.guiTime.Size = new System.Drawing.Size(145, 29);
+            this.guiTime.Size = new System.Drawing.Size(157, 47);
             this.guiTime.TabIndex = 25;
             this.guiTime.Text = "0.000";
             this.guiTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1040,11 +1375,11 @@
             // guiLoad
             // 
             this.guiLoad.BackColor = System.Drawing.Color.Black;
-            this.guiLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guiLoad.ForeColor = System.Drawing.Color.Lime;
-            this.guiLoad.Location = new System.Drawing.Point(318, 20);
+            this.guiLoad.Location = new System.Drawing.Point(481, 25);
             this.guiLoad.Name = "guiLoad";
-            this.guiLoad.Size = new System.Drawing.Size(145, 29);
+            this.guiLoad.Size = new System.Drawing.Size(157, 47);
             this.guiLoad.TabIndex = 40;
             this.guiLoad.Text = "0.000";
             this.guiLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2661,65 +2996,6 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
-            // Pos_AtoolStripMenuItem1
-            // 
-            this.Pos_AtoolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("Pos_AtoolStripMenuItem1.Image")));
-            this.Pos_AtoolStripMenuItem1.Name = "Pos_AtoolStripMenuItem1";
-            this.Pos_AtoolStripMenuItem1.Size = new System.Drawing.Size(70, 21);
-            this.Pos_AtoolStripMenuItem1.Text = "Pos_A";
-            this.Pos_AtoolStripMenuItem1.Click += new System.EventHandler(this.Pos_AtoolStripMenuItem1_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(865, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 16);
-            this.label1.TabIndex = 48;
-            this.label1.Text = "滚动模式";
-            // 
-            // cmbX_ScrollMode
-            // 
-            this.cmbX_ScrollMode.DisplayMember = "Text";
-            this.cmbX_ScrollMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbX_ScrollMode.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbX_ScrollMode.FormattingEnabled = true;
-            this.cmbX_ScrollMode.ItemHeight = 21;
-            this.cmbX_ScrollMode.Items.AddRange(new object[] {
-            this.comboItem1,
-            this.comboItem2,
-            this.comboItem3,
-            this.comboItem4,
-            this.comboItem5});
-            this.cmbX_ScrollMode.Location = new System.Drawing.Point(865, 70);
-            this.cmbX_ScrollMode.Name = "cmbX_ScrollMode";
-            this.cmbX_ScrollMode.Size = new System.Drawing.Size(121, 27);
-            this.cmbX_ScrollMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbX_ScrollMode.TabIndex = 62;
-            this.cmbX_ScrollMode.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx7_SelectedIndexChanged);
-            // 
-            // comboItem1
-            // 
-            this.comboItem1.Text = "None";
-            // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "Scrolling";
-            // 
-            // comboItem3
-            // 
-            this.comboItem3.Text = "Stepping";
-            // 
-            // comboItem4
-            // 
-            this.comboItem4.Text = "Sweeping";
-            // 
-            // comboItem5
-            // 
-            this.comboItem5.Text = "Triggered";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2741,10 +3017,11 @@
             this.panel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_machine)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pl_DataShow.ResumeLayout(false);
+            this.pl_DataShow.PerformLayout();
             this.superTabControlPanel1.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
             this.panelEx6.ResumeLayout(false);
@@ -2909,7 +3186,7 @@
         private System.Windows.Forms.Label lblDestinationUnit;
         private System.Windows.Forms.Label lblSpeedUnit;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pl_DataShow;
         private DevComponents.DotNetBar.ButtonX btnX_Connect;
         private DevComponents.DotNetBar.ButtonX btnX_Disconnect;
         private DevComponents.DotNetBar.ButtonX bntX_MoveDown;
@@ -2922,7 +3199,6 @@
         private DevComponents.DotNetBar.ButtonX btnX_MoveQuickUp;
         private DevComponents.DotNetBar.ButtonX btnX_QuickMoveDown;
         private DevComponents.DotNetBar.LabelX lbX_EDCName;
-        private Arction.WinForms.Charting.LightningChart lightningChart1;
         private DevComponents.DotNetBar.ButtonX buttonX15;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem commandsToolStripMenuItem;
@@ -2967,6 +3243,25 @@
         private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.Editors.ComboItem comboItem4;
         private DevComponents.Editors.ComboItem comboItem5;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_machine;
+        private System.Windows.Forms.CheckBox cb_TarePos;
+        private System.Windows.Forms.CheckBox cb_TareExt;
+        private System.Windows.Forms.CheckBox cb_TareLoad;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tb_MaxPos;
+        private System.Windows.Forms.TextBox tb_MinPos;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tb_MinLoad;
+        private System.Windows.Forms.TextBox tb_MaxLoad;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tb_MinExt;
+        private System.Windows.Forms.TextBox tb_MaxExt;
     }
 }
 
