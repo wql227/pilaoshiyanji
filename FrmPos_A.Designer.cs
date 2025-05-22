@@ -44,7 +44,7 @@
             this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.comboItem6 = new DevComponents.Editors.ComboItem();
-            this.cmbX_PosA_Destnation = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cmbX_PosA_DestnationUnit = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem7 = new DevComponents.Editors.ComboItem();
             this.comboItem8 = new DevComponents.Editors.ComboItem();
             this.comboItem9 = new DevComponents.Editors.ComboItem();
@@ -217,22 +217,22 @@
             // 
             this.comboItem6.Text = "m/s";
             // 
-            // cmbX_PosA_Destnation
+            // cmbX_PosA_DestnationUnit
             // 
-            this.cmbX_PosA_Destnation.DisplayMember = "Text";
-            this.cmbX_PosA_Destnation.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbX_PosA_Destnation.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbX_PosA_Destnation.FormattingEnabled = true;
-            this.cmbX_PosA_Destnation.ItemHeight = 21;
-            this.cmbX_PosA_Destnation.Items.AddRange(new object[] {
+            this.cmbX_PosA_DestnationUnit.DisplayMember = "Text";
+            this.cmbX_PosA_DestnationUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_PosA_DestnationUnit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_PosA_DestnationUnit.FormattingEnabled = true;
+            this.cmbX_PosA_DestnationUnit.ItemHeight = 21;
+            this.cmbX_PosA_DestnationUnit.Items.AddRange(new object[] {
             this.comboItem7,
             this.comboItem8,
             this.comboItem9});
-            this.cmbX_PosA_Destnation.Location = new System.Drawing.Point(206, 200);
-            this.cmbX_PosA_Destnation.Name = "cmbX_PosA_Destnation";
-            this.cmbX_PosA_Destnation.Size = new System.Drawing.Size(84, 27);
-            this.cmbX_PosA_Destnation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbX_PosA_Destnation.TabIndex = 1;
+            this.cmbX_PosA_DestnationUnit.Location = new System.Drawing.Point(206, 200);
+            this.cmbX_PosA_DestnationUnit.Name = "cmbX_PosA_DestnationUnit";
+            this.cmbX_PosA_DestnationUnit.Size = new System.Drawing.Size(84, 27);
+            this.cmbX_PosA_DestnationUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_PosA_DestnationUnit.TabIndex = 1;
             // 
             // comboItem7
             // 
@@ -393,7 +393,7 @@
             this.Controls.Add(this.tbX_Pos_DecCtrl);
             this.Controls.Add(this.tbX_Pos_AccCtrl);
             this.Controls.Add(this.tbX_Pos_SpeedCtrl);
-            this.Controls.Add(this.cmbX_PosA_Destnation);
+            this.Controls.Add(this.cmbX_PosA_DestnationUnit);
             this.Controls.Add(this.cmbX_PosA_DecUnit);
             this.Controls.Add(this.cmbX_PosA_AccUnit);
             this.Controls.Add(this.cmbX_PosA_SpeedUnit);
@@ -424,7 +424,7 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_PosA_MoveCtrl;
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_Pos_Destnation;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_PosA_SpeedUnit;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_PosA_Destnation;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_PosA_DestnationUnit;
         private DevComponents.DotNetBar.PanelEx panelEx_POS;
         private DevComponents.DotNetBar.ButtonX btnX_Pos_ASend;
         private DevComponents.Editors.ComboItem comboItem1;
