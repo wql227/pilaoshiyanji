@@ -108,7 +108,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IniFileHelper.cs" />
+    <Compile Include="Util\IniFileHelper.cs" />
     <Compile Include="FrmDynCtrl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,7 +145,7 @@
     <Compile Include="FrmPos_A.Designer.cs">
       <DependentUpon>FrmPos_A.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogHelper.cs" />
+    <Compile Include="Util\LogHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
