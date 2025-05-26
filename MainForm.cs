@@ -206,6 +206,8 @@ namespace DoPE10Net_CSharpDemo
         /// </summary>
         int nTestCount = 0;
 
+        double nAxisStep = 0;
+
 
         /// <summary>
         /// Boolean for random data
@@ -322,6 +324,7 @@ namespace DoPE10Net_CSharpDemo
                 {
                     Display("连接成功，Name:" + MyEdc.ModuleInfo.Name + "; DeviceId = " + MyEdc.ModuleInfo.DeviceID + "; FunctionId = " + MyEdc.ModuleInfo.DeviceID + "; SerNr = " + MyEdc.ModuleInfo.SerNr + "\n");
 
+                    LogHelper.WriteLogFile("AAAA");
                     lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
                 }
 
@@ -601,6 +604,10 @@ namespace DoPE10Net_CSharpDemo
 
                 string aaa = String.Format("{0}", Sample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
 
+                //if ((Sample.Cycles) % 2 == 0)
+                {
+                    tbX_TestCycles.Text = (Sample.Cycles * 2).ToString();
+                }
                 //波形图
                 //if (Block.Data.Length > 0)
                 {
@@ -615,6 +622,7 @@ namespace DoPE10Net_CSharpDemo
                 //    multiChannelData[channelIndex][pointIndex].Y = Decimal.ToDouble(data_display1); // generating y value (using random in this point is way too heavy with multiple channels
                 //                                                                                    //multiChannelData[channelIndex][pointIndex].Y = Math.Sin((double)(_pointsOutput + pointIndex) / 150.0) * 50; // generating y value (using random in this point is way too heavy with multiple channels
                 //}
+
 
             }
             return 0;
@@ -884,6 +892,7 @@ namespace DoPE10Net_CSharpDemo
                     {
                         //绘制Position
                         double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
+                        //x_Position += nAxisStep;
                         x_Position += 0.05;
 
                         if (chart_machine.Series != null)
@@ -891,7 +900,7 @@ namespace DoPE10Net_CSharpDemo
                             if (chart_machine.Series[0] != null)
                             {
                                 chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
-                                if (chart_machine.Series[0].Points.Count - 1 == 100)
+                                if (chart_machine.Series[0].Points.Count - 1 == 200)
                                 {
                                     //chart1.Series[0].Points.AddXY(10.0, y);
                                     chart_machine.Series[0].Points.Clear();
@@ -915,11 +924,13 @@ namespace DoPE10Net_CSharpDemo
 
                         //绘制Load
                         double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
+                        //x_Load += nAxisStep;
                         x_Load += 0.05;
+
                         if (chart_machine.Series[1] != null)
                         {
                             chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
-                            if (chart_machine.Series[1].Points.Count - 1 == 100)
+                            if (chart_machine.Series[1].Points.Count - 1 == 200)
                             {
                                 //chart1.Series[0].Points.AddXY(10.0, y);
                                 chart_machine.Series[1].Points.Clear();
@@ -1307,6 +1318,8 @@ namespace DoPE10Net_CSharpDemo
                 chart_machine.Series[1].Points.Clear();
                 x_Load = 0.0;
                 chart_machine.Series[1].Points.AddXY(0.0, 0.0);
+
+                GetXaxisScale();
             }
         }
 
@@ -1630,7 +1643,7 @@ namespace DoPE10Net_CSharpDemo
             if (bConnected)
             {
                 FrmPos frmPos = new FrmPos();
-                frmPos.ShowDialog();
+                frmPos.Show();
             }
             else
             {
@@ -1658,7 +1671,7 @@ namespace DoPE10Net_CSharpDemo
             if (bConnected)
             {
                 FrmPos_A frmPos = new FrmPos_A();
-                frmPos.ShowDialog();
+                frmPos.Show();
             }
             else
             {
@@ -1727,6 +1740,38 @@ namespace DoPE10Net_CSharpDemo
                 MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, false);
 
             }
+        }
+
+
+        public void GetXaxisScale()
+        {
+            if (chart_machine != null)
+            {
+                double dMax = chart_machine.ChartAreas[0].AxisX.Maximum;
+                double dMin = chart_machine.ChartAreas[0].AxisX.Minimum;
+                if ((dMax - dMin) > 0)
+                {
+                    nAxisStep = 1 / ((dMax - dMin) /** 2*/);
+                }
+                else
+                {
+                    nAxisStep = 0.1;
+                }
+
+            }
+        }
+
+        private void btnX_SetHigh_Click(object sender, EventArgs e)
+        {
+            DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(true);
+            //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(true);
+        }
+
+        private void btnX_SetLow_Click(object sender, EventArgs e)
+        {
+            DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
+            //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(false);
+
         }
     }
 }

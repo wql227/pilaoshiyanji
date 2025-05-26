@@ -145,6 +145,7 @@
     <Compile Include="FrmPos_A.Designer.cs">
       <DependentUpon>FrmPos_A.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
