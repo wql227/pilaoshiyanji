@@ -244,10 +244,10 @@ namespace DoPE10Net_CSharpDemo
             Application.DoEvents();
 
             // show DoPE.Ctrl enum members in guiControl combo-box.
-            guiControl.DataSource = Enum.GetNames(typeof(DoPE.CTRL));
+            //guiControl.DataSource = Enum.GetNames(typeof(DoPE.CTRL));
 
             // Set the control-combobox to "position".
-            guiControl.SelectedIndex = (int)DoPE.CTRL.POS;
+            //guiControl.SelectedIndex = (int)DoPE.CTRL.POS;
 
             EnableButton();
 
@@ -423,8 +423,16 @@ namespace DoPE10Net_CSharpDemo
         ///----------------------------------------------------------------------
         private void Display(string Text)
         {
-            guiDebug.AppendText(Text);
-            Refresh();
+            if (guiDebug.InvokeRequired)
+            {
+                guiDebug.Invoke(new Action<string>(Display), Text);
+            }
+            else
+            {
+                guiDebug.AppendText(Text + "\r\n");
+                guiDebug.ScrollToCaret(); // 自动滚动到底部
+                //Refresh();
+            }
         }
 
 
@@ -478,7 +486,7 @@ namespace DoPE10Net_CSharpDemo
 
             try
             {
-                speed = Convert.ToDouble(guiSpeed.Text);
+                speed = Convert.ToDouble("30");
 
                 DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
                 DisplayError(error, "FDPoti");
@@ -498,25 +506,25 @@ namespace DoPE10Net_CSharpDemo
         ///----------------------------------------------------------------------
         private void guiPos_Click(object sender, EventArgs e)
         {
-            DoPE.CTRL control;
-            double speed;
-            double destination;
+            //DoPE.CTRL control;
+            //double speed;
+            //double destination;
 
-            try
-            {
-                control = (DoPE.CTRL)guiControl.SelectedIndex;
-                speed = Convert.ToDouble(guiSpeed.Text);
-                destination = Convert.ToDouble(guiDestination.Text);
+            //try
+            //{
+            //    control = (DoPE.CTRL)guiControl.SelectedIndex;
+            //    speed = Convert.ToDouble(guiSpeed.Text);
+            //    destination = Convert.ToDouble(guiDestination.Text);
 
-                DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
-                //formsPlot1.
+            //    DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
+            //    //formsPlot1.
 
-                DisplayError(error, "Pos");
-            }
-            catch (NullReferenceException)
-            {
-                Display(CommandFailedString);
-            }
+            //    DisplayError(error, "Pos");
+            //}
+            //catch (NullReferenceException)
+            //{
+            //    Display(CommandFailedString);
+            //}
         }
 
         ///----------------------------------------------------------------------
@@ -524,35 +532,35 @@ namespace DoPE10Net_CSharpDemo
         ///----------------------------------------------------------------------
         private void guiControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DoPE.CTRL control = (DoPE.CTRL)guiControl.SelectedIndex;
+            //DoPE.CTRL control = (DoPE.CTRL)guiControl.SelectedIndex;
 
-            switch (control)
-            {
-                case DoPE.CTRL.POS:
-                    {
-                        lblSpeedUnit.Text = "mm/s";
-                        lblDestinationUnit.Text = "mm";
-                        break;
-                    }
-                case DoPE.CTRL.LOAD:
-                    {
-                        lblSpeedUnit.Text = "N/s";
-                        lblDestinationUnit.Text = "N";
-                        break;
-                    }
-                case DoPE.CTRL.EXTENSION:
-                    {
-                        lblSpeedUnit.Text = "mm/s";
-                        lblDestinationUnit.Text = "mm";
-                        break;
-                    }
-                default:
-                    {
-                        lblSpeedUnit.Text = "Unit/s";
-                        lblDestinationUnit.Text = "Unit";
-                        break;
-                    }
-            }
+            //switch (control)
+            //{
+            //    case DoPE.CTRL.POS:
+            //        {
+            //            lblSpeedUnit.Text = "mm/s";
+            //            lblDestinationUnit.Text = "mm";
+            //            break;
+            //        }
+            //    case DoPE.CTRL.LOAD:
+            //        {
+            //            lblSpeedUnit.Text = "N/s";
+            //            lblDestinationUnit.Text = "N";
+            //            break;
+            //        }
+            //    case DoPE.CTRL.EXTENSION:
+            //        {
+            //            lblSpeedUnit.Text = "mm/s";
+            //            lblDestinationUnit.Text = "mm";
+            //            break;
+            //        }
+            //    default:
+            //        {
+            //            lblSpeedUnit.Text = "Unit/s";
+            //            lblDestinationUnit.Text = "Unit";
+            //            break;
+            //        }
+            //}
         }
 
         #endregion
@@ -806,7 +814,17 @@ namespace DoPE10Net_CSharpDemo
 
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x0014) // 禁掉清除背景消息
+            {
+                return;
+            }
+
+            base.WndProc(ref m);
+        }
+
+    private void MainForm_Load(object sender, EventArgs e)
         {
             // formsPlot1.XLabel("这是X轴的描述");
 
@@ -815,6 +833,11 @@ namespace DoPE10Net_CSharpDemo
             //formsPlot1.Plot.A
 
             // superTabControl1.SelectedTabIndex = 1;
+
+            this.DoubleBuffered = true;//设置本窗体
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
 
             timer_UpdateData.Interval = 300;
             timer_UpdateData.Start();
@@ -989,12 +1012,12 @@ namespace DoPE10Net_CSharpDemo
                         tb_MinExt.Text = minExt.ToString();
                     }
 
-                    nTestCount++;
+                    //nTestCount++;
 
-                    if (nTestCount > 0)
-                    {
+                    //if (nTestCount > 0)
+                    //{
 
-                    }
+                    //}
 
                 }
 
@@ -1165,7 +1188,7 @@ namespace DoPE10Net_CSharpDemo
 
                 try
                 {
-                    speed = Convert.ToDouble(guiSpeed.Text) * 10;
+                    speed = Convert.ToDouble("30") * 10;
 
                     DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
                     DisplayError(error, "FDPoti");
@@ -1250,7 +1273,7 @@ namespace DoPE10Net_CSharpDemo
 
                 try
                 {
-                    speed = Convert.ToDouble(guiSpeed.Text);
+                    speed = Convert.ToDouble("30");
 
                     DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
                     DisplayError(error, "FDPoti");
@@ -1346,198 +1369,29 @@ namespace DoPE10Net_CSharpDemo
         /// <param name="e"></param>
         private void bntX_GUIPos_Click(object sender, EventArgs e)
         {
-            if (bConnected)
-            {
-                DoPE.CTRL control;
-                double speed;
-                double destination;
-
-                try
-                {
-                    control = (DoPE.CTRL)guiControl.SelectedIndex;
-                    speed = Convert.ToDouble(guiSpeed.Text);
-                    destination = Convert.ToDouble(guiDestination.Text);
-
-                    DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
-                    //formsPlot1.
-                    //bool aaaa = MyEdc.IsConnected();
-
-                    DisplayError(error, "Pos");
-                }
-                catch (NullReferenceException)
-                {
-                    Display(CommandFailedString);
-                }
-            }
-        }
-
-        private void buttonX15_Click(object sender, EventArgs e)
-        {
-            //if (_thread == null)
+            //if (bConnected)
             //{
-            //    //Start 
-            //    _previousX = 0;
+            //    DoPE.CTRL control;
+            //    double speed;
+            //    double destination;
 
-            //    //波形通道数量
             //    try
             //    {
-            //        _channelCount = int.Parse("1");
-            //        _rand = new Random[_channelCount];
-            //        _previousTemperature = new double[_channelCount];
-            //        //Every channel needs own random otherwise with high data generation random will break it self
-            //        for (int i = 0; i < _rand.Length; i++)
-            //        {
-            //            _rand[i] = new Random((int)DateTime.Now.Ticks + i);
-            //        }
+            //        control = (DoPE.CTRL)guiControl.SelectedIndex;
+            //        speed = Convert.ToDouble(guiSpeed.Text);
+            //        destination = Convert.ToDouble(guiDestination.Text);
+
+            //        DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
+            //        //formsPlot1.
+            //        //bool aaaa = MyEdc.IsConnected();
+
+            //        DisplayError(error, "Pos");
             //    }
-            //    catch
+            //    catch (NullReferenceException)
             //    {
-            //        MessageBox.Show("Invalid channel count text input");
-            //        return;
+            //        Display(CommandFailedString);
             //    }
-
-            //    //Read sampling frequency
-            //    try
-            //    {
-            //        _pointsPerSec = double.Parse("10");
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Invalid sampling frequency text input");
-            //        return;
-            //    }
-
-            //    //Read X axis length
-            //    try
-            //    {
-            //        _xLength = double.Parse("15");
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Invalid X-Axis length text input");
-            //        return;
-            //    }
-
-            //    //Disable rendering
-            //    lightningChart1.BeginUpdate();
-
-            //    int newPointsCount = _channelCount * (int)_pointsPerSec; //Amount of new generated points per second
-
-            //    lightningChart1.Title.Text = "Real-time data feeding from a thread, " + _channelCount.ToString() + " * " + _pointsPerSec.ToString("0") + " Hz = " + newPointsCount.ToString() + " new data points per sec";
-
-            //    lightningChart1.ViewXY.YAxes.Clear(); //Remove existing y-axes
-            //    lightningChart1.ViewXY.PointLineSeries.Clear(); //Remove existing PointlineSEries
-
-            //    //Add Y axis and SampleDataSeries for each channel 
-            //    for (int channelIndex = 0; channelIndex < _channelCount; channelIndex++)
-            //    {
-            //        AxisY axisY = new AxisY(lightningChart1.ViewXY);
-            //        axisY.SetRange(YMin, YMax);
-            //        axisY.Title.Font = new Font("Segoe UI", 8.0f, FontStyle.Regular);
-            //        axisY.Title.Text = string.Format("Ch {0}", channelIndex + 1);
-            //        axisY.Title.Angle = 0;
-            //        axisY.Units.Visible = false;
-            //        axisY.AutoDivSeparationPercent = 10;
-            //        axisY.MinorGrid.Visible = false;
-            //        axisY.MajorGrid.Visible = false;
-            //        lightningChart1.ViewXY.YAxes.Add(axisY);
-
-            //        PointLineSeries series = new PointLineSeries(lightningChart1.ViewXY, lightningChart1.ViewXY.XAxes[0], axisY);
-            //        series.LineStyle.Color = DefaultColors.SeriesForBlackBackground[channelIndex % DefaultColors.SeriesForBlackBackground.Length];
-            //        series.LineStyle.Width = 1.5f;
-            //        series.LineStyle.AntiAliasing = LineAntialias.Normal;
-            //        series.ScrollingStabilizing = false;
-            //        series.AllowUserInteraction = false;
-            //        series.UsePalette = false;
-
-            //        lightningChart1.ViewXY.PointLineSeries.Add(series);
-            //    }
-
-            //    lightningChart1.ViewXY.XAxes[0].SetRange(0, _xLength);
-
-            //    //Allow rendering
-            //    lightningChart1.EndUpdate();
-
-            //    _pointsOutput = 0;
-
-            //    //buttonStartStop.Click -= buttonStart_Click;
-            //    //buttonStartStop.Click += buttonStop_Click;
-
-            //    _startTicks = _stopWatch.ElapsedTicks;
-
-            //    _stop = false;
-
-            //    _thread = new Thread(new ThreadStart(ThreadLoop));
-            //    _thread.Start();
             //}
-        }
-
-
-        private void ThreadLoop()
-        {
-            while (_stop == false)
-            {
-                //_renderingTime = _stopWatch.ElapsedTicks;
-
-                //long currentPointIndex =
-                //          (long)(TimeSpan.FromTicks(_renderingTime - _startTicks).TotalSeconds * _pointsPerSec);
-
-                //int pointPacksToGenerate = (int)(currentPointIndex - _pointsOutput);
-
-                //if (pointPacksToGenerate > 0)
-                //{
-                //    SeriesPoint[][] multiChannelData = new SeriesPoint[_channelCount][];
-
-                //    //if (randomdata)
-                //    //{
-                //    //    Parallel.For(0, _channelCount, (channelIndex) =>
-                //    //    {
-                //    //        multiChannelData[channelIndex] = new SeriesPoint[pointPacksToGenerate];
-
-                //    //        //Generate random data
-                //    //        for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
-                //    //        {
-                //    //            multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
-                //    //            multiChannelData[channelIndex][pointIndex].Y = CalculateYValue(channelIndex); // generating y value (using random in this point is way too heavy with multiple channels
-                //    //        }
-                //    //    });
-                //    //}
-                //    //else
-                //    {
-                //        Parallel.For(0, _channelCount, (channelIndex) =>
-                //        {
-                //            multiChannelData[channelIndex] = new SeriesPoint[pointPacksToGenerate];
-
-                //            //Generate random data
-                //            for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
-                //            {
-                //                multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
-                //                //multiChannelData[channelIndex][pointIndex].Y = Decimal.ToDouble(data_display1); // generating y value (using random in this point is way too heavy with multiple channels
-                //                multiChannelData[channelIndex][pointIndex].Y = ((double)(data_display1 + pointIndex) / 10 ); // generating y value (using random in this point is way too heavy with multiple channels
-                //                //multiChannelData[channelIndex][pointIndex].Y = Math.Sin((double)(_pointsOutput + pointIndex) / 150.0) * 500; // generating y value (using random in this point is way too heavy with multiple channels
-                //            }
-                //        });
-                //    }
-                //    _pointsOutput += pointPacksToGenerate;
-
-                //    this.Invoke((MethodInvoker)delegate
-                //    {
-                //        FeedNewDataToChart(multiChannelData);
-                //    });
-
-
-                //}
-                //else
-                //{
-                //    Thread.Sleep(0);
-                //}
-
-            }
-            _thread = null;
-            if (_bFormClosing == true)  // close form from Main UI thread
-            {
-                this.Invoke((MethodInvoker)delegate { Close(); });
-            }
         }
 
 
@@ -1716,13 +1570,13 @@ namespace DoPE10Net_CSharpDemo
         {
             if (cb_TareLoad.Checked)
             {
-                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, true);
+                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, true);
 
 
             }
             else
             {
-                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, false);
+                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, false);
 
 
             }
@@ -1732,12 +1586,12 @@ namespace DoPE10Net_CSharpDemo
         {
             if (cb_TareExt.Checked)
             {
-                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, true);
+                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_E, true);
 
             }
             else
             {
-                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, false);
+                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_E, false);
 
             }
         }
@@ -1771,6 +1625,11 @@ namespace DoPE10Net_CSharpDemo
         {
             DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
             //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(false);
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
 
         }
     }

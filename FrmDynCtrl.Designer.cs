@@ -677,6 +677,7 @@
             this.btnX_Dyn_Freq_P1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Freq_P1.TabIndex = 4;
             this.btnX_Dyn_Freq_P1.Text = "+";
+            this.btnX_Dyn_Freq_P1.Click += new System.EventHandler(this.btnX_Dyn_Freq_P1_Click);
             // 
             // btnX_Dyn_Freq_P2
             // 
@@ -689,6 +690,7 @@
             this.btnX_Dyn_Freq_P2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Freq_P2.TabIndex = 4;
             this.btnX_Dyn_Freq_P2.Text = "++";
+            this.btnX_Dyn_Freq_P2.Click += new System.EventHandler(this.btnX_Dyn_Freq_P2_Click);
             // 
             // btnX_Dyn_Freq_P3
             // 
@@ -701,6 +703,7 @@
             this.btnX_Dyn_Freq_P3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Freq_P3.TabIndex = 4;
             this.btnX_Dyn_Freq_P3.Text = "+++";
+            this.btnX_Dyn_Freq_P3.Click += new System.EventHandler(this.btnX_Dyn_Freq_P3_Click);
             // 
             // btnX_Dyn_Freq_S1
             // 
@@ -713,6 +716,7 @@
             this.btnX_Dyn_Freq_S1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Freq_S1.TabIndex = 4;
             this.btnX_Dyn_Freq_S1.Text = "-";
+            this.btnX_Dyn_Freq_S1.Click += new System.EventHandler(this.btnX_Dyn_Freq_S1_Click);
             // 
             // btnX_Dyn_Freq_S2
             // 
@@ -725,6 +729,7 @@
             this.btnX_Dyn_Freq_S2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Freq_S2.TabIndex = 4;
             this.btnX_Dyn_Freq_S2.Text = "--";
+            this.btnX_Dyn_Freq_S2.Click += new System.EventHandler(this.btnX_Dyn_Freq_S2_Click);
             // 
             // btnX_Dyn_Freq_S3
             // 
@@ -737,6 +742,7 @@
             this.btnX_Dyn_Freq_S3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Freq_S3.TabIndex = 4;
             this.btnX_Dyn_Freq_S3.Text = "---";
+            this.btnX_Dyn_Freq_S3.Click += new System.EventHandler(this.btnX_Dyn_Freq_S3_Click);
             // 
             // panelEx1
             // 

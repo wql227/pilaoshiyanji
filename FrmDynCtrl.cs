@@ -37,40 +37,12 @@ namespace DoPE10Net_CSharpDemo
         {
             InitializeComponent();
 
+            this.TopMost = true;
+
             if (cmbX_Dyn_EDC.Items.Count >= 1)
             {
                 cmbX_Dyn_EDC.SelectedIndex = 0;
             }
-
-            //if (cmbX_Dyn_StartCtrl.Items.Count >= 1)
-            //{
-            //    cmbX_Dyn_StartCtrl.SelectedIndex = 0;
-            //}
-
-            //if (cmbX_Dyn_StartSpeed_Unit.Items.Count >= 1)
-            //{
-            //    cmbX_Dyn_StartSpeed_Unit.SelectedIndex = 0;
-            //}
-
-            //if (cmbX_Dyn_MoveCtrl.Items.Count >= 1)
-            //{
-            //    cmbX_Dyn_MoveCtrl.SelectedIndex = 0;
-            //}
-
-            //if (cmbX_Dyn_MoveCtrl_Unit.Items.Count >= 1)
-            //{
-            //    cmbX_Dyn_MoveCtrl_Unit.SelectedIndex = 0;
-            //}
-
-            //if (cmbX_Dyn_WaveFrom.Items.Count >= 1)
-            //{
-            //    cmbX_Dyn_WaveFrom.SelectedIndex = 0;
-            //}
-
-            //if (cmbX_Dyn_PeakCtrl.Items.Count >= 1)
-            //{
-            //    cmbX_Dyn_PeakCtrl.SelectedIndex = 0;
-            //}
 
             cmbX_Dyn_PeakCtrl.Visible = false;
 
@@ -263,12 +235,43 @@ namespace DoPE10Net_CSharpDemo
 
         private void btnX_Dyn_Amplitude_S2_Click(object sender, EventArgs e)
         {
-            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.One, false).ToString();
+            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, false).ToString();
         }
 
         private void btnX_Dyn_Amplitude_S3_Click(object sender, EventArgs e)
         {
-            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Ten, false).ToString();
+            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, false).ToString();
+        }
+
+
+        private void btnX_Dyn_Freq_P1_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Deci, true).ToString();
+        }
+
+        private void btnX_Dyn_Freq_P2_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, true).ToString();
+        }
+
+        private void btnX_Dyn_Freq_P3_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, true).ToString();
+        }
+
+        private void btnX_Dyn_Freq_S1_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Deci, false).ToString();
+        }
+
+        private void btnX_Dyn_Freq_S2_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, false).ToString();
+        }
+
+        private void btnX_Dyn_Freq_S3_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, false).ToString();
         }
 
         private void tbX_Dyn_Offset_KeyPress(object sender, KeyPressEventArgs e)
@@ -405,5 +408,7 @@ namespace DoPE10Net_CSharpDemo
             strTmp = tbX_Dyn_Frequency.Text;
             IniFileHelper.WriteIniString("DynCtrl", "Frequency", strTmp);
         }
+
+
     }
 }
