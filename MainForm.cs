@@ -864,7 +864,6 @@ namespace DoPE10Net_CSharpDemo
                 btnX_QuickMoveDown.Enabled = true;
                 bntX_GUIOn.Enabled = true;
                 bntX_GUIOff.Enabled = true;
-                bntX_GUIPos.Enabled = true;
             }
             else
             {
@@ -877,10 +876,16 @@ namespace DoPE10Net_CSharpDemo
                 btnX_QuickMoveDown.Enabled = false;
                 bntX_GUIOn.Enabled = false;
                 bntX_GUIOff.Enabled = false;
-                bntX_GUIPos.Enabled = false;
             }
         }
 
+        private void StartCommunicationWithEdcTimer_Tick(object sender, EventArgs e)
+        {
+            UpdateValues();
+            //formsPlot1.Render();
+        }
+
+        #region 界面按钮消息事件
 
         /// <summary>
         /// 连接到EDC控制器
@@ -893,11 +898,251 @@ namespace DoPE10Net_CSharpDemo
 
         }
 
-        private void StartCommunicationWithEdcTimer_Tick(object sender, EventArgs e)
+
+        /// <summary>
+        /// 断开EDC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_Disconnect_Click(object sender, EventArgs e)
         {
-            UpdateValues();
-            //formsPlot1.Render();
+            Disconnect();
         }
+
+
+        /// <summary>
+        /// 向上
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Sends a move-command with direction "up" to the EDC.</summary>
+        ///----------------------------------------------------------------------
+        private void bntX_MoveUp_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                double speed;
+
+                try
+                {
+                    speed = Convert.ToDouble("30") * 10;
+
+                    DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
+                    DisplayError(error, "FDPoti");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 快速向上
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Sends a move-command with direction "up" to the EDC.</summary>
+        ///----------------------------------------------------------------------
+        private void btnX_MoveQuickUp_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                double speed;
+
+                try
+                {
+                    speed = Convert.ToDouble(300);
+
+                    //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
+                    //DisplayError(error, "FDPoti");
+                    DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                    DisplayError(error, "FMove_A");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 保持
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Sends a halt-command to the EDC.</summary>
+        ///----------------------------------------------------------------------
+        private void bntX_MoveHalt_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                try
+                {
+                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DisplayError(error, "Halt");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 向下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Sends a move-command with direction "down" to the EDC.</summary>
+        ///----------------------------------------------------------------------
+        private void bntX_MoveDown_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                double speed;
+
+                try
+                {
+                    speed = Convert.ToDouble("30");
+
+                    DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                    DisplayError(error, "FDPoti");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 快速向下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Sends a move-command with direction "down" to the EDC.</summary>
+        ///----------------------------------------------------------------------
+        private void btnX_QuickMoveDown_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                double speed;
+
+                try
+                {
+                    speed = Convert.ToDouble(3000);
+
+                    //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                    //DisplayError(error, "FDPoti");
+
+                    DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                    DisplayError(error, "FMove_A");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 激活
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Activates the EDC's drive.</summary>
+        ///----------------------------------------------------------------------
+        private void bntX_GUIOn_Click(object sender, EventArgs e)
+        {
+            OnEDC();
+
+            if (MyEdc.IsConnected() && bActivated)
+            {
+                //位移
+                chart_machine.Series[0].Points.Clear();
+                x_Position = 0.0;
+                chart_machine.Series[0].Points.AddXY(0.0, 0.0);
+
+                //试验力
+                chart_machine.Series[1].Points.Clear();
+                x_Load = 0.0;
+                chart_machine.Series[1].Points.AddXY(0.0, 0.0);
+
+                GetXaxisScale();
+
+                btnX_SetLow.Checked = true;
+                btnX_SetHigh.Checked = false;
+            }
+        }
+
+
+        /// <summary>
+        /// 停用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///----------------------------------------------------------------------
+        /// <summary>Activates the EDC's drive.</summary>
+        ///----------------------------------------------------------------------
+        private void bntX_GUIOff_Click(object sender, EventArgs e)
+        {
+            OffEDC();
+
+            btnX_SetLow.Checked = false;
+            btnX_SetHigh.Checked = false;
+        }
+
+
+        /// <summary>
+        /// IO高压
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_SetHigh_Click(object sender, EventArgs e)
+        {
+            DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(true);
+            //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(true);
+
+            if (Err == DoPE.ERR.NOERROR)
+            {
+                btnX_SetLow.Checked = false;
+                btnX_SetHigh.Checked = true;
+            }
+        }
+
+
+        /// <summary>
+        /// IO低压
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_SetLow_Click(object sender, EventArgs e)
+        {
+            DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
+            //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(false);
+
+            if (Err == DoPE.ERR.NOERROR)
+            {
+                btnX_SetHigh.Checked = false;
+                btnX_SetLow.Checked = true;
+            }
+        }
+
+        #endregion 
+
+
 
 
         /// <summary>
@@ -1063,15 +1308,7 @@ namespace DoPE10Net_CSharpDemo
         }
 
 
-        /// <summary>
-        /// 断开EDC
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnX_Disconnect_Click(object sender, EventArgs e)
-        {
-            Disconnect();
-        }
+
 
 
         /// <summary>
@@ -1172,228 +1409,7 @@ namespace DoPE10Net_CSharpDemo
         }
 
 
-        /// <summary>
-        /// 向上
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        ///----------------------------------------------------------------------
-        /// <summary>Sends a move-command with direction "up" to the EDC.</summary>
-        ///----------------------------------------------------------------------
-        private void bntX_MoveUp_Click(object sender, EventArgs e)
-        {
-            if (bConnected)
-            {
-                double speed;
-
-                try
-                {
-                    speed = Convert.ToDouble("30") * 10;
-
-                    DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
-                    DisplayError(error, "FDPoti");
-                }
-                catch (NullReferenceException)
-                {
-                    Display(CommandFailedString);
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// 快速向上
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        ///----------------------------------------------------------------------
-        /// <summary>Sends a move-command with direction "up" to the EDC.</summary>
-        ///----------------------------------------------------------------------
-        private void btnX_MoveQuickUp_Click(object sender, EventArgs e)
-        {
-            if (bConnected)
-            {
-                double speed;
-
-                try
-                {
-                    speed = Convert.ToDouble(300);
-
-                    //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
-                    //DisplayError(error, "FDPoti");
-                    DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
-                    DisplayError(error, "FMove_A");
-                }
-                catch (NullReferenceException)
-                {
-                    Display(CommandFailedString);
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// 保持
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        ///----------------------------------------------------------------------
-        /// <summary>Sends a halt-command to the EDC.</summary>
-        ///----------------------------------------------------------------------
-        private void bntX_MoveHalt_Click(object sender, EventArgs e)
-        {
-            if (bConnected)
-            {
-                try
-                {
-                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                    DisplayError(error, "Halt");
-                }
-                catch (NullReferenceException)
-                {
-                    Display(CommandFailedString);
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// 向下
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        ///----------------------------------------------------------------------
-        /// <summary>Sends a move-command with direction "down" to the EDC.</summary>
-        ///----------------------------------------------------------------------
-        private void bntX_MoveDown_Click(object sender, EventArgs e)
-        {
-            if (bConnected)
-            {
-                double speed;
-
-                try
-                {
-                    speed = Convert.ToDouble("30");
-
-                    DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
-                    DisplayError(error, "FDPoti");
-                }
-                catch (NullReferenceException)
-                {
-                    Display(CommandFailedString);
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// 向下
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        ///----------------------------------------------------------------------
-        /// <summary>Sends a move-command with direction "down" to the EDC.</summary>
-        ///----------------------------------------------------------------------
-        private void btnX_QuickMoveDown_Click(object sender, EventArgs e)
-        {
-            if (bConnected)
-            {
-                double speed;
-
-                try
-                {
-                    speed = Convert.ToDouble(3000);
-
-                    //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
-                    //DisplayError(error, "FDPoti");
-
-                    DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
-                    DisplayError(error, "FMove_A");
-                }
-                catch (NullReferenceException)
-                {
-                    Display(CommandFailedString);
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// 激活
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        ///----------------------------------------------------------------------
-        /// <summary>Activates the EDC's drive.</summary>
-        ///----------------------------------------------------------------------
-        private void bntX_GUIOn_Click(object sender, EventArgs e)
-        {
-            OnEDC();
-
-            if (MyEdc.IsConnected() && bActivated)
-            {
-                //位移
-                chart_machine.Series[0].Points.Clear();
-                x_Position = 0.0;
-                chart_machine.Series[0].Points.AddXY(0.0, 0.0);
-
-                //试验力
-                chart_machine.Series[1].Points.Clear();
-                x_Load = 0.0;
-                chart_machine.Series[1].Points.AddXY(0.0, 0.0);
-
-                GetXaxisScale();
-            }
-        }
-
-
-        /// <summary>
-        /// 停用
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        ///----------------------------------------------------------------------
-        /// <summary>Activates the EDC's drive.</summary>
-        ///----------------------------------------------------------------------
-        private void bntX_GUIOff_Click(object sender, EventArgs e)
-        {
-            OffEDC();
-
-        }
-
-
-        /// <summary>
-        /// 移动
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void bntX_GUIPos_Click(object sender, EventArgs e)
-        {
-            //if (bConnected)
-            //{
-            //    DoPE.CTRL control;
-            //    double speed;
-            //    double destination;
-
-            //    try
-            //    {
-            //        control = (DoPE.CTRL)guiControl.SelectedIndex;
-            //        speed = Convert.ToDouble(guiSpeed.Text);
-            //        destination = Convert.ToDouble(guiDestination.Text);
-
-            //        DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
-            //        //formsPlot1.
-            //        //bool aaaa = MyEdc.IsConnected();
-
-            //        DisplayError(error, "Pos");
-            //    }
-            //    catch (NullReferenceException)
-            //    {
-            //        Display(CommandFailedString);
-            //    }
-            //}
-        }
-
+     
 
         /// <summary>
         /// Calculate Y value for random data
@@ -1422,30 +1438,6 @@ namespace DoPE10Net_CSharpDemo
 
             return nextY;
         }
-
-
-        //private void FeedNewDataToChart(SeriesPoint[][] multiChannelData)
-        //{
-        //    // Disable rendering to update properties.
-        //    lightningChart1.BeginUpdate();
-
-        //    if (lightningChart1 == null)
-        //    {
-        //        return;
-        //    }
-
-        //    Parallel.For(0, _channelCount, channelIndex =>
-        //    {
-        //        lightningChart1.ViewXY.PointLineSeries[channelIndex].AddPoints(multiChannelData[channelIndex], false);
-        //    });
-        //    _previousX = _pointsOutput;
-        //    lightningChart1.ViewXY.XAxes[0].ScrollPosition = _previousX;
-
-        //    // Allow rendering.
-        //    lightningChart1.EndUpdate();
-
-
-        //}
 
 
         /// <summary>
@@ -1492,6 +1484,14 @@ namespace DoPE10Net_CSharpDemo
 
         }
 
+
+        #region 快捷工具栏消息响应事件
+
+        /// <summary>
+        /// 工具栏POS
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void posToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (bConnected)
@@ -1506,6 +1506,12 @@ namespace DoPE10Net_CSharpDemo
             }
         }
 
+
+        /// <summary>
+        /// 工具栏DYNCTRL
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dynCtrlToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (bConnected)
@@ -1520,6 +1526,11 @@ namespace DoPE10Net_CSharpDemo
             }
         }
 
+        /// <summary>
+        /// 工具栏POS_A
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Pos_AtoolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (bConnected)
@@ -1533,6 +1544,20 @@ namespace DoPE10Net_CSharpDemo
                 return;
             }
         }
+
+
+
+        private void ShowLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+        #endregion
+
 
         private void comboBoxEx7_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1615,22 +1640,9 @@ namespace DoPE10Net_CSharpDemo
             }
         }
 
-        private void btnX_SetHigh_Click(object sender, EventArgs e)
-        {
-            DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(true);
-            //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(true);
-        }
 
-        private void btnX_SetLow_Click(object sender, EventArgs e)
-        {
-            DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
-            //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(false);
 
-        }
 
-        private void label11_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }
