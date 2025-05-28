@@ -141,6 +141,12 @@ namespace DoPE10Net_CSharpDemo
         /// </summary>
         private Random[] _rand;
 
+        /// <summary>
+        /// 是否暂停绘制
+        /// </summary>
+        private bool bPause = false;
+
+
 
         readonly double[] Values = new double[25];
         readonly Stopwatch Stopwatch = Stopwatch.StartNew();
@@ -229,6 +235,8 @@ namespace DoPE10Net_CSharpDemo
             _thread = null;
             _stopWatch = new Stopwatch();
             _stopWatch.Start();
+
+            bPause = false;
 
         }
 
@@ -423,6 +431,10 @@ namespace DoPE10Net_CSharpDemo
         ///----------------------------------------------------------------------
         private void Display(string Text)
         {
+            try
+            {
+
+            
             if (guiDebug.InvokeRequired)
             {
                 guiDebug.Invoke(new Action<string>(Display), Text);
@@ -432,6 +444,12 @@ namespace DoPE10Net_CSharpDemo
                 guiDebug.AppendText(Text + "\r\n");
                 guiDebug.ScrollToCaret(); // 自动滚动到底部
                 //Refresh();
+            }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
 
@@ -565,7 +583,7 @@ namespace DoPE10Net_CSharpDemo
 
         #endregion
 
-        #region DoPE Events
+        #region DoPE Events DoPE事件消息
 
         private int OnLine(DoPE.LineState LineState, object Parameter)
         {
@@ -787,6 +805,22 @@ namespace DoPE10Net_CSharpDemo
 
         #endregion
 
+
+
+
+        #region 菜单选项响应事件
+
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 登录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void 保存数据问题及ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -803,28 +837,19 @@ namespace DoPE10Net_CSharpDemo
 
         }
 
+        #endregion 菜单选项响应事件
 
-        /// <summary>
-        /// 登录
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void 登录ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        //protected override void WndProc(ref Message m)
+        //{
+        //    if (m.Msg == 0x0014) // 禁掉清除背景消息
+        //    {
+        //        return;
+        //    }
 
-        }
+        //    base.WndProc(ref m);
+        //}
 
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x0014) // 禁掉清除背景消息
-            {
-                return;
-            }
-
-            base.WndProc(ref m);
-        }
-
-    private void MainForm_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             // formsPlot1.XLabel("这是X轴的描述");
 
@@ -848,6 +873,16 @@ namespace DoPE10Net_CSharpDemo
             //chart_DrawGraph.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
 
             //lightningChart1.ColorTheme = ColorTheme.SkyBlue;
+
+            //初始化chart控件
+            chart_machine.Series[0].Points.Clear();
+            //x_Position = 0.0;
+            chart_machine.Series[0].Points.AddXY(0.0, 0.0);
+
+            //试验力
+            chart_machine.Series[1].Points.Clear();
+            //x_Load = 0.0;
+            chart_machine.Series[1].Points.AddXY(0.0, 0.0);
         }
 
 
@@ -1156,30 +1191,57 @@ namespace DoPE10Net_CSharpDemo
                 //if (MyEdc.IsConnected() && bConnected)
                 if (chart_machine != null)
                 {
-                    for (int i = 50; Block.Data.Length > i; i += 100)
+                    if (!bPause)
                     {
-                        //绘制Position
-                        double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
-                        //x_Position += nAxisStep;
-                        x_Position += 0.05;
-
-                        if (chart_machine.Series != null)
+                        for (int i = 50; Block.Data.Length > i; i += 100)
                         {
-                            if (chart_machine.Series[0] != null)
+                            //绘制Position
+                            double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
+                            //x_Position += nAxisStep;
+                            x_Position += 0.05;
+
+                            if (chart_machine.Series != null)
                             {
-                                chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
-                                if (chart_machine.Series[0].Points.Count - 1 == 200)
+                                if (chart_machine.Series[0] != null)
+                                {
+                                    chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
+                                    if (chart_machine.Series[0].Points.Count - 1 == 200)
+                                    {
+                                        //chart1.Series[0].Points.AddXY(10.0, y);
+                                        chart_machine.Series[0].Points.Clear();
+                                        // 异步更新图表数据
+                                        //await chart1.InvokeAsync(() =>
+                                        //{
+                                        //    chartControl.Series[0].Points.AddXY(.0, y);
+                                        //});
+
+                                        chart_machine.Series[0].Points.AddXY(0.0, y_Position);
+                                        x_Position = 0.0;
+                                    }
+                                    /*if (x >= 10.0)
+                                    {
+                                        x = 0.0;
+                                        chart1.Series[0].Points.Clear();
+                                        chart1.Series[0].Points.AddXY(-1.0, y);
+                                    }*/
+                                }
+                            }
+
+                            //绘制Load
+                            double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
+                            //x_Load += nAxisStep;
+                            x_Load += 0.05;
+
+                            if (chart_machine.Series[1] != null)
+                            {
+                                chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
+                                if (chart_machine.Series[1].Points.Count - 1 == 200)
                                 {
                                     //chart1.Series[0].Points.AddXY(10.0, y);
-                                    chart_machine.Series[0].Points.Clear();
-                                    // 异步更新图表数据
-                                    //await chart1.InvokeAsync(() =>
-                                    //{
-                                    //    chartControl.Series[0].Points.AddXY(.0, y);
-                                    //});
+                                    chart_machine.Series[1].Points.Clear();
 
-                                    chart_machine.Series[0].Points.AddXY(0.0, y_Position);
-                                    x_Position = 0.0;
+                                    chart_machine.Series[1].Points.AddXY(0.0, y_Load);
+                                    x_Load = 0.0;
                                 }
                                 /*if (x >= 10.0)
                                 {
@@ -1190,79 +1252,55 @@ namespace DoPE10Net_CSharpDemo
                             }
                         }
 
-                        //绘制Load
-                        double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
-                        //x_Load += nAxisStep;
-                        x_Load += 0.05;
 
-                        if (chart_machine.Series[1] != null)
+
+
+                        //计算Position 峰谷值
+                        if (maxPos < float.Parse(guiPosition.Text))
                         {
-                            chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
-                            if (chart_machine.Series[1].Points.Count - 1 == 200)
-                            {
-                                //chart1.Series[0].Points.AddXY(10.0, y);
-                                chart_machine.Series[1].Points.Clear();
-
-                                chart_machine.Series[1].Points.AddXY(0.0, y_Load);
-                                x_Load = 0.0;
-                            }
-                            /*if (x >= 10.0)
-                            {
-                                x = 0.0;
-                                chart1.Series[0].Points.Clear();
-                                chart1.Series[0].Points.AddXY(-1.0, y);
-                            }*/
+                            maxPos = float.Parse(guiPosition.Text);
+                            tb_MaxPos.Text = maxPos.ToString();
                         }
+
+                        if (minPos > float.Parse(guiPosition.Text))
+                        {
+                            minPos = float.Parse(guiPosition.Text);
+                            tb_MinPos.Text = minPos.ToString();
+                        }
+
+                        //计算Load 峰谷值
+                        if (maxLoad < float.Parse(guiLoad.Text))
+                        {
+                            maxLoad = float.Parse(guiLoad.Text);
+                            tb_MaxLoad.Text = maxLoad.ToString();
+                        }
+
+                        if (minLoad > float.Parse(guiLoad.Text))
+                        {
+                            minLoad = float.Parse(guiLoad.Text);
+                            tb_MinLoad.Text = minLoad.ToString();
+                        }
+
+                        //计算Extension 峰谷值
+                        if (maxExt < float.Parse(guiExtension.Text))
+                        {
+                            maxExt = float.Parse(guiExtension.Text);
+                            tb_MaxLoad.Text = maxExt.ToString();
+                        }
+
+                        if (minExt > float.Parse(guiExtension.Text))
+                        {
+                            minExt = float.Parse(guiExtension.Text);
+                            tb_MinExt.Text = minExt.ToString();
+                        }
+
+                        //nTestCount++;
+
+                        //if (nTestCount > 0)
+                        //{
+
+                        //}
                     }
-
-
-
-
-                    //计算Position 峰谷值
-                    if (maxPos < float.Parse(guiPosition.Text))
-                    {
-                        maxPos = float.Parse(guiPosition.Text);
-                        tb_MaxPos.Text = maxPos.ToString();
-                    }
-
-                    if (minPos > float.Parse(guiPosition.Text))
-                    {
-                        minPos = float.Parse(guiPosition.Text);
-                        tb_MinPos.Text = minPos.ToString();
-                    }
-
-                    //计算Load 峰谷值
-                    if (maxLoad < float.Parse(guiLoad.Text))
-                    {
-                        maxLoad = float.Parse(guiLoad.Text);
-                        tb_MaxLoad.Text = maxLoad.ToString();
-                    }
-
-                    if (minLoad > float.Parse(guiLoad.Text))
-                    {
-                        minLoad = float.Parse(guiLoad.Text);
-                        tb_MinLoad.Text = minLoad.ToString();
-                    }
-
-                    //计算Extension 峰谷值
-                    if (maxExt < float.Parse(guiExtension.Text))
-                    {
-                        maxExt = float.Parse(guiExtension.Text);
-                        tb_MaxLoad.Text = maxExt.ToString();
-                    }
-
-                    if (minExt > float.Parse(guiExtension.Text))
-                    {
-                        minExt = float.Parse(guiExtension.Text);
-                        tb_MinExt.Text = minExt.ToString();
-                    }
-
-                    //nTestCount++;
-
-                    //if (nTestCount > 0)
-                    //{
-
-                    //}
 
                 }
 
@@ -1333,7 +1371,6 @@ namespace DoPE10Net_CSharpDemo
             }
         }
 
-        static int startUp = 0; //波形显示上电先显示零零，保证波形显示框显示出来
 
         private void timer_UpdateData_Tick(object sender, EventArgs e)
         {
@@ -1343,73 +1380,8 @@ namespace DoPE10Net_CSharpDemo
             }
 
             EnableButton();
-
-            //try
-            //{
-            //    int countX;
-            //    int LengthX = 20;                   //X轴显示长度，长度不能大于 array_display1 数组长度，最大140
-            //    //Random rd = new Random();           //产生随机函数
-
-            //    chart_DrawGraph.ResetAutoValues();
-
-            //    //if (startUp == 0)                     //上电第一次显示波形零，让波形表格呈现出来,只执行一次
-            //    {
-            //      //  startUp = 1;
-            //        for (countX = 1; countX < LengthX; countX++)
-            //        {
-            //            chart_DrawGraph.Series[0].Points.AddXY(0, 99);        //X0~50,Y99，先勾画出框图表格
-            //            chart_DrawGraph.Series[1].Points.AddXY(0, 99);
-            //            chart_DrawGraph.Series[2].Points.AddXY(0, 99);
-            //        }
-            //    }
-
-            //    data_displayEnable = 1;                  //模拟始终更新数据，串口显示时屏蔽此处
-            //    if (data_displayEnable == 1)                //更新数据标志为1 更新数据，数据为0不更新数据
-            //    {
-            //        //原始显示方法
-            //        //chart1.Series[0].Points.AddXY(countX + 1, rd.Next(1, 100));
-            //        //chart1.Series[1].Points.AddXY(countX + 1, rd.Next(1, 100));
-
-            //        //串口接收数据显示
-            //        //data_display1 = rd.Next(1, 100);                   //内部产生随机值，模拟数据
-            //        //data_display2 = rd.Next(1, 100);
-            //        //data_display3 = rd.Next(1, 100);
-
-            //        data_displayEnable = 0;                             //清零标志,串口收到数据后再更新数据
-            //        chart_DrawGraph.Series[0].Points.Clear();                    //清除显示点，数组重新滑动后显示
-            //        chart_DrawGraph.Series[1].Points.Clear();
-            //        chart_DrawGraph.Series[2].Points.Clear();
-
-            //        array_display1[LengthX - 1] = data_display1;        //将数据复制到显示数组中
-            //        array_display2[LengthX - 1] = data_display2;
-            //        array_display3[LengthX - 1] = data_display3;
-
-            //        for (countX = 0; countX < LengthX; countX++)
-            //        {
-            //            array_display1[countX] = array_display1[countX + 1];
-            //            array_display2[countX] = array_display2[countX + 1];
-            //            array_display3[countX] = array_display3[countX + 1];
-            //        }
-
-            //        for (countX = 1; countX < LengthX; countX++)
-            //        {
-            //            chart_DrawGraph.Series[0].Points.AddXY(countX, array_display1[countX]);
-            //            chart_DrawGraph.Series[1].Points.AddXY(countX, array_display2[countX]);
-            //            chart_DrawGraph.Series[2].Points.AddXY(countX, array_display3[countX]);
-            //        }
-
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("波形显示错误！");                 //调试软件后台打印
-            //    return;
-            //}
         }
 
-
-     
 
         /// <summary>
         /// Calculate Y value for random data
@@ -1465,22 +1437,14 @@ namespace DoPE10Net_CSharpDemo
 
         }
 
-        //public void MoveDynCtrl(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl, bool RelativeDestination, 
-        //    Double SpeedToStart, Double Offset, Double Amplitude, Double HaltAtPlusAmplitude, Double HaltAtMinusAmplitude, Double Frequency, 
-        //    Int32 HalfCycles, Double SpeedToDestination, Double Destination, DoPE.DYN_SWEEP SweepFrequencyMode, Double SweepEndFrequency, 
-        //    Double SweepFrequencyTime, Int32 SweepFrequencyCount, DoPE.DYN_SWEEP SweepOffsetMode, Double SweepEndOffset, Double SweepOffsetTime, 
-        //    Int32 SweepOffsetCount, DoPE.DYN_SWEEP SweepAmplitudeMode, Double SweepEndAmplitude, Double SweepAmplitudeTime, Int32 SweepAmplitudeCount,
-        //    DoPE.DYN_SUPERPOS SuperpositionMode, Double SuperpositionFrequency, Double SuperpositionAmplitude, DoPE.DYN_BIMODAL BimodalCtrlMode, 
-        //    DoPE.SENSOR BimodalCtrlSensor, Double BimodalValue1, Double BimodalValue2, Double BimodalScale, ref Int16 Tan)
-        //{
-        //    //DoPE.ERR error = MyEdc.Move.DynCycles(control, speed, destination, ref MyTan);
 
-        //}
-
-
-        public void MoveDynCycles(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl, bool RelativeDestination, double SpeedToStart, double Offset, double Amplitude, double HaltAtPlusAmplitude, double HaltAtMinusAmplitude, double Frequency, int HalfCycles, double SpeedToDestination, double Destination, DoPE.DYN_SWEEP SweepFrequencyMode)
+        public void MoveDynCycles(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl, 
+            bool RelativeDestination, double SpeedToStart, double Offset, double Amplitude, double HaltAtPlusAmplitude, double HaltAtMinusAmplitude, 
+            double Frequency, int HalfCycles, double SpeedToDestination, double Destination, DoPE.DYN_SWEEP SweepFrequencyMode)
         {
-            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0, 0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
+            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0, 
+                0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode, 
+                0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
 
         }
 
@@ -1553,22 +1517,31 @@ namespace DoPE10Net_CSharpDemo
         }
 
 
-
-
-
-        #endregion
-
-
-        private void comboBoxEx7_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// 启动和暂停绘制
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void startStopDrawToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (lightningChart1 != null)
-            //{
-            //    if (cmbX_ScrollMode.SelectedIndex >= 0)
-            //    {
-            //        lightningChart1.ViewXY.XAxes[0].ScrollMode = (XAxisScrollMode)cmbX_ScrollMode.SelectedIndex;
-            //    }
-            //}
+            bPause = !bPause;
+
+            if (bPause)
+            {
+                startStopDrawToolStripMenuItem.Text = "启动绘制";
+            }
+            else
+            {
+                startStopDrawToolStripMenuItem.Text = "暂停绘制";
+            }
+
+            chart_machine.Enabled = false;
         }
+
+
+        # endregion 快捷工具栏消息响应事件
+
+
 
         private void lblTime_Click(object sender, EventArgs e)
         {
@@ -1580,14 +1553,10 @@ namespace DoPE10Net_CSharpDemo
             if (cb_TarePos.Checked)
             {
                 MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, true);
-
-
             }
             else
             {
                 MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, false);
-
-
             }
         }
 
@@ -1639,9 +1608,6 @@ namespace DoPE10Net_CSharpDemo
 
             }
         }
-
-
-
 
 
     }
