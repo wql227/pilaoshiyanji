@@ -29,12 +29,12 @@
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
@@ -94,20 +94,21 @@
             this.pIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setBitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ShowLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startStopDrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pl_DataShow = new System.Windows.Forms.Panel();
             this.cb_TareExt = new System.Windows.Forms.CheckBox();
             this.cb_TareLoad = new System.Windows.Forms.CheckBox();
             this.cb_TarePos = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblLoadMinValue = new System.Windows.Forms.Label();
+            this.lblPositionMinValue = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblLoadMaxValue = new System.Windows.Forms.Label();
+            this.lblTestCycles = new System.Windows.Forms.Label();
+            this.lblExtensionMaxMin = new System.Windows.Forms.Label();
+            this.lblLoadMaxMin = new System.Windows.Forms.Label();
+            this.lblPositionMaxValue = new System.Windows.Forms.Label();
+            this.lblPositionMaxMin = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.tb_MinExt = new System.Windows.Forms.TextBox();
             this.lblExtension = new System.Windows.Forms.Label();
@@ -238,7 +239,6 @@
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
-            this.startStopDrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -384,67 +384,71 @@
             this.chart_machine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea6.AxisX.Interval = 1D;
-            chartArea6.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea6.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea6.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea6.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea6.AxisX.Maximum = 10D;
-            chartArea6.AxisX.MaximumAutoSize = 100F;
-            chartArea6.AxisX.Minimum = 0D;
-            chartArea6.AxisX.MinorTickMark.Enabled = true;
-            chartArea6.AxisX.Title = "时间(s)";
-            chartArea6.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea6.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea6.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
-            chartArea6.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
-            chartArea6.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea6.AxisY.Maximum = 20D;
-            chartArea6.AxisY.Minimum = -20D;
-            chartArea6.AxisY.MinorTickMark.Enabled = true;
-            chartArea6.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea6.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
-            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
-            chartArea6.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea6.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea6.AxisY2.LineColor = System.Drawing.Color.Orange;
-            chartArea6.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea6.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea6.AxisY2.Maximum = 20D;
-            chartArea6.AxisY2.Minimum = -20D;
-            chartArea6.AxisY2.MinorTickMark.Enabled = true;
-            chartArea6.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea6.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(kN)";
-            chartArea6.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
-            chartArea6.Name = "ChartArea1";
-            this.chart_machine.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart_machine.Legends.Add(legend6);
+            chartArea2.AxisX.Interval = 1D;
+            chartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea2.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea2.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisX.Maximum = 10D;
+            chartArea2.AxisX.MaximumAutoSize = 100F;
+            chartArea2.AxisX.Minimum = 0D;
+            chartArea2.AxisX.MinorTickMark.Enabled = true;
+            chartArea2.AxisX.MinorTickMark.Size = 0.5F;
+            chartArea2.AxisX.Title = "时间(s)";
+            chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea2.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
+            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisY.Maximum = 20D;
+            chartArea2.AxisY.Minimum = -20D;
+            chartArea2.AxisY.MinorTickMark.Enabled = true;
+            chartArea2.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+            chartArea2.AxisY.MinorTickMark.Size = 0.5F;
+            chartArea2.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea2.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
+            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
+            chartArea2.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea2.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.AxisY2.LineColor = System.Drawing.Color.Orange;
+            chartArea2.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea2.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisY2.Maximum = 20D;
+            chartArea2.AxisY2.Minimum = -20D;
+            chartArea2.AxisY2.MinorTickMark.Enabled = true;
+            chartArea2.AxisY2.MinorTickMark.Size = 0.5F;
+            chartArea2.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea2.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(kN)";
+            chartArea2.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
+            chartArea2.Name = "ChartArea1";
+            this.chart_machine.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart_machine.Legends.Add(legend2);
             this.chart_machine.Location = new System.Drawing.Point(6, 51);
             this.chart_machine.Name = "chart_machine";
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series21.Legend = "Legend1";
-            series21.Name = "位移";
-            series21.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series22.ChartArea = "ChartArea1";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series22.Legend = "Legend1";
-            series22.Name = "试验力";
-            series23.ChartArea = "ChartArea1";
-            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series23.Legend = "Legend1";
-            series23.Name = "变形";
-            series24.ChartArea = "ChartArea1";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series24.Legend = "Legend1";
-            series24.Name = "命令";
-            this.chart_machine.Series.Add(series21);
-            this.chart_machine.Series.Add(series22);
-            this.chart_machine.Series.Add(series23);
-            this.chart_machine.Series.Add(series24);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Legend = "Legend1";
+            series5.Name = "位移";
+            series5.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.Legend = "Legend1";
+            series6.Name = "试验力";
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.Legend = "Legend1";
+            series7.Name = "变形";
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series8.Legend = "Legend1";
+            series8.Name = "命令";
+            this.chart_machine.Series.Add(series5);
+            this.chart_machine.Series.Add(series6);
+            this.chart_machine.Series.Add(series7);
+            this.chart_machine.Series.Add(series8);
             this.chart_machine.Size = new System.Drawing.Size(1221, 583);
             this.chart_machine.TabIndex = 63;
             this.chart_machine.Text = "chart1";
@@ -918,21 +922,28 @@
             this.ShowLogToolStripMenuItem.Text = "显示日志";
             this.ShowLogToolStripMenuItem.Click += new System.EventHandler(this.ShowLogToolStripMenuItem_Click);
             // 
+            // startStopDrawToolStripMenuItem
+            // 
+            this.startStopDrawToolStripMenuItem.Name = "startStopDrawToolStripMenuItem";
+            this.startStopDrawToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.startStopDrawToolStripMenuItem.Text = "暂停绘制";
+            this.startStopDrawToolStripMenuItem.Click += new System.EventHandler(this.startStopDrawToolStripMenuItem_Click);
+            // 
             // pl_DataShow
             // 
             this.pl_DataShow.Controls.Add(this.cb_TareExt);
             this.pl_DataShow.Controls.Add(this.cb_TareLoad);
             this.pl_DataShow.Controls.Add(this.cb_TarePos);
             this.pl_DataShow.Controls.Add(this.label10);
-            this.pl_DataShow.Controls.Add(this.label7);
-            this.pl_DataShow.Controls.Add(this.label4);
+            this.pl_DataShow.Controls.Add(this.lblLoadMinValue);
+            this.pl_DataShow.Controls.Add(this.lblPositionMinValue);
             this.pl_DataShow.Controls.Add(this.label9);
-            this.pl_DataShow.Controls.Add(this.label6);
-            this.pl_DataShow.Controls.Add(this.label1);
-            this.pl_DataShow.Controls.Add(this.label8);
-            this.pl_DataShow.Controls.Add(this.label5);
-            this.pl_DataShow.Controls.Add(this.label3);
-            this.pl_DataShow.Controls.Add(this.label2);
+            this.pl_DataShow.Controls.Add(this.lblLoadMaxValue);
+            this.pl_DataShow.Controls.Add(this.lblTestCycles);
+            this.pl_DataShow.Controls.Add(this.lblExtensionMaxMin);
+            this.pl_DataShow.Controls.Add(this.lblLoadMaxMin);
+            this.pl_DataShow.Controls.Add(this.lblPositionMaxValue);
+            this.pl_DataShow.Controls.Add(this.lblPositionMaxMin);
             this.pl_DataShow.Controls.Add(this.lblTime);
             this.pl_DataShow.Controls.Add(this.tb_MinExt);
             this.pl_DataShow.Controls.Add(this.lblExtension);
@@ -1001,27 +1012,27 @@
             this.label10.Text = "谷值";
             this.label10.Click += new System.EventHandler(this.lblTime_Click);
             // 
-            // label7
+            // lblLoadMinValue
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(644, 52);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 17);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "谷值";
-            this.label7.Click += new System.EventHandler(this.lblTime_Click);
+            this.lblLoadMinValue.AutoSize = true;
+            this.lblLoadMinValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoadMinValue.Location = new System.Drawing.Point(644, 52);
+            this.lblLoadMinValue.Name = "lblLoadMinValue";
+            this.lblLoadMinValue.Size = new System.Drawing.Size(38, 17);
+            this.lblLoadMinValue.TabIndex = 26;
+            this.lblLoadMinValue.Text = "谷值";
+            this.lblLoadMinValue.Click += new System.EventHandler(this.lblTime_Click);
             // 
-            // label4
+            // lblPositionMinValue
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(337, 52);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 17);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "谷值";
-            this.label4.Click += new System.EventHandler(this.lblTime_Click);
+            this.lblPositionMinValue.AutoSize = true;
+            this.lblPositionMinValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPositionMinValue.Location = new System.Drawing.Point(337, 52);
+            this.lblPositionMinValue.Name = "lblPositionMinValue";
+            this.lblPositionMinValue.Size = new System.Drawing.Size(38, 17);
+            this.lblPositionMinValue.TabIndex = 26;
+            this.lblPositionMinValue.Text = "谷值";
+            this.lblPositionMinValue.Click += new System.EventHandler(this.lblTime_Click);
             // 
             // label9
             // 
@@ -1034,71 +1045,71 @@
             this.label9.Text = "峰值";
             this.label9.Click += new System.EventHandler(this.lblTime_Click);
             // 
-            // label6
+            // lblLoadMaxValue
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(644, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 17);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "峰值";
-            this.label6.Click += new System.EventHandler(this.lblTime_Click);
+            this.lblLoadMaxValue.AutoSize = true;
+            this.lblLoadMaxValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoadMaxValue.Location = new System.Drawing.Point(644, 28);
+            this.lblLoadMaxValue.Name = "lblLoadMaxValue";
+            this.lblLoadMaxValue.Size = new System.Drawing.Size(38, 17);
+            this.lblLoadMaxValue.TabIndex = 26;
+            this.lblLoadMaxValue.Text = "峰值";
+            this.lblLoadMaxValue.Click += new System.EventHandler(this.lblTime_Click);
             // 
-            // label1
+            // lblTestCycles
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1095, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 20);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "试验次数";
-            this.label1.Click += new System.EventHandler(this.lblTime_Click);
+            this.lblTestCycles.AutoSize = true;
+            this.lblTestCycles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTestCycles.Location = new System.Drawing.Point(1095, 1);
+            this.lblTestCycles.Name = "lblTestCycles";
+            this.lblTestCycles.Size = new System.Drawing.Size(77, 20);
+            this.lblTestCycles.TabIndex = 26;
+            this.lblTestCycles.Text = "试验次数";
+            this.lblTestCycles.Click += new System.EventHandler(this.lblTime_Click);
             // 
-            // label8
+            // lblExtensionMaxMin
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(995, 1);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 20);
-            this.label8.TabIndex = 26;
-            this.label8.Text = "变形峰谷值";
-            this.label8.Click += new System.EventHandler(this.lblTime_Click);
+            this.lblExtensionMaxMin.AutoSize = true;
+            this.lblExtensionMaxMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExtensionMaxMin.Location = new System.Drawing.Point(995, 1);
+            this.lblExtensionMaxMin.Name = "lblExtensionMaxMin";
+            this.lblExtensionMaxMin.Size = new System.Drawing.Size(94, 20);
+            this.lblExtensionMaxMin.TabIndex = 26;
+            this.lblExtensionMaxMin.Text = "变形峰谷值";
+            this.lblExtensionMaxMin.Click += new System.EventHandler(this.lblTime_Click);
             // 
-            // label5
+            // lblLoadMaxMin
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(671, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 20);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "试验力峰谷值";
-            this.label5.Click += new System.EventHandler(this.lblTime_Click);
+            this.lblLoadMaxMin.AutoSize = true;
+            this.lblLoadMaxMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoadMaxMin.Location = new System.Drawing.Point(671, 2);
+            this.lblLoadMaxMin.Name = "lblLoadMaxMin";
+            this.lblLoadMaxMin.Size = new System.Drawing.Size(111, 20);
+            this.lblLoadMaxMin.TabIndex = 26;
+            this.lblLoadMaxMin.Text = "试验力峰谷值";
+            this.lblLoadMaxMin.Click += new System.EventHandler(this.lblTime_Click);
             // 
-            // label3
+            // lblPositionMaxValue
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(337, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 17);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "峰值";
-            this.label3.Click += new System.EventHandler(this.lblTime_Click);
+            this.lblPositionMaxValue.AutoSize = true;
+            this.lblPositionMaxValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPositionMaxValue.Location = new System.Drawing.Point(337, 28);
+            this.lblPositionMaxValue.Name = "lblPositionMaxValue";
+            this.lblPositionMaxValue.Size = new System.Drawing.Size(38, 17);
+            this.lblPositionMaxValue.TabIndex = 26;
+            this.lblPositionMaxValue.Text = "峰值";
+            this.lblPositionMaxValue.Click += new System.EventHandler(this.lblTime_Click);
             // 
-            // label2
+            // lblPositionMaxMin
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(381, 2);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 20);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "位移峰谷值";
-            this.label2.Click += new System.EventHandler(this.lblTime_Click);
+            this.lblPositionMaxMin.AutoSize = true;
+            this.lblPositionMaxMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPositionMaxMin.Location = new System.Drawing.Point(381, 2);
+            this.lblPositionMaxMin.Name = "lblPositionMaxMin";
+            this.lblPositionMaxMin.Size = new System.Drawing.Size(94, 20);
+            this.lblPositionMaxMin.TabIndex = 26;
+            this.lblPositionMaxMin.Text = "位移峰谷值";
+            this.lblPositionMaxMin.Click += new System.EventHandler(this.lblTime_Click);
             // 
             // lblTime
             // 
@@ -2882,13 +2893,6 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
-            // startStopDrawToolStripMenuItem
-            // 
-            this.startStopDrawToolStripMenuItem.Name = "startStopDrawToolStripMenuItem";
-            this.startStopDrawToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.startStopDrawToolStripMenuItem.Text = "暂停绘制";
-            this.startStopDrawToolStripMenuItem.Click += new System.EventHandler(this.startStopDrawToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3123,25 +3127,25 @@
         private System.Windows.Forms.CheckBox cb_TarePos;
         private System.Windows.Forms.CheckBox cb_TareExt;
         private System.Windows.Forms.CheckBox cb_TareLoad;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPositionMaxMin;
         private System.Windows.Forms.TextBox tb_MaxPos;
         private System.Windows.Forms.TextBox tb_MinPos;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblPositionMaxValue;
+        private System.Windows.Forms.Label lblPositionMinValue;
+        private System.Windows.Forms.Label lblLoadMinValue;
+        private System.Windows.Forms.Label lblLoadMaxValue;
+        private System.Windows.Forms.Label lblLoadMaxMin;
         private System.Windows.Forms.TextBox tb_MinLoad;
         private System.Windows.Forms.TextBox tb_MaxLoad;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblExtensionMaxMin;
         private System.Windows.Forms.TextBox tb_MinExt;
         private System.Windows.Forms.TextBox tb_MaxExt;
         private DevComponents.DotNetBar.ButtonX btnX_SetHigh;
         private DevComponents.DotNetBar.ButtonX btnX_SetLow;
         private System.Windows.Forms.ToolStripMenuItem ShowLogToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTestCycles;
         private System.Windows.Forms.TextBox tbX_TestCycles;
         private System.Windows.Forms.ToolStripMenuItem startStopDrawToolStripMenuItem;
     }

@@ -610,6 +610,7 @@ namespace DoPE10Net_CSharpDemo
 
         private int OnDataBlock(ref DoPE.OnDataBlock Block, object Parameter)
         {
+            string strCSVLog = "";
             if (Block.Data.Length > 0)
             {
                 // refesh edit controls with the latest sample
@@ -618,30 +619,39 @@ namespace DoPE10Net_CSharpDemo
 
                 text = String.Format("{0}", Sample.Time.ToString("0.000"));
                 guiTime.Text = text;
+                strCSVLog += text + ",";
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
                 guiPosition.Text = text;
+                strCSVLog += text + ",";
                 data_display1 = decimal.Parse(guiPosition.Text);
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
                 guiLoad.Text = text;
+                strCSVLog += text + ",";
                 data_display2 = decimal.Parse(guiLoad.Text);
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
                 guiExtension.Text = text;
+                strCSVLog += text + ",";
                 data_display3 = decimal.Parse(guiExtension.Text);
 
-                string aaa = String.Format("{0}", Sample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
+                text = String.Format("{0}", Sample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
+                strCSVLog += text + ",";
+
 
                 //if ((Sample.Cycles) % 2 == 0)
                 {
-                    tbX_TestCycles.Text = (Sample.Cycles * 2).ToString();
+                    strCSVLog += (Sample.Cycles << 1).ToString() + ",";
+                    tbX_TestCycles.Text = (Sample.Cycles >> 1).ToString();
                 }
+
+                LogHelper.SaveCsvData(strCSVLog);
+
+
                 //波形图
-                //if (Block.Data.Length > 0)
+                if (bConnected && bActivated)
                 {
-                    if (bConnected && bActivated)
-                    {
-                        ShowWave(Block);
-                    }
+                    ShowWave(Block);
                 }
+
                 //for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
                 //{
                 //    multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
@@ -1510,10 +1520,14 @@ namespace DoPE10Net_CSharpDemo
         }
 
 
-
+        /// <summary>
+        /// 显示日志窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowLogToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //
         }
 
 
@@ -1565,14 +1579,10 @@ namespace DoPE10Net_CSharpDemo
             if (cb_TareLoad.Checked)
             {
                 MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, true);
-
-
             }
             else
             {
                 MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, false);
-
-
             }
         }
 
