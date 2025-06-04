@@ -1,0 +1,32 @@
+{
+	//
+	"MainForm" :{
+		"lblTime": "RunTime [s]",
+		"lblPosition":"Position [mm]",
+		"lblPositionMaxMin":"位移峰谷值",
+		"lblPositionMaxValue":"峰值",
+		"lblPositionMinValue":"谷值",
+		"lblLoad":"试验力 [N]",
+		"lblLoadMaxMin":"试验力峰谷值",
+		"lblLoadMaxValue":"峰值",
+		"lblLoadMinValue":"谷值",
+		"lblExtension":"变形 [mm]",
+		"lblExtensionMaxMin":"变形峰谷值",
+		"lblExtensionMaxValue":"峰值",
+		"lblExtensionMinValue":"谷值",
+		"btnX_Connect":"连    接",
+		"btnX_Disconnect":"断    开",
+		"btnX_MoveQuickUp":"快速向上",
+		"bntX_MoveUp":"向上",
+		"bntX_MoveHalt":"保持",
+		"bntX_MoveDown":"向下",
+		"btnX_QuickMoveDown":"快速向下",
+        "bntX_GUIOn": "激活",
+        "bntX_GUIOff": "停用",
+        "btnX_SetHigh": "高压",
+        "btnX_SetLow": "低压",
+	
+
+		}
+	
+}
