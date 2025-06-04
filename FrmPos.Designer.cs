@@ -97,7 +97,7 @@
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(80, 23);
             this.labelX2.TabIndex = 0;
-            this.labelX2.Text = "移动控制";
+            this.labelX2.Text = "控制方式";
             // 
             // labelX3
             // 

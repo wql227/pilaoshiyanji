@@ -52,14 +52,6 @@ namespace DoPE10Net_CSharpDemo
 
             cmbX_Dyn_MoveCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
-            //tbX_Dyn_StartSpeed.Text = "20";
-
-            //tbX_Cycles.Text = "50";
-            //tbX_Dyn_PeakCtrl.Text = "0";
-            //tbX_Dyn_Offset.Text = "-10";
-            //tbX_Dyn_Amplitude.Text = "3";
-            //tbX_Dyn_Frequency.Text = "2";
-
             LoadIni();
         }
 
@@ -124,8 +116,8 @@ namespace DoPE10Net_CSharpDemo
             Amplitude = double.Parse(tbX_Dyn_Amplitude.Text);
             Frequency = double.Parse(tbX_Dyn_Frequency.Text);
             HalfCycles = int.Parse(tbX_Cycles.Text); /** 2;*/
-            Modify = false;
-            RelativeDestination = false;
+            Modify = cbX_DynCtrl_ModifyParam.Checked;
+            RelativeDestination = cbX_DynCtrl_RelativeDestinations.Checked;
             HaltAtPlusAmplitude = 0.0;
             HaltAtMinusAmplitude = 0.0;
             SpeedToDestination = 0.0;

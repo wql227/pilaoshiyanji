@@ -72,7 +72,7 @@ namespace DoPE10Net_CSharpDemo
             if (!File.Exists(paths + DateTime.Now.ToString("yyyy-MM-dd") + ".CSV"))
             {
                 //判断是否存在，若不存在，则首先添加Hearder
-                string ColumnHead = "Time [s],Position [mm],Load [ N],Extension [ Rev],Command [ ],";
+                string ColumnHead = "Time [s],Position [mm],Load [ N],Extension [ Rev],Command [ ],Cycles [ ]";
                 FileStream fs1 = new FileStream(filename, FileMode.Create, FileAccess.Write);//创建写入文件
                 StreamWriter sw1 = new StreamWriter(fs1, Encoding.Default);
                 //"\r\n"回车换行,下一条记录直接换行

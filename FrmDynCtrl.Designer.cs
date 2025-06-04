@@ -55,7 +55,6 @@
             this.cbX_Dyn_PeakCtrl = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbX_Dyn_FadeInOut = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.tbX_Dyn_PeakCtrl = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbX_Cycles = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnX_Dyn_Offset_S1 = new DevComponents.DotNetBar.ButtonX();
@@ -63,10 +62,8 @@
             this.btnX_Dyn_Offset_S2 = new DevComponents.DotNetBar.ButtonX();
             this.btnX_Dyn_Offset_S3 = new DevComponents.DotNetBar.ButtonX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.tbX_Dyn_Amplitude = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
-            this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.btnX_Dyn_Offset_P1 = new DevComponents.DotNetBar.ButtonX();
             this.btnX_Dyn_Offset_P2 = new DevComponents.DotNetBar.ButtonX();
             this.btnX_Dyn_Offset_P3 = new DevComponents.DotNetBar.ButtonX();
@@ -92,6 +89,8 @@
             this.comboItem13 = new DevComponents.Editors.ComboItem();
             this.comboItem14 = new DevComponents.Editors.ComboItem();
             this.comboItem15 = new DevComponents.Editors.ComboItem();
+            this.cbX_DynCtrl_ModifyParam = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbX_DynCtrl_RelativeDestinations = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,7 +118,7 @@
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(99, 23);
             this.labelX2.TabIndex = 0;
-            this.labelX2.Text = "StartCtrl";
+            this.labelX2.Text = "趋近控制";
             // 
             // labelX3
             // 
@@ -132,7 +131,7 @@
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(99, 23);
             this.labelX3.TabIndex = 0;
-            this.labelX3.Text = "StartSpeed";
+            this.labelX3.Text = "趋近速度";
             // 
             // labelX4
             // 
@@ -145,7 +144,7 @@
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(99, 23);
             this.labelX4.TabIndex = 0;
-            this.labelX4.Text = "MoveCtrl";
+            this.labelX4.Text = "控制方式";
             // 
             // labelX5
             // 
@@ -158,7 +157,7 @@
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(99, 23);
             this.labelX5.TabIndex = 0;
-            this.labelX5.Text = "WaveFrom";
+            this.labelX5.Text = "波形方式";
             // 
             // labelX6
             // 
@@ -171,7 +170,7 @@
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(99, 23);
             this.labelX6.TabIndex = 0;
-            this.labelX6.Text = "PeakCtrl";
+            this.labelX6.Text = "峰值控制";
             // 
             // labelX7
             // 
@@ -184,7 +183,7 @@
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(99, 23);
             this.labelX7.TabIndex = 0;
-            this.labelX7.Text = "Cycles";
+            this.labelX7.Text = "循环次数";
             // 
             // cmbX_Dyn_EDC
             // 
@@ -359,7 +358,7 @@
             this.cbX_Dyn_FadeInOut.Size = new System.Drawing.Size(100, 23);
             this.cbX_Dyn_FadeInOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_Dyn_FadeInOut.TabIndex = 3;
-            this.cbX_Dyn_FadeInOut.Text = "FadeInOut";
+            this.cbX_Dyn_FadeInOut.Text = "淡入淡出";
             // 
             // labelX8
             // 
@@ -370,22 +369,9 @@
             this.labelX8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX8.Location = new System.Drawing.Point(117, 248);
             this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(63, 23);
+            this.labelX8.Size = new System.Drawing.Size(103, 23);
             this.labelX8.TabIndex = 0;
-            this.labelX8.Text = "Offset";
-            // 
-            // labelX9
-            // 
-            // 
-            // 
-            // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX9.Location = new System.Drawing.Point(180, 248);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(40, 23);
-            this.labelX9.TabIndex = 0;
-            this.labelX9.Text = "Unit";
+            this.labelX8.Text = "偏移量 Unit";
             // 
             // tbX_Dyn_PeakCtrl
             // 
@@ -460,6 +446,7 @@
             // 
             this.btnX_Dyn_Offset_S3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Offset_S3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_Dyn_Offset_S3.Enabled = false;
             this.btnX_Dyn_Offset_S3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Dyn_Offset_S3.Location = new System.Drawing.Point(24, 276);
             this.btnX_Dyn_Offset_S3.Name = "btnX_Dyn_Offset_S3";
@@ -478,22 +465,9 @@
             this.labelX10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX10.Location = new System.Drawing.Point(117, 307);
             this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(82, 23);
+            this.labelX10.Size = new System.Drawing.Size(103, 23);
             this.labelX10.TabIndex = 0;
-            this.labelX10.Text = "Amplitude";
-            // 
-            // labelX11
-            // 
-            // 
-            // 
-            // 
-            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX11.Location = new System.Drawing.Point(205, 307);
-            this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(40, 23);
-            this.labelX11.TabIndex = 0;
-            this.labelX11.Text = "Unit";
+            this.labelX10.Text = "振幅 Unit";
             // 
             // tbX_Dyn_Amplitude
             // 
@@ -518,22 +492,9 @@
             this.labelX12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX12.Location = new System.Drawing.Point(117, 368);
             this.labelX12.Name = "labelX12";
-            this.labelX12.Size = new System.Drawing.Size(82, 23);
+            this.labelX12.Size = new System.Drawing.Size(103, 23);
             this.labelX12.TabIndex = 0;
-            this.labelX12.Text = "Frequency";
-            // 
-            // labelX13
-            // 
-            // 
-            // 
-            // 
-            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX13.Location = new System.Drawing.Point(205, 368);
-            this.labelX13.Name = "labelX13";
-            this.labelX13.Size = new System.Drawing.Size(40, 23);
-            this.labelX13.TabIndex = 0;
-            this.labelX13.Text = "Hz";
+            this.labelX12.Text = "频率 Hz";
             // 
             // btnX_Dyn_Offset_P1
             // 
@@ -565,6 +526,7 @@
             // 
             this.btnX_Dyn_Offset_P3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Offset_P3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_Dyn_Offset_P3.Enabled = false;
             this.btnX_Dyn_Offset_P3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Dyn_Offset_P3.Location = new System.Drawing.Point(288, 276);
             this.btnX_Dyn_Offset_P3.Name = "btnX_Dyn_Offset_P3";
@@ -604,6 +566,7 @@
             // 
             this.btnX_Dyn_Amplitude_S3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Amplitude_S3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_Dyn_Amplitude_S3.Enabled = false;
             this.btnX_Dyn_Amplitude_S3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Dyn_Amplitude_S3.Location = new System.Drawing.Point(24, 337);
             this.btnX_Dyn_Amplitude_S3.Name = "btnX_Dyn_Amplitude_S3";
@@ -643,6 +606,7 @@
             // 
             this.btnX_Dyn_Amplitude_P3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Amplitude_P3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_Dyn_Amplitude_P3.Enabled = false;
             this.btnX_Dyn_Amplitude_P3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Dyn_Amplitude_P3.Location = new System.Drawing.Point(288, 337);
             this.btnX_Dyn_Amplitude_P3.Name = "btnX_Dyn_Amplitude_P3";
@@ -696,6 +660,7 @@
             // 
             this.btnX_Dyn_Freq_P3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Freq_P3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_Dyn_Freq_P3.Enabled = false;
             this.btnX_Dyn_Freq_P3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Dyn_Freq_P3.Location = new System.Drawing.Point(288, 398);
             this.btnX_Dyn_Freq_P3.Name = "btnX_Dyn_Freq_P3";
@@ -735,6 +700,7 @@
             // 
             this.btnX_Dyn_Freq_S3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Freq_S3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_Dyn_Freq_S3.Enabled = false;
             this.btnX_Dyn_Freq_S3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Dyn_Freq_S3.Location = new System.Drawing.Point(24, 397);
             this.btnX_Dyn_Freq_S3.Name = "btnX_Dyn_Freq_S3";
@@ -822,11 +788,39 @@
             // 
             this.comboItem15.Text = "16";
             // 
+            // cbX_DynCtrl_ModifyParam
+            // 
+            // 
+            // 
+            // 
+            this.cbX_DynCtrl_ModifyParam.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_DynCtrl_ModifyParam.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbX_DynCtrl_ModifyParam.Location = new System.Drawing.Point(117, 429);
+            this.cbX_DynCtrl_ModifyParam.Name = "cbX_DynCtrl_ModifyParam";
+            this.cbX_DynCtrl_ModifyParam.Size = new System.Drawing.Size(196, 23);
+            this.cbX_DynCtrl_ModifyParam.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_DynCtrl_ModifyParam.TabIndex = 3;
+            this.cbX_DynCtrl_ModifyParam.Text = "修改参数";
+            // 
+            // cbX_DynCtrl_RelativeDestinations
+            // 
+            // 
+            // 
+            // 
+            this.cbX_DynCtrl_RelativeDestinations.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_DynCtrl_RelativeDestinations.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbX_DynCtrl_RelativeDestinations.Location = new System.Drawing.Point(117, 458);
+            this.cbX_DynCtrl_RelativeDestinations.Name = "cbX_DynCtrl_RelativeDestinations";
+            this.cbX_DynCtrl_RelativeDestinations.Size = new System.Drawing.Size(196, 23);
+            this.cbX_DynCtrl_RelativeDestinations.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_DynCtrl_RelativeDestinations.TabIndex = 3;
+            this.cbX_DynCtrl_RelativeDestinations.Text = "相对目的地";
+            // 
             // FrmDynCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 440);
+            this.ClientSize = new System.Drawing.Size(328, 482);
             this.Controls.Add(this.cmbX_Dyn_PeakCtrl);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.btnX_Dyn_Freq_S3);
@@ -847,6 +841,8 @@
             this.Controls.Add(this.btnX_Dyn_Amplitude_P1);
             this.Controls.Add(this.btnX_Dyn_Offset_P1);
             this.Controls.Add(this.btnX_Dyn_Offset_S1);
+            this.Controls.Add(this.cbX_DynCtrl_RelativeDestinations);
+            this.Controls.Add(this.cbX_DynCtrl_ModifyParam);
             this.Controls.Add(this.cbX_Dyn_FadeInOut);
             this.Controls.Add(this.cbX_Dyn_PeakCtrl);
             this.Controls.Add(this.tbX_Dyn_Frequency);
@@ -861,9 +857,6 @@
             this.Controls.Add(this.cmbX_Dyn_StartSpeed_Unit);
             this.Controls.Add(this.cmbX_Dyn_StartCtrl);
             this.Controls.Add(this.cmbX_Dyn_EDC);
-            this.Controls.Add(this.labelX13);
-            this.Controls.Add(this.labelX11);
-            this.Controls.Add(this.labelX9);
             this.Controls.Add(this.labelX12);
             this.Controls.Add(this.labelX10);
             this.Controls.Add(this.labelX8);
@@ -902,7 +895,6 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX cbX_Dyn_PeakCtrl;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbX_Dyn_FadeInOut;
         private DevComponents.DotNetBar.LabelX labelX8;
-        private DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_Dyn_PeakCtrl;
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_Cycles;
         private DevComponents.DotNetBar.ButtonX btnX_Dyn_Offset_S1;
@@ -910,10 +902,8 @@
         private DevComponents.DotNetBar.ButtonX btnX_Dyn_Offset_S2;
         private DevComponents.DotNetBar.ButtonX btnX_Dyn_Offset_S3;
         private DevComponents.DotNetBar.LabelX labelX10;
-        private DevComponents.DotNetBar.LabelX labelX11;
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_Dyn_Amplitude;
         private DevComponents.DotNetBar.LabelX labelX12;
-        private DevComponents.DotNetBar.LabelX labelX13;
         private DevComponents.DotNetBar.ButtonX btnX_Dyn_Offset_P1;
         private DevComponents.DotNetBar.ButtonX btnX_Dyn_Offset_P2;
         private DevComponents.DotNetBar.ButtonX btnX_Dyn_Offset_P3;
@@ -948,5 +938,7 @@
         private DevComponents.Editors.ComboItem comboItem13;
         private DevComponents.Editors.ComboItem comboItem14;
         private DevComponents.Editors.ComboItem comboItem15;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_DynCtrl_ModifyParam;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_DynCtrl_RelativeDestinations;
     }
 }
