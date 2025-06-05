@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace DoPE10Net_CSharpDemo
+namespace DoPENetConnect
 {
     static class Program
     {
