@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 //using DevComponents.DotNetBar2;
 
-namespace DoPE10Net_CSharpDemo
+namespace DoPENetConnect
 {
     public partial class FrmOperationOptions : Office2007Form
     {

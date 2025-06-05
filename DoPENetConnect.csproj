@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1B65A701-14FF-4F71-A7FB-B4A177D15CFD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>DoPE10Net_CSharpDemo</RootNamespace>
-    <AssemblyName>DoPE10Net_CSharpDemo</AssemblyName>
+    <RootNamespace>DoPENetConnect</RootNamespace>
+    <AssemblyName>DoPENetConnect</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

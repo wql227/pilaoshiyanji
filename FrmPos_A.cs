@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DoPE10Net_CSharpDemo
+namespace DoPENetConnect
 {
     public partial class FrmPos_A : Form
     {

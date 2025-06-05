@@ -84,7 +84,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using static Doli.DoPE10.DoPE;
 
-namespace DoPE10Net_CSharpDemo
+namespace DoPENetConnect
 {
     /// <summary>
     /// Demo-application for the DoPE .NET library.
@@ -146,6 +146,14 @@ namespace DoPE10Net_CSharpDemo
         /// </summary>
         private bool bPause = false;
 
+        /// <summary>
+        /// 是否正在运行
+        /// </summary>
+        private bool isRunning = false;
+
+        private int nCount = 0;
+
+        public Stopwatch stopwatch = new Stopwatch();
 
 
         readonly double[] Values = new double[25];
@@ -350,7 +358,8 @@ namespace DoPE10Net_CSharpDemo
                 // for a 300 ms display refresh
                 DoPE.Machine Machine = new DoPE.Machine(0);
                 MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
-                MyEdc.Eh.SetOnDataBlockSize((Int32)(0.300 / Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2));
+                double aaa = (0.030 / Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2);
+                MyEdc.Eh.SetOnDataBlockSize((Int32)(aaa));
                 MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
                 MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
                 MyEdc.Eh.OnPosMsgHdlr += new DoPE.OnPosMsgHdlr(OnPosMsg);
@@ -613,29 +622,54 @@ namespace DoPE10Net_CSharpDemo
             string strCSVLog = "";
             if (Block.Data.Length > 0)
             {
+                nCount++;
                 // refesh edit controls with the latest sample
                 DoPE.Data Sample = Block.Data[Block.Data.Length - 1].Data;
                 string text;
 
+                //Sample.CtrlState1.
+
                 text = String.Format("{0}", Sample.Time.ToString("0.000"));
-                guiTime.Text = text;
+                //if (nCount >= 20)
+                //{
+                //    guiTime.Text = text;
+                //}
+
                 strCSVLog += text + ",";
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
-                guiPosition.Text = text;
+
+                // if (Math.Round(Sample.Time, 1) % 2 == 1)
+                if (nCount >= 20)
+                {
+                    guiPosition.Text = text;
+                }
                 strCSVLog += text + ",";
-                data_display1 = decimal.Parse(guiPosition.Text);
+                //data_display1 = decimal.Parse(guiPosition.Text == "" ? "" : "0");
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
-                guiLoad.Text = text;
+                if (nCount >= 20)
+                {
+                    guiLoad.Text = text;
+                }
+
                 strCSVLog += text + ",";
-                data_display2 = decimal.Parse(guiLoad.Text);
+                //data_display2 = decimal.Parse(guiLoad.Text);
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
-                guiExtension.Text = text;
+
+                if (nCount >= 20)
+                {
+                    guiExtension.Text = text;
+                }
+
                 strCSVLog += text + ",";
-                data_display3 = decimal.Parse(guiExtension.Text);
+                //data_display3 = decimal.Parse(guiExtension.Text);
 
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
                 strCSVLog += text + ",";
 
+                if (nCount >= 20)
+                {
+                    nCount = 0;
+                }
 
                 //if ((Sample.Cycles) % 2 == 0)
                 {
@@ -645,6 +679,7 @@ namespace DoPE10Net_CSharpDemo
 
                 LogHelper.SaveCsvData(strCSVLog);
 
+                //tb_MaxPos.Text =  FindPeaks(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
 
                 //波形图
                 if (bConnected && bActivated)
@@ -1147,6 +1182,11 @@ namespace DoPE10Net_CSharpDemo
 
             btnX_SetLow.Checked = false;
             btnX_SetHigh.Checked = false;
+
+            if (stopwatch.IsRunning)
+            {
+                stopwatch.Stop();
+            }
         }
 
 
@@ -1263,46 +1303,56 @@ namespace DoPE10Net_CSharpDemo
                         }
 
 
-
-
                         //计算Position 峰谷值
-                        if (maxPos < float.Parse(guiPosition.Text))
+
+                        if (double.Parse(guiPosition.Text) > double.Parse(guiPosition.Text) * 0.9 )
                         {
-                            maxPos = float.Parse(guiPosition.Text);
-                            tb_MaxPos.Text = maxPos.ToString();
+                            tb_MaxPos.Text = guiPosition.Text.ToString();
                         }
 
-                        if (minPos > float.Parse(guiPosition.Text))
+                        if (double.Parse(guiPosition.Text) < double.Parse(guiPosition.Text) * 0.1)
                         {
-                            minPos = float.Parse(guiPosition.Text);
-                            tb_MinPos.Text = minPos.ToString();
+                            tb_MinPos.Text = guiPosition.Text.ToString();
                         }
 
-                        //计算Load 峰谷值
-                        if (maxLoad < float.Parse(guiLoad.Text))
-                        {
-                            maxLoad = float.Parse(guiLoad.Text);
-                            tb_MaxLoad.Text = maxLoad.ToString();
-                        }
 
-                        if (minLoad > float.Parse(guiLoad.Text))
-                        {
-                            minLoad = float.Parse(guiLoad.Text);
-                            tb_MinLoad.Text = minLoad.ToString();
-                        }
+                        //if (maxPos < float.Parse(guiPosition.Text))
+                        //{
+                        //    maxPos = float.Parse(guiPosition.Text);
+                        //    tb_MaxPos.Text = maxPos.ToString();
+                        //}
 
-                        //计算Extension 峰谷值
-                        if (maxExt < float.Parse(guiExtension.Text))
-                        {
-                            maxExt = float.Parse(guiExtension.Text);
-                            tb_MaxLoad.Text = maxExt.ToString();
-                        }
+                        //if (minPos > float.Parse(guiPosition.Text))
+                        //{
+                        //    minPos = float.Parse(guiPosition.Text);
+                        //    tb_MinPos.Text = minPos.ToString();
+                        //}
 
-                        if (minExt > float.Parse(guiExtension.Text))
-                        {
-                            minExt = float.Parse(guiExtension.Text);
-                            tb_MinExt.Text = minExt.ToString();
-                        }
+                        ////计算Load 峰谷值
+                        //if (maxLoad < float.Parse(guiLoad.Text))
+                        //{
+                        //    maxLoad = float.Parse(guiLoad.Text);
+                        //    tb_MaxLoad.Text = maxLoad.ToString();
+                        //}
+
+                        //if (minLoad > float.Parse(guiLoad.Text))
+                        //{
+                        //    minLoad = float.Parse(guiLoad.Text);
+                        //    tb_MinLoad.Text = minLoad.ToString();
+                        //}
+
+                        ////计算Extension 峰谷值
+                        //if (maxExt < float.Parse(guiExtension.Text))
+                        //{
+                        //    maxExt = float.Parse(guiExtension.Text);
+                        //    tb_MaxLoad.Text = maxExt.ToString();
+                        //}
+
+                        //if (minExt > float.Parse(guiExtension.Text))
+                        //{
+                        //    minExt = float.Parse(guiExtension.Text);
+                        //    tb_MinExt.Text = minExt.ToString();
+                        //}
 
                         //nTestCount++;
 
@@ -1356,9 +1406,6 @@ namespace DoPE10Net_CSharpDemo
         }
 
 
-
-
-
         /// <summary>
         /// 断开设备连接
         /// </summary>
@@ -1388,6 +1435,9 @@ namespace DoPE10Net_CSharpDemo
             {
                 return;
             }
+
+            TimeSpan elapsed = stopwatch.Elapsed;
+            guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
 
             EnableButton();
         }
@@ -1432,6 +1482,11 @@ namespace DoPE10Net_CSharpDemo
         {
             DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
 
+            //正常返回，开始计时
+            if (error == DoPE.ERR.NOERROR)
+            {
+                stopwatch.Start();
+            }
         }
 
 
@@ -1445,6 +1500,12 @@ namespace DoPE10Net_CSharpDemo
         {
             DoPE.ERR error = MyEdc.Move.Pos_A(control, acc, speed, dec, destination, ref MyTan);
 
+            //正常返回，开始计时
+            if (error == DoPE.ERR.NOERROR)
+            {
+                stopwatch.Start();
+            }
+
         }
 
 
@@ -1455,6 +1516,12 @@ namespace DoPE10Net_CSharpDemo
             DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0, 
                 0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode, 
                 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
+
+            //正常返回，开始计时
+            if (error == DoPE.ERR.NOERROR)
+            {
+                stopwatch.Start();
+            }
 
         }
 
@@ -1619,6 +1686,39 @@ namespace DoPE10Net_CSharpDemo
             }
         }
 
+        private void btnX_AxisYMax_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY.Maximum += 5;
+            chart_machine.ChartAreas[0].AxisY.Minimum += 5;
+        }
 
+        private void btnX_AsixYMin_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY.Maximum -= 5;
+            chart_machine.ChartAreas[0].AxisY.Minimum -= 5;
+
+        }
+
+        //测试寻峰算法
+        public static List<double> FindPeaks(int[] data)
+        {
+            var peaks = new List<double>();
+
+            if (data.Length < 3)
+            {
+                return peaks; // 如果数组长度小于3，则不可能有峰值
+            }
+
+            for (int i = 1; i < data.Length - 1; i++)
+            {
+                // 检查当前点是否为峰值
+                if (data[i] > data[i - 1] && data[i] > data[i + 1])
+                {
+                    peaks.Add(i); // 添加峰值的位置
+                }
+            }
+
+            return peaks;
+        }
     }
 }

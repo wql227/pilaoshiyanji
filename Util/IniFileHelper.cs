@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace DoPE10Net_CSharpDemo
+namespace DoPENetConnect
 {
     // INI文件操作类
     class IniFileHelper

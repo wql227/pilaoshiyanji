@@ -1,4 +1,4 @@
-﻿namespace DoPE10Net_CSharpDemo
+﻿namespace DoPENetConnect
 {
     partial class FrmDynCtrl
     {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace DoPE10Net_CSharpDemo
+namespace DoPENetConnect
 {
     public class LogHelper
     {

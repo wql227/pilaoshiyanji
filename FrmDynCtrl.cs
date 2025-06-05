@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using static Doli.DoPE10.DoPE;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace DoPE10Net_CSharpDemo
+namespace DoPENetConnect
 {
     public partial class FrmDynCtrl : Form
     {
