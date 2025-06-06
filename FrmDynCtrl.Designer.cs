@@ -371,7 +371,7 @@
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(103, 23);
             this.labelX8.TabIndex = 0;
-            this.labelX8.Text = "偏移量 Unit";
+            this.labelX8.Text = "偏移量 mm";
             // 
             // tbX_Dyn_PeakCtrl
             // 
@@ -467,7 +467,7 @@
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(103, 23);
             this.labelX10.TabIndex = 0;
-            this.labelX10.Text = "振幅 Unit";
+            this.labelX10.Text = "振幅 mm";
             // 
             // tbX_Dyn_Amplitude
             // 

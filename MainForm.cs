@@ -196,6 +196,8 @@ namespace DoPENetConnect
         /// </summary>
         double x_Position = 0.0;
         double x_Load = 0.0;
+        double x_Extension = 0.0;
+        double x_Command = 0.0;
 
         /// <summary>
         /// Position 峰谷值
@@ -928,6 +930,29 @@ namespace DoPENetConnect
             chart_machine.Series[1].Points.Clear();
             //x_Load = 0.0;
             chart_machine.Series[1].Points.AddXY(0.0, 0.0);
+
+
+
+            //// 获取或创建 ChartArea
+            //ChartArea chartArea = chart_machine.ChartAreas[0];
+
+            //// 设置主 Y 轴（左边）
+            //chartArea.AxisY.Title = "Position";
+
+            //// 添加副 Y 轴（右边）
+            //chartArea.AxisY2.Enabled = AxisEnabled.True;
+            //chartArea.AxisY2.Title = "Load";
+            //chartArea.AxisY2.LabelStyle.Enabled = true;
+
+            //// 为 Series[0] 设置使用主 Y 轴（AxisY）
+            //chart_machine.Series[0].YAxisType = AxisType.Primary;
+
+            //// 为 Series[1] 设置使用副 Y 轴（AxisY2）
+            //chart_machine.Series[1].YAxisType = AxisType.Secondary;
+
+            //// 可选：设置样式以区分两个系列
+            //chart_machine.Series[0].Color = Color.Blue;
+            //chart_machine.Series[1].Color = Color.Red;
         }
 
 
@@ -1151,14 +1176,14 @@ namespace DoPENetConnect
             if (MyEdc.IsConnected() && bActivated)
             {
                 //位移
-                chart_machine.Series[0].Points.Clear();
-                x_Position = 0.0;
-                chart_machine.Series[0].Points.AddXY(0.0, 0.0);
+                //chart_machine.Series[0].Points.Clear();
+                //x_Position = 0.0;
+                //chart_machine.Series[0].Points.AddXY(0.0, 0.0);
 
-                //试验力
-                chart_machine.Series[1].Points.Clear();
-                x_Load = 0.0;
-                chart_machine.Series[1].Points.AddXY(0.0, 0.0);
+                ////试验力
+                //chart_machine.Series[1].Points.Clear();
+                //x_Load = 0.0;
+                //chart_machine.Series[1].Points.AddXY(0.0, 0.0);
 
                 GetXaxisScale();
 
@@ -1248,7 +1273,7 @@ namespace DoPENetConnect
                             //绘制Position
                             double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
                             //x_Position += nAxisStep;
-                            x_Position += 0.05;
+                            x_Position += 0.03;
 
                             if (chart_machine.Series != null)
                             {
@@ -1280,7 +1305,7 @@ namespace DoPENetConnect
                             //绘制Load
                             double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
                             //x_Load += nAxisStep;
-                            x_Load += 0.05;
+                            x_Load += 0.03;
 
                             if (chart_machine.Series[1] != null)
                             {
@@ -1300,11 +1325,59 @@ namespace DoPENetConnect
                                     chart1.Series[0].Points.AddXY(-1.0, y);
                                 }*/
                             }
+
+                            //绘制Extension
+                            double y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
+                            //x_Load += nAxisStep;
+                            x_Extension += 0.03;
+
+                            if (chart_machine.Series[2] != null)
+                            {
+                                chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
+                                if (chart_machine.Series[2].Points.Count - 1 == 200)
+                                {
+                                    //chart1.Series[0].Points.AddXY(10.0, y);
+                                    chart_machine.Series[2].Points.Clear();
+
+                                    chart_machine.Series[2].Points.AddXY(0.0, y_Extension);
+                                    x_Extension = 0.0;
+                                }
+                                /*if (x >= 10.0)
+                                {
+                                    x = 0.0;
+                                    chart1.Series[0].Points.Clear();
+                                    chart1.Series[0].Points.AddXY(-1.0, y);
+                                }*/
+                            }
+
+                            //绘制Command
+                            //double y_Command = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_DP];
+                            double y_Command = Block.Data[i].Data.Command;
+                            //x_Load += nAxisStep;
+                            x_Command += 0.03;
+
+                            if (chart_machine.Series[3] != null)
+                            {
+                                chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
+                                if (chart_machine.Series[3].Points.Count - 1 == 200)
+                                {
+                                    //chart1.Series[0].Points.AddXY(10.0, y);
+                                    chart_machine.Series[3].Points.Clear();
+
+                                    chart_machine.Series[3].Points.AddXY(0.0, y_Command);
+                                    x_Command = 0.0;
+                                }
+                                /*if (x >= 10.0)
+                                {
+                                    x = 0.0;
+                                    chart1.Series[0].Points.Clear();
+                                    chart1.Series[0].Points.AddXY(-1.0, y);
+                                }*/
+                            }
                         }
 
 
                         //计算Position 峰谷值
-
                         if (double.Parse(guiPosition.Text) > double.Parse(guiPosition.Text) * 0.9 )
                         {
                             tb_MaxPos.Text = guiPosition.Text.ToString();
