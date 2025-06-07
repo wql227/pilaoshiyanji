@@ -1269,7 +1269,9 @@ namespace DoPENetConnect
                     if (!bPause)
                     {
                         for (int i = 50; Block.Data.Length > i; i += 100)
+                        //for (int i = 20; Block.Data.Length > i; i += 100)
                         {
+
                             //绘制Position
                             double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
                             //x_Position += nAxisStep;
@@ -1792,6 +1794,54 @@ namespace DoPENetConnect
             }
 
             return peaks;
+        }
+
+        private void cb_DrawPosition_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_DrawPosition.Checked)
+            {
+                chart_machine.Series[0].Enabled = true;
+            }
+            else
+            {
+                chart_machine.Series[0].Enabled = false;
+            }
+        }
+
+        private void cb_DrawLoad_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_DrawLoad.Checked)
+            {
+                chart_machine.Series[1].Enabled = true;
+            }
+            else
+            {
+                chart_machine.Series[1].Enabled = false;
+            }
+        }
+
+        private void cb_DrawExtension_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_DrawExtension.Checked)
+            {
+                chart_machine.Series[2].Enabled = true;
+            }
+            else
+            {
+                chart_machine.Series[2].Enabled = false;
+            }
+        }
+
+        private void cb_DrawCommand_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_DrawCommand.Checked)
+            {
+                chart_machine.Series[3].Enabled = true;
+            }
+            else
+            {
+                chart_machine.Series[3].Enabled = false;
+            }
         }
     }
 }

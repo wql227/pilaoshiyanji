@@ -242,6 +242,10 @@
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
+            this.cb_DrawPosition = new System.Windows.Forms.CheckBox();
+            this.cb_DrawLoad = new System.Windows.Forms.CheckBox();
+            this.cb_DrawExtension = new System.Windows.Forms.CheckBox();
+            this.cb_DrawCommand = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -359,6 +363,10 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cb_DrawCommand);
+            this.groupBox1.Controls.Add(this.cb_DrawExtension);
+            this.groupBox1.Controls.Add(this.cb_DrawLoad);
+            this.groupBox1.Controls.Add(this.cb_DrawPosition);
             this.groupBox1.Controls.Add(this.btnX_AsixYMin);
             this.groupBox1.Controls.Add(this.btnX_AxisYMax);
             this.groupBox1.Controls.Add(this.chart_machine);
@@ -2932,6 +2940,62 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
+            // cb_DrawPosition
+            // 
+            this.cb_DrawPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_DrawPosition.AutoSize = true;
+            this.cb_DrawPosition.Checked = true;
+            this.cb_DrawPosition.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_DrawPosition.Location = new System.Drawing.Point(1111, 144);
+            this.cb_DrawPosition.Name = "cb_DrawPosition";
+            this.cb_DrawPosition.Size = new System.Drawing.Size(48, 16);
+            this.cb_DrawPosition.TabIndex = 65;
+            this.cb_DrawPosition.Text = "位移";
+            this.cb_DrawPosition.UseVisualStyleBackColor = true;
+            this.cb_DrawPosition.CheckedChanged += new System.EventHandler(this.cb_DrawPosition_CheckedChanged);
+            // 
+            // cb_DrawLoad
+            // 
+            this.cb_DrawLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_DrawLoad.AutoSize = true;
+            this.cb_DrawLoad.Checked = true;
+            this.cb_DrawLoad.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_DrawLoad.Location = new System.Drawing.Point(1111, 167);
+            this.cb_DrawLoad.Name = "cb_DrawLoad";
+            this.cb_DrawLoad.Size = new System.Drawing.Size(60, 16);
+            this.cb_DrawLoad.TabIndex = 65;
+            this.cb_DrawLoad.Text = "试验力";
+            this.cb_DrawLoad.UseVisualStyleBackColor = true;
+            this.cb_DrawLoad.CheckedChanged += new System.EventHandler(this.cb_DrawLoad_CheckedChanged);
+            // 
+            // cb_DrawExtension
+            // 
+            this.cb_DrawExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_DrawExtension.AutoSize = true;
+            this.cb_DrawExtension.Checked = true;
+            this.cb_DrawExtension.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_DrawExtension.Location = new System.Drawing.Point(1111, 189);
+            this.cb_DrawExtension.Name = "cb_DrawExtension";
+            this.cb_DrawExtension.Size = new System.Drawing.Size(48, 16);
+            this.cb_DrawExtension.TabIndex = 65;
+            this.cb_DrawExtension.Text = "变形";
+            this.cb_DrawExtension.UseVisualStyleBackColor = true;
+            this.cb_DrawExtension.CheckedChanged += new System.EventHandler(this.cb_DrawExtension_CheckedChanged);
+            // 
+            // cb_DrawCommand
+            // 
+            this.cb_DrawCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_DrawCommand.AutoSize = true;
+            this.cb_DrawCommand.Checked = true;
+            this.cb_DrawCommand.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_DrawCommand.Location = new System.Drawing.Point(1111, 212);
+            this.cb_DrawCommand.Name = "cb_DrawCommand";
+            this.cb_DrawCommand.Size = new System.Drawing.Size(48, 16);
+            this.cb_DrawCommand.TabIndex = 65;
+            this.cb_DrawCommand.Text = "命令";
+            this.cb_DrawCommand.UseVisualStyleBackColor = true;
+            this.cb_DrawCommand.CheckedChanged += new System.EventHandler(this.cb_DrawCommand_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3190,6 +3254,10 @@
         private DevComponents.DotNetBar.ButtonX btnX_AxisYMax;
         private DevComponents.DotNetBar.ButtonX btnX_AsixYMin;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox cb_DrawPosition;
+        private System.Windows.Forms.CheckBox cb_DrawExtension;
+        private System.Windows.Forms.CheckBox cb_DrawLoad;
+        private System.Windows.Forms.CheckBox cb_DrawCommand;
     }
 }
 
