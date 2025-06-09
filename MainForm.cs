@@ -83,6 +83,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Threading;
 using System.Threading.Tasks;
 using static Doli.DoPE10.DoPE;
+using System.Linq;
 
 namespace DoPENetConnect
 {
@@ -232,6 +233,31 @@ namespace DoPENetConnect
 
         //Stopwatch for controlling the timing 
         Stopwatch _stopWatch;
+
+        /// <summary>
+        /// 记录位移峰谷值的队列
+        /// </summary>
+        Queue<double> PVPositionQueue = new Queue<double>(1000);
+
+        /// <summary>
+        /// 记录试验力峰谷值的队列
+        /// </summary>
+        Queue<double> PVLoadQueue = new Queue<double>(1000);
+
+        /// <summary>
+        /// 记录试验力峰谷值的队列
+        /// </summary>
+        Queue<double> PVExtensionQueue = new Queue<double>(1000);
+
+        /// <summary>
+        /// 峰值列表
+        /// </summary>
+        Queue<double> PeakQueue = new Queue<double>(2000);
+
+        /// <summary>
+        /// 谷值列表
+        /// </summary>
+        Queue<double> ValleyQueue = new Queue<double>(2000);
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -640,7 +666,15 @@ namespace DoPENetConnect
                 strCSVLog += text + ",";
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
 
-                // if (Math.Round(Sample.Time, 1) % 2 == 1)
+                //位移队列
+                PVPositionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
+                if (PVPositionQueue.Count >= 50)
+                {
+                    tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
+                    tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
+                    PVPositionQueue.Clear();
+                }
+
                 if (nCount >= 20)
                 {
                     guiPosition.Text = text;
@@ -648,6 +682,16 @@ namespace DoPENetConnect
                 strCSVLog += text + ",";
                 //data_display1 = decimal.Parse(guiPosition.Text == "" ? "" : "0");
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
+
+                //试验力队列
+                PVLoadQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
+                if (PVLoadQueue.Count >= 50)
+                {
+                    tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
+                    tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
+                    PVLoadQueue.Clear();
+                }
+
                 if (nCount >= 20)
                 {
                     guiLoad.Text = text;
@@ -656,6 +700,15 @@ namespace DoPENetConnect
                 strCSVLog += text + ",";
                 //data_display2 = decimal.Parse(guiLoad.Text);
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
+
+                //变形队列
+                PVExtensionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
+                if (PVExtensionQueue.Count >= 50)
+                {
+                    tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
+                    tb_MaxExt.Text = PVExtensionQueue.Min().ToString("0.000");
+                    PVExtensionQueue.Clear();
+                }
 
                 if (nCount >= 20)
                 {
@@ -1282,7 +1335,7 @@ namespace DoPENetConnect
                                 if (chart_machine.Series[0] != null)
                                 {
                                     chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
-                                    if (chart_machine.Series[0].Points.Count - 1 == 200)
+                                    if (chart_machine.Series[0].Points.Count - 1 == 333)
                                     {
                                         //chart1.Series[0].Points.AddXY(10.0, y);
                                         chart_machine.Series[0].Points.Clear();
@@ -1312,7 +1365,7 @@ namespace DoPENetConnect
                             if (chart_machine.Series[1] != null)
                             {
                                 chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
-                                if (chart_machine.Series[1].Points.Count - 1 == 200)
+                                if (chart_machine.Series[1].Points.Count - 1 == 333)
                                 {
                                     //chart1.Series[0].Points.AddXY(10.0, y);
                                     chart_machine.Series[1].Points.Clear();
@@ -1336,7 +1389,7 @@ namespace DoPENetConnect
                             if (chart_machine.Series[2] != null)
                             {
                                 chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
-                                if (chart_machine.Series[2].Points.Count - 1 == 200)
+                                if (chart_machine.Series[2].Points.Count - 1 == 333)
                                 {
                                     //chart1.Series[0].Points.AddXY(10.0, y);
                                     chart_machine.Series[2].Points.Clear();
@@ -1358,10 +1411,14 @@ namespace DoPENetConnect
                             //x_Load += nAxisStep;
                             x_Command += 0.03;
 
+                            var Axis = chart_machine.ChartAreas[0].AxisX;
+                            // 获取X轴的最小值和最大值
+                            double minValue = Axis.Minimum;
+                            double maxValue = Axis.Maximum;
                             if (chart_machine.Series[3] != null)
                             {
                                 chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
-                                if (chart_machine.Series[3].Points.Count - 1 == 200)
+                                if (chart_machine.Series[3].Points.Count - 1 == 333)
                                 {
                                     //chart1.Series[0].Points.AddXY(10.0, y);
                                     chart_machine.Series[3].Points.Clear();
@@ -1380,15 +1437,15 @@ namespace DoPENetConnect
 
 
                         //计算Position 峰谷值
-                        if (double.Parse(guiPosition.Text) > double.Parse(guiPosition.Text) * 0.9 )
-                        {
-                            tb_MaxPos.Text = guiPosition.Text.ToString();
-                        }
+                        //if (double.Parse(guiPosition.Text) > double.Parse(guiPosition.Text) * 0.9 )
+                        //{
+                        //    tb_MaxPos.Text = guiPosition.Text.ToString();
+                        //}
 
-                        if (double.Parse(guiPosition.Text) < double.Parse(guiPosition.Text) * 0.1)
-                        {
-                            tb_MinPos.Text = guiPosition.Text.ToString();
-                        }
+                        //if (double.Parse(guiPosition.Text) < double.Parse(guiPosition.Text) * 0.1)
+                        //{
+                        //    tb_MinPos.Text = guiPosition.Text.ToString();
+                        //}
 
 
                         //if (maxPos < float.Parse(guiPosition.Text))
