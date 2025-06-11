@@ -43,6 +43,10 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cb_DrawCommand = new System.Windows.Forms.CheckBox();
+            this.cb_DrawExtension = new System.Windows.Forms.CheckBox();
+            this.cb_DrawLoad = new System.Windows.Forms.CheckBox();
+            this.cb_DrawPosition = new System.Windows.Forms.CheckBox();
             this.btnX_AsixYMin = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisYMax = new DevComponents.DotNetBar.ButtonX();
             this.chart_machine = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -242,10 +246,6 @@
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
-            this.cb_DrawPosition = new System.Windows.Forms.CheckBox();
-            this.cb_DrawLoad = new System.Windows.Forms.CheckBox();
-            this.cb_DrawExtension = new System.Windows.Forms.CheckBox();
-            this.cb_DrawCommand = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -391,6 +391,62 @@
             this.groupBox1.Size = new System.Drawing.Size(1362, 626);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
+            // 
+            // cb_DrawCommand
+            // 
+            this.cb_DrawCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_DrawCommand.AutoSize = true;
+            this.cb_DrawCommand.Checked = true;
+            this.cb_DrawCommand.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_DrawCommand.Location = new System.Drawing.Point(1111, 212);
+            this.cb_DrawCommand.Name = "cb_DrawCommand";
+            this.cb_DrawCommand.Size = new System.Drawing.Size(48, 16);
+            this.cb_DrawCommand.TabIndex = 65;
+            this.cb_DrawCommand.Text = "命令";
+            this.cb_DrawCommand.UseVisualStyleBackColor = true;
+            this.cb_DrawCommand.CheckedChanged += new System.EventHandler(this.cb_DrawCommand_CheckedChanged);
+            // 
+            // cb_DrawExtension
+            // 
+            this.cb_DrawExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_DrawExtension.AutoSize = true;
+            this.cb_DrawExtension.Checked = true;
+            this.cb_DrawExtension.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_DrawExtension.Location = new System.Drawing.Point(1111, 189);
+            this.cb_DrawExtension.Name = "cb_DrawExtension";
+            this.cb_DrawExtension.Size = new System.Drawing.Size(48, 16);
+            this.cb_DrawExtension.TabIndex = 65;
+            this.cb_DrawExtension.Text = "变形";
+            this.cb_DrawExtension.UseVisualStyleBackColor = true;
+            this.cb_DrawExtension.CheckedChanged += new System.EventHandler(this.cb_DrawExtension_CheckedChanged);
+            // 
+            // cb_DrawLoad
+            // 
+            this.cb_DrawLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_DrawLoad.AutoSize = true;
+            this.cb_DrawLoad.Checked = true;
+            this.cb_DrawLoad.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_DrawLoad.Location = new System.Drawing.Point(1111, 167);
+            this.cb_DrawLoad.Name = "cb_DrawLoad";
+            this.cb_DrawLoad.Size = new System.Drawing.Size(60, 16);
+            this.cb_DrawLoad.TabIndex = 65;
+            this.cb_DrawLoad.Text = "试验力";
+            this.cb_DrawLoad.UseVisualStyleBackColor = true;
+            this.cb_DrawLoad.CheckedChanged += new System.EventHandler(this.cb_DrawLoad_CheckedChanged);
+            // 
+            // cb_DrawPosition
+            // 
+            this.cb_DrawPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_DrawPosition.AutoSize = true;
+            this.cb_DrawPosition.Checked = true;
+            this.cb_DrawPosition.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_DrawPosition.Location = new System.Drawing.Point(1111, 144);
+            this.cb_DrawPosition.Name = "cb_DrawPosition";
+            this.cb_DrawPosition.Size = new System.Drawing.Size(48, 16);
+            this.cb_DrawPosition.TabIndex = 65;
+            this.cb_DrawPosition.Text = "位移";
+            this.cb_DrawPosition.UseVisualStyleBackColor = true;
+            this.cb_DrawPosition.CheckedChanged += new System.EventHandler(this.cb_DrawPosition_CheckedChanged);
             // 
             // btnX_AsixYMin
             // 
@@ -2837,19 +2893,20 @@
             // 试验操作选项ToolStripMenuItem
             // 
             this.试验操作选项ToolStripMenuItem.Name = "试验操作选项ToolStripMenuItem";
-            this.试验操作选项ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.试验操作选项ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.试验操作选项ToolStripMenuItem.Text = "试验操作选项";
             // 
             // 系统保护选项ToolStripMenuItem
             // 
             this.系统保护选项ToolStripMenuItem.Name = "系统保护选项ToolStripMenuItem";
-            this.系统保护选项ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.系统保护选项ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.系统保护选项ToolStripMenuItem.Text = "系统保护选项";
+            this.系统保护选项ToolStripMenuItem.Click += new System.EventHandler(this.系统保护选项ToolStripMenuItem_Click);
             // 
             // 绘图选项ToolStripMenuItem
             // 
             this.绘图选项ToolStripMenuItem.Name = "绘图选项ToolStripMenuItem";
-            this.绘图选项ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.绘图选项ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.绘图选项ToolStripMenuItem.Text = "绘图选项";
             // 
             // 试验数据ToolStripMenuItem
@@ -2939,62 +2996,6 @@
             // timer_UpdateData
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
-            // 
-            // cb_DrawPosition
-            // 
-            this.cb_DrawPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_DrawPosition.AutoSize = true;
-            this.cb_DrawPosition.Checked = true;
-            this.cb_DrawPosition.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_DrawPosition.Location = new System.Drawing.Point(1111, 144);
-            this.cb_DrawPosition.Name = "cb_DrawPosition";
-            this.cb_DrawPosition.Size = new System.Drawing.Size(48, 16);
-            this.cb_DrawPosition.TabIndex = 65;
-            this.cb_DrawPosition.Text = "位移";
-            this.cb_DrawPosition.UseVisualStyleBackColor = true;
-            this.cb_DrawPosition.CheckedChanged += new System.EventHandler(this.cb_DrawPosition_CheckedChanged);
-            // 
-            // cb_DrawLoad
-            // 
-            this.cb_DrawLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_DrawLoad.AutoSize = true;
-            this.cb_DrawLoad.Checked = true;
-            this.cb_DrawLoad.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_DrawLoad.Location = new System.Drawing.Point(1111, 167);
-            this.cb_DrawLoad.Name = "cb_DrawLoad";
-            this.cb_DrawLoad.Size = new System.Drawing.Size(60, 16);
-            this.cb_DrawLoad.TabIndex = 65;
-            this.cb_DrawLoad.Text = "试验力";
-            this.cb_DrawLoad.UseVisualStyleBackColor = true;
-            this.cb_DrawLoad.CheckedChanged += new System.EventHandler(this.cb_DrawLoad_CheckedChanged);
-            // 
-            // cb_DrawExtension
-            // 
-            this.cb_DrawExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_DrawExtension.AutoSize = true;
-            this.cb_DrawExtension.Checked = true;
-            this.cb_DrawExtension.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_DrawExtension.Location = new System.Drawing.Point(1111, 189);
-            this.cb_DrawExtension.Name = "cb_DrawExtension";
-            this.cb_DrawExtension.Size = new System.Drawing.Size(48, 16);
-            this.cb_DrawExtension.TabIndex = 65;
-            this.cb_DrawExtension.Text = "变形";
-            this.cb_DrawExtension.UseVisualStyleBackColor = true;
-            this.cb_DrawExtension.CheckedChanged += new System.EventHandler(this.cb_DrawExtension_CheckedChanged);
-            // 
-            // cb_DrawCommand
-            // 
-            this.cb_DrawCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_DrawCommand.AutoSize = true;
-            this.cb_DrawCommand.Checked = true;
-            this.cb_DrawCommand.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_DrawCommand.Location = new System.Drawing.Point(1111, 212);
-            this.cb_DrawCommand.Name = "cb_DrawCommand";
-            this.cb_DrawCommand.Size = new System.Drawing.Size(48, 16);
-            this.cb_DrawCommand.TabIndex = 65;
-            this.cb_DrawCommand.Text = "命令";
-            this.cb_DrawCommand.UseVisualStyleBackColor = true;
-            this.cb_DrawCommand.CheckedChanged += new System.EventHandler(this.cb_DrawCommand_CheckedChanged);
             // 
             // MainForm
             // 

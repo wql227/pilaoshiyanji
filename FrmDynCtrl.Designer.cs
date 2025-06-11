@@ -795,12 +795,13 @@
             // 
             this.cbX_DynCtrl_ModifyParam.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_DynCtrl_ModifyParam.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_DynCtrl_ModifyParam.Location = new System.Drawing.Point(117, 429);
+            this.cbX_DynCtrl_ModifyParam.Location = new System.Drawing.Point(24, 438);
             this.cbX_DynCtrl_ModifyParam.Name = "cbX_DynCtrl_ModifyParam";
-            this.cbX_DynCtrl_ModifyParam.Size = new System.Drawing.Size(196, 23);
+            this.cbX_DynCtrl_ModifyParam.Size = new System.Drawing.Size(103, 23);
             this.cbX_DynCtrl_ModifyParam.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_DynCtrl_ModifyParam.TabIndex = 3;
             this.cbX_DynCtrl_ModifyParam.Text = "修改参数";
+            this.cbX_DynCtrl_ModifyParam.Visible = false;
             // 
             // cbX_DynCtrl_RelativeDestinations
             // 
@@ -809,18 +810,19 @@
             // 
             this.cbX_DynCtrl_RelativeDestinations.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_DynCtrl_RelativeDestinations.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_DynCtrl_RelativeDestinations.Location = new System.Drawing.Point(117, 458);
+            this.cbX_DynCtrl_RelativeDestinations.Location = new System.Drawing.Point(133, 438);
             this.cbX_DynCtrl_RelativeDestinations.Name = "cbX_DynCtrl_RelativeDestinations";
-            this.cbX_DynCtrl_RelativeDestinations.Size = new System.Drawing.Size(196, 23);
+            this.cbX_DynCtrl_RelativeDestinations.Size = new System.Drawing.Size(121, 23);
             this.cbX_DynCtrl_RelativeDestinations.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_DynCtrl_RelativeDestinations.TabIndex = 3;
             this.cbX_DynCtrl_RelativeDestinations.Text = "相对目的地";
+            this.cbX_DynCtrl_RelativeDestinations.Visible = false;
             // 
             // FrmDynCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 482);
+            this.ClientSize = new System.Drawing.Size(328, 471);
             this.Controls.Add(this.cmbX_Dyn_PeakCtrl);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.btnX_Dyn_Freq_S3);

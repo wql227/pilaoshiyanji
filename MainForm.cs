@@ -526,7 +526,8 @@ namespace DoPENetConnect
             try
             {
                 DoPE.ERR error = MyEdc.Move.Off();
-                bActivated = true;
+                bActivated = false;
+                StartCommunicationWithEdcTimer.Stop();
                 DisplayError(error, "Off");
             }
             catch (NullReferenceException)
@@ -1899,6 +1900,19 @@ namespace DoPENetConnect
             {
                 chart_machine.Series[3].Enabled = false;
             }
+        }
+
+        //运行时才能决定是否执行内联
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public ushort setUInt16(float src, ushort k = 1)
+        {
+            return (ushort)(src * k);
+        }
+
+        private void 系统保护选项ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmProtectOption frmProtectOption = new FrmProtectOption();
+            frmProtectOption.ShowDialog();
         }
     }
 }
