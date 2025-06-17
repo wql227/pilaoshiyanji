@@ -21,6 +21,18 @@ namespace DoPENetConnect
         public static extern int GetPrivateProfileInt(string section, string key, int nDefault, string filePath);
 
         /// <summary>
+        /// 编码格式
+        /// </summary>
+        public static string encodingName = "utf-8";
+
+        //与ini交互必须统一编码格式
+        private static byte[] getBytes(string s)
+        {
+            return null == s ? null : Encoding.GetEncoding(encodingName).GetBytes(s);
+        }
+
+
+        /// <summary>
         /// 有参构造函数
         /// </summary>
         /// <param name="strIniFilePath">ini配置文件路径</param>
@@ -33,6 +45,21 @@ namespace DoPENetConnect
             }
         }
 
+
+        ///// <summary>
+        ///// 获取ini配置文件中的字符串
+        ///// </summary>
+        ///// <param name="section">节名</param>
+        ///// <param name="key">键名</param>
+        ///// <param name="strDefault">默认值</param>
+        ///// <param name="retVal">结果缓冲区</param>
+        ///// <param name="size">结果缓冲区大小</param>
+        ///// <returns>成功true,失败false</returns>
+        //public static bool GetIniString(string section, string key, string strDefault, StringBuilder retVal, int size)
+        //{
+        //    long liRet = GetPrivateProfileString(getBytes(section), getBytes(key), getBytes(strDefault), retVal, size, getBytes(strIniFilePath));
+        //    return (liRet >= 1);
+        //}
 
         /// <summary>
         /// 获取ini配置文件中的字符串
@@ -49,18 +76,17 @@ namespace DoPENetConnect
             return (liRet >= 1);
         }
 
-
-        /// <summary>
-        /// 获取ini配置文件中的整型值
-        /// </summary>
-        /// <param name="section">节名</param>
-        /// <param name="key">键名</param>
-        /// <param name="nDefault">默认值</param>
-        /// <returns></returns>
-        public static int GetIniInt(string section, string key, int nDefault)
-        {
-            return GetPrivateProfileInt(section, key, nDefault, strIniFilePath);
-        }
+        ///// <summary>
+        ///// 获取ini配置文件中的整型值
+        ///// </summary>
+        ///// <param name="section">节名</param>
+        ///// <param name="key">键名</param>
+        ///// <param name="nDefault">默认值</param>
+        ///// <returns></returns>
+        //public static int GetIniInt(string section, string key, int nDefault)
+        //{
+        //    return GetPrivateProfileInt(section, key, nDefault, strIniFilePath);
+        //}
 
 
         /// <summary>
@@ -77,16 +103,16 @@ namespace DoPENetConnect
         }
 
 
-        /// <summary>
-        /// 往ini配置文件写入整型数据
-        /// </summary>
-        /// <param name="section">节名</param>
-        /// <param name="key">键名</param>
-        /// <param name="val">要写入的数据</param>
-        /// <returns>成功true,失败false</returns>
-        public static bool WriteIniInt(string section, string key, int val)
-        {
-            return WriteIniString(section, key, val.ToString());
-        }
+        ///// <summary>
+        ///// 往ini配置文件写入整型数据
+        ///// </summary>
+        ///// <param name="section">节名</param>
+        ///// <param name="key">键名</param>
+        ///// <param name="val">要写入的数据</param>
+        ///// <returns>成功true,失败false</returns>
+        //public static bool WriteIniInt(string section, string key, int val)
+        //{
+        //    return WriteIniString(section, key, val.ToString());
+        //}
     }
 }

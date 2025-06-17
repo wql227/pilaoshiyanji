@@ -224,4 +224,7 @@
   <ItemGroup>
     <Content Include="ICON.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Impl\" />
+  </ItemGroup>
 </Project>

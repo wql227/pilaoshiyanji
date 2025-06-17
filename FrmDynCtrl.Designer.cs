@@ -801,7 +801,6 @@
             this.cbX_DynCtrl_ModifyParam.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_DynCtrl_ModifyParam.TabIndex = 3;
             this.cbX_DynCtrl_ModifyParam.Text = "修改参数";
-            this.cbX_DynCtrl_ModifyParam.Visible = false;
             // 
             // cbX_DynCtrl_RelativeDestinations
             // 

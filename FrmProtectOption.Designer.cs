@@ -31,31 +31,60 @@
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
             this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.textBoxX8 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX7 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.checkBoxX7 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX6 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.tbX_FrmProtectOption_PosMinIn = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_FrmProtectOption_PosMinOut = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_FrmProtectOption_PosMaxIn = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_FrmProtectOption_PosMaxOut = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cbX_FrmProtectOption_PosMinIn_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbX_FrmProtectOption_PosMinOut_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbX_FrmProtectOption_PosMaxIn_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbX_FrmProtectOption_PosMaxOut_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.label20 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.checkBoxX5 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cbX_FrmProtectOption_ExtMinIn_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.tbX_FrmProtectOption_ExtMinIn = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cbX_FrmProtectOption_ExtMinOut_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.tbX_FrmProtectOption_ExtMinOut = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbX_FrmProtectOption_ExtMaxOut_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.tbX_FrmProtectOption_ExtMaxIn = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_FrmProtectOption_ExtMaxOut = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cbX_FrmProtectOption_LoadMinIn_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbX_FrmProtectOption_LoadMinOut_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbX_FrmProtectOption_LoadMaxIn_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.tbX_FrmProtectOption_LoadMinIn = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_FrmProtectOption_LoadMaxIn = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_FrmProtectOption_LoadMinOut = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_FrmProtectOption_LoadMaxOut = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cbX_ProtectOption = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,33 +99,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
-            this.checkBoxX8 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.textBoxX9 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.textBoxX10 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX11 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.checkBoxX9 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX10 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX11 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX12 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX13 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX14 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -136,7 +138,7 @@
             this.superTabControl1.ReorderTabsEnabled = true;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl1.SelectedTabIndex = 1;
-            this.superTabControl1.Size = new System.Drawing.Size(498, 593);
+            this.superTabControl1.Size = new System.Drawing.Size(498, 643);
             this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl1.TabIndex = 0;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -150,7 +152,7 @@
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel2.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(498, 565);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(498, 615);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItem2;
             // 
@@ -158,16 +160,18 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.btnX_FrmProtectOption_OK);
+            this.panelEx2.Controls.Add(this.btnX_FrmProtectOption_Cencel);
             this.panelEx2.Controls.Add(this.groupPanel2);
             this.panelEx2.Controls.Add(this.groupPanel4);
             this.panelEx2.Controls.Add(this.groupPanel1);
-            this.panelEx2.Controls.Add(this.comboBoxEx1);
+            this.panelEx2.Controls.Add(this.cbX_ProtectOption);
             this.panelEx2.Controls.Add(this.label1);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(498, 565);
+            this.panelEx2.Size = new System.Drawing.Size(498, 615);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -177,18 +181,44 @@
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 4;
             // 
+            // btnX_FrmProtectOption_OK
+            // 
+            this.btnX_FrmProtectOption_OK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_FrmProtectOption_OK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_FrmProtectOption_OK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnX_FrmProtectOption_OK.Location = new System.Drawing.Point(106, 556);
+            this.btnX_FrmProtectOption_OK.Name = "btnX_FrmProtectOption_OK";
+            this.btnX_FrmProtectOption_OK.Size = new System.Drawing.Size(95, 36);
+            this.btnX_FrmProtectOption_OK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_FrmProtectOption_OK.TabIndex = 3;
+            this.btnX_FrmProtectOption_OK.Text = "确定";
+            this.btnX_FrmProtectOption_OK.Click += new System.EventHandler(this.btnX_FrmProtectOption_OK_Click);
+            // 
+            // btnX_FrmProtectOption_Cencel
+            // 
+            this.btnX_FrmProtectOption_Cencel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_FrmProtectOption_Cencel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_FrmProtectOption_Cencel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnX_FrmProtectOption_Cencel.Location = new System.Drawing.Point(295, 556);
+            this.btnX_FrmProtectOption_Cencel.Name = "btnX_FrmProtectOption_Cencel";
+            this.btnX_FrmProtectOption_Cencel.Size = new System.Drawing.Size(95, 36);
+            this.btnX_FrmProtectOption_Cencel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_FrmProtectOption_Cencel.TabIndex = 3;
+            this.btnX_FrmProtectOption_Cencel.Text = "取消";
+            this.btnX_FrmProtectOption_Cencel.Click += new System.EventHandler(this.btnX_FrmProtectOption_Cencel_Click);
+            // 
             // groupPanel2
             // 
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel2.Controls.Add(this.textBoxX8);
-            this.groupPanel2.Controls.Add(this.textBoxX2);
-            this.groupPanel2.Controls.Add(this.textBoxX7);
-            this.groupPanel2.Controls.Add(this.textBoxX1);
-            this.groupPanel2.Controls.Add(this.checkBoxX8);
-            this.groupPanel2.Controls.Add(this.checkBoxX7);
-            this.groupPanel2.Controls.Add(this.checkBoxX6);
-            this.groupPanel2.Controls.Add(this.checkBoxX1);
+            this.groupPanel2.Controls.Add(this.tbX_FrmProtectOption_PosMinIn);
+            this.groupPanel2.Controls.Add(this.tbX_FrmProtectOption_PosMinOut);
+            this.groupPanel2.Controls.Add(this.tbX_FrmProtectOption_PosMaxIn);
+            this.groupPanel2.Controls.Add(this.tbX_FrmProtectOption_PosMaxOut);
+            this.groupPanel2.Controls.Add(this.cbX_FrmProtectOption_PosMinIn_Effect);
+            this.groupPanel2.Controls.Add(this.cbX_FrmProtectOption_PosMinOut_Effect);
+            this.groupPanel2.Controls.Add(this.cbX_FrmProtectOption_PosMaxIn_Effect);
+            this.groupPanel2.Controls.Add(this.cbX_FrmProtectOption_PosMaxOut_Effect);
             this.groupPanel2.Controls.Add(this.label20);
             this.groupPanel2.Controls.Add(this.label7);
             this.groupPanel2.Controls.Add(this.label19);
@@ -233,103 +263,121 @@
             this.groupPanel2.TabIndex = 2;
             this.groupPanel2.Text = "位移保护设置";
             // 
-            // textBoxX8
+            // tbX_FrmProtectOption_PosMinIn
             // 
             // 
             // 
             // 
-            this.textBoxX8.Border.Class = "TextBoxBorder";
-            this.textBoxX8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX8.Location = new System.Drawing.Point(280, 82);
-            this.textBoxX8.Name = "textBoxX8";
-            this.textBoxX8.PreventEnterBeep = true;
-            this.textBoxX8.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX8.TabIndex = 2;
-            this.textBoxX8.TextChanged += new System.EventHandler(this.textBoxX8_TextChanged);
+            this.tbX_FrmProtectOption_PosMinIn.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_PosMinIn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_PosMinIn.Location = new System.Drawing.Point(280, 82);
+            this.tbX_FrmProtectOption_PosMinIn.Name = "tbX_FrmProtectOption_PosMinIn";
+            this.tbX_FrmProtectOption_PosMinIn.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_PosMinIn.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_PosMinIn.TabIndex = 2;
+            this.tbX_FrmProtectOption_PosMinIn.Text = "10";
+            this.tbX_FrmProtectOption_PosMinIn.TextChanged += new System.EventHandler(this.textBoxX8_TextChanged);
             // 
-            // textBoxX2
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX2.Border.Class = "TextBoxBorder";
-            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.Location = new System.Drawing.Point(20, 84);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.PreventEnterBeep = true;
-            this.textBoxX2.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX2.TabIndex = 2;
-            this.textBoxX2.TextChanged += new System.EventHandler(this.textBoxX2_TextChanged);
-            // 
-            // textBoxX7
+            // tbX_FrmProtectOption_PosMinOut
             // 
             // 
             // 
             // 
-            this.textBoxX7.Border.Class = "TextBoxBorder";
-            this.textBoxX7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX7.Location = new System.Drawing.Point(280, 28);
-            this.textBoxX7.Name = "textBoxX7";
-            this.textBoxX7.PreventEnterBeep = true;
-            this.textBoxX7.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX7.TabIndex = 2;
-            this.textBoxX7.TextChanged += new System.EventHandler(this.textBoxX7_TextChanged);
+            this.tbX_FrmProtectOption_PosMinOut.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_PosMinOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_PosMinOut.Location = new System.Drawing.Point(20, 84);
+            this.tbX_FrmProtectOption_PosMinOut.Name = "tbX_FrmProtectOption_PosMinOut";
+            this.tbX_FrmProtectOption_PosMinOut.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_PosMinOut.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_PosMinOut.TabIndex = 2;
+            this.tbX_FrmProtectOption_PosMinOut.Text = "10";
+            this.tbX_FrmProtectOption_PosMinOut.TextChanged += new System.EventHandler(this.textBoxX2_TextChanged);
             // 
-            // textBoxX1
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(20, 28);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX1.TabIndex = 2;
-            this.textBoxX1.TextChanged += new System.EventHandler(this.textBoxX1_TextChanged);
-            // 
-            // checkBoxX7
+            // tbX_FrmProtectOption_PosMaxIn
             // 
             // 
             // 
             // 
-            this.checkBoxX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX7.Location = new System.Drawing.Point(124, 84);
-            this.checkBoxX7.Name = "checkBoxX7";
-            this.checkBoxX7.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX7.TabIndex = 1;
-            this.checkBoxX7.Text = "生效";
-            this.checkBoxX7.CheckedChanged += new System.EventHandler(this.checkBoxX7_CheckedChanged);
+            this.tbX_FrmProtectOption_PosMaxIn.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_PosMaxIn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_PosMaxIn.Location = new System.Drawing.Point(280, 28);
+            this.tbX_FrmProtectOption_PosMaxIn.Name = "tbX_FrmProtectOption_PosMaxIn";
+            this.tbX_FrmProtectOption_PosMaxIn.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_PosMaxIn.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_PosMaxIn.TabIndex = 2;
+            this.tbX_FrmProtectOption_PosMaxIn.Text = "10";
+            this.tbX_FrmProtectOption_PosMaxIn.TextChanged += new System.EventHandler(this.textBoxX7_TextChanged);
             // 
-            // checkBoxX6
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX6.Location = new System.Drawing.Point(382, 30);
-            this.checkBoxX6.Name = "checkBoxX6";
-            this.checkBoxX6.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX6.TabIndex = 1;
-            this.checkBoxX6.Text = "生效";
-            this.checkBoxX6.CheckedChanged += new System.EventHandler(this.checkBoxX6_CheckedChanged);
-            // 
-            // checkBoxX1
+            // tbX_FrmProtectOption_PosMaxOut
             // 
             // 
             // 
             // 
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(124, 31);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 1;
-            this.checkBoxX1.Text = "生效";
-            this.checkBoxX1.CheckedChanged += new System.EventHandler(this.checkBoxX1_CheckedChanged);
+            this.tbX_FrmProtectOption_PosMaxOut.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_PosMaxOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_PosMaxOut.Location = new System.Drawing.Point(20, 28);
+            this.tbX_FrmProtectOption_PosMaxOut.Name = "tbX_FrmProtectOption_PosMaxOut";
+            this.tbX_FrmProtectOption_PosMaxOut.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_PosMaxOut.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_PosMaxOut.TabIndex = 2;
+            this.tbX_FrmProtectOption_PosMaxOut.Text = "10";
+            this.tbX_FrmProtectOption_PosMaxOut.TextChanged += new System.EventHandler(this.tbX_FrmProtectOption_PosMaxOut_TextChanged);
+            // 
+            // cbX_FrmProtectOption_PosMinIn_Effect
+            // 
+            // 
+            // 
+            // 
+            this.cbX_FrmProtectOption_PosMinIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_PosMinIn_Effect.Location = new System.Drawing.Point(384, 82);
+            this.cbX_FrmProtectOption_PosMinIn_Effect.Name = "cbX_FrmProtectOption_PosMinIn_Effect";
+            this.cbX_FrmProtectOption_PosMinIn_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_PosMinIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_PosMinIn_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_PosMinIn_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_PosMinIn_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX8_CheckedChanged);
+            // 
+            // cbX_FrmProtectOption_PosMinOut_Effect
+            // 
+            // 
+            // 
+            // 
+            this.cbX_FrmProtectOption_PosMinOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_PosMinOut_Effect.Location = new System.Drawing.Point(124, 84);
+            this.cbX_FrmProtectOption_PosMinOut_Effect.Name = "cbX_FrmProtectOption_PosMinOut_Effect";
+            this.cbX_FrmProtectOption_PosMinOut_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_PosMinOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_PosMinOut_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_PosMinOut_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_PosMinOut_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX7_CheckedChanged);
+            // 
+            // cbX_FrmProtectOption_PosMaxIn_Effect
+            // 
+            // 
+            // 
+            // 
+            this.cbX_FrmProtectOption_PosMaxIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_PosMaxIn_Effect.Location = new System.Drawing.Point(382, 30);
+            this.cbX_FrmProtectOption_PosMaxIn_Effect.Name = "cbX_FrmProtectOption_PosMaxIn_Effect";
+            this.cbX_FrmProtectOption_PosMaxIn_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_PosMaxIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_PosMaxIn_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_PosMaxIn_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_PosMaxIn_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX6_CheckedChanged);
+            // 
+            // cbX_FrmProtectOption_PosMaxOut_Effect
+            // 
+            // 
+            // 
+            // 
+            this.cbX_FrmProtectOption_PosMaxOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_PosMaxOut_Effect.Location = new System.Drawing.Point(124, 31);
+            this.cbX_FrmProtectOption_PosMaxOut_Effect.Name = "cbX_FrmProtectOption_PosMaxOut_Effect";
+            this.cbX_FrmProtectOption_PosMaxOut_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_PosMaxOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_PosMaxOut_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_PosMaxOut_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_PosMaxOut_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX1_CheckedChanged);
             // 
             // label20
             // 
@@ -371,6 +419,16 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "mm";
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label23.Location = new System.Drawing.Point(277, 61);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(104, 16);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "谷值的内保护";
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -380,6 +438,16 @@
             this.label18.Size = new System.Drawing.Size(104, 16);
             this.label18.TabIndex = 0;
             this.label18.Text = "峰值的内保护";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label22.Location = new System.Drawing.Point(20, 61);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(104, 16);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "谷值的外保护";
             // 
             // label16
             // 
@@ -395,14 +463,14 @@
             // 
             this.groupPanel4.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel4.Controls.Add(this.checkBoxX14);
-            this.groupPanel4.Controls.Add(this.textBoxX12);
-            this.groupPanel4.Controls.Add(this.checkBoxX13);
-            this.groupPanel4.Controls.Add(this.textBoxX5);
-            this.groupPanel4.Controls.Add(this.checkBoxX12);
-            this.groupPanel4.Controls.Add(this.checkBoxX5);
-            this.groupPanel4.Controls.Add(this.textBoxX4);
-            this.groupPanel4.Controls.Add(this.textBoxX6);
+            this.groupPanel4.Controls.Add(this.cbX_FrmProtectOption_ExtMinIn_Effect);
+            this.groupPanel4.Controls.Add(this.tbX_FrmProtectOption_ExtMinIn);
+            this.groupPanel4.Controls.Add(this.cbX_FrmProtectOption_ExtMinOut_Effect);
+            this.groupPanel4.Controls.Add(this.tbX_FrmProtectOption_ExtMinOut);
+            this.groupPanel4.Controls.Add(this.cbX_FrmProtectOption_ExtMaxIn_Effect);
+            this.groupPanel4.Controls.Add(this.cbX_FrmProtectOption_ExtMaxOut_Effect);
+            this.groupPanel4.Controls.Add(this.tbX_FrmProtectOption_ExtMaxIn);
+            this.groupPanel4.Controls.Add(this.tbX_FrmProtectOption_ExtMaxOut);
             this.groupPanel4.Controls.Add(this.label36);
             this.groupPanel4.Controls.Add(this.label35);
             this.groupPanel4.Controls.Add(this.label13);
@@ -447,47 +515,141 @@
             this.groupPanel4.TabIndex = 2;
             this.groupPanel4.Text = "变形保护设置";
             // 
-            // textBoxX5
+            // cbX_FrmProtectOption_ExtMinIn_Effect
             // 
             // 
             // 
             // 
-            this.textBoxX5.Border.Class = "TextBoxBorder";
-            this.textBoxX5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX5.Location = new System.Drawing.Point(20, 86);
-            this.textBoxX5.Name = "textBoxX5";
-            this.textBoxX5.PreventEnterBeep = true;
-            this.textBoxX5.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX5.TabIndex = 2;
-            this.textBoxX5.TextChanged += new System.EventHandler(this.textBoxX5_TextChanged);
+            this.cbX_FrmProtectOption_ExtMinIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_ExtMinIn_Effect.Location = new System.Drawing.Point(384, 89);
+            this.cbX_FrmProtectOption_ExtMinIn_Effect.Name = "cbX_FrmProtectOption_ExtMinIn_Effect";
+            this.cbX_FrmProtectOption_ExtMinIn_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_ExtMinIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_ExtMinIn_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_ExtMinIn_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_ExtMinIn_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX14_CheckedChanged);
             // 
-            // checkBoxX5
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX5.Location = new System.Drawing.Point(124, 34);
-            this.checkBoxX5.Name = "checkBoxX5";
-            this.checkBoxX5.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX5.TabIndex = 1;
-            this.checkBoxX5.Text = "生效";
-            this.checkBoxX5.CheckedChanged += new System.EventHandler(this.checkBoxX5_CheckedChanged);
-            // 
-            // textBoxX6
+            // tbX_FrmProtectOption_ExtMinIn
             // 
             // 
             // 
             // 
-            this.textBoxX6.Border.Class = "TextBoxBorder";
-            this.textBoxX6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX6.Location = new System.Drawing.Point(20, 31);
-            this.textBoxX6.Name = "textBoxX6";
-            this.textBoxX6.PreventEnterBeep = true;
-            this.textBoxX6.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX6.TabIndex = 2;
-            this.textBoxX6.TextChanged += new System.EventHandler(this.textBoxX6_TextChanged);
+            this.tbX_FrmProtectOption_ExtMinIn.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_ExtMinIn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_ExtMinIn.Location = new System.Drawing.Point(280, 88);
+            this.tbX_FrmProtectOption_ExtMinIn.Name = "tbX_FrmProtectOption_ExtMinIn";
+            this.tbX_FrmProtectOption_ExtMinIn.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_ExtMinIn.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_ExtMinIn.TabIndex = 2;
+            this.tbX_FrmProtectOption_ExtMinIn.Text = "10";
+            this.tbX_FrmProtectOption_ExtMinIn.TextChanged += new System.EventHandler(this.textBoxX12_TextChanged);
+            // 
+            // cbX_FrmProtectOption_ExtMinOut_Effect
+            // 
+            // 
+            // 
+            // 
+            this.cbX_FrmProtectOption_ExtMinOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_ExtMinOut_Effect.Location = new System.Drawing.Point(124, 88);
+            this.cbX_FrmProtectOption_ExtMinOut_Effect.Name = "cbX_FrmProtectOption_ExtMinOut_Effect";
+            this.cbX_FrmProtectOption_ExtMinOut_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_ExtMinOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_ExtMinOut_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_ExtMinOut_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_ExtMinOut_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX13_CheckedChanged);
+            // 
+            // tbX_FrmProtectOption_ExtMinOut
+            // 
+            // 
+            // 
+            // 
+            this.tbX_FrmProtectOption_ExtMinOut.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_ExtMinOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_ExtMinOut.Location = new System.Drawing.Point(20, 86);
+            this.tbX_FrmProtectOption_ExtMinOut.Name = "tbX_FrmProtectOption_ExtMinOut";
+            this.tbX_FrmProtectOption_ExtMinOut.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_ExtMinOut.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_ExtMinOut.TabIndex = 2;
+            this.tbX_FrmProtectOption_ExtMinOut.Text = "10";
+            this.tbX_FrmProtectOption_ExtMinOut.TextChanged += new System.EventHandler(this.textBoxX5_TextChanged);
+            // 
+            // cbX_FrmProtectOption_ExtMaxIn_Effect
+            // 
+            // 
+            // 
+            // 
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect.Location = new System.Drawing.Point(382, 40);
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect.Name = "cbX_FrmProtectOption_ExtMaxIn_Effect";
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX12_CheckedChanged);
+            // 
+            // cbX_FrmProtectOption_ExtMaxOut_Effect
+            // 
+            // 
+            // 
+            // 
+            this.cbX_FrmProtectOption_ExtMaxOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_ExtMaxOut_Effect.Location = new System.Drawing.Point(124, 34);
+            this.cbX_FrmProtectOption_ExtMaxOut_Effect.Name = "cbX_FrmProtectOption_ExtMaxOut_Effect";
+            this.cbX_FrmProtectOption_ExtMaxOut_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_ExtMaxOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_ExtMaxOut_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_ExtMaxOut_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_ExtMaxOut_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX5_CheckedChanged);
+            // 
+            // tbX_FrmProtectOption_ExtMaxIn
+            // 
+            // 
+            // 
+            // 
+            this.tbX_FrmProtectOption_ExtMaxIn.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_ExtMaxIn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_ExtMaxIn.Location = new System.Drawing.Point(280, 38);
+            this.tbX_FrmProtectOption_ExtMaxIn.Name = "tbX_FrmProtectOption_ExtMaxIn";
+            this.tbX_FrmProtectOption_ExtMaxIn.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_ExtMaxIn.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_ExtMaxIn.TabIndex = 2;
+            this.tbX_FrmProtectOption_ExtMaxIn.Text = "10";
+            this.tbX_FrmProtectOption_ExtMaxIn.TextChanged += new System.EventHandler(this.textBoxX4_TextChanged);
+            // 
+            // tbX_FrmProtectOption_ExtMaxOut
+            // 
+            // 
+            // 
+            // 
+            this.tbX_FrmProtectOption_ExtMaxOut.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_ExtMaxOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_ExtMaxOut.Location = new System.Drawing.Point(20, 31);
+            this.tbX_FrmProtectOption_ExtMaxOut.Name = "tbX_FrmProtectOption_ExtMaxOut";
+            this.tbX_FrmProtectOption_ExtMaxOut.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_ExtMaxOut.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_ExtMaxOut.TabIndex = 2;
+            this.tbX_FrmProtectOption_ExtMaxOut.Text = "10";
+            this.tbX_FrmProtectOption_ExtMaxOut.TextChanged += new System.EventHandler(this.textBoxX6_TextChanged);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label36.Location = new System.Drawing.Point(354, 92);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(24, 16);
+            this.label36.TabIndex = 0;
+            this.label36.Text = "kN";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label35.Location = new System.Drawing.Point(354, 40);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(24, 16);
+            this.label35.TabIndex = 0;
+            this.label35.Text = "kN";
             // 
             // label13
             // 
@@ -509,18 +671,58 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "kN";
             // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label39.Location = new System.Drawing.Point(20, 67);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(104, 16);
+            this.label39.TabIndex = 0;
+            this.label39.Text = "谷值的外保护";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label38.Location = new System.Drawing.Point(277, 67);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(104, 16);
+            this.label38.TabIndex = 0;
+            this.label38.Text = "谷值的内保护";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.Location = new System.Drawing.Point(17, 12);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(104, 16);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "峰值的外保护";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(277, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(104, 16);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "峰值的内保护";
+            // 
             // groupPanel1
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel1.Controls.Add(this.checkBoxX11);
-            this.groupPanel1.Controls.Add(this.checkBoxX10);
-            this.groupPanel1.Controls.Add(this.checkBoxX9);
-            this.groupPanel1.Controls.Add(this.checkBoxX2);
-            this.groupPanel1.Controls.Add(this.textBoxX11);
-            this.groupPanel1.Controls.Add(this.textBoxX9);
-            this.groupPanel1.Controls.Add(this.textBoxX10);
-            this.groupPanel1.Controls.Add(this.textBoxX3);
+            this.groupPanel1.Controls.Add(this.cbX_FrmProtectOption_LoadMinIn_Effect);
+            this.groupPanel1.Controls.Add(this.cbX_FrmProtectOption_LoadMinOut_Effect);
+            this.groupPanel1.Controls.Add(this.cbX_FrmProtectOption_LoadMaxIn_Effect);
+            this.groupPanel1.Controls.Add(this.cbX_FrmProtectOption_LoadMaxOut_Effect);
+            this.groupPanel1.Controls.Add(this.tbX_FrmProtectOption_LoadMinIn);
+            this.groupPanel1.Controls.Add(this.tbX_FrmProtectOption_LoadMaxIn);
+            this.groupPanel1.Controls.Add(this.tbX_FrmProtectOption_LoadMinOut);
+            this.groupPanel1.Controls.Add(this.tbX_FrmProtectOption_LoadMaxOut);
             this.groupPanel1.Controls.Add(this.label31);
             this.groupPanel1.Controls.Add(this.label28);
             this.groupPanel1.Controls.Add(this.label30);
@@ -565,33 +767,151 @@
             this.groupPanel1.TabIndex = 2;
             this.groupPanel1.Text = "试验力保护设置";
             // 
-            // checkBoxX2
+            // cbX_FrmProtectOption_LoadMinIn_Effect
             // 
             // 
             // 
             // 
-            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.Location = new System.Drawing.Point(127, 32);
-            this.checkBoxX2.Name = "checkBoxX2";
-            this.checkBoxX2.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX2.TabIndex = 1;
-            this.checkBoxX2.Text = "生效";
-            this.checkBoxX2.CheckedChanged += new System.EventHandler(this.checkBoxX2_CheckedChanged);
+            this.cbX_FrmProtectOption_LoadMinIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_LoadMinIn_Effect.Location = new System.Drawing.Point(384, 96);
+            this.cbX_FrmProtectOption_LoadMinIn_Effect.Name = "cbX_FrmProtectOption_LoadMinIn_Effect";
+            this.cbX_FrmProtectOption_LoadMinIn_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_LoadMinIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_LoadMinIn_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_LoadMinIn_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_LoadMinIn_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX11_CheckedChanged);
             // 
-            // textBoxX3
-            // 
-            // 
+            // cbX_FrmProtectOption_LoadMinOut_Effect
             // 
             // 
-            this.textBoxX3.Border.Class = "TextBoxBorder";
-            this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX3.Location = new System.Drawing.Point(23, 29);
-            this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.PreventEnterBeep = true;
-            this.textBoxX3.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX3.TabIndex = 2;
-            this.textBoxX3.TextChanged += new System.EventHandler(this.textBoxX3_TextChanged);
+            // 
+            // 
+            this.cbX_FrmProtectOption_LoadMinOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_LoadMinOut_Effect.Location = new System.Drawing.Point(127, 96);
+            this.cbX_FrmProtectOption_LoadMinOut_Effect.Name = "cbX_FrmProtectOption_LoadMinOut_Effect";
+            this.cbX_FrmProtectOption_LoadMinOut_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_LoadMinOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_LoadMinOut_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_LoadMinOut_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_LoadMinOut_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX10_CheckedChanged);
+            // 
+            // cbX_FrmProtectOption_LoadMaxIn_Effect
+            // 
+            // 
+            // 
+            // 
+            this.cbX_FrmProtectOption_LoadMaxIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_LoadMaxIn_Effect.Location = new System.Drawing.Point(384, 34);
+            this.cbX_FrmProtectOption_LoadMaxIn_Effect.Name = "cbX_FrmProtectOption_LoadMaxIn_Effect";
+            this.cbX_FrmProtectOption_LoadMaxIn_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_LoadMaxIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_LoadMaxIn_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_LoadMaxIn_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_LoadMaxIn_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX9_CheckedChanged);
+            // 
+            // cbX_FrmProtectOption_LoadMaxOut_Effect
+            // 
+            // 
+            // 
+            // 
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect.Location = new System.Drawing.Point(127, 32);
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect.Name = "cbX_FrmProtectOption_LoadMaxOut_Effect";
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect.Size = new System.Drawing.Size(62, 23);
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect.TabIndex = 1;
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect.Text = "生效";
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect.CheckedChanged += new System.EventHandler(this.checkBoxX2_CheckedChanged);
+            // 
+            // tbX_FrmProtectOption_LoadMinIn
+            // 
+            // 
+            // 
+            // 
+            this.tbX_FrmProtectOption_LoadMinIn.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_LoadMinIn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_LoadMinIn.Location = new System.Drawing.Point(280, 93);
+            this.tbX_FrmProtectOption_LoadMinIn.Name = "tbX_FrmProtectOption_LoadMinIn";
+            this.tbX_FrmProtectOption_LoadMinIn.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_LoadMinIn.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_LoadMinIn.TabIndex = 2;
+            this.tbX_FrmProtectOption_LoadMinIn.Text = "10";
+            this.tbX_FrmProtectOption_LoadMinIn.TextChanged += new System.EventHandler(this.textBoxX11_TextChanged);
+            // 
+            // tbX_FrmProtectOption_LoadMaxIn
+            // 
+            // 
+            // 
+            // 
+            this.tbX_FrmProtectOption_LoadMaxIn.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_LoadMaxIn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_LoadMaxIn.Location = new System.Drawing.Point(280, 31);
+            this.tbX_FrmProtectOption_LoadMaxIn.Name = "tbX_FrmProtectOption_LoadMaxIn";
+            this.tbX_FrmProtectOption_LoadMaxIn.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_LoadMaxIn.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_LoadMaxIn.TabIndex = 2;
+            this.tbX_FrmProtectOption_LoadMaxIn.Text = "10";
+            this.tbX_FrmProtectOption_LoadMaxIn.TextChanged += new System.EventHandler(this.textBoxX9_TextChanged);
+            // 
+            // tbX_FrmProtectOption_LoadMinOut
+            // 
+            // 
+            // 
+            // 
+            this.tbX_FrmProtectOption_LoadMinOut.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_LoadMinOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_LoadMinOut.Location = new System.Drawing.Point(23, 93);
+            this.tbX_FrmProtectOption_LoadMinOut.Name = "tbX_FrmProtectOption_LoadMinOut";
+            this.tbX_FrmProtectOption_LoadMinOut.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_LoadMinOut.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_LoadMinOut.TabIndex = 2;
+            this.tbX_FrmProtectOption_LoadMinOut.Text = "10";
+            this.tbX_FrmProtectOption_LoadMinOut.TextChanged += new System.EventHandler(this.textBoxX10_TextChanged);
+            // 
+            // tbX_FrmProtectOption_LoadMaxOut
+            // 
+            // 
+            // 
+            // 
+            this.tbX_FrmProtectOption_LoadMaxOut.Border.Class = "TextBoxBorder";
+            this.tbX_FrmProtectOption_LoadMaxOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmProtectOption_LoadMaxOut.Location = new System.Drawing.Point(23, 29);
+            this.tbX_FrmProtectOption_LoadMaxOut.Name = "tbX_FrmProtectOption_LoadMaxOut";
+            this.tbX_FrmProtectOption_LoadMaxOut.PreventEnterBeep = true;
+            this.tbX_FrmProtectOption_LoadMaxOut.Size = new System.Drawing.Size(68, 26);
+            this.tbX_FrmProtectOption_LoadMaxOut.TabIndex = 2;
+            this.tbX_FrmProtectOption_LoadMaxOut.Text = "10";
+            this.tbX_FrmProtectOption_LoadMaxOut.TextChanged += new System.EventHandler(this.textBoxX3_TextChanged);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label31.Location = new System.Drawing.Point(354, 95);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(24, 16);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "kN";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label28.Location = new System.Drawing.Point(354, 33);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(24, 16);
+            this.label28.TabIndex = 0;
+            this.label28.Text = "kN";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label30.Location = new System.Drawing.Point(97, 95);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(24, 16);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "kN";
             // 
             // label8
             // 
@@ -603,22 +923,62 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "kN";
             // 
-            // comboBoxEx1
+            // label27
             // 
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 21;
-            this.comboBoxEx1.Items.AddRange(new object[] {
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label27.Location = new System.Drawing.Point(17, 67);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(104, 16);
+            this.label27.TabIndex = 0;
+            this.label27.Text = "谷值的外保护";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label26.Location = new System.Drawing.Point(277, 67);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(104, 16);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "谷值的内保护";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label24.Location = new System.Drawing.Point(17, 3);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(104, 16);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "峰值的外保护";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label25.Location = new System.Drawing.Point(277, 10);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(104, 16);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "峰值的内保护";
+            // 
+            // cbX_ProtectOption
+            // 
+            this.cbX_ProtectOption.DisplayMember = "Text";
+            this.cbX_ProtectOption.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_ProtectOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbX_ProtectOption.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbX_ProtectOption.FormattingEnabled = true;
+            this.cbX_ProtectOption.ItemHeight = 21;
+            this.cbX_ProtectOption.Items.AddRange(new object[] {
             this.comboItem1,
             this.comboItem2});
-            this.comboBoxEx1.Location = new System.Drawing.Point(122, 8);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(169, 27);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 1;
+            this.cbX_ProtectOption.Location = new System.Drawing.Point(122, 8);
+            this.cbX_ProtectOption.Name = "cbX_ProtectOption";
+            this.cbX_ProtectOption.Size = new System.Drawing.Size(169, 27);
+            this.cbX_ProtectOption.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_ProtectOption.TabIndex = 1;
             // 
             // comboItem1
             // 
@@ -651,7 +1011,7 @@
             this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(600, 633);
+            this.superTabControlPanel1.Size = new System.Drawing.Size(498, 615);
             this.superTabControlPanel1.TabIndex = 1;
             this.superTabControlPanel1.TabItem = this.superTabItem1;
             // 
@@ -664,7 +1024,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(600, 633);
+            this.panelEx1.Size = new System.Drawing.Size(498, 615);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -787,329 +1147,11 @@
             this.superTabItem1.Name = "superTabItem1";
             this.superTabItem1.Text = "系统保护选项";
             // 
-            // checkBoxX8
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX8.Location = new System.Drawing.Point(384, 82);
-            this.checkBoxX8.Name = "checkBoxX8";
-            this.checkBoxX8.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX8.TabIndex = 1;
-            this.checkBoxX8.Text = "生效";
-            this.checkBoxX8.CheckedChanged += new System.EventHandler(this.checkBoxX8_CheckedChanged);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label22.Location = new System.Drawing.Point(20, 61);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(104, 16);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "谷值的外保护";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label23.Location = new System.Drawing.Point(277, 61);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(104, 16);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "谷值的内保护";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label24.Location = new System.Drawing.Point(17, 3);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(104, 16);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "峰值的外保护";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label25.Location = new System.Drawing.Point(277, 10);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(104, 16);
-            this.label25.TabIndex = 0;
-            this.label25.Text = "峰值的内保护";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label26.Location = new System.Drawing.Point(277, 67);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(104, 16);
-            this.label26.TabIndex = 0;
-            this.label26.Text = "谷值的内保护";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label27.Location = new System.Drawing.Point(17, 67);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(104, 16);
-            this.label27.TabIndex = 0;
-            this.label27.Text = "谷值的外保护";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label28.Location = new System.Drawing.Point(354, 33);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(24, 16);
-            this.label28.TabIndex = 0;
-            this.label28.Text = "kN";
-            // 
-            // textBoxX9
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX9.Border.Class = "TextBoxBorder";
-            this.textBoxX9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX9.Location = new System.Drawing.Point(280, 31);
-            this.textBoxX9.Name = "textBoxX9";
-            this.textBoxX9.PreventEnterBeep = true;
-            this.textBoxX9.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX9.TabIndex = 2;
-            this.textBoxX9.TextChanged += new System.EventHandler(this.textBoxX9_TextChanged);
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label30.Location = new System.Drawing.Point(97, 95);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(24, 16);
-            this.label30.TabIndex = 0;
-            this.label30.Text = "kN";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label31.Location = new System.Drawing.Point(354, 95);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(24, 16);
-            this.label31.TabIndex = 0;
-            this.label31.Text = "kN";
-            // 
-            // textBoxX10
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX10.Border.Class = "TextBoxBorder";
-            this.textBoxX10.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX10.Location = new System.Drawing.Point(23, 93);
-            this.textBoxX10.Name = "textBoxX10";
-            this.textBoxX10.PreventEnterBeep = true;
-            this.textBoxX10.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX10.TabIndex = 2;
-            this.textBoxX10.TextChanged += new System.EventHandler(this.textBoxX10_TextChanged);
-            // 
-            // textBoxX11
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX11.Border.Class = "TextBoxBorder";
-            this.textBoxX11.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX11.Location = new System.Drawing.Point(280, 93);
-            this.textBoxX11.Name = "textBoxX11";
-            this.textBoxX11.PreventEnterBeep = true;
-            this.textBoxX11.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX11.TabIndex = 2;
-            this.textBoxX11.TextChanged += new System.EventHandler(this.textBoxX11_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(277, 12);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 16);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "峰值的内保护";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(17, 12);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 16);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "峰值的外保护";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label35.Location = new System.Drawing.Point(354, 40);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(24, 16);
-            this.label35.TabIndex = 0;
-            this.label35.Text = "kN";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label36.Location = new System.Drawing.Point(354, 92);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(24, 16);
-            this.label36.TabIndex = 0;
-            this.label36.Text = "kN";
-            // 
-            // textBoxX4
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX4.Border.Class = "TextBoxBorder";
-            this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX4.Location = new System.Drawing.Point(280, 38);
-            this.textBoxX4.Name = "textBoxX4";
-            this.textBoxX4.PreventEnterBeep = true;
-            this.textBoxX4.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX4.TabIndex = 2;
-            this.textBoxX4.TextChanged += new System.EventHandler(this.textBoxX4_TextChanged);
-            // 
-            // textBoxX12
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX12.Border.Class = "TextBoxBorder";
-            this.textBoxX12.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX12.Location = new System.Drawing.Point(280, 88);
-            this.textBoxX12.Name = "textBoxX12";
-            this.textBoxX12.PreventEnterBeep = true;
-            this.textBoxX12.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX12.TabIndex = 2;
-            this.textBoxX12.TextChanged += new System.EventHandler(this.textBoxX12_TextChanged);
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label38.Location = new System.Drawing.Point(277, 67);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(104, 16);
-            this.label38.TabIndex = 0;
-            this.label38.Text = "谷值的内保护";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label39.Location = new System.Drawing.Point(20, 67);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(104, 16);
-            this.label39.TabIndex = 0;
-            this.label39.Text = "谷值的外保护";
-            // 
-            // checkBoxX9
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX9.Location = new System.Drawing.Point(384, 34);
-            this.checkBoxX9.Name = "checkBoxX9";
-            this.checkBoxX9.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX9.TabIndex = 1;
-            this.checkBoxX9.Text = "生效";
-            this.checkBoxX9.CheckedChanged += new System.EventHandler(this.checkBoxX9_CheckedChanged);
-            // 
-            // checkBoxX10
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX10.Location = new System.Drawing.Point(127, 96);
-            this.checkBoxX10.Name = "checkBoxX10";
-            this.checkBoxX10.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX10.TabIndex = 1;
-            this.checkBoxX10.Text = "生效";
-            this.checkBoxX10.CheckedChanged += new System.EventHandler(this.checkBoxX10_CheckedChanged);
-            // 
-            // checkBoxX11
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX11.Location = new System.Drawing.Point(384, 96);
-            this.checkBoxX11.Name = "checkBoxX11";
-            this.checkBoxX11.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX11.TabIndex = 1;
-            this.checkBoxX11.Text = "生效";
-            this.checkBoxX11.CheckedChanged += new System.EventHandler(this.checkBoxX11_CheckedChanged);
-            // 
-            // checkBoxX12
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX12.Location = new System.Drawing.Point(382, 40);
-            this.checkBoxX12.Name = "checkBoxX12";
-            this.checkBoxX12.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX12.TabIndex = 1;
-            this.checkBoxX12.Text = "生效";
-            this.checkBoxX12.CheckedChanged += new System.EventHandler(this.checkBoxX12_CheckedChanged);
-            // 
-            // checkBoxX13
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX13.Location = new System.Drawing.Point(124, 88);
-            this.checkBoxX13.Name = "checkBoxX13";
-            this.checkBoxX13.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX13.TabIndex = 1;
-            this.checkBoxX13.Text = "生效";
-            this.checkBoxX13.CheckedChanged += new System.EventHandler(this.checkBoxX13_CheckedChanged);
-            // 
-            // checkBoxX14
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX14.Location = new System.Drawing.Point(384, 89);
-            this.checkBoxX14.Name = "checkBoxX14";
-            this.checkBoxX14.Size = new System.Drawing.Size(62, 23);
-            this.checkBoxX14.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX14.TabIndex = 1;
-            this.checkBoxX14.Text = "生效";
-            this.checkBoxX14.CheckedChanged += new System.EventHandler(this.checkBoxX14_CheckedChanged);
-            // 
             // FrmProtectOption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 593);
+            this.ClientSize = new System.Drawing.Size(498, 643);
             this.Controls.Add(this.superTabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmProtectOption";
@@ -1144,17 +1186,17 @@
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.SuperTabItem superTabItem2;
         private DevComponents.DotNetBar.PanelEx panelEx1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbX_ProtectOption;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
         private System.Windows.Forms.Label label1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_PosMaxOut_Effect;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_LoadMaxOut_Effect;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_PosMinOut;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_PosMaxOut;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_LoadMaxOut;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
@@ -1166,25 +1208,25 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel4;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX5;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX5;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX6;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_ExtMinOut;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_ExtMaxOut_Effect;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_ExtMaxOut;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX8;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX7;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_PosMinIn;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_PosMaxIn;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX7;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX6;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX8;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_PosMinOut_Effect;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_PosMaxIn_Effect;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_PosMinIn_Effect;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX11;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX9;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX10;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_LoadMinIn;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_LoadMaxIn;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_LoadMinOut;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label30;
@@ -1194,17 +1236,19 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX12;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX4;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_ExtMinIn;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmProtectOption_ExtMaxIn;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label38;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX11;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX10;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX9;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX14;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX13;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX12;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_LoadMinIn_Effect;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_LoadMinOut_Effect;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_LoadMaxIn_Effect;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_ExtMinIn_Effect;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_ExtMinOut_Effect;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_FrmProtectOption_ExtMaxIn_Effect;
+        private DevComponents.DotNetBar.ButtonX btnX_FrmProtectOption_OK;
+        private DevComponents.DotNetBar.ButtonX btnX_FrmProtectOption_Cencel;
     }
 }
