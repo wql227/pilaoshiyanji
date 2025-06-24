@@ -35,6 +35,8 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString(strConfigSetion, "位移峰值外保护", "0", strTmp, strTmp.Capacity);
             tbX_FrmProtectOption_PosMaxOut.Text = strTmp.ToString();
 
+            double aaa = MainForm.mainform.protectOption.ProtectOption_ExtMaxIn;
+
             IniFileHelper.GetIniString(strConfigSetion, "位移峰值外保护生效", "0", strTmp, strTmp.Capacity);
             cbX_FrmProtectOption_PosMaxOut_Effect.Checked = strTmp.ToString() == "0" ? false : true;
 
@@ -121,77 +123,101 @@ namespace DoPENetConnect
 
             //位移保护选项
             strTmp = tbX_FrmProtectOption_PosMaxOut.Text;
+            MainForm.mainform.protectOption.ProtectOption_PosMaxOut = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "位移峰值外保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_PosMaxOut_Effect.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_PosMaxOut_Effect = cbX_FrmProtectOption_PosMaxOut_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "位移峰值外保护生效", strTmp);
 
             strTmp = tbX_FrmProtectOption_PosMinOut.Text;
+            MainForm.mainform.protectOption.ProtectOption_PosMinOut = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "位移谷值外保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_PosMinOut_Effect.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_PosMinOut_Effect = cbX_FrmProtectOption_PosMinOut_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "位移谷值外保护生效", strTmp);
 
             strTmp = tbX_FrmProtectOption_PosMaxIn.Text;
+            MainForm.mainform.protectOption.ProtectOption_PosMaxIn = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "位移峰值内保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_PosMaxIn_Effect.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_PosMaxIn_Effect = cbX_FrmProtectOption_PosMaxIn_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "位移峰值内保护生效", strTmp);
 
             strTmp = tbX_FrmProtectOption_PosMinIn.Text;
+            MainForm.mainform.protectOption.ProtectOption_PosMinIn = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "位移谷值内保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_PosMinIn_Effect.Checked == true ? "1" : "0";
+            MainForm.mainform.protectOption.ProtectOption_PosMinIn_Effect = cbX_FrmProtectOption_PosMinIn_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "位移谷值内保护生效", strTmp);
 
             //试验力保护选项
             strTmp = tbX_FrmProtectOption_LoadMaxOut.Text;
+            MainForm.mainform.protectOption.ProtectOption_LoadMaxOut = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值外保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_LoadMaxOut_Effect.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_LoadMaxOut_Effect = cbX_FrmProtectOption_LoadMaxOut_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值外保护生效", strTmp);
 
             strTmp = tbX_FrmProtectOption_LoadMinOut.Text;
+            MainForm.mainform.protectOption.ProtectOption_LoadMinOut = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值外保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_LoadMinOut_Effect.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_LoadMinOut_Effect = cbX_FrmProtectOption_LoadMinOut_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值外保护生效", strTmp);
 
             strTmp = tbX_FrmProtectOption_LoadMaxIn.Text;
+            MainForm.mainform.protectOption.ProtectOption_LoadMaxIn = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值内保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_LoadMaxIn_Effect.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_LoadMaxIn_Effect = cbX_FrmProtectOption_LoadMaxIn_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值内保护生效", strTmp);
 
             strTmp = tbX_FrmProtectOption_LoadMinIn.Text;
+            MainForm.mainform.protectOption.ProtectOption_LoadMinIn = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值内保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_LoadMinIn_Effect.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_LoadMinIn_Effect = cbX_FrmProtectOption_LoadMinIn_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值内保护生效", strTmp);
 
             //变形保护选项
             strTmp = tbX_FrmProtectOption_ExtMaxOut.Text;
+            MainForm.mainform.protectOption.ProtectOption_ExtMaxOut = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "变形峰值外保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_ExtMaxOut_Effect.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_ExtMaxOut_Effect = cbX_FrmProtectOption_ExtMaxOut_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "变形峰值外保护生效", strTmp);
 
             strTmp = tbX_FrmProtectOption_ExtMinOut.Text;
+            MainForm.mainform.protectOption.ProtectOption_ExtMinOut = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "变形谷值外保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_ExtMinOut_Effect.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_ExtMinOut_Effect = cbX_FrmProtectOption_ExtMinOut_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "变形谷值外保护生效", strTmp);
 
             strTmp = tbX_FrmProtectOption_ExtMaxIn.Text;
+            MainForm.mainform.protectOption.ProtectOption_ExtMaxIn = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "变形峰值内保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_ExtMaxIn_Effect.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_ExtMaxIn_Effect = cbX_FrmProtectOption_ExtMaxIn_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "变形峰值内保护生效", strTmp);
 
             strTmp = tbX_FrmProtectOption_ExtMinIn.Text;
+            MainForm.mainform.protectOption.ProtectOption_ExtMinIn = double.Parse(strTmp);
             IniFileHelper.WriteIniString(strConfigSetion, "变形谷值内保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_ExtMinIn_Effect.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_ExtMinIn_Effect = cbX_FrmProtectOption_ExtMinIn_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "变形谷值内保护生效", strTmp);
         }
 
@@ -203,50 +229,50 @@ namespace DoPENetConnect
         private bool ValidityCheck()
         {
             //位移峰值外保护校验
-            if (double.Parse(tbX_FrmProtectOption_PosMaxOut.Text) <= double.Parse(tbX_FrmProtectOption_PosMinOut.Text))
+            if (double.Parse(tbX_FrmProtectOption_PosMaxOut.Text) <= double.Parse(tbX_FrmProtectOption_PosMaxIn.Text))
             {
-                MessageBox.Show("位移峰值外保护值不能小于位移谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("位移峰值外保护值不能小于等于位移峰值内保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbX_FrmProtectOption_PosMaxOut.Focus();
                 return false;
             }
 
             //位移谷值内保护校验
-            if (double.Parse(tbX_FrmProtectOption_PosMaxIn.Text) <= double.Parse(tbX_FrmProtectOption_PosMinIn.Text))
+            if (double.Parse(tbX_FrmProtectOption_PosMinOut.Text) >= double.Parse(tbX_FrmProtectOption_PosMinIn.Text))
             {
-                //MessageBox.Show("位移峰值内保护值不能小于位移谷值内保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //tbX_FrmProtectOption_PosMaxIn.Focus();
-                //return false;
+                MessageBox.Show("位移谷值内保护值不能小于等于位移谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                tbX_FrmProtectOption_PosMinOut.Focus();
+                return false;
             }
 
             //试验力峰值外保护校验
-            if (double.Parse(tbX_FrmProtectOption_LoadMaxOut.Text) <= double.Parse(tbX_FrmProtectOption_LoadMinOut.Text))
+            if (double.Parse(tbX_FrmProtectOption_LoadMaxOut.Text) <= double.Parse(tbX_FrmProtectOption_LoadMaxIn.Text))
             {
-                MessageBox.Show("试验力峰值外保护值不能小于试验力谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("试验力峰值外保护值不能小于试验力峰值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbX_FrmProtectOption_LoadMaxOut.Focus();
                 return false;
             }
 
             //试验力谷值外保护校验
-            if (double.Parse(tbX_FrmProtectOption_LoadMaxIn.Text) <= double.Parse(tbX_FrmProtectOption_LoadMinIn.Text))
+            if (double.Parse(tbX_FrmProtectOption_LoadMinOut.Text) >= double.Parse(tbX_FrmProtectOption_LoadMinIn.Text))
             {
-                MessageBox.Show("试验力峰值内保护值不能小于试验力谷值内保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                tbX_FrmProtectOption_LoadMaxOut.Focus();
+                MessageBox.Show("试验力峰值内保护值不能小于等于试验力谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                tbX_FrmProtectOption_LoadMinOut.Focus();
                 return false;
             }
 
             //变形峰值谷值内保护校验
-            if (double.Parse(tbX_FrmProtectOption_ExtMaxIn.Text) <= double.Parse(tbX_FrmProtectOption_ExtMinIn.Text))
+            if (double.Parse(tbX_FrmProtectOption_ExtMaxOut.Text) <= double.Parse(tbX_FrmProtectOption_ExtMaxIn.Text))
             {
                 MessageBox.Show("变形峰值外保护值不能小于变形谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                tbX_FrmProtectOption_LoadMaxOut.Focus();
+                tbX_FrmProtectOption_ExtMaxOut.Focus();
                 return false;
             }
 
             //变形峰值谷值内保护校验
-            if (double.Parse(tbX_FrmProtectOption_ExtMaxIn.Text) <= double.Parse(tbX_FrmProtectOption_ExtMinIn.Text))
+            if (double.Parse(tbX_FrmProtectOption_ExtMinOut.Text) >= double.Parse(tbX_FrmProtectOption_ExtMinIn.Text))
             {
-                MessageBox.Show("变形峰值内保护值不能小于变形谷值内保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                tbX_FrmProtectOption_LoadMaxOut.Focus();
+                MessageBox.Show("变形峰值内保护值不能小于变形谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                tbX_FrmProtectOption_ExtMaxOut.Focus();
                 return false;
             }
 

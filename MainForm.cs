@@ -98,6 +98,11 @@ namespace DoPENetConnect
         public static MainForm mainform;
 
         /// <summary>
+        /// 保护配置
+        /// </summary>
+        public ProtectOption protectOption;
+
+        /// <summary>
         /// Represents one EDC.
         /// This object is needed to perform DoPE tasks.
         /// (Similar to the DoPE-handle in C++.)
@@ -259,52 +264,6 @@ namespace DoPENetConnect
         /// </summary>
         Queue<double> ValleyQueue = new Queue<double>(2000);
 
-
-        #region 获取峰谷值的配置值
-
-        /// <summary>
-        /// 位移峰值外保护
-        /// </summary>
-        public double ProtectOption_PosMaxOut = 0.0;
-
-        /// <summary>
-        /// 启用位移峰值外保护
-        /// </summary>
-        public bool ProtectOption_PosMaxOut_Effect = false;
-
-
-        /// <summary>
-        /// 位移谷值外保护
-        /// </summary>
-        public double ProtectOption_PosMinOut = 0.0;
-
-        /// <summary>
-        /// 启用位移谷值外保护
-        /// </summary>
-        public bool ProtectOption_PosMinOut_Effect = false;
-
-        /// <summary>
-        /// 位移峰值内保护
-        /// </summary>
-        public double ProtectOption_PosMaxIn = 0.0;
-
-        /// <summary>
-        /// 启用位移峰值内保护
-        /// </summary>
-        public bool ProtectOption_PosMaxIn_Effect = false;
-
-        /// <summary>
-        /// 位移谷值内保护
-        /// </summary>
-        public double ProtectOption_PosMinIn = 0.0;
-
-        /// <summary>
-        /// 启用位移谷值内保护
-        /// </summary>
-        public bool ProtectOption_PosMinIn_Effect = false;
-
-        #endregion 
-
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -313,7 +272,6 @@ namespace DoPENetConnect
             // Initialize graphical-user-interface.
             InitializeComponent();
 
-            LoadIni();
 
             _stop = false;
             _thread = null;
@@ -321,6 +279,14 @@ namespace DoPENetConnect
             _stopWatch.Start();
 
             bPause = false;
+
+            //实例化保护选项
+            protectOption = new ProtectOption();
+
+            //传递当前实例
+            mainform = this;
+
+            LoadIni();
         }
 
         ///----------------------------------------------------------------------
@@ -348,8 +314,8 @@ namespace DoPENetConnect
             //设置lightningchart参数
             CreateChart();
 
-            //传递当前实例
-            mainform = this;
+
+
 
         }
 
@@ -711,136 +677,227 @@ namespace DoPENetConnect
                 DoPE.Data Sample = Block.Data[Block.Data.Length - 1].Data;
                 string text;
 
-                //Sample.CtrlState1.
-
                 text = String.Format("{0}", Sample.Time.ToString("0.000"));
-                //if (nCount >= 20)
-                //{
-                //    guiTime.Text = text;
-                //}
 
                 strCSVLog += text + ",";
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
 
-                //位移队列
-                PVPositionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
-                if (PVPositionQueue.Count >= 50)
+                if (bConnected && bActivated)
                 {
-                    tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
-                    tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
-
-                    //判断是否处于正常峰值区间
-                    if (ProtectOption_PosMaxOut_Effect)
+                    //位移队列
+                    PVPositionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
+                    if (PVPositionQueue.Count >= 50)
                     {
-                        if ( PVPositionQueue.Max() > ProtectOption_PosMaxOut )
+                        tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
+                        tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
+
+                        //判断是否处于正常峰值区间
+                        if (protectOption.ProtectOption_PosMaxOut_Effect)
                         {
-                            MessageBox.Show("峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            OffEDC();
+                            if (PVPositionQueue.Max() > protectOption.ProtectOption_PosMaxOut)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
                         }
+
+                        if (protectOption.ProtectOption_PosMaxIn_Effect)
+                        {
+                            if (PVPositionQueue.Max() < protectOption.ProtectOption_PosMaxIn)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移峰值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
+                        }
+
+                        //判断是否处于正常谷值区间
+                        if (protectOption.ProtectOption_PosMinOut_Effect)
+                        {
+                            if (PVPositionQueue.Min() < protectOption.ProtectOption_PosMinOut)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移谷值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
+                        }
+
+                        if (protectOption.ProtectOption_PosMinIn_Effect)
+                        {
+                            if (PVPositionQueue.Min() > protectOption.ProtectOption_PosMinIn)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移谷值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
+                        }
+
+                        PVPositionQueue.Clear();
                     }
 
-                    if (ProtectOption_PosMaxIn_Effect)
+                    // TODO:判断峰谷值是否超过外保护
+                    double dPosition = 0; //获取峰值外保护
+                                          //if (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S] > 7.0 )
+                                          //{
+                                          //    //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                                          //    OffEDC();
+                                          //}
+
+                    if (nCount >= 20)
                     {
-                        if (PVPositionQueue.Max() < ProtectOption_PosMaxIn )
+                        guiPosition.Text = text;
+                    }
+                    strCSVLog += text + ",";
+                    //data_display1 = decimal.Parse(guiPosition.Text == "" ? "" : "0");
+                    text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
+
+                    //试验力队列
+                    PVLoadQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
+                    if (PVLoadQueue.Count >= 50)
+                    {
+                        tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
+                        tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
+
+                        //判断是否处于合理的试验力峰值区间 峰值外保护
+                        if (protectOption.ProtectOption_LoadMaxOut_Effect)
                         {
-                            MessageBox.Show("峰值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            OffEDC();
+                            if (PVLoadQueue.Max() > protectOption.ProtectOption_LoadMaxOut)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
                         }
+
+                        //判断是否处于合理的试验力峰值区间 峰值内保护
+                        if (protectOption.ProtectOption_LoadMaxIn_Effect)
+                        {
+                            if (PVLoadQueue.Max() < protectOption.ProtectOption_LoadMaxIn)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
+                        }
+
+                        //判断是否处于合理的试验力谷值区间 谷值外保护
+                        if (protectOption.ProtectOption_LoadMinOut_Effect)
+                        {
+                            if (PVLoadQueue.Min() < protectOption.ProtectOption_LoadMinOut)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
+                        }
+
+                        //判断是否处于合理的试验力谷值区间 谷值内保护
+                        if (protectOption.ProtectOption_LoadMinIn_Effect)
+                        {
+                            if (PVLoadQueue.Min() > protectOption.ProtectOption_LoadMinIn)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
+                        }
+
+                        PVLoadQueue.Clear();
                     }
 
-                    //判断是否处于正常谷值区间
-                    if (ProtectOption_PosMinOut_Effect)
+                    //if (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F] > 3.0)
                     {
-                        if (PVPositionQueue.Min() < ProtectOption_PosMinOut)
-                        {
-                            MessageBox.Show("谷值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            OffEDC();
-                        }
+                        //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                        //OffEDC();
+                    }
+                    //ProtectOption_PosMaxOut
+
+                    if (nCount >= 20)
+                    {
+                        guiLoad.Text = text;
                     }
 
-                    if (ProtectOption_PosMinIn_Effect)
+                    strCSVLog += text + ",";
+                    //data_display2 = decimal.Parse(guiLoad.Text);
+                    text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
+
+                    //变形队列
+                    PVExtensionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
+                    if (PVExtensionQueue.Count >= 50)
                     {
-                        if (PVPositionQueue.Min() > ProtectOption_PosMinIn )
+                        tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
+                        tb_MaxExt.Text = PVExtensionQueue.Min().ToString("0.000");
+
+                        //判断是否处于合理的试验力峰值区间 峰值外保护
+                        if (protectOption.ProtectOption_LoadMaxOut_Effect)
                         {
-                            MessageBox.Show("谷值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            OffEDC();
+                            if (PVExtensionQueue.Max() > protectOption.ProtectOption_ExtMaxOut)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
                         }
+
+                        //判断是否处于合理的试验力峰值区间 峰值内保护
+                        if (protectOption.ProtectOption_LoadMaxIn_Effect)
+                        {
+                            if (PVExtensionQueue.Max() < protectOption.ProtectOption_ExtMaxIn)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
+                        }
+
+                        //判断是否处于合理的试验力谷值区间 谷值外保护
+                        if (protectOption.ProtectOption_LoadMinOut_Effect)
+                        {
+                            if (PVExtensionQueue.Min() < protectOption.ProtectOption_ExtMinOut)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
+                        }
+
+                        //判断是否处于合理的试验力谷值区间 谷值内保护
+                        if (protectOption.ProtectOption_LoadMinIn_Effect)
+                        {
+                            if (PVExtensionQueue.Min() > protectOption.ProtectOption_ExtMinIn)
+                            {
+                                OffEDC();
+                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return 0;
+                            }
+                        }
+
+
+                        PVExtensionQueue.Clear();
                     }
 
-                    PVPositionQueue.Clear();
-                }
+                    //if (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E] > 7.0)
+                    //{
+                    //    //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    //    OffEDC();
+                    //}
 
-                // TODO:判断峰谷值是否超过外保护
-                double dPosition = 0; //获取峰值外保护
-                //if (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S] > 7.0 )
-                //{
-                //    //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                //    OffEDC();
-                //}
+                    if (nCount >= 20)
+                    {
+                        guiExtension.Text = text;
+                    }
 
-                if (nCount >= 20)
-                {
-                    guiPosition.Text = text;
-                }
-                strCSVLog += text + ",";
-                //data_display1 = decimal.Parse(guiPosition.Text == "" ? "" : "0");
-                text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
+                    strCSVLog += text + ",";
+                    //data_display3 = decimal.Parse(guiExtension.Text);
 
-                //试验力队列
-                PVLoadQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                if (PVLoadQueue.Count >= 50)
-                {
-                    tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
-                    tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
+                    text = String.Format("{0}", Sample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
+                    strCSVLog += text + ",";
 
-                    PVLoadQueue.Clear();
-                }
-
-                //if (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F] > 3.0)
-                {
-                    //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                    //OffEDC();
-                }
-                //ProtectOption_PosMaxOut
-
-                if (nCount >= 20)
-                {
-                    guiLoad.Text = text;
-                }
-
-                strCSVLog += text + ",";
-                //data_display2 = decimal.Parse(guiLoad.Text);
-                text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
-
-                //变形队列
-                PVExtensionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
-                if (PVExtensionQueue.Count >= 50)
-                {
-                    tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
-                    tb_MaxExt.Text = PVExtensionQueue.Min().ToString("0.000");
-                    PVExtensionQueue.Clear();
-                }
-
-                //if (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E] > 7.0)
-                //{
-                //    //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                //    OffEDC();
-                //}
-
-                if (nCount >= 20)
-                {
-                    guiExtension.Text = text;
-                }
-
-                strCSVLog += text + ",";
-                //data_display3 = decimal.Parse(guiExtension.Text);
-
-                text = String.Format("{0}", Sample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
-                strCSVLog += text + ",";
-
-                if (nCount >= 20)
-                {
-                    nCount = 0;
+                    if (nCount >= 20)
+                    {
+                        nCount = 0;
+                    }
                 }
 
                 //if ((Sample.Cycles) % 2 == 0)
@@ -1432,8 +1489,9 @@ namespace DoPENetConnect
                 {
                     if (!bPause)
                     {
-                        for (int i = 50; Block.Data.Length > i; i += 100)
-                        //for (int i = 20; Block.Data.Length > i; i += 100)
+                        for (int i = 50; Block.Data.Length > i; i += 5000)
+                        //for (int i = 30; Block.Data.Length >= i; i += 60)
+                        //for (int i = 20; Block.Data.Length > i; i += 2000)
                         {
 
                             //绘制Position
@@ -2034,29 +2092,89 @@ namespace DoPENetConnect
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             StringBuilder strTmp = new StringBuilder(255);
             string strConfigSetion = this.Name;
+
+            //停机保护选项
+            IniFileHelper.GetIniString("FrmProtectOption", "限位保护选项", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOptionType = strTmp.ToString();
+
+            #region 位移保护
             IniFileHelper.GetIniString("FrmProtectOption", "位移峰值外保护", "0", strTmp, strTmp.Capacity);
-            ProtectOption_PosMaxOut = double.Parse(strTmp.ToString());
+            protectOption.ProtectOption_PosMaxOut = double.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("FrmProtectOption", "位移峰值外保护生效", "0", strTmp, strTmp.Capacity);
-            ProtectOption_PosMaxOut_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_PosMaxOut_Effect = strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmProtectOption", "位移谷值外保护", "0", strTmp, strTmp.Capacity);
-            ProtectOption_PosMinOut = double.Parse(strTmp.ToString());
+            protectOption.ProtectOption_PosMinOut = double.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("FrmProtectOption", "位移谷值外保护生效", "0", strTmp, strTmp.Capacity);
-            ProtectOption_PosMinOut_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_PosMinOut_Effect = strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmProtectOption", "位移峰值内保护", "0", strTmp, strTmp.Capacity);
-            ProtectOption_PosMaxIn = double.Parse(strTmp.ToString());
+            protectOption.ProtectOption_PosMaxIn = double.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("FrmProtectOption", "位移峰值内保护生效", "0", strTmp, strTmp.Capacity);
-            ProtectOption_PosMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_PosMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmProtectOption", "位移谷值内保护", "0", strTmp, strTmp.Capacity);
-            ProtectOption_PosMinIn = double.Parse(strTmp.ToString());
+            protectOption.ProtectOption_PosMinIn = double.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("FrmProtectOption", "位移谷值内保护生效", "0", strTmp, strTmp.Capacity);
-            ProtectOption_PosMinIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_PosMinIn_Effect = strTmp.ToString() == "0" ? false : true;
+            #endregion 位移保护
+
+            #region 试验力保护
+            IniFileHelper.GetIniString("FrmProtectOption", "试验力峰值外保护", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_LoadMaxOut = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmProtectOption", "试验力峰值外保护生效", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_LoadMaxOut_Effect = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("FrmProtectOption", "试验力谷值外保护", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_LoadMinOut = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmProtectOption", "试验力谷值外保护生效", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_LoadMinOut_Effect = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("FrmProtectOption", "试验力峰值内保护", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_LoadMaxIn = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmProtectOption", "试验力峰值内保护生效", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_LoadMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("FrmProtectOption", "试验力谷值内保护", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_LoadMinIn = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmProtectOption", "试验力谷值内保护生效", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_LoadMinIn_Effect = strTmp.ToString() == "0" ? false : true;
+            #endregion 试验力保护
+
+            #region 变形保护
+            IniFileHelper.GetIniString("FrmProtectOption", "变形峰值外保护", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_ExtMaxOut = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmProtectOption", "变形峰值外保护生效", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_ExtMaxOut_Effect = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("FrmProtectOption", "变形谷值外保护", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_ExtMinOut = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmProtectOption", "变形谷值外保护生效", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_ExtMinOut_Effect = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("FrmProtectOption", "变形峰值内保护", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_ExtMaxIn = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmProtectOption", "变形峰值内保护生效", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_ExtMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("FrmProtectOption", "变形谷值内保护", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_ExtMinIn = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmProtectOption", "变形谷值内保护生效", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_ExtMinIn_Effect = strTmp.ToString() == "0" ? false : true;
+            #endregion 变形保护
+
         }
     }
 }
