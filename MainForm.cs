@@ -95,24 +95,24 @@ namespace DoPENetConnect
         #region Initialization
 
 
-        public static MainForm mainform;
+        public static MainForm mainform = null;
 
         /// <summary>
         /// 保护配置
         /// </summary>
-        public ProtectOption protectOption;
+        public ProtectOption protectOption = null;
 
         /// <summary>
         /// Represents one EDC.
         /// This object is needed to perform DoPE tasks.
         /// (Similar to the DoPE-handle in C++.)
         /// </summary>
-        private Edc MyEdc;
+        private Edc MyEdc = null;
 
         /// <summary>
         /// 查询所有EDC
         /// </summary>
-        public EdcList MyEdcList;
+        public EdcList MyEdcList = null;
 
         /// <summary>
         /// TAN number assigned to a DoPE command.
@@ -263,6 +263,8 @@ namespace DoPENetConnect
         /// 谷值列表
         /// </summary>
         Queue<double> ValleyQueue = new Queue<double>(2000);
+
+        public string strBlockLog = "";
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -898,15 +900,23 @@ namespace DoPENetConnect
                     {
                         nCount = 0;
                     }
+
+                    //if ((Sample.Cycles) % 2 == 0)
+                    {
+                        strCSVLog += (Sample.Cycles << 1).ToString() + ",";
+                        tbX_TestCycles.Text = (Sample.Cycles >> 1).ToString();
+                    }
+
+                    strBlockLog += ( strCSVLog + "\r\n");
+
+                    if ((Sample.Cycles >> 1) % 50 == 0)
+                    {
+                        LogHelper.SaveCsvData(strBlockLog);
+                        strBlockLog = "";
+                    }
+
                 }
 
-                //if ((Sample.Cycles) % 2 == 0)
-                {
-                    strCSVLog += (Sample.Cycles << 1).ToString() + ",";
-                    tbX_TestCycles.Text = (Sample.Cycles >> 1).ToString();
-                }
-
-                LogHelper.SaveCsvData(strCSVLog);
 
                 //tb_MaxPos.Text =  FindPeaks(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
 
