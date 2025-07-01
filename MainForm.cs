@@ -264,6 +264,11 @@ namespace DoPENetConnect
         /// </summary>
         Queue<double> ValleyQueue = new Queue<double>(2000);
 
+        /// <summary>
+        /// 日志试验记录次数
+        /// </summary>
+        public int nCountLog = 100;
+
         public string strBlockLog = "";
 
         ///----------------------------------------------------------------------
@@ -909,7 +914,7 @@ namespace DoPENetConnect
 
                     strBlockLog += ( strCSVLog + "\r\n");
 
-                    if ((Sample.Cycles >> 1) % 50 == 0)
+                    if ((Sample.Cycles >> 1) % nCountLog == 0)
                     {
                         LogHelper.SaveCsvData(strBlockLog);
                         strBlockLog = "";
@@ -2102,6 +2107,10 @@ namespace DoPENetConnect
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             StringBuilder strTmp = new StringBuilder(255);
             string strConfigSetion = this.Name;
+
+            //按试验次数记录日志
+            IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
+            nCountLog = int.Parse(strTmp.ToString());
 
             //停机保护选项
             IniFileHelper.GetIniString("FrmProtectOption", "限位保护选项", "0", strTmp, strTmp.Capacity);

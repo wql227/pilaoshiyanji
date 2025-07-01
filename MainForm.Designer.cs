@@ -1067,6 +1067,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 21);
             this.textBox1.TabIndex = 43;
+            this.textBox1.Visible = false;
             // 
             // cb_TareExt
             // 
@@ -2893,20 +2894,20 @@
             // 试验操作选项ToolStripMenuItem
             // 
             this.试验操作选项ToolStripMenuItem.Name = "试验操作选项ToolStripMenuItem";
-            this.试验操作选项ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.试验操作选项ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.试验操作选项ToolStripMenuItem.Text = "试验操作选项";
             // 
             // 系统保护选项ToolStripMenuItem
             // 
             this.系统保护选项ToolStripMenuItem.Name = "系统保护选项ToolStripMenuItem";
-            this.系统保护选项ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.系统保护选项ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.系统保护选项ToolStripMenuItem.Text = "系统保护选项";
             this.系统保护选项ToolStripMenuItem.Click += new System.EventHandler(this.系统保护选项ToolStripMenuItem_Click);
             // 
             // 绘图选项ToolStripMenuItem
             // 
             this.绘图选项ToolStripMenuItem.Name = "绘图选项ToolStripMenuItem";
-            this.绘图选项ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.绘图选项ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.绘图选项ToolStripMenuItem.Text = "绘图选项";
             // 
             // 试验数据ToolStripMenuItem

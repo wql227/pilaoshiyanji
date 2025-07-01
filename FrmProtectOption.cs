@@ -28,6 +28,10 @@ namespace DoPENetConnect
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             StringBuilder strTmp = new StringBuilder(255);
             string strConfigSetion = this.Name;
+
+            IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
+            NUD_CountLog.Text = strTmp.ToString();
+
             IniFileHelper.GetIniString("FrmProtectOption", "限位保护选项", "0", strTmp, strTmp.Capacity);
             cbX_ProtectOption.SelectedIndex = int.Parse(strTmp.ToString());
 
@@ -118,6 +122,12 @@ namespace DoPENetConnect
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             string strTmp = "";
             string strConfigSetion = this.Name;
+
+            //按试验次数记录日志
+            strTmp = NUD_CountLog.Text;
+            MainForm.mainform.nCountLog = int.Parse(strTmp);
+            IniFileHelper.WriteIniString("Setting", "CountLog", strTmp);
+
             strTmp = cbX_ProtectOption.SelectedIndex.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "限位保护选项", strTmp);
 
