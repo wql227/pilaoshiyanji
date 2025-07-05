@@ -269,6 +269,12 @@ namespace DoPENetConnect
         /// </summary>
         public int nCountLog = 100;
 
+        /// <summary>
+        /// Y轴重新设置表示区间
+        /// </summary>
+        public List<ChartAxisYParm> m_ChartAxixYParmList;
+
+
         public string strBlockLog = "";
 
         ///----------------------------------------------------------------------
@@ -278,7 +284,6 @@ namespace DoPENetConnect
         {
             // Initialize graphical-user-interface.
             InitializeComponent();
-
 
             _stop = false;
             _thread = null;
@@ -320,9 +325,6 @@ namespace DoPENetConnect
 
             //设置lightningchart参数
             CreateChart();
-
-
-
 
         }
 
@@ -374,91 +376,102 @@ namespace DoPENetConnect
 
             this.Cursor = Cursors.WaitCursor;
 
-            try
-            {
-                DoPE.ERR error;
-                //DoPE.IgnoreTcpIpNIC(true);
-                // open the first EDC found on this PC
-                //打开edc列表
-                MyEdcList = new EdcList(32);
-                MyEdc = MyEdcList[0];
-                //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);
-                //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
-                if (MyEdc != null)
+            //改成线程访问，防止卡顿界面
+           // Task.Run(() =>
+           // {
+                try
                 {
-                    Display("连接成功，Name:" + MyEdc.ModuleInfo.Name + "; DeviceId = " + MyEdc.ModuleInfo.DeviceID + "; FunctionId = " + MyEdc.ModuleInfo.DeviceID + "; SerNr = " + MyEdc.ModuleInfo.SerNr + "\n");
+                    DoPE.ERR error;
+                    //DoPE.IgnoreTcpIpNIC(true);
+                    // open the first EDC found on this PC
+                    //打开edc列表
+                    //MyEdcList = new EdcList(32);
+                    //MyEdc = MyEdcList[0];
+                    //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);
+                    MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse("0214B901", System.Globalization.NumberStyles.HexNumber));
+                    //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 3491251);
 
-                    LogHelper.WriteLogFile("AAAA");
-                    lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
-                }
+                    //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
+                    if (MyEdc != null)
+                    {
+                        Display("连接成功，Name:" + MyEdc.ModuleInfo.Name + "; DeviceId = " + MyEdc.ModuleInfo.DeviceID + "; FunctionId = " + MyEdc.ModuleInfo.DeviceID + "; SerNr = " + MyEdc.ModuleInfo.SerNr + "\n");
+
+                        LogHelper.WriteLogFile("AAAA");
+
+                        lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
+
+                    }
 
                 bConnected = MyEdc.IsConnected();
 
-                EnableButton();
+                    EnableButton();
 
-                //DoPEcheck dope_block = new DoPEcheck(MyEdc);
+                    //DoPEcheck dope_block = new DoPEcheck(MyEdc);
 
-                //DoPE.ERR aaa = dope_block.ClrCheck();
+                    //DoPE.ERR aaa = dope_block.ClrCheck();
 
-                // hang in event-handler to receive DoPE-events
-                MyEdc.Eh.OnLineHdlr += new DoPE.OnLineHdlr(OnLine);
-                // Set number of samples for OnDataBlock events
-                // for a 300 ms display refresh
-                DoPE.Machine Machine = new DoPE.Machine(0);
-                MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
-                double aaa = (0.030 / Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2);
-                MyEdc.Eh.SetOnDataBlockSize((Int32)(aaa));
-                MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
-                MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
-                MyEdc.Eh.OnPosMsgHdlr += new DoPE.OnPosMsgHdlr(OnPosMsg);
-                MyEdc.Eh.OnTPosMsgHdlr += new DoPE.OnTPosMsgHdlr(OnTPosMsg);
-                MyEdc.Eh.OnLPosMsgHdlr += new DoPE.OnLPosMsgHdlr(OnLPosMsg);
-                MyEdc.Eh.OnSftMsgHdlr += new DoPE.OnSftMsgHdlr(OnSftMsg);
-                MyEdc.Eh.OnOffsCMsgHdlr += new DoPE.OnOffsCMsgHdlr(OnOffsCMsg);
-                MyEdc.Eh.OnCheckMsgHdlr += new DoPE.OnCheckMsgHdlr(OnCheckMsg);
-                MyEdc.Eh.OnRefSignalMsgHdlr += new DoPE.OnRefSignalMsgHdlr(OnRefSignalMsg);
-                MyEdc.Eh.OnSensorMsgHdlr += new DoPE.OnSensorMsgHdlr(OnSensorMsg);
-                MyEdc.Eh.OnIoSHaltMsgHdlr += new DoPE.OnIoSHaltMsgHdlr(OnIoSHaltMsg);
-                MyEdc.Eh.OnGuardMsgHdlr += new DoPE.OnGuardMsgHdlr(OnGuardMsg);
-                MyEdc.Eh.OnKeyMsgHdlr += new DoPE.OnKeyMsgHdlr(OnKeyMsg);
-                MyEdc.Eh.OnRuntimeErrorHdlr += new DoPE.OnRuntimeErrorHdlr(OnRuntimeError);
-                MyEdc.Eh.OnOverflowHdlr += new DoPE.OnOverflowHdlr(OnOverflow);
-                MyEdc.Eh.OnSystemMsgHdlr += new DoPE.OnSystemMsgHdlr(OnSystemMsg);
-                MyEdc.Eh.OnDebugMsgHdlr += new DoPE.OnDebugMsgHdlr(OnDebugMsg);
-                MyEdc.Eh.OnRmcEventHdlr += new DoPE.OnRmcEventHdlr(OnRmcEvent);
+                    // hang in event-handler to receive DoPE-events
+                    MyEdc.Eh.OnLineHdlr += new DoPE.OnLineHdlr(OnLine);
+                    // Set number of samples for OnDataBlock events
+                    // for a 300 ms display refresh
+                    DoPE.Machine Machine = new DoPE.Machine(0);
+                    MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
+                    double aaa = (0.030 / Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2);
+                    MyEdc.Eh.SetOnDataBlockSize((Int32)(aaa));
+                    MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
+                    MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
+                    MyEdc.Eh.OnPosMsgHdlr += new DoPE.OnPosMsgHdlr(OnPosMsg);
+                    MyEdc.Eh.OnTPosMsgHdlr += new DoPE.OnTPosMsgHdlr(OnTPosMsg);
+                    MyEdc.Eh.OnLPosMsgHdlr += new DoPE.OnLPosMsgHdlr(OnLPosMsg);
+                    MyEdc.Eh.OnSftMsgHdlr += new DoPE.OnSftMsgHdlr(OnSftMsg);
+                    MyEdc.Eh.OnOffsCMsgHdlr += new DoPE.OnOffsCMsgHdlr(OnOffsCMsg);
+                    MyEdc.Eh.OnCheckMsgHdlr += new DoPE.OnCheckMsgHdlr(OnCheckMsg);
+                    MyEdc.Eh.OnRefSignalMsgHdlr += new DoPE.OnRefSignalMsgHdlr(OnRefSignalMsg);
+                    MyEdc.Eh.OnSensorMsgHdlr += new DoPE.OnSensorMsgHdlr(OnSensorMsg);
+                    MyEdc.Eh.OnIoSHaltMsgHdlr += new DoPE.OnIoSHaltMsgHdlr(OnIoSHaltMsg);
+                    MyEdc.Eh.OnGuardMsgHdlr += new DoPE.OnGuardMsgHdlr(OnGuardMsg);
+                    MyEdc.Eh.OnKeyMsgHdlr += new DoPE.OnKeyMsgHdlr(OnKeyMsg);
+                    MyEdc.Eh.OnRuntimeErrorHdlr += new DoPE.OnRuntimeErrorHdlr(OnRuntimeError);
+                    MyEdc.Eh.OnOverflowHdlr += new DoPE.OnOverflowHdlr(OnOverflow);
+                    MyEdc.Eh.OnSystemMsgHdlr += new DoPE.OnSystemMsgHdlr(OnSystemMsg);
+                    MyEdc.Eh.OnDebugMsgHdlr += new DoPE.OnDebugMsgHdlr(OnDebugMsg);
+                    MyEdc.Eh.OnRmcEventHdlr += new DoPE.OnRmcEventHdlr(OnRmcEvent);
 
-                // Set UserScale
-                DoPE.UserScale userScale = new DoPE.UserScale();
-                // set position and extension scale to mm
-                userScale[DoPE.SENSOR.SENSOR_S] = 1000;
-                userScale[DoPE.SENSOR.SENSOR_E] = 1000;
+                    // Set UserScale
+                    DoPE.UserScale userScale = new DoPE.UserScale();
+                    // set position and extension scale to mm
+                    userScale[DoPE.SENSOR.SENSOR_S] = 1000;
+                    userScale[DoPE.SENSOR.SENSOR_E] = 1000;
 
-                // Select machine setup and initialize
-                error = MyEdc.Setup.SelMachine(DoPE.MACHINE_NUMBER.MACHINE_1, userScale);
-                if (error != DoPE.ERR.NOERROR)
-                {
-                    DisplayError(error, "SelectMachine");
+                    // Select machine setup and initialize
+                    error = MyEdc.Setup.SelMachine(DoPE.MACHINE_NUMBER.MACHINE_1, userScale);
+                    if (error != DoPE.ERR.NOERROR)
+                    {
+                        DisplayError(error, "SelectMachine");
+                    }
+                    else
+                    {
+                        Display("SelectMachine : OK !\n");
+                    }
+
+                    MyEdc.Rmc.Enable(-1, -1);
                 }
-                else
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex.ToString());
+                //    Display(string.Format("{0}\n", ex));
+                //}
+                catch (DoPEException ex)
                 {
-                    Display("SelectMachine : OK !\n");
+                    // During the initialization and the
+                    // shut-down phase a DoPE Exception can arise.
+                    // Other errors are reported by the DoPE
+                    // error return codes.
+                    Display(string.Format("{0}\n", ex));
                 }
 
-                MyEdc.Rmc.Enable(-1, -1);
-            }
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.ToString());
-            //    Display(string.Format("{0}\n", ex));
-            //}
-            catch (DoPEException ex)
-            {
-                // During the initialization and the
-                // shut-down phase a DoPE Exception can arise.
-                // Other errors are reported by the DoPE
-                // error return codes.
-                Display(string.Format("{0}\n", ex));
-            }
+          //  });
+
 
             this.Cursor = Cursors.Default;
 
@@ -490,18 +503,16 @@ namespace DoPENetConnect
         {
             try
             {
-
-            
-            if (guiDebug.InvokeRequired)
-            {
-                guiDebug.Invoke(new Action<string>(Display), Text);
-            }
-            else
-            {
-                guiDebug.AppendText(Text + "\r\n");
-                guiDebug.ScrollToCaret(); // 自动滚动到底部
-                //Refresh();
-            }
+                if (guiDebug.InvokeRequired)
+                {
+                    guiDebug.Invoke(new Action<string>(Display), Text);
+                }
+                else
+                {
+                    guiDebug.AppendText(Text + "\r\n");
+                    guiDebug.ScrollToCaret(); // 自动滚动到底部
+                                              //Refresh();
+                }
 
             }
             catch (Exception ex)
@@ -520,7 +531,7 @@ namespace DoPENetConnect
             {
                 DoPE.ERR error = MyEdc.Move.On();
                 bActivated = true;
-                StartCommunicationWithEdcTimer.Start();
+                //StartCommunicationWithEdcTimer.Start();
                 DisplayError(error, "On");
             }
             catch (NullReferenceException)
@@ -547,7 +558,7 @@ namespace DoPENetConnect
             {
                 DoPE.ERR error = MyEdc.Move.Off();
                 bActivated = false;
-                StartCommunicationWithEdcTimer.Stop();
+                //StartCommunicationWithEdcTimer.Stop();
                 DisplayError(error, "Off");
 
                 btnX_SetLow.Checked = false;
@@ -1476,13 +1487,20 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_SetLow_Click(object sender, EventArgs e)
         {
-            DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
-            //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(false);
-
-            if (Err == DoPE.ERR.NOERROR)
+            if (bConnected)
             {
-                btnX_SetHigh.Checked = false;
-                btnX_SetLow.Checked = true;
+                DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
+                //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(false);
+
+                if (Err == DoPE.ERR.NOERROR)
+                {
+                    btnX_SetHigh.Checked = false;
+                    btnX_SetLow.Checked = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先连接控制器！");
             }
         }
 
@@ -1517,7 +1535,7 @@ namespace DoPENetConnect
                             if (chart_machine.Series != null)
                             {
                                 if (chart_machine.Series[0] != null)
-                                {
+                                { 
                                     chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
                                     if (chart_machine.Series[0].Points.Count - 1 == 333)
                                     {
@@ -2039,14 +2057,40 @@ namespace DoPENetConnect
 
         private void cb_DrawPosition_CheckedChanged(object sender, EventArgs e)
         {
-            if (cb_DrawPosition.Checked)
+            //if (cb_DrawPosition.Checked)
+            //{
+            //    chart_machine.Series[0].Enabled = true;
+            //}
+            //else
+            //{
+            //    chart_machine.Series[0].Enabled = false;
+            //}
+
+            int selectConut = 0;
+            while (chart_machine.Series.Count > 7)
             {
-                chart_machine.Series[0].Enabled = true;
+                chart_machine.Series.RemoveAt((chart_machine.Series.Count - 1));
             }
-            else
+
+            while (chart_machine.ChartAreas.Count > 1)
             {
-                chart_machine.Series[0].Enabled = false;
+                chart_machine.ChartAreas.RemoveAt((chart_machine.ChartAreas.Count - 1));
             }
+
+            foreach (Control c in this.Controls)
+            {
+                if (c is CheckBox && ((CheckBox)c).Checked == true)
+                {
+                    selectConut++;
+                }
+            }
+
+            chart_machine.Series[cb_DrawPosition.Text].Enabled = cb_DrawPosition.Checked;
+
+            float axisOffset = 12;
+            CreateYAxis(chart_machine, chart_machine.ChartAreas["ChartArea1"], chart_machine.Series["变形"], axisOffset, 3);
+            axisOffset += 6;
+
         }
 
         private void cb_DrawLoad_CheckedChanged(object sender, EventArgs e)
@@ -2071,6 +2115,44 @@ namespace DoPENetConnect
             {
                 chart_machine.Series[2].Enabled = false;
             }
+
+            int selectConut = 0;
+            while (chart_machine.Series.Count > 4)
+            {
+                chart_machine.Series.RemoveAt((chart_machine.Series.Count - 1));
+            }
+
+            while (chart_machine.ChartAreas.Count > 1)
+            {
+                chart_machine.ChartAreas.RemoveAt((chart_machine.ChartAreas.Count - 1));
+            }
+
+            foreach (Control c in this.Controls)
+            {
+                if (c is CheckBox && ((CheckBox)c).Checked == true)
+                {
+                    selectConut++;
+                }
+            }
+
+            chart_machine.Series[cb_DrawPosition.Text].Enabled = cb_DrawExtension.Checked;
+
+            if (cb_DrawExtension.Checked)
+            {
+                //x坐标点
+                int positionx = 0;
+                //char宽度计数
+                int charWith = 0;
+                positionx = positionx == 1 ? positionx += 10 : positionx += 10;
+                charWith += 5;
+
+                //chart_machine.ChartAreas["ChartArea1"].Position = new ElementPosition(positionx, 10, 100 - charWith, 85);
+                chart_machine.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 100 - charWith - 1, 90);
+
+                float axisOffset = 12;
+                CreateYAxis(chart_machine, chart_machine.ChartAreas["ChartArea1"], chart_machine.Series["变形"], axisOffset, 3);
+                axisOffset += 6;
+            }
         }
 
         private void cb_DrawCommand_CheckedChanged(object sender, EventArgs e)
@@ -2083,6 +2165,45 @@ namespace DoPENetConnect
             {
                 chart_machine.Series[3].Enabled = false;
             }
+
+            int selectConut = 0;
+            while (chart_machine.Series.Count > 4)
+            {
+                chart_machine.Series.RemoveAt((chart_machine.Series.Count - 1));
+            }
+
+            while (chart_machine.ChartAreas.Count > 1)
+            {
+                chart_machine.ChartAreas.RemoveAt((chart_machine.ChartAreas.Count - 1));
+            }
+
+            foreach (Control c in this.Controls)
+            {
+                if (c is CheckBox && ((CheckBox)c).Checked == true)
+                {
+                    selectConut++;
+                }
+            }
+
+            chart_machine.Series[cb_DrawCommand.Text].Enabled = cb_DrawCommand.Checked;
+
+            if (cb_DrawCommand.Checked)
+            {
+                //x坐标点
+                int positionx = 0;
+                //char宽度计数
+                int charWith = 0;
+                positionx = positionx == 1 ? positionx += 11 : positionx += 8;
+                charWith += 6;
+
+                chart_machine.ChartAreas["ChartArea1"].Position = new ElementPosition(positionx, 10, 100 - charWith, 85);
+                chart_machine.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 100 - charWith - 1, 90);
+
+                float axisOffset = 12;
+                CreateYAxis(chart_machine, chart_machine.ChartAreas["ChartArea1"], chart_machine.Series["命令"], axisOffset, 3);
+                axisOffset += 6;
+            }
+
         }
 
         //运行时才能决定是否执行内联
@@ -2195,5 +2316,269 @@ namespace DoPENetConnect
             #endregion 变形保护
 
         }
+
+        private void 系统参数ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSystemSetting frmSystemSetting = new FrmSystemSetting();
+            frmSystemSetting.ShowDialog();
+        }
+
+
+
+        /// <summary>
+        /// Creates Y axis for the specified series.
+        /// </summary>
+        /// <param name="chart">Chart control.</param>
+        /// <param name="area">Original chart area.</param>
+        /// <param name="series">Series.</param>
+        /// <param name="axisOffset">New Y axis offset in relative coordinates.</param>
+        /// <param name="labelsSize">Extar space for new Y axis labels in relative coordinates.</param>
+        public void CreateYAxis(Chart chart, ChartArea area, Series series, float axisOffset, float labelsSize)
+        {
+            try
+            {
+                ChartArea areaSeries = chart.ChartAreas.Add("ChartArea_" + series.Name);
+                areaSeries.BackColor = Color.Transparent;
+                areaSeries.BorderColor = Color.Transparent;
+                areaSeries.Position.FromRectangleF(area.Position.ToRectangleF());
+                areaSeries.InnerPlotPosition.FromRectangleF(area.InnerPlotPosition.ToRectangleF());
+                areaSeries.AxisX.MajorGrid.Enabled = false;
+                areaSeries.AxisX.MajorTickMark.Enabled = false;
+                areaSeries.AxisX.LabelStyle.Enabled = false;
+                areaSeries.AxisY.MajorGrid.Enabled = false;
+                areaSeries.AxisY.MajorTickMark.Enabled = false;
+                areaSeries.AxisY.LabelStyle.Enabled = false;
+                areaSeries.AxisY.IsStartedFromZero = area.AxisY.IsStartedFromZero;
+                areaSeries.CursorX.AutoScroll = true;
+                areaSeries.AxisX.ScrollBar.Enabled = true;
+                areaSeries.CursorX.IsUserEnabled = true;
+                areaSeries.CursorX.IsUserSelectionEnabled = true;
+                areaSeries.AxisX.ScaleView.Zoomable = true;
+                areaSeries.AxisX.ScaleView.Position = 1;
+                //areaSeries.AxisX.ScaleView.Size = 10;
+                areaSeries.AxisX.ScaleView.Position = 1D;
+                areaSeries.AxisX.ScaleView.Size = area.AxisX.ScaleView.Size;
+                areaSeries.AxisX.ScrollBar.ButtonColor = System.Drawing.Color.Lime;
+                areaSeries.AxisX.ScrollBar.LineColor = System.Drawing.Color.Yellow;
+                areaSeries.CursorX.IsUserEnabled = true;
+                areaSeries.CursorX.IsUserSelectionEnabled = true;
+
+                areaSeries.AxisY.LineColor = area.AxisY.LineColor;
+                areaSeries.AxisY.TitleForeColor = area.AxisY.TitleForeColor;
+                areaSeries.AxisY.TitleAlignment = StringAlignment.Far;
+                areaSeries.AxisY.LabelStyle.ForeColor = area.AxisY.LabelStyle.ForeColor;
+                areaSeries.AxisX.IsMarginVisible = false;
+                areaSeries.AxisX.ScaleView.Zoomable = false;
+                areaSeries.AxisY.ScaleView.Zoomable = false;
+                if (null != m_ChartAxixYParmList)
+                {
+                    ChartAxisYParm data = m_ChartAxixYParmList.FirstOrDefault(t => t.ItemName.Equals(series.Name));
+                    if (null != data)
+                    {
+                        areaSeries.AxisY.Interval = data.Interval;//100刻度间隔
+                        if (data.Maximum > 0)
+                        {
+                            areaSeries.AxisY.Maximum = data.Maximum;
+                        }
+                        areaSeries.AxisY.Minimum = data.Minimum;
+                    }
+                }
+
+                series.ChartArea = areaSeries.Name;
+
+                //areaSeries.AxisX.Interval = 0.5;//100刻度间隔
+                // Create new chart area for axis
+                ChartArea areaAxis = chart.ChartAreas.Add("AxisY_" + series.ChartArea);
+                areaAxis.BackColor = Color.Transparent;
+                areaAxis.BorderColor = Color.Transparent;
+                areaAxis.Position.FromRectangleF(chart.ChartAreas[series.ChartArea].Position.ToRectangleF());
+                areaAxis.InnerPlotPosition.FromRectangleF(chart.ChartAreas[series.ChartArea].InnerPlotPosition.ToRectangleF());
+                //areaAxis.AxisX.Interval = 0.5;//100刻度间隔
+                // Create a copy of specified series
+                Series seriesCopy = chart.Series.Add(series.Name + "_Copy");
+                seriesCopy.ChartType = series.ChartType;
+                if (null != m_ChartAxixYParmList)
+                {
+                    ChartAxisYParm data = m_ChartAxixYParmList.FirstOrDefault(t => t.ItemName.Equals(series.Name));
+                    if (null != data)
+                    {
+                        areaAxis.AxisY.Interval = data.Interval;//100刻度间隔
+                        if (data.Maximum > 0)
+                        {
+                            areaAxis.AxisY.Maximum = data.Maximum;
+                        }
+
+                        areaAxis.AxisY.Minimum = data.Minimum;
+                    }
+                }
+
+                foreach (DataPoint point in series.Points)
+                {
+                    seriesCopy.Points.AddXY(point.XValue, point.YValues[0]);
+                }
+
+                // Hide copied series
+                seriesCopy.IsVisibleInLegend = series.IsVisibleInLegend;
+                seriesCopy.Color = Color.Transparent;
+                seriesCopy.BorderColor = Color.Transparent;
+                seriesCopy.ChartArea = areaAxis.Name;
+
+                // Disable drid lines & tickmarks
+                areaAxis.AxisX.LineWidth = 0;
+                areaAxis.AxisX.MajorGrid.Enabled = false;
+                areaAxis.AxisX.MajorTickMark.Enabled = false;
+                areaAxis.AxisX.LabelStyle.Enabled = false;
+                areaAxis.AxisY.MajorGrid.Enabled = false;
+                areaAxis.AxisY.IsStartedFromZero = area.AxisY.IsStartedFromZero;
+                areaAxis.AxisY.LabelStyle.Font = area.AxisY.LabelStyle.Font;
+                areaAxis.AxisX.IsMarginVisible = false;
+                areaAxis.AxisX.ScaleView.Zoomable = false;
+                areaAxis.AxisY.ScaleView.Zoomable = false;
+                //if (m_ChartAxixYParmList == null)
+                //{
+                //    m_ChartAxixYParmList = new List<ChartAxisYParm>();
+                //}
+                //if (null != m_ChartAxixYParmList)
+                //{
+                //    ChartAxisYParm data = m_ChartAxixYParmList.FirstOrDefault(t => t.ItemName.Equals(series.Name));
+                //    if (null == data)
+                //    {
+                //        ChartAxisYParm item = new ChartAxisYParm();
+                //        item.Interval = area.AxisY.Interval;//100刻度间隔
+                //        item.Maximum = area.AxisY.Maximum;
+                //        item.Minimum = area.AxisY.Minimum;
+                //        item.ItemName = series.Name;
+                //        m_ChartAxixYParmList.Add(item);
+                //    }
+                //    else {
+                //        foreach (var item in m_ChartAxixYParmList)
+                //        {
+                //            if (item.ItemName.Equals(series.Name))
+                //            {
+                //                item.Interval = area.AxisY.Interval;//100刻度间隔
+                //                item.Maximum = area.AxisY.Maximum;
+                //                item.Minimum = area.AxisY.Minimum;
+                //                item.ItemName = series.Name;
+                //            }
+                //        }
+                //    }
+                //}
+                if (series.Name.Equals("Rn浓度"))
+                {
+                    areaAxis.AxisY.LineColor = System.Drawing.Color.FromArgb(65, 140, 240);
+                    areaAxis.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(65, 140, 240);
+                    areaAxis.AxisY.Title = "C_Rn";
+                    areaAxis.AxisY.TitleAlignment = StringAlignment.Far;
+                    areaAxis.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(252, 180, 65);
+                }
+                else if (series.Name.Equals("Rn误差"))
+                {
+                    //areaAxis.AxisY.LineColor = System.Drawing.Color.FromArgb(252, 180, 65);
+                    //areaAxis.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(252, 180, 65);
+                    //areaAxis.AxisY.Title = "Rn误差";
+                    //areaAxis.AxisY.TitleAlignment = StringAlignment.Far;
+                    //areaAxis.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(252, 180, 65);
+
+                }
+                else if (series.Name.Equals("变形"))
+                {
+                    areaAxis.AxisY.LineColor = System.Drawing.Color.FromArgb(224, 64, 10);
+                    areaAxis.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(224, 64, 10);
+                    areaAxis.AxisY.Title = "变形";
+                    areaAxis.AxisY.TitleAlignment = StringAlignment.Far;
+                    areaAxis.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(224, 64, 10);
+                }
+                else if (series.Name.Equals("CRnInWater误差"))
+                {
+                    //areaAxis.AxisY.LineColor = System.Drawing.Color.FromArgb(3, 100, 147);
+                    //areaAxis.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(3, 100, 147);
+                    //areaAxis.AxisY.Title = "CRnInWater误差";
+                    //areaAxis.AxisY.TitleAlignment = StringAlignment.Far;
+                    //areaAxis.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(3, 100, 147);
+                }
+                else if (series.Name.Equals("命令"))
+                {
+                    areaAxis.AxisY.LineColor = System.Drawing.Color.FromArgb(130, 130, 130);
+                    areaAxis.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(130, 130, 130);
+                    areaAxis.AxisY.Title = "命令";
+                    areaAxis.AxisY.TitleAlignment = StringAlignment.Far;
+                    areaAxis.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(130, 130, 130);
+                }
+                else if (series.Name.Equals("温度"))
+                {
+                    areaAxis.AxisY.LineColor = System.Drawing.Color.FromArgb(26, 59, 105);
+                    areaAxis.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(26, 59, 105);
+                    areaAxis.AxisY.Title = "气温";
+                    areaAxis.AxisY.TitleAlignment = StringAlignment.Far;
+                    areaAxis.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(26, 59, 105);
+                }
+                else if (series.Name.Equals("湿度"))
+                {
+                    areaAxis.AxisY.LineColor = System.Drawing.Color.FromArgb(255, 204, 44);
+                    areaAxis.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(255, 204, 44);
+                    areaAxis.AxisY.Title = "湿度";
+                    areaAxis.AxisY.TitleAlignment = StringAlignment.Far;
+                    areaAxis.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(255, 204, 44);
+                }
+                else if (series.Name.Equals("大气压"))
+                {
+                    areaAxis.AxisY.LineColor = System.Drawing.Color.FromArgb(18, 25, 221);
+                    areaAxis.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(18, 25, 221);
+                    areaAxis.AxisY.Title = "大气压";
+                    areaAxis.AxisY.TitleAlignment = StringAlignment.Far;
+                    areaAxis.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(18, 25, 221);
+                }
+                else if (series.Name.Equals("电量"))
+                {
+                    areaAxis.AxisY.LineColor = System.Drawing.Color.FromArgb(124, 46, 21);
+                    areaAxis.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(124, 46, 21);
+                    areaAxis.AxisY.Title = "电量";
+                    areaAxis.AxisY.TitleAlignment = StringAlignment.Far;
+                    areaAxis.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(124, 46, 21);
+                }
+
+                if (!series.Name.Equals("CRnInWater误差"))
+                {
+
+                    // Adjust area position
+                    if (areaAxis.Position.X - axisOffset > 100)
+                    {
+                        areaAxis.Position.X = 100;
+                    }
+                    else if (areaAxis.Position.X - axisOffset < 0)
+                    {
+                        areaAxis.Position.X = 0;
+                    }
+                    else
+                    {
+                        areaAxis.Position.X -= axisOffset;
+                    }
+
+                    if (areaAxis.InnerPlotPosition.X + labelsSize > 100)
+                    {
+                        areaAxis.InnerPlotPosition.X = 100;
+                    }
+                    else if (areaAxis.InnerPlotPosition.X + labelsSize < 0)
+                    {
+                        areaAxis.InnerPlotPosition.X = 0;
+                    }
+                    else
+                    {
+                        areaAxis.InnerPlotPosition.X += labelsSize;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //MsgLog.WriteLog(" Creates Y axis for the specified series.", ex);
+                Console.WriteLine("class " + ex.Message);
+                Console.WriteLine("class " + ex);
+                MessageBox.Show("出现意外错误：：" + ex.Message, "提示信息", MessageBoxButtons.OK, MessageBoxIcon.None);
+            }
+            // Create new chart area for original series
+
+        }
+
+
     }
 }

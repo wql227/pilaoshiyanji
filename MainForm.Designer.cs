@@ -43,6 +43,7 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.cb_DrawCommand = new System.Windows.Forms.CheckBox();
             this.cb_DrawExtension = new System.Windows.Forms.CheckBox();
             this.cb_DrawLoad = new System.Windows.Forms.CheckBox();
@@ -131,8 +132,11 @@
             this.lblPosition = new System.Windows.Forms.Label();
             this.guiTime = new System.Windows.Forms.TextBox();
             this.guiLoad = new System.Windows.Forms.TextBox();
-            this.guiDebug = new System.Windows.Forms.RichTextBox();
             this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
+            this.superTabControlPanel7 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.panelEx9 = new DevComponents.DotNetBar.PanelEx();
+            this.guiDebug = new System.Windows.Forms.RichTextBox();
+            this.superTabItem7 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx7 = new DevComponents.DotNetBar.PanelEx();
@@ -231,6 +235,7 @@
             this.试验数据回访ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.系统参数ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.试验操作选项ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统保护选项ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.绘图选项ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -255,6 +260,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart_machine)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.pl_DataShow.SuspendLayout();
+            this.superTabControlPanel7.SuspendLayout();
+            this.panelEx9.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx6.SuspendLayout();
@@ -304,6 +311,7 @@
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel7);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.menuStrip1);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -317,7 +325,8 @@
             this.superTabControl1.TabIndex = 57;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabItem2,
-            this.superTabItem1});
+            this.superTabItem1,
+            this.superTabItem7});
             this.superTabControl1.Text = "superTabControl1";
             // 
             // superTabControlPanel2
@@ -336,7 +345,6 @@
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx1.Controls.Add(this.panel2);
             this.panelEx1.Controls.Add(this.pl_DataShow);
-            this.panelEx1.Controls.Add(this.guiDebug);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
@@ -357,12 +365,13 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 81);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1362, 626);
+            this.panel2.Size = new System.Drawing.Size(1418, 626);
             this.panel2.TabIndex = 57;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.statusStrip1);
             this.groupBox1.Controls.Add(this.cb_DrawCommand);
             this.groupBox1.Controls.Add(this.cb_DrawExtension);
             this.groupBox1.Controls.Add(this.cb_DrawLoad);
@@ -388,9 +397,17 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1362, 626);
+            this.groupBox1.Size = new System.Drawing.Size(1418, 626);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(3, 601);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1412, 22);
+            this.statusStrip1.TabIndex = 66;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // cb_DrawCommand
             // 
@@ -410,8 +427,6 @@
             // 
             this.cb_DrawExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_DrawExtension.AutoSize = true;
-            this.cb_DrawExtension.Checked = true;
-            this.cb_DrawExtension.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_DrawExtension.Location = new System.Drawing.Point(1111, 189);
             this.cb_DrawExtension.Name = "cb_DrawExtension";
             this.cb_DrawExtension.Size = new System.Drawing.Size(48, 16);
@@ -587,7 +602,7 @@
             this.btnX_SetLow.Size = new System.Drawing.Size(123, 39);
             this.btnX_SetLow.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_SetLow.TabIndex = 57;
-            this.btnX_SetLow.Text = "地    压";
+            this.btnX_SetLow.Text = "低    压";
             this.btnX_SetLow.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
             this.btnX_SetLow.Click += new System.EventHandler(this.btnX_SetLow_Click);
             // 
@@ -764,7 +779,7 @@
             this.startStopDrawToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(3, 17);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1356, 25);
+            this.menuStrip2.Size = new System.Drawing.Size(1412, 25);
             this.menuStrip2.TabIndex = 61;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -1058,7 +1073,7 @@
             this.pl_DataShow.Dock = System.Windows.Forms.DockStyle.Top;
             this.pl_DataShow.Location = new System.Drawing.Point(0, 0);
             this.pl_DataShow.Name = "pl_DataShow";
-            this.pl_DataShow.Size = new System.Drawing.Size(1362, 81);
+            this.pl_DataShow.Size = new System.Drawing.Size(1418, 81);
             this.pl_DataShow.TabIndex = 56;
             // 
             // textBox1
@@ -1388,24 +1403,59 @@
             this.guiLoad.Text = "0.000";
             this.guiLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // guiDebug
-            // 
-            this.guiDebug.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guiDebug.HideSelection = false;
-            this.guiDebug.Location = new System.Drawing.Point(1362, 0);
-            this.guiDebug.Name = "guiDebug";
-            this.guiDebug.ReadOnly = true;
-            this.guiDebug.Size = new System.Drawing.Size(56, 707);
-            this.guiDebug.TabIndex = 0;
-            this.guiDebug.Text = "Starting Communication\n";
-            this.guiDebug.Visible = false;
-            // 
             // superTabItem2
             // 
             this.superTabItem2.AttachedControl = this.superTabControlPanel2;
             this.superTabItem2.GlobalItem = false;
             this.superTabItem2.Name = "superTabItem2";
             this.superTabItem2.Text = "控制器实时曲线";
+            // 
+            // superTabControlPanel7
+            // 
+            this.superTabControlPanel7.Controls.Add(this.panelEx9);
+            this.superTabControlPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel7.Location = new System.Drawing.Point(0, 52);
+            this.superTabControlPanel7.Name = "superTabControlPanel7";
+            this.superTabControlPanel7.Size = new System.Drawing.Size(1418, 707);
+            this.superTabControlPanel7.TabIndex = 0;
+            this.superTabControlPanel7.TabItem = this.superTabItem7;
+            // 
+            // panelEx9
+            // 
+            this.panelEx9.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx9.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx9.Controls.Add(this.guiDebug);
+            this.panelEx9.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx9.Location = new System.Drawing.Point(0, 0);
+            this.panelEx9.Name = "panelEx9";
+            this.panelEx9.Size = new System.Drawing.Size(1418, 707);
+            this.panelEx9.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx9.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx9.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx9.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx9.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx9.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx9.Style.GradientAngle = 90;
+            this.panelEx9.TabIndex = 0;
+            // 
+            // guiDebug
+            // 
+            this.guiDebug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guiDebug.HideSelection = false;
+            this.guiDebug.Location = new System.Drawing.Point(0, 0);
+            this.guiDebug.Name = "guiDebug";
+            this.guiDebug.ReadOnly = true;
+            this.guiDebug.Size = new System.Drawing.Size(1418, 707);
+            this.guiDebug.TabIndex = 1;
+            this.guiDebug.Text = "Starting Communication\n";
+            // 
+            // superTabItem7
+            // 
+            this.superTabItem7.AttachedControl = this.superTabControlPanel7;
+            this.superTabItem7.GlobalItem = false;
+            this.superTabItem7.Name = "superTabItem7";
+            this.superTabItem7.Text = "日志消息";
             // 
             // superTabControlPanel1
             // 
@@ -2884,12 +2934,20 @@
             // 参数设置ToolStripMenuItem
             // 
             this.参数设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.系统参数ToolStripMenuItem,
             this.试验操作选项ToolStripMenuItem,
             this.系统保护选项ToolStripMenuItem,
             this.绘图选项ToolStripMenuItem});
             this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
             this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.参数设置ToolStripMenuItem.Text = "参数设置";
+            // 
+            // 系统参数ToolStripMenuItem
+            // 
+            this.系统参数ToolStripMenuItem.Name = "系统参数ToolStripMenuItem";
+            this.系统参数ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.系统参数ToolStripMenuItem.Text = "系统参数";
+            this.系统参数ToolStripMenuItem.Click += new System.EventHandler(this.系统参数ToolStripMenuItem_Click);
             // 
             // 试验操作选项ToolStripMenuItem
             // 
@@ -3007,7 +3065,7 @@
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DoPE10Net C# Demo";
+            this.Text = "DoPE10NetConnect";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
@@ -3024,6 +3082,8 @@
             this.menuStrip2.PerformLayout();
             this.pl_DataShow.ResumeLayout(false);
             this.pl_DataShow.PerformLayout();
+            this.superTabControlPanel7.ResumeLayout(false);
+            this.panelEx9.ResumeLayout(false);
             this.superTabControlPanel1.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
             this.panelEx6.ResumeLayout(false);
@@ -3060,7 +3120,6 @@
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RichTextBox guiDebug;
         private System.Windows.Forms.TextBox guiExtension;
         private System.Windows.Forms.TextBox guiTime;
         private System.Windows.Forms.TextBox guiLoad;
@@ -3260,6 +3319,12 @@
         private System.Windows.Forms.CheckBox cb_DrawExtension;
         private System.Windows.Forms.CheckBox cb_DrawLoad;
         private System.Windows.Forms.CheckBox cb_DrawCommand;
+        private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel7;
+        private DevComponents.DotNetBar.PanelEx panelEx9;
+        private DevComponents.DotNetBar.SuperTabItem superTabItem7;
+        private System.Windows.Forms.RichTextBox guiDebug;
+        private System.Windows.Forms.ToolStripMenuItem 系统参数ToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }
 
