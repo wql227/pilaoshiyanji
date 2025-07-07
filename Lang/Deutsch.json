@@ -1,0 +1,28 @@
+{
+	"MainForm": {
+		"lblTime": "Laufzeit [s]",
+		"lblPosition": "Position [mm]",
+		"lblPositionMaxMin": "Weg/Peak-Valley-Werte",
+		"lblPositionMaxValue": "Peak-Wert",
+		"lblPositionMinValue": "Valley-Wert",
+		"lblLoad": "Prüfkraft [N]",
+		"lblLoadMaxMin": "Prüfkraft Peak-Valley-Werte",
+		"lblLoadMaxValue": "Peak-Wert",
+		"lblLoadMinValue": "Valley-Wert",
+		"lblExtension": "Verformung [mm]",
+		"lblExtensionMaxMin": "Verformungs-Peak-Valley-Werte",
+		"lblExtensionMaxValue": "Peak-Wert",
+		"lblExtensionMinValue": "Valley-Wert",
+		"btnX_Connect": "Verbinden",
+		"btnX_Disconnect": "Trennen",
+		"btnX_MoveQuickUp": "Schnell nach oben",
+		"bntX_MoveUp": "Nach oben",
+		"bntX_MoveHalt": "Anhalten",
+		"bntX_MoveDown": "Nach unten",
+		"btnX_QuickMoveDown": "Schnell nach unten",
+        "bntX_GUIOn": "Aktivieren",
+        "bntX_GUIOff": "Deaktivieren",
+        "btnX_SetHigh": "Hoher Druck",
+        "btnX_SetLow": "Niedriger Druck"
+	}
+}
