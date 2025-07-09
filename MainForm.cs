@@ -84,6 +84,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using static Doli.DoPE10.DoPE;
 using System.Linq;
+using System.IO;
 
 namespace DoPENetConnect
 {
@@ -1117,7 +1118,8 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void 登录ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.ShowDialog();
         }
 
 
@@ -1132,9 +1134,10 @@ namespace DoPENetConnect
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_About_Click(object sender, EventArgs e)
         {
-
+            FrmAbout frmAbout = new FrmAbout();
+            frmAbout.ShowDialog();
         }
 
         #endregion 菜单选项响应事件
@@ -1151,14 +1154,6 @@ namespace DoPENetConnect
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // formsPlot1.XLabel("这是X轴的描述");
-
-            //formsPlot1.Plot.Axes.SetLimitsY(0, 10);
-
-            //formsPlot1.Plot.A
-
-            // superTabControl1.SelectedTabIndex = 1;
-
             this.DoubleBuffered = true;//设置本窗体
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
@@ -1206,8 +1201,64 @@ namespace DoPENetConnect
             //// 可选：设置样式以区分两个系列
             //chart_machine.Series[0].Color = Color.Blue;
             //chart_machine.Series[1].Color = Color.Red;
+
+
         }
 
+
+        /// <summary>
+        /// 加载语言项
+        /// </summary>
+        public void LoadLanguage()
+        {
+            // 动态绑定菜单：遍历指定目录中的语言文件并生成菜单项
+            string langPath = System.IO.Directory.GetCurrentDirectory() + "\\Lang";
+
+            if (Directory.Exists(langPath))
+            {
+                string[] strLanguages = Directory.GetFiles(langPath);
+
+                foreach (string filePath in strLanguages)
+                {
+                    // 获取文件名（不含路径）
+                    string fileName = Path.GetFileName(filePath);
+                    fileName = Path.GetFileNameWithoutExtension(filePath);
+
+                    // 创建菜单项
+                    ToolStripMenuItem langMenuItem = new ToolStripMenuItem();
+                    langMenuItem.Text = fileName; // 显示文件名作为菜单项文本
+                    langMenuItem.Tag = filePath;  // 使用 Tag 存储完整路径，便于事件中使用
+
+                    // 绑定点击事件
+                    langMenuItem.Click += LangMenuItem_Click;
+
+                    // 添加到父菜单项下
+                    界面语言ToolStripMenuItem.DropDownItems.Add(langMenuItem);
+                }
+            }
+            else
+            {
+                MessageBox.Show("语言目录不存在！");
+            }
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LangMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem clickedItem)
+            {
+                string selectedFile = clickedItem.Tag?.ToString();
+                string selectedText = clickedItem.Text;
+
+                // 这里可以执行加载语言文件等操作
+                MessageBox.Show($"你选择了语言文件：{selectedText}\n路径：{selectedFile}");
+            }
+        }
 
         public void EnableButton()
         {
@@ -1457,8 +1508,6 @@ namespace DoPENetConnect
         private void bntX_GUIOff_Click(object sender, EventArgs e)
         {
             OffEDC();
-
-
         }
 
 
@@ -1487,21 +1536,21 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_SetLow_Click(object sender, EventArgs e)
         {
-            if (bConnected)
+            //if (bConnected)
             {
-                DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
+                //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
                 //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(false);
 
-                if (Err == DoPE.ERR.NOERROR)
+                //if (Err == DoPE.ERR.NOERROR)
                 {
                     btnX_SetHigh.Checked = false;
                     btnX_SetLow.Checked = true;
                 }
             }
-            else
-            {
-                MessageBox.Show("请先连接控制器！");
-            }
+            //else
+            //{
+            //    MessageBox.Show("请先连接控制器！");
+            //}
         }
 
         #endregion 
@@ -2157,14 +2206,14 @@ namespace DoPENetConnect
 
         private void cb_DrawCommand_CheckedChanged(object sender, EventArgs e)
         {
-            if (cb_DrawCommand.Checked)
+            //if (cb_DrawCommand.Checked)
             {
-                chart_machine.Series[3].Enabled = true;
+                chart_machine.Series[3].Enabled = cb_DrawCommand.Checked;
             }
-            else
-            {
-                chart_machine.Series[3].Enabled = false;
-            }
+            //else
+            //{
+            //    chart_machine.Series[3].Enabled = false;
+            //}
 
             int selectConut = 0;
             while (chart_machine.Series.Count > 4)
@@ -2197,14 +2246,23 @@ namespace DoPENetConnect
                 charWith += 6;
 
                 chart_machine.ChartAreas["ChartArea1"].Position = new ElementPosition(positionx, 10, 100 - charWith, 85);
-                chart_machine.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 100 - charWith - 1, 90);
+                chart_machine.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 50 - charWith, 90);
 
-                float axisOffset = 12;
-                CreateYAxis(chart_machine, chart_machine.ChartAreas["ChartArea1"], chart_machine.Series["命令"], axisOffset, 3);
-                axisOffset += 6;
+                float axisOffset = 2;
+                CreateYAxis_New(chart_machine, chart_machine.ChartAreas["ChartArea1"], chart_machine.Series["命令"], axisOffset, 1);
+                axisOffset += 3;
             }
 
         }
+
+
+        public void SeriesCheckChanged()
+        {
+
+
+        }
+
+
 
         //运行时才能决定是否执行内联
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -2317,12 +2375,66 @@ namespace DoPENetConnect
 
         }
 
-        private void 系统参数ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_SystemSetting_Click(object sender, EventArgs e)
         {
             FrmSystemSetting frmSystemSetting = new FrmSystemSetting();
             frmSystemSetting.ShowDialog();
         }
 
+
+        public void CreateYAxis_New(Chart chart, ChartArea area, Series series, float axisOffset, float labelsSize)
+        {
+            // Create new chart area for original series
+            ChartArea areaSeries = chart.ChartAreas.Add("ChartArea_" + series.Name);
+            areaSeries.BackColor = Color.Transparent;
+            areaSeries.BorderColor = Color.Transparent;
+            areaSeries.Position.FromRectangleF(area.Position.ToRectangleF());
+            areaSeries.InnerPlotPosition.FromRectangleF(area.InnerPlotPosition.ToRectangleF());
+            areaSeries.AxisX.MajorGrid.Enabled = false;
+            areaSeries.AxisX.MajorTickMark.Enabled = false;
+            areaSeries.AxisX.LabelStyle.Enabled = false;
+            areaSeries.AxisY.MajorGrid.Enabled = true;
+            areaSeries.AxisY.MajorTickMark.Enabled = true;
+            areaSeries.AxisY.LabelStyle.Enabled = true;
+            areaSeries.AxisY.IsStartedFromZero = area.AxisY.IsStartedFromZero;
+
+            series.ChartArea = areaSeries.Name;
+
+            // Create new chart area for axis
+            ChartArea areaAxis = chart.ChartAreas.Add("AxisY_" + series.ChartArea);
+            areaAxis.BackColor = Color.Transparent;
+            areaAxis.BorderColor = Color.Transparent;
+            areaAxis.Position.FromRectangleF(chart.ChartAreas[series.ChartArea].Position.ToRectangleF());
+            areaAxis.InnerPlotPosition.FromRectangleF(chart.ChartAreas[series.ChartArea].InnerPlotPosition.ToRectangleF());
+
+            // Create a copy of specified series
+            Series seriesCopy = chart.Series.Add(series.Name + "_Copy");
+            seriesCopy.ChartType = series.ChartType;
+            foreach (DataPoint point in series.Points)
+            {
+                seriesCopy.Points.AddXY(point.XValue, point.YValues[0]);
+            }
+
+            // Hide copied series
+            seriesCopy.IsVisibleInLegend = false;
+            seriesCopy.Color = Color.Transparent;
+            seriesCopy.BorderColor = Color.Transparent;
+            seriesCopy.ChartArea = areaAxis.Name;
+
+            // Disable drid lines & tickmarks
+            areaAxis.AxisX.LineWidth = 0;
+            areaAxis.AxisX.MajorGrid.Enabled = false;
+            areaAxis.AxisX.MajorTickMark.Enabled = false;
+            areaAxis.AxisX.LabelStyle.Enabled = false;
+            areaAxis.AxisY.MajorGrid.Enabled = true;
+            areaAxis.AxisY.IsStartedFromZero = area.AxisY.IsStartedFromZero;
+            areaAxis.AxisY.LabelStyle.Font = area.AxisY.LabelStyle.Font;
+
+            // Adjust area position
+            //areaAxis.Position.X -= axisOffset;
+            areaAxis.InnerPlotPosition.X += labelsSize;
+
+        }
 
 
         /// <summary>
@@ -2434,35 +2546,39 @@ namespace DoPENetConnect
                 areaAxis.AxisX.IsMarginVisible = false;
                 areaAxis.AxisX.ScaleView.Zoomable = false;
                 areaAxis.AxisY.ScaleView.Zoomable = false;
-                //if (m_ChartAxixYParmList == null)
-                //{
-                //    m_ChartAxixYParmList = new List<ChartAxisYParm>();
-                //}
-                //if (null != m_ChartAxixYParmList)
-                //{
-                //    ChartAxisYParm data = m_ChartAxixYParmList.FirstOrDefault(t => t.ItemName.Equals(series.Name));
-                //    if (null == data)
-                //    {
-                //        ChartAxisYParm item = new ChartAxisYParm();
-                //        item.Interval = area.AxisY.Interval;//100刻度间隔
-                //        item.Maximum = area.AxisY.Maximum;
-                //        item.Minimum = area.AxisY.Minimum;
-                //        item.ItemName = series.Name;
-                //        m_ChartAxixYParmList.Add(item);
-                //    }
-                //    else {
-                //        foreach (var item in m_ChartAxixYParmList)
-                //        {
-                //            if (item.ItemName.Equals(series.Name))
-                //            {
-                //                item.Interval = area.AxisY.Interval;//100刻度间隔
-                //                item.Maximum = area.AxisY.Maximum;
-                //                item.Minimum = area.AxisY.Minimum;
-                //                item.ItemName = series.Name;
-                //            }
-                //        }
-                //    }
-                //}
+
+                if (m_ChartAxixYParmList == null)
+                {
+                    m_ChartAxixYParmList = new List<ChartAxisYParm>();
+                }
+
+                if (null != m_ChartAxixYParmList)
+                {
+                    ChartAxisYParm data = m_ChartAxixYParmList.FirstOrDefault(t => t.ItemName.Equals(series.Name));
+                    if (null == data)
+                    {
+                        ChartAxisYParm item = new ChartAxisYParm();
+                        item.Interval = area.AxisY.Interval;//100刻度间隔
+                        item.Maximum = area.AxisY.Maximum;
+                        item.Minimum = area.AxisY.Minimum;
+                        item.ItemName = series.Name;
+                        m_ChartAxixYParmList.Add(item);
+                    }
+                    else
+                    {
+                        foreach (var item in m_ChartAxixYParmList)
+                        {
+                            if (item.ItemName.Equals(series.Name))
+                            {
+                                item.Interval = area.AxisY.Interval;//100刻度间隔
+                                item.Maximum = area.AxisY.Maximum;
+                                item.Minimum = area.AxisY.Minimum;
+                                item.ItemName = series.Name;
+                            }
+                        }
+                    }
+                }
+
                 if (series.Name.Equals("Rn浓度"))
                 {
                     areaAxis.AxisY.LineColor = System.Drawing.Color.FromArgb(65, 140, 240);
@@ -2539,7 +2655,6 @@ namespace DoPENetConnect
 
                 if (!series.Name.Equals("CRnInWater误差"))
                 {
-
                     // Adjust area position
                     if (areaAxis.Position.X - axisOffset > 100)
                     {
@@ -2580,5 +2695,16 @@ namespace DoPENetConnect
         }
 
 
+        /// <summary>
+        /// 打开日志文件目录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItem_OpenLogsDir_Click(object sender, EventArgs e)
+        {
+            string strLogFilePath = "Logs";
+            System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "\\"+ strLogFilePath);
+
+        }
     }
 }
