@@ -271,6 +271,11 @@ namespace DoPENetConnect
         public int nCountLog = 100;
 
         /// <summary>
+        /// 日志试验记录次数
+        /// </summary>
+        public string strLanguage = "简体中文";
+
+        /// <summary>
         /// Y轴重新设置表示区间
         /// </summary>
         public List<ChartAxisYParm> m_ChartAxixYParmList;
@@ -1154,6 +1159,8 @@ namespace DoPENetConnect
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            LoadLanguage();
+
             this.DoubleBuffered = true;//设置本窗体
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
@@ -1207,7 +1214,7 @@ namespace DoPENetConnect
 
 
         /// <summary>
-        /// 加载语言项
+        /// 加载语言项菜单
         /// </summary>
         public void LoadLanguage()
         {
@@ -1238,7 +1245,37 @@ namespace DoPENetConnect
             }
             else
             {
-                MessageBox.Show("语言目录不存在！");
+                MessageBox.Show("语言目录不存在！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
+
+
+        /// <summary>
+        /// 替换界面语言
+        /// </summary>
+        public void ReplaceLanguage()
+        {
+            var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
+
+            //string aaa = superTabControl1;
+            string aaa = superTabItem2.Text;
+
+            //循环界面控件替换成指定的语言
+            if (langData.TryGetValue(this.Name, out var mainFormLabels))
+            {
+                foreach (var kvp in mainFormLabels)
+                {
+                    var controlName = kvp.Key;
+                    var textValue = kvp.Value;
+
+                    // 根据控件名称查找控件（可以扩展为递归查找）
+                    var ctrl = this.Controls.Find(controlName, true).FirstOrDefault();
+                    if (ctrl != null)
+                    {
+                        ctrl.Text = textValue;
+                    }
+                }
             }
         }
 
@@ -1254,12 +1291,20 @@ namespace DoPENetConnect
             {
                 string selectedFile = clickedItem.Tag?.ToString();
                 string selectedText = clickedItem.Text;
+                strLanguage = selectedText;
 
                 // 这里可以执行加载语言文件等操作
                 MessageBox.Show($"你选择了语言文件：{selectedText}\n路径：{selectedFile}");
+
+                IniFileHelper.WriteIniString("Setting", "Language", selectedText);
+                ReplaceLanguage();
             }
         }
 
+
+        /// <summary>
+        /// 启用禁用按钮
+        /// </summary>
         public void EnableButton()
         {
             if (bConnected)
@@ -2290,6 +2335,10 @@ namespace DoPENetConnect
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
             nCountLog = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("Setting", "Language", "0", strTmp, strTmp.Capacity);
+            strLanguage = strTmp.ToString();
+
 
             //停机保护选项
             IniFileHelper.GetIniString("FrmProtectOption", "限位保护选项", "0", strTmp, strTmp.Capacity);

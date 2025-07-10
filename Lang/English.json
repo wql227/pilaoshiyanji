@@ -3,26 +3,66 @@
 		"lblTime": "Run Time [s]",
 		"lblPosition": "Position [mm]",
 		"lblPositionMaxMin": "Position Peak & Valley Values",
-		"lblPositionMaxValue": "Peak Value",
-		"lblPositionMinValue": "Valley Value",
+		"lblPositionMaxValue": "Peak",
+		"lblPositionMinValue": "Valley",
 		"lblLoad": "Load [N]",
 		"lblLoadMaxMin": "Load Peak & Valley Values",
-		"lblLoadMaxValue": "Peak Value",
-		"lblLoadMinValue": "Valley Value",
+		"lblLoadMaxValue": "Peak",
+		"lblLoadMinValue": "Valley",
 		"lblExtension": "Extension [mm]",
 		"lblExtensionMaxMin": "Extension Peak & Valley Values",
-		"lblExtensionMaxValue": "Peak Value",
-		"lblExtensionMinValue": "Valley Value",
-		"btnX_Connect": "Connect",
+		"lblExtensionMaxValue": "Peak",
+		"lblExtensionMinValue": "Valley",
+		"btnX_Connect": "   Connect",
 		"btnX_Disconnect": "Disconnect",
-		"btnX_MoveQuickUp": "Move Up Quick",
-		"bntX_MoveUp": "Move Up",
-		"bntX_MoveHalt": "Halt",
-		"bntX_MoveDown": "Move Down",
-		"btnX_QuickMoveDown": "Move Down Quick",
-		"bntX_GUIOn": "Activate",
+		"btnX_MoveQuickUp": "   Move Up Quick",
+		"bntX_MoveUp": "   Move Up",
+		"bntX_MoveHalt": "      Halt",
+		"bntX_MoveDown": " Move Down",
+		"btnX_QuickMoveDown": " Move Down Quick",
+		"bntX_GUIOn": "  Activate",
 		"bntX_GUIOff": "Deactivate",
-		"btnX_SetHigh": "High Pressure",
-		"btnX_SetLow": "Low Pressure"
-	}
+		"btnX_SetHigh": "  High Pressure",
+		"btnX_SetLow": "  Low Pressure",
+		"superTabItem2" : "Runtime Curve",
+		"lblTestCycles": "Test Count",
+		"ShowLogToolStripMenuItem":"ShowLog"
+		
+	},
+	
+	"FrmPos":{
+		"btnX_PosSend":"Send",		
+		"labelX1":"EDC",
+		"labelX2":"MoveCtrl",
+		"labelX3":"Speed",
+		"labelX4":"Destination"
+		},
+
+
+	"FrmPos_A":{
+		"btnX_Pos_ASend":"Send",
+		"labelX1":"EDC",
+		"labelX2":"MoveCtrl",
+		"labelX3":"Speed",
+		"labelX4":"Destination",
+		"labelX5":"Acceleration",
+		"labelX6":"Deceleration"
+		},
+		
+	"FrmDynCtrl":{
+		"btnX_Dyn_Send": "Send",
+		"labelX1":"EDC",
+		"labelX2":"StartCtrl",
+		"labelX3":"StartSpeed",
+		"labelX4":"Move",
+		"labelX5":"WaveForm",
+		"labelX6":"PeakCtrl",
+		"labelX7":"Cycles",	
+		"labelX8":"Offset mm",
+		"labelX10":"Amplitude mm",
+		"labelX12":"Frequency Hz",
+		"cbX_Dyn_FadeInOut":"FadeInOut",
+		"cbX_DynCtrl_ModifyParam":"Modify",
+		"cbX_DynCtrl_RelativeDestinations":"RelativeDestination"
+		}
 }

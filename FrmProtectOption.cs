@@ -16,14 +16,7 @@ namespace DoPENetConnect
         {
             InitializeComponent();
 
-           // LoadIni();
         }
-
-
-      
-
-
-
    
     }
 }

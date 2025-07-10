@@ -1,5 +1,4 @@
 {
-
 	"MainForm" :{
 		"lblTime": "运行时间 [s]",
 		"lblPosition":"位移 [mm]",
@@ -17,16 +16,54 @@
 		"btnX_Connect":"连    接",
 		"btnX_Disconnect":"断    开",
 		"btnX_MoveQuickUp":"快速向上",
-		"bntX_MoveUp":"向上",
-		"bntX_MoveHalt":"保持",
-		"bntX_MoveDown":"向下",
+		"bntX_MoveUp":"向    上",
+		"bntX_MoveHalt":"保    持",
+		"bntX_MoveDown":"向    下",
 		"btnX_QuickMoveDown":"快速向下",
-        "bntX_GUIOn": "激活",
-        "bntX_GUIOff": "停用",
-        "btnX_SetHigh": "高压",
-        "btnX_SetLow": "低压",
+        "bntX_GUIOn": "激    活",
+        "bntX_GUIOff": "停    用",
+        "btnX_SetHigh": "高    压",
+        "btnX_SetLow": "低    压",
+		"superTabItem2" : "控制器实时曲线",
+		"lblTestCycles": "试验次数",
+		"ShowLogToolStripMenuItem":"显示日志"
+		},
 	
-
+	"FrmPos":{
+		"btnX_PosSend":"发送",
+		"labelX1":"控制器",
+		"labelX2":"控制方式",
+		"labelX3":"速度",
+		"labelX4":"目的地"
+		},
+		
+	"FrmPos_A":{
+		"btnX_Pos_ASend":"发送",
+		"labelX1":"控制器",
+		"labelX2":"控制方式",
+		"labelX3":"速度",
+		"labelX4":"目的地",
+		"labelX5":"加速度",
+		"labelX6":"减速度"
+		},
+		
+	"FrmDynCtrl":{
+		"btnX_Dyn_Send": "发送",
+		"labelX1":"控制器",
+		"labelX2":"趋近控制",
+		"labelX3":"趋近速度",
+		"labelX4":"控制方式",
+		"labelX5":"波形方式",
+		"labelX6":"峰值控制",
+		"labelX7":"循环次数",	
+		"labelX8":"偏移量 mm",
+		"labelX10":"振幅 mm",
+		"labelX12":"频率 Hz",
+		"labelX6":"峰值控制",	
+		"cbX_Dyn_FadeInOut":"淡入淡出",
+		"cbX_DynCtrl_ModifyParam":"修改参数",
+		"cbX_DynCtrl_RelativeDestinations":"相对目的地"
 		}
-	
+		
+		
 }

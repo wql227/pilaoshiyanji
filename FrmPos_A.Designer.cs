@@ -318,7 +318,7 @@
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(80, 23);
             this.labelX6.TabIndex = 0;
-            this.labelX6.Text = "加速度";
+            this.labelX6.Text = "减速度";
             // 
             // tbX_Pos_DecCtrl
             // 
