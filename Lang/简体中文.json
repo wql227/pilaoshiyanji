@@ -26,7 +26,16 @@
         "btnX_SetLow": "低    压",
 		"superTabItem2" : "控制器实时曲线",
 		"lblTestCycles": "试验次数",
-		"ShowLogToolStripMenuItem":"显示日志"
+		"ShowLogToolStripMenuItem":"显示日志",
+		"startStopDrawToolStripMenuItem":"暂停绘制",
+		"ToolStripMenuItem_Oper":"操作(&O)",
+		"ToolStripMenuItem_Login":"登录...(&L)",
+		"ToolStripMenuItem_Setting":"参数设置(&S)",
+		"ToolStripMenuItem_Data":"实验数据(&D)",
+		"ToolStripMenuItem_Result":"实验结果(&R)",
+		"ToolStripMenuItem_Language":"界面语言",
+		"ToolStripMenuItem_Help":"帮助"
+
 		},
 	
 	"FrmPos":{

@@ -29,12 +29,12 @@
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
@@ -106,10 +106,10 @@
             this.cb_TareExt = new System.Windows.Forms.CheckBox();
             this.cb_TareLoad = new System.Windows.Forms.CheckBox();
             this.cb_TarePos = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblExtensionMinValue = new System.Windows.Forms.Label();
             this.lblLoadMinValue = new System.Windows.Forms.Label();
             this.lblPositionMinValue = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblExtensionMaxValue = new System.Windows.Forms.Label();
             this.lbX_EDCName = new DevComponents.DotNetBar.LabelX();
             this.lblLoadMaxValue = new System.Windows.Forms.Label();
             this.lblTestCycles = new System.Windows.Forms.Label();
@@ -230,26 +230,26 @@
             this.guiDebug = new System.Windows.Forms.RichTextBox();
             this.superTabItem7 = new DevComponents.DotNetBar.SuperTabItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Oper = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Login = new System.Windows.Forms.ToolStripMenuItem();
             this.试验数据回访ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Setting = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_SystemSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.试验操作选项ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统保护选项ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.绘图选项ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.试验数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Data = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_OpenLogsDir = new System.Windows.Forms.ToolStripMenuItem();
             this.保存数据问题及ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.保存当前曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.试验结果ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Result = new System.Windows.Forms.ToolStripMenuItem();
             this.拷贝当前曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打印当前曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.界面语言ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Language = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_OpenLangDir = new System.Windows.Forms.ToolStripMenuItem();
-            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Adout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
@@ -504,75 +504,76 @@
             // 
             // chart_machine
             // 
-            this.chart_machine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.chart_machine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea5.AxisX.Interval = 1D;
-            chartArea5.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea5.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea5.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea5.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea5.AxisX.Maximum = 10D;
-            chartArea5.AxisX.MaximumAutoSize = 100F;
-            chartArea5.AxisX.Minimum = 0D;
-            chartArea5.AxisX.MinorTickMark.Enabled = true;
-            chartArea5.AxisX.MinorTickMark.Size = 0.5F;
-            chartArea5.AxisX.Title = "时间(s)";
-            chartArea5.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea5.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea5.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
-            chartArea5.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
-            chartArea5.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea5.AxisY.Maximum = 20D;
-            chartArea5.AxisY.Minimum = -20D;
-            chartArea5.AxisY.MinorTickMark.Enabled = true;
-            chartArea5.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-            chartArea5.AxisY.MinorTickMark.Size = 0.5F;
-            chartArea5.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea5.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
-            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
-            chartArea5.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea5.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea5.AxisY2.LineColor = System.Drawing.Color.Orange;
-            chartArea5.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea5.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea5.AxisY2.Maximum = 20D;
-            chartArea5.AxisY2.Minimum = -20D;
-            chartArea5.AxisY2.MinorTickMark.Enabled = true;
-            chartArea5.AxisY2.MinorTickMark.Size = 0.5F;
-            chartArea5.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea5.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(kN)";
-            chartArea5.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
-            chartArea5.Name = "ChartArea1";
-            this.chart_machine.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chart_machine.Legends.Add(legend5);
+            chartArea2.AxisX.Interval = 1D;
+            chartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea2.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea2.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisX.Maximum = 10D;
+            chartArea2.AxisX.MaximumAutoSize = 100F;
+            chartArea2.AxisX.Minimum = 0D;
+            chartArea2.AxisX.MinorTickMark.Enabled = true;
+            chartArea2.AxisX.MinorTickMark.Size = 0.5F;
+            chartArea2.AxisX.Title = "时间(s)";
+            chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea2.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
+            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisY.Maximum = 20D;
+            chartArea2.AxisY.Minimum = -20D;
+            chartArea2.AxisY.MinorTickMark.Enabled = true;
+            chartArea2.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+            chartArea2.AxisY.MinorTickMark.Size = 0.5F;
+            chartArea2.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea2.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
+            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
+            chartArea2.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea2.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.AxisY2.LineColor = System.Drawing.Color.Orange;
+            chartArea2.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea2.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisY2.Maximum = 20D;
+            chartArea2.AxisY2.Minimum = -20D;
+            chartArea2.AxisY2.MinorTickMark.Enabled = true;
+            chartArea2.AxisY2.MinorTickMark.Size = 0.5F;
+            chartArea2.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea2.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(kN)";
+            chartArea2.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
+            chartArea2.Name = "ChartArea1";
+            this.chart_machine.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart_machine.Legends.Add(legend2);
             this.chart_machine.Location = new System.Drawing.Point(0, 0);
             this.chart_machine.Name = "chart_machine";
-            series17.ChartArea = "ChartArea1";
-            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series17.Legend = "Legend1";
-            series17.Name = "位移";
-            series17.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series18.ChartArea = "ChartArea1";
-            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series18.Legend = "Legend1";
-            series18.Name = "试验力";
-            series19.ChartArea = "ChartArea1";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series19.Legend = "Legend1";
-            series19.Name = "变形";
-            series20.ChartArea = "ChartArea1";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series20.Legend = "Legend1";
-            series20.Name = "命令";
-            series20.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            this.chart_machine.Series.Add(series17);
-            this.chart_machine.Series.Add(series18);
-            this.chart_machine.Series.Add(series19);
-            this.chart_machine.Series.Add(series20);
-            this.chart_machine.Size = new System.Drawing.Size(1139, 558);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Legend = "Legend1";
+            series5.Name = "位移";
+            series5.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.Legend = "Legend1";
+            series6.Name = "试验力";
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.Legend = "Legend1";
+            series7.Name = "变形";
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series8.Legend = "Legend1";
+            series8.Name = "命令";
+            series8.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.chart_machine.Series.Add(series5);
+            this.chart_machine.Series.Add(series6);
+            this.chart_machine.Series.Add(series7);
+            this.chart_machine.Series.Add(series8);
+            this.chart_machine.Size = new System.Drawing.Size(1212, 558);
             this.chart_machine.TabIndex = 63;
             // 
             // btnX_Connect
@@ -585,7 +586,7 @@
             this.btnX_Connect.Image = ((System.Drawing.Image)(resources.GetObject("btnX_Connect.Image")));
             this.btnX_Connect.Location = new System.Drawing.Point(1236, 59);
             this.btnX_Connect.Name = "btnX_Connect";
-            this.btnX_Connect.Size = new System.Drawing.Size(123, 39);
+            this.btnX_Connect.Size = new System.Drawing.Size(120, 39);
             this.btnX_Connect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_Connect.TabIndex = 57;
             this.btnX_Connect.Text = "连     接";
@@ -1033,15 +1034,17 @@
             // 
             // ShowLogToolStripMenuItem
             // 
+            this.ShowLogToolStripMenuItem.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ShowLogToolStripMenuItem.Name = "ShowLogToolStripMenuItem";
-            this.ShowLogToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.ShowLogToolStripMenuItem.Size = new System.Drawing.Size(65, 21);
             this.ShowLogToolStripMenuItem.Text = "显示日志";
             this.ShowLogToolStripMenuItem.Click += new System.EventHandler(this.ShowLogToolStripMenuItem_Click);
             // 
             // startStopDrawToolStripMenuItem
             // 
+            this.startStopDrawToolStripMenuItem.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.startStopDrawToolStripMenuItem.Name = "startStopDrawToolStripMenuItem";
-            this.startStopDrawToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.startStopDrawToolStripMenuItem.Size = new System.Drawing.Size(65, 21);
             this.startStopDrawToolStripMenuItem.Text = "暂停绘制";
             this.startStopDrawToolStripMenuItem.Click += new System.EventHandler(this.startStopDrawToolStripMenuItem_Click);
             // 
@@ -1050,10 +1053,10 @@
             this.pl_DataShow.Controls.Add(this.cb_TareExt);
             this.pl_DataShow.Controls.Add(this.cb_TareLoad);
             this.pl_DataShow.Controls.Add(this.cb_TarePos);
-            this.pl_DataShow.Controls.Add(this.label10);
+            this.pl_DataShow.Controls.Add(this.lblExtensionMinValue);
             this.pl_DataShow.Controls.Add(this.lblLoadMinValue);
             this.pl_DataShow.Controls.Add(this.lblPositionMinValue);
-            this.pl_DataShow.Controls.Add(this.label9);
+            this.pl_DataShow.Controls.Add(this.lblExtensionMaxValue);
             this.pl_DataShow.Controls.Add(this.lbX_EDCName);
             this.pl_DataShow.Controls.Add(this.lblLoadMaxValue);
             this.pl_DataShow.Controls.Add(this.lblTestCycles);
@@ -1118,16 +1121,16 @@
             this.cb_TarePos.UseVisualStyleBackColor = true;
             this.cb_TarePos.CheckedChanged += new System.EventHandler(this.cb_TarePos_CheckedChanged);
             // 
-            // label10
+            // lblExtensionMinValue
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(951, 52);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 17);
-            this.label10.TabIndex = 26;
-            this.label10.Text = "谷值";
-            this.label10.Click += new System.EventHandler(this.lblTime_Click);
+            this.lblExtensionMinValue.AutoSize = true;
+            this.lblExtensionMinValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExtensionMinValue.Location = new System.Drawing.Point(951, 52);
+            this.lblExtensionMinValue.Name = "lblExtensionMinValue";
+            this.lblExtensionMinValue.Size = new System.Drawing.Size(38, 17);
+            this.lblExtensionMinValue.TabIndex = 26;
+            this.lblExtensionMinValue.Text = "谷值";
+            this.lblExtensionMinValue.Click += new System.EventHandler(this.lblTime_Click);
             // 
             // lblLoadMinValue
             // 
@@ -1151,16 +1154,16 @@
             this.lblPositionMinValue.Text = "谷值";
             this.lblPositionMinValue.Click += new System.EventHandler(this.lblTime_Click);
             // 
-            // label9
+            // lblExtensionMaxValue
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(951, 28);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(38, 17);
-            this.label9.TabIndex = 26;
-            this.label9.Text = "峰值";
-            this.label9.Click += new System.EventHandler(this.lblTime_Click);
+            this.lblExtensionMaxValue.AutoSize = true;
+            this.lblExtensionMaxValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExtensionMaxValue.Location = new System.Drawing.Point(951, 28);
+            this.lblExtensionMaxValue.Name = "lblExtensionMaxValue";
+            this.lblExtensionMaxValue.Size = new System.Drawing.Size(38, 17);
+            this.lblExtensionMaxValue.TabIndex = 26;
+            this.lblExtensionMaxValue.Text = "峰值";
+            this.lblExtensionMaxValue.Click += new System.EventHandler(this.lblTime_Click);
             // 
             // lbX_EDCName
             // 
@@ -2904,35 +2907,35 @@
             // 
             this.menuStrip1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.操作ToolStripMenuItem,
-            this.参数设置ToolStripMenuItem,
-            this.试验数据ToolStripMenuItem,
-            this.试验结果ToolStripMenuItem,
-            this.界面语言ToolStripMenuItem,
-            this.帮助ToolStripMenuItem});
+            this.ToolStripMenuItem_Oper,
+            this.ToolStripMenuItem_Setting,
+            this.ToolStripMenuItem_Data,
+            this.ToolStripMenuItem_Result,
+            this.ToolStripMenuItem_Language,
+            this.ToolStripMenuItem_Help});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1418, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 操作ToolStripMenuItem
+            // ToolStripMenuItem_Oper
             // 
-            this.操作ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.登录ToolStripMenuItem,
+            this.ToolStripMenuItem_Oper.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_Login,
             this.试验数据回访ToolStripMenuItem,
             this.退出ToolStripMenuItem});
-            this.操作ToolStripMenuItem.Name = "操作ToolStripMenuItem";
-            this.操作ToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.操作ToolStripMenuItem.Text = "操作(&O)";
+            this.ToolStripMenuItem_Oper.Name = "ToolStripMenuItem_Oper";
+            this.ToolStripMenuItem_Oper.Size = new System.Drawing.Size(76, 20);
+            this.ToolStripMenuItem_Oper.Text = "操作(&O)";
             // 
-            // 登录ToolStripMenuItem
+            // ToolStripMenuItem_Login
             // 
-            this.登录ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("登录ToolStripMenuItem.Image")));
-            this.登录ToolStripMenuItem.Name = "登录ToolStripMenuItem";
-            this.登录ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.登录ToolStripMenuItem.Text = "登录...(&L)";
-            this.登录ToolStripMenuItem.Click += new System.EventHandler(this.登录ToolStripMenuItem_Click);
+            this.ToolStripMenuItem_Login.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem_Login.Image")));
+            this.ToolStripMenuItem_Login.Name = "ToolStripMenuItem_Login";
+            this.ToolStripMenuItem_Login.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Login.Text = "登录...(&L)";
+            this.ToolStripMenuItem_Login.Click += new System.EventHandler(this.ToolStripMenuItem_Login_Click);
             // 
             // 试验数据回访ToolStripMenuItem
             // 
@@ -2948,16 +2951,16 @@
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.退出ToolStripMenuItem.Text = "退出(&Q)";
             // 
-            // 参数设置ToolStripMenuItem
+            // ToolStripMenuItem_Setting
             // 
-            this.参数设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_Setting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_SystemSetting,
             this.试验操作选项ToolStripMenuItem,
             this.系统保护选项ToolStripMenuItem,
             this.绘图选项ToolStripMenuItem});
-            this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
-            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
-            this.参数设置ToolStripMenuItem.Text = "参数设置(&S)";
+            this.ToolStripMenuItem_Setting.Name = "ToolStripMenuItem_Setting";
+            this.ToolStripMenuItem_Setting.Size = new System.Drawing.Size(108, 20);
+            this.ToolStripMenuItem_Setting.Text = "参数设置(&S)";
             // 
             // ToolStripMenuItem_SystemSetting
             // 
@@ -2989,16 +2992,16 @@
             this.绘图选项ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.绘图选项ToolStripMenuItem.Text = "绘图选项...";
             // 
-            // 试验数据ToolStripMenuItem
+            // ToolStripMenuItem_Data
             // 
-            this.试验数据ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_Data.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_OpenLogsDir,
             this.保存数据问题及ToolStripMenuItem,
             this.toolStripSeparator1,
             this.保存当前曲线ToolStripMenuItem});
-            this.试验数据ToolStripMenuItem.Name = "试验数据ToolStripMenuItem";
-            this.试验数据ToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
-            this.试验数据ToolStripMenuItem.Text = "试验数据(&D)";
+            this.ToolStripMenuItem_Data.Name = "ToolStripMenuItem_Data";
+            this.ToolStripMenuItem_Data.Size = new System.Drawing.Size(108, 20);
+            this.ToolStripMenuItem_Data.Text = "试验数据(&D)";
             // 
             // ToolStripMenuItem_OpenLogsDir
             // 
@@ -3011,7 +3014,7 @@
             // 保存数据问题及ToolStripMenuItem
             // 
             this.保存数据问题及ToolStripMenuItem.Name = "保存数据问题及ToolStripMenuItem";
-            this.保存数据问题及ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.保存数据问题及ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.保存数据问题及ToolStripMenuItem.Text = "保存数据文件";
             this.保存数据问题及ToolStripMenuItem.Visible = false;
             this.保存数据问题及ToolStripMenuItem.Click += new System.EventHandler(this.保存数据问题及ToolStripMenuItem_Click);
@@ -3019,23 +3022,23 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(193, 6);
             // 
             // 保存当前曲线ToolStripMenuItem
             // 
             this.保存当前曲线ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("保存当前曲线ToolStripMenuItem.Image")));
             this.保存当前曲线ToolStripMenuItem.Name = "保存当前曲线ToolStripMenuItem";
-            this.保存当前曲线ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.保存当前曲线ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.保存当前曲线ToolStripMenuItem.Text = "保存当前曲线";
             // 
-            // 试验结果ToolStripMenuItem
+            // ToolStripMenuItem_Result
             // 
-            this.试验结果ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_Result.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.拷贝当前曲线ToolStripMenuItem,
             this.打印当前曲线ToolStripMenuItem});
-            this.试验结果ToolStripMenuItem.Name = "试验结果ToolStripMenuItem";
-            this.试验结果ToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
-            this.试验结果ToolStripMenuItem.Text = "试验结果(&R)";
+            this.ToolStripMenuItem_Result.Name = "ToolStripMenuItem_Result";
+            this.ToolStripMenuItem_Result.Size = new System.Drawing.Size(108, 20);
+            this.ToolStripMenuItem_Result.Text = "试验结果(&R)";
             // 
             // 拷贝当前曲线ToolStripMenuItem
             // 
@@ -3051,13 +3054,13 @@
             this.打印当前曲线ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.打印当前曲线ToolStripMenuItem.Text = "打印当前曲线(&P)";
             // 
-            // 界面语言ToolStripMenuItem
+            // ToolStripMenuItem_Language
             // 
-            this.界面语言ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_Language.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem_OpenLangDir});
-            this.界面语言ToolStripMenuItem.Name = "界面语言ToolStripMenuItem";
-            this.界面语言ToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
-            this.界面语言ToolStripMenuItem.Text = "界面语言(&L)";
+            this.ToolStripMenuItem_Language.Name = "ToolStripMenuItem_Language";
+            this.ToolStripMenuItem_Language.Size = new System.Drawing.Size(108, 20);
+            this.ToolStripMenuItem_Language.Text = "界面语言(&L)";
             // 
             // toolStripMenuItem_OpenLangDir
             // 
@@ -3066,13 +3069,13 @@
             this.toolStripMenuItem_OpenLangDir.Size = new System.Drawing.Size(212, 22);
             this.toolStripMenuItem_OpenLangDir.Text = "打开多语言目录(&D)";
             // 
-            // 帮助ToolStripMenuItem
+            // ToolStripMenuItem_Help
             // 
-            this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_Adout});
-            this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.帮助ToolStripMenuItem.Text = "帮助(&H)";
+            this.ToolStripMenuItem_Help.Name = "ToolStripMenuItem_Help";
+            this.ToolStripMenuItem_Help.Size = new System.Drawing.Size(76, 20);
+            this.ToolStripMenuItem_Help.Text = "帮助(&H)";
             // 
             // ToolStripMenuItem_Adout
             // 
@@ -3174,13 +3177,13 @@
         private System.Windows.Forms.Label lblExtension;
         private DevComponents.DotNetBar.SuperTabItem superTabItem2;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 操作ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 参数设置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 试验数据ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 试验结果ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Oper;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Setting;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Data;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Result;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Help;
         private DevComponents.DotNetBar.PanelEx panelEx2;
-        private System.Windows.Forms.ToolStripMenuItem 登录ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Login;
         private System.Windows.Forms.ToolStripMenuItem 试验数据回访ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 试验操作选项ToolStripMenuItem;
@@ -3310,8 +3313,8 @@
         private System.Windows.Forms.Label lblLoadMaxMin;
         private System.Windows.Forms.TextBox tb_MinLoad;
         private System.Windows.Forms.TextBox tb_MaxLoad;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblExtensionMinValue;
+        private System.Windows.Forms.Label lblExtensionMaxValue;
         private System.Windows.Forms.Label lblExtensionMaxMin;
         private System.Windows.Forms.TextBox tb_MinExt;
         private System.Windows.Forms.TextBox tb_MaxExt;
@@ -3370,7 +3373,7 @@
         private System.Windows.Forms.ToolStripMenuItem setBitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ShowLogToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startStopDrawToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 界面语言ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Language;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_OpenLangDir;
     }
 }

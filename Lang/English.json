@@ -26,8 +26,16 @@
 		"btnX_SetLow": "  Low Pressure",
 		"superTabItem2" : "Runtime Curve",
 		"lblTestCycles": "Test Count",
-		"ShowLogToolStripMenuItem":"ShowLog"
-		
+		"ShowLogToolStripMenuItem":"Show Log",
+		"startStopDrawToolStripMenuItem":"Suspend Draw",
+		"ToolStripMenuItem_Oper":"Operation(&O)",
+		"ToolStripMenuItem_Login":"Login...(&L)",
+		"ToolStripMenuItem_Setting":"Parameter Setting(&S)",
+		"ToolStripMenuItem_Data":"Experimental Data(&D)",
+		"ToolStripMenuItem_Result":"Experimental Result(&R)",
+		"ToolStripMenuItem_Language":"Language(&L)",
+		"ToolStripMenuItem_Help":"Help(&H)"		
+			
 	},
 	
 	"FrmPos":{

@@ -1121,7 +1121,7 @@ namespace DoPENetConnect
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void 登录ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Login_Click(object sender, EventArgs e)
         {
             FrmLogin frmLogin = new FrmLogin();
             frmLogin.ShowDialog();
@@ -1160,6 +1160,8 @@ namespace DoPENetConnect
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadLanguage();
+
+            ReplaceLanguage();
 
             this.DoubleBuffered = true;//设置本窗体
             SetStyle(ControlStyles.UserPaint, true);
@@ -1240,7 +1242,7 @@ namespace DoPENetConnect
                     langMenuItem.Click += LangMenuItem_Click;
 
                     // 添加到父菜单项下
-                    界面语言ToolStripMenuItem.DropDownItems.Add(langMenuItem);
+                    ToolStripMenuItem_Language.DropDownItems.Add(langMenuItem);
                 }
             }
             else
@@ -1258,25 +1260,103 @@ namespace DoPENetConnect
         {
             var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
 
-            //string aaa = superTabControl1;
-            string aaa = superTabItem2.Text;
-
             //循环界面控件替换成指定的语言
             if (langData.TryGetValue(this.Name, out var mainFormLabels))
             {
+                //foreach (var kvp in mainFormLabels)
+                //{
+                //    var controlName = kvp.Key;
+                //    var textValue = kvp.Value;
+
+                //    // 根据控件名称查找控件（可以扩展为递归查找）
+                //    var ctrl = this.Controls.Find(controlName, true).FirstOrDefault();
+                //    if (ctrl != null)
+                //    {
+                //        ctrl.Text = textValue;
+                //    }
+                //}
+
                 foreach (var kvp in mainFormLabels)
                 {
                     var controlName = kvp.Key;
                     var textValue = kvp.Value;
 
-                    // 根据控件名称查找控件（可以扩展为递归查找）
+                    // 首先尝试从主窗体的控件集合中查找控件
                     var ctrl = this.Controls.Find(controlName, true).FirstOrDefault();
+
+                    if (ctrl == null && this is Form form)
+                    {
+                        // 如果未找到，则检查 SuperTabControl 中的所有 SuperTabItem
+                        foreach (Control c in form.Controls)
+                        {
+                            if (c is SuperTabControl superTabControl)
+                            {
+                                foreach (SuperTabItem tabItem in superTabControl.Tabs)
+                                {
+                                    // 获取当前 TabItem 的内容区域
+                                    Control contentContainer = GetContentContainer(tabItem);
+                                    if (contentContainer != null)
+                                    {
+                                        ctrl = contentContainer.Controls.Find(controlName, true).FirstOrDefault();
+                                        if (ctrl != null) break; // 找到后跳出循环
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     if (ctrl != null)
                     {
                         ctrl.Text = textValue;
                     }
                 }
+
+
+                foreach (var kvp in mainFormLabels)
+                {
+                    var controlName = kvp.Key;
+                    var textValue = kvp.Value;
+
+                    ToolStripMenuItem menuItem1 = FindMenuItem(this.menuStrip1.Items, controlName);
+                    if (menuItem1 != null)
+                    {
+                        menuItem1.Text = textValue;
+                    }
+
+                    ToolStripMenuItem menuItem2 = FindMenuItem(this.menuStrip2.Items, controlName);
+                    if (menuItem2 != null)
+                    {
+                        menuItem2.Text = textValue;
+                    }
+                }
+
             }
+        }
+
+        private Control GetContentContainer(SuperTabItem tabItem)
+        {
+            // 获取 SuperTabItem 对应的内容区域
+            return tabItem.AttachedControl;
+        }
+
+        private ToolStripMenuItem FindMenuItem(ToolStripItemCollection items, string name)
+        {
+            foreach (ToolStripItem item in items)
+            {
+                if (item is ToolStripMenuItem toolStripMenuItem && toolStripMenuItem.Name == name)
+                {
+                    return toolStripMenuItem;
+                }
+                //else if (item.HasDropDownItems)
+                //{
+                //    ToolStripMenuItem foundItem = FindMenuItem(toolStripMenuItem.DropDownItems, name);
+                //    if (foundItem != null)
+                //    {
+                //        return foundItem;
+                //    }
+                //}
+            }
+            return null;
         }
 
 
