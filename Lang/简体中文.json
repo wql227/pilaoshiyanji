@@ -72,6 +72,17 @@
 		"cbX_Dyn_FadeInOut":"淡入淡出",
 		"cbX_DynCtrl_ModifyParam":"修改参数",
 		"cbX_DynCtrl_RelativeDestinations":"相对目的地"
+		},
+	
+	"FrmAbout":{
+		"labelX9":"程序内存使用",
+		"labelX10":"程序名称",
+		"labelX11":"程序版本",
+		"labelX12":"程序标识",
+		"labelX13":"计算机用户",
+		"labelX14":"操作系统",
+		"labelX15":"CLR",
+		"labelX16":"程序内存使用",
 		}
 		
 		

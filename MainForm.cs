@@ -1260,6 +1260,15 @@ namespace DoPENetConnect
         {
             var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
 
+            List<string> allMenuNames = GetAllMenuNames(this.MainMenuStrip.Items);
+
+            // 输出所有菜单项名称
+            foreach (var name in allMenuNames)
+            {
+                Console.WriteLine(name);
+            }
+
+
             //循环界面控件替换成指定的语言
             if (langData.TryGetValue(this.Name, out var mainFormLabels))
             {
@@ -1298,7 +1307,10 @@ namespace DoPENetConnect
                                     if (contentContainer != null)
                                     {
                                         ctrl = contentContainer.Controls.Find(controlName, true).FirstOrDefault();
-                                        if (ctrl != null) break; // 找到后跳出循环
+                                        if (ctrl != null)
+                                        {
+                                            break; // 找到后跳出循环
+                                        }
                                     }
                                 }
                             }
@@ -1311,7 +1323,6 @@ namespace DoPENetConnect
                     }
                 }
 
-
                 foreach (var kvp in mainFormLabels)
                 {
                     var controlName = kvp.Key;
@@ -1322,7 +1333,7 @@ namespace DoPENetConnect
                     {
                         menuItem1.Text = textValue;
                     }
-
+                  
                     ToolStripMenuItem menuItem2 = FindMenuItem(this.menuStrip2.Items, controlName);
                     if (menuItem2 != null)
                     {
@@ -1332,6 +1343,27 @@ namespace DoPENetConnect
 
             }
         }
+
+        private List<string> GetAllMenuNames(ToolStripItemCollection items)
+        {
+            List<string> menuNames = new List<string>();
+
+            foreach (ToolStripItem item in items)
+            {
+                if (item is ToolStripMenuItem toolStripMenuItem)
+                {
+                    menuNames.Add(toolStripMenuItem.Name);
+
+                    if (toolStripMenuItem.HasDropDownItems)
+                    {
+                        menuNames.AddRange(GetAllMenuNames(toolStripMenuItem.DropDownItems));
+                    }
+                }
+            }
+
+            return menuNames;
+        }
+
 
         private Control GetContentContainer(SuperTabItem tabItem)
         {

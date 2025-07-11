@@ -48,15 +48,24 @@ namespace DoPENetConnect
             attrs = assembly.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
             string strDescription = (attrs.Length == 0) ? "" : ((AssemblyDescriptionAttribute)attrs[0]).Description;
 
-            labelX1.Text = string.Format(@"程序名称：{0}", strtitle + " - " + assembly.GetName().Name);
-            labelX2.Text = string.Format("程序版本：{0}", assembly.GetName().Version);
-            labelX3.Text = string.Format(@"程序标识：{0}", gGuid.ToString());
-            labelX4.Text = string.Format(@"程序说明：{0}", strDescription);
-            labelX4.Text = string.Format(@"计算机用户：{0}", Environment.UserName + " @ " + Environment.MachineName);
-            labelX5.Text = string.Format(@"操作系统：{0}", Environment.OSVersion.ToString());
-            labelX6.Text = string.Format(@"公共语言运行库：{0}", Environment.Version.ToString());
-            labelX7.Text = string.Format(@"程序文件名称：{0}", assembly.Location);
-            labelX8.Text = string.Format(@"程序内存使用：{0}", Environment.WorkingSet.ToString("N0") + " bytes");
+            labelX1.Text = string.Format(@"{0}", strtitle + " - " + assembly.GetName().Name);
+            labelX2.Text = string.Format("{0}", assembly.GetName().Version);
+            labelX3.Text = string.Format(@"{0}", gGuid.ToString());
+            labelX4.Text = string.Format(@"{0}", strDescription);
+            labelX4.Text = string.Format(@"{0}", Environment.UserName + " @ " + Environment.MachineName);
+            labelX5.Text = string.Format(@"{0}", Environment.OSVersion.ToString());
+            labelX6.Text = string.Format(@"{0}", Environment.Version.ToString());
+            labelX7.Text = string.Format(@"：{0}", assembly.Location);
+            labelX8.Text = string.Format(@"{0}", Environment.WorkingSet.ToString("N0") + " bytes");
+
+            labelX9.Text = "程序名称：";
+            labelX10.Text = "程序版本：";
+            labelX11.Text = "程序标识：";
+            labelX12.Text = "计算机用户：";
+            labelX13.Text = "操作系统：";
+            labelX14.Text = "公共语言运行库：";
+            labelX15.Text = "程序文件名称：";
+            labelX16.Text = "程序内存使用：";
         }
 
         
