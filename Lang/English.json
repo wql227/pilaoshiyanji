@@ -75,13 +75,13 @@
 		},
 	
 	"FrmAbout":{
-		"labelX9":"程序内存使用",
-		"labelX10":"程序名称",
-		"labelX11":"程序版本",
-		"labelX12":"程序标识",
-		"labelX13":"计算机用户",
-		"labelX14":"操作系统",
-		"labelX15":"CLR",
-		"labelX16":"程序内存使用",
+		"labelX9":"Program Name:",
+		"labelX10":"Program Version:",
+		"labelX11":"Program GUID:",
+		"labelX12":"User:",
+		"labelX13":"Operation System:",
+		"labelX14":"CLR",
+		"labelX15":"File Name",
+		"labelX16":"Memory Usage",
 		}
 }
