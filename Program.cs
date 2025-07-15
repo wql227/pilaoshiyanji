@@ -14,6 +14,10 @@ namespace DoPENetConnect
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //配置日志
+            log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo(System.IO.Directory.GetCurrentDirectory() + "\\log4net.config"));
+
             Application.Run(new MainForm());
         }
     }

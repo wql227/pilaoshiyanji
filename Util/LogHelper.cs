@@ -1,12 +1,71 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using log4net;
 
 namespace DoPENetConnect
 {
     public class LogHelper
     {
+        private static ILog log;
+
+        static LogHelper()
+        {
+            log = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);//通过反射获取日志对象实例
+        }
+
+        /// <summary>
+        /// Fatal记录
+        /// </summary>
+        /// <param name="info"></param>
+        public static void Fatal(string info)
+        {
+            log.Fatal(info);
+        }
+
+
+        /// <summary>
+        /// Error记录
+        /// </summary>
+        /// <param name="info"></param>
+        public static void Error(string info)
+        {
+            log.Error(info);
+        }
+
+
+        /// <summary>
+        /// Warn记录
+        /// </summary>
+        /// <param name="info"></param>
+        public static void Warn(string info)
+        {
+            log.Warn(info);
+        }
+
+
+        /// <summary>
+        /// Warn记录
+        /// </summary>
+        /// <param name="info"></param>
+        public static void Info(string info)
+        {
+            log.Info(info);
+        }
+
+
+        /// <summary>
+        /// Fatal记录
+        /// </summary>
+        /// <param name="info"></param>
+        public static void Debug(string info)
+        {
+            log.Debug(info);
+        }
+
+
         //// <summary>
         /// 写入日志文件
         /// </summary>
@@ -24,6 +83,8 @@ namespace DoPENetConnect
                 string dt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 string strLogPath = System.AppDomain.CurrentDomain.BaseDirectory + "Logs\\";
+                string logFilePath = Path.Combine(strLogPath, filename);
+    
                 // 判断文件夹是否存在
                 if (!Directory.Exists(strLogPath))
                 {
@@ -31,21 +92,49 @@ namespace DoPENetConnect
                     Directory.CreateDirectory(strLogPath);
                 }
 
-                System.IO.FileInfo file = new System.IO.FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "Logs\\" + filename); //如果是web程序，这个的变成Http什么的
-                System.IO.StreamWriter sw = null;
-                if (!file.Exists)
+                // 创建目录（如果不存在）
+                if (!Directory.Exists(strLogPath))
                 {
-                    sw = file.CreateText();
-                    sw.WriteLine(dt + " " + input.ToString());
+                    Directory.CreateDirectory(strLogPath);
                 }
-                else
+
+                // 检查文件大小并滚动
+                int maxFileSize = 10 * 1024 * 1024; // 10MB
+                FileInfo fi = new FileInfo(logFilePath);
+
+                if (fi.Exists && fi.Length > maxFileSize)
                 {
-                    sw = file.AppendText();
-                    sw.WriteLine(dt + " " + input.ToString());
+                    // 滚动日志文件（保留最多 5 个备份）
+                    for (int i = 4; i >= 1; i--)
+                    {
+                        string oldFile = Path.Combine(strLogPath, $"{filename}.{i}");
+                        if (File.Exists(oldFile))
+                        {
+                            File.Delete(oldFile);
+                        }
+
+                        string prevFile = Path.Combine(strLogPath, $"{filename}.{i - 1}");
+                        if (File.Exists(prevFile))
+                        {
+                            File.Move(prevFile, oldFile);
+                        }
+                    }
+
+                    // 将当前日志文件重命名为 .0，然后创建新文件
+                    string backupFile = Path.Combine(strLogPath, $"{filename}.0");
+                    if (File.Exists(backupFile))
+                    {
+                        File.Delete(backupFile);
+                    }
+
+                    File.Move(logFilePath, backupFile);
                 }
-                sw.Close();
-                sw.Flush();
-                sw.Dispose();
+
+                // 写入新的日志内容
+                using (StreamWriter sw = File.AppendText(logFilePath))
+                {
+                    sw.WriteLine($"{dt} {input}");
+                }
             }
             catch (Exception e)
             {
@@ -61,33 +150,68 @@ namespace DoPENetConnect
         /// <param name="strs">strs为对应的参数字符,值之间用","隔开</param>
         public static void SaveCsvData(string strs)
         {
-            //当前是根据日期每天生成一个,所以在记录之前需要判断是否已经存在文件
-            string paths = AppDomain.CurrentDomain.BaseDirectory + "\\Logs\\";
-            string filename = paths + DateTime.Now.ToString("yyyy-MM-dd") + ".CSV";
-            if (!Directory.Exists(paths))
+            try
             {
-                Directory.CreateDirectory(paths);
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string logPath = Path.Combine(baseDirectory, "Logs");
+                string dateStr = DateTime.Now.ToString("yyyy-MM-dd");
+                string filename = Path.Combine(logPath, $"{dateStr}.CSV");
+
+                // 创建目录（如果不存在）
+                if (!Directory.Exists(logPath))
+                {
+                    Directory.CreateDirectory(logPath);
+                }
+
+                int maxFileSize = 1 * 1024 * 1024; // 10 MB
+                FileInfo fi = new FileInfo(filename);
+
+                // 如果文件存在且超过最大大小，则进行滚动
+                if (fi.Exists && fi.Length > maxFileSize)
+                {
+                    // 滚动旧文件，保留最多5个备份
+                    for (int i = 4; i >= 1; i--)
+                    {
+                        string oldFile = Path.Combine(logPath, $"{dateStr}.CSV.{i}");
+                        string prevFile = Path.Combine(logPath, $"{dateStr}.CSV.{i - 1}");
+
+                        if (File.Exists(oldFile))
+                        {
+                            File.Delete(oldFile);
+                        }
+
+                        if (File.Exists(prevFile))
+                        {
+                            File.Move(prevFile, oldFile);
+                        }
+                    }
+
+                    string firstBackup = Path.Combine(logPath, $"{dateStr}.CSV.0");
+                    if (File.Exists(firstBackup))
+                    {
+                        File.Delete(firstBackup);
+                    }
+                    File.Move(filename, firstBackup);
+                }
+
+                // 如果文件不存在，先写入表头
+                bool writeHeader = !File.Exists(filename);
+                using (StreamWriter sw = new StreamWriter(filename, true, Encoding.Default))
+                {
+                    if (writeHeader)
+                    {
+                        string header = "Time [s],Position [mm],Load [N],Extension [Rev],Command [ ],Cycles [ ]";
+                        sw.WriteLine(header);
+                    }
+
+                    sw.WriteLine(strs);
+                }
             }
-            //string logPath = paths + file + ".csv";
-            if (!File.Exists(paths + DateTime.Now.ToString("yyyy-MM-dd") + ".CSV"))
+            catch (Exception ex)
             {
-                //判断是否存在，若不存在，则首先添加Hearder
-                string ColumnHead = "Time [s],Position [mm],Load [ N],Extension [ Rev],Command [ ],Cycles [ ]";
-                FileStream fs1 = new FileStream(filename, FileMode.Create, FileAccess.Write);//创建写入文件
-                StreamWriter sw1 = new StreamWriter(fs1, Encoding.Default);
-                //"\r\n"回车换行,下一条记录直接换行
-                sw1.Write(ColumnHead + "\r\n");
-                sw1.Close();
-                fs1.Close();
+                // 可选：记录错误日志或弹出提示
+                // MessageBox.Show(ex.Message);
             }
-
-            FileStream fs = new FileStream(filename, FileMode.Append, FileAccess.Write);//创建写入文件
-            StreamWriter sw = new StreamWriter(fs, Encoding.Default);
-
-            sw.Write(strs + "\r\n");
-            sw.Close();
-            fs.Close();
         }
-
     }
 }

@@ -85,6 +85,9 @@ using System.Threading.Tasks;
 using static Doli.DoPE10.DoPE;
 using System.Linq;
 using System.IO;
+using log4net;
+using System.Reflection;
+using Microsoft.Extensions.Configuration;
 
 namespace DoPENetConnect
 {
@@ -293,6 +296,8 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         public MainForm()
         {
+            LogHelper.Info("开始执行记录任务");
+
             // Initialize graphical-user-interface.
             InitializeComponent();
 
@@ -393,13 +398,13 @@ namespace DoPENetConnect
                 try
                 {
                     DoPE.ERR error;
-                //DoPE.IgnoreTcpIpNIC(true);
-                // open the first EDC found on this PC
-                //打开edc列表
-                //MyEdcList = new EdcList(32);
-                //MyEdc = MyEdcList[0];
-                //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);02137E43                
-                MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse(devId.ToString(), System.Globalization.NumberStyles.HexNumber));
+                    //DoPE.IgnoreTcpIpNIC(true);
+                    // open the first EDC found on this PC
+                    //打开edc列表
+                    //MyEdcList = new EdcList(32);
+                    //MyEdc = MyEdcList[0];
+                    //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);02137E43                
+                    MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse(devId.ToString(), System.Globalization.NumberStyles.HexNumber));
                     //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 3491251);
 
                     //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
@@ -413,7 +418,7 @@ namespace DoPENetConnect
 
                     }
 
-                bConnected = MyEdc.IsConnected();
+                    bConnected = MyEdc.IsConnected();
 
                     EnableButton();
 
@@ -931,7 +936,7 @@ namespace DoPENetConnect
                     //if ((Sample.Cycles) % 2 == 0)
                     {
                         strCSVLog += (Sample.Cycles << 1).ToString() + ",";
-                        tbX_TestCycles.Text = (Sample.Cycles >> 1).ToString();
+                        tbX_TestCycles.Text = (Sample.Cycles /*>> 1*/).ToString();
                     }
 
                     strBlockLog += ( strCSVLog + "\r\n");
@@ -1265,7 +1270,7 @@ namespace DoPENetConnect
         {
             var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
 
-            List<string> allMenuNames = GetAllMenuNames(this.MainMenuStrip.Items);
+            List<string> allMenuNames = GetAllMenuNames(this.menuStrip1.Items);
 
             // 输出所有菜单项名称
             foreach (var name in allMenuNames)
@@ -1409,9 +1414,6 @@ namespace DoPENetConnect
                 string selectedFile = clickedItem.Tag?.ToString();
                 string selectedText = clickedItem.Text;
                 strLanguage = selectedText;
-
-                // 这里可以执行加载语言文件等操作
-                MessageBox.Show($"你选择了语言文件：{selectedText}\n路径：{selectedFile}");
 
                 IniFileHelper.WriteIniString("Setting", "Language", selectedText);
                 ReplaceLanguage();
@@ -2874,7 +2876,63 @@ namespace DoPENetConnect
         {
             string strLogFilePath = "Logs";
             System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "\\"+ strLogFilePath);
-
         }
+
+        private void 校正ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "文本文件 (*.corr)|*.corr";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                var builder = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddIniFile(ofd.FileName);
+
+                IConfiguration config = builder.Build();
+                var correctionTable = ParseStiffnessCorrection(config.GetSection("SensorCorrection"));
+
+                DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetStiffnessCorrection(ref correctionTable);
+            }
+            else
+            {
+                Console.WriteLine("未选择文件");
+                return;
+            }
+        }
+  
+
+        /// <summary>
+        /// 解析
+        /// </summary>
+        /// <param name="section"></param>
+        /// <returns></returns>
+        public StiffnessCorrectionTable ParseStiffnessCorrection(IConfigurationSection section)
+        {
+            int corrNo = int.Parse(section["CorrNo"] ?? "0");
+
+            double[] dLoad = new double[STIFF_CORR_MAX];
+            double[] dDeformation = new double[STIFF_CORR_MAX];
+
+            double S2Data_0 = double.Parse(section["S2Data_0"] ?? "0");
+            double S1Data_1 = double.Parse(section["S1Data_1"] ?? "0");
+
+            for (int i = 0; i < corrNo; i ++)
+            {
+                string strLoadIndex = string.Format(@"S1Data_{0}", i);
+                dLoad[i] = double.Parse(section[strLoadIndex] ?? "0");
+
+                string strDeformationIndex = string.Format(@"S2Data_{0}", i);
+                dDeformation[i] = double.Parse(section[strDeformationIndex] ?? "0");
+            }
+
+            StiffnessCorrectionTable stiffnessCorrectionTable = new StiffnessCorrectionTable();
+            stiffnessCorrectionTable.CorrNo = corrNo;
+            stiffnessCorrectionTable.Load = dLoad;
+            stiffnessCorrectionTable.Deformation = dDeformation;
+
+            return stiffnessCorrectionTable;
+        }
+
     }
 }
