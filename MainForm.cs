@@ -283,6 +283,11 @@ namespace DoPENetConnect
 
         public string strBlockLog = "";
 
+        /// <summary>
+        /// 设备id
+        /// </summary>
+        StringBuilder devId;
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -388,13 +393,13 @@ namespace DoPENetConnect
                 try
                 {
                     DoPE.ERR error;
-                    //DoPE.IgnoreTcpIpNIC(true);
-                    // open the first EDC found on this PC
-                    //打开edc列表
-                    //MyEdcList = new EdcList(32);
-                    //MyEdc = MyEdcList[0];
-                    //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);
-                    MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse("0214B901", System.Globalization.NumberStyles.HexNumber));
+                //DoPE.IgnoreTcpIpNIC(true);
+                // open the first EDC found on this PC
+                //打开edc列表
+                //MyEdcList = new EdcList(32);
+                //MyEdc = MyEdcList[0];
+                //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);02137E43                
+                MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse(devId.ToString(), System.Globalization.NumberStyles.HexNumber));
                     //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 3491251);
 
                     //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
@@ -2443,6 +2448,10 @@ namespace DoPENetConnect
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             StringBuilder strTmp = new StringBuilder(255);
             string strConfigSetion = this.Name;
+
+            //获取EDC设备id
+            devId = new StringBuilder(16);
+            bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devId, devId.Capacity);
 
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
