@@ -160,11 +160,12 @@
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.superTabControl1.MaximumSize = new System.Drawing.Size(0, 600);
             this.superTabControl1.Name = "superTabControl1";
             this.superTabControl1.ReorderTabsEnabled = true;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl1.SelectedTabIndex = 2;
-            this.superTabControl1.Size = new System.Drawing.Size(560, 656);
+            this.superTabControl1.Size = new System.Drawing.Size(560, 600);
             this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl1.TabIndex = 0;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -181,7 +182,7 @@
             this.superTabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel5.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel5.Name = "superTabControlPanel5";
-            this.superTabControlPanel5.Size = new System.Drawing.Size(560, 628);
+            this.superTabControlPanel5.Size = new System.Drawing.Size(560, 572);
             this.superTabControlPanel5.TabIndex = 2;
             this.superTabControlPanel5.TabItem = this.superTabItem5;
             // 
@@ -196,7 +197,7 @@
             this.panelEx5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx5.Location = new System.Drawing.Point(0, 0);
             this.panelEx5.Name = "panelEx5";
-            this.panelEx5.Size = new System.Drawing.Size(560, 628);
+            this.panelEx5.Size = new System.Drawing.Size(560, 572);
             this.panelEx5.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx5.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx5.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -435,7 +436,7 @@
             this.superTabControlPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel6.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel6.Name = "superTabControlPanel6";
-            this.superTabControlPanel6.Size = new System.Drawing.Size(560, 628);
+            this.superTabControlPanel6.Size = new System.Drawing.Size(560, 572);
             this.superTabControlPanel6.TabIndex = 3;
             this.superTabControlPanel6.TabItem = this.superTabItem6;
             // 
@@ -443,8 +444,6 @@
             // 
             this.panelEx6.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx6.Controls.Add(this.btnX_FrmProtectOption_OK);
-            this.panelEx6.Controls.Add(this.btnX_FrmProtectOption_Cencel);
             this.panelEx6.Controls.Add(this.groupPanel2);
             this.panelEx6.Controls.Add(this.groupPanel4);
             this.panelEx6.Controls.Add(this.groupPanel1);
@@ -454,7 +453,7 @@
             this.panelEx6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx6.Location = new System.Drawing.Point(0, 0);
             this.panelEx6.Name = "panelEx6";
-            this.panelEx6.Size = new System.Drawing.Size(560, 628);
+            this.panelEx6.Size = new System.Drawing.Size(560, 572);
             this.panelEx6.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx6.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx6.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -469,7 +468,7 @@
             this.btnX_FrmProtectOption_OK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_FrmProtectOption_OK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_FrmProtectOption_OK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_FrmProtectOption_OK.Location = new System.Drawing.Point(106, 556);
+            this.btnX_FrmProtectOption_OK.Location = new System.Drawing.Point(112, 608);
             this.btnX_FrmProtectOption_OK.Name = "btnX_FrmProtectOption_OK";
             this.btnX_FrmProtectOption_OK.Size = new System.Drawing.Size(95, 36);
             this.btnX_FrmProtectOption_OK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -481,7 +480,7 @@
             this.btnX_FrmProtectOption_Cencel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_FrmProtectOption_Cencel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_FrmProtectOption_Cencel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_FrmProtectOption_Cencel.Location = new System.Drawing.Point(295, 556);
+            this.btnX_FrmProtectOption_Cencel.Location = new System.Drawing.Point(281, 608);
             this.btnX_FrmProtectOption_Cencel.Name = "btnX_FrmProtectOption_Cencel";
             this.btnX_FrmProtectOption_Cencel.Size = new System.Drawing.Size(95, 36);
             this.btnX_FrmProtectOption_Cencel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -510,9 +509,9 @@
             this.groupPanel2.Controls.Add(this.label16);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel2.Location = new System.Drawing.Point(12, 53);
+            this.groupPanel2.Location = new System.Drawing.Point(12, 51);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(468, 165);
+            this.groupPanel2.Size = new System.Drawing.Size(468, 146);
             // 
             // 
             // 
@@ -551,7 +550,7 @@
             // 
             this.tbX_FrmProtectOption_PosMinIn.Border.Class = "TextBoxBorder";
             this.tbX_FrmProtectOption_PosMinIn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmProtectOption_PosMinIn.Location = new System.Drawing.Point(280, 82);
+            this.tbX_FrmProtectOption_PosMinIn.Location = new System.Drawing.Point(280, 86);
             this.tbX_FrmProtectOption_PosMinIn.Name = "tbX_FrmProtectOption_PosMinIn";
             this.tbX_FrmProtectOption_PosMinIn.PreventEnterBeep = true;
             this.tbX_FrmProtectOption_PosMinIn.Size = new System.Drawing.Size(68, 26);
@@ -565,7 +564,7 @@
             // 
             this.tbX_FrmProtectOption_PosMinOut.Border.Class = "TextBoxBorder";
             this.tbX_FrmProtectOption_PosMinOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmProtectOption_PosMinOut.Location = new System.Drawing.Point(20, 84);
+            this.tbX_FrmProtectOption_PosMinOut.Location = new System.Drawing.Point(20, 86);
             this.tbX_FrmProtectOption_PosMinOut.Name = "tbX_FrmProtectOption_PosMinOut";
             this.tbX_FrmProtectOption_PosMinOut.PreventEnterBeep = true;
             this.tbX_FrmProtectOption_PosMinOut.Size = new System.Drawing.Size(68, 26);
@@ -579,7 +578,7 @@
             // 
             this.tbX_FrmProtectOption_PosMaxIn.Border.Class = "TextBoxBorder";
             this.tbX_FrmProtectOption_PosMaxIn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmProtectOption_PosMaxIn.Location = new System.Drawing.Point(280, 28);
+            this.tbX_FrmProtectOption_PosMaxIn.Location = new System.Drawing.Point(280, 31);
             this.tbX_FrmProtectOption_PosMaxIn.Name = "tbX_FrmProtectOption_PosMaxIn";
             this.tbX_FrmProtectOption_PosMaxIn.PreventEnterBeep = true;
             this.tbX_FrmProtectOption_PosMaxIn.Size = new System.Drawing.Size(68, 26);
@@ -593,7 +592,7 @@
             // 
             this.tbX_FrmProtectOption_PosMaxOut.Border.Class = "TextBoxBorder";
             this.tbX_FrmProtectOption_PosMaxOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmProtectOption_PosMaxOut.Location = new System.Drawing.Point(20, 28);
+            this.tbX_FrmProtectOption_PosMaxOut.Location = new System.Drawing.Point(20, 31);
             this.tbX_FrmProtectOption_PosMaxOut.Name = "tbX_FrmProtectOption_PosMaxOut";
             this.tbX_FrmProtectOption_PosMaxOut.PreventEnterBeep = true;
             this.tbX_FrmProtectOption_PosMaxOut.Size = new System.Drawing.Size(68, 26);
@@ -606,7 +605,7 @@
             // 
             // 
             this.cbX_FrmProtectOption_PosMinIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbX_FrmProtectOption_PosMinIn_Effect.Location = new System.Drawing.Point(384, 82);
+            this.cbX_FrmProtectOption_PosMinIn_Effect.Location = new System.Drawing.Point(384, 86);
             this.cbX_FrmProtectOption_PosMinIn_Effect.Name = "cbX_FrmProtectOption_PosMinIn_Effect";
             this.cbX_FrmProtectOption_PosMinIn_Effect.Size = new System.Drawing.Size(62, 23);
             this.cbX_FrmProtectOption_PosMinIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -619,7 +618,7 @@
             // 
             // 
             this.cbX_FrmProtectOption_PosMinOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbX_FrmProtectOption_PosMinOut_Effect.Location = new System.Drawing.Point(124, 84);
+            this.cbX_FrmProtectOption_PosMinOut_Effect.Location = new System.Drawing.Point(124, 86);
             this.cbX_FrmProtectOption_PosMinOut_Effect.Name = "cbX_FrmProtectOption_PosMinOut_Effect";
             this.cbX_FrmProtectOption_PosMinOut_Effect.Size = new System.Drawing.Size(62, 23);
             this.cbX_FrmProtectOption_PosMinOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -632,7 +631,7 @@
             // 
             // 
             this.cbX_FrmProtectOption_PosMaxIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbX_FrmProtectOption_PosMaxIn_Effect.Location = new System.Drawing.Point(382, 30);
+            this.cbX_FrmProtectOption_PosMaxIn_Effect.Location = new System.Drawing.Point(382, 33);
             this.cbX_FrmProtectOption_PosMaxIn_Effect.Name = "cbX_FrmProtectOption_PosMaxIn_Effect";
             this.cbX_FrmProtectOption_PosMaxIn_Effect.Size = new System.Drawing.Size(62, 23);
             this.cbX_FrmProtectOption_PosMaxIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -645,7 +644,7 @@
             // 
             // 
             this.cbX_FrmProtectOption_PosMaxOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbX_FrmProtectOption_PosMaxOut_Effect.Location = new System.Drawing.Point(124, 31);
+            this.cbX_FrmProtectOption_PosMaxOut_Effect.Location = new System.Drawing.Point(124, 34);
             this.cbX_FrmProtectOption_PosMaxOut_Effect.Name = "cbX_FrmProtectOption_PosMaxOut_Effect";
             this.cbX_FrmProtectOption_PosMaxOut_Effect.Size = new System.Drawing.Size(62, 23);
             this.cbX_FrmProtectOption_PosMaxOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -656,7 +655,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label20.Location = new System.Drawing.Point(354, 84);
+            this.label20.Location = new System.Drawing.Point(354, 88);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(24, 16);
             this.label20.TabIndex = 0;
@@ -666,7 +665,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(94, 86);
+            this.label7.Location = new System.Drawing.Point(94, 88);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(24, 16);
             this.label7.TabIndex = 0;
@@ -676,7 +675,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label19.Location = new System.Drawing.Point(352, 30);
+            this.label19.Location = new System.Drawing.Point(352, 33);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(24, 16);
             this.label19.TabIndex = 0;
@@ -686,7 +685,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(94, 30);
+            this.label6.Location = new System.Drawing.Point(94, 33);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(24, 16);
             this.label6.TabIndex = 0;
@@ -696,7 +695,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label23.Location = new System.Drawing.Point(277, 61);
+            this.label23.Location = new System.Drawing.Point(277, 63);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(104, 16);
             this.label23.TabIndex = 0;
@@ -716,7 +715,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label22.Location = new System.Drawing.Point(20, 61);
+            this.label22.Location = new System.Drawing.Point(20, 63);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(104, 16);
             this.label22.TabIndex = 0;
@@ -726,7 +725,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label16.Location = new System.Drawing.Point(20, 9);
+            this.label16.Location = new System.Drawing.Point(17, 9);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(104, 16);
             this.label16.TabIndex = 0;
@@ -754,9 +753,9 @@
             this.groupPanel4.Controls.Add(this.label5);
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel4.Location = new System.Drawing.Point(12, 393);
+            this.groupPanel4.Location = new System.Drawing.Point(12, 405);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(468, 157);
+            this.groupPanel4.Size = new System.Drawing.Size(468, 146);
             // 
             // 
             // 
@@ -808,7 +807,7 @@
             // 
             this.tbX_FrmProtectOption_ExtMinIn.Border.Class = "TextBoxBorder";
             this.tbX_FrmProtectOption_ExtMinIn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmProtectOption_ExtMinIn.Location = new System.Drawing.Point(280, 88);
+            this.tbX_FrmProtectOption_ExtMinIn.Location = new System.Drawing.Point(280, 86);
             this.tbX_FrmProtectOption_ExtMinIn.Name = "tbX_FrmProtectOption_ExtMinIn";
             this.tbX_FrmProtectOption_ExtMinIn.PreventEnterBeep = true;
             this.tbX_FrmProtectOption_ExtMinIn.Size = new System.Drawing.Size(68, 26);
@@ -848,7 +847,7 @@
             // 
             // 
             this.cbX_FrmProtectOption_ExtMaxIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbX_FrmProtectOption_ExtMaxIn_Effect.Location = new System.Drawing.Point(382, 40);
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect.Location = new System.Drawing.Point(382, 34);
             this.cbX_FrmProtectOption_ExtMaxIn_Effect.Name = "cbX_FrmProtectOption_ExtMaxIn_Effect";
             this.cbX_FrmProtectOption_ExtMaxIn_Effect.Size = new System.Drawing.Size(62, 23);
             this.cbX_FrmProtectOption_ExtMaxIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -875,7 +874,7 @@
             // 
             this.tbX_FrmProtectOption_ExtMaxIn.Border.Class = "TextBoxBorder";
             this.tbX_FrmProtectOption_ExtMaxIn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmProtectOption_ExtMaxIn.Location = new System.Drawing.Point(280, 38);
+            this.tbX_FrmProtectOption_ExtMaxIn.Location = new System.Drawing.Point(280, 31);
             this.tbX_FrmProtectOption_ExtMaxIn.Name = "tbX_FrmProtectOption_ExtMaxIn";
             this.tbX_FrmProtectOption_ExtMaxIn.PreventEnterBeep = true;
             this.tbX_FrmProtectOption_ExtMaxIn.Size = new System.Drawing.Size(68, 26);
@@ -900,7 +899,7 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label36.Location = new System.Drawing.Point(354, 92);
+            this.label36.Location = new System.Drawing.Point(354, 90);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(24, 16);
             this.label36.TabIndex = 0;
@@ -910,7 +909,7 @@
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label35.Location = new System.Drawing.Point(354, 40);
+            this.label35.Location = new System.Drawing.Point(354, 35);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(24, 16);
             this.label35.TabIndex = 0;
@@ -920,7 +919,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(94, 88);
+            this.label13.Location = new System.Drawing.Point(94, 90);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(24, 16);
             this.label13.TabIndex = 0;
@@ -930,7 +929,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.Location = new System.Drawing.Point(94, 33);
+            this.label14.Location = new System.Drawing.Point(94, 35);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(24, 16);
             this.label14.TabIndex = 0;
@@ -940,7 +939,7 @@
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label39.Location = new System.Drawing.Point(20, 67);
+            this.label39.Location = new System.Drawing.Point(20, 63);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(104, 16);
             this.label39.TabIndex = 0;
@@ -950,7 +949,7 @@
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label38.Location = new System.Drawing.Point(277, 67);
+            this.label38.Location = new System.Drawing.Point(277, 63);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(104, 16);
             this.label38.TabIndex = 0;
@@ -960,7 +959,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(17, 12);
+            this.label9.Location = new System.Drawing.Point(18, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(104, 16);
             this.label9.TabIndex = 0;
@@ -970,7 +969,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(277, 12);
+            this.label5.Location = new System.Drawing.Point(277, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 16);
             this.label5.TabIndex = 0;
@@ -998,9 +997,9 @@
             this.groupPanel1.Controls.Add(this.label25);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel1.Location = new System.Drawing.Point(12, 224);
+            this.groupPanel1.Location = new System.Drawing.Point(12, 228);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(465, 163);
+            this.groupPanel1.Size = new System.Drawing.Size(465, 146);
             // 
             // 
             // 
@@ -1038,7 +1037,7 @@
             // 
             // 
             this.cbX_FrmProtectOption_LoadMinIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbX_FrmProtectOption_LoadMinIn_Effect.Location = new System.Drawing.Point(384, 96);
+            this.cbX_FrmProtectOption_LoadMinIn_Effect.Location = new System.Drawing.Point(384, 87);
             this.cbX_FrmProtectOption_LoadMinIn_Effect.Name = "cbX_FrmProtectOption_LoadMinIn_Effect";
             this.cbX_FrmProtectOption_LoadMinIn_Effect.Size = new System.Drawing.Size(62, 23);
             this.cbX_FrmProtectOption_LoadMinIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1051,7 +1050,7 @@
             // 
             // 
             this.cbX_FrmProtectOption_LoadMinOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbX_FrmProtectOption_LoadMinOut_Effect.Location = new System.Drawing.Point(127, 96);
+            this.cbX_FrmProtectOption_LoadMinOut_Effect.Location = new System.Drawing.Point(124, 88);
             this.cbX_FrmProtectOption_LoadMinOut_Effect.Name = "cbX_FrmProtectOption_LoadMinOut_Effect";
             this.cbX_FrmProtectOption_LoadMinOut_Effect.Size = new System.Drawing.Size(62, 23);
             this.cbX_FrmProtectOption_LoadMinOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1077,7 +1076,7 @@
             // 
             // 
             this.cbX_FrmProtectOption_LoadMaxOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbX_FrmProtectOption_LoadMaxOut_Effect.Location = new System.Drawing.Point(127, 32);
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect.Location = new System.Drawing.Point(124, 34);
             this.cbX_FrmProtectOption_LoadMaxOut_Effect.Name = "cbX_FrmProtectOption_LoadMaxOut_Effect";
             this.cbX_FrmProtectOption_LoadMaxOut_Effect.Size = new System.Drawing.Size(62, 23);
             this.cbX_FrmProtectOption_LoadMaxOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1091,7 +1090,7 @@
             // 
             this.tbX_FrmProtectOption_LoadMinIn.Border.Class = "TextBoxBorder";
             this.tbX_FrmProtectOption_LoadMinIn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmProtectOption_LoadMinIn.Location = new System.Drawing.Point(280, 93);
+            this.tbX_FrmProtectOption_LoadMinIn.Location = new System.Drawing.Point(280, 86);
             this.tbX_FrmProtectOption_LoadMinIn.Name = "tbX_FrmProtectOption_LoadMinIn";
             this.tbX_FrmProtectOption_LoadMinIn.PreventEnterBeep = true;
             this.tbX_FrmProtectOption_LoadMinIn.Size = new System.Drawing.Size(68, 26);
@@ -1119,7 +1118,7 @@
             // 
             this.tbX_FrmProtectOption_LoadMinOut.Border.Class = "TextBoxBorder";
             this.tbX_FrmProtectOption_LoadMinOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmProtectOption_LoadMinOut.Location = new System.Drawing.Point(23, 93);
+            this.tbX_FrmProtectOption_LoadMinOut.Location = new System.Drawing.Point(20, 86);
             this.tbX_FrmProtectOption_LoadMinOut.Name = "tbX_FrmProtectOption_LoadMinOut";
             this.tbX_FrmProtectOption_LoadMinOut.PreventEnterBeep = true;
             this.tbX_FrmProtectOption_LoadMinOut.Size = new System.Drawing.Size(68, 26);
@@ -1133,7 +1132,7 @@
             // 
             this.tbX_FrmProtectOption_LoadMaxOut.Border.Class = "TextBoxBorder";
             this.tbX_FrmProtectOption_LoadMaxOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmProtectOption_LoadMaxOut.Location = new System.Drawing.Point(23, 29);
+            this.tbX_FrmProtectOption_LoadMaxOut.Location = new System.Drawing.Point(20, 31);
             this.tbX_FrmProtectOption_LoadMaxOut.Name = "tbX_FrmProtectOption_LoadMaxOut";
             this.tbX_FrmProtectOption_LoadMaxOut.PreventEnterBeep = true;
             this.tbX_FrmProtectOption_LoadMaxOut.Size = new System.Drawing.Size(68, 26);
@@ -1144,7 +1143,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label31.Location = new System.Drawing.Point(354, 95);
+            this.label31.Location = new System.Drawing.Point(354, 89);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(24, 16);
             this.label31.TabIndex = 0;
@@ -1154,7 +1153,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label28.Location = new System.Drawing.Point(354, 33);
+            this.label28.Location = new System.Drawing.Point(354, 36);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(24, 16);
             this.label28.TabIndex = 0;
@@ -1164,7 +1163,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label30.Location = new System.Drawing.Point(97, 95);
+            this.label30.Location = new System.Drawing.Point(94, 90);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(24, 16);
             this.label30.TabIndex = 0;
@@ -1174,7 +1173,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(97, 31);
+            this.label8.Location = new System.Drawing.Point(94, 36);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(24, 16);
             this.label8.TabIndex = 0;
@@ -1184,7 +1183,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label27.Location = new System.Drawing.Point(17, 67);
+            this.label27.Location = new System.Drawing.Point(20, 63);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(104, 16);
             this.label27.TabIndex = 0;
@@ -1194,7 +1193,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label26.Location = new System.Drawing.Point(277, 67);
+            this.label26.Location = new System.Drawing.Point(277, 63);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(104, 16);
             this.label26.TabIndex = 0;
@@ -1204,7 +1203,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label24.Location = new System.Drawing.Point(17, 3);
+            this.label24.Location = new System.Drawing.Point(17, 9);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(104, 16);
             this.label24.TabIndex = 0;
@@ -1214,7 +1213,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label25.Location = new System.Drawing.Point(277, 10);
+            this.label25.Location = new System.Drawing.Point(277, 9);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(104, 16);
             this.label25.TabIndex = 0;
@@ -1247,13 +1246,13 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(12, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 16);
+            this.label1.Size = new System.Drawing.Size(104, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "限位保护选项";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // superTabItem6
             // 
@@ -1268,7 +1267,7 @@
             this.superTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel4.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel4.Name = "superTabControlPanel4";
-            this.superTabControlPanel4.Size = new System.Drawing.Size(560, 467);
+            this.superTabControlPanel4.Size = new System.Drawing.Size(560, 572);
             this.superTabControlPanel4.TabIndex = 0;
             this.superTabControlPanel4.TabItem = this.superTabItem4;
             // 
@@ -1282,7 +1281,7 @@
             this.panelEx4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx4.Location = new System.Drawing.Point(0, 0);
             this.panelEx4.Name = "panelEx4";
-            this.panelEx4.Size = new System.Drawing.Size(560, 467);
+            this.panelEx4.Size = new System.Drawing.Size(560, 572);
             this.panelEx4.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx4.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx4.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1331,7 +1330,7 @@
             this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel3.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(560, 467);
+            this.superTabControlPanel3.Size = new System.Drawing.Size(560, 572);
             this.superTabControlPanel3.TabIndex = 0;
             this.superTabControlPanel3.TabItem = this.superTabItem3;
             // 
@@ -1343,7 +1342,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 0);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(560, 467);
+            this.panelEx3.Size = new System.Drawing.Size(560, 572);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1366,7 +1365,7 @@
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel2.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(560, 467);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(560, 572);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItem2;
             // 
@@ -1378,7 +1377,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(560, 467);
+            this.panelEx2.Size = new System.Drawing.Size(560, 572);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1400,6 +1399,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 656);
+            this.Controls.Add(this.btnX_FrmProtectOption_Cencel);
+            this.Controls.Add(this.btnX_FrmProtectOption_OK);
             this.Controls.Add(this.superTabControl1);
             this.Name = "FrmSystemSetting";
             this.Text = "系统参数";
@@ -1419,7 +1420,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.superTabControlPanel6.ResumeLayout(false);
             this.panelEx6.ResumeLayout(false);
-            this.panelEx6.PerformLayout();
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel2.PerformLayout();
             this.groupPanel4.ResumeLayout(false);
