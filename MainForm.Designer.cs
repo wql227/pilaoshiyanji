@@ -29,12 +29,12 @@
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
@@ -48,7 +48,11 @@
             this.cb_DrawCommand = new System.Windows.Forms.CheckBox();
             this.cb_DrawExtension = new System.Windows.Forms.CheckBox();
             this.cb_DrawLoad = new System.Windows.Forms.CheckBox();
+            this.btnX_AxisLoadY_MaxUp = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisLoadY_MinUp = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisLoadY_MaxDown = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AsixYMin = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisLoadY_MinDown = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisYMax = new DevComponents.DotNetBar.ButtonX();
             this.chart_machine = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnX_Connect = new DevComponents.DotNetBar.ButtonX();
@@ -102,6 +106,7 @@
             this.setBitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ShowLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startStopDrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.校正ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pl_DataShow = new System.Windows.Forms.Panel();
             this.cb_TareExt = new System.Windows.Forms.CheckBox();
             this.cb_TareLoad = new System.Windows.Forms.CheckBox();
@@ -253,7 +258,8 @@
             this.ToolStripMenuItem_Adout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
-            this.校正ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnX_AxisPOSY_MaxDown = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisPOSY_MaxUp = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -394,7 +400,13 @@
             this.panelEx10.Controls.Add(this.cb_DrawCommand);
             this.panelEx10.Controls.Add(this.cb_DrawExtension);
             this.panelEx10.Controls.Add(this.cb_DrawLoad);
+            this.panelEx10.Controls.Add(this.btnX_AxisPOSY_MaxUp);
+            this.panelEx10.Controls.Add(this.btnX_AxisLoadY_MaxUp);
+            this.panelEx10.Controls.Add(this.btnX_AxisPOSY_MaxDown);
+            this.panelEx10.Controls.Add(this.btnX_AxisLoadY_MinUp);
+            this.panelEx10.Controls.Add(this.btnX_AxisLoadY_MaxDown);
             this.panelEx10.Controls.Add(this.btnX_AsixYMin);
+            this.panelEx10.Controls.Add(this.btnX_AxisLoadY_MinDown);
             this.panelEx10.Controls.Add(this.btnX_AxisYMax);
             this.panelEx10.Controls.Add(this.chart_machine);
             this.panelEx10.Controls.Add(this.btnX_Connect);
@@ -429,7 +441,7 @@
             this.cb_DrawPosition.AutoSize = true;
             this.cb_DrawPosition.Checked = true;
             this.cb_DrawPosition.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_DrawPosition.Location = new System.Drawing.Point(1046, 104);
+            this.cb_DrawPosition.Location = new System.Drawing.Point(1096, 104);
             this.cb_DrawPosition.Name = "cb_DrawPosition";
             this.cb_DrawPosition.Size = new System.Drawing.Size(48, 16);
             this.cb_DrawPosition.TabIndex = 65;
@@ -443,7 +455,7 @@
             this.cb_DrawCommand.AutoSize = true;
             this.cb_DrawCommand.Checked = true;
             this.cb_DrawCommand.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_DrawCommand.Location = new System.Drawing.Point(1046, 173);
+            this.cb_DrawCommand.Location = new System.Drawing.Point(1096, 173);
             this.cb_DrawCommand.Name = "cb_DrawCommand";
             this.cb_DrawCommand.Size = new System.Drawing.Size(48, 16);
             this.cb_DrawCommand.TabIndex = 65;
@@ -455,7 +467,9 @@
             // 
             this.cb_DrawExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_DrawExtension.AutoSize = true;
-            this.cb_DrawExtension.Location = new System.Drawing.Point(1046, 149);
+            this.cb_DrawExtension.Checked = true;
+            this.cb_DrawExtension.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_DrawExtension.Location = new System.Drawing.Point(1096, 149);
             this.cb_DrawExtension.Name = "cb_DrawExtension";
             this.cb_DrawExtension.Size = new System.Drawing.Size(48, 16);
             this.cb_DrawExtension.TabIndex = 65;
@@ -469,7 +483,7 @@
             this.cb_DrawLoad.AutoSize = true;
             this.cb_DrawLoad.Checked = true;
             this.cb_DrawLoad.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_DrawLoad.Location = new System.Drawing.Point(1046, 127);
+            this.cb_DrawLoad.Location = new System.Drawing.Point(1096, 127);
             this.cb_DrawLoad.Name = "cb_DrawLoad";
             this.cb_DrawLoad.Size = new System.Drawing.Size(60, 16);
             this.cb_DrawLoad.TabIndex = 65;
@@ -477,103 +491,155 @@
             this.cb_DrawLoad.UseVisualStyleBackColor = true;
             this.cb_DrawLoad.CheckedChanged += new System.EventHandler(this.cb_DrawLoad_CheckedChanged);
             // 
+            // btnX_AxisLoadY_MaxUp
+            // 
+            this.btnX_AxisLoadY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisLoadY_MaxUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisLoadY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisLoadY_MaxUp.Location = new System.Drawing.Point(992, 28);
+            this.btnX_AxisLoadY_MaxUp.Name = "btnX_AxisLoadY_MaxUp";
+            this.btnX_AxisLoadY_MaxUp.Size = new System.Drawing.Size(25, 25);
+            this.btnX_AxisLoadY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisLoadY_MaxUp.TabIndex = 64;
+            this.btnX_AxisLoadY_MaxUp.Text = "▲";
+            this.btnX_AxisLoadY_MaxUp.Click += new System.EventHandler(this.btnX_AxisLoadY_MaxUp_Click);
+            // 
+            // btnX_AxisLoadY_MinUp
+            // 
+            this.btnX_AxisLoadY_MinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisLoadY_MinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisLoadY_MinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisLoadY_MinUp.Location = new System.Drawing.Point(996, 454);
+            this.btnX_AxisLoadY_MinUp.Name = "btnX_AxisLoadY_MinUp";
+            this.btnX_AxisLoadY_MinUp.Size = new System.Drawing.Size(25, 25);
+            this.btnX_AxisLoadY_MinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisLoadY_MinUp.TabIndex = 64;
+            this.btnX_AxisLoadY_MinUp.Text = "▲";
+            this.btnX_AxisLoadY_MinUp.Click += new System.EventHandler(this.btnX_AxisLoadY_MinUp_Click);
+            // 
+            // btnX_AxisLoadY_MaxDown
+            // 
+            this.btnX_AxisLoadY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisLoadY_MaxDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisLoadY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisLoadY_MaxDown.Location = new System.Drawing.Point(992, 59);
+            this.btnX_AxisLoadY_MaxDown.Name = "btnX_AxisLoadY_MaxDown";
+            this.btnX_AxisLoadY_MaxDown.Size = new System.Drawing.Size(25, 25);
+            this.btnX_AxisLoadY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisLoadY_MaxDown.TabIndex = 64;
+            this.btnX_AxisLoadY_MaxDown.Text = "▼";
+            this.btnX_AxisLoadY_MaxDown.Click += new System.EventHandler(this.btnX_AxisLoadY_MaxDown_Click);
+            // 
             // btnX_AsixYMin
             // 
             this.btnX_AsixYMin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AsixYMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AsixYMin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AsixYMin.Location = new System.Drawing.Point(1046, 496);
+            this.btnX_AsixYMin.Location = new System.Drawing.Point(91, 485);
             this.btnX_AsixYMin.Name = "btnX_AsixYMin";
             this.btnX_AsixYMin.Size = new System.Drawing.Size(25, 25);
             this.btnX_AsixYMin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_AsixYMin.TabIndex = 64;
             this.btnX_AsixYMin.Text = "▼";
-            this.btnX_AsixYMin.Click += new System.EventHandler(this.btnX_AsixYMin_Click);
+            this.btnX_AsixYMin.Click += new System.EventHandler(this.btnX_AsixPOSY_MinDown_Click);
+            // 
+            // btnX_AxisLoadY_MinDown
+            // 
+            this.btnX_AxisLoadY_MinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisLoadY_MinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisLoadY_MinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisLoadY_MinDown.Location = new System.Drawing.Point(996, 485);
+            this.btnX_AxisLoadY_MinDown.Name = "btnX_AxisLoadY_MinDown";
+            this.btnX_AxisLoadY_MinDown.Size = new System.Drawing.Size(25, 25);
+            this.btnX_AxisLoadY_MinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisLoadY_MinDown.TabIndex = 64;
+            this.btnX_AxisLoadY_MinDown.Text = "▼";
+            this.btnX_AxisLoadY_MinDown.Click += new System.EventHandler(this.btnX_AxisLoadY_MinDown_Click);
             // 
             // btnX_AxisYMax
             // 
             this.btnX_AxisYMax.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisYMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisYMax.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisYMax.Location = new System.Drawing.Point(1046, 465);
+            this.btnX_AxisYMax.Location = new System.Drawing.Point(91, 454);
             this.btnX_AxisYMax.Name = "btnX_AxisYMax";
             this.btnX_AxisYMax.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisYMax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_AxisYMax.TabIndex = 64;
             this.btnX_AxisYMax.Text = "▲";
-            this.btnX_AxisYMax.Click += new System.EventHandler(this.btnX_AxisYMax_Click);
+            this.btnX_AxisYMax.Click += new System.EventHandler(this.btnX_AxisPOSY_MinUp_Click);
             // 
             // chart_machine
             // 
             this.chart_machine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.AxisX.Interval = 1D;
-            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea1.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisX.Maximum = 10D;
-            chartArea1.AxisX.MaximumAutoSize = 100F;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.MinorTickMark.Enabled = true;
-            chartArea1.AxisX.MinorTickMark.Size = 0.5F;
-            chartArea1.AxisX.Title = "时间(s)";
-            chartArea1.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.Maximum = 20D;
-            chartArea1.AxisY.Minimum = -20D;
-            chartArea1.AxisY.MinorTickMark.Enabled = true;
-            chartArea1.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-            chartArea1.AxisY.MinorTickMark.Size = 0.5F;
-            chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea1.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
-            chartArea1.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea1.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisY2.LineColor = System.Drawing.Color.Orange;
-            chartArea1.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea1.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY2.Maximum = 20D;
-            chartArea1.AxisY2.Minimum = -20D;
-            chartArea1.AxisY2.MinorTickMark.Enabled = true;
-            chartArea1.AxisY2.MinorTickMark.Size = 0.5F;
-            chartArea1.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea1.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(kN)";
-            chartArea1.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
-            chartArea1.Name = "ChartArea1";
-            this.chart_machine.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart_machine.Legends.Add(legend1);
+            chartArea6.AxisX.Interval = 1D;
+            chartArea6.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea6.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea6.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea6.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea6.AxisX.Maximum = 10D;
+            chartArea6.AxisX.MaximumAutoSize = 100F;
+            chartArea6.AxisX.Minimum = 0D;
+            chartArea6.AxisX.MinorTickMark.Enabled = true;
+            chartArea6.AxisX.MinorTickMark.Size = 0.5F;
+            chartArea6.AxisX.Title = "时间(s)";
+            chartArea6.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea6.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea6.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
+            chartArea6.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
+            chartArea6.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea6.AxisY.Maximum = 20D;
+            chartArea6.AxisY.Minimum = -20D;
+            chartArea6.AxisY.MinorTickMark.Enabled = true;
+            chartArea6.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+            chartArea6.AxisY.MinorTickMark.Size = 0.5F;
+            chartArea6.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea6.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
+            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
+            chartArea6.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea6.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea6.AxisY2.LineColor = System.Drawing.Color.Orange;
+            chartArea6.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea6.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea6.AxisY2.Maximum = 20D;
+            chartArea6.AxisY2.Minimum = -20D;
+            chartArea6.AxisY2.MinorTickMark.Enabled = true;
+            chartArea6.AxisY2.MinorTickMark.Size = 0.5F;
+            chartArea6.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea6.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(kN)";
+            chartArea6.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
+            chartArea6.Name = "ChartArea1";
+            this.chart_machine.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart_machine.Legends.Add(legend6);
             this.chart_machine.Location = new System.Drawing.Point(0, 0);
             this.chart_machine.Name = "chart_machine";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "位移";
-            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "试验力";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "变形";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "命令";
-            series4.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            this.chart_machine.Series.Add(series1);
-            this.chart_machine.Series.Add(series2);
-            this.chart_machine.Series.Add(series3);
-            this.chart_machine.Series.Add(series4);
+            series21.ChartArea = "ChartArea1";
+            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series21.Legend = "Legend1";
+            series21.Name = "位移";
+            series21.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series22.ChartArea = "ChartArea1";
+            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series22.Legend = "Legend1";
+            series22.Name = "试验力";
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series23.Legend = "Legend1";
+            series23.Name = "变形";
+            series24.ChartArea = "ChartArea1";
+            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series24.Legend = "Legend1";
+            series24.Name = "命令";
+            series24.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.chart_machine.Series.Add(series21);
+            this.chart_machine.Series.Add(series22);
+            this.chart_machine.Series.Add(series23);
+            this.chart_machine.Series.Add(series24);
             this.chart_machine.Size = new System.Drawing.Size(1212, 558);
             this.chart_machine.TabIndex = 63;
             // 
@@ -833,7 +899,7 @@
             this.toolStripSeparator8,
             this.synchronizeMoveToolStripMenuItem});
             this.moveToolStripMenuItem.Name = "moveToolStripMenuItem";
-            this.moveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.moveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.moveToolStripMenuItem.Text = "Move";
             // 
             // posAToolStripMenuItem
@@ -1049,6 +1115,13 @@
             this.startStopDrawToolStripMenuItem.Size = new System.Drawing.Size(65, 21);
             this.startStopDrawToolStripMenuItem.Text = "暂停绘制";
             this.startStopDrawToolStripMenuItem.Click += new System.EventHandler(this.startStopDrawToolStripMenuItem_Click);
+            // 
+            // 校正ToolStripMenuItem
+            // 
+            this.校正ToolStripMenuItem.Name = "校正ToolStripMenuItem";
+            this.校正ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.校正ToolStripMenuItem.Text = "校正";
+            this.校正ToolStripMenuItem.Click += new System.EventHandler(this.校正ToolStripMenuItem_Click);
             // 
             // pl_DataShow
             // 
@@ -3104,12 +3177,31 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
-            // 校正ToolStripMenuItem
+            // btnX_AxisPOSY_MaxDown
             // 
-            this.校正ToolStripMenuItem.Name = "校正ToolStripMenuItem";
-            this.校正ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.校正ToolStripMenuItem.Text = "校正";
-            this.校正ToolStripMenuItem.Click += new System.EventHandler(this.校正ToolStripMenuItem_Click);
+            this.btnX_AxisPOSY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisPOSY_MaxDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisPOSY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisPOSY_MaxDown.Location = new System.Drawing.Point(91, 59);
+            this.btnX_AxisPOSY_MaxDown.Name = "btnX_AxisPOSY_MaxDown";
+            this.btnX_AxisPOSY_MaxDown.Size = new System.Drawing.Size(25, 25);
+            this.btnX_AxisPOSY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisPOSY_MaxDown.TabIndex = 64;
+            this.btnX_AxisPOSY_MaxDown.Text = "▼";
+            this.btnX_AxisPOSY_MaxDown.Click += new System.EventHandler(this.btnX_AxisPOSY_MaxDown_Click);
+            // 
+            // btnX_AxisPOSY_MaxUp
+            // 
+            this.btnX_AxisPOSY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisPOSY_MaxUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisPOSY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisPOSY_MaxUp.Location = new System.Drawing.Point(91, 28);
+            this.btnX_AxisPOSY_MaxUp.Name = "btnX_AxisPOSY_MaxUp";
+            this.btnX_AxisPOSY_MaxUp.Size = new System.Drawing.Size(25, 25);
+            this.btnX_AxisPOSY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisPOSY_MaxUp.TabIndex = 64;
+            this.btnX_AxisPOSY_MaxUp.Text = "▲";
+            this.btnX_AxisPOSY_MaxUp.Click += new System.EventHandler(this.btnX_AxisPOSY_MaxUp_Click);
             // 
             // MainForm
             // 
@@ -3385,6 +3477,12 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Language;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_OpenLangDir;
         private System.Windows.Forms.ToolStripMenuItem 校正ToolStripMenuItem;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MinUp;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MinDown;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MaxUp;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MaxDown;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisPOSY_MaxUp;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisPOSY_MaxDown;
     }
 }
 

@@ -286,11 +286,6 @@ namespace DoPENetConnect
 
         public string strBlockLog = "";
 
-        /// <summary>
-        /// 设备id
-        /// </summary>
-        StringBuilder devId;
-
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -403,8 +398,8 @@ namespace DoPENetConnect
                     //打开edc列表
                     //MyEdcList = new EdcList(32);
                     //MyEdc = MyEdcList[0];
-                    //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);02137E43                
-                    MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse(devId.ToString(), System.Globalization.NumberStyles.HexNumber));
+                    //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);
+                    MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse("0214B901", System.Globalization.NumberStyles.HexNumber));
                     //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 3491251);
 
                     //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
@@ -418,7 +413,7 @@ namespace DoPENetConnect
 
                     }
 
-                    bConnected = MyEdc.IsConnected();
+                bConnected = MyEdc.IsConnected();
 
                     EnableButton();
 
@@ -2233,16 +2228,14 @@ namespace DoPENetConnect
             }
         }
 
-        private void btnX_AxisYMax_Click(object sender, EventArgs e)
+        private void btnX_AxisLoadY_MinUp_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Maximum += 5;
-            chart_machine.ChartAreas[0].AxisY.Minimum += 5;
+            chart_machine.ChartAreas[0].AxisY2.Minimum += 5;
         }
 
-        private void btnX_AsixYMin_Click(object sender, EventArgs e)
+        private void btnX_AxisLoadY_MinDown_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Maximum -= 5;
-            chart_machine.ChartAreas[0].AxisY.Minimum -= 5;
+            chart_machine.ChartAreas[0].AxisY2.Minimum -= 5;
 
         }
 
@@ -2450,10 +2443,6 @@ namespace DoPENetConnect
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             StringBuilder strTmp = new StringBuilder(255);
             string strConfigSetion = this.Name;
-
-            //获取EDC设备id
-            devId = new StringBuilder(16);
-            bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devId, devId.Capacity);
 
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
@@ -2934,5 +2923,39 @@ namespace DoPENetConnect
             return stiffnessCorrectionTable;
         }
 
+
+        private void btnX_AxisPOSY_MinUp_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY.Minimum += 5;
+        }
+
+        private void btnX_AsixPOSY_MinDown_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY.Minimum -= 5;
+        }
+
+        private void btnX_AxisLoadY_MaxUp_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY2.Maximum += 5;
+
+        }
+
+        private void btnX_AxisLoadY_MaxDown_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY2.Maximum -= 5;
+
+        }
+
+        private void btnX_AxisPOSY_MaxUp_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY.Maximum += 5;
+
+        }
+
+        private void btnX_AxisPOSY_MaxDown_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY.Maximum -= 5;
+
+        }
     }
 }
