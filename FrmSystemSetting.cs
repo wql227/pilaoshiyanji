@@ -242,6 +242,13 @@ namespace DoPENetConnect
             MainForm.mainform.protectOption.ProtectOption_ExtMinIn_Effect = cbX_FrmProtectOption_ExtMinIn_Effect.Checked;
             IniFileHelper.WriteIniString(strConfigSetion, "变形谷值内保护生效", strTmp);
 
+            //系统保护设置  section=SysProtectSetting numericUpDown1: key=OverLoad_Percent=10; numericUpDown2:OverLoad_Force = 10;
+            strTmp = numericUpDown1.Value.ToString();
+            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Percent", strTmp);
+
+            strTmp = numericUpDown2.Value.ToString();
+            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Force", strTmp);
+
         }
 
 
@@ -587,21 +594,6 @@ namespace DoPENetConnect
         {
             this.Close();
 
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-            //系统保护设置  section=SysProtectSetting numericUpDown1: key=OverLoad_Percent=10; numericUpDown2:OverLoad_Force = 10;
-            string strTmp = numericUpDown1.Value.ToString();
-            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Percent", strTmp);
-        }
-
-        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
-        {
-            //系统保护设置  section=SysProtectSetting numericUpDown1: key=OverLoad_Percent=10; numericUpDown2:OverLoad_Force = 10;
-            string strTmp = numericUpDown2.Value.ToString();
-            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Force", strTmp);
         }
     }
 }
