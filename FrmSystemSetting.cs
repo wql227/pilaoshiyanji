@@ -121,8 +121,14 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_Percent","0",strTmp,strTmp.Capacity);
             numericUpDown1.Value = Convert.ToDecimal(strTmp.ToString());
 
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadPercent_Flag", "0", strTmp, strTmp.Capacity);
+            checkBoxX3.Checked = strTmp.ToString() == "0" ? false : true;
+
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_Force", "0", strTmp, strTmp.Capacity);
             numericUpDown2.Value = decimal.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Flag", "0", strTmp, strTmp.Capacity);
+            checkBoxX4.Checked = strTmp.ToString() == "0" ? false : true;
         }
 
 
@@ -243,10 +249,21 @@ namespace DoPENetConnect
             IniFileHelper.WriteIniString(strConfigSetion, "变形谷值内保护生效", strTmp);
 
             //系统保护设置  section=SysProtectSetting numericUpDown1: key=OverLoad_Percent=10; numericUpDown2:OverLoad_Force = 10;
+            strTmp = checkBoxX3.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_OverLoadPercent_Flag = checkBoxX3.Checked;
+            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadPercent_Flag", strTmp);
+
             strTmp = numericUpDown1.Value.ToString();
+            MainForm.mainform.protectOption.ProtectOption_OverLoadPercent = double.Parse(strTmp);
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Percent", strTmp);
 
+
+            strTmp = checkBoxX4.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_OverLoadForce_Flag = checkBoxX4.Checked;
+            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadForce_Flag", strTmp);
+
             strTmp = numericUpDown2.Value.ToString();
+            MainForm.mainform.protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp);
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Force", strTmp);
 
         }
@@ -595,5 +612,6 @@ namespace DoPENetConnect
             this.Close();
 
         }
+
     }
 }
