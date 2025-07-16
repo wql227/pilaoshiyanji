@@ -157,11 +157,11 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.Controls.Add(this.superTabControlPanel5);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel6);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel5);
             this.superTabControl1.Location = new System.Drawing.Point(0, 0);
             this.superTabControl1.MaximumSize = new System.Drawing.Size(600, 600);
             this.superTabControl1.MinimumSize = new System.Drawing.Size(560, 600);
@@ -854,7 +854,7 @@
             this.groupPanel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupPanel1.Location = new System.Drawing.Point(46, 228);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(465, 146);
+            this.groupPanel1.Size = new System.Drawing.Size(468, 146);
             // 
             // 
             // 
@@ -1155,7 +1155,7 @@
             this.groupPanel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupPanel6.Location = new System.Drawing.Point(46, 287);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(473, 87);
+            this.groupPanel6.Size = new System.Drawing.Size(468, 87);
             // 
             // 
             // 
@@ -1207,7 +1207,7 @@
             this.groupPanel5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupPanel5.Location = new System.Drawing.Point(46, 171);
             this.groupPanel5.Name = "groupPanel5";
-            this.groupPanel5.Size = new System.Drawing.Size(473, 87);
+            this.groupPanel5.Size = new System.Drawing.Size(468, 87);
             // 
             // 
             // 
@@ -1270,7 +1270,7 @@
             this.groupPanel3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupPanel3.Location = new System.Drawing.Point(46, 16);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(474, 128);
+            this.groupPanel3.Size = new System.Drawing.Size(468, 128);
             // 
             // 
             // 
@@ -1374,7 +1374,7 @@
             this.btnX_FrmProtectOption_OK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_FrmProtectOption_OK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_FrmProtectOption_OK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_FrmProtectOption_OK.Location = new System.Drawing.Point(143, 611);
+            this.btnX_FrmProtectOption_OK.Location = new System.Drawing.Point(148, 611);
             this.btnX_FrmProtectOption_OK.Name = "btnX_FrmProtectOption_OK";
             this.btnX_FrmProtectOption_OK.Size = new System.Drawing.Size(95, 36);
             this.btnX_FrmProtectOption_OK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1387,7 +1387,7 @@
             this.btnX_FrmProtectOption_Cencel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_FrmProtectOption_Cencel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_FrmProtectOption_Cencel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_FrmProtectOption_Cencel.Location = new System.Drawing.Point(312, 611);
+            this.btnX_FrmProtectOption_Cencel.Location = new System.Drawing.Point(317, 611);
             this.btnX_FrmProtectOption_Cencel.Name = "btnX_FrmProtectOption_Cencel";
             this.btnX_FrmProtectOption_Cencel.Size = new System.Drawing.Size(95, 36);
             this.btnX_FrmProtectOption_Cencel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
