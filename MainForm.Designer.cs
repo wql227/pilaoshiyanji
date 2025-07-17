@@ -48,7 +48,9 @@
             this.cb_DrawCommand = new System.Windows.Forms.CheckBox();
             this.cb_DrawExtension = new System.Windows.Forms.CheckBox();
             this.cb_DrawLoad = new System.Windows.Forms.CheckBox();
+            this.btnX_AxisPOSY_MaxUp = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisLoadY_MaxUp = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisPOSY_MaxDown = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisLoadY_MinUp = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisLoadY_MaxDown = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AsixYMin = new DevComponents.DotNetBar.ButtonX();
@@ -115,7 +117,6 @@
             this.lblLoadMinValue = new System.Windows.Forms.Label();
             this.lblPositionMinValue = new System.Windows.Forms.Label();
             this.lblExtensionMaxValue = new System.Windows.Forms.Label();
-            this.lbX_EDCName = new DevComponents.DotNetBar.LabelX();
             this.lblLoadMaxValue = new System.Windows.Forms.Label();
             this.lblTestCycles = new System.Windows.Forms.Label();
             this.lblExtensionMaxMin = new System.Windows.Forms.Label();
@@ -258,8 +259,10 @@
             this.ToolStripMenuItem_Adout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
-            this.btnX_AxisPOSY_MaxDown = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_AxisPOSY_MaxUp = new DevComponents.DotNetBar.ButtonX();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbX_EDCName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_SystemTime = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -268,6 +271,7 @@
             this.groupBox1.SuspendLayout();
             this.panelEx10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_machine)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.pl_DataShow.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
@@ -425,7 +429,7 @@
             this.panelEx10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx10.Location = new System.Drawing.Point(3, 42);
             this.panelEx10.Name = "panelEx10";
-            this.panelEx10.Size = new System.Drawing.Size(1412, 558);
+            this.panelEx10.Size = new System.Drawing.Size(1412, 554);
             this.panelEx10.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx10.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx10.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -491,12 +495,25 @@
             this.cb_DrawLoad.UseVisualStyleBackColor = true;
             this.cb_DrawLoad.CheckedChanged += new System.EventHandler(this.cb_DrawLoad_CheckedChanged);
             // 
+            // btnX_AxisPOSY_MaxUp
+            // 
+            this.btnX_AxisPOSY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisPOSY_MaxUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisPOSY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisPOSY_MaxUp.Location = new System.Drawing.Point(91, 24);
+            this.btnX_AxisPOSY_MaxUp.Name = "btnX_AxisPOSY_MaxUp";
+            this.btnX_AxisPOSY_MaxUp.Size = new System.Drawing.Size(25, 25);
+            this.btnX_AxisPOSY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisPOSY_MaxUp.TabIndex = 64;
+            this.btnX_AxisPOSY_MaxUp.Text = "▲";
+            this.btnX_AxisPOSY_MaxUp.Click += new System.EventHandler(this.btnX_AxisPOSY_MaxUp_Click);
+            // 
             // btnX_AxisLoadY_MaxUp
             // 
             this.btnX_AxisLoadY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_AxisLoadY_MaxUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisLoadY_MaxUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MaxUp.Location = new System.Drawing.Point(992, 28);
+            this.btnX_AxisLoadY_MaxUp.Location = new System.Drawing.Point(992, 24);
             this.btnX_AxisLoadY_MaxUp.Name = "btnX_AxisLoadY_MaxUp";
             this.btnX_AxisLoadY_MaxUp.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -504,12 +521,25 @@
             this.btnX_AxisLoadY_MaxUp.Text = "▲";
             this.btnX_AxisLoadY_MaxUp.Click += new System.EventHandler(this.btnX_AxisLoadY_MaxUp_Click);
             // 
+            // btnX_AxisPOSY_MaxDown
+            // 
+            this.btnX_AxisPOSY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisPOSY_MaxDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisPOSY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisPOSY_MaxDown.Location = new System.Drawing.Point(91, 55);
+            this.btnX_AxisPOSY_MaxDown.Name = "btnX_AxisPOSY_MaxDown";
+            this.btnX_AxisPOSY_MaxDown.Size = new System.Drawing.Size(25, 25);
+            this.btnX_AxisPOSY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisPOSY_MaxDown.TabIndex = 64;
+            this.btnX_AxisPOSY_MaxDown.Text = "▼";
+            this.btnX_AxisPOSY_MaxDown.Click += new System.EventHandler(this.btnX_AxisPOSY_MaxDown_Click);
+            // 
             // btnX_AxisLoadY_MinUp
             // 
             this.btnX_AxisLoadY_MinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_AxisLoadY_MinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisLoadY_MinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MinUp.Location = new System.Drawing.Point(996, 454);
+            this.btnX_AxisLoadY_MinUp.Location = new System.Drawing.Point(996, 450);
             this.btnX_AxisLoadY_MinUp.Name = "btnX_AxisLoadY_MinUp";
             this.btnX_AxisLoadY_MinUp.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -520,9 +550,9 @@
             // btnX_AxisLoadY_MaxDown
             // 
             this.btnX_AxisLoadY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_AxisLoadY_MaxDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisLoadY_MaxDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MaxDown.Location = new System.Drawing.Point(992, 59);
+            this.btnX_AxisLoadY_MaxDown.Location = new System.Drawing.Point(992, 55);
             this.btnX_AxisLoadY_MaxDown.Name = "btnX_AxisLoadY_MaxDown";
             this.btnX_AxisLoadY_MaxDown.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -533,9 +563,9 @@
             // btnX_AsixYMin
             // 
             this.btnX_AsixYMin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_AsixYMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AsixYMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AsixYMin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AsixYMin.Location = new System.Drawing.Point(91, 485);
+            this.btnX_AsixYMin.Location = new System.Drawing.Point(91, 481);
             this.btnX_AsixYMin.Name = "btnX_AsixYMin";
             this.btnX_AsixYMin.Size = new System.Drawing.Size(25, 25);
             this.btnX_AsixYMin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -546,9 +576,9 @@
             // btnX_AxisLoadY_MinDown
             // 
             this.btnX_AxisLoadY_MinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_AxisLoadY_MinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisLoadY_MinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MinDown.Location = new System.Drawing.Point(996, 485);
+            this.btnX_AxisLoadY_MinDown.Location = new System.Drawing.Point(996, 481);
             this.btnX_AxisLoadY_MinDown.Name = "btnX_AxisLoadY_MinDown";
             this.btnX_AxisLoadY_MinDown.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -559,9 +589,9 @@
             // btnX_AxisYMax
             // 
             this.btnX_AxisYMax.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_AxisYMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnX_AxisYMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisYMax.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisYMax.Location = new System.Drawing.Point(91, 454);
+            this.btnX_AxisYMax.Location = new System.Drawing.Point(91, 450);
             this.btnX_AxisYMax.Name = "btnX_AxisYMax";
             this.btnX_AxisYMax.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisYMax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -640,7 +670,7 @@
             this.chart_machine.Series.Add(series22);
             this.chart_machine.Series.Add(series23);
             this.chart_machine.Series.Add(series24);
-            this.chart_machine.Size = new System.Drawing.Size(1212, 558);
+            this.chart_machine.Size = new System.Drawing.Size(1212, 554);
             this.chart_machine.TabIndex = 63;
             // 
             // btnX_Connect
@@ -834,9 +864,14 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(3, 600);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.lbX_EDCName,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel_SystemTime});
+            this.statusStrip1.Location = new System.Drawing.Point(3, 596);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1412, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1412, 26);
             this.statusStrip1.TabIndex = 66;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -1132,7 +1167,6 @@
             this.pl_DataShow.Controls.Add(this.lblLoadMinValue);
             this.pl_DataShow.Controls.Add(this.lblPositionMinValue);
             this.pl_DataShow.Controls.Add(this.lblExtensionMaxValue);
-            this.pl_DataShow.Controls.Add(this.lbX_EDCName);
             this.pl_DataShow.Controls.Add(this.lblLoadMaxValue);
             this.pl_DataShow.Controls.Add(this.lblTestCycles);
             this.pl_DataShow.Controls.Add(this.lblExtensionMaxMin);
@@ -1164,7 +1198,7 @@
             // 
             this.cb_TareExt.AutoSize = true;
             this.cb_TareExt.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cb_TareExt.Location = new System.Drawing.Point(788, 4);
+            this.cb_TareExt.Location = new System.Drawing.Point(831, 4);
             this.cb_TareExt.Name = "cb_TareExt";
             this.cb_TareExt.Size = new System.Drawing.Size(35, 20);
             this.cb_TareExt.TabIndex = 42;
@@ -1176,7 +1210,7 @@
             // 
             this.cb_TareLoad.AutoSize = true;
             this.cb_TareLoad.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cb_TareLoad.Location = new System.Drawing.Point(481, 4);
+            this.cb_TareLoad.Location = new System.Drawing.Point(503, 4);
             this.cb_TareLoad.Name = "cb_TareLoad";
             this.cb_TareLoad.Size = new System.Drawing.Size(35, 20);
             this.cb_TareLoad.TabIndex = 42;
@@ -1200,7 +1234,7 @@
             // 
             this.lblExtensionMinValue.AutoSize = true;
             this.lblExtensionMinValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtensionMinValue.Location = new System.Drawing.Point(951, 52);
+            this.lblExtensionMinValue.Location = new System.Drawing.Point(994, 52);
             this.lblExtensionMinValue.Name = "lblExtensionMinValue";
             this.lblExtensionMinValue.Size = new System.Drawing.Size(38, 17);
             this.lblExtensionMinValue.TabIndex = 26;
@@ -1211,7 +1245,7 @@
             // 
             this.lblLoadMinValue.AutoSize = true;
             this.lblLoadMinValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoadMinValue.Location = new System.Drawing.Point(644, 52);
+            this.lblLoadMinValue.Location = new System.Drawing.Point(666, 52);
             this.lblLoadMinValue.Name = "lblLoadMinValue";
             this.lblLoadMinValue.Size = new System.Drawing.Size(38, 17);
             this.lblLoadMinValue.TabIndex = 26;
@@ -1233,33 +1267,18 @@
             // 
             this.lblExtensionMaxValue.AutoSize = true;
             this.lblExtensionMaxValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtensionMaxValue.Location = new System.Drawing.Point(951, 28);
+            this.lblExtensionMaxValue.Location = new System.Drawing.Point(994, 28);
             this.lblExtensionMaxValue.Name = "lblExtensionMaxValue";
             this.lblExtensionMaxValue.Size = new System.Drawing.Size(38, 17);
             this.lblExtensionMaxValue.TabIndex = 26;
             this.lblExtensionMaxValue.Text = "峰值";
             this.lblExtensionMaxValue.Click += new System.EventHandler(this.lblTime_Click);
             // 
-            // lbX_EDCName
-            // 
-            this.lbX_EDCName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbX_EDCName.BackColor = System.Drawing.Color.LightSkyBlue;
-            // 
-            // 
-            // 
-            this.lbX_EDCName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbX_EDCName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbX_EDCName.Location = new System.Drawing.Point(1258, 25);
-            this.lbX_EDCName.Name = "lbX_EDCName";
-            this.lbX_EDCName.Size = new System.Drawing.Size(123, 29);
-            this.lbX_EDCName.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
-            this.lbX_EDCName.TabIndex = 59;
-            // 
             // lblLoadMaxValue
             // 
             this.lblLoadMaxValue.AutoSize = true;
             this.lblLoadMaxValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoadMaxValue.Location = new System.Drawing.Point(644, 28);
+            this.lblLoadMaxValue.Location = new System.Drawing.Point(666, 28);
             this.lblLoadMaxValue.Name = "lblLoadMaxValue";
             this.lblLoadMaxValue.Size = new System.Drawing.Size(38, 17);
             this.lblLoadMaxValue.TabIndex = 26;
@@ -1270,7 +1289,7 @@
             // 
             this.lblTestCycles.AutoSize = true;
             this.lblTestCycles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTestCycles.Location = new System.Drawing.Point(1095, 1);
+            this.lblTestCycles.Location = new System.Drawing.Point(1157, 1);
             this.lblTestCycles.Name = "lblTestCycles";
             this.lblTestCycles.Size = new System.Drawing.Size(77, 20);
             this.lblTestCycles.TabIndex = 26;
@@ -1281,7 +1300,7 @@
             // 
             this.lblExtensionMaxMin.AutoSize = true;
             this.lblExtensionMaxMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtensionMaxMin.Location = new System.Drawing.Point(995, 1);
+            this.lblExtensionMaxMin.Location = new System.Drawing.Point(1057, 1);
             this.lblExtensionMaxMin.Name = "lblExtensionMaxMin";
             this.lblExtensionMaxMin.Size = new System.Drawing.Size(94, 20);
             this.lblExtensionMaxMin.TabIndex = 26;
@@ -1292,7 +1311,7 @@
             // 
             this.lblLoadMaxMin.AutoSize = true;
             this.lblLoadMaxMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoadMaxMin.Location = new System.Drawing.Point(671, 2);
+            this.lblLoadMaxMin.Location = new System.Drawing.Point(714, 2);
             this.lblLoadMaxMin.Name = "lblLoadMaxMin";
             this.lblLoadMaxMin.Size = new System.Drawing.Size(111, 20);
             this.lblLoadMaxMin.TabIndex = 26;
@@ -1314,7 +1333,7 @@
             // 
             this.lblPositionMaxMin.AutoSize = true;
             this.lblPositionMaxMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPositionMaxMin.Location = new System.Drawing.Point(381, 2);
+            this.lblPositionMaxMin.Location = new System.Drawing.Point(403, 2);
             this.lblPositionMaxMin.Name = "lblPositionMaxMin";
             this.lblPositionMaxMin.Size = new System.Drawing.Size(94, 20);
             this.lblPositionMaxMin.TabIndex = 26;
@@ -1325,7 +1344,7 @@
             // 
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(55, 2);
+            this.lblTime.Location = new System.Drawing.Point(12, 2);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(101, 20);
             this.lblTime.TabIndex = 26;
@@ -1337,7 +1356,7 @@
             this.tb_MinExt.BackColor = System.Drawing.Color.Black;
             this.tb_MinExt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_MinExt.ForeColor = System.Drawing.Color.Lime;
-            this.tb_MinExt.Location = new System.Drawing.Point(995, 49);
+            this.tb_MinExt.Location = new System.Drawing.Point(1057, 49);
             this.tb_MinExt.Name = "tb_MinExt";
             this.tb_MinExt.Size = new System.Drawing.Size(94, 23);
             this.tb_MinExt.TabIndex = 39;
@@ -1348,7 +1367,7 @@
             // 
             this.lblExtension.AutoSize = true;
             this.lblExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtension.Location = new System.Drawing.Point(862, 4);
+            this.lblExtension.Location = new System.Drawing.Point(905, 4);
             this.lblExtension.Name = "lblExtension";
             this.lblExtension.Size = new System.Drawing.Size(86, 20);
             this.lblExtension.TabIndex = 32;
@@ -1359,7 +1378,7 @@
             this.tb_MinLoad.BackColor = System.Drawing.Color.Black;
             this.tb_MinLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_MinLoad.ForeColor = System.Drawing.Color.Lime;
-            this.tb_MinLoad.Location = new System.Drawing.Point(688, 49);
+            this.tb_MinLoad.Location = new System.Drawing.Point(731, 49);
             this.tb_MinLoad.Name = "tb_MinLoad";
             this.tb_MinLoad.Size = new System.Drawing.Size(94, 23);
             this.tb_MinLoad.TabIndex = 39;
@@ -1371,7 +1390,7 @@
             this.tb_MaxExt.BackColor = System.Drawing.Color.Black;
             this.tb_MaxExt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_MaxExt.ForeColor = System.Drawing.Color.Lime;
-            this.tb_MaxExt.Location = new System.Drawing.Point(995, 25);
+            this.tb_MaxExt.Location = new System.Drawing.Point(1057, 25);
             this.tb_MaxExt.Name = "tb_MaxExt";
             this.tb_MaxExt.Size = new System.Drawing.Size(94, 23);
             this.tb_MaxExt.TabIndex = 39;
@@ -1382,7 +1401,7 @@
             // 
             this.lblLoad.AutoSize = true;
             this.lblLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoad.Location = new System.Drawing.Point(551, 1);
+            this.lblLoad.Location = new System.Drawing.Point(573, 1);
             this.lblLoad.Name = "lblLoad";
             this.lblLoad.Size = new System.Drawing.Size(87, 20);
             this.lblLoad.TabIndex = 30;
@@ -1393,7 +1412,7 @@
             this.tb_MaxLoad.BackColor = System.Drawing.Color.Black;
             this.tb_MaxLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_MaxLoad.ForeColor = System.Drawing.Color.Lime;
-            this.tb_MaxLoad.Location = new System.Drawing.Point(688, 25);
+            this.tb_MaxLoad.Location = new System.Drawing.Point(731, 25);
             this.tb_MaxLoad.Name = "tb_MaxLoad";
             this.tb_MaxLoad.Size = new System.Drawing.Size(94, 23);
             this.tb_MaxLoad.TabIndex = 39;
@@ -1405,7 +1424,7 @@
             this.tb_MinPos.BackColor = System.Drawing.Color.Black;
             this.tb_MinPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_MinPos.ForeColor = System.Drawing.Color.Lime;
-            this.tb_MinPos.Location = new System.Drawing.Point(381, 49);
+            this.tb_MinPos.Location = new System.Drawing.Point(403, 49);
             this.tb_MinPos.Name = "tb_MinPos";
             this.tb_MinPos.Size = new System.Drawing.Size(94, 23);
             this.tb_MinPos.TabIndex = 39;
@@ -1417,7 +1436,7 @@
             this.tb_MaxPos.BackColor = System.Drawing.Color.Black;
             this.tb_MaxPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_MaxPos.ForeColor = System.Drawing.Color.Lime;
-            this.tb_MaxPos.Location = new System.Drawing.Point(381, 25);
+            this.tb_MaxPos.Location = new System.Drawing.Point(403, 25);
             this.tb_MaxPos.Name = "tb_MaxPos";
             this.tb_MaxPos.Size = new System.Drawing.Size(94, 23);
             this.tb_MaxPos.TabIndex = 39;
@@ -1441,7 +1460,7 @@
             this.tbX_TestCycles.BackColor = System.Drawing.Color.Black;
             this.tbX_TestCycles.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbX_TestCycles.ForeColor = System.Drawing.Color.Lime;
-            this.tbX_TestCycles.Location = new System.Drawing.Point(1095, 25);
+            this.tbX_TestCycles.Location = new System.Drawing.Point(1157, 25);
             this.tbX_TestCycles.Name = "tbX_TestCycles";
             this.tbX_TestCycles.Size = new System.Drawing.Size(157, 47);
             this.tbX_TestCycles.TabIndex = 41;
@@ -1453,7 +1472,7 @@
             this.guiExtension.BackColor = System.Drawing.Color.Black;
             this.guiExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guiExtension.ForeColor = System.Drawing.Color.Lime;
-            this.guiExtension.Location = new System.Drawing.Point(788, 25);
+            this.guiExtension.Location = new System.Drawing.Point(831, 25);
             this.guiExtension.Name = "guiExtension";
             this.guiExtension.Size = new System.Drawing.Size(157, 47);
             this.guiExtension.TabIndex = 41;
@@ -1487,7 +1506,7 @@
             this.guiLoad.BackColor = System.Drawing.Color.Black;
             this.guiLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guiLoad.ForeColor = System.Drawing.Color.Lime;
-            this.guiLoad.Location = new System.Drawing.Point(481, 25);
+            this.guiLoad.Location = new System.Drawing.Point(503, 25);
             this.guiLoad.Name = "guiLoad";
             this.guiLoad.Size = new System.Drawing.Size(157, 47);
             this.guiLoad.TabIndex = 40;
@@ -3177,31 +3196,42 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
-            // btnX_AxisPOSY_MaxDown
+            // toolStripStatusLabel1
             // 
-            this.btnX_AxisPOSY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_AxisPOSY_MaxDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnX_AxisPOSY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisPOSY_MaxDown.Location = new System.Drawing.Point(91, 59);
-            this.btnX_AxisPOSY_MaxDown.Name = "btnX_AxisPOSY_MaxDown";
-            this.btnX_AxisPOSY_MaxDown.Size = new System.Drawing.Size(25, 25);
-            this.btnX_AxisPOSY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_AxisPOSY_MaxDown.TabIndex = 64;
-            this.btnX_AxisPOSY_MaxDown.Text = "▼";
-            this.btnX_AxisPOSY_MaxDown.Click += new System.EventHandler(this.btnX_AxisPOSY_MaxDown_Click);
+            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(84, 21);
+            this.toolStripStatusLabel1.Text = "控制器型号：";
             // 
-            // btnX_AxisPOSY_MaxUp
+            // lbX_EDCName
             // 
-            this.btnX_AxisPOSY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_AxisPOSY_MaxUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnX_AxisPOSY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisPOSY_MaxUp.Location = new System.Drawing.Point(91, 28);
-            this.btnX_AxisPOSY_MaxUp.Name = "btnX_AxisPOSY_MaxUp";
-            this.btnX_AxisPOSY_MaxUp.Size = new System.Drawing.Size(25, 25);
-            this.btnX_AxisPOSY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_AxisPOSY_MaxUp.TabIndex = 64;
-            this.btnX_AxisPOSY_MaxUp.Text = "▲";
-            this.btnX_AxisPOSY_MaxUp.Click += new System.EventHandler(this.btnX_AxisPOSY_MaxUp_Click);
+            this.lbX_EDCName.AutoSize = false;
+            this.lbX_EDCName.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lbX_EDCName.Name = "lbX_EDCName";
+            this.lbX_EDCName.Size = new System.Drawing.Size(160, 21);
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(72, 21);
+            this.toolStripStatusLabel2.Text = "系统时间：";
+            // 
+            // toolStripStatusLabel_SystemTime
+            // 
+            this.toolStripStatusLabel_SystemTime.AutoSize = false;
+            this.toolStripStatusLabel_SystemTime.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel_SystemTime.Name = "toolStripStatusLabel_SystemTime";
+            this.toolStripStatusLabel_SystemTime.Size = new System.Drawing.Size(160, 21);
             // 
             // MainForm
             // 
@@ -3227,6 +3257,8 @@
             this.panelEx10.ResumeLayout(false);
             this.panelEx10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_machine)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.pl_DataShow.ResumeLayout(false);
@@ -3399,7 +3431,6 @@
         private System.Windows.Forms.Button btn_ConState;
         private DevComponents.DotNetBar.ButtonX btnX_MoveQuickUp;
         private DevComponents.DotNetBar.ButtonX btnX_QuickMoveDown;
-        private DevComponents.DotNetBar.LabelX lbX_EDCName;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_machine;
         private System.Windows.Forms.CheckBox cb_TarePos;
         private System.Windows.Forms.CheckBox cb_TareExt;
@@ -3483,6 +3514,10 @@
         private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MaxDown;
         private DevComponents.DotNetBar.ButtonX btnX_AxisPOSY_MaxUp;
         private DevComponents.DotNetBar.ButtonX btnX_AxisPOSY_MaxDown;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel lbX_EDCName;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_SystemTime;
     }
 }
 
