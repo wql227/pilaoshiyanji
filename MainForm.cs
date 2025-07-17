@@ -2981,5 +2981,12 @@ namespace DoPENetConnect
             chart_machine.ChartAreas[0].AxisY.Maximum -= 5;
 
         }
+
+        public void RefreshDeviceID(string strID)
+        {
+            devId = new StringBuilder(strID);
+            //Console.WriteLine("refresh_controls:{0}",strControl);
+        }
+
     }
 }

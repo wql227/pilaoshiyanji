@@ -129,6 +129,9 @@ namespace DoPENetConnect
 
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Flag", "0", strTmp, strTmp.Capacity);
             checkBoxX4.Checked = strTmp.ToString() == "0" ? false : true;
+            //系统设置-设备id
+            IniFileHelper.GetIniString("Device", "DeviceID", "0", strTmp, strTmp.Capacity);
+            tbX_DeviceID.Text = strTmp.ToString();
         }
 
 
@@ -265,6 +268,10 @@ namespace DoPENetConnect
             strTmp = numericUpDown2.Value.ToString();
             MainForm.mainform.protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp);
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Force", strTmp);
+
+            strTmp = tbX_DeviceID.Text;
+            MainForm.mainform.RefreshDeviceID(strTmp);
+            IniFileHelper.WriteIniString("Device", "DeviceID", strTmp);
 
         }
 
@@ -597,11 +604,11 @@ namespace DoPENetConnect
 
         private void btnX_FrmProtectOption_OK_Click(object sender, EventArgs e)
         {
-            if (!ValidityCheck())
-            {
-                MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //if (!ValidityCheck())
+            //{
+            //    MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
 
             WriteIni();
             this.Close();
