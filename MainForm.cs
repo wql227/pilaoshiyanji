@@ -291,6 +291,15 @@ namespace DoPENetConnect
         /// </summary>
         StringBuilder devId;
 
+        /// <summary>
+        /// 向上向下按动标识
+        /// </summary>
+        private bool EndUp = false;
+        private bool EndDown = false;
+        private bool EndQuickUp = false;
+        private bool EndQuickDown = false;
+
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -1495,16 +1504,70 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void bntX_MoveUp_Click(object sender, EventArgs e)
         {
+            //if (bConnected)
+            //{
+            //    double speed;
+
+            //    try
+            //    {
+            //        speed = Convert.ToDouble("30");
+
+            //        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
+            //        DisplayError(error, "FDPoti");
+            //    }
+            //    catch (NullReferenceException)
+            //    {
+            //        Display(CommandFailedString);
+            //    }
+            //}
+        }
+
+
+        /// <summary>
+        /// 向上移动按钮按下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bntX_MoveUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            EndUp = true;
+            if (EndUp)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = Convert.ToDouble("10");
+
+                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
+                        DisplayError(error, "FDPoti");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 向上移动按钮抬起
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bntX_MoveUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            EndUp = false;
+
             if (bConnected)
             {
-                double speed;
-
                 try
                 {
-                    speed = Convert.ToDouble("30") * 10;
-
-                    DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
-                    DisplayError(error, "FDPoti");
+                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DisplayError(error, "Halt");
                 }
                 catch (NullReferenceException)
                 {
@@ -1536,6 +1599,51 @@ namespace DoPENetConnect
                     //DisplayError(error, "FDPoti");
                     DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
                     DisplayError(error, "FMove_A");
+                }
+                catch (NullReferenceException)
+                {
+                    Display(CommandFailedString);
+                }
+            }
+        }
+
+
+        private void btnX_MoveQuickUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            EndQuickUp = true;
+            if (EndQuickUp)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = Convert.ToDouble(300);
+
+                        //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
+                        //DisplayError(error, "FDPoti");
+                        DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                        DisplayError(error, "FMove_A");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+        private void btnX_MoveQuickUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            EndQuickUp = false;
+
+            if (bConnected)
+            {
+                try
+                {
+                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DisplayError(error, "Halt");
                 }
                 catch (NullReferenceException)
                 {
@@ -1580,22 +1688,66 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void bntX_MoveDown_Click(object sender, EventArgs e)
         {
+            //if (bConnected)
+            //{
+            //    double speed;
+
+            //    try
+            //    {
+            //        speed = Convert.ToDouble("30");
+
+            //        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+            //        DisplayError(error, "FDPoti");
+            //    }
+            //    catch (NullReferenceException)
+            //    {
+            //        Display(CommandFailedString);
+            //    }
+            //}
+        }
+
+
+        private void bntX_MoveDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            EndDown = true;
+            if (EndDown)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = Convert.ToDouble("10");
+
+                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                        DisplayError(error, "FDPoti");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+        private void bntX_MoveDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            EndDown = false;
+
             if (bConnected)
             {
-                double speed;
-
                 try
                 {
-                    speed = Convert.ToDouble("30");
-
-                    DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
-                    DisplayError(error, "FDPoti");
+                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DisplayError(error, "Halt");
                 }
                 catch (NullReferenceException)
                 {
                     Display(CommandFailedString);
                 }
             }
+
         }
 
 
@@ -1609,19 +1761,65 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void btnX_QuickMoveDown_Click(object sender, EventArgs e)
         {
+            //if (bConnected)
+            //{
+            //    double speed;
+
+            //    try
+            //    {
+            //        speed = Convert.ToDouble(3000);
+
+            //        //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+            //        //DisplayError(error, "FDPoti");
+
+            //        DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
+            //        DisplayError(error, "FMove_A");
+            //    }
+            //    catch (NullReferenceException)
+            //    {
+            //        Display(CommandFailedString);
+            //    }
+            //}
+        }
+
+
+        private void btnX_QuickMoveDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            EndQuickDown = true;
+            if (EndQuickDown)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = Convert.ToDouble(3000);
+
+                        //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                        //DisplayError(error, "FDPoti");
+
+                        DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                        DisplayError(error, "FMove_A");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+
+        private void btnX_QuickMoveDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            EndQuickDown = false;
             if (bConnected)
             {
-                double speed;
-
                 try
                 {
-                    speed = Convert.ToDouble(3000);
-
-                    //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
-                    //DisplayError(error, "FDPoti");
-
-                    DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
-                    DisplayError(error, "FMove_A");
+                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DisplayError(error, "Halt");
                 }
                 catch (NullReferenceException)
                 {
@@ -3007,6 +3205,7 @@ namespace DoPENetConnect
 
             return 0.0;
         }
+
 
     }
 }
