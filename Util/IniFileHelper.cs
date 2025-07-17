@@ -7,18 +7,17 @@ namespace DoPENetConnect
     // INI文件操作类
     class IniFileHelper
     {
-        public static string strIniFilePath { get; set; }  // ini配置文件路径
+        // ini配置文件路径
+        public static string strIniFilePath { get; set; }
 
-        // 返回0表示失败，非0为成功
-        [DllImport("kernel32", CharSet = CharSet.Auto)]
-        private static extern long WritePrivateProfileString(string section, string key, string val, string filePath);
+        //按BYTE方式读取配置文件
+        [DllImport("kernel32")]
+        private static extern int GetPrivateProfileString(byte[] section, byte[] key, byte[] def, byte[] retVal, int size, string filePath);
 
-        // 返回取得字符串缓冲区的长度
-        [DllImport("kernel32", CharSet = CharSet.Auto)]
-        private static extern long GetPrivateProfileString(string section, string key, string strDefault, StringBuilder retVal, int size, string filePath);
+        //按BYTE方式写入配置文件
+        [DllImport("kernel32")]
+        private static extern bool WritePrivateProfileString(byte[] section, byte[] key, byte[] val, string filePath);
 
-        [DllImport("Kernel32.dll", CharSet = CharSet.Auto)]
-        public static extern int GetPrivateProfileInt(string section, string key, int nDefault, string filePath);
 
         /// <summary>
         /// 编码格式
@@ -29,6 +28,11 @@ namespace DoPENetConnect
         private static byte[] getBytes(string s)
         {
             return null == s ? null : Encoding.GetEncoding(encodingName).GetBytes(s);
+        }
+
+        private static string getString(byte[] s)
+        {
+            return System.Text.Encoding.UTF8.GetString(s);
         }
 
 
@@ -46,21 +50,6 @@ namespace DoPENetConnect
         }
 
 
-        ///// <summary>
-        ///// 获取ini配置文件中的字符串
-        ///// </summary>
-        ///// <param name="section">节名</param>
-        ///// <param name="key">键名</param>
-        ///// <param name="strDefault">默认值</param>
-        ///// <param name="retVal">结果缓冲区</param>
-        ///// <param name="size">结果缓冲区大小</param>
-        ///// <returns>成功true,失败false</returns>
-        //public static bool GetIniString(string section, string key, string strDefault, StringBuilder retVal, int size)
-        //{
-        //    long liRet = GetPrivateProfileString(getBytes(section), getBytes(key), getBytes(strDefault), retVal, size, getBytes(strIniFilePath));
-        //    return (liRet >= 1);
-        //}
-
         /// <summary>
         /// 获取ini配置文件中的字符串
         /// </summary>
@@ -72,21 +61,14 @@ namespace DoPENetConnect
         /// <returns>成功true,失败false</returns>
         public static bool GetIniString(string section, string key, string strDefault, StringBuilder retVal, int size)
         {
-            long liRet = GetPrivateProfileString(section, key, strDefault, retVal, size, strIniFilePath);
+            byte[] buffer = new byte[size];
+            int liRet = GetPrivateProfileString(getBytes(section), getBytes(key),
+                getBytes(strDefault), buffer, size, strIniFilePath);
+            string strRet = Encoding.GetEncoding(encodingName).GetString(buffer, 0, liRet).Trim();
+            retVal.Clear();
+            retVal.Append(strRet);
             return (liRet >= 1);
         }
-
-        ///// <summary>
-        ///// 获取ini配置文件中的整型值
-        ///// </summary>
-        ///// <param name="section">节名</param>
-        ///// <param name="key">键名</param>
-        ///// <param name="nDefault">默认值</param>
-        ///// <returns></returns>
-        //public static int GetIniInt(string section, string key, int nDefault)
-        //{
-        //    return GetPrivateProfileInt(section, key, nDefault, strIniFilePath);
-        //}
 
 
         /// <summary>
@@ -98,21 +80,26 @@ namespace DoPENetConnect
         /// <returns>成功true,失败false</returns>
         public static bool WriteIniString(string section, string key, string val)
         {
-            long liRet = WritePrivateProfileString(section, key, val, strIniFilePath);
-            return (liRet != 0);
+            return WritePrivateProfileString(getBytes(section), getBytes(key), getBytes(val), strIniFilePath);
         }
 
 
-        ///// <summary>
-        ///// 往ini配置文件写入整型数据
-        ///// </summary>
-        ///// <param name="section">节名</param>
-        ///// <param name="key">键名</param>
-        ///// <param name="val">要写入的数据</param>
-        ///// <returns>成功true,失败false</returns>
-        //public static bool WriteIniInt(string section, string key, int val)
-        //{
-        //    return WriteIniString(section, key, val.ToString());
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="section"></param>
+        /// <param name="key"></param>
+        /// <param name="defaultVal"></param>
+        /// <param name="size"></param>
+        /// <param name="encodingName"></param>
+        /// <returns></returns>
+        public string ReadIniString(string section, string key, string defaultVal = "", int size = 1024)
+        {
+            byte[] buffer = new byte[size];
+            int count = GetPrivateProfileString(getBytes(section), getBytes(key),
+                getBytes(defaultVal), buffer, size, strIniFilePath);
+            return Encoding.GetEncoding(encodingName).GetString(buffer, 0, count).Trim();
+        }
+
     }
 }
