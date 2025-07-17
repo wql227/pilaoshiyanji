@@ -139,5 +139,30 @@ namespace DoPENetConnect
         /// </summary>
         public bool ProtectOption_ExtMinIn_Effect = false;
         #endregion 变形峰谷值保护
+
+        #region 系统保护
+        /// <summary>
+        /// 试验力以百分比设定保护范围生效
+        /// </summary>
+        public bool ProtectOption_OverLoadPercent_Flag = false;
+
+        /// <summary>
+        /// 实验力以百分比设定保护范围
+        /// </summary>
+        public double ProtectOption_OverLoadPercent = 0.0;
+
+        /// <summary>
+        /// 试验力以数值设定保护范围生效
+        /// </summary>
+        public bool ProtectOption_OverLoadForce_Flag = false;
+
+        /// <summary>
+        /// 实验力以数值设定保护范围
+        /// </summary>
+        public double ProtectOption_OverLoadForce = 0.0;
+
+
+        #endregion 系统保护
+
     }
 }

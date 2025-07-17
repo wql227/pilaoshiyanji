@@ -2543,6 +2543,21 @@ namespace DoPENetConnect
             protectOption.ProtectOption_ExtMinIn_Effect = strTmp.ToString() == "0" ? false : true;
             #endregion 变形保护
 
+            #region 系统保护
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadPercent_Flag", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadPercent_Flag = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_Percent", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadPercent = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Flag", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadForce_Flag = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_Force", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp.ToString());
+
+            #endregion 系统保护
+
         }
 
         private void ToolStripMenuItem_SystemSetting_Click(object sender, EventArgs e)
