@@ -416,6 +416,8 @@ namespace DoPENetConnect
 
                         lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
 
+                        toolStripStatusLabel4.Text = this.devId.ToString();
+
                     }
 
                     bConnected = MyEdc.IsConnected();
@@ -2235,16 +2237,7 @@ namespace DoPENetConnect
             }
         }
 
-        private void btnX_AxisLoadY_MinUp_Click(object sender, EventArgs e)
-        {
-            chart_machine.ChartAreas[0].AxisY2.Minimum += 5;
-        }
 
-        private void btnX_AxisLoadY_MinDown_Click(object sender, EventArgs e)
-        {
-            chart_machine.ChartAreas[0].AxisY2.Minimum -= 5;
-
-        }
 
         //测试寻峰算法
         public static List<double> FindPeaks(int[] data)
@@ -2952,42 +2945,67 @@ namespace DoPENetConnect
 
         private void btnX_AxisPOSY_MinUp_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Minimum += 5;
+            chart_machine.ChartAreas[0].AxisY.Minimum += CheckYAxis(chart_machine.ChartAreas[0].AxisY.Maximum, chart_machine.ChartAreas[0].AxisY.Minimum);
         }
 
         private void btnX_AsixPOSY_MinDown_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Minimum -= 5;
-        }
-
-        private void btnX_AxisLoadY_MaxUp_Click(object sender, EventArgs e)
-        {
-            chart_machine.ChartAreas[0].AxisY2.Maximum += 5;
-
-        }
-
-        private void btnX_AxisLoadY_MaxDown_Click(object sender, EventArgs e)
-        {
-            chart_machine.ChartAreas[0].AxisY2.Maximum -= 5;
-
+            chart_machine.ChartAreas[0].AxisY.Minimum -= CheckYAxis(chart_machine.ChartAreas[0].AxisY.Maximum, chart_machine.ChartAreas[0].AxisY.Minimum);
         }
 
         private void btnX_AxisPOSY_MaxUp_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Maximum += 5;
-
+            chart_machine.ChartAreas[0].AxisY.Maximum += CheckYAxis(chart_machine.ChartAreas[0].AxisY.Maximum, chart_machine.ChartAreas[0].AxisY.Minimum); ;
         }
 
         private void btnX_AxisPOSY_MaxDown_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Maximum -= 5;
-
+            chart_machine.ChartAreas[0].AxisY.Maximum -= CheckYAxis(chart_machine.ChartAreas[0].AxisY.Maximum, chart_machine.ChartAreas[0].AxisY.Minimum); ;
         }
+
+        private void btnX_AxisLoadY_MaxUp_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY2.Maximum += CheckYAxis(chart_machine.ChartAreas[0].AxisY2.Maximum, chart_machine.ChartAreas[0].AxisY2.Minimum);
+        }
+
+        private void btnX_AxisLoadY_MaxDown_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY2.Maximum -= CheckYAxis(chart_machine.ChartAreas[0].AxisY2.Maximum, chart_machine.ChartAreas[0].AxisY2.Minimum);
+        }
+
+        private void btnX_AxisLoadY_MinUp_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY2.Minimum += CheckYAxis(chart_machine.ChartAreas[0].AxisY2.Maximum, chart_machine.ChartAreas[0].AxisY2.Minimum);
+        }
+
+        private void btnX_AxisLoadY_MinDown_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY2.Minimum -= CheckYAxis(chart_machine.ChartAreas[0].AxisY2.Maximum, chart_machine.ChartAreas[0].AxisY2.Minimum);
+        }
+
 
         public void RefreshDeviceID(string strID)
         {
             devId = new StringBuilder(strID);
             //Console.WriteLine("refresh_controls:{0}",strControl);
+        }
+
+        private double CheckYAxis(double maxAxis, double minAxis)
+        {
+            if ((maxAxis - minAxis) > 10)
+            {
+                return 5;
+            }
+            else if ((maxAxis - minAxis) > 5)
+            {
+                return 5;
+            }
+            else if ((maxAxis - minAxis) > 1)
+            {
+                return 0.1;
+            }
+
+            return 0.0;
         }
 
     }
