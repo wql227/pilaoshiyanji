@@ -604,11 +604,11 @@ namespace DoPENetConnect
 
         private void btnX_FrmProtectOption_OK_Click(object sender, EventArgs e)
         {
-            //if (!ValidityCheck())
-            //{
-            //    MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+            if (!ValidityCheck())
+            {
+                MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             WriteIni();
             this.Close();
