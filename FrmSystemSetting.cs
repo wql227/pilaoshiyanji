@@ -619,6 +619,5 @@ namespace DoPENetConnect
             this.Close();
 
         }
-
     }
 }
