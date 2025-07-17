@@ -24,6 +24,8 @@ namespace DoPENetConnect
 
         private void FrmAbout_Load(object sender, EventArgs e)
         {
+            ReplaceLanguage();
+
             Assembly assembly = Assembly.GetExecutingAssembly();
 
             string strtitle = "";
@@ -57,17 +59,85 @@ namespace DoPENetConnect
             labelX6.Text = string.Format(@"{0}", Environment.Version.ToString());
             labelX7.Text = string.Format(@"：{0}", assembly.Location);
             labelX8.Text = string.Format(@"{0}", Environment.WorkingSet.ToString("N0") + " bytes");
-
-            labelX9.Text = "程序名称：";
-            labelX10.Text = "程序版本：";
-            labelX11.Text = "程序标识：";
-            labelX12.Text = "计算机用户：";
-            labelX13.Text = "操作系统：";
-            labelX14.Text = "公共语言运行库：";
-            labelX15.Text = "程序文件名称：";
-            labelX16.Text = "程序内存使用：";
         }
 
-        
+
+        /// <summary>
+        /// 替换界面语言
+        /// </summary>
+        public void ReplaceLanguage()
+        {
+            string strLanguage = MainForm.mainform.strLanguage;
+            var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
+
+            //循环界面控件替换成指定的语言
+            if (langData.TryGetValue(this.Name, out var mainFormLabels))
+            {
+                foreach (var kvp in mainFormLabels)
+                {
+                    var controlName = kvp.Key;
+                    var textValue = kvp.Value;
+
+                    // 根据控件名称查找控件（可以扩展为递归查找）
+                    var ctrl = this.Controls.Find(controlName, true).FirstOrDefault();
+                    if (ctrl != null)
+                    {
+                        ctrl.Text = textValue;
+                    }
+                }
+
+                //foreach (var kvp in mainFormLabels)
+                //{
+                //    var controlName = kvp.Key;
+                //    var textValue = kvp.Value;
+
+                //    // 首先尝试从主窗体的控件集合中查找控件
+                //    var ctrl = this.Controls.Find(controlName, true).FirstOrDefault();
+
+                //    if (ctrl == null && this is Form form)
+                //    {
+                //        // 如果未找到，则检查 SuperTabControl 中的所有 SuperTabItem
+                //        foreach (Control c in form.Controls)
+                //        {
+                //            if (c is SuperTabControl superTabControl)
+                //            {
+                //                foreach (SuperTabItem tabItem in superTabControl.Tabs)
+                //                {
+                //                    // 获取当前 TabItem 的内容区域
+                //                    Control contentContainer = GetContentContainer(tabItem);
+                //                    if (contentContainer != null)
+                //                    {
+                //                        ctrl = contentContainer.Controls.Find(controlName, true).FirstOrDefault();
+                //                        if (ctrl != null)
+                //                        {
+                //                            break; // 找到后跳出循环
+                //                        }
+                //                    }
+                //                }
+                //            }
+                //        }
+                //    }
+
+                //    if (ctrl != null)
+                //    {
+                //        ctrl.Text = textValue;
+                //    }
+                //}
+
+                //foreach (var kvp in mainFormLabels)
+                //{
+                //    var controlName = kvp.Key;
+                //    var textValue = kvp.Value;
+                //}
+            }
+        }
+
+
+        private Control GetContentContainer(SuperTabItem tabItem)
+        {
+            // 获取 SuperTabItem 对应的内容区域
+            return tabItem.AttachedControl;
+        }
+
     }
 }
