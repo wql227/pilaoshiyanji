@@ -1504,22 +1504,7 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void bntX_MoveUp_Click(object sender, EventArgs e)
         {
-            //if (bConnected)
-            //{
-            //    double speed;
 
-            //    try
-            //    {
-            //        speed = Convert.ToDouble("30");
-
-            //        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
-            //        DisplayError(error, "FDPoti");
-            //    }
-            //    catch (NullReferenceException)
-            //    {
-            //        Display(CommandFailedString);
-            //    }
-            //}
         }
 
 
@@ -1539,7 +1524,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = Convert.ToDouble("10");
+                        speed = Convert.ToDouble("1");
 
                         DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
                         DisplayError(error, "FDPoti");
@@ -1587,24 +1572,7 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void btnX_MoveQuickUp_Click(object sender, EventArgs e)
         {
-            if (bConnected)
-            {
-                double speed;
-
-                try
-                {
-                    speed = Convert.ToDouble(300);
-
-                    //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
-                    //DisplayError(error, "FDPoti");
-                    DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
-                    DisplayError(error, "FMove_A");
-                }
-                catch (NullReferenceException)
-                {
-                    Display(CommandFailedString);
-                }
-            }
+            
         }
 
 
@@ -1619,12 +1587,12 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = Convert.ToDouble(300);
+                        speed = Convert.ToDouble(10);
 
-                        //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
-                        //DisplayError(error, "FDPoti");
-                        DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
-                        DisplayError(error, "FMove_A");
+                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
+                        DisplayError(error, "FDPoti");
+                        //DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                        //DisplayError(error, "FMove_A");
                     }
                     catch (NullReferenceException)
                     {
@@ -1688,22 +1656,7 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void bntX_MoveDown_Click(object sender, EventArgs e)
         {
-            //if (bConnected)
-            //{
-            //    double speed;
-
-            //    try
-            //    {
-            //        speed = Convert.ToDouble("30");
-
-            //        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
-            //        DisplayError(error, "FDPoti");
-            //    }
-            //    catch (NullReferenceException)
-            //    {
-            //        Display(CommandFailedString);
-            //    }
-            //}
+  
         }
 
 
@@ -1718,7 +1671,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = Convert.ToDouble("10");
+                        speed = Convert.ToDouble(1);
 
                         DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
                         DisplayError(error, "FDPoti");
@@ -1761,25 +1714,7 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void btnX_QuickMoveDown_Click(object sender, EventArgs e)
         {
-            //if (bConnected)
-            //{
-            //    double speed;
-
-            //    try
-            //    {
-            //        speed = Convert.ToDouble(3000);
-
-            //        //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
-            //        //DisplayError(error, "FDPoti");
-
-            //        DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
-            //        DisplayError(error, "FMove_A");
-            //    }
-            //    catch (NullReferenceException)
-            //    {
-            //        Display(CommandFailedString);
-            //    }
-            //}
+ 
         }
 
 
@@ -1794,13 +1729,13 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = Convert.ToDouble(3000);
+                        speed = Convert.ToDouble(10);
 
-                        //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
-                        //DisplayError(error, "FDPoti");
+                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                        DisplayError(error, "FDPoti");
 
-                        DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
-                        DisplayError(error, "FMove_A");
+                        //DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                        //DisplayError(error, "FMove_A");
                     }
                     catch (NullReferenceException)
                     {
@@ -1882,13 +1817,20 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_SetHigh_Click(object sender, EventArgs e)
         {
-            DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(true);
-            //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(true);
-
-            if (Err == DoPE.ERR.NOERROR)
+            if (bConnected)
             {
-                btnX_SetLow.Checked = false;
-                btnX_SetHigh.Checked = true;
+                DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(true);
+                //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(true);
+
+                if (Err == DoPE.ERR.NOERROR)
+                {
+                    btnX_SetLow.Checked = false;
+                    btnX_SetHigh.Checked = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先连接控制器！");
             }
         }
 
@@ -1900,21 +1842,21 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_SetLow_Click(object sender, EventArgs e)
         {
-            //if (bConnected)
+            if (bConnected)
             {
-                //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
+                DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
                 //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(false);
 
-                //if (Err == DoPE.ERR.NOERROR)
+                if (Err == DoPE.ERR.NOERROR)
                 {
                     btnX_SetHigh.Checked = false;
                     btnX_SetLow.Checked = true;
                 }
             }
-            //else
-            //{
-            //    MessageBox.Show("请先连接控制器！");
-            //}
+            else
+            {
+                MessageBox.Show("请先连接控制器！");
+            }
         }
 
         #endregion 
@@ -2230,6 +2172,8 @@ namespace DoPENetConnect
         public void MovePos(DoPE.CTRL control, double speed, double destination)
         {
             DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
+
+            //DoPE.ERR error = MyEdc.Move.Ex(control, speed, destination, ref MyTan);
 
             //正常返回，开始计时
             if (error == DoPE.ERR.NOERROR)
