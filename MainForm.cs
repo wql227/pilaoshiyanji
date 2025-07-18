@@ -299,7 +299,13 @@ namespace DoPENetConnect
         private bool EndQuickUp = false;
         private bool EndQuickDown = false;
 
-        private double btnMvUpSlowValue = 0;
+        /// <summary>
+        /// 向上按钮步进值
+        /// </summary>
+        public double btnUpConstantVal = 0.0;
+        public double btnHurryUpConstantVal = 0.0;
+        public double btnDownConstantVal = 0.0;
+        public double btnHurryDownConstantVal = 0.0;
 
 
         ///----------------------------------------------------------------------

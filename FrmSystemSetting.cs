@@ -132,6 +132,19 @@ namespace DoPENetConnect
             //系统设置-设备id
             IniFileHelper.GetIniString("Device", "DeviceID", "0", strTmp, strTmp.Capacity);
             tbX_DeviceID.Text = strTmp.ToString();
+
+            //按钮常量设置
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "Up", "0", strTmp, strTmp.Capacity);
+            tbX_upval.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryUp", "0", strTmp, strTmp.Capacity);
+            tbX_hurryupval.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "Down", "0", strTmp, strTmp.Capacity);
+            tbX_downval.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDown", "0", strTmp, strTmp.Capacity);
+            tbX_hurrydownval.Text = strTmp.ToString();
         }
 
 
@@ -272,6 +285,23 @@ namespace DoPENetConnect
             strTmp = tbX_DeviceID.Text;
             MainForm.mainform.RefreshDeviceID(strTmp);
             IniFileHelper.WriteIniString("Device", "DeviceID", strTmp);
+
+            //按钮常量设置
+            strTmp = tbX_upval.Text;
+            MainForm.mainform.btnUpConstantVal = double.Parse(strTmp);
+            IniFileHelper.WriteIniString("PushButtonFunctionConstant", "Up", strTmp);
+
+            strTmp = tbX_hurryupval.Text;
+            MainForm.mainform.btnHurryUpConstantVal = double.Parse(strTmp);
+            IniFileHelper.WriteIniString("PushButtonFunctionConstant", "HurryUp", strTmp);
+
+            strTmp = tbX_downval.Text;
+            MainForm.mainform.btnDownConstantVal = double.Parse(strTmp);
+            IniFileHelper.WriteIniString("PushButtonFunctionConstant", "Down", strTmp);
+
+            strTmp = tbX_hurrydownval.Text;
+            MainForm.mainform.btnHurryDownConstantVal = double.Parse(strTmp);
+            IniFileHelper.WriteIniString("PushButtonFunctionConstant", "HurryDown", strTmp);
 
         }
 

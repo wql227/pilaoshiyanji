@@ -32,7 +32,7 @@
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx7 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel9 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.tbXdownVal = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_downval = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label37 = new System.Windows.Forms.Label();
             this.tbX_hurryupval = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label34 = new System.Windows.Forms.Label();
@@ -174,7 +174,7 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_hurrydownval = new DevComponents.DotNetBar.Controls.TextBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
@@ -232,7 +232,7 @@
             this.superTabControl1.Name = "superTabControl1";
             this.superTabControl1.ReorderTabsEnabled = true;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.superTabControl1.SelectedTabIndex = 2;
+            this.superTabControl1.SelectedTabIndex = 0;
             this.superTabControl1.Size = new System.Drawing.Size(558, 597);
             this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl1.TabIndex = 0;
@@ -277,9 +277,9 @@
             this.groupPanel9.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel9.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel9.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel9.Controls.Add(this.textBoxX1);
+            this.groupPanel9.Controls.Add(this.tbX_hurrydownval);
             this.groupPanel9.Controls.Add(this.label42);
-            this.groupPanel9.Controls.Add(this.tbXdownVal);
+            this.groupPanel9.Controls.Add(this.tbX_downval);
             this.groupPanel9.Controls.Add(this.label37);
             this.groupPanel9.Controls.Add(this.label41);
             this.groupPanel9.Controls.Add(this.tbX_hurryupval);
@@ -325,19 +325,19 @@
             this.groupPanel9.TabIndex = 4;
             this.groupPanel9.Text = "左侧手动操作菜单";
             // 
-            // tbXdownVal
+            // tbX_downval
             // 
             // 
             // 
             // 
-            this.tbXdownVal.Border.Class = "TextBoxBorder";
-            this.tbXdownVal.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbXdownVal.Location = new System.Drawing.Point(168, 90);
-            this.tbXdownVal.Name = "tbXdownVal";
-            this.tbXdownVal.PreventEnterBeep = true;
-            this.tbXdownVal.Size = new System.Drawing.Size(123, 26);
-            this.tbXdownVal.TabIndex = 5;
-            this.tbXdownVal.Text = "10";
+            this.tbX_downval.Border.Class = "TextBoxBorder";
+            this.tbX_downval.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_downval.Location = new System.Drawing.Point(168, 90);
+            this.tbX_downval.Name = "tbX_downval";
+            this.tbX_downval.PreventEnterBeep = true;
+            this.tbX_downval.Size = new System.Drawing.Size(123, 26);
+            this.tbX_downval.TabIndex = 5;
+            this.tbX_downval.Text = "10";
             // 
             // label37
             // 
@@ -2128,19 +2128,19 @@
             this.label42.TabIndex = 3;
             this.label42.Text = "mm/min";
             // 
-            // textBoxX1
+            // tbX_hurrydownval
             // 
             // 
             // 
             // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(168, 132);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(123, 26);
-            this.textBoxX1.TabIndex = 5;
-            this.textBoxX1.Text = "10";
+            this.tbX_hurrydownval.Border.Class = "TextBoxBorder";
+            this.tbX_hurrydownval.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_hurrydownval.Location = new System.Drawing.Point(168, 132);
+            this.tbX_hurrydownval.Name = "tbX_hurrydownval";
+            this.tbX_hurrydownval.PreventEnterBeep = true;
+            this.tbX_hurrydownval.Size = new System.Drawing.Size(123, 26);
+            this.tbX_hurrydownval.TabIndex = 5;
+            this.tbX_hurrydownval.Text = "10";
             // 
             // FrmSystemSetting
             // 
@@ -2333,10 +2333,10 @@
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_hurryupval;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label21;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbXdownVal;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_downval;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label34;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_hurrydownval;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label41;
     }
