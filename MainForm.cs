@@ -291,6 +291,15 @@ namespace DoPENetConnect
         /// </summary>
         StringBuilder devId;
 
+        /// <summary>
+        /// 向上向下按动标识
+        /// </summary>
+        private bool EndUp = false;
+        private bool EndDown = false;
+        private bool EndQuickUp = false;
+        private bool EndQuickDown = false;
+
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -415,6 +424,8 @@ namespace DoPENetConnect
                         LogHelper.WriteLogFile("AAAA");
 
                         lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
+
+                        toolStripStatusLabel4.Text = this.devId.ToString();
 
                     }
 
@@ -1493,16 +1504,55 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void bntX_MoveUp_Click(object sender, EventArgs e)
         {
+
+        }
+
+
+        /// <summary>
+        /// 向上移动按钮按下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bntX_MoveUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            EndUp = true;
+            if (EndUp)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = Convert.ToDouble("1");
+
+                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
+                        DisplayError(error, "FDPoti");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 向上移动按钮抬起
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bntX_MoveUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            EndUp = false;
+
             if (bConnected)
             {
-                double speed;
-
                 try
                 {
-                    speed = Convert.ToDouble("30") * 10;
-
-                    DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
-                    DisplayError(error, "FDPoti");
+                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DisplayError(error, "Halt");
                 }
                 catch (NullReferenceException)
                 {
@@ -1522,18 +1572,46 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void btnX_MoveQuickUp_Click(object sender, EventArgs e)
         {
+            
+        }
+
+
+        private void btnX_MoveQuickUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            EndQuickUp = true;
+            if (EndQuickUp)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = Convert.ToDouble(10);
+
+                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
+                        DisplayError(error, "FDPoti");
+                        //DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                        //DisplayError(error, "FMove_A");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+        private void btnX_MoveQuickUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            EndQuickUp = false;
+
             if (bConnected)
             {
-                double speed;
-
                 try
                 {
-                    speed = Convert.ToDouble(300);
-
-                    //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
-                    //DisplayError(error, "FDPoti");
-                    DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
-                    DisplayError(error, "FMove_A");
+                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DisplayError(error, "Halt");
                 }
                 catch (NullReferenceException)
                 {
@@ -1578,22 +1656,51 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void bntX_MoveDown_Click(object sender, EventArgs e)
         {
+  
+        }
+
+
+        private void bntX_MoveDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            EndDown = true;
+            if (EndDown)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = Convert.ToDouble(1);
+
+                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                        DisplayError(error, "FDPoti");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+        private void bntX_MoveDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            EndDown = false;
+
             if (bConnected)
             {
-                double speed;
-
                 try
                 {
-                    speed = Convert.ToDouble("30");
-
-                    DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
-                    DisplayError(error, "FDPoti");
+                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DisplayError(error, "Halt");
                 }
                 catch (NullReferenceException)
                 {
                     Display(CommandFailedString);
                 }
             }
+
         }
 
 
@@ -1607,19 +1714,47 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void btnX_QuickMoveDown_Click(object sender, EventArgs e)
         {
+ 
+        }
+
+
+        private void btnX_QuickMoveDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            EndQuickDown = true;
+            if (EndQuickDown)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = Convert.ToDouble(10);
+
+                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                        DisplayError(error, "FDPoti");
+
+                        //DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                        //DisplayError(error, "FMove_A");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+
+        private void btnX_QuickMoveDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            EndQuickDown = false;
             if (bConnected)
             {
-                double speed;
-
                 try
                 {
-                    speed = Convert.ToDouble(3000);
-
-                    //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
-                    //DisplayError(error, "FDPoti");
-
-                    DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
-                    DisplayError(error, "FMove_A");
+                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DisplayError(error, "Halt");
                 }
                 catch (NullReferenceException)
                 {
@@ -1682,13 +1817,20 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_SetHigh_Click(object sender, EventArgs e)
         {
-            DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(true);
-            //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(true);
-
-            if (Err == DoPE.ERR.NOERROR)
+            if (bConnected)
             {
-                btnX_SetLow.Checked = false;
-                btnX_SetHigh.Checked = true;
+                DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(true);
+                //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(true);
+
+                if (Err == DoPE.ERR.NOERROR)
+                {
+                    btnX_SetLow.Checked = false;
+                    btnX_SetHigh.Checked = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先连接控制器！");
             }
         }
 
@@ -1700,21 +1842,21 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_SetLow_Click(object sender, EventArgs e)
         {
-            //if (bConnected)
+            if (bConnected)
             {
-                //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
+                DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
                 //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(false);
 
-                //if (Err == DoPE.ERR.NOERROR)
+                if (Err == DoPE.ERR.NOERROR)
                 {
                     btnX_SetHigh.Checked = false;
                     btnX_SetLow.Checked = true;
                 }
             }
-            //else
-            //{
-            //    MessageBox.Show("请先连接控制器！");
-            //}
+            else
+            {
+                MessageBox.Show("请先连接控制器！");
+            }
         }
 
         #endregion 
@@ -2031,6 +2173,8 @@ namespace DoPENetConnect
         {
             DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
 
+            //DoPE.ERR error = MyEdc.Move.Ex(control, speed, destination, ref MyTan);
+
             //正常返回，开始计时
             if (error == DoPE.ERR.NOERROR)
             {
@@ -2235,16 +2379,7 @@ namespace DoPENetConnect
             }
         }
 
-        private void btnX_AxisLoadY_MinUp_Click(object sender, EventArgs e)
-        {
-            chart_machine.ChartAreas[0].AxisY2.Minimum += 5;
-        }
 
-        private void btnX_AxisLoadY_MinDown_Click(object sender, EventArgs e)
-        {
-            chart_machine.ChartAreas[0].AxisY2.Minimum -= 5;
-
-        }
 
         //测试寻峰算法
         public static List<double> FindPeaks(int[] data)
@@ -2952,43 +3087,69 @@ namespace DoPENetConnect
 
         private void btnX_AxisPOSY_MinUp_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Minimum += 5;
+            chart_machine.ChartAreas[0].AxisY.Minimum += CheckYAxis(chart_machine.ChartAreas[0].AxisY.Maximum, chart_machine.ChartAreas[0].AxisY.Minimum);
         }
 
         private void btnX_AsixPOSY_MinDown_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Minimum -= 5;
-        }
-
-        private void btnX_AxisLoadY_MaxUp_Click(object sender, EventArgs e)
-        {
-            chart_machine.ChartAreas[0].AxisY2.Maximum += 5;
-
-        }
-
-        private void btnX_AxisLoadY_MaxDown_Click(object sender, EventArgs e)
-        {
-            chart_machine.ChartAreas[0].AxisY2.Maximum -= 5;
-
+            chart_machine.ChartAreas[0].AxisY.Minimum -= CheckYAxis(chart_machine.ChartAreas[0].AxisY.Maximum, chart_machine.ChartAreas[0].AxisY.Minimum);
         }
 
         private void btnX_AxisPOSY_MaxUp_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Maximum += 5;
-
+            chart_machine.ChartAreas[0].AxisY.Maximum += CheckYAxis(chart_machine.ChartAreas[0].AxisY.Maximum, chart_machine.ChartAreas[0].AxisY.Minimum); ;
         }
 
         private void btnX_AxisPOSY_MaxDown_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Maximum -= 5;
-
+            chart_machine.ChartAreas[0].AxisY.Maximum -= CheckYAxis(chart_machine.ChartAreas[0].AxisY.Maximum, chart_machine.ChartAreas[0].AxisY.Minimum); ;
         }
+
+        private void btnX_AxisLoadY_MaxUp_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY2.Maximum += CheckYAxis(chart_machine.ChartAreas[0].AxisY2.Maximum, chart_machine.ChartAreas[0].AxisY2.Minimum);
+        }
+
+        private void btnX_AxisLoadY_MaxDown_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY2.Maximum -= CheckYAxis(chart_machine.ChartAreas[0].AxisY2.Maximum, chart_machine.ChartAreas[0].AxisY2.Minimum);
+        }
+
+        private void btnX_AxisLoadY_MinUp_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY2.Minimum += CheckYAxis(chart_machine.ChartAreas[0].AxisY2.Maximum, chart_machine.ChartAreas[0].AxisY2.Minimum);
+        }
+
+        private void btnX_AxisLoadY_MinDown_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY2.Minimum -= CheckYAxis(chart_machine.ChartAreas[0].AxisY2.Maximum, chart_machine.ChartAreas[0].AxisY2.Minimum);
+        }
+
 
         public void RefreshDeviceID(string strID)
         {
             devId = new StringBuilder(strID);
             //Console.WriteLine("refresh_controls:{0}",strControl);
         }
+
+        private double CheckYAxis(double maxAxis, double minAxis)
+        {
+            if ((maxAxis - minAxis) > 10)
+            {
+                return 5;
+            }
+            else if ((maxAxis - minAxis) > 5)
+            {
+                return 5;
+            }
+            else if ((maxAxis - minAxis) > 1)
+            {
+                return 0.1;
+            }
+
+            return 0.0;
+        }
+
 
     }
 }

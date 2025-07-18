@@ -48,7 +48,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_PosSend_Click(object sender, EventArgs e)
         {
-            MainForm.mainform.MovePos(0, double.Parse(tbX_Pos_SpeedCtrl.Text), double.Parse(tbX_Pos_Destnation.Text));
+            MainForm.mainform.MovePos((DoPE.CTRL)cmbX_Pos_MoveCtrl.SelectedIndex, double.Parse(tbX_Pos_SpeedCtrl.Text), double.Parse(tbX_Pos_Destnation.Text));
 
             WriteIni();
         }

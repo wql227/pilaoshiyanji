@@ -3,7 +3,7 @@
 ; 安装程序初始定义常量
 !define PRODUCT_NAME "DOLI试验测试系统"
 !define PRODUCT_MAIN_FILE "DoPENetConnect"
-!define PRODUCT_VERSION "1.0"
+!define PRODUCT_VERSION "1.1"
 !define PRODUCT_PUBLISHER "济南新测仪器有限公司"
 !define PRODUCT_WEB_SITE "http://www.jnxince.cn/"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
@@ -47,7 +47,7 @@ ShowUnInstDetails show
 Section "MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
-  File /r "D:\WorkSpace\新仪器\DoPENet_Connect\bin\x64\Release\*.*"
+  File /r "D:\WorkSpace\DoPENet_Connect_200\bin\x64\Release\*.*"
   CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "$INSTDIR\${PRODUCT_MAIN_FILE}"
 SectionEnd
 
