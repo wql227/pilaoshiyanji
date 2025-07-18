@@ -299,6 +299,8 @@ namespace DoPENetConnect
         private bool EndQuickUp = false;
         private bool EndQuickDown = false;
 
+        private double btnMvUpSlowValue = 0;
+
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
