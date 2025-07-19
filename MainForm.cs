@@ -159,13 +159,21 @@ namespace DoPENetConnect
         /// <summary>
         /// 是否正在运行
         /// </summary>
-        private bool isRunning = false;
+        public bool isRunning = false;
 
+        /// <summary>
+        /// 按次数延迟显示实时数据
+        /// </summary>
         private int nCount = 0;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Stopwatch stopwatch = new Stopwatch();
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         readonly double[] Values = new double[25];
         readonly Stopwatch Stopwatch = Stopwatch.StartNew();
 
@@ -595,7 +603,7 @@ namespace DoPENetConnect
                 bActivated = false;
                 //StartCommunicationWithEdcTimer.Stop();
                 DisplayError(error, "Off");
-
+                isRunning = false;
                 btnX_SetLow.Checked = false;
                 btnX_SetHigh.Checked = false;
 
@@ -956,6 +964,12 @@ namespace DoPENetConnect
                     {
                         strCSVLog += (Sample.Cycles << 1).ToString() + ",";
                         tbX_TestCycles.Text = (Sample.Cycles /*>> 1*/).ToString();
+
+                        //试验次数
+                        if (Sample.Cycles >= nTestCount )
+                        {
+                            isRunning = false;
+                        }
                     }
 
                     strBlockLog += ( strCSVLog + "\r\n");
@@ -2221,6 +2235,8 @@ namespace DoPENetConnect
             //正常返回，开始计时
             if (error == DoPE.ERR.NOERROR)
             {
+                isRunning = true;
+                nTestCount = HalfCycles;
                 stopwatch.Start();
             }
 

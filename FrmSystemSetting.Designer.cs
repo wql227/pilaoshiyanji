@@ -220,12 +220,12 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel4);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel3);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel5);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel5);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel3);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Location = new System.Drawing.Point(1, 0);
             this.superTabControl1.MaximumSize = new System.Drawing.Size(600, 597);
             this.superTabControl1.MinimumSize = new System.Drawing.Size(550, 597);
@@ -360,7 +360,7 @@
             this.tbX_downval.Name = "tbX_downval";
             this.tbX_downval.PreventEnterBeep = true;
             this.tbX_downval.Size = new System.Drawing.Size(123, 26);
-            this.tbX_downval.TabIndex = 5;
+            this.tbX_downval.TabIndex = 4;
             this.tbX_downval.Text = "10";
             // 
             // label37
@@ -394,7 +394,7 @@
             this.tbX_hurryupval.Name = "tbX_hurryupval";
             this.tbX_hurryupval.PreventEnterBeep = true;
             this.tbX_hurryupval.Size = new System.Drawing.Size(123, 26);
-            this.tbX_hurryupval.TabIndex = 5;
+            this.tbX_hurryupval.TabIndex = 3;
             this.tbX_hurryupval.Text = "10";
             // 
             // label34
@@ -1993,7 +1993,6 @@
             this.superTabItem2.GlobalItem = false;
             this.superTabItem2.Name = "superTabItem2";
             this.superTabItem2.Text = "试验机参数";
-            this.superTabItem2.Visible = false;
             // 
             // superTabControlPanel3
             // 
@@ -2028,7 +2027,6 @@
             this.superTabItem3.GlobalItem = false;
             this.superTabItem3.Name = "superTabItem3";
             this.superTabItem3.Text = "变形";
-            this.superTabItem3.Visible = false;
             // 
             // superTabControlPanel4
             // 
@@ -2091,7 +2089,6 @@
             this.superTabItem4.GlobalItem = false;
             this.superTabItem4.Name = "superTabItem4";
             this.superTabItem4.Text = "其他";
-            this.superTabItem4.Visible = false;
             // 
             // btnX_FrmProtectOption_OK
             // 
@@ -2134,7 +2131,7 @@
             this.panelEx1.MaximumSize = new System.Drawing.Size(560, 656);
             this.panelEx1.MinimumSize = new System.Drawing.Size(550, 656);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(560, 656);
+            this.panelEx1.Size = new System.Drawing.Size(556, 656);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -2151,6 +2148,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 656);
             this.Controls.Add(this.panelEx1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(576, 695);
             this.Name = "FrmSystemSetting";
             this.Text = "系统参数";
