@@ -133,7 +133,13 @@
 		"label39":"谷值的外保护",
 		"label38":"谷值的内保护",
 		"cbX_FrmProtectOption_ExtMinOut_Effect":"生效",
-		"cbX_FrmProtectOption_ExtMinIn_Effect":"生效"
+		"cbX_FrmProtectOption_ExtMinIn_Effect":"生效",
+		
+		"groupPanel9":"左侧手动操作菜单",
+		"labe44":"向上按钮",
+		"labe21":"快速向上按钮",
+		"labe34":"向下按钮",
+		"labe41":"快速向下按钮"
 		
 		}
 		
