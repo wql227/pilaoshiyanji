@@ -1532,7 +1532,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = Convert.ToDouble("1");
+                        speed = btnUpConstantVal;
 
                         DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
                         DisplayError(error, "FDPoti");
@@ -1595,7 +1595,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = Convert.ToDouble(10);
+                        speed = btnHurryUpConstantVal;
 
                         DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
                         DisplayError(error, "FDPoti");
@@ -1679,7 +1679,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = Convert.ToDouble(1);
+                        speed = btnDownConstantVal;
 
                         DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
                         DisplayError(error, "FDPoti");
@@ -1737,7 +1737,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = Convert.ToDouble(10);
+                        speed = btnHurryDownConstantVal;
 
                         DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
                         DisplayError(error, "FDPoti");
@@ -2702,6 +2702,20 @@ namespace DoPENetConnect
             protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp.ToString());
 
             #endregion 系统保护
+
+            #region 按键功能常数
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "Up", "0", strTmp, strTmp.Capacity);
+            btnUpConstantVal = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryUp", "0", strTmp, strTmp.Capacity);
+            btnHurryUpConstantVal = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "Down", "0", strTmp, strTmp.Capacity);
+            btnDownConstantVal = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDown", "0", strTmp, strTmp.Capacity);
+            btnHurryDownConstantVal = double.Parse(strTmp.ToString());
+            #endregion 按键功能常数
 
         }
 
