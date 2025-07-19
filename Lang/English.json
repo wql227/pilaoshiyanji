@@ -28,6 +28,7 @@
 		"lblTestCycles": "Test Count",
 		"ShowLogToolStripMenuItem":"Show Log",
 		"startStopDrawToolStripMenuItem":"Suspend Draw",
+		"AdjustToolStripMenuItem":"Corrección",
 		"ToolStripMenuItem_Oper":"Operation(&O)",
 		"ToolStripMenuItem_Login":"Login...(&L)",
 		"ToolStripMenuItem_Setting":"Parameter Setting(&S)",

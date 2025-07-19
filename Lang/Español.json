@@ -28,6 +28,7 @@
 		"lblTestCycles": "Cantidad de Pruebas",
 		"ShowLogToolStripMenuItem": "Mostrar Registro",
 		"startStopDrawToolStripMenuItem": "Pausar Dibujo",
+		"AdjustToolStripMenuItem":"Corrección",
 		"ToolStripMenuItem_Oper": "Operación (&O)",
 		"ToolStripMenuItem_Login": "Iniciar Sesión... (&L)",
 		"ToolStripMenuItem_Setting": "Configuración de Parámetros (&S)",

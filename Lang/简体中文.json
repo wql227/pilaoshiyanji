@@ -28,6 +28,7 @@
 		"lblTestCycles": "试验次数",
 		"ShowLogToolStripMenuItem":"显示日志",
 		"startStopDrawToolStripMenuItem":"暂停绘制",
+		"AdjustToolStripMenuItem":"Corrección",
 		"ToolStripMenuItem_Oper":"操作(&O)",
 		"ToolStripMenuItem_Login":"登录...(&L)",
 		"ToolStripMenuItem_Setting":"参数设置(&S)",
