@@ -969,6 +969,7 @@ namespace DoPENetConnect
                         if (Sample.Cycles >= nTestCount )
                         {
                             isRunning = false;
+                            SetControlEnable(!isRunning);
                         }
                     }
 
@@ -2236,6 +2237,7 @@ namespace DoPENetConnect
             if (error == DoPE.ERR.NOERROR)
             {
                 isRunning = true;
+                SetControlEnable(!isRunning);
                 nTestCount = HalfCycles;
                 stopwatch.Start();
             }
@@ -2340,47 +2342,84 @@ namespace DoPENetConnect
         # endregion 快捷工具栏消息响应事件
 
 
+        /// <summary>
+        /// 设置部分控件禁用
+        /// </summary>
+        /// <param name="bState"></param>
+        private void SetControlEnable(bool bState)
+        {
+            cb_TarePos.Enabled = bState;
+            cb_TareLoad.Enabled = bState;
+            cb_TareExt.Enabled = bState;
+        }
+
+
 
         private void lblTime_Click(object sender, EventArgs e)
         {
 
         }
 
+
+        /// <summary>
+        /// 位移清零
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cb_TarePos_CheckedChanged(object sender, EventArgs e)
         {
-            if (cb_TarePos.Checked)
+            if (!isRunning)
             {
-                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, true);
-            }
-            else
-            {
-                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, false);
+                if (cb_TarePos.Checked)
+                {
+                    MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, true);
+                }
+                else
+                {
+                    MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, false);
+                }
             }
         }
 
+
+        /// <summary>
+        /// 试验力清零
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cb_TareLoad_CheckedChanged(object sender, EventArgs e)
         {
-            if (cb_TareLoad.Checked)
+            if (!isRunning)
             {
-                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, true);
-            }
-            else
-            {
-                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, false);
+                if (cb_TareLoad.Checked)
+                {
+                    MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, true);
+                }
+                else
+                {
+                    MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, false);
+                }
             }
         }
 
+
+        /// <summary>
+        /// 变形清零
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cb_TareExt_CheckedChanged(object sender, EventArgs e)
         {
-            if (cb_TareExt.Checked)
+            if (!isRunning)
             {
-                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_E, true);
-
-            }
-            else
-            {
-                MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_E, false);
-
+                if (cb_TareExt.Checked)
+                {
+                    MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_E, true);
+                }
+                else
+                {
+                    MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_E, false);
+                }
             }
         }
 
