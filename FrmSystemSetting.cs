@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar;
 
 namespace DoPENetConnect
 {
@@ -22,8 +23,82 @@ namespace DoPENetConnect
         private void FrmSystemSetting_Load(object sender, EventArgs e)
         {
             LoadIni();
+            ReplaceLanguage();
 
         }
+
+        private void ReplaceLanguage()
+        {
+            StringBuilder strTmp = new StringBuilder();
+            IniFileHelper.GetIniString("Setting", "Language", "0", strTmp, strTmp.Capacity);
+            string strLanguage = strTmp.ToString();
+            var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
+                       
+            //循环界面控件替换成指定的语言
+            if (langData.TryGetValue(this.Name, out var frmSystemSetting))
+            {
+                //foreach (var kvp in mainFormLabels)
+                //{
+                //    var controlName = kvp.Key;
+                //    var textValue = kvp.Value;
+
+                //    // 根据控件名称查找控件（可以扩展为递归查找）
+                //    var ctrl = this.Controls.Find(controlName, true).FirstOrDefault();
+                //    if (ctrl != null)
+                //    {
+                //        ctrl.Text = textValue;
+                //    }
+                //}
+
+
+
+                //
+                // 只要是下拉框就先清除
+                //
+                while(cbX_ProtectOption.Items.Count!=0)
+                {
+                    cbX_ProtectOption.Items.RemoveAt(0);
+                }
+
+
+                foreach (var kvp in frmSystemSetting)
+                {
+                    var controlName = kvp.Key;
+                    var textValue = kvp.Value;
+
+                    // 首先尝试从主窗体的控件集合中查找控件
+                    var ctrl = this.Controls.Find(controlName, true).FirstOrDefault();
+
+                    if (ctrl == null)
+                    {
+                        foreach (SuperTabItem tabItem in superTabControl1.Tabs)
+                        {
+                            // 获取当前 TabItem 的内容区域
+                            if (tabItem.Name == controlName)
+                            {
+                                tabItem.Text = textValue;
+                                break;
+                            }
+                        }
+
+                        if (controlName.Contains("cbX_ProtectOption")) cbX_ProtectOption.Items.Add(textValue);
+                   
+                    }
+                    else {
+                        ctrl.Text = textValue;
+                    }
+
+                }
+
+            }
+        }
+
+        private Control GetContentContainer(SuperTabItem tabItem)
+        {
+            // 获取 SuperTabItem 对应的内容区域
+            return tabItem.AttachedControl;
+        }
+
 
         /// <summary>
         /// 加载配置文件参数
@@ -649,6 +724,7 @@ namespace DoPENetConnect
             this.Close();
 
         }
+
 
     }
 }
