@@ -102,7 +102,7 @@
         "btnX_FrmProtectOption_OK":"OK"	,
 		"btnX_FrmProtectOption_Cencel":"Cancel",
 		
-		"label1":"PositionProtection",
+		"label1":"PosProtection",
 		"cbX_ProtectOptionItm1":"StopExperment",
 		"cbX_ProtectOptionItm2":"StopPump",
 		
@@ -135,6 +135,12 @@
 		"label39":"External Protection of Valley",
 		"label38":"Internal Protection of Valley",
 		"cbX_FrmProtectOption_ExtMinOut_Effect":"Effective",
-		"cbX_FrmProtectOption_ExtMinIn_Effect":"Effective"
+		"cbX_FrmProtectOption_ExtMinIn_Effect":"Effective",
+				
+		"groupPanel9":"ManualOptionOnLeft",
+		"label44":"UpButton",
+		"label21":"HurryUpButton",
+		"label34":"DownButton",
+		"label41":"HurryDownButton"
 		}
 }
