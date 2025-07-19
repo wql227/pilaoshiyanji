@@ -52,6 +52,11 @@ namespace DoPENetConnect
 
             cmbX_Dyn_MoveCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
+            if (MainForm.mainform.isRunning)
+            {
+                cbX_DynCtrl_ModifyParam.Checked = true;
+            }
+
             LoadIni();
         }
 
@@ -116,6 +121,12 @@ namespace DoPENetConnect
             Amplitude = double.Parse(tbX_Dyn_Amplitude.Text);
             Frequency = double.Parse(tbX_Dyn_Frequency.Text);
             HalfCycles = int.Parse(tbX_Cycles.Text); /** 2;*/
+
+            if (MainForm.mainform.isRunning)
+            {
+                cbX_DynCtrl_ModifyParam.Checked = true;
+            }
+
             Modify = cbX_DynCtrl_ModifyParam.Checked;
             RelativeDestination = cbX_DynCtrl_RelativeDestinations.Checked;
             HaltAtPlusAmplitude = 0.0;
@@ -125,6 +136,8 @@ namespace DoPENetConnect
             SweepFrequencyMode = 0;
 
             MainForm.mainform.MoveDynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination, SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode);
+
+            cbX_DynCtrl_ModifyParam.Checked = true;
 
             WriteIni();
         }
