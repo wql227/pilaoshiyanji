@@ -157,12 +157,6 @@
     <Compile Include="FrmSetChartAxisY.Designer.cs">
       <DependentUpon>FrmSetChartAxisY.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmProtectOption.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmProtectOption.Designer.cs">
-      <DependentUpon>FrmProtectOption.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmSystemSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,9 +232,6 @@
     <EmbeddedResource Include="FrmPos_A.resx">
       <DependentUpon>FrmPos_A.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmProtectOption.resx">
-      <DependentUpon>FrmProtectOption.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmSystemSetting.resx">
       <DependentUpon>FrmSystemSetting.cs</DependentUpon>
     </EmbeddedResource>
@@ -294,7 +285,7 @@
   <ItemGroup />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Enabled="1" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Deploy="1" />
+      <UserProperties Reactor_Deploy="1" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Configuration="" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
