@@ -757,7 +757,14 @@ namespace DoPENetConnect
                         {
                             if (PVPositionQueue.Max() > protectOption.ProtectOption_PosMaxOut)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
@@ -767,7 +774,14 @@ namespace DoPENetConnect
                         {
                             if (PVPositionQueue.Max() < protectOption.ProtectOption_PosMaxIn)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移峰值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
@@ -778,7 +792,14 @@ namespace DoPENetConnect
                         {
                             if (PVPositionQueue.Min() < protectOption.ProtectOption_PosMinOut)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移谷值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
@@ -788,7 +809,14 @@ namespace DoPENetConnect
                         {
                             if (PVPositionQueue.Min() > protectOption.ProtectOption_PosMinIn)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移谷值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
@@ -825,7 +853,14 @@ namespace DoPENetConnect
                         {
                             if (PVLoadQueue.Max() > protectOption.ProtectOption_LoadMaxOut)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
@@ -836,7 +871,14 @@ namespace DoPENetConnect
                         {
                             if (PVLoadQueue.Max() < protectOption.ProtectOption_LoadMaxIn)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
@@ -847,7 +889,14 @@ namespace DoPENetConnect
                         {
                             if (PVLoadQueue.Min() < protectOption.ProtectOption_LoadMinOut)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
@@ -858,7 +907,14 @@ namespace DoPENetConnect
                         {
                             if (PVLoadQueue.Min() > protectOption.ProtectOption_LoadMinIn)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
@@ -895,7 +951,14 @@ namespace DoPENetConnect
                         {
                             if (PVExtensionQueue.Max() > protectOption.ProtectOption_ExtMaxOut)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
@@ -906,7 +969,14 @@ namespace DoPENetConnect
                         {
                             if (PVExtensionQueue.Max() < protectOption.ProtectOption_ExtMaxIn)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
@@ -917,7 +987,14 @@ namespace DoPENetConnect
                         {
                             if (PVExtensionQueue.Min() < protectOption.ProtectOption_ExtMinOut)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
@@ -928,12 +1005,18 @@ namespace DoPENetConnect
                         {
                             if (PVExtensionQueue.Min() > protectOption.ProtectOption_ExtMinIn)
                             {
-                                OffEDC();
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
                                 MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return 0;
                             }
                         }
-
 
                         PVExtensionQueue.Clear();
                     }
@@ -1570,18 +1653,7 @@ namespace DoPENetConnect
         {
             EndUp = false;
 
-            if (bConnected)
-            {
-                try
-                {
-                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                    DisplayError(error, "Halt");
-                }
-                catch (NullReferenceException)
-                {
-                    Display(CommandFailedString);
-                }
-            }
+            MoveHalt();
         }
 
 
@@ -1602,6 +1674,7 @@ namespace DoPENetConnect
         private void btnX_MoveQuickUp_MouseDown(object sender, MouseEventArgs e)
         {
             EndQuickUp = true;
+
             if (EndQuickUp)
             {
                 if (bConnected)
@@ -1629,18 +1702,7 @@ namespace DoPENetConnect
         {
             EndQuickUp = false;
 
-            if (bConnected)
-            {
-                try
-                {
-                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                    DisplayError(error, "Halt");
-                }
-                catch (NullReferenceException)
-                {
-                    Display(CommandFailedString);
-                }
-            }
+            MoveHalt();
         }
 
 
@@ -1653,6 +1715,15 @@ namespace DoPENetConnect
         /// <summary>Sends a halt-command to the EDC.</summary>
         ///----------------------------------------------------------------------
         private void bntX_MoveHalt_Click(object sender, EventArgs e)
+        {
+            MoveHalt();
+        }
+
+
+        /// <summary>
+        /// MoveHalt 移动停止
+        /// </summary>
+        private void MoveHalt()
         {
             if (bConnected)
             {
@@ -1711,19 +1782,7 @@ namespace DoPENetConnect
         {
             EndDown = false;
 
-            if (bConnected)
-            {
-                try
-                {
-                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                    DisplayError(error, "Halt");
-                }
-                catch (NullReferenceException)
-                {
-                    Display(CommandFailedString);
-                }
-            }
-
+            MoveHalt();
         }
 
 
@@ -1772,19 +1831,9 @@ namespace DoPENetConnect
         private void btnX_QuickMoveDown_MouseUp(object sender, MouseEventArgs e)
         {
             EndQuickDown = false;
-            if (bConnected)
-            {
-                try
-                {
-                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                    DisplayError(error, "Halt");
-                }
-                catch (NullReferenceException)
-                {
-                    Display(CommandFailedString);
-                }
-            }
-        }
+
+            MoveHalt();
+         }
 
 
         /// <summary>
@@ -2633,12 +2682,6 @@ namespace DoPENetConnect
             return (ushort)(src * k);
         }
 
-        private void 系统保护选项ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmProtectOption frmProtectOption = new FrmProtectOption();
-            frmProtectOption.ShowDialog();
-        }
-
 
         /// <summary>
         /// 加载配置文件
@@ -3105,29 +3148,6 @@ namespace DoPENetConnect
             System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "\\"+ strLogFilePath);
         }
 
-        private void 校正ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "文本文件 (*.corr)|*.corr";
-
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                var builder = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddIniFile(ofd.FileName);
-
-                IConfiguration config = builder.Build();
-                var correctionTable = ParseStiffnessCorrection(config.GetSection("SensorCorrection"));
-
-                DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetStiffnessCorrection(ref correctionTable);
-            }
-            else
-            {
-                Console.WriteLine("未选择文件");
-                return;
-            }
-        }
-  
 
         /// <summary>
         /// 解析
@@ -3228,5 +3248,43 @@ namespace DoPENetConnect
         }
 
 
+        /// <summary>
+        /// 右键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chart_machine_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+
+        /// <summary>
+        /// 使用校正配置文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AdjustToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "文本文件 (*.corr)|*.corr";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                var builder = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddIniFile(ofd.FileName);
+
+                IConfiguration config = builder.Build();
+                var correctionTable = ParseStiffnessCorrection(config.GetSection("SensorCorrection"));
+
+                DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetStiffnessCorrection(ref correctionTable);
+            }
+            else
+            {
+                Console.WriteLine("未选择文件");
+                return;
+            }
+        }
     }
 }
