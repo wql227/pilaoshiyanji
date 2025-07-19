@@ -3286,5 +3286,18 @@ namespace DoPENetConnect
                 return;
             }
         }
+
+
+
+        /// <summary>
+        /// 图表设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChartSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSetChartAxisY frmSetChartAxisY = new FrmSetChartAxisY();
+            frmSetChartAxisY.ShowDialog();
+        }
     }
 }
