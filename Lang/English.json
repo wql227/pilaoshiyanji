@@ -84,5 +84,57 @@
 		"labelX14":"CLR",
 		"labelX15":"File Name",
 		"labelX16":"Memory Usage",
+		},
+		
+	"FrmSystemSetting":{
+		"superTabItem5":"SysSet",
+		"superTabItem6":"ProtectionInDynProcess",
+		"superTabItem1":"ButtonConstant",
+		"groupPanel3":"SysProtectSet",
+		"checkBoxX3":"ForceLimit",
+		"label12":"% ShutDownAuto",
+		"checkBoxX4":"ForceLimit",
+		"label11":"kN，ShutDownAuto",
+		"groupPanel5":"LogSet",
+		"label2":"Waves record Log",
+		"groupPanel6":"Controller Connect Set",
+		"label3":"DeviceId"	,
+        "btnX_FrmProtectOption_OK":"OK"	,
+		"btnX_FrmProtectOption_Cencel":"Cancel",
+		
+		"label1":"PositionProtection",
+		"cbX_ProtectOptionItm1":"StopExperment",
+		"cbX_ProtectOptionItm2":"StopPump",
+		
+		
+		"groupPanel2":"DisplacementProtection",
+		"label16":"External Protection of Peak",
+		"label18":"Internal Protection of Peak",
+		"cbX_FrmProtectOption_PosMaxOut_Effect":"Effective",
+		"cbX_FrmProtectOption_PosMaxIn_Effect":"Effective",
+		"label22":"External Protection of Valley",
+		"label23":"Internal Protection of Valley",
+		"cbX_FrmProtectOption_PosMinOut_Effect":"Effective",
+		"cbX_FrmProtectOption_PosMinIn_Effect":"Effective",
+		
+		"groupPanel1":"ForceProtection",
+		"label24":"External Protection of Peak",
+		"label25":"Internal Protection of Peak",
+		"cbX_FrmProtectOption_LoadMaxOut_Effect":"Effective",
+		"cbX_FrmProtectOption_LoadMaxIn_Effect":"Effective",
+		"label27":"External Protection of Valley",
+		"label26":"Internal Protection of Valley",
+		"cbX_FrmProtectOption_LoadMinOut_Effect":"Effective",
+		"cbX_FrmProtectOption_LoadMinIn_Effect":"Effective",
+		
+		"groupPanel4":"DeformationProtection",
+		"label9":"External Protection of Peak",
+		"label5":"Internal Protection of Peak",
+		"cbX_FrmProtectOption_ExtMaxOut_Effect":"Effective",
+		"cbX_FrmProtectOption_ExtMaxIn_Effect":"Effective",
+		"label39":"External Protection of Valley",
+		"label38":"Internal Protection of Valley",
+		"cbX_FrmProtectOption_ExtMinOut_Effect":"Effective",
+		"cbX_FrmProtectOption_ExtMinIn_Effect":"Effective"
 		}
 }

@@ -84,6 +84,58 @@
 		"labelX14":"操作系统",
 		"labelX15":"CLR",
 		"labelX16":"程序内存使用",
+		},
+	
+	"FrmSystemSetting":{
+		"superTabItem5":"系统设置",
+		"superTabItem6":"动态实验过程保护选项",
+		"superTabItem1":"按键常数",
+		"groupPanel3":"系统保护设置",
+		"checkBoxX3":"试验力超过",
+		"label12":"% 满量程时，自动停机",
+		"checkBoxX4":"试验力超过",
+		"label11":"kN，自动停机",
+		"groupPanel5":"日志记录",
+		"label2":"次波形记录日志",
+		"groupPanel6":"控制器连接设置",
+		"label3":"设备ID",
+        "btnX_FrmProtectOption_OK":"确定",
+		"btnX_FrmProtectOption_Cencel":"取消",
+		
+		"label1":"限位保护选项",
+		"cbX_ProtectOptionItm1":"实验停止",
+		"cbX_ProtectOptionItm2":"停泵",
+		
+		"groupPanel2":"位移保护设置",
+		"label16":"峰值的外保护",
+		"label18":"峰值的内保护",
+		"cbX_FrmProtectOption_PosMaxOut_Effect":"生效",
+		"cbX_FrmProtectOption_PosMaxIn_Effect":"生效",
+		"label22":"谷值的外保护",
+		"label23":"谷值的内保护",
+		"cbX_FrmProtectOption_PosMinOut_Effect":"生效",
+		"cbX_FrmProtectOption_PosMinIn_Effect":"生效",
+		
+		"groupPanel1":"实验力保护设置",
+		"label24":"峰值的外保护",
+		"label25":"峰值的内保护",
+		"cbX_FrmProtectOption_LoadMaxOut_Effect":"生效",
+		"cbX_FrmProtectOption_LoadMaxIn_Effect":"生效",
+		"label27":"谷值的外保护",
+		"label26":"谷值的内保护",
+		"cbX_FrmProtectOption_LoadMinOut_Effect":"生效",
+		"cbX_FrmProtectOption_LoadMinIn_Effect":"生效",
+		
+		"groupPanel4":"变形保护设置",
+		"label9":"峰值的外保护",
+		"label5":"峰值的内保护",
+		"cbX_FrmProtectOption_ExtMaxOut_Effect":"生效",
+		"cbX_FrmProtectOption_ExtMaxIn_Effect":"生效",
+		"label39":"谷值的外保护",
+		"label38":"谷值的内保护",
+		"cbX_FrmProtectOption_ExtMinOut_Effect":"生效",
+		"cbX_FrmProtectOption_ExtMinIn_Effect":"生效"
+		
 		}
 		
 		
