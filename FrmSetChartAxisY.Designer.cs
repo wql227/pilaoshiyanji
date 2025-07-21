@@ -253,7 +253,7 @@
             this.tbX_FrmSetChartAxisY_CommandY_Min.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_CommandY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_CommandY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_CommandY_Min.Location = new System.Drawing.Point(437, 67);
+            this.tbX_FrmSetChartAxisY_CommandY_Min.Location = new System.Drawing.Point(437, 69);
             this.tbX_FrmSetChartAxisY_CommandY_Min.Name = "tbX_FrmSetChartAxisY_CommandY_Min";
             this.tbX_FrmSetChartAxisY_CommandY_Min.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_CommandY_Min.Size = new System.Drawing.Size(92, 26);
@@ -267,7 +267,7 @@
             this.tbX_FrmSetChartAxisY_LoadY_Min.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_LoadY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_LoadY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_LoadY_Min.Location = new System.Drawing.Point(225, 67);
+            this.tbX_FrmSetChartAxisY_LoadY_Min.Location = new System.Drawing.Point(225, 69);
             this.tbX_FrmSetChartAxisY_LoadY_Min.Name = "tbX_FrmSetChartAxisY_LoadY_Min";
             this.tbX_FrmSetChartAxisY_LoadY_Min.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_LoadY_Min.Size = new System.Drawing.Size(92, 26);
@@ -309,7 +309,7 @@
             this.tbX_FrmSetChartAxisY_ExtY_Min.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_ExtY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_ExtY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_ExtY_Min.Location = new System.Drawing.Point(331, 67);
+            this.tbX_FrmSetChartAxisY_ExtY_Min.Location = new System.Drawing.Point(331, 69);
             this.tbX_FrmSetChartAxisY_ExtY_Min.Name = "tbX_FrmSetChartAxisY_ExtY_Min";
             this.tbX_FrmSetChartAxisY_ExtY_Min.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_ExtY_Min.Size = new System.Drawing.Size(92, 26);
@@ -323,7 +323,7 @@
             this.tbX_FrmSetChartAxisY_PosY_Min.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_PosY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_PosY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_PosY_Min.Location = new System.Drawing.Point(119, 67);
+            this.tbX_FrmSetChartAxisY_PosY_Min.Location = new System.Drawing.Point(119, 69);
             this.tbX_FrmSetChartAxisY_PosY_Min.Name = "tbX_FrmSetChartAxisY_PosY_Min";
             this.tbX_FrmSetChartAxisY_PosY_Min.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_PosY_Min.Size = new System.Drawing.Size(92, 26);
@@ -336,7 +336,7 @@
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX3.Location = new System.Drawing.Point(12, 41);
+            this.labelX3.Location = new System.Drawing.Point(12, 43);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(101, 23);
             this.labelX3.TabIndex = 0;
@@ -349,7 +349,7 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX2.Location = new System.Drawing.Point(12, 70);
+            this.labelX2.Location = new System.Drawing.Point(12, 72);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(90, 23);
             this.labelX2.TabIndex = 0;
@@ -362,7 +362,7 @@
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX4.Location = new System.Drawing.Point(12, 99);
+            this.labelX4.Location = new System.Drawing.Point(12, 105);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(90, 23);
             this.labelX4.TabIndex = 0;
@@ -372,8 +372,10 @@
             // 
             this.cbX_Pos_Range.DisplayMember = "Text";
             this.cbX_Pos_Range.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_Pos_Range.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbX_Pos_Range.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbX_Pos_Range.FormattingEnabled = true;
-            this.cbX_Pos_Range.ItemHeight = 15;
+            this.cbX_Pos_Range.ItemHeight = 21;
             this.cbX_Pos_Range.Items.AddRange(new object[] {
             this.comboItem1,
             this.comboItem2,
@@ -382,9 +384,9 @@
             this.comboItem5,
             this.comboItem6,
             this.comboItem7});
-            this.cbX_Pos_Range.Location = new System.Drawing.Point(119, 101);
+            this.cbX_Pos_Range.Location = new System.Drawing.Point(118, 101);
             this.cbX_Pos_Range.Name = "cbX_Pos_Range";
-            this.cbX_Pos_Range.Size = new System.Drawing.Size(92, 21);
+            this.cbX_Pos_Range.Size = new System.Drawing.Size(92, 27);
             this.cbX_Pos_Range.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_Pos_Range.TabIndex = 4;
             // 
@@ -427,8 +429,9 @@
             // 
             this.cbX_Load_Range.DisplayMember = "Text";
             this.cbX_Load_Range.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_Load_Range.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbX_Load_Range.FormattingEnabled = true;
-            this.cbX_Load_Range.ItemHeight = 15;
+            this.cbX_Load_Range.ItemHeight = 21;
             this.cbX_Load_Range.Items.AddRange(new object[] {
             this.comboItem8,
             this.comboItem9,
@@ -439,7 +442,7 @@
             this.comboItem14});
             this.cbX_Load_Range.Location = new System.Drawing.Point(225, 101);
             this.cbX_Load_Range.Name = "cbX_Load_Range";
-            this.cbX_Load_Range.Size = new System.Drawing.Size(92, 21);
+            this.cbX_Load_Range.Size = new System.Drawing.Size(92, 27);
             this.cbX_Load_Range.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_Load_Range.TabIndex = 4;
             // 
@@ -475,8 +478,9 @@
             // 
             this.cbX_Ext_Range.DisplayMember = "Text";
             this.cbX_Ext_Range.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_Ext_Range.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbX_Ext_Range.FormattingEnabled = true;
-            this.cbX_Ext_Range.ItemHeight = 15;
+            this.cbX_Ext_Range.ItemHeight = 21;
             this.cbX_Ext_Range.Items.AddRange(new object[] {
             this.comboItem15,
             this.comboItem16,
@@ -487,7 +491,7 @@
             this.comboItem21});
             this.cbX_Ext_Range.Location = new System.Drawing.Point(331, 101);
             this.cbX_Ext_Range.Name = "cbX_Ext_Range";
-            this.cbX_Ext_Range.Size = new System.Drawing.Size(92, 21);
+            this.cbX_Ext_Range.Size = new System.Drawing.Size(92, 27);
             this.cbX_Ext_Range.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_Ext_Range.TabIndex = 4;
             // 
@@ -523,8 +527,9 @@
             // 
             this.cbX_Command_Range.DisplayMember = "Text";
             this.cbX_Command_Range.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_Command_Range.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbX_Command_Range.FormattingEnabled = true;
-            this.cbX_Command_Range.ItemHeight = 15;
+            this.cbX_Command_Range.ItemHeight = 21;
             this.cbX_Command_Range.Items.AddRange(new object[] {
             this.comboItem22,
             this.comboItem23,
@@ -535,7 +540,7 @@
             this.comboItem28});
             this.cbX_Command_Range.Location = new System.Drawing.Point(437, 101);
             this.cbX_Command_Range.Name = "cbX_Command_Range";
-            this.cbX_Command_Range.Size = new System.Drawing.Size(92, 21);
+            this.cbX_Command_Range.Size = new System.Drawing.Size(92, 27);
             this.cbX_Command_Range.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_Command_Range.TabIndex = 4;
             // 

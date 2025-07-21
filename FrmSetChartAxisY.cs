@@ -148,6 +148,10 @@ namespace DoPENetConnect
             MainForm.mainform.chart_machine.ChartAreas[0].AxisY.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
             MainForm.mainform.chart_machine.ChartAreas[0].AxisY.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
 
+            MainForm.mainform.Chart_Pos_Step = double.Parse(cbX_Pos_Range.Text);
+            MainForm.mainform.Chart_Load_Step = double.Parse(cbX_Load_Range.Text);
+            MainForm.mainform.Chart_Ext_Step = double.Parse(cbX_Ext_Range.Text);
+            MainForm.mainform.Chart_Command_Step = double.Parse(cbX_Command_Range.Text);
         }
 
         private void btn_FrmSerAxisY_Cancel_Click(object sender, EventArgs e)
