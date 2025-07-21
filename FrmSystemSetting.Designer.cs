@@ -220,8 +220,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
@@ -591,6 +591,7 @@
             // 
             this.comboBoxEx_ForceUnit.DisplayMember = "Text";
             this.comboBoxEx_ForceUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx_ForceUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx_ForceUnit.FormattingEnabled = true;
             this.comboBoxEx_ForceUnit.ItemHeight = 21;
             this.comboBoxEx_ForceUnit.Items.AddRange(new object[] {
@@ -600,7 +601,6 @@
             this.comboBoxEx_ForceUnit.Size = new System.Drawing.Size(121, 27);
             this.comboBoxEx_ForceUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_ForceUnit.TabIndex = 3;
-            this.comboBoxEx_ForceUnit.Text = "kN";
             // 
             // comboItem38
             // 
@@ -700,6 +700,7 @@
             // 
             this.comboBoxEx_TripSensor.DisplayMember = "Text";
             this.comboBoxEx_TripSensor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx_TripSensor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx_TripSensor.FormattingEnabled = true;
             this.comboBoxEx_TripSensor.ItemHeight = 21;
             this.comboBoxEx_TripSensor.Items.AddRange(new object[] {
@@ -709,7 +710,7 @@
             this.comboBoxEx_TripSensor.Size = new System.Drawing.Size(177, 27);
             this.comboBoxEx_TripSensor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_TripSensor.TabIndex = 10;
-            this.comboBoxEx_TripSensor.Text = "模拟量位移传感器";
+            this.comboBoxEx_TripSensor.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx_TripSensor_SelectedIndexChanged);
             // 
             // comboItem24
             // 
@@ -729,6 +730,7 @@
             // 
             this.comboBoxEx_MaxTrip.DisplayMember = "Text";
             this.comboBoxEx_MaxTrip.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx_MaxTrip.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx_MaxTrip.FormattingEnabled = true;
             this.comboBoxEx_MaxTrip.ItemHeight = 21;
             this.comboBoxEx_MaxTrip.Items.AddRange(new object[] {
@@ -749,7 +751,6 @@
             this.comboBoxEx_MaxTrip.Size = new System.Drawing.Size(121, 27);
             this.comboBoxEx_MaxTrip.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_MaxTrip.TabIndex = 7;
-            this.comboBoxEx_MaxTrip.Text = "20";
             // 
             // comboItem12
             // 
@@ -836,6 +837,7 @@
             // 
             this.comboBoxEx_MaxForce.DisplayMember = "Text";
             this.comboBoxEx_MaxForce.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx_MaxForce.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx_MaxForce.FormattingEnabled = true;
             this.comboBoxEx_MaxForce.ItemHeight = 21;
             this.comboBoxEx_MaxForce.Items.AddRange(new object[] {
@@ -853,7 +855,6 @@
             this.comboBoxEx_MaxForce.Size = new System.Drawing.Size(121, 27);
             this.comboBoxEx_MaxForce.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_MaxForce.TabIndex = 3;
-            this.comboBoxEx_MaxForce.Text = "10";
             // 
             // comboItem3
             // 
@@ -1745,6 +1746,7 @@
             this.cbX_ProtectOption.Size = new System.Drawing.Size(169, 27);
             this.cbX_ProtectOption.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_ProtectOption.TabIndex = 1;
+            this.cbX_ProtectOption.SelectedIndexChanged += new System.EventHandler(this.cbX_ProtectOption_SelectedIndexChanged);
             // 
             // comboItem1
             // 

@@ -56,7 +56,7 @@ namespace DoPENetConnect
                 // 只要是下拉框就先清除
                 //
                 int protectOptionCurrentIndex = cbX_ProtectOption.SelectedIndex;
-                while (cbX_ProtectOption.Items.Count!=0)
+                while (cbX_ProtectOption.Items.Count != 0)
                 {
                     cbX_ProtectOption.Items.RemoveAt(0);
                 }
@@ -106,6 +106,13 @@ namespace DoPENetConnect
                 cbX_ProtectOption.SelectedIndex = protectOptionCurrentIndex;
 
                 comboBoxEx_TripSensor.SelectedIndex = tripSensorCurrentIndex;
+
+
+                Console.WriteLine(cbX_ProtectOption.SelectedIndex);
+                Console.WriteLine(cbX_ProtectOption.SelectedText);
+
+                Console.WriteLine(comboBoxEx_TripSensor.SelectedIndex);
+                Console.WriteLine(comboBoxEx_TripSensor.SelectedText);
                 #endregion RestoreUi
 
 
@@ -131,7 +138,7 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
             NUD_CountLog.Text = strTmp.ToString();
 
-            IniFileHelper.GetIniString("FrmProtectOption", "限位保护选项", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString(strConfigSetion, "限位保护选项", "0", strTmp, strTmp.Capacity);
             cbX_ProtectOption.SelectedIndex = int.Parse(strTmp.ToString());
 
             //峰值保护选项
@@ -239,6 +246,18 @@ namespace DoPENetConnect
 
             IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDown", "0", strTmp, strTmp.Capacity);
             tbX_hurrydownval.Text = strTmp.ToString();
+
+            ///ui 选中状态
+            //IniFileHelper.GetIniString("UIDefault", "cbX_ProtectOption", "0", strTmp, strTmp.Capacity);
+            //cbX_ProtectOption.SelectedIndex = int.Parse(strTmp.ToString());
+            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_MaxForce", "0", strTmp, strTmp.Capacity);
+            comboBoxEx_MaxForce.SelectedIndex = int.Parse(strTmp.ToString());
+            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_MaxTrip", "0", strTmp, strTmp.Capacity);
+            comboBoxEx_MaxTrip.SelectedIndex = int.Parse(strTmp.ToString());
+            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_TripSensor", "0", strTmp, strTmp.Capacity);
+            comboBoxEx_TripSensor.SelectedIndex = int.Parse(strTmp.ToString());
+            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_ForceUnit", "0", strTmp, strTmp.Capacity);
+            comboBoxEx_ForceUnit.SelectedIndex = int.Parse(strTmp.ToString());
         }
 
 
@@ -396,6 +415,23 @@ namespace DoPENetConnect
             strTmp = tbX_hurrydownval.Text;
             MainForm.mainform.btnHurryDownConstantVal = double.Parse(strTmp);
             IniFileHelper.WriteIniString("PushButtonFunctionConstant", "HurryDown", strTmp);
+
+
+            ///ui 选中状态
+            //strTmp = cbX_ProtectOption.SelectedIndex.ToString();
+           // IniFileHelper.WriteIniString("UIDefault ", "cbX_ProtectOption", strTmp);
+
+            strTmp = comboBoxEx_MaxForce.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("UIDefault ", "comboBoxEx_MaxForce", strTmp);
+
+            strTmp = comboBoxEx_MaxTrip.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("UIDefault ", "comboBoxEx_MaxTrip", strTmp);
+
+            strTmp = comboBoxEx_TripSensor.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("UIDefault ", "comboBoxEx_TripSensor", strTmp);
+
+            strTmp = comboBoxEx_ForceUnit.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("UIDefault ", "comboBoxEx_ForceUnit", strTmp);
 
         }
 
@@ -728,11 +764,11 @@ namespace DoPENetConnect
 
         private void btnX_FrmProtectOption_OK_Click(object sender, EventArgs e)
         {
-            if (!ValidityCheck())
-            {
-                MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //if (!ValidityCheck())
+            //{
+            //    MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
 
             WriteIni();
             this.Close();
@@ -744,6 +780,17 @@ namespace DoPENetConnect
 
         }
 
+        private void comboBoxEx_TripSensor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(comboBoxEx_TripSensor.SelectedIndex);
+            Console.WriteLine(comboBoxEx_TripSensor.SelectedText);
+        }
 
+        private void cbX_ProtectOption_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(cbX_ProtectOption.SelectedIndex);
+            Console.WriteLine(cbX_ProtectOption.Text);
+            
+        }
     }
 }
