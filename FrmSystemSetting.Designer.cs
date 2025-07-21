@@ -220,8 +220,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
@@ -686,9 +686,9 @@
             this.label42.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label42.Location = new System.Drawing.Point(309, 137);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(56, 16);
+            this.label42.Size = new System.Drawing.Size(40, 16);
             this.label42.TabIndex = 3;
-            this.label42.Text = "mm/min";
+            this.label42.Text = "mm/s";
             // 
             // tbX_downval
             // 
@@ -710,9 +710,9 @@
             this.label37.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label37.Location = new System.Drawing.Point(309, 95);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(56, 16);
+            this.label37.Size = new System.Drawing.Size(40, 16);
             this.label37.TabIndex = 3;
-            this.label37.Text = "mm/min";
+            this.label37.Text = "mm/s";
             // 
             // label41
             // 
@@ -754,9 +754,9 @@
             this.label4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.Location = new System.Drawing.Point(309, 55);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 16);
+            this.label4.Size = new System.Drawing.Size(40, 16);
             this.label4.TabIndex = 3;
-            this.label4.Text = "mm/min";
+            this.label4.Text = "mm/s";
             // 
             // label21
             // 
@@ -788,9 +788,9 @@
             this.label40.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label40.Location = new System.Drawing.Point(309, 14);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(56, 16);
+            this.label40.Size = new System.Drawing.Size(40, 16);
             this.label40.TabIndex = 0;
-            this.label40.Text = "mm/min";
+            this.label40.Text = "mm/s";
             // 
             // label44
             // 
