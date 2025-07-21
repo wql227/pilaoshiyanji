@@ -95,7 +95,7 @@
 		"checkBoxX3":"ForceLimit",
 		"label12":"% ShutDownAuto",
 		"checkBoxX4":"ForceLimit",
-		"label11":"kN，ShutDownAuto",
+		"label11":"N，ShutDownAuto",
 		"groupPanel5":"LogSet",
 		"label2":"Waves record Log",
 		"groupPanel6":"Controller Connect Set",
