@@ -89,6 +89,7 @@
 			"superTabItem5": "Configuración del sistema",
 			"superTabItem6": "Opciones de protección durante el experimento dinámico",
 			"superTabItem1": "Constantes de teclas",
+		    "superTabItem2":"Parámetros de la máquina de prueba",
 			"groupPanel3": "Configuración de protección del sistema",
 			"checkBoxX3": "Fuerza de prueba exceda el",
 			"label12": "% del rango completo, detener automáticamente",
@@ -136,9 +137,22 @@
 			"cbX_FrmProtectOption_ExtMinIn_Effect": "Activa",
 
 			"groupPanel9": "Menú manual del lado izquierdo",
-			"labe44": "Botón hacia arriba",
-			"labe21": "Botón rápido hacia arriba",
-			"labe34": "Botón hacia abajo",
-			"labe41": "Botón rápido hacia abajo"
+			"label44": "Botón hacia arriba",
+			"label21": "Botón rápido hacia arriba",
+			"label34": "Botón hacia abajo",
+			"label41": "Botón rápido hacia abajo",
+				
+			"groupPanel7":"Parámetros principales",		
+			"lbX_MaxForce":"Fuerza máxima de prueba del sistema",
+			"cbX_MaxForce":"Bidireccional",
+			"lbX_MaxTrip":"Recorrido máximo de prueba del sistema",
+			"cbX_MaxTrip":"Bidireccional",
+			"label29":"Velocidad máxima de desplazamiento",
+			"label33":"La cantidad de desplazamiento se adopta",
+			"label32":"Número de la máquina de prueba",
+			
+			"comboBoxEx_TripSensorItm24":"Sensor de desplazamiento analógico",				
+			"groupPanel8":"Selección de unidades",		
+			"label43":"Selección de la unidad de fuerza de prueba"
 		}
 }

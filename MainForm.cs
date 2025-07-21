@@ -2616,6 +2616,9 @@ namespace DoPENetConnect
             StringBuilder strTmp = new StringBuilder(255);
             string strConfigSetion = this.Name;
 
+            //软件信息
+            IniFileHelper.GetIniString("SoftWareInfo", "Name", "0", strTmp, strTmp.Capacity);
+            this.Text = strTmp.ToString();
             //获取EDC设备id
             devId = new StringBuilder(16);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devId, devId.Capacity);
