@@ -156,6 +156,29 @@ namespace DoPENetConnect
             label43.Location = new Point(lineStart, label43.Location.Y);
             comboBoxEx_ForceUnit.Location = new Point(comboBoxEx_MaxForce.Location.X, comboBoxEx_ForceUnit.Location.Y);
 
+            ///按键常数
+            label44.Location = new Point(lineStart, label44.Location.Y);
+            tbX_upval.Location = new Point(label44.Location.X + label44.Width + 100, tbX_upval.Location.Y);
+            label40.Location = new Point(tbX_upval.Location.X + tbX_upval.Width + 5, label40.Location.Y);
+
+
+            label21.Location = new Point(lineStart, label21.Location.Y);
+            tbX_hurryupval.Location = new Point(tbX_upval.Location.X , tbX_hurryupval.Location.Y);
+            label4.Location = new Point(label40.Location.X, label4.Location.Y);
+
+
+
+
+            label34.Location = new Point(lineStart, label34.Location.Y);
+            tbX_downval.Location = new Point(tbX_upval.Location.X, tbX_downval.Location.Y);
+            label37.Location = new Point(label40.Location.X, label37.Location.Y);
+
+
+
+            label41.Location = new Point(lineStart, label41.Location.Y);
+            tbX_hurrydownval.Location = new Point(tbX_upval.Location.X, tbX_hurrydownval.Location.Y);
+            label42.Location = new Point(label40.Location.X, label42.Location.Y);
+
 
 
         }
