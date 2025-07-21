@@ -103,16 +103,12 @@ namespace DoPENetConnect
                 }
 
                 #region RestoreUi
-                cbX_ProtectOption.SelectedIndex = protectOptionCurrentIndex;
+                if(cbX_ProtectOption.Items.Count>protectOptionCurrentIndex)
+                    cbX_ProtectOption.SelectedIndex = protectOptionCurrentIndex;
 
-                comboBoxEx_TripSensor.SelectedIndex = tripSensorCurrentIndex;
+                if (comboBoxEx_TripSensor.Items.Count > tripSensorCurrentIndex)
+                    comboBoxEx_TripSensor.SelectedIndex = tripSensorCurrentIndex;
 
-
-                Console.WriteLine(cbX_ProtectOption.SelectedIndex);
-                Console.WriteLine(cbX_ProtectOption.SelectedText);
-
-                Console.WriteLine(comboBoxEx_TripSensor.SelectedIndex);
-                Console.WriteLine(comboBoxEx_TripSensor.SelectedText);
                 #endregion RestoreUi
 
 
@@ -139,7 +135,9 @@ namespace DoPENetConnect
             NUD_CountLog.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString(strConfigSetion, "限位保护选项", "0", strTmp, strTmp.Capacity);
-            cbX_ProtectOption.SelectedIndex = int.Parse(strTmp.ToString());
+            int indexToBeSetted = int.Parse(strTmp.ToString());
+            if (cbX_ProtectOption.Items.Count > indexToBeSetted)
+                cbX_ProtectOption.SelectedIndex = indexToBeSetted;
 
             //峰值保护选项
             IniFileHelper.GetIniString(strConfigSetion, "位移峰值外保护", "0", strTmp, strTmp.Capacity);
@@ -255,7 +253,9 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("UIDefault", "comboBoxEx_MaxTrip", "0", strTmp, strTmp.Capacity);
             comboBoxEx_MaxTrip.SelectedIndex = int.Parse(strTmp.ToString());
             IniFileHelper.GetIniString("UIDefault", "comboBoxEx_TripSensor", "0", strTmp, strTmp.Capacity);
-            comboBoxEx_TripSensor.SelectedIndex = int.Parse(strTmp.ToString());
+            indexToBeSetted = int.Parse(strTmp.ToString());
+            if (comboBoxEx_TripSensor.Items.Count > indexToBeSetted)
+                comboBoxEx_TripSensor.SelectedIndex = indexToBeSetted;
             IniFileHelper.GetIniString("UIDefault", "comboBoxEx_ForceUnit", "0", strTmp, strTmp.Capacity);
             comboBoxEx_ForceUnit.SelectedIndex = int.Parse(strTmp.ToString());
         }
