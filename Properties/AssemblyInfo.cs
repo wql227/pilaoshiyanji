@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DoPENetConnect")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("济南新测仪器有限公司")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DoPENetConnect")]
 [assembly: AssemblyCopyright("Copyright © 2019 - 2025")]
 [assembly: AssemblyTrademark("")]

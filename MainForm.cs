@@ -615,6 +615,8 @@ namespace DoPENetConnect
                 btnX_SetLow.Checked = false;
                 btnX_SetHigh.Checked = false;
 
+                SetControlEnable(isRunning);
+
                 if (stopwatch.IsRunning)
                 {
                     stopwatch.Stop();
@@ -1725,6 +1727,8 @@ namespace DoPENetConnect
         private void bntX_MoveHalt_Click(object sender, EventArgs e)
         {
             MoveHalt();
+
+            SetControlEnable(isRunning);
         }
 
 
@@ -2105,12 +2109,9 @@ namespace DoPENetConnect
             }
         }
 
+
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (bConnected)
-            {
-                OffEDC();
-            }
         }
 
 
@@ -3216,6 +3217,53 @@ namespace DoPENetConnect
         {
             FrmSetChartAxisY frmSetChartAxisY = new FrmSetChartAxisY();
             frmSetChartAxisY.ShowDialog();
+        }
+
+
+        /// <summary>
+        /// 计数器清零
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ck_TareCount_CheckedChanged(object sender, EventArgs e)
+        {
+            //DoPE.ERR Err = MyEdc.Data.SetTime(DoPE.SETTIME_MODE.FIRST_CYCLE, 0);
+
+            //MyEdc.Tare.Tare(DoPE.Data..SENSOR_E, true);
+
+            //if (!isRunning)
+            //{
+            //    if (cb_TareExt.Checked)
+            //    {
+            //        MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_E, true);
+            //    }
+            //    else
+            //    {
+            //        MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_E, false);
+            //    }
+            //}
+        }
+
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+  
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                if (bConnected)
+                {
+                    OffEDC();
+                }
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                e.Cancel = true; // 取消关闭
+            }
         }
     }
 }
