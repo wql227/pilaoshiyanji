@@ -220,12 +220,12 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Location = new System.Drawing.Point(1, 0);
             this.superTabControl1.MaximumSize = new System.Drawing.Size(800, 597);
             this.superTabControl1.MinimumSize = new System.Drawing.Size(550, 597);
@@ -850,7 +850,7 @@
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel2.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(683, 569);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(784, 569);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItem2;
             // 
@@ -864,7 +864,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(683, 569);
+            this.panelEx2.Size = new System.Drawing.Size(784, 569);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(255)))));
@@ -882,9 +882,9 @@
             this.groupPanel8.Controls.Add(this.label43);
             this.groupPanel8.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel8.Location = new System.Drawing.Point(45, 329);
+            this.groupPanel8.Location = new System.Drawing.Point(18, 329);
             this.groupPanel8.Name = "groupPanel8";
-            this.groupPanel8.Size = new System.Drawing.Size(468, 105);
+            this.groupPanel8.Size = new System.Drawing.Size(753, 105);
             // 
             // 
             // 
@@ -967,9 +967,9 @@
             this.groupPanel7.Controls.Add(this.lbX_MaxForce);
             this.groupPanel7.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel7.Location = new System.Drawing.Point(45, 34);
+            this.groupPanel7.Location = new System.Drawing.Point(18, 34);
             this.groupPanel7.Name = "groupPanel7";
-            this.groupPanel7.Size = new System.Drawing.Size(468, 264);
+            this.groupPanel7.Size = new System.Drawing.Size(753, 264);
             // 
             // 
             // 
@@ -1131,13 +1131,14 @@
             // 
             // cbX_MaxTrip
             // 
+            this.cbX_MaxTrip.AutoSize = true;
             // 
             // 
             // 
             this.cbX_MaxTrip.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_MaxTrip.Location = new System.Drawing.Point(323, 56);
             this.cbX_MaxTrip.Name = "cbX_MaxTrip";
-            this.cbX_MaxTrip.Size = new System.Drawing.Size(114, 23);
+            this.cbX_MaxTrip.Size = new System.Drawing.Size(61, 23);
             this.cbX_MaxTrip.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_MaxTrip.TabIndex = 6;
             this.cbX_MaxTrip.Text = "双向";
@@ -1237,13 +1238,14 @@
             // 
             // cbX_MaxForce
             // 
+            this.cbX_MaxForce.AutoSize = true;
             // 
             // 
             // 
             this.cbX_MaxForce.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_MaxForce.Location = new System.Drawing.Point(323, 12);
             this.cbX_MaxForce.Name = "cbX_MaxForce";
-            this.cbX_MaxForce.Size = new System.Drawing.Size(114, 23);
+            this.cbX_MaxForce.Size = new System.Drawing.Size(61, 23);
             this.cbX_MaxForce.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_MaxForce.TabIndex = 1;
             this.cbX_MaxForce.Text = "双向";

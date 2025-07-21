@@ -131,6 +131,31 @@ namespace DoPENetConnect
             label36.Location = new Point(label19.Bounds.X, label36.Location.Y);
             cbX_FrmProtectOption_ExtMinIn_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxIn_Effect.Bounds.X, cbX_FrmProtectOption_ExtMinIn_Effect.Location.Y);
 
+            ///试验机参数
+            //主参数
+            lbX_MaxForce.Location = new Point(lineStart , lbX_MaxForce.Location.Y);
+            comboBoxEx_MaxForce.Location = new Point(lbX_MaxForce.Location.X + lbX_MaxForce.Width + 30, comboBoxEx_MaxForce.Location.Y);
+            label17.Location = new Point(comboBoxEx_MaxForce.Location.X + comboBoxEx_MaxForce.Width + 5, label17.Location.Y);
+            cbX_MaxForce.Location = new Point(label17.Location.X + label17.Width + 5, cbX_MaxForce.Location.Y);
+
+            lbX_MaxTrip.Location = new Point(lbX_MaxForce.Bounds.X, lbX_MaxTrip.Location.Y);
+            comboBoxEx_MaxTrip.Location = new Point(comboBoxEx_MaxForce.Location.X, comboBoxEx_MaxTrip.Location.Y);
+            label10.Location = new Point(label17.Location.X, label10.Location.Y);
+            cbX_MaxTrip.Location = new Point(cbX_MaxForce.Location.X, cbX_MaxTrip.Location.Y);
+
+            label29.Location = new Point(lbX_MaxForce.Bounds.X, label29.Location.Y);
+            tbX_MaxTripSpeed.Location = new Point(comboBoxEx_MaxForce.Location.X, tbX_MaxTripSpeed.Location.Y);
+            label15.Location = new Point(label17.Location.X, label15.Location.Y);
+
+            label33.Location = new Point(lbX_MaxForce.Bounds.X, label33.Location.Y);
+            comboBoxEx_TripSensor.Location = new Point(comboBoxEx_MaxForce.Location.X, comboBoxEx_TripSensor.Location.Y);
+
+            label32.Location = new Point(lbX_MaxForce.Bounds.X, label32.Location.Y);
+            tbDeviceNo.Location = new Point(comboBoxEx_MaxForce.Location.X, tbDeviceNo.Location.Y);
+            //单位选择
+            label43.Location = new Point(lineStart, label43.Location.Y);
+            comboBoxEx_ForceUnit.Location = new Point(comboBoxEx_MaxForce.Location.X, comboBoxEx_ForceUnit.Location.Y);
+
 
 
         }
