@@ -146,7 +146,7 @@
 				
 		"groupPanel7":"MainParameter",		
 		"lbX_MaxForce":"SysMaxForce",
-		"cbX_MaxForce":"BiDirection"
+		"cbX_MaxForce":"BiDirection",
 		"lbX_MaxTrip":"SysMaxTrip",
 		"cbX_MaxTrip":"BiDirection",
 		"label29":"MaxDispSpeed",
