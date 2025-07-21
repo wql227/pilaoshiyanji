@@ -134,7 +134,7 @@ namespace DoPENetConnect
             ///试验机参数
             //主参数
             lbX_MaxForce.Location = new Point(lineStart , lbX_MaxForce.Location.Y);
-            comboBoxEx_MaxForce.Location = new Point(lbX_MaxForce.Location.X + lbX_MaxForce.Width + 30, comboBoxEx_MaxForce.Location.Y);
+            comboBoxEx_MaxForce.Location = new Point(lbX_MaxForce.Location.X + lbX_MaxForce.Width + 60, comboBoxEx_MaxForce.Location.Y);
             label17.Location = new Point(comboBoxEx_MaxForce.Location.X + comboBoxEx_MaxForce.Width + 5, label17.Location.Y);
             cbX_MaxForce.Location = new Point(label17.Location.X + label17.Width + 5, cbX_MaxForce.Location.Y);
 
