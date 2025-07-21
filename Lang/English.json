@@ -142,6 +142,20 @@
 		"label44":"UpButton",
 		"label21":"HurryUpButton",
 		"label34":"DownButton",
-		"label41":"HurryDownButton"
+		"label41":"HurryDownButton",	
+				
+		"groupPanel7":"MainParameter",		
+		"lbX_MaxForce":"SysMaxForce",
+		"cbX_MaxForce":"BiDirection"
+		"lbX_MaxTrip":"SysMaxTrip",
+		"cbX_MaxTrip":"BiDirection",
+		"label29":"MaxDispSpeed",
+		"label33":"DispSensor",
+		"label32":"TestMachineNo",
+		
+		"comboBoxEx_TripSensorItm24":"AnalogDispSensor",	
+				
+		"groupPanel8":"UnitSet",		
+		"label43":"ForceUnitSet"	
 		}
 }

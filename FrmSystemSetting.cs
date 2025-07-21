@@ -55,9 +55,15 @@ namespace DoPENetConnect
                 //
                 // 只要是下拉框就先清除
                 //
-                while(cbX_ProtectOption.Items.Count!=0)
+                int protectOptionCurrentIndex = cbX_ProtectOption.SelectedIndex;
+                while (cbX_ProtectOption.Items.Count!=0)
                 {
                     cbX_ProtectOption.Items.RemoveAt(0);
+                }
+                int tripSensorCurrentIndex = comboBoxEx_TripSensor.SelectedIndex;
+                while (comboBoxEx_TripSensor.Items.Count != 0)
+                {
+                    comboBoxEx_TripSensor.Items.RemoveAt(0);
                 }
 
 
@@ -81,14 +87,27 @@ namespace DoPENetConnect
                             }
                         }
 
-                        if (controlName.Contains("cbX_ProtectOption")) cbX_ProtectOption.Items.Add(textValue);
-                   
+                        if (controlName.Contains("cbX_ProtectOption"))
+                        {
+                            cbX_ProtectOption.Items.Add(textValue);
+                        }
+                        if (controlName.Contains("comboBoxEx_TripSensor"))
+                        {
+                             comboBoxEx_TripSensor.Items.Add(textValue);
+                        }
                     }
                     else {
                         ctrl.Text = textValue;
                     }
 
                 }
+
+                #region RestoreUi
+                cbX_ProtectOption.SelectedIndex = protectOptionCurrentIndex;
+
+                comboBoxEx_TripSensor.SelectedIndex = tripSensorCurrentIndex;
+                #endregion RestoreUi
+
 
             }
         }

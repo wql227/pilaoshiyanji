@@ -140,7 +140,21 @@
 		"labe44":"向上按钮",
 		"labe21":"快速向上按钮",
 		"labe34":"向下按钮",
-		"labe41":"快速向下按钮"
+		"labe41":"快速向下按钮",
+				
+		"groupPanel7":"主参数",		
+		"lbX_MaxForce":"系统最大实验力",
+		"cbX_MaxForce":"双向"
+		"lbX_MaxTrip":"系统最大实验行程",
+		"cbX_MaxTrip":"双向",
+		"label29":"最大位移速度",
+		"label33":"位移量采用",
+		"label32":"试验机编号",
+		
+		"comboBoxEx_TripSensorItm24":"模拟量位移传感器",	
+				
+		"groupPanel8":"单位选择",		
+		"label43":"试验力单位选择"	
 		
 		}
 		
