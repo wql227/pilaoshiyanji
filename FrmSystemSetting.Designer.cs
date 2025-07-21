@@ -220,10 +220,10 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel6);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Location = new System.Drawing.Point(1, 0);
@@ -501,9 +501,9 @@
             this.label11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label11.Location = new System.Drawing.Point(198, 44);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(104, 16);
+            this.label11.Size = new System.Drawing.Size(96, 16);
             this.label11.TabIndex = 0;
-            this.label11.Text = "kN，自动停机";
+            this.label11.Text = "N，自动停机";
             // 
             // label12
             // 
@@ -1754,7 +1754,7 @@
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(24, 16);
             this.label36.TabIndex = 0;
-            this.label36.Text = "kN";
+            this.label36.Text = "mm";
             // 
             // label35
             // 
@@ -1764,7 +1764,7 @@
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(24, 16);
             this.label35.TabIndex = 0;
-            this.label35.Text = "kN";
+            this.label35.Text = "mm";
             // 
             // label13
             // 
@@ -1774,7 +1774,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(24, 16);
             this.label13.TabIndex = 0;
-            this.label13.Text = "kN";
+            this.label13.Text = "mm";
             // 
             // label14
             // 
@@ -1784,7 +1784,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(24, 16);
             this.label14.TabIndex = 0;
-            this.label14.Text = "kN";
+            this.label14.Text = "mm";
             // 
             // label39
             // 
@@ -2000,9 +2000,9 @@
             this.label31.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label31.Location = new System.Drawing.Point(354, 89);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(24, 16);
+            this.label31.Size = new System.Drawing.Size(16, 16);
             this.label31.TabIndex = 0;
-            this.label31.Text = "kN";
+            this.label31.Text = "N";
             // 
             // label28
             // 
@@ -2010,9 +2010,9 @@
             this.label28.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label28.Location = new System.Drawing.Point(354, 36);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(24, 16);
+            this.label28.Size = new System.Drawing.Size(16, 16);
             this.label28.TabIndex = 0;
-            this.label28.Text = "kN";
+            this.label28.Text = "N";
             // 
             // label30
             // 
@@ -2020,9 +2020,9 @@
             this.label30.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label30.Location = new System.Drawing.Point(94, 90);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(24, 16);
+            this.label30.Size = new System.Drawing.Size(16, 16);
             this.label30.TabIndex = 0;
-            this.label30.Text = "kN";
+            this.label30.Text = "N";
             // 
             // label8
             // 
@@ -2030,9 +2030,9 @@
             this.label8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.Location = new System.Drawing.Point(94, 36);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(24, 16);
+            this.label8.Size = new System.Drawing.Size(16, 16);
             this.label8.TabIndex = 0;
-            this.label8.Text = "kN";
+            this.label8.Text = "N";
             // 
             // label27
             // 
