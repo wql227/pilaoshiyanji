@@ -220,20 +220,20 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel6);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Location = new System.Drawing.Point(1, 0);
-            this.superTabControl1.MaximumSize = new System.Drawing.Size(600, 597);
+            this.superTabControl1.MaximumSize = new System.Drawing.Size(800, 597);
             this.superTabControl1.MinimumSize = new System.Drawing.Size(550, 597);
             this.superTabControl1.Name = "superTabControl1";
             this.superTabControl1.ReorderTabsEnabled = true;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl1.SelectedTabIndex = 0;
-            this.superTabControl1.Size = new System.Drawing.Size(583, 597);
+            this.superTabControl1.Size = new System.Drawing.Size(784, 597);
             this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl1.TabIndex = 0;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -251,7 +251,7 @@
             this.superTabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel5.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel5.Name = "superTabControlPanel5";
-            this.superTabControlPanel5.Size = new System.Drawing.Size(583, 569);
+            this.superTabControlPanel5.Size = new System.Drawing.Size(784, 569);
             this.superTabControlPanel5.TabIndex = 2;
             this.superTabControlPanel5.TabItem = this.superTabItem5;
             // 
@@ -266,7 +266,7 @@
             this.panelEx5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx5.Location = new System.Drawing.Point(0, 0);
             this.panelEx5.Name = "panelEx5";
-            this.panelEx5.Size = new System.Drawing.Size(583, 569);
+            this.panelEx5.Size = new System.Drawing.Size(784, 569);
             this.panelEx5.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx5.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx5.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(255)))));
@@ -414,9 +414,9 @@
             this.groupPanel3.Controls.Add(this.label12);
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel3.Location = new System.Drawing.Point(46, 16);
+            this.groupPanel3.Location = new System.Drawing.Point(18, 16);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(468, 128);
+            this.groupPanel3.Size = new System.Drawing.Size(753, 128);
             // 
             // 
             // 
@@ -457,7 +457,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(133, 12);
+            this.numericUpDown1.Location = new System.Drawing.Point(272, 12);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(59, 26);
             this.numericUpDown1.TabIndex = 2;
@@ -481,9 +481,9 @@
             // 
             // 
             this.checkBoxX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX3.Location = new System.Drawing.Point(13, 15);
+            this.checkBoxX3.Location = new System.Drawing.Point(12, 15);
             this.checkBoxX3.Name = "checkBoxX3";
-            this.checkBoxX3.Size = new System.Drawing.Size(114, 23);
+            this.checkBoxX3.Size = new System.Drawing.Size(253, 23);
             this.checkBoxX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxX3.TabIndex = 1;
             this.checkBoxX3.Text = "试验力超过";
@@ -502,7 +502,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(198, 15);
+            this.label12.Location = new System.Drawing.Point(343, 15);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(168, 16);
             this.label12.TabIndex = 0;
@@ -521,7 +521,7 @@
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel2.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(583, 569);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(683, 569);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItem2;
             // 
@@ -535,7 +535,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(583, 569);
+            this.panelEx2.Size = new System.Drawing.Size(683, 569);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(255)))));
@@ -972,7 +972,7 @@
             this.superTabControlPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel6.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel6.Name = "superTabControlPanel6";
-            this.superTabControlPanel6.Size = new System.Drawing.Size(583, 569);
+            this.superTabControlPanel6.Size = new System.Drawing.Size(683, 569);
             this.superTabControlPanel6.TabIndex = 3;
             this.superTabControlPanel6.TabItem = this.superTabItem6;
             // 
@@ -989,7 +989,7 @@
             this.panelEx6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx6.Location = new System.Drawing.Point(0, 0);
             this.panelEx6.Name = "panelEx6";
-            this.panelEx6.Size = new System.Drawing.Size(583, 569);
+            this.panelEx6.Size = new System.Drawing.Size(683, 569);
             this.panelEx6.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx6.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx6.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(255)))));
@@ -1779,7 +1779,7 @@
             this.superTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel4.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel4.Name = "superTabControlPanel4";
-            this.superTabControlPanel4.Size = new System.Drawing.Size(583, 569);
+            this.superTabControlPanel4.Size = new System.Drawing.Size(683, 569);
             this.superTabControlPanel4.TabIndex = 0;
             this.superTabControlPanel4.TabItem = this.superTabItem4;
             // 
@@ -1793,7 +1793,7 @@
             this.panelEx4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx4.Location = new System.Drawing.Point(0, 0);
             this.panelEx4.Name = "panelEx4";
-            this.panelEx4.Size = new System.Drawing.Size(583, 569);
+            this.panelEx4.Size = new System.Drawing.Size(683, 569);
             this.panelEx4.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx4.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx4.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(255)))));
@@ -1842,7 +1842,7 @@
             this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(583, 569);
+            this.superTabControlPanel1.Size = new System.Drawing.Size(683, 569);
             this.superTabControlPanel1.TabIndex = 0;
             this.superTabControlPanel1.TabItem = this.superTabItem1;
             // 
@@ -2066,7 +2066,7 @@
             this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel3.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(583, 569);
+            this.superTabControlPanel3.Size = new System.Drawing.Size(683, 569);
             this.superTabControlPanel3.TabIndex = 0;
             this.superTabControlPanel3.TabItem = this.superTabItem3;
             // 
@@ -2078,7 +2078,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 0);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(583, 569);
+            this.panelEx3.Size = new System.Drawing.Size(683, 569);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(255)))));
@@ -2133,10 +2133,10 @@
             this.panelEx1.Controls.Add(this.btnX_FrmProtectOption_OK);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.MaximumSize = new System.Drawing.Size(600, 656);
-            this.panelEx1.MinimumSize = new System.Drawing.Size(600, 656);
+            this.panelEx1.MaximumSize = new System.Drawing.Size(800, 656);
+            this.panelEx1.MinimumSize = new System.Drawing.Size(700, 656);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(600, 656);
+            this.panelEx1.Size = new System.Drawing.Size(800, 656);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -2151,9 +2151,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 656);
+            this.ClientSize = new System.Drawing.Size(784, 656);
             this.Controls.Add(this.panelEx1);
-            this.MaximumSize = new System.Drawing.Size(600, 695);
+            this.MaximumSize = new System.Drawing.Size(800, 695);
             this.Name = "FrmSystemSetting";
             this.Text = "系统参数";
             this.Load += new System.EventHandler(this.FrmSystemSetting_Load);
