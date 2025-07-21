@@ -220,9 +220,9 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
@@ -1351,7 +1351,7 @@
             this.groupPanel2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupPanel2.Location = new System.Drawing.Point(18, 51);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(548, 146);
+            this.groupPanel2.Size = new System.Drawing.Size(753, 146);
             // 
             // 
             // 
@@ -1441,52 +1441,56 @@
             // 
             // cbX_FrmProtectOption_PosMinIn_Effect
             // 
+            this.cbX_FrmProtectOption_PosMinIn_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_PosMinIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_PosMinIn_Effect.Location = new System.Drawing.Point(384, 86);
             this.cbX_FrmProtectOption_PosMinIn_Effect.Name = "cbX_FrmProtectOption_PosMinIn_Effect";
-            this.cbX_FrmProtectOption_PosMinIn_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_PosMinIn_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_PosMinIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_PosMinIn_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_PosMinIn_Effect.Text = "生效";
             // 
             // cbX_FrmProtectOption_PosMinOut_Effect
             // 
+            this.cbX_FrmProtectOption_PosMinOut_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_PosMinOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_PosMinOut_Effect.Location = new System.Drawing.Point(124, 86);
             this.cbX_FrmProtectOption_PosMinOut_Effect.Name = "cbX_FrmProtectOption_PosMinOut_Effect";
-            this.cbX_FrmProtectOption_PosMinOut_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_PosMinOut_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_PosMinOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_PosMinOut_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_PosMinOut_Effect.Text = "生效";
             // 
             // cbX_FrmProtectOption_PosMaxIn_Effect
             // 
+            this.cbX_FrmProtectOption_PosMaxIn_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_PosMaxIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_PosMaxIn_Effect.Location = new System.Drawing.Point(382, 33);
             this.cbX_FrmProtectOption_PosMaxIn_Effect.Name = "cbX_FrmProtectOption_PosMaxIn_Effect";
-            this.cbX_FrmProtectOption_PosMaxIn_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_PosMaxIn_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_PosMaxIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_PosMaxIn_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_PosMaxIn_Effect.Text = "生效";
             // 
             // cbX_FrmProtectOption_PosMaxOut_Effect
             // 
+            this.cbX_FrmProtectOption_PosMaxOut_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_PosMaxOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_PosMaxOut_Effect.Location = new System.Drawing.Point(124, 34);
             this.cbX_FrmProtectOption_PosMaxOut_Effect.Name = "cbX_FrmProtectOption_PosMaxOut_Effect";
-            this.cbX_FrmProtectOption_PosMaxOut_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_PosMaxOut_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_PosMaxOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_PosMaxOut_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_PosMaxOut_Effect.Text = "生效";
@@ -1595,7 +1599,7 @@
             this.groupPanel4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupPanel4.Location = new System.Drawing.Point(18, 405);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(548, 146);
+            this.groupPanel4.Size = new System.Drawing.Size(753, 146);
             // 
             // 
             // 
@@ -1629,13 +1633,14 @@
             // 
             // cbX_FrmProtectOption_ExtMinIn_Effect
             // 
+            this.cbX_FrmProtectOption_ExtMinIn_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_ExtMinIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_ExtMinIn_Effect.Location = new System.Drawing.Point(384, 89);
             this.cbX_FrmProtectOption_ExtMinIn_Effect.Name = "cbX_FrmProtectOption_ExtMinIn_Effect";
-            this.cbX_FrmProtectOption_ExtMinIn_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_ExtMinIn_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_ExtMinIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_ExtMinIn_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_ExtMinIn_Effect.Text = "生效";
@@ -1656,13 +1661,14 @@
             // 
             // cbX_FrmProtectOption_ExtMinOut_Effect
             // 
+            this.cbX_FrmProtectOption_ExtMinOut_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_ExtMinOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_ExtMinOut_Effect.Location = new System.Drawing.Point(124, 88);
             this.cbX_FrmProtectOption_ExtMinOut_Effect.Name = "cbX_FrmProtectOption_ExtMinOut_Effect";
-            this.cbX_FrmProtectOption_ExtMinOut_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_ExtMinOut_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_ExtMinOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_ExtMinOut_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_ExtMinOut_Effect.Text = "生效";
@@ -1683,26 +1689,28 @@
             // 
             // cbX_FrmProtectOption_ExtMaxIn_Effect
             // 
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_ExtMaxIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_ExtMaxIn_Effect.Location = new System.Drawing.Point(382, 34);
             this.cbX_FrmProtectOption_ExtMaxIn_Effect.Name = "cbX_FrmProtectOption_ExtMaxIn_Effect";
-            this.cbX_FrmProtectOption_ExtMaxIn_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_ExtMaxIn_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_ExtMaxIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_ExtMaxIn_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_ExtMaxIn_Effect.Text = "生效";
             // 
             // cbX_FrmProtectOption_ExtMaxOut_Effect
             // 
+            this.cbX_FrmProtectOption_ExtMaxOut_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_ExtMaxOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_ExtMaxOut_Effect.Location = new System.Drawing.Point(124, 34);
             this.cbX_FrmProtectOption_ExtMaxOut_Effect.Name = "cbX_FrmProtectOption_ExtMaxOut_Effect";
-            this.cbX_FrmProtectOption_ExtMaxOut_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_ExtMaxOut_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_ExtMaxOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_ExtMaxOut_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_ExtMaxOut_Effect.Text = "生效";
@@ -1839,7 +1847,7 @@
             this.groupPanel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupPanel1.Location = new System.Drawing.Point(18, 228);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(548, 146);
+            this.groupPanel1.Size = new System.Drawing.Size(753, 146);
             // 
             // 
             // 
@@ -1873,52 +1881,56 @@
             // 
             // cbX_FrmProtectOption_LoadMinIn_Effect
             // 
+            this.cbX_FrmProtectOption_LoadMinIn_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_LoadMinIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_LoadMinIn_Effect.Location = new System.Drawing.Point(384, 87);
             this.cbX_FrmProtectOption_LoadMinIn_Effect.Name = "cbX_FrmProtectOption_LoadMinIn_Effect";
-            this.cbX_FrmProtectOption_LoadMinIn_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_LoadMinIn_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_LoadMinIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_LoadMinIn_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_LoadMinIn_Effect.Text = "生效";
             // 
             // cbX_FrmProtectOption_LoadMinOut_Effect
             // 
+            this.cbX_FrmProtectOption_LoadMinOut_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_LoadMinOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_LoadMinOut_Effect.Location = new System.Drawing.Point(124, 88);
             this.cbX_FrmProtectOption_LoadMinOut_Effect.Name = "cbX_FrmProtectOption_LoadMinOut_Effect";
-            this.cbX_FrmProtectOption_LoadMinOut_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_LoadMinOut_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_LoadMinOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_LoadMinOut_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_LoadMinOut_Effect.Text = "生效";
             // 
             // cbX_FrmProtectOption_LoadMaxIn_Effect
             // 
+            this.cbX_FrmProtectOption_LoadMaxIn_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_LoadMaxIn_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_LoadMaxIn_Effect.Location = new System.Drawing.Point(384, 34);
             this.cbX_FrmProtectOption_LoadMaxIn_Effect.Name = "cbX_FrmProtectOption_LoadMaxIn_Effect";
-            this.cbX_FrmProtectOption_LoadMaxIn_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_LoadMaxIn_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_LoadMaxIn_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_LoadMaxIn_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_LoadMaxIn_Effect.Text = "生效";
             // 
             // cbX_FrmProtectOption_LoadMaxOut_Effect
             // 
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect.AutoSize = true;
             // 
             // 
             // 
             this.cbX_FrmProtectOption_LoadMaxOut_Effect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmProtectOption_LoadMaxOut_Effect.Location = new System.Drawing.Point(124, 34);
             this.cbX_FrmProtectOption_LoadMaxOut_Effect.Name = "cbX_FrmProtectOption_LoadMaxOut_Effect";
-            this.cbX_FrmProtectOption_LoadMaxOut_Effect.Size = new System.Drawing.Size(124, 23);
+            this.cbX_FrmProtectOption_LoadMaxOut_Effect.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmProtectOption_LoadMaxOut_Effect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmProtectOption_LoadMaxOut_Effect.TabIndex = 1;
             this.cbX_FrmProtectOption_LoadMaxOut_Effect.Text = "生效";
@@ -2072,7 +2084,7 @@
             this.comboItem2});
             this.cbX_ProtectOption.Location = new System.Drawing.Point(168, 8);
             this.cbX_ProtectOption.Name = "cbX_ProtectOption";
-            this.cbX_ProtectOption.Size = new System.Drawing.Size(169, 27);
+            this.cbX_ProtectOption.Size = new System.Drawing.Size(201, 27);
             this.cbX_ProtectOption.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_ProtectOption.TabIndex = 1;
             this.cbX_ProtectOption.SelectedIndexChanged += new System.EventHandler(this.cbX_ProtectOption_SelectedIndexChanged);
@@ -2087,10 +2099,11 @@
             // 
             // label1
             // 
+            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(46, 8);
+            this.label1.Location = new System.Drawing.Point(46, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 27);
+            this.label1.Size = new System.Drawing.Size(104, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "限位保护选项";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2192,6 +2205,7 @@
             this.groupPanel7.PerformLayout();
             this.superTabControlPanel6.ResumeLayout(false);
             this.panelEx6.ResumeLayout(false);
+            this.panelEx6.PerformLayout();
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel2.PerformLayout();
             this.groupPanel4.ResumeLayout(false);

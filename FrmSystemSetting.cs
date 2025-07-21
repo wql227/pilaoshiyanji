@@ -34,12 +34,14 @@ namespace DoPENetConnect
         /// </summary>
         private void UiAutoSize()
         {
+
             ///底部按钮
             int btnsBottomLength =btnX_FrmProtectOption_OK.Width + 150;
             int btnBottomStart = (this.Width-btnsBottomLength)/ 2;
             btnX_FrmProtectOption_OK.Location = new Point(btnBottomStart, btnX_FrmProtectOption_OK.Bounds.Y);
             btnX_FrmProtectOption_Cencel.Location = new Point(btnBottomStart + 180, btnX_FrmProtectOption_Cencel.Bounds.Y);
 
+            ///系统设置
             ///groupPannel3
             int lineStart = 15;
             checkBoxX3.Location = new Point(lineStart, checkBoxX3.Location.Y);
@@ -57,6 +59,79 @@ namespace DoPENetConnect
             ///groupPanel6
             label3.Location = new Point(lineStart, label3.Location.Y);
             tbX_DeviceID.Location = new Point(label3.Location.X + label3.Width + 5, tbX_DeviceID.Location.Y);
+
+
+            ///动态实验过程保护选项
+            ///Line1
+            label1.Location = new Point(lineStart, label1.Location.Y);
+            cbX_ProtectOption.Location = new Point(label1.Location.X + label1.Width + 5, cbX_ProtectOption.Location.Y);
+
+            //titles
+            label16.Location = new Point(lineStart, label16.Location.Y);
+            label22.Location = new Point(label16.Location.X, label22.Location.Y);
+            label24.Location = new Point(label16.Location.X, label24.Location.Y);
+            label27.Location = new Point(label16.Location.X, label27.Location.Y);
+            label9.Location = new Point(label16.Location.X, label9.Location.Y);
+            label39.Location = new Point(label16.Location.X, label39.Location.Y);
+
+            label18.Location = new Point(label16.Location.X + label16.Width + 100, label18.Location.Y);
+            label23.Location = new Point(label18.Location.X, label23.Location.Y);
+            label25.Location = new Point(label18.Location.X, label25.Location.Y);
+            label26.Location = new Point(label18.Location.X, label26.Location.Y);
+            label5.Location = new Point(label18.Location.X, label5.Location.Y);
+            label38.Location = new Point(label18.Location.X, label38.Location.Y);
+
+            //groupPanels
+            tbX_FrmProtectOption_PosMaxOut.Location = new Point(lineStart+2, tbX_FrmProtectOption_PosMaxOut.Location.Y);
+            label6.Location = new Point(tbX_FrmProtectOption_PosMaxOut.Location.X + tbX_FrmProtectOption_PosMaxOut.Width + 5, label6.Location.Y);
+            cbX_FrmProtectOption_PosMaxOut_Effect.Location = new Point(label6.Location.X + label6.Width + 5, cbX_FrmProtectOption_PosMaxOut_Effect.Location.Y);
+
+            tbX_FrmProtectOption_PosMinOut.Location = new Point(lineStart + 2, tbX_FrmProtectOption_PosMinOut.Location.Y);
+            label7.Location = new Point(label6.Bounds.X, label7.Location.Y);
+            cbX_FrmProtectOption_PosMinOut_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxOut_Effect.Bounds.X, cbX_FrmProtectOption_PosMinOut_Effect.Location.Y);
+
+            tbX_FrmProtectOption_LoadMaxOut.Location = new Point(lineStart + 2, tbX_FrmProtectOption_LoadMaxOut.Location.Y);
+            label8.Location = new Point(label6.Bounds.X, label8.Location.Y);
+            cbX_FrmProtectOption_LoadMaxOut_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxOut_Effect.Bounds.X, cbX_FrmProtectOption_LoadMaxOut_Effect.Location.Y);
+
+            tbX_FrmProtectOption_LoadMinOut.Location = new Point(lineStart + 2, tbX_FrmProtectOption_LoadMinOut.Location.Y);
+            label30.Location = new Point(label6.Bounds.X, label30.Location.Y);
+            cbX_FrmProtectOption_LoadMinOut_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxOut_Effect.Bounds.X, cbX_FrmProtectOption_LoadMinOut_Effect.Location.Y);
+
+            tbX_FrmProtectOption_ExtMaxOut.Location = new Point(lineStart + 2, tbX_FrmProtectOption_ExtMaxOut.Location.Y);
+            label14.Location = new Point(label6.Bounds.X, label14.Location.Y);
+            cbX_FrmProtectOption_ExtMaxOut_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxOut_Effect.Bounds.X, cbX_FrmProtectOption_ExtMaxOut_Effect.Location.Y);
+
+            tbX_FrmProtectOption_ExtMinOut.Location = new Point(lineStart + 2, tbX_FrmProtectOption_ExtMinOut.Location.Y);
+            label13.Location = new Point(label6.Bounds.X, label13.Location.Y);
+            cbX_FrmProtectOption_ExtMinOut_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxOut_Effect.Bounds.X, cbX_FrmProtectOption_ExtMinOut_Effect.Location.Y);
+
+
+            tbX_FrmProtectOption_PosMaxIn.Location = new Point(label18.Bounds.X+2, tbX_FrmProtectOption_PosMaxIn.Location.Y);
+            label19.Location = new Point(tbX_FrmProtectOption_PosMaxIn.Location.X + tbX_FrmProtectOption_PosMaxIn.Width + 5, label19.Location.Y);
+            cbX_FrmProtectOption_PosMaxIn_Effect.Location = new Point(label19.Location.X + label19.Width + 5, cbX_FrmProtectOption_PosMaxIn_Effect.Location.Y);
+
+            tbX_FrmProtectOption_PosMinIn.Location = new Point(tbX_FrmProtectOption_PosMaxIn.Bounds.X, tbX_FrmProtectOption_PosMinIn.Location.Y);
+            label20.Location = new Point(label19.Bounds.X, label20.Location.Y);
+            cbX_FrmProtectOption_PosMinIn_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxIn_Effect.Bounds.X, cbX_FrmProtectOption_PosMinIn_Effect.Location.Y);
+
+            tbX_FrmProtectOption_LoadMaxIn.Location = new Point(tbX_FrmProtectOption_PosMaxIn.Bounds.X, tbX_FrmProtectOption_LoadMaxIn.Location.Y);
+            label28.Location = new Point(label19.Bounds.X, label28.Location.Y);
+            cbX_FrmProtectOption_LoadMaxIn_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxIn_Effect.Bounds.X, cbX_FrmProtectOption_LoadMaxIn_Effect.Location.Y);
+
+            tbX_FrmProtectOption_LoadMinIn.Location = new Point(tbX_FrmProtectOption_PosMaxIn.Bounds.X, tbX_FrmProtectOption_LoadMinIn.Location.Y);
+            label31.Location = new Point(label19.Bounds.X, label31.Location.Y);
+            cbX_FrmProtectOption_LoadMinIn_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxIn_Effect.Bounds.X, cbX_FrmProtectOption_LoadMinIn_Effect.Location.Y);
+
+            tbX_FrmProtectOption_ExtMaxIn.Location = new Point(tbX_FrmProtectOption_PosMaxIn.Bounds.X, tbX_FrmProtectOption_ExtMaxIn.Location.Y);
+            label35.Location = new Point(label19.Bounds.X, label35.Location.Y);
+            cbX_FrmProtectOption_ExtMaxIn_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxIn_Effect.Bounds.X, cbX_FrmProtectOption_ExtMaxIn_Effect.Location.Y);
+
+            tbX_FrmProtectOption_ExtMinIn.Location = new Point(tbX_FrmProtectOption_PosMaxIn.Bounds.X, tbX_FrmProtectOption_ExtMinIn.Location.Y);
+            label36.Location = new Point(label19.Bounds.X, label36.Location.Y);
+            cbX_FrmProtectOption_ExtMinIn_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxIn_Effect.Bounds.X, cbX_FrmProtectOption_ExtMinIn_Effect.Location.Y);
+
+
 
         }
 
