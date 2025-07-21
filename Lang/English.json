@@ -87,6 +87,7 @@
 		},
 		
 	"FrmSystemSetting":{
+		"superTabItem2":"Controller Parameter",
 		"superTabItem5":"SysSet",
 		"superTabItem6":"ProtectionInDynProcess",
 		"superTabItem1":"ButtonConstant",

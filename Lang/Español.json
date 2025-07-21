@@ -29,31 +29,35 @@
 		"ShowLogToolStripMenuItem": "Mostrar Registro",
 		"startStopDrawToolStripMenuItem": "Pausar Dibujo",
 		"AdjustToolStripMenuItem":"Corrección",
+		"ChartSetToolStripMenuItem":"Configuración de gráficos",
 		"ToolStripMenuItem_Oper": "Operación (&O)",
 		"ToolStripMenuItem_Login": "Iniciar Sesión... (&L)",
 		"ToolStripMenuItem_Setting": "Configuración de Parámetros (&S)",
 		"ToolStripMenuItem_Data": "Datos Experimentales (&D)",
 		"ToolStripMenuItem_Result": "Resultados Experimentales (&R)",
 		"ToolStripMenuItem_Language": "Idioma (&L)",
-		"ToolStripMenuItem_Help": "Ayuda (&H)"
+		"ToolStripMenuItem_Help": "Ayuda (&H)",
 	},
-	"FrmPos": {
+	
+	 "FrmPos": {
 		"btnX_PosSend": "Enviar",
 		"labelX1": "EDC",
 		"labelX2": "MoveCtrl",
 		"labelX3": "Velocidad",
 		"labelX4": "Destino"
-	},
-	"FrmPos_A": {
-		"btnX_Pos_ASend": "Enviar",
-		"labelX1": "EDC",
-		"labelX2": "MoveCtrl",
-		"labelX3": "Velocidad",
-		"labelX4": "Destino",
-		"labelX5": "Aceleración",
-		"labelX6": "Desaceleración"
-	},
-	"FrmDynCtrl": {
+		},
+
+	  "FrmPos_A": {
+	        "btnX_Pos_ASend": "Enviar",
+	        "labelX1": "EDC",
+	        "labelX2": "MoveCtrl",
+	        "labelX3": "Velocidad",
+	        "labelX4": "Destino",
+	        "labelX5": "Aceleración",
+	        "labelX6": "Desaceleración"
+	  },
+
+	  "FrmDynCtrl": {
 		"btnX_Dyn_Send": "Enviar",
 		"labelX1": "EDC",
 		"labelX2": "StartCtrl",
@@ -67,16 +71,74 @@
 		"labelX12": "Frecuencia Hz",
 		"cbX_Dyn_FadeInOut": "Fundido In/Out",
 		"cbX_DynCtrl_ModifyParam": "Modificar",
-		"cbX_DynCtrl_RelativeDestinations": "Destinos Relativos"
-	},
-	"FrmAbout": {
-		"labelX9": "Nombre del Programa:",
-		"labelX10": "Versión del Programa:",
-		"labelX11": "GUID del Programa:",
-		"labelX12": "Usuario:",
-		"labelX13": "Sistema Operativo:",
-		"labelX14": "CLR：",
-		"labelX15": "Nombre del Archivo：",
-		"labelX16": "Uso de Memoria："
-	}
+	    "cbX_DynCtrl_RelativeDestinations": "Destinos Relativos"
+	  },
+
+	  "FrmAbout": {
+	        "labelX9": "Nombre del Programa:",
+	        "labelX10": "Versión del Programa:",
+	        "labelX11": "GUID del Programa:",
+	        "labelX12": "Usuario:",
+	        "labelX13": "Sistema Operativo:",
+	        "labelX14": "CLR：",
+	        "labelX15": "Nombre del Archivo：",
+	        "labelX16": "Uso de Memoria："
+	  },
+	  
+	"FrmSystemSetting": {
+			"superTabItem5": "Configuración del sistema",
+			"superTabItem6": "Opciones de protección durante el experimento dinámico",
+			"superTabItem1": "Constantes de teclas",
+			"groupPanel3": "Configuración de protección del sistema",
+			"checkBoxX3": "Fuerza de prueba exceda el",
+			"label12": "% del rango completo, detener automáticamente",
+			"checkBoxX4": "Fuerza de prueba exceda",
+			"label11": "kN, detener automáticamente",
+			"groupPanel5": "Registro de logs",
+			"label2": "Guardar log de forma de onda",
+			"groupPanel6": "Configuración de conexión del controlador",
+			"label3": "ID del dispositivo",
+			"btnX_FrmProtectOption_OK": "Aceptar",
+			"btnX_FrmProtectOption_Cencel": "Cancelar",
+
+			"label1": "Opciones de protección de límite",
+			"cbX_ProtectOptionItm1": "Detener experimento",
+			"cbX_ProtectOptionItm2": "Detener bomba",
+
+			"groupPanel2": "Configuración de protección de desplazamiento",
+			"label16": "Protección externa del pico",
+			"label18": "Protección interna del pico",
+			"cbX_FrmProtectOption_PosMaxOut_Effect": "Activa",
+			"cbX_FrmProtectOption_PosMaxIn_Effect": "Activa",
+			"label22": "Protección externa del valle",
+			"label23": "Protección interna del valle",
+			"cbX_FrmProtectOption_PosMinOut_Effect": "Activa",
+			"cbX_FrmProtectOption_PosMinIn_Effect": "Activa",
+
+			"groupPanel1": "Configuración de protección de fuerza de prueba",
+			"label24": "Protección externa del pico",
+			"label25": "Protección interna del pico",
+			"cbX_FrmProtectOption_LoadMaxOut_Effect": "Activa",
+			"cbX_FrmProtectOption_LoadMaxIn_Effect": "Activa",
+			"label27": "Protección externa del valle",
+			"label26": "Protección interna del valle",
+			"cbX_FrmProtectOption_LoadMinOut_Effect": "Activa",
+			"cbX_FrmProtectOption_LoadMinIn_Effect": "Activa",
+
+			"groupPanel4": "Configuración de protección de deformación",
+			"label9": "Protección externa del pico",
+			"label5": "Protección interna del pico",
+			"cbX_FrmProtectOption_ExtMaxOut_Effect": "Activa",
+			"cbX_FrmProtectOption_ExtMaxIn_Effect": "Activa",
+			"label39": "Protección externa del valle",
+			"label38": "Protección interna del valle",
+			"cbX_FrmProtectOption_ExtMinOut_Effect": "Activa",
+			"cbX_FrmProtectOption_ExtMinIn_Effect": "Activa",
+
+			"groupPanel9": "Menú manual del lado izquierdo",
+			"labe44": "Botón hacia arriba",
+			"labe21": "Botón rápido hacia arriba",
+			"labe34": "Botón hacia abajo",
+			"labe41": "Botón rápido hacia abajo"
+		}
 }
