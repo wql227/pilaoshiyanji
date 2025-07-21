@@ -24,6 +24,39 @@ namespace DoPENetConnect
         {
             LoadIni();
             ReplaceLanguage();
+            UiAutoSize();
+
+        }
+
+        /// <summary>
+        /// 根据语言自适应控件位置参数
+        /// 由于语言长度不同 因此需要根据语言长度设置控件长度自适应
+        /// </summary>
+        private void UiAutoSize()
+        {
+            ///底部按钮
+            int btnsBottomLength =btnX_FrmProtectOption_OK.Width + 150;
+            int btnBottomStart = (this.Width-btnsBottomLength)/ 2;
+            btnX_FrmProtectOption_OK.Location = new Point(btnBottomStart, btnX_FrmProtectOption_OK.Bounds.Y);
+            btnX_FrmProtectOption_Cencel.Location = new Point(btnBottomStart + 180, btnX_FrmProtectOption_Cencel.Bounds.Y);
+
+            ///groupPannel3
+            int lineStart = 15;
+            checkBoxX3.Location = new Point(lineStart, checkBoxX3.Location.Y);
+            numericUpDown1.Location = new Point(checkBoxX3.Location.X+checkBoxX3.Width+5, numericUpDown1.Location.Y);
+            label12.Location = new Point(numericUpDown1.Location.X + numericUpDown1.Width + 5, label12.Location.Y);
+
+            checkBoxX4.Location = new Point(lineStart, checkBoxX4.Location.Y);
+            numericUpDown2.Location = new Point(numericUpDown1.Location.X , numericUpDown2.Location.Y);
+            label11.Location = new Point(label12.Location.X , label11.Location.Y);
+
+            ///groupPanne5
+            NUD_CountLog.Location = new Point(lineStart, NUD_CountLog.Location.Y);
+            label2.Location = new Point(NUD_CountLog.Location.X + NUD_CountLog.Width + 5, label2.Location.Y);
+
+            ///groupPanel6
+            label3.Location = new Point(lineStart, label3.Location.Y);
+            tbX_DeviceID.Location = new Point(label3.Location.X + label3.Width + 5, tbX_DeviceID.Location.Y);
 
         }
 
