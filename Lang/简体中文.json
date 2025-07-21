@@ -144,7 +144,7 @@
 				
 		"groupPanel7":"主参数",		
 		"lbX_MaxForce":"系统最大实验力",
-		"cbX_MaxForce":"双向"
+		"cbX_MaxForce":"双向",
 		"lbX_MaxTrip":"系统最大实验行程",
 		"cbX_MaxTrip":"双向",
 		"label29":"最大位移速度",
