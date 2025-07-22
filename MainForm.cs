@@ -323,6 +323,8 @@ namespace DoPENetConnect
         public double Chart_Ext_Step = 5.0;
         public double Chart_Command_Step = 5.0;
 
+        //
+        public double AxisXMax = 5;
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
