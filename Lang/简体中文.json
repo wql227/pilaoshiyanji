@@ -95,7 +95,7 @@
 		"checkBoxX3":"试验力超过",
 		"label12":"% 满量程时，自动停机",
 		"checkBoxX4":"试验力超过",
-		"label11":"kN，自动停机",
+		"label11":"N，自动停机",
 		"groupPanel5":"日志记录",
 		"label2":"次波形记录日志",
 		"groupPanel6":"控制器连接设置",

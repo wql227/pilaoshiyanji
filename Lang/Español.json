@@ -94,7 +94,7 @@
 			"checkBoxX3": "Fuerza de prueba exceda el",
 			"label12": "% del rango completo, detener automáticamente",
 			"checkBoxX4": "Fuerza de prueba exceda",
-			"label11": "kN, detener automáticamente",
+			"label11": "N, detener automáticamente",
 			"groupPanel5": "Registro de logs",
 			"label2": "Guardar log de forma de onda",
 			"groupPanel6": "Configuración de conexión del controlador",
