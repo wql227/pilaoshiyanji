@@ -1878,6 +1878,8 @@ namespace DoPENetConnect
 
                 btnX_SetLow.Checked = true;
                 btnX_SetHigh.Checked = false;
+
+                this.MaximizeBox = false;
             }
         }
 
@@ -1893,6 +1895,8 @@ namespace DoPENetConnect
         private void bntX_GUIOff_Click(object sender, EventArgs e)
         {
             OffEDC();
+
+            this.MaximizeBox = true;
         }
 
 
@@ -3323,5 +3327,9 @@ namespace DoPENetConnect
             }
         }
 
+        private void cb_TareTime_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
