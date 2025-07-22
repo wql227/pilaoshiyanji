@@ -414,6 +414,38 @@ namespace DoPENetConnect
             IniFileHelper.WriteIniString("DynCtrl", "Frequency", strTmp);
         }
 
+        private void cmbX_Dyn_StartCtrl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbX_Dyn_StartCtrl.SelectedValue.ToString())
+            {
+                case "POS":
+                    cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
+                    break;
+                case "LOAD":
+                    cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s" };
+                    break;
+                default:
+                    cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "Unit/s" };
+                    break;
 
+            }
+        }
+
+        private void cmbX_Dyn_MoveCtrl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbX_Dyn_MoveCtrl.SelectedValue.ToString())
+            {
+                case "POS":
+                    cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "mm" };
+                    break;
+                case "LOAD":
+                    cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "N" };
+                    break;
+                default:
+                    cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "Unit" };
+                    break;
+
+            }
+        }
     }
 }

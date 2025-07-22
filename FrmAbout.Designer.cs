@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAbout));
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
@@ -290,6 +291,7 @@
             this.ClientSize = new System.Drawing.Size(628, 278);
             this.Controls.Add(this.panelEx1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAbout";
             this.Text = "关于";
             this.Load += new System.EventHandler(this.FrmAbout_Load);

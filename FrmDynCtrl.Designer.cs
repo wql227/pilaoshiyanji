@@ -218,6 +218,7 @@
             this.cmbX_Dyn_StartCtrl.Size = new System.Drawing.Size(103, 27);
             this.cmbX_Dyn_StartCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbX_Dyn_StartCtrl.TabIndex = 1;
+            this.cmbX_Dyn_StartCtrl.SelectedIndexChanged += new System.EventHandler(this.cmbX_Dyn_StartCtrl_SelectedIndexChanged);
             // 
             // cmbX_Dyn_StartSpeed_Unit
             // 
@@ -272,6 +273,7 @@
             this.cmbX_Dyn_MoveCtrl.Size = new System.Drawing.Size(103, 27);
             this.cmbX_Dyn_MoveCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbX_Dyn_MoveCtrl.TabIndex = 1;
+            this.cmbX_Dyn_MoveCtrl.SelectedIndexChanged += new System.EventHandler(this.cmbX_Dyn_MoveCtrl_SelectedIndexChanged);
             // 
             // cmbX_Dyn_WaveFrom
             // 
@@ -870,6 +872,7 @@
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FrmDynCtrl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.SuspendLayout();
             // 
-            // FrmAbout
+            // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(456, 276);
             this.DoubleBuffered = true;
-            this.Name = "FrmAbout";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FrmLogin";
             this.Text = "登录";
             this.ResumeLayout(false);
 

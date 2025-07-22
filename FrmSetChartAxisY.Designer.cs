@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSetChartAxisY));
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.cbX_Command_Range = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -54,6 +55,14 @@
             this.comboItem12 = new DevComponents.Editors.ComboItem();
             this.comboItem13 = new DevComponents.Editors.ComboItem();
             this.comboItem14 = new DevComponents.Editors.ComboItem();
+            this.cbX_Time_Range = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem29 = new DevComponents.Editors.ComboItem();
+            this.comboItem30 = new DevComponents.Editors.ComboItem();
+            this.comboItem31 = new DevComponents.Editors.ComboItem();
+            this.comboItem32 = new DevComponents.Editors.ComboItem();
+            this.comboItem33 = new DevComponents.Editors.ComboItem();
+            this.comboItem34 = new DevComponents.Editors.ComboItem();
+            this.comboItem35 = new DevComponents.Editors.ComboItem();
             this.cbX_Pos_Range = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
@@ -65,6 +74,7 @@
             this.cbX_FrmSetChartAxisY_CommandEnable = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbX_FrmSetChartAxisY_ExtEnable = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbX_FrmSetChartAxisY_LoadEnable = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbX_FrmSetChartAxisY_TimeEnable = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbX_FrmSetChartAxisY_PosEnable = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.btn_FrmSerAxisY_Cancel = new DevComponents.DotNetBar.ButtonX();
             this.btn_FrmSerAxisY_OK = new DevComponents.DotNetBar.ButtonX();
@@ -73,23 +83,14 @@
             this.tbX_FrmSetChartAxisY_CommandY_Min = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbX_FrmSetChartAxisY_LoadY_Min = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbX_FrmSetChartAxisY_ExtY_Max = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_FrmSetChartAxisY_TimeY_Max = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbX_FrmSetChartAxisY_PosY_Max = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_FrmSetChartAxisY_TimeY_Min = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbX_FrmSetChartAxisY_ExtY_Min = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbX_FrmSetChartAxisY_PosY_Min = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.cbX_FrmSetChartAxisY_TimeEnable = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.tbX_FrmSetChartAxisY_TimeY_Min = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.tbX_FrmSetChartAxisY_TimeY_Max = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.cbX_Time_Range = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem29 = new DevComponents.Editors.ComboItem();
-            this.comboItem30 = new DevComponents.Editors.ComboItem();
-            this.comboItem31 = new DevComponents.Editors.ComboItem();
-            this.comboItem32 = new DevComponents.Editors.ComboItem();
-            this.comboItem33 = new DevComponents.Editors.ComboItem();
-            this.comboItem34 = new DevComponents.Editors.ComboItem();
-            this.comboItem35 = new DevComponents.Editors.ComboItem();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -300,6 +301,64 @@
             // 
             this.comboItem14.Text = "20";
             // 
+            // cbX_Time_Range
+            // 
+            this.cbX_Time_Range.DisplayMember = "Text";
+            this.cbX_Time_Range.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_Time_Range.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbX_Time_Range.Enabled = false;
+            this.cbX_Time_Range.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbX_Time_Range.FormattingEnabled = true;
+            this.cbX_Time_Range.ItemHeight = 21;
+            this.cbX_Time_Range.Items.AddRange(new object[] {
+            this.comboItem29,
+            this.comboItem30,
+            this.comboItem31,
+            this.comboItem32,
+            this.comboItem33,
+            this.comboItem34,
+            this.comboItem35});
+            this.cbX_Time_Range.Location = new System.Drawing.Point(119, 101);
+            this.cbX_Time_Range.Name = "cbX_Time_Range";
+            this.cbX_Time_Range.Size = new System.Drawing.Size(67, 27);
+            this.cbX_Time_Range.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_Time_Range.TabIndex = 4;
+            // 
+            // comboItem29
+            // 
+            this.comboItem29.Text = "0.2";
+            this.comboItem29.Value = "0.2";
+            // 
+            // comboItem30
+            // 
+            this.comboItem30.Text = "0.5";
+            this.comboItem30.Value = "0.5";
+            // 
+            // comboItem31
+            // 
+            this.comboItem31.Text = "1";
+            this.comboItem31.Value = "1";
+            // 
+            // comboItem32
+            // 
+            this.comboItem32.Text = "2";
+            this.comboItem32.Value = "2";
+            // 
+            // comboItem33
+            // 
+            this.comboItem33.Text = "5";
+            this.comboItem33.Value = "5";
+            // 
+            // comboItem34
+            // 
+            this.comboItem34.Text = "10";
+            this.comboItem34.Value = "10";
+            // 
+            // comboItem35
+            // 
+            this.comboItem35.Text = "20";
+            this.comboItem35.Value = "20";
+            // 
             // cbX_Pos_Range
             // 
             this.cbX_Pos_Range.DisplayMember = "Text";
@@ -398,6 +457,24 @@
             this.cbX_FrmSetChartAxisY_LoadEnable.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmSetChartAxisY_LoadEnable.TabIndex = 3;
             this.cbX_FrmSetChartAxisY_LoadEnable.Text = "试验力";
+            // 
+            // cbX_FrmSetChartAxisY_TimeEnable
+            // 
+            // 
+            // 
+            // 
+            this.cbX_FrmSetChartAxisY_TimeEnable.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_FrmSetChartAxisY_TimeEnable.Checked = true;
+            this.cbX_FrmSetChartAxisY_TimeEnable.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbX_FrmSetChartAxisY_TimeEnable.CheckValue = "Y";
+            this.cbX_FrmSetChartAxisY_TimeEnable.Enabled = false;
+            this.cbX_FrmSetChartAxisY_TimeEnable.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbX_FrmSetChartAxisY_TimeEnable.Location = new System.Drawing.Point(119, 12);
+            this.cbX_FrmSetChartAxisY_TimeEnable.Name = "cbX_FrmSetChartAxisY_TimeEnable";
+            this.cbX_FrmSetChartAxisY_TimeEnable.Size = new System.Drawing.Size(67, 23);
+            this.cbX_FrmSetChartAxisY_TimeEnable.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_FrmSetChartAxisY_TimeEnable.TabIndex = 3;
+            this.cbX_FrmSetChartAxisY_TimeEnable.Text = "时间";
             // 
             // cbX_FrmSetChartAxisY_PosEnable
             // 
@@ -509,6 +586,20 @@
             this.tbX_FrmSetChartAxisY_ExtY_Max.Size = new System.Drawing.Size(67, 26);
             this.tbX_FrmSetChartAxisY_ExtY_Max.TabIndex = 1;
             // 
+            // tbX_FrmSetChartAxisY_TimeY_Max
+            // 
+            // 
+            // 
+            // 
+            this.tbX_FrmSetChartAxisY_TimeY_Max.Border.Class = "TextBoxBorder";
+            this.tbX_FrmSetChartAxisY_TimeY_Max.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmSetChartAxisY_TimeY_Max.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbX_FrmSetChartAxisY_TimeY_Max.Location = new System.Drawing.Point(119, 37);
+            this.tbX_FrmSetChartAxisY_TimeY_Max.Name = "tbX_FrmSetChartAxisY_TimeY_Max";
+            this.tbX_FrmSetChartAxisY_TimeY_Max.PreventEnterBeep = true;
+            this.tbX_FrmSetChartAxisY_TimeY_Max.Size = new System.Drawing.Size(67, 26);
+            this.tbX_FrmSetChartAxisY_TimeY_Max.TabIndex = 1;
+            // 
             // tbX_FrmSetChartAxisY_PosY_Max
             // 
             // 
@@ -522,6 +613,20 @@
             this.tbX_FrmSetChartAxisY_PosY_Max.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_PosY_Max.Size = new System.Drawing.Size(67, 26);
             this.tbX_FrmSetChartAxisY_PosY_Max.TabIndex = 1;
+            // 
+            // tbX_FrmSetChartAxisY_TimeY_Min
+            // 
+            // 
+            // 
+            // 
+            this.tbX_FrmSetChartAxisY_TimeY_Min.Border.Class = "TextBoxBorder";
+            this.tbX_FrmSetChartAxisY_TimeY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmSetChartAxisY_TimeY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbX_FrmSetChartAxisY_TimeY_Min.Location = new System.Drawing.Point(119, 69);
+            this.tbX_FrmSetChartAxisY_TimeY_Min.Name = "tbX_FrmSetChartAxisY_TimeY_Min";
+            this.tbX_FrmSetChartAxisY_TimeY_Min.PreventEnterBeep = true;
+            this.tbX_FrmSetChartAxisY_TimeY_Min.Size = new System.Drawing.Size(67, 26);
+            this.tbX_FrmSetChartAxisY_TimeY_Min.TabIndex = 1;
             // 
             // tbX_FrmSetChartAxisY_ExtY_Min
             // 
@@ -590,116 +695,13 @@
             this.labelX2.TabIndex = 0;
             this.labelX2.Text = "最小值";
             // 
-            // cbX_FrmSetChartAxisY_TimeEnable
-            // 
-            // 
-            // 
-            // 
-            this.cbX_FrmSetChartAxisY_TimeEnable.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbX_FrmSetChartAxisY_TimeEnable.Checked = true;
-            this.cbX_FrmSetChartAxisY_TimeEnable.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbX_FrmSetChartAxisY_TimeEnable.CheckValue = "Y";
-            this.cbX_FrmSetChartAxisY_TimeEnable.Enabled = false;
-            this.cbX_FrmSetChartAxisY_TimeEnable.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_FrmSetChartAxisY_TimeEnable.Location = new System.Drawing.Point(119, 12);
-            this.cbX_FrmSetChartAxisY_TimeEnable.Name = "cbX_FrmSetChartAxisY_TimeEnable";
-            this.cbX_FrmSetChartAxisY_TimeEnable.Size = new System.Drawing.Size(67, 23);
-            this.cbX_FrmSetChartAxisY_TimeEnable.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbX_FrmSetChartAxisY_TimeEnable.TabIndex = 3;
-            this.cbX_FrmSetChartAxisY_TimeEnable.Text = "时间";
-            // 
-            // tbX_FrmSetChartAxisY_TimeY_Min
-            // 
-            // 
-            // 
-            // 
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Border.Class = "TextBoxBorder";
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Location = new System.Drawing.Point(119, 69);
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Name = "tbX_FrmSetChartAxisY_TimeY_Min";
-            this.tbX_FrmSetChartAxisY_TimeY_Min.PreventEnterBeep = true;
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Size = new System.Drawing.Size(67, 26);
-            this.tbX_FrmSetChartAxisY_TimeY_Min.TabIndex = 1;
-            // 
-            // tbX_FrmSetChartAxisY_TimeY_Max
-            // 
-            // 
-            // 
-            // 
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Border.Class = "TextBoxBorder";
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Location = new System.Drawing.Point(119, 37);
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Name = "tbX_FrmSetChartAxisY_TimeY_Max";
-            this.tbX_FrmSetChartAxisY_TimeY_Max.PreventEnterBeep = true;
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Size = new System.Drawing.Size(67, 26);
-            this.tbX_FrmSetChartAxisY_TimeY_Max.TabIndex = 1;
-            // 
-            // cbX_Time_Range
-            // 
-            this.cbX_Time_Range.DisplayMember = "Text";
-            this.cbX_Time_Range.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbX_Time_Range.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbX_Time_Range.Enabled = false;
-            this.cbX_Time_Range.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_Time_Range.FormattingEnabled = true;
-            this.cbX_Time_Range.ItemHeight = 21;
-            this.cbX_Time_Range.Items.AddRange(new object[] {
-            this.comboItem29,
-            this.comboItem30,
-            this.comboItem31,
-            this.comboItem32,
-            this.comboItem33,
-            this.comboItem34,
-            this.comboItem35});
-            this.cbX_Time_Range.Location = new System.Drawing.Point(119, 101);
-            this.cbX_Time_Range.Name = "cbX_Time_Range";
-            this.cbX_Time_Range.Size = new System.Drawing.Size(67, 27);
-            this.cbX_Time_Range.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbX_Time_Range.TabIndex = 4;
-            // 
-            // comboItem29
-            // 
-            this.comboItem29.Text = "0.2";
-            this.comboItem29.Value = "0.2";
-            // 
-            // comboItem30
-            // 
-            this.comboItem30.Text = "0.5";
-            this.comboItem30.Value = "0.5";
-            // 
-            // comboItem31
-            // 
-            this.comboItem31.Text = "1";
-            this.comboItem31.Value = "1";
-            // 
-            // comboItem32
-            // 
-            this.comboItem32.Text = "2";
-            this.comboItem32.Value = "2";
-            // 
-            // comboItem33
-            // 
-            this.comboItem33.Text = "5";
-            this.comboItem33.Value = "5";
-            // 
-            // comboItem34
-            // 
-            this.comboItem34.Text = "10";
-            this.comboItem34.Value = "10";
-            // 
-            // comboItem35
-            // 
-            this.comboItem35.Text = "20";
-            this.comboItem35.Value = "20";
-            // 
             // FrmSetChartAxisY
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 208);
             this.Controls.Add(this.panelEx1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmSetChartAxisY";
             this.Text = "FrmSetChartAxisY";
             this.Load += new System.EventHandler(this.FrmSetChartAxisY_Load);
