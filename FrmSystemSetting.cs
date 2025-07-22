@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using System.Security.Cryptography;
 
 namespace DoPENetConnect
 {
@@ -551,7 +552,7 @@ namespace DoPENetConnect
             MainForm.mainform.protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp);
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Force", strTmp);
 
-            strTmp = tbX_DeviceID.Text;
+            strTmp = ComputeMD5(tbX_DeviceID.Text); 
             MainForm.mainform.RefreshDeviceID(strTmp);
             IniFileHelper.WriteIniString("Device", "DeviceID", strTmp);
 
@@ -920,11 +921,11 @@ namespace DoPENetConnect
 
         private void btnX_FrmProtectOption_OK_Click(object sender, EventArgs e)
         {
-            //if (!ValidityCheck())
-            //{
-            //    MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+            if (!ValidityCheck())
+            {
+                MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             WriteIni();
             this.Close();
@@ -947,6 +948,33 @@ namespace DoPENetConnect
             Console.WriteLine(cbX_ProtectOption.SelectedIndex);
             Console.WriteLine(cbX_ProtectOption.Text);
             
+        }
+        public string ComputeMD5(string input)
+
+        {
+
+            using (MD5 md5 = MD5.Create())
+
+            {
+
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+
+                for (int i = 0; i < hashBytes.Length; i++)
+
+                {
+
+                    sb.Append(hashBytes[i].ToString("x2"));
+
+                }
+
+                return sb.ToString();
+
+            }
+
         }
     }
 }
