@@ -1070,10 +1070,13 @@ namespace DoPENetConnect
 
                     strBlockLog += ( strCSVLog + "\r\n");
 
-                    if ((Sample.Cycles >> 1) % nCountLog == 0)
+                    if (isRunning)
                     {
-                        LogHelper.SaveCsvData(strBlockLog);
-                        strBlockLog = "";
+                        if ((Sample.Cycles >> 1) % nCountLog == 0)
+                        {
+                            LogHelper.SaveCsvData(strBlockLog);
+                            strBlockLog = "";
+                        }
                     }
 
                 }
