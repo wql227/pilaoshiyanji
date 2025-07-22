@@ -28,6 +28,7 @@
 		"lblTestCycles": "试验次数",
 		"ShowLogToolStripMenuItem":"显示日志",
 		"startStopDrawToolStripMenuItem":"暂停绘制",
+		"startStopDrawToolStripMenuItemPause":"启动绘制",
 		"AdjustToolStripMenuItem":"校正",
 		"AutoSetYAxisToolStripMenuItem":"曲线自适应",
 		"ChartSetToolStripMenuItem":"图表设置",
