@@ -29,6 +29,7 @@
 		"ShowLogToolStripMenuItem":"Show Log",
 		"startStopDrawToolStripMenuItem":"Suspend Draw",
 		"AdjustToolStripMenuItem":"Corrección",
+		"AutoSetYAxisToolStripMenuItem":"Curva Adaptativa",
 		"ToolStripMenuItem_Oper":"Operation(&O)",
 		"ToolStripMenuItem_Login":"Login...(&L)",
 		"ToolStripMenuItem_Setting":"Parameter Setting(&S)",
@@ -100,7 +101,7 @@
 		"label2":"Waves record Log",
 		"groupPanel6":"Controller Connect Set",
 		"label3":"DeviceId"	,
-        "btnX_FrmProtectOption_OK":"OK"	,
+        	"btnX_FrmProtectOption_OK":"OK"	,
 		"btnX_FrmProtectOption_Cencel":"Cancel",
 		
 		"label1":"PosProtection",

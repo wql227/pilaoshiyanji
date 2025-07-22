@@ -30,6 +30,7 @@
 		"startStopDrawToolStripMenuItem": "Pausar Dibujo",
 		"AdjustToolStripMenuItem":"Corrección",
 		"ChartSetToolStripMenuItem":"Configuración de gráficos",
+		"AutoSetYAxisToolStripMenuItem":"Curva Adaptativa",
 		"ToolStripMenuItem_Oper": "Operación (&O)",
 		"ToolStripMenuItem_Login": "Iniciar Sesión... (&L)",
 		"ToolStripMenuItem_Setting": "Configuración de Parámetros (&S)",

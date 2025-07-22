@@ -753,82 +753,85 @@ namespace DoPENetConnect
                 strCSVLog += text + ",";
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
 
-                if (bConnected && bActivated)
+                if (bConnected )
                 {
                     //位移队列
                     PVPositionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
-                    if (PVPositionQueue.Count >= 50)
+                    if (PVPositionQueue.Count >= 100)
                     {
                         tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
                         tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
 
-                        //判断是否处于正常峰值区间
-                        if (protectOption.ProtectOption_PosMaxOut_Effect)
+                        if (bActivated)
                         {
-                            if (PVPositionQueue.Max() > protectOption.ProtectOption_PosMaxOut)
+                            //判断是否处于正常峰值区间
+                            if (protectOption.ProtectOption_PosMaxOut_Effect)
                             {
-                                if (protectOption.ProtectOptionType == "0")
+                                if (PVPositionQueue.Max() > protectOption.ProtectOption_PosMaxOut)
                                 {
-                                    MoveHalt();
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
                                 }
-                                else
-                                {
-                                    OffEDC();
-                                }
-                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
                             }
-                        }
 
-                        if (protectOption.ProtectOption_PosMaxIn_Effect)
-                        {
-                            if (PVPositionQueue.Max() < protectOption.ProtectOption_PosMaxIn)
+                            if (protectOption.ProtectOption_PosMaxIn_Effect)
                             {
-                                if (protectOption.ProtectOptionType == "0")
+                                if (PVPositionQueue.Max() < protectOption.ProtectOption_PosMaxIn)
                                 {
-                                    MoveHalt();
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移峰值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
                                 }
-                                else
-                                {
-                                    OffEDC();
-                                }
-                                MessageBox.Show("位移峰值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
                             }
-                        }
 
-                        //判断是否处于正常谷值区间
-                        if (protectOption.ProtectOption_PosMinOut_Effect)
-                        {
-                            if (PVPositionQueue.Min() < protectOption.ProtectOption_PosMinOut)
+                            //判断是否处于正常谷值区间
+                            if (protectOption.ProtectOption_PosMinOut_Effect)
                             {
-                                if (protectOption.ProtectOptionType == "0")
+                                if (PVPositionQueue.Min() < protectOption.ProtectOption_PosMinOut)
                                 {
-                                    MoveHalt();
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移谷值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
                                 }
-                                else
-                                {
-                                    OffEDC();
-                                }
-                                MessageBox.Show("位移谷值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
                             }
-                        }
 
-                        if (protectOption.ProtectOption_PosMinIn_Effect)
-                        {
-                            if (PVPositionQueue.Min() > protectOption.ProtectOption_PosMinIn)
+                            if (protectOption.ProtectOption_PosMinIn_Effect)
                             {
-                                if (protectOption.ProtectOptionType == "0")
+                                if (PVPositionQueue.Min() > protectOption.ProtectOption_PosMinIn)
                                 {
-                                    MoveHalt();
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移谷值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
                                 }
-                                else
-                                {
-                                    OffEDC();
-                                }
-                                MessageBox.Show("位移谷值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
                             }
                         }
 
@@ -836,14 +839,9 @@ namespace DoPENetConnect
                     }
 
                     // TODO:判断峰谷值是否超过外保护
-                    double dPosition = 0; //获取峰值外保护
-                                          //if (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S] > 7.0 )
-                                          //{
-                                          //    //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                                          //    OffEDC();
-                                          //}
+                    double dPosition = 0; 
 
-                    if (nCount >= 20)
+                    if (nCount >= 100)
                     {
                         guiPosition.Text = text;
                     }
@@ -853,80 +851,82 @@ namespace DoPENetConnect
 
                     //试验力队列
                     PVLoadQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                    if (PVLoadQueue.Count >= 50)
+                    if (PVLoadQueue.Count >= 100)
                     {
                         tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
                         tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
-
-                        //判断是否处于合理的试验力峰值区间 峰值外保护
-                        if (protectOption.ProtectOption_LoadMaxOut_Effect)
+                        if (bActivated)
                         {
-                            if (PVLoadQueue.Max() > protectOption.ProtectOption_LoadMaxOut)
+                            //判断是否处于合理的试验力峰值区间 峰值外保护
+                            if (protectOption.ProtectOption_LoadMaxOut_Effect)
                             {
-                                if (protectOption.ProtectOptionType == "0")
+                                if (PVLoadQueue.Max() > protectOption.ProtectOption_LoadMaxOut)
                                 {
-                                    MoveHalt();
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
                                 }
-                                else
-                                {
-                                    OffEDC();
-                                }
-                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
                             }
-                        }
 
-                        //判断是否处于合理的试验力峰值区间 峰值内保护
-                        if (protectOption.ProtectOption_LoadMaxIn_Effect)
-                        {
-                            if (PVLoadQueue.Max() < protectOption.ProtectOption_LoadMaxIn)
+                            //判断是否处于合理的试验力峰值区间 峰值内保护
+                            if (protectOption.ProtectOption_LoadMaxIn_Effect)
                             {
-                                if (protectOption.ProtectOptionType == "0")
+                                if (PVLoadQueue.Max() < protectOption.ProtectOption_LoadMaxIn)
                                 {
-                                    MoveHalt();
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
                                 }
-                                else
-                                {
-                                    OffEDC();
-                                }
-                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
                             }
-                        }
 
-                        //判断是否处于合理的试验力谷值区间 谷值外保护
-                        if (protectOption.ProtectOption_LoadMinOut_Effect)
-                        {
-                            if (PVLoadQueue.Min() < protectOption.ProtectOption_LoadMinOut)
+                            //判断是否处于合理的试验力谷值区间 谷值外保护
+                            if (protectOption.ProtectOption_LoadMinOut_Effect)
                             {
-                                if (protectOption.ProtectOptionType == "0")
+                                if (PVLoadQueue.Min() < protectOption.ProtectOption_LoadMinOut)
                                 {
-                                    MoveHalt();
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
                                 }
-                                else
-                                {
-                                    OffEDC();
-                                }
-                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
                             }
-                        }
 
-                        //判断是否处于合理的试验力谷值区间 谷值内保护
-                        if (protectOption.ProtectOption_LoadMinIn_Effect)
-                        {
-                            if (PVLoadQueue.Min() > protectOption.ProtectOption_LoadMinIn)
+                            //判断是否处于合理的试验力谷值区间 谷值内保护
+                            if (protectOption.ProtectOption_LoadMinIn_Effect)
                             {
-                                if (protectOption.ProtectOptionType == "0")
+                                if (PVLoadQueue.Min() > protectOption.ProtectOption_LoadMinIn)
                                 {
-                                    MoveHalt();
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
                                 }
-                                else
-                                {
-                                    OffEDC();
-                                }
-                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
                             }
                         }
 
@@ -940,7 +940,7 @@ namespace DoPENetConnect
                     }
                     //ProtectOption_PosMaxOut
 
-                    if (nCount >= 20)
+                    if (nCount >= 100)
                     {
                         guiLoad.Text = text;
                     }
@@ -951,83 +951,85 @@ namespace DoPENetConnect
 
                     //变形队列
                     PVExtensionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
-                    if (PVExtensionQueue.Count >= 50)
+                    if (PVExtensionQueue.Count >= 100)
                     {
                         tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
                         tb_MaxExt.Text = PVExtensionQueue.Min().ToString("0.000");
 
-                        //判断是否处于合理的试验力峰值区间 峰值外保护
-                        if (protectOption.ProtectOption_LoadMaxOut_Effect)
+                        if (bActivated)
                         {
-                            if (PVExtensionQueue.Max() > protectOption.ProtectOption_ExtMaxOut)
+                            //判断是否处于合理的试验力峰值区间 峰值外保护
+                            if (protectOption.ProtectOption_LoadMaxOut_Effect)
                             {
-                                if (protectOption.ProtectOptionType == "0")
+                                if (PVExtensionQueue.Max() > protectOption.ProtectOption_ExtMaxOut)
                                 {
-                                    MoveHalt();
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
                                 }
-                                else
+                            }
+
+                            //判断是否处于合理的试验力峰值区间 峰值内保护
+                            if (protectOption.ProtectOption_LoadMaxIn_Effect)
+                            {
+                                if (PVExtensionQueue.Max() < protectOption.ProtectOption_ExtMaxIn)
                                 {
-                                    OffEDC();
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
                                 }
-                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
+                            }
+
+                            //判断是否处于合理的试验力谷值区间 谷值外保护
+                            if (protectOption.ProtectOption_LoadMinOut_Effect)
+                            {
+                                if (PVExtensionQueue.Min() < protectOption.ProtectOption_ExtMinOut)
+                                {
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
+                                }
+                            }
+
+                            //判断是否处于合理的试验力谷值区间 谷值内保护
+                            if (protectOption.ProtectOption_LoadMinIn_Effect)
+                            {
+                                if (PVExtensionQueue.Min() > protectOption.ProtectOption_ExtMinIn)
+                                {
+                                    if (protectOption.ProtectOptionType == "0")
+                                    {
+                                        MoveHalt();
+                                    }
+                                    else
+                                    {
+                                        OffEDC();
+                                    }
+                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return 0;
+                                }
                             }
                         }
-
-                        //判断是否处于合理的试验力峰值区间 峰值内保护
-                        if (protectOption.ProtectOption_LoadMaxIn_Effect)
-                        {
-                            if (PVExtensionQueue.Max() < protectOption.ProtectOption_ExtMaxIn)
-                            {
-                                if (protectOption.ProtectOptionType == "0")
-                                {
-                                    MoveHalt();
-                                }
-                                else
-                                {
-                                    OffEDC();
-                                }
-                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
-                            }
-                        }
-
-                        //判断是否处于合理的试验力谷值区间 谷值外保护
-                        if (protectOption.ProtectOption_LoadMinOut_Effect)
-                        {
-                            if (PVExtensionQueue.Min() < protectOption.ProtectOption_ExtMinOut)
-                            {
-                                if (protectOption.ProtectOptionType == "0")
-                                {
-                                    MoveHalt();
-                                }
-                                else
-                                {
-                                    OffEDC();
-                                }
-                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
-                            }
-                        }
-
-                        //判断是否处于合理的试验力谷值区间 谷值内保护
-                        if (protectOption.ProtectOption_LoadMinIn_Effect)
-                        {
-                            if (PVExtensionQueue.Min() > protectOption.ProtectOption_ExtMinIn)
-                            {
-                                if (protectOption.ProtectOptionType == "0")
-                                {
-                                    MoveHalt();
-                                }
-                                else
-                                {
-                                    OffEDC();
-                                }
-                                MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return 0;
-                            }
-                        }
-
                         PVExtensionQueue.Clear();
                     }
 
@@ -1037,7 +1039,7 @@ namespace DoPENetConnect
                     //    OffEDC();
                     //}
 
-                    if (nCount >= 20)
+                    if (nCount >= 100)
                     {
                         guiExtension.Text = text;
                     }
@@ -1048,7 +1050,7 @@ namespace DoPENetConnect
                     text = String.Format("{0}", Sample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
                     strCSVLog += text + ",";
 
-                    if (nCount >= 20)
+                    if (nCount >= 100)
                     {
                         nCount = 0;
                     }
@@ -3247,10 +3249,31 @@ namespace DoPENetConnect
             //}
         }
 
+
+        /// <summary>
+        /// 退出菜单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-  
+            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                if (bConnected)
+                {
+                    OffEDC();
+                }
+
+                Application.Exit();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
         }
+
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -3268,5 +3291,22 @@ namespace DoPENetConnect
                 e.Cancel = true; // 取消关闭
             }
         }
+
+
+        /// <summary>
+        /// 曲线自适应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AutoSetYAxisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text)) * 0.8;
+            chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text)) * 0.8;
+
+            chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text)) * 0.8;
+            chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(double.Parse(tb_MinLoad.Text)) * 0.8;
+
+        }
+
     }
 }

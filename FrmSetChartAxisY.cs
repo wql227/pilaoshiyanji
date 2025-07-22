@@ -34,25 +34,25 @@ namespace DoPENetConnect
             cbX_FrmSetChartAxisY_PosEnable.Checked = strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString(strConfigSetion, "PosRange", "0", strTmp, strTmp.Capacity);
-            cbX_Pos_Range.SelectedText = strTmp.ToString();
+            cbX_Pos_Range.SelectedIndex = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString(strConfigSetion, "LoadEnable", "0", strTmp, strTmp.Capacity);
             cbX_FrmSetChartAxisY_LoadEnable.Checked = strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString(strConfigSetion, "LoadRange", "0", strTmp, strTmp.Capacity);
-            cbX_Load_Range.SelectedText = strTmp.ToString();
+            cbX_Load_Range.SelectedIndex = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString(strConfigSetion, "ExtEnable", "0", strTmp, strTmp.Capacity);
             cbX_FrmSetChartAxisY_ExtEnable.Checked = strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString(strConfigSetion, "ExtRange", "0", strTmp, strTmp.Capacity);
-            cbX_Ext_Range.SelectedText = strTmp.ToString();
+            cbX_Ext_Range.SelectedIndex = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString(strConfigSetion, "CommandEnable", "0", strTmp, strTmp.Capacity);
             cbX_FrmSetChartAxisY_CommandEnable.Checked = strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString(strConfigSetion, "CommandRange", "0", strTmp, strTmp.Capacity);
-            cbX_Command_Range.SelectedText = strTmp.ToString();
+            cbX_Command_Range.SelectedIndex = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString(strConfigSetion, "PositionY_MAX", "0", strTmp, strTmp.Capacity);
             tbX_FrmSetChartAxisY_PosY_Max.Text = strTmp.ToString();
@@ -88,25 +88,25 @@ namespace DoPENetConnect
             strTmp = cbX_FrmSetChartAxisY_PosEnable.Checked == false ? "0" : "1";
             IniFileHelper.WriteIniString(strConfigSetion, "PositionEnable", strTmp);
 
-            strTmp = cbX_Pos_Range.Text;
+            strTmp = cbX_Pos_Range.SelectedIndex.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "PosRange", strTmp);
 
             strTmp = cbX_FrmSetChartAxisY_LoadEnable.Checked == false ? "0" : "1";
             IniFileHelper.WriteIniString(strConfigSetion, "LoadEnable", strTmp);
 
-            strTmp = cbX_Load_Range.Text;
+            strTmp = cbX_Load_Range.SelectedIndex.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "LoadRange", strTmp);
 
             strTmp = cbX_FrmSetChartAxisY_ExtEnable.Checked == false ? "0" : "1";
             IniFileHelper.WriteIniString(strConfigSetion, "ExtEnable", strTmp);
 
-            strTmp = cbX_Ext_Range.Text;
+            strTmp = cbX_Ext_Range.SelectedIndex.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "ExtRange", strTmp);
 
             strTmp = cbX_FrmSetChartAxisY_CommandEnable.Checked == false ? "0" : "1";
             IniFileHelper.WriteIniString(strConfigSetion, "CommandEnable", strTmp);
 
-            strTmp = cbX_Command_Range.Text;
+            strTmp = cbX_Command_Range.SelectedIndex.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "CommandRange", strTmp);
 
             strTmp = tbX_FrmSetChartAxisY_PosY_Max.Text.ToString();
@@ -152,6 +152,8 @@ namespace DoPENetConnect
             MainForm.mainform.Chart_Load_Step = double.Parse(cbX_Load_Range.Text);
             MainForm.mainform.Chart_Ext_Step = double.Parse(cbX_Ext_Range.Text);
             MainForm.mainform.Chart_Command_Step = double.Parse(cbX_Command_Range.Text);
+
+            this.Close();
         }
 
         private void btn_FrmSerAxisY_Cancel_Click(object sender, EventArgs e)
@@ -241,6 +243,34 @@ namespace DoPENetConnect
             {
                 MessageBox.Show("命令坐标最小值不能大于最大值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbX_FrmSetChartAxisY_CommandY_Min.Focus();
+                return false;
+            }
+
+            if (cbX_Pos_Range.SelectedIndex == -1)
+            {
+                MessageBox.Show("位移坐标调整量程请选中一个值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbX_Pos_Range.Focus();
+                return false;
+            }
+
+            if (cbX_Load_Range.SelectedIndex == -1)
+            {
+                MessageBox.Show("试验力坐标调整量程请选中一个值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbX_Load_Range.Focus();
+                return false;
+            }
+
+            if (cbX_Ext_Range.SelectedIndex == -1)
+            {
+                MessageBox.Show("变形坐标调整量程请选中一个值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbX_Ext_Range.Focus();
+                return false;
+            }
+
+            if (cbX_Command_Range.SelectedIndex == -1)
+            {
+                MessageBox.Show("命令坐标调整量程请选中一个值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbX_Command_Range.Focus();
                 return false;
             }
 
