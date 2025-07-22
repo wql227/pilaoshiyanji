@@ -2374,6 +2374,10 @@ namespace DoPENetConnect
         {
             if (!isRunning)
             {
+                return;
+            }
+            else
+            {
                 if (cb_TarePos.Checked)
                 {
                     MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_S, true);
@@ -2395,6 +2399,10 @@ namespace DoPENetConnect
         {
             if (!isRunning)
             {
+                return;
+            }
+            else
+            {
                 if (cb_TareLoad.Checked)
                 {
                     MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, true);
@@ -2415,6 +2423,10 @@ namespace DoPENetConnect
         private void cb_TareExt_CheckedChanged(object sender, EventArgs e)
         {
             if (!isRunning)
+            {
+                return;
+            }
+            else
             {
                 if (cb_TareExt.Checked)
                 {
@@ -3343,15 +3355,24 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void AutoSetYAxisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (double.Parse(tb_MaxPos.Text) <= 0.01 )
+            if (Math.Abs(double.Parse(tb_MaxPos.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinPos.Text)) <= 0.01)
             {
                 chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
                 chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
             }
-            else
+            else 
             {
-                chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2;
-                chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2;
+                if (double.Parse(tb_MaxPos.Text) == double.Parse(tb_MinPos.Text))
+                {
+                    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2 + 1;
+                    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2 - 1;
+                }
+                else
+                {
+                    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2;
+                    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2;
+                }
+    
                 chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "F2";
 
             }
@@ -3363,6 +3384,11 @@ namespace DoPENetConnect
             }
             else
             {
+                if (double.Parse(tb_MaxLoad.Text) == double.Parse(tb_MinLoad.Text))
+                {
+                    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2 + 1;
+                    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2 - 1;
+                }
                 chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2;
                 chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2;
                 chart_machine.ChartAreas[0].AxisY2.LabelStyle.Format = "F2";
