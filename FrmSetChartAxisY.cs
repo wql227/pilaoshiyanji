@@ -30,6 +30,12 @@ namespace DoPENetConnect
             StringBuilder strTmp = new StringBuilder(255);
             string strConfigSetion = this.Name;
 
+            IniFileHelper.GetIniString(strConfigSetion, "TimeEnable", "1", strTmp, strTmp.Capacity);
+            cbX_FrmSetChartAxisY_TimeEnable.Checked = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString(strConfigSetion, "TimeRange", "1", strTmp, strTmp.Capacity);
+            cbX_Time_Range.SelectedIndex = int.Parse(strTmp.ToString());
+
             IniFileHelper.GetIniString(strConfigSetion, "PositionEnable", "0", strTmp, strTmp.Capacity);
             cbX_FrmSetChartAxisY_PosEnable.Checked = strTmp.ToString() == "0" ? false : true;
 
@@ -53,6 +59,12 @@ namespace DoPENetConnect
 
             IniFileHelper.GetIniString(strConfigSetion, "CommandRange", "0", strTmp, strTmp.Capacity);
             cbX_Command_Range.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString(strConfigSetion, "TimeX_MAX", "5", strTmp, strTmp.Capacity);
+            tbX_FrmSetChartAxisY_TimeY_Max.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString(strConfigSetion, "TimeX_MIN", "0", strTmp, strTmp.Capacity);
+            tbX_FrmSetChartAxisY_TimeY_Min.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString(strConfigSetion, "PositionY_MAX", "0", strTmp, strTmp.Capacity);
             tbX_FrmSetChartAxisY_PosY_Max.Text = strTmp.ToString();

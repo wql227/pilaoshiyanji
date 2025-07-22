@@ -1353,6 +1353,8 @@ namespace DoPENetConnect
             //chart_machine.Series[0].Color = Color.Blue;
             //chart_machine.Series[1].Color = Color.Red;
 
+            chart_machine.ChartAreas[0].AxisX.Minimum = 0;
+            //chart_machine.ChartAreas[0].AxisX.Maximum = 5;
 
         }
 
@@ -1967,7 +1969,9 @@ namespace DoPENetConnect
             //{
             //X轴坐标长度 = dStep * nTotal
             double dStep = 0.01;
-            double nTotal = 1000;
+            double nTotal = 500;
+            //double dStep = 0.01;
+            //double nTotal = 1000;
             //double dStep = 0.03;
             //double nTotal = 333;
 
@@ -2178,8 +2182,6 @@ namespace DoPENetConnect
         public void MovePos(DoPE.CTRL control, double speed, double destination)
         {
             DoPE.ERR error = MyEdc.Move.Pos(control, speed, destination, ref MyTan);
-
-            //DoPE.ERR error = MyEdc.Move.Ex(control, speed, destination, ref MyTan);
 
             //正常返回，开始计时
             if (error == DoPE.ERR.NOERROR)
@@ -2751,6 +2753,9 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDown", "0", strTmp, strTmp.Capacity);
             btnHurryDownConstantVal = double.Parse(strTmp.ToString());
             #endregion 按键功能常数
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "TimeX_MAX", "5", strTmp, strTmp.Capacity);
+            chart_machine.ChartAreas[0].AxisX.Maximum = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
             cb_DrawPosition.Checked = strTmp.ToString() == "0" ? false : true;
