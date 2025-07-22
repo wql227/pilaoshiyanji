@@ -80,8 +80,8 @@
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.cbX_FrmSetChartAxisY_TimeEnable = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.tbX_FrmSetChartAxisY_TimeY_Min = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.tbX_FrmSetChartAxisY_TimeY_Max = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_FrmSetChartAxisY_Time_Min = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_FrmSetChartAxisX_Time_Max = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cbX_Time_Range = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem29 = new DevComponents.Editors.ComboItem();
             this.comboItem30 = new DevComponents.Editors.ComboItem();
@@ -127,9 +127,9 @@
             this.panelEx1.Controls.Add(this.tbX_FrmSetChartAxisY_CommandY_Min);
             this.panelEx1.Controls.Add(this.tbX_FrmSetChartAxisY_LoadY_Min);
             this.panelEx1.Controls.Add(this.tbX_FrmSetChartAxisY_ExtY_Max);
-            this.panelEx1.Controls.Add(this.tbX_FrmSetChartAxisY_TimeY_Max);
+            this.panelEx1.Controls.Add(this.tbX_FrmSetChartAxisX_Time_Max);
             this.panelEx1.Controls.Add(this.tbX_FrmSetChartAxisY_PosY_Max);
-            this.panelEx1.Controls.Add(this.tbX_FrmSetChartAxisY_TimeY_Min);
+            this.panelEx1.Controls.Add(this.tbX_FrmSetChartAxisY_Time_Min);
             this.panelEx1.Controls.Add(this.tbX_FrmSetChartAxisY_ExtY_Min);
             this.panelEx1.Controls.Add(this.tbX_FrmSetChartAxisY_PosY_Min);
             this.panelEx1.Controls.Add(this.labelX3);
@@ -608,33 +608,33 @@
             this.cbX_FrmSetChartAxisY_TimeEnable.TabIndex = 3;
             this.cbX_FrmSetChartAxisY_TimeEnable.Text = "时间";
             // 
-            // tbX_FrmSetChartAxisY_TimeY_Min
+            // tbX_FrmSetChartAxisY_Time_Min
             // 
             // 
             // 
             // 
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Border.Class = "TextBoxBorder";
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Location = new System.Drawing.Point(119, 69);
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Name = "tbX_FrmSetChartAxisY_TimeY_Min";
-            this.tbX_FrmSetChartAxisY_TimeY_Min.PreventEnterBeep = true;
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Size = new System.Drawing.Size(67, 26);
-            this.tbX_FrmSetChartAxisY_TimeY_Min.TabIndex = 1;
+            this.tbX_FrmSetChartAxisY_Time_Min.Border.Class = "TextBoxBorder";
+            this.tbX_FrmSetChartAxisY_Time_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmSetChartAxisY_Time_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbX_FrmSetChartAxisY_Time_Min.Location = new System.Drawing.Point(119, 69);
+            this.tbX_FrmSetChartAxisY_Time_Min.Name = "tbX_FrmSetChartAxisY_Time_Min";
+            this.tbX_FrmSetChartAxisY_Time_Min.PreventEnterBeep = true;
+            this.tbX_FrmSetChartAxisY_Time_Min.Size = new System.Drawing.Size(67, 26);
+            this.tbX_FrmSetChartAxisY_Time_Min.TabIndex = 1;
             // 
-            // tbX_FrmSetChartAxisY_TimeY_Max
-            // 
-            // 
+            // tbX_FrmSetChartAxisX_Time_Max
             // 
             // 
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Border.Class = "TextBoxBorder";
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Location = new System.Drawing.Point(119, 37);
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Name = "tbX_FrmSetChartAxisY_TimeY_Max";
-            this.tbX_FrmSetChartAxisY_TimeY_Max.PreventEnterBeep = true;
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Size = new System.Drawing.Size(67, 26);
-            this.tbX_FrmSetChartAxisY_TimeY_Max.TabIndex = 1;
+            // 
+            // 
+            this.tbX_FrmSetChartAxisX_Time_Max.Border.Class = "TextBoxBorder";
+            this.tbX_FrmSetChartAxisX_Time_Max.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_FrmSetChartAxisX_Time_Max.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbX_FrmSetChartAxisX_Time_Max.Location = new System.Drawing.Point(119, 37);
+            this.tbX_FrmSetChartAxisX_Time_Max.Name = "tbX_FrmSetChartAxisX_Time_Max";
+            this.tbX_FrmSetChartAxisX_Time_Max.PreventEnterBeep = true;
+            this.tbX_FrmSetChartAxisX_Time_Max.Size = new System.Drawing.Size(67, 26);
+            this.tbX_FrmSetChartAxisX_Time_Max.TabIndex = 1;
             // 
             // cbX_Time_Range
             // 
@@ -770,7 +770,7 @@
         private DevComponents.Editors.ComboItem comboItem33;
         private DevComponents.Editors.ComboItem comboItem34;
         private DevComponents.Editors.ComboItem comboItem35;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmSetChartAxisY_TimeY_Max;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmSetChartAxisY_TimeY_Min;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmSetChartAxisX_Time_Max;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmSetChartAxisY_Time_Min;
     }
 }

@@ -325,6 +325,8 @@ namespace DoPENetConnect
 
         //
         public double AxisXMax = 5;
+        public double dStep = 0.01;
+        public double nTotal = 500;
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -350,6 +352,8 @@ namespace DoPENetConnect
             mainform = this;
 
             LoadIni();
+
+            nTotal = AxisXMax / dStep;
         }
 
         ///----------------------------------------------------------------------
@@ -1741,6 +1745,8 @@ namespace DoPENetConnect
         {
             MoveHalt();
 
+            isRunning = false;
+
             SetControlEnable(true);
         }
 
@@ -1974,12 +1980,6 @@ namespace DoPENetConnect
             //try
             //{
             //X轴坐标长度 = dStep * nTotal
-            double dStep = 0.01;
-            double nTotal = 500;
-            //double dStep = 0.01;
-            //double nTotal = 1000;
-            //double dStep = 0.03;
-            //double nTotal = 333;
 
             //if (MyEdc.IsConnected() && bConnected)
             if (chart_machine != null)
@@ -1996,8 +1996,7 @@ namespace DoPENetConnect
                         //x_Position += nAxisStep;
                         x_Position += dStep;
 
-                        if (chart_machine.Series != null)
-                        {
+
                             if (chart_machine.Series[0] != null)
                             {
                                 chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
@@ -2009,7 +2008,7 @@ namespace DoPENetConnect
                                 }
 
                             }
-                        }
+
 
                         //绘制Load
                         double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
@@ -2078,10 +2077,6 @@ namespace DoPENetConnect
                 //Console.WriteLine(ex.ToString());
                 //return;
             }
-
-
-            //max_label.Text = max.ToString();
-            //min_label.Text = min.ToString();
 
         }
 
@@ -2378,7 +2373,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void cb_TarePos_CheckedChanged(object sender, EventArgs e)
         {
-            if (!isRunning)
+            if (isRunning)
             {
                 return;
             }
@@ -2403,7 +2398,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void cb_TareLoad_CheckedChanged(object sender, EventArgs e)
         {
-            if (!isRunning)
+            if (isRunning)
             {
                 return;
             }
@@ -2428,7 +2423,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void cb_TareExt_CheckedChanged(object sender, EventArgs e)
         {
-            if (!isRunning)
+            if (isRunning)
             {
                 return;
             }
@@ -2795,7 +2790,8 @@ namespace DoPENetConnect
             #endregion 按键功能常数
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "TimeX_MAX", "5", strTmp, strTmp.Capacity);
-            chart_machine.ChartAreas[0].AxisX.Maximum = int.Parse(strTmp.ToString());
+            AxisXMax = int.Parse(strTmp.ToString());
+            chart_machine.ChartAreas[0].AxisX.Maximum = AxisXMax;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
             cb_DrawPosition.Checked = strTmp.ToString() == "0" ? false : true;
