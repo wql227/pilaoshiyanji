@@ -2752,6 +2752,18 @@ namespace DoPENetConnect
             btnHurryDownConstantVal = double.Parse(strTmp.ToString());
             #endregion 按键功能常数
 
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
+            cb_DrawPosition.Checked = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "LoadEnable", "0", strTmp, strTmp.Capacity);
+            cb_DrawLoad.Checked = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "ExtEnable", "0", strTmp, strTmp.Capacity);
+            cb_DrawExtension.Checked = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "0", strTmp, strTmp.Capacity);
+            cb_DrawCommand.Checked = strTmp.ToString() == "0" ? false : true;
+
         }
 
         private void ToolStripMenuItem_SystemSetting_Click(object sender, EventArgs e)
