@@ -3313,6 +3313,8 @@ namespace DoPENetConnect
             {
                 chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2;
                 chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2;
+                chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "F2";
+
             }
 
             if (double.Parse(tb_MaxLoad.Text) <= 0.01 )
@@ -3324,6 +3326,7 @@ namespace DoPENetConnect
             {
                 chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2;
                 chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2;
+                chart_machine.ChartAreas[0].AxisY2.LabelStyle.Format = "F2";
             }
         }
 
