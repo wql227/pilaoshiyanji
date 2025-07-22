@@ -429,6 +429,7 @@
             // 
             this.cbX_Load_Range.DisplayMember = "Text";
             this.cbX_Load_Range.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_Load_Range.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbX_Load_Range.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbX_Load_Range.FormattingEnabled = true;
             this.cbX_Load_Range.ItemHeight = 21;
@@ -478,6 +479,7 @@
             // 
             this.cbX_Ext_Range.DisplayMember = "Text";
             this.cbX_Ext_Range.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_Ext_Range.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbX_Ext_Range.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbX_Ext_Range.FormattingEnabled = true;
             this.cbX_Ext_Range.ItemHeight = 21;
@@ -527,6 +529,7 @@
             // 
             this.cbX_Command_Range.DisplayMember = "Text";
             this.cbX_Command_Range.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_Command_Range.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbX_Command_Range.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbX_Command_Range.FormattingEnabled = true;
             this.cbX_Command_Range.ItemHeight = 21;

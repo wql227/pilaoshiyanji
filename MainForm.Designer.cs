@@ -29,12 +29,12 @@
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
@@ -117,6 +117,7 @@
             this.startStopDrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdjustToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ChartSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AutoSetYAxisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pl_DataShow = new System.Windows.Forms.Panel();
             this.cb_TareExt = new System.Windows.Forms.CheckBox();
             this.cb_TareLoad = new System.Windows.Forms.CheckBox();
@@ -266,7 +267,6 @@
             this.ToolStripMenuItem_Adout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
-            this.ck_TareCount = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -446,7 +446,6 @@
             // 
             // line1
             // 
-            this.line1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.line1.Location = new System.Drawing.Point(1239, 459);
             this.line1.Name = "line1";
             this.line1.Size = new System.Drawing.Size(120, 10);
@@ -616,74 +615,74 @@
             this.chart_machine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.AxisX.Interval = 1D;
-            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea1.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisX.Maximum = 10D;
-            chartArea1.AxisX.MaximumAutoSize = 100F;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.MinorTickMark.Enabled = true;
-            chartArea1.AxisX.MinorTickMark.Size = 0.5F;
-            chartArea1.AxisX.Title = "时间(s)";
-            chartArea1.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.Maximum = 20D;
-            chartArea1.AxisY.Minimum = -20D;
-            chartArea1.AxisY.MinorTickMark.Enabled = true;
-            chartArea1.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-            chartArea1.AxisY.MinorTickMark.Size = 0.5F;
-            chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea1.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
-            chartArea1.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea1.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisY2.LineColor = System.Drawing.Color.Orange;
-            chartArea1.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea1.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY2.Maximum = 20D;
-            chartArea1.AxisY2.Minimum = -20D;
-            chartArea1.AxisY2.MinorTickMark.Enabled = true;
-            chartArea1.AxisY2.MinorTickMark.Size = 0.5F;
-            chartArea1.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea1.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(N)";
-            chartArea1.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
-            chartArea1.Name = "ChartArea1";
-            this.chart_machine.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart_machine.Legends.Add(legend1);
+            chartArea5.AxisX.Interval = 1D;
+            chartArea5.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea5.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea5.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea5.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea5.AxisX.Maximum = 10D;
+            chartArea5.AxisX.MaximumAutoSize = 100F;
+            chartArea5.AxisX.Minimum = 0D;
+            chartArea5.AxisX.MinorTickMark.Enabled = true;
+            chartArea5.AxisX.MinorTickMark.Size = 0.5F;
+            chartArea5.AxisX.Title = "时间(s)";
+            chartArea5.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea5.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea5.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
+            chartArea5.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
+            chartArea5.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea5.AxisY.Maximum = 20D;
+            chartArea5.AxisY.Minimum = -20D;
+            chartArea5.AxisY.MinorTickMark.Enabled = true;
+            chartArea5.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+            chartArea5.AxisY.MinorTickMark.Size = 0.5F;
+            chartArea5.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea5.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
+            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
+            chartArea5.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea5.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea5.AxisY2.LineColor = System.Drawing.Color.Orange;
+            chartArea5.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea5.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea5.AxisY2.Maximum = 20D;
+            chartArea5.AxisY2.Minimum = -20D;
+            chartArea5.AxisY2.MinorTickMark.Enabled = true;
+            chartArea5.AxisY2.MinorTickMark.Size = 0.5F;
+            chartArea5.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea5.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(kN)";
+            chartArea5.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
+            chartArea5.Name = "ChartArea1";
+            this.chart_machine.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart_machine.Legends.Add(legend5);
             this.chart_machine.Location = new System.Drawing.Point(0, 0);
             this.chart_machine.Name = "chart_machine";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series1.Legend = "Legend1";
-            series1.Name = "位移";
-            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series2.Legend = "Legend1";
-            series2.Name = "试验力";
-            series2.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series3.Legend = "Legend1";
-            series3.Name = "变形";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series4.Color = System.Drawing.Color.BlueViolet;
-            series4.Legend = "Legend1";
-            series4.Name = "命令";
-            series4.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            this.chart_machine.Series.Add(series1);
-            this.chart_machine.Series.Add(series2);
-            this.chart_machine.Series.Add(series3);
-            this.chart_machine.Series.Add(series4);
+            series17.ChartArea = "ChartArea1";
+            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series17.Legend = "Legend1";
+            series17.Name = "位移";
+            series17.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series18.ChartArea = "ChartArea1";
+            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series18.Legend = "Legend1";
+            series18.Name = "试验力";
+            series18.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            series19.ChartArea = "ChartArea1";
+            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series19.Legend = "Legend1";
+            series19.Name = "变形";
+            series20.ChartArea = "ChartArea1";
+            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series20.Color = System.Drawing.Color.BlueViolet;
+            series20.Legend = "Legend1";
+            series20.Name = "命令";
+            series20.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.chart_machine.Series.Add(series17);
+            this.chart_machine.Series.Add(series18);
+            this.chart_machine.Series.Add(series19);
+            this.chart_machine.Series.Add(series20);
             this.chart_machine.Size = new System.Drawing.Size(1212, 554);
             this.chart_machine.TabIndex = 63;
             // 
@@ -965,7 +964,8 @@
             this.ShowLogToolStripMenuItem,
             this.startStopDrawToolStripMenuItem,
             this.AdjustToolStripMenuItem,
-            this.ChartSetToolStripMenuItem});
+            this.ChartSetToolStripMenuItem,
+            this.AutoSetYAxisToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(3, 17);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(1412, 25);
@@ -1192,7 +1192,6 @@
             this.Pos_AtoolStripMenuItem1.Name = "Pos_AtoolStripMenuItem1";
             this.Pos_AtoolStripMenuItem1.Size = new System.Drawing.Size(70, 21);
             this.Pos_AtoolStripMenuItem1.Text = "Pos_A";
-            this.Pos_AtoolStripMenuItem1.Visible = false;
             this.Pos_AtoolStripMenuItem1.Click += new System.EventHandler(this.Pos_AtoolStripMenuItem1_Click);
             // 
             // dynCtrlToolStripMenuItem
@@ -1249,9 +1248,15 @@
             this.ChartSetToolStripMenuItem.Text = "图表设置";
             this.ChartSetToolStripMenuItem.Click += new System.EventHandler(this.ChartSetToolStripMenuItem_Click);
             // 
+            // AutoSetYAxisToolStripMenuItem
+            // 
+            this.AutoSetYAxisToolStripMenuItem.Name = "AutoSetYAxisToolStripMenuItem";
+            this.AutoSetYAxisToolStripMenuItem.Size = new System.Drawing.Size(104, 21);
+            this.AutoSetYAxisToolStripMenuItem.Text = "曲线坐标自适应";
+            this.AutoSetYAxisToolStripMenuItem.Click += new System.EventHandler(this.AutoSetYAxisToolStripMenuItem_Click);
+            // 
             // pl_DataShow
             // 
-            this.pl_DataShow.Controls.Add(this.ck_TareCount);
             this.pl_DataShow.Controls.Add(this.cb_TareExt);
             this.pl_DataShow.Controls.Add(this.cb_TareLoad);
             this.pl_DataShow.Controls.Add(this.cb_TarePos);
@@ -1381,7 +1386,7 @@
             // 
             this.lblTestCycles.AutoSize = true;
             this.lblTestCycles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTestCycles.Location = new System.Drawing.Point(1198, 2);
+            this.lblTestCycles.Location = new System.Drawing.Point(1157, 1);
             this.lblTestCycles.Name = "lblTestCycles";
             this.lblTestCycles.Size = new System.Drawing.Size(77, 20);
             this.lblTestCycles.TabIndex = 26;
@@ -1554,9 +1559,9 @@
             this.tbX_TestCycles.ForeColor = System.Drawing.Color.Lime;
             this.tbX_TestCycles.Location = new System.Drawing.Point(1157, 25);
             this.tbX_TestCycles.Name = "tbX_TestCycles";
-            this.tbX_TestCycles.Size = new System.Drawing.Size(208, 47);
+            this.tbX_TestCycles.Size = new System.Drawing.Size(205, 47);
             this.tbX_TestCycles.TabIndex = 41;
-            this.tbX_TestCycles.Text = "0000000000";
+            this.tbX_TestCycles.Text = "00000000";
             this.tbX_TestCycles.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // guiExtension
@@ -3120,7 +3125,7 @@
             // 
             this.ToolStripMenuItem_Login.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem_Login.Image")));
             this.ToolStripMenuItem_Login.Name = "ToolStripMenuItem_Login";
-            this.ToolStripMenuItem_Login.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Login.Size = new System.Drawing.Size(172, 22);
             this.ToolStripMenuItem_Login.Text = "登录...(&L)";
             this.ToolStripMenuItem_Login.Visible = false;
             this.ToolStripMenuItem_Login.Click += new System.EventHandler(this.ToolStripMenuItem_Login_Click);
@@ -3129,7 +3134,7 @@
             // 
             this.试验数据回访ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("试验数据回访ToolStripMenuItem.Image")));
             this.试验数据回访ToolStripMenuItem.Name = "试验数据回访ToolStripMenuItem";
-            this.试验数据回访ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.试验数据回访ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.试验数据回访ToolStripMenuItem.Text = "试验数据回放";
             this.试验数据回访ToolStripMenuItem.Visible = false;
             // 
@@ -3289,18 +3294,6 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
-            // ck_TareCount
-            // 
-            this.ck_TareCount.AutoSize = true;
-            this.ck_TareCount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ck_TareCount.Location = new System.Drawing.Point(1157, 4);
-            this.ck_TareCount.Name = "ck_TareCount";
-            this.ck_TareCount.Size = new System.Drawing.Size(35, 20);
-            this.ck_TareCount.TabIndex = 42;
-            this.ck_TareCount.Text = "T";
-            this.ck_TareCount.UseVisualStyleBackColor = true;
-            this.ck_TareCount.CheckedChanged += new System.EventHandler(this.ck_TareCount_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3311,7 +3304,6 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DoPE10NetConnect";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
@@ -3590,7 +3582,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private DevComponents.DotNetBar.Controls.Line line1;
         private System.Windows.Forms.ToolStripMenuItem ChartSetToolStripMenuItem;
-        private System.Windows.Forms.CheckBox ck_TareCount;
+        private System.Windows.Forms.ToolStripMenuItem AutoSetYAxisToolStripMenuItem;
     }
 }
 
