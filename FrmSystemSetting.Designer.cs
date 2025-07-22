@@ -316,7 +316,6 @@
             this.groupPanel6.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel6.TabIndex = 4;
             this.groupPanel6.Text = "控制器连接设置";
-            this.groupPanel6.Visible = false;
             // 
             // tbX_DeviceID
             // 
@@ -330,7 +329,7 @@
             this.tbX_DeviceID.PreventEnterBeep = true;
             this.tbX_DeviceID.Size = new System.Drawing.Size(125, 26);
             this.tbX_DeviceID.TabIndex = 3;
-            this.tbX_DeviceID.Text = "10";
+            this.tbX_DeviceID.WordWrap = false;
             // 
             // label3
             // 

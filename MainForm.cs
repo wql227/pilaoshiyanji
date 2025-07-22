@@ -433,13 +433,17 @@ namespace DoPENetConnect
                 try
                 {
                     DoPE.ERR error;
-                    //DoPE.IgnoreTcpIpNIC(true);
-                    // open the first EDC found on this PC
-                    //打开edc列表
-                    //MyEdcList = new EdcList(32);
-                    //MyEdc = MyEdcList[0];
-                    //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);02137E43                
-                    MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse(devId.ToString(), System.Globalization.NumberStyles.HexNumber));
+                //DoPE.IgnoreTcpIpNIC(true);
+                // open the first EDC found on this PC
+                //打开edc列表
+                //MyEdcList = new EdcList(32);
+                //MyEdc = MyEdcList[0];
+                //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);02137E43 
+                if (devId != null) MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse(devId.ToString(), System.Globalization.NumberStyles.HexNumber));
+                else
+                {
+                    return;
+                }
                     //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 3491251);
 
                     //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
@@ -2665,8 +2669,11 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("SoftWareInfo", "Name", "0", strTmp, strTmp.Capacity);
             this.Text = strTmp.ToString();
             //获取EDC设备id
-            devId = new StringBuilder(16);
-            bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devId, devId.Capacity);
+            StringBuilder devIdEncrypted = new StringBuilder(255);
+            bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
+            string idEncry=devIdEncrypted.ToString();
+            if(idEncry!="0"&&idEncry!="")
+                devId =new StringBuilder(DESEncrypt.Decrypt(idEncry));
 
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
