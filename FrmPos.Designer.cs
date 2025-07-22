@@ -39,11 +39,7 @@
             this.cmbX_Pos_MoveCtrl = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.tbX_Pos_Destnation = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cmbX_Pos_SpeedUnit = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
-            this.comboItem4 = new DevComponents.Editors.ComboItem();
-            this.comboItem5 = new DevComponents.Editors.ComboItem();
-            this.comboItem6 = new DevComponents.Editors.ComboItem();
             this.cmbX_Pos_DestnationUnit = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem7 = new DevComponents.Editors.ComboItem();
             this.comboItem8 = new DevComponents.Editors.ComboItem();
@@ -176,36 +172,16 @@
             this.cmbX_Pos_SpeedUnit.FormattingEnabled = true;
             this.cmbX_Pos_SpeedUnit.ItemHeight = 21;
             this.cmbX_Pos_SpeedUnit.Items.AddRange(new object[] {
-            this.comboItem2,
-            this.comboItem3,
-            this.comboItem4,
-            this.comboItem5,
-            this.comboItem6});
+            this.comboItem3});
             this.cmbX_Pos_SpeedUnit.Location = new System.Drawing.Point(204, 100);
             this.cmbX_Pos_SpeedUnit.Name = "cmbX_Pos_SpeedUnit";
             this.cmbX_Pos_SpeedUnit.Size = new System.Drawing.Size(89, 27);
             this.cmbX_Pos_SpeedUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbX_Pos_SpeedUnit.TabIndex = 1;
             // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "mm/min";
-            // 
             // comboItem3
             // 
             this.comboItem3.Text = "mm/s";
-            // 
-            // comboItem4
-            // 
-            this.comboItem4.Text = "μm/s";
-            // 
-            // comboItem5
-            // 
-            this.comboItem5.Text = "μm/min";
-            // 
-            // comboItem6
-            // 
-            this.comboItem6.Text = "m/s";
             // 
             // cmbX_Pos_DestnationUnit
             // 
@@ -309,11 +285,7 @@
         private DevComponents.DotNetBar.PanelEx panelEx_POS;
         private DevComponents.DotNetBar.ButtonX btnX_PosSend;
         private DevComponents.Editors.ComboItem comboItem1;
-        private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.Editors.ComboItem comboItem3;
-        private DevComponents.Editors.ComboItem comboItem4;
-        private DevComponents.Editors.ComboItem comboItem5;
-        private DevComponents.Editors.ComboItem comboItem6;
         private DevComponents.Editors.ComboItem comboItem7;
         private DevComponents.Editors.ComboItem comboItem8;
         private DevComponents.Editors.ComboItem comboItem9;
