@@ -3244,10 +3244,31 @@ namespace DoPENetConnect
             //}
         }
 
+
+        /// <summary>
+        /// 退出菜单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-  
+            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                if (bConnected)
+                {
+                    OffEDC();
+                }
+
+                Application.Exit();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
         }
+
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -3265,5 +3286,17 @@ namespace DoPENetConnect
                 e.Cancel = true; // 取消关闭
             }
         }
+
+
+        /// <summary>
+        /// 曲线自适应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AutoSetYAxisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
