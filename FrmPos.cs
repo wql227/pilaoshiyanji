@@ -101,5 +101,25 @@ namespace DoPENetConnect
             IniFileHelper.WriteIniString("POS", "DestnationUnit", strTmp);
 
         }
+
+        private void cmbX_Pos_MoveCtrl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbX_Pos_MoveCtrl.SelectedValue.ToString())
+            {
+                case "POS":
+                    cmbX_Pos_SpeedUnit.DataSource = new string[]{"mm/s" };
+                    cmbX_Pos_DestnationUnit.DataSource = new string[]{ "mm"};
+                    break;
+                case "LOAD":
+                    cmbX_Pos_SpeedUnit.DataSource = new string[]{"N/s"};
+                    cmbX_Pos_DestnationUnit.DataSource = new string[]{"N"};
+                    break;
+                default:
+                    cmbX_Pos_SpeedUnit.DataSource = new string[] { "Unit/s" };
+                    cmbX_Pos_DestnationUnit.DataSource = new string[] { "Unit" };
+                    break;
+
+            }
+        }
     }
 }

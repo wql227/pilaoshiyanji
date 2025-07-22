@@ -148,6 +148,7 @@
             this.cmbX_Pos_MoveCtrl.Size = new System.Drawing.Size(101, 27);
             this.cmbX_Pos_MoveCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbX_Pos_MoveCtrl.TabIndex = 1;
+            this.cmbX_Pos_MoveCtrl.SelectedIndexChanged += new System.EventHandler(this.cmbX_Pos_MoveCtrl_SelectedIndexChanged);
             // 
             // tbX_Pos_Destnation
             // 
