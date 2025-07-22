@@ -266,6 +266,7 @@
             this.ToolStripMenuItem_Adout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
+            this.ck_TareCount = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -445,6 +446,7 @@
             // 
             // line1
             // 
+            this.line1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.line1.Location = new System.Drawing.Point(1239, 459);
             this.line1.Name = "line1";
             this.line1.Size = new System.Drawing.Size(120, 10);
@@ -649,7 +651,7 @@
             chartArea1.AxisY2.MinorTickMark.Enabled = true;
             chartArea1.AxisY2.MinorTickMark.Size = 0.5F;
             chartArea1.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea1.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(kN)";
+            chartArea1.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(N)";
             chartArea1.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
             chartArea1.Name = "ChartArea1";
@@ -978,6 +980,7 @@
             this.commandsToolStripMenuItem.Name = "commandsToolStripMenuItem";
             this.commandsToolStripMenuItem.Size = new System.Drawing.Size(108, 21);
             this.commandsToolStripMenuItem.Text = "Command▼";
+            this.commandsToolStripMenuItem.Visible = false;
             // 
             // moveToolStripMenuItem
             // 
@@ -1011,7 +1014,7 @@
             this.toolStripSeparator8,
             this.synchronizeMoveToolStripMenuItem});
             this.moveToolStripMenuItem.Name = "moveToolStripMenuItem";
-            this.moveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.moveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.moveToolStripMenuItem.Text = "Move";
             // 
             // posAToolStripMenuItem
@@ -1189,6 +1192,7 @@
             this.Pos_AtoolStripMenuItem1.Name = "Pos_AtoolStripMenuItem1";
             this.Pos_AtoolStripMenuItem1.Size = new System.Drawing.Size(70, 21);
             this.Pos_AtoolStripMenuItem1.Text = "Pos_A";
+            this.Pos_AtoolStripMenuItem1.Visible = false;
             this.Pos_AtoolStripMenuItem1.Click += new System.EventHandler(this.Pos_AtoolStripMenuItem1_Click);
             // 
             // dynCtrlToolStripMenuItem
@@ -1205,12 +1209,14 @@
             this.pIDToolStripMenuItem.Name = "pIDToolStripMenuItem";
             this.pIDToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
             this.pIDToolStripMenuItem.Text = "PID";
+            this.pIDToolStripMenuItem.Visible = false;
             // 
             // setBitToolStripMenuItem
             // 
             this.setBitToolStripMenuItem.Name = "setBitToolStripMenuItem";
             this.setBitToolStripMenuItem.Size = new System.Drawing.Size(53, 21);
             this.setBitToolStripMenuItem.Text = "SetBit";
+            this.setBitToolStripMenuItem.Visible = false;
             // 
             // ShowLogToolStripMenuItem
             // 
@@ -1218,6 +1224,7 @@
             this.ShowLogToolStripMenuItem.Name = "ShowLogToolStripMenuItem";
             this.ShowLogToolStripMenuItem.Size = new System.Drawing.Size(65, 21);
             this.ShowLogToolStripMenuItem.Text = "显示日志";
+            this.ShowLogToolStripMenuItem.Visible = false;
             this.ShowLogToolStripMenuItem.Click += new System.EventHandler(this.ShowLogToolStripMenuItem_Click);
             // 
             // startStopDrawToolStripMenuItem
@@ -1244,6 +1251,7 @@
             // 
             // pl_DataShow
             // 
+            this.pl_DataShow.Controls.Add(this.ck_TareCount);
             this.pl_DataShow.Controls.Add(this.cb_TareExt);
             this.pl_DataShow.Controls.Add(this.cb_TareLoad);
             this.pl_DataShow.Controls.Add(this.cb_TarePos);
@@ -1373,7 +1381,7 @@
             // 
             this.lblTestCycles.AutoSize = true;
             this.lblTestCycles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTestCycles.Location = new System.Drawing.Point(1157, 1);
+            this.lblTestCycles.Location = new System.Drawing.Point(1198, 2);
             this.lblTestCycles.Name = "lblTestCycles";
             this.lblTestCycles.Size = new System.Drawing.Size(77, 20);
             this.lblTestCycles.TabIndex = 26;
@@ -1546,9 +1554,9 @@
             this.tbX_TestCycles.ForeColor = System.Drawing.Color.Lime;
             this.tbX_TestCycles.Location = new System.Drawing.Point(1157, 25);
             this.tbX_TestCycles.Name = "tbX_TestCycles";
-            this.tbX_TestCycles.Size = new System.Drawing.Size(157, 47);
+            this.tbX_TestCycles.Size = new System.Drawing.Size(208, 47);
             this.tbX_TestCycles.TabIndex = 41;
-            this.tbX_TestCycles.Text = "0.000";
+            this.tbX_TestCycles.Text = "0000000000";
             this.tbX_TestCycles.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // guiExtension
@@ -3112,7 +3120,7 @@
             // 
             this.ToolStripMenuItem_Login.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem_Login.Image")));
             this.ToolStripMenuItem_Login.Name = "ToolStripMenuItem_Login";
-            this.ToolStripMenuItem_Login.Size = new System.Drawing.Size(172, 22);
+            this.ToolStripMenuItem_Login.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Login.Text = "登录...(&L)";
             this.ToolStripMenuItem_Login.Visible = false;
             this.ToolStripMenuItem_Login.Click += new System.EventHandler(this.ToolStripMenuItem_Login_Click);
@@ -3121,7 +3129,7 @@
             // 
             this.试验数据回访ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("试验数据回访ToolStripMenuItem.Image")));
             this.试验数据回访ToolStripMenuItem.Name = "试验数据回访ToolStripMenuItem";
-            this.试验数据回访ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.试验数据回访ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.试验数据回访ToolStripMenuItem.Text = "试验数据回放";
             this.试验数据回访ToolStripMenuItem.Visible = false;
             // 
@@ -3129,8 +3137,9 @@
             // 
             this.退出ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("退出ToolStripMenuItem.Image")));
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.退出ToolStripMenuItem.Text = "退出(&Q)";
+            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem_Setting
             // 
@@ -3280,6 +3289,18 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
+            // ck_TareCount
+            // 
+            this.ck_TareCount.AutoSize = true;
+            this.ck_TareCount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ck_TareCount.Location = new System.Drawing.Point(1157, 4);
+            this.ck_TareCount.Name = "ck_TareCount";
+            this.ck_TareCount.Size = new System.Drawing.Size(35, 20);
+            this.ck_TareCount.TabIndex = 42;
+            this.ck_TareCount.Text = "T";
+            this.ck_TareCount.UseVisualStyleBackColor = true;
+            this.ck_TareCount.CheckedChanged += new System.EventHandler(this.ck_TareCount_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3290,6 +3311,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DoPE10NetConnect";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
@@ -3568,6 +3590,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private DevComponents.DotNetBar.Controls.Line line1;
         private System.Windows.Forms.ToolStripMenuItem ChartSetToolStripMenuItem;
+        private System.Windows.Forms.CheckBox ck_TareCount;
     }
 }
 
