@@ -28,6 +28,7 @@
 		"lblTestCycles": "Test Count",
 		"ShowLogToolStripMenuItem":"Show Log",
 		"startStopDrawToolStripMenuItem":"Suspend Draw",
+		"startStopDrawToolStripMenuItemPause":"Start Draw",
 		"AdjustToolStripMenuItem":"Correct",
 		"AutoSetYAxisToolStripMenuItem":"Curve Adaptive",		
 		"ChartSetToolStripMenuItem":"ChartSet",

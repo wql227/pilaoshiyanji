@@ -2309,13 +2309,14 @@ namespace DoPENetConnect
         {
             bPause = !bPause;
 
+
             if (bPause)
             {
-                startStopDrawToolStripMenuItem.Text = "启动绘制";
+                startStopDrawToolStripMenuItem.Text = GetValueFromLanguageFile("startStopDrawToolStripMenuItemPause");
             }
             else
             {
-                startStopDrawToolStripMenuItem.Text = "暂停绘制";
+                startStopDrawToolStripMenuItem.Text = GetValueFromLanguageFile("startStopDrawToolStripMenuItem");
             }
 
             chart_machine.Enabled = false;
@@ -2323,6 +2324,24 @@ namespace DoPENetConnect
 
 
         # endregion 快捷工具栏消息响应事件
+
+        /// <summary>
+        /// 根据控件名称获取语言文件中的值
+        /// </summary>
+        /// <returns></returns>
+        private string GetValueFromLanguageFile(string keyName)
+        {
+            var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
+
+            //循环界面控件替换成指定的语言
+            if (langData.TryGetValue(this.Name, out var dictionaryVals))
+            {
+                return dictionaryVals[keyName];
+            }
+            else
+                return "-1";
+
+        }
 
 
         /// <summary>
