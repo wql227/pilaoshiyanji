@@ -120,6 +120,7 @@
             this.ChartSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutoSetYAxisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pl_DataShow = new System.Windows.Forms.Panel();
+            this.cb_TareTime = new System.Windows.Forms.CheckBox();
             this.cb_TareExt = new System.Windows.Forms.CheckBox();
             this.cb_TareLoad = new System.Windows.Forms.CheckBox();
             this.cb_TarePos = new System.Windows.Forms.CheckBox();
@@ -268,7 +269,6 @@
             this.ToolStripMenuItem_Adout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
-            this.cb_TareTime = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -1309,6 +1309,18 @@
             this.pl_DataShow.Name = "pl_DataShow";
             this.pl_DataShow.Size = new System.Drawing.Size(1418, 82);
             this.pl_DataShow.TabIndex = 56;
+            // 
+            // cb_TareTime
+            // 
+            this.cb_TareTime.AutoSize = true;
+            this.cb_TareTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cb_TareTime.Location = new System.Drawing.Point(1160, 4);
+            this.cb_TareTime.Name = "cb_TareTime";
+            this.cb_TareTime.Size = new System.Drawing.Size(35, 20);
+            this.cb_TareTime.TabIndex = 42;
+            this.cb_TareTime.Text = "T";
+            this.cb_TareTime.UseVisualStyleBackColor = true;
+            this.cb_TareTime.CheckedChanged += new System.EventHandler(this.cb_TareTime_CheckedChanged);
             // 
             // cb_TareExt
             // 
@@ -3313,18 +3325,6 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
-            // cb_TareTime
-            // 
-            this.cb_TareTime.AutoSize = true;
-            this.cb_TareTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cb_TareTime.Location = new System.Drawing.Point(1160, 4);
-            this.cb_TareTime.Name = "cb_TareTime";
-            this.cb_TareTime.Size = new System.Drawing.Size(35, 20);
-            this.cb_TareTime.TabIndex = 42;
-            this.cb_TareTime.Text = "T";
-            this.cb_TareTime.UseVisualStyleBackColor = true;
-            this.cb_TareTime.CheckedChanged += new System.EventHandler(this.cb_TareTime_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3332,6 +3332,7 @@
             this.ClientSize = new System.Drawing.Size(1418, 759);
             this.Controls.Add(this.superTabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
