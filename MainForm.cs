@@ -3300,12 +3300,27 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void AutoSetYAxisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text)) * 0.8;
-            chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text)) * 0.8;
+            if (double.Parse(tb_MaxPos.Text) <= 0.01 )
+            {
+                chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
+                chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
+            }
+            else
+            {
+                chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2;
+                chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2;
+            }
 
-            chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text)) * 0.8;
-            chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(double.Parse(tb_MinLoad.Text)) * 0.8;
-
+            if (double.Parse(tb_MaxLoad.Text) <= 0.01 )
+            {
+                chart_machine.ChartAreas[0].AxisY2.Maximum = 0.1;
+                chart_machine.ChartAreas[0].AxisY2.Minimum = -0.1;
+            }
+            else
+            {
+                chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2;
+                chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2;
+            }
         }
 
     }
