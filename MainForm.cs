@@ -1733,7 +1733,7 @@ namespace DoPENetConnect
         {
             MoveHalt();
 
-            SetControlEnable(isRunning);
+            SetControlEnable(true);
         }
 
 
