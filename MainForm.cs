@@ -1986,9 +1986,9 @@ namespace DoPENetConnect
             {
                 if (!bPause)
                 {
-                    for (int i = 50; Block.Data.Length > i; i += 2500)
+                    //for (int i = 50; Block.Data.Length > i; i += 2500)
                     //for (int i = 30; Block.Data.Length >= i; i += 60)
-                    //for (int i = 20; Block.Data.Length > i; i += 2000)
+                    for (int i = 20; Block.Data.Length > i; i += 2000)
                     {
 
                         //绘制Position
@@ -1996,19 +1996,17 @@ namespace DoPENetConnect
                         //x_Position += nAxisStep;
                         x_Position += dStep;
 
-
-                            if (chart_machine.Series[0] != null)
+                        if (chart_machine.Series[0] != null)
+                        {
+                            chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
+                            if (chart_machine.Series[0].Points.Count - 1 == nTotal)
                             {
-                                chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
-                                if (chart_machine.Series[0].Points.Count - 1 == nTotal)
-                                {
-                                    chart_machine.Series[0].Points.Clear();
+                                chart_machine.Series[0].Points.Clear();
+                                chart_machine.Series[1].Points.AddXY(0.0, y_Position);
 
-                                    x_Position = 0.0;
-                                }
-
+                                x_Position = 0.0;
                             }
-
+                        }
 
                         //绘制Load
                         double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
@@ -2667,9 +2665,10 @@ namespace DoPENetConnect
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
             string idEncry=devIdEncrypted.ToString();
-            if(idEncry!="0"&&idEncry!="")
-                devId =new StringBuilder(DESEncrypt.Decrypt(idEncry));
-
+            if (idEncry != "0" && idEncry != "")
+            {
+                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+            }
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
             nCountLog = int.Parse(strTmp.ToString());
