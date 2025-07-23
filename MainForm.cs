@@ -376,7 +376,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -1498,12 +1498,77 @@ namespace DoPENetConnect
                                 }
                             }
                         }
-
-                        for (int i = 0; i < this.statusStrip1.Items.Count; i++)
-                        {
-                            if (statusStrip1.Items[i].Name == controlName) {
-                                statusStrip1.Items[i].Text = textValue;
+                        if (controlName.Contains("toolStripStatusLabel")) {
+                            for (int i = 0; i < this.statusStrip1.Items.Count; i++)
+                            {
+                                if (statusStrip1.Items[i].Name == controlName) {
+                                    statusStrip1.Items[i].Text = textValue;
+                                    break;
+                                }
                             }
+                        }
+                        //二级菜单
+                        if (controlName.Contains("ToolStripMenuItem")&& controlName.Contains("@"))
+                        {
+                            string[] realCtrlName = controlName.Split('@');
+
+                            if (realCtrlName[1] == "1")
+                            {
+                                foreach (ToolStripMenuItem tmpItm in ToolStripMenuItem_Oper.DropDownItems)
+                                {
+                                    if (tmpItm.Name == realCtrlName[0])
+                                    {
+                                        tmpItm.Text = textValue;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (realCtrlName[1] == "2")
+                            {
+                                foreach (ToolStripMenuItem tmpItm in ToolStripMenuItem_Setting.DropDownItems)
+                                {
+                                    if (tmpItm.Name == realCtrlName[0])
+                                    {
+                                        tmpItm.Text = textValue;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (realCtrlName[1] == "3")
+                            {
+                                foreach (ToolStripMenuItem tmpItm in ToolStripMenuItem_Data.DropDownItems)
+                                {
+                                    if (tmpItm.Name == realCtrlName[0])
+                                    {
+                                        tmpItm.Text = textValue;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (realCtrlName[1] == "5")
+                            {
+                                foreach (ToolStripMenuItem tmpItm in ToolStripMenuItem_Language.DropDownItems)
+                                {
+                                    if (tmpItm.Name == realCtrlName[0])
+                                    {
+                                        tmpItm.Text = textValue;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (realCtrlName[1] == "6")
+                            {
+                                foreach (ToolStripMenuItem tmpItm in ToolStripMenuItem_Help.DropDownItems)
+                                {
+                                    if (tmpItm.Name == realCtrlName[0])
+                                    {
+                                        tmpItm.Text = textValue;
+                                        break;
+                                    }
+                                }
+                            }
+
+
                         }
                     }
 
@@ -1523,7 +1588,7 @@ namespace DoPENetConnect
                     {
                         menuItem1.Text = textValue;
                     }
-                  
+
                     ToolStripMenuItem menuItem2 = FindMenuItem(this.menuStrip2.Items, controlName);
                     if (menuItem2 != null)
                     {

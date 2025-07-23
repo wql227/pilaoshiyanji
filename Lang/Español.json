@@ -1,5 +1,14 @@
 {
 	"MainForm": {
+		"退出ToolStripMenuItem@1":"Renunciar(&Q)",
+		"ToolStripMenuItem_SystemSetting@2":"Configuración de parámetros(&S))",
+		"ToolStripMenuItem_OpenLogsDir@3":"Abrir el archivo de datos(&O)",
+		"ToolStripMenuItem_OpenLangDir@5":"Abrir el archivo de idioma(&D)",
+		"ToolStripMenuItem_OpenLangDir1@5":"Alemán",		
+		"ToolStripMenuItem_OpenLangDir2@5":"Inglés",	
+		"ToolStripMenuItem_OpenLangDir3@5":"Español",
+		"ToolStripMenuItem_OpenLangDir4@5":"Chino simplificado",
+		"ToolStripMenuItem_Adout@6":"Acerca de(&A)",
 		"toolStripStatusLabel1":"Modelo de controlador：",
 		"toolStripStatusLabel2":"Hora del sistema：",
 		"toolStripStatusLabel3":"Número de dispositivo：",

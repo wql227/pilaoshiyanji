@@ -1,5 +1,14 @@
 {
 	"MainForm": {
+		"退出ToolStripMenuItem@1":"Exit(&Q)",
+		"ToolStripMenuItem_SystemSetting@2":"Parameter Set(&S))",
+		"ToolStripMenuItem_OpenLogsDir@3":"Open Data File(&O)",
+		"ToolStripMenuItem_OpenLangDir@5":"Open Lang Dir(&D)",
+		"ToolStripMenuItem_OpenLangDir1@5":"German",		
+		"ToolStripMenuItem_OpenLangDir2@5":"English",	
+		"ToolStripMenuItem_OpenLangDir3@5":"Spanish",
+		"ToolStripMenuItem_OpenLangDir4@5":"Simplified  Chinese",
+		"ToolStripMenuItem_Adout@6":"About(&A)",
 		"toolStripStatusLabel1":"Controller model：",
 		"toolStripStatusLabel2":"System time：",
 		"toolStripStatusLabel3":"Device number：",		
