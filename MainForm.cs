@@ -372,7 +372,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -1492,6 +1492,13 @@ namespace DoPENetConnect
                                     chart_machine.Series[i].Name = textValue;
                                     break;
                                 }
+                            }
+                        }
+
+                        for (int i = 0; i < this.statusStrip1.Items.Count; i++)
+                        {
+                            if (statusStrip1.Items[i].Name == controlName) {
+                                statusStrip1.Items[i].Text = textValue;
                             }
                         }
                     }

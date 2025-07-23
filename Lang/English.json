@@ -1,6 +1,8 @@
 {
 	"MainForm": {
-		
+		"toolStripStatusLabel1":"Controller model：",
+		"toolStripStatusLabel2":"System time：",
+		"toolStripStatusLabel3":"Device number：",		
 		"cb_DrawPosition":"Displacement",
 		"cb_DrawLoad":"Load",
 		"cb_DrawExtension":"Deformation",

@@ -1,10 +1,12 @@
 {
 	"MainForm" :{
+		"toolStripStatusLabel1":"控制器型号：",
+		"toolStripStatusLabel2":"系统时间：",
+		"toolStripStatusLabel3":"设备编号：",
 		"cb_DrawPosition":"位移",
 		"cb_DrawLoad":"试验力",
 		"cb_DrawExtension":"变形",
-		"cb_DrawCommand":"命令",
-		
+		"cb_DrawCommand":"命令",		
 		"chartSeries0":"位移",
 		"chartSeries1":"试验力",
 		"chartSeries2":"变形",
