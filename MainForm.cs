@@ -1484,6 +1484,16 @@ namespace DoPENetConnect
                                 break;
                             }
                         }
+
+                        if (controlName.Contains("chartSeries")){
+                            for (int i = 0; i < chart_machine.Series.Count(); i++) {
+                                if (controlName.Contains(i.ToString()))
+                                {
+                                    chart_machine.Series[i].Name = textValue;
+                                    break;
+                                }
+                            }
+                        }
                     }
 
                     if (ctrl != null)

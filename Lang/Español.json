@@ -1,5 +1,9 @@
 {
 	"MainForm": {
+		"chartSeries0":"Desplazamiento",
+		"chartSeries1":"Fuerza",
+		"chartSeries2":"Deformación",
+		"chartSeries3":"Mandar",
 		"X axis":"Hora(s)",
 		"Y (Value) axis":"D \n\ne \n\ns \n\np \n\nl \n\na \n\nz \n\na \n\nm \n\ni \n\ne \n\nn \n\nt \n\no \n\n(mm)",
 		"Secondary X axis":"",

@@ -1,5 +1,9 @@
 {
 	"MainForm" :{
+		"chartSeries0":"位移",
+		"chartSeries1":"试验力",
+		"chartSeries2":"变形",
+		"chartSeries3":"命令",
 		"X axis":"时间(s)",
 		"Y (Value) axis":"位 \n\n移 \n\n(mm)",
 		"Secondary X axis":"",

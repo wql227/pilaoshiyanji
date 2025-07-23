@@ -1,5 +1,9 @@
 {
 	"MainForm": {
+		"chartSeries0":"Displacement",
+		"chartSeries1":"Load",
+		"chartSeries2":"Deformation",
+		"chartSeries3":"Command",
 		"X axis":"Time(s)",
 		"Y (Value) axis":"P \n\no \n\ns \n\ni \n\nt \n\ni \n\no \n\nn \n\n(mm)",
 		"Secondary X axis":"",
