@@ -1,5 +1,9 @@
 {
 	"MainForm" :{
+		"X axis":"时间(s)",
+		"Y (Value) axis":"位 \n\n移 \n\n(mm)",
+		"Secondary X axis":"",
+		"Secondary Y (Value) axis":"试 \n\n验\n\n力\n\n(N)",
 		"lblTime": "运行时间 [s]",
 		"lblPosition":"位移 [mm]",
 		"lblPositionMaxMin":"位移峰谷值",
@@ -25,6 +29,8 @@
         	"btnX_SetHigh": "高    压",
         	"btnX_SetLow": "低    压",
 		"superTabItem2" : "控制器实时曲线",
+		"superTabItem1" : "试验数据",
+		"superTabItem7" : "日志消息",
 		"lblTestCycles": "试验次数",
 		"ShowLogToolStripMenuItem":"显示日志",
 		"startStopDrawToolStripMenuItem":"暂停绘制",

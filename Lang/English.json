@@ -1,5 +1,9 @@
 {
 	"MainForm": {
+		"X axis":"Time(s)",
+		"Y (Value) axis":"P \n\no \n\ns \n\ni \n\nt \n\ni \n\no \n\nn \n\n(mm)",
+		"Secondary X axis":"",
+		"Secondary Y (Value) axis":"L \n\no\n\na\n\nd\n\n(N)",
 		"lblTime": "Run Time [s]",
 		"lblPosition": "Position [mm]",
 		"lblPositionMaxMin": "Position Peak & Valley Values",
@@ -25,6 +29,8 @@
 		"btnX_SetHigh": "  High Pressure",
 		"btnX_SetLow": "  Low Pressure",
 		"superTabItem2" : "Runtime Curve",
+		"superTabItem1" : "Experimental Data",
+		"superTabItem7" : "Log Message",
 		"lblTestCycles": "Test Count",
 		"ShowLogToolStripMenuItem":"Show Log",
 		"startStopDrawToolStripMenuItem":"Suspend Draw",

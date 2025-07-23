@@ -1476,7 +1476,14 @@ namespace DoPENetConnect
                                 break;
                             }
                         }
-
+                        for (int i = 0; i < chart_machine.ChartAreas[0].Axes.Count(); i++)
+                        {
+                            if (chart_machine.ChartAreas[0].Axes[i].Name == controlName)
+                            {
+                                chart_machine.ChartAreas[0].Axes[i].Title = textValue;
+                                break;
+                            }
+                        }
                     }
 
                     if (ctrl != null)
@@ -1620,7 +1627,6 @@ namespace DoPENetConnect
         private void btnX_Connect_Click(object sender, EventArgs e)
         {
             ConnectToEdc();
-
         }
 
 
