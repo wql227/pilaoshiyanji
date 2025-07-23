@@ -1466,6 +1466,18 @@ namespace DoPENetConnect
                             }
                         }
                     }
+                    if (ctrl == null) {
+                        foreach (SuperTabItem tabItem in superTabControl1.Tabs)
+                        {
+                            // 获取当前 TabItem 的内容区域
+                            if (tabItem.Name == controlName)
+                            {
+                                tabItem.Text = textValue;
+                                break;
+                            }
+                        }
+
+                    }
 
                     if (ctrl != null)
                     {
@@ -3408,5 +3420,6 @@ namespace DoPENetConnect
         {
 
         }
+
     }
 }
