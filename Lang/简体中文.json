@@ -1,5 +1,10 @@
 {
 	"MainForm" :{
+		"cb_DrawPosition":"位移",
+		"cb_DrawLoad":"试验力",
+		"cb_DrawExtension":"变形",
+		"cb_DrawCommand":"命令",
+		
 		"chartSeries0":"位移",
 		"chartSeries1":"试验力",
 		"chartSeries2":"变形",

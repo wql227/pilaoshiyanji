@@ -1,5 +1,10 @@
 {
 	"MainForm": {
+		
+		"cb_DrawPosition":"Desplazamiento",
+		"cb_DrawLoad":"Fuerza",
+		"cb_DrawExtension":"Deformación",
+		"cb_DrawCommand":"Mandar",
 		"chartSeries0":"Desplazamiento",
 		"chartSeries1":"Fuerza",
 		"chartSeries2":"Deformación",

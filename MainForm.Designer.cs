@@ -472,57 +472,57 @@
             // cb_DrawPosition
             // 
             this.cb_DrawPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_DrawPosition.AutoSize = true;
+            this.cb_DrawPosition.BackColor = System.Drawing.Color.White;
             this.cb_DrawPosition.Checked = true;
             this.cb_DrawPosition.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_DrawPosition.Location = new System.Drawing.Point(1096, 104);
             this.cb_DrawPosition.Name = "cb_DrawPosition";
-            this.cb_DrawPosition.Size = new System.Drawing.Size(48, 16);
+            this.cb_DrawPosition.Size = new System.Drawing.Size(100, 16);
             this.cb_DrawPosition.TabIndex = 65;
             this.cb_DrawPosition.Text = "位移";
-            this.cb_DrawPosition.UseVisualStyleBackColor = true;
+            this.cb_DrawPosition.UseVisualStyleBackColor = false;
             this.cb_DrawPosition.CheckedChanged += new System.EventHandler(this.cb_DrawPosition_CheckedChanged);
             // 
             // cb_DrawCommand
             // 
             this.cb_DrawCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_DrawCommand.AutoSize = true;
+            this.cb_DrawCommand.BackColor = System.Drawing.Color.White;
             this.cb_DrawCommand.Checked = true;
             this.cb_DrawCommand.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_DrawCommand.Location = new System.Drawing.Point(1096, 171);
             this.cb_DrawCommand.Name = "cb_DrawCommand";
-            this.cb_DrawCommand.Size = new System.Drawing.Size(48, 16);
+            this.cb_DrawCommand.Size = new System.Drawing.Size(100, 16);
             this.cb_DrawCommand.TabIndex = 65;
             this.cb_DrawCommand.Text = "命令";
-            this.cb_DrawCommand.UseVisualStyleBackColor = true;
+            this.cb_DrawCommand.UseVisualStyleBackColor = false;
             this.cb_DrawCommand.CheckedChanged += new System.EventHandler(this.cb_DrawCommand_CheckedChanged);
             // 
             // cb_DrawExtension
             // 
             this.cb_DrawExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_DrawExtension.AutoSize = true;
+            this.cb_DrawExtension.BackColor = System.Drawing.Color.White;
             this.cb_DrawExtension.Checked = true;
             this.cb_DrawExtension.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_DrawExtension.Location = new System.Drawing.Point(1096, 149);
             this.cb_DrawExtension.Name = "cb_DrawExtension";
-            this.cb_DrawExtension.Size = new System.Drawing.Size(48, 16);
+            this.cb_DrawExtension.Size = new System.Drawing.Size(100, 16);
             this.cb_DrawExtension.TabIndex = 65;
             this.cb_DrawExtension.Text = "变形";
-            this.cb_DrawExtension.UseVisualStyleBackColor = true;
+            this.cb_DrawExtension.UseVisualStyleBackColor = false;
             this.cb_DrawExtension.CheckedChanged += new System.EventHandler(this.cb_DrawExtension_CheckedChanged);
             // 
             // cb_DrawLoad
             // 
             this.cb_DrawLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_DrawLoad.AutoSize = true;
+            this.cb_DrawLoad.BackColor = System.Drawing.Color.White;
             this.cb_DrawLoad.Checked = true;
             this.cb_DrawLoad.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_DrawLoad.Location = new System.Drawing.Point(1096, 127);
             this.cb_DrawLoad.Name = "cb_DrawLoad";
-            this.cb_DrawLoad.Size = new System.Drawing.Size(60, 16);
+            this.cb_DrawLoad.Size = new System.Drawing.Size(100, 16);
             this.cb_DrawLoad.TabIndex = 65;
             this.cb_DrawLoad.Text = "试验力";
-            this.cb_DrawLoad.UseVisualStyleBackColor = true;
+            this.cb_DrawLoad.UseVisualStyleBackColor = false;
             this.cb_DrawLoad.CheckedChanged += new System.EventHandler(this.cb_DrawLoad_CheckedChanged);
             // 
             // btnX_AxisPOSY_MaxUp
@@ -3349,7 +3349,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelEx10.ResumeLayout(false);
-            this.panelEx10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_machine)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

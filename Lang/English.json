@@ -1,5 +1,10 @@
 {
 	"MainForm": {
+		
+		"cb_DrawPosition":"Displacement",
+		"cb_DrawLoad":"Load",
+		"cb_DrawExtension":"Deformation",
+		"cb_DrawCommand":"Command",
 		"chartSeries0":"Displacement",
 		"chartSeries1":"Load",
 		"chartSeries2":"Deformation",
