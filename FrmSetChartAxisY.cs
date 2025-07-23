@@ -144,6 +144,12 @@ namespace DoPENetConnect
 
             strTmp = tbX_FrmSetChartAxisY_CommandY_Min.Text.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "CommandY_MIN", strTmp);
+
+            strTmp = tbX_FrmSetChartAxisY_TimeY_Max.Text.ToString();
+            IniFileHelper.WriteIniString(strConfigSetion, "TimeX_MAX", strTmp);
+
+            strTmp = tbX_FrmSetChartAxisY_TimeY_Max.Text.ToString();
+            IniFileHelper.WriteIniString(strConfigSetion, "TimeX_MIN", strTmp);
         }
 
 
@@ -159,6 +165,13 @@ namespace DoPENetConnect
 
             MainForm.mainform.chart_machine.ChartAreas[0].AxisY.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
             MainForm.mainform.chart_machine.ChartAreas[0].AxisY.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
+
+            MainForm.mainform.chart_machine.ChartAreas[0].AxisY2.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
+            MainForm.mainform.chart_machine.ChartAreas[0].AxisY2.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
+
+            MainForm.mainform.chart_machine.ChartAreas[0].AxisX.Maximum = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
+            MainForm.mainform.AxisXMax = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
+            MainForm.mainform.nTotal = MainForm.mainform.AxisXMax / MainForm.mainform.dStep;
 
             MainForm.mainform.Chart_Pos_Step = double.Parse(cbX_Pos_Range.Text);
             MainForm.mainform.Chart_Load_Step = double.Parse(cbX_Load_Range.Text);

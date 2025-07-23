@@ -325,6 +325,8 @@ namespace DoPENetConnect
 
         //
         public double AxisXMax = 5;
+        public double dStep = 0.01;
+        public double nTotal = 500;
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -350,6 +352,8 @@ namespace DoPENetConnect
             mainform = this;
 
             LoadIni();
+
+            nTotal = AxisXMax / dStep;
         }
 
         ///----------------------------------------------------------------------
@@ -1776,6 +1780,8 @@ namespace DoPENetConnect
         {
             MoveHalt();
 
+            isRunning = false;
+
             SetControlEnable(true);
         }
 
@@ -2009,21 +2015,15 @@ namespace DoPENetConnect
             //try
             //{
             //X轴坐标长度 = dStep * nTotal
-            double dStep = 0.01;
-            double nTotal = 500;
-            //double dStep = 0.01;
-            //double nTotal = 1000;
-            //double dStep = 0.03;
-            //double nTotal = 333;
 
             //if (MyEdc.IsConnected() && bConnected)
             if (chart_machine != null)
             {
                 if (!bPause)
                 {
-                    for (int i = 50; Block.Data.Length > i; i += 2500)
+                    //for (int i = 50; Block.Data.Length > i; i += 2500)
                     //for (int i = 30; Block.Data.Length >= i; i += 60)
-                    //for (int i = 20; Block.Data.Length > i; i += 2000)
+                    for (int i = 20; Block.Data.Length > i; i += 2000)
                     {
 
                         //绘制Position
@@ -2031,18 +2031,15 @@ namespace DoPENetConnect
                         //x_Position += nAxisStep;
                         x_Position += dStep;
 
-                        if (chart_machine.Series != null)
+                        if (chart_machine.Series[0] != null)
                         {
-                            if (chart_machine.Series[0] != null)
+                            chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
+                            if (chart_machine.Series[0].Points.Count - 1 == nTotal)
                             {
-                                chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
-                                if (chart_machine.Series[0].Points.Count - 1 == nTotal)
-                                {
-                                    chart_machine.Series[0].Points.Clear();
+                                chart_machine.Series[0].Points.Clear();
+                                chart_machine.Series[1].Points.AddXY(0.0, y_Position);
 
-                                    x_Position = 0.0;
-                                }
-
+                                x_Position = 0.0;
                             }
                         }
 
@@ -2113,10 +2110,6 @@ namespace DoPENetConnect
                 //Console.WriteLine(ex.ToString());
                 //return;
             }
-
-
-            //max_label.Text = max.ToString();
-            //min_label.Text = min.ToString();
 
         }
 
@@ -2413,7 +2406,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void cb_TarePos_CheckedChanged(object sender, EventArgs e)
         {
-            if (!isRunning)
+            if (isRunning)
             {
                 return;
             }
@@ -2438,7 +2431,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void cb_TareLoad_CheckedChanged(object sender, EventArgs e)
         {
-            if (!isRunning)
+            if (isRunning)
             {
                 return;
             }
@@ -2463,7 +2456,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void cb_TareExt_CheckedChanged(object sender, EventArgs e)
         {
-            if (!isRunning)
+            if (isRunning)
             {
                 return;
             }
@@ -2707,9 +2700,10 @@ namespace DoPENetConnect
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
             string idEncry=devIdEncrypted.ToString();
-            if(idEncry!="0"&&idEncry!="")
-                devId =new StringBuilder(DESEncrypt.Decrypt(idEncry));
-
+            if (idEncry != "0" && idEncry != "")
+            {
+                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+            }
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
             nCountLog = int.Parse(strTmp.ToString());
@@ -2830,7 +2824,8 @@ namespace DoPENetConnect
             #endregion 按键功能常数
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "TimeX_MAX", "5", strTmp, strTmp.Capacity);
-            chart_machine.ChartAreas[0].AxisX.Maximum = int.Parse(strTmp.ToString());
+            AxisXMax = int.Parse(strTmp.ToString());
+            chart_machine.ChartAreas[0].AxisX.Maximum = AxisXMax;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
             cb_DrawPosition.Checked = strTmp.ToString() == "0" ? false : true;
@@ -3183,7 +3178,7 @@ namespace DoPENetConnect
         /// </summary>
         /// <param name="section"></param>
         /// <returns></returns>
-        public StiffnessCorrectionTable ParseStiffnessCorrection(IConfigurationSection section)
+        public SensorCorrectionTable/*StiffnessCorrectionTable*/ ParseStiffnessCorrection(IConfigurationSection section)
         {
             int corrNo = int.Parse(section["CorrNo"] ?? "0");
 
@@ -3202,10 +3197,16 @@ namespace DoPENetConnect
                 dDeformation[i] = double.Parse(section[strDeformationIndex] ?? "0");
             }
 
-            StiffnessCorrectionTable stiffnessCorrectionTable = new StiffnessCorrectionTable();
+            //StiffnessCorrectionTable stiffnessCorrectionTable = new StiffnessCorrectionTable();
+            //stiffnessCorrectionTable.CorrNo = corrNo;
+            //stiffnessCorrectionTable.Load = dLoad;
+            //stiffnessCorrectionTable.Deformation = dDeformation;
+
+            SensorCorrectionTable stiffnessCorrectionTable = new SensorCorrectionTable();
             stiffnessCorrectionTable.CorrNo = corrNo;
-            stiffnessCorrectionTable.Load = dLoad;
-            stiffnessCorrectionTable.Deformation = dDeformation;
+            stiffnessCorrectionTable.S1Correction = dLoad;
+            stiffnessCorrectionTable.S2Value = dDeformation;
+
 
             return stiffnessCorrectionTable;
         }
@@ -3289,6 +3290,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void AdjustToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "文本文件 (*.corr)|*.corr";
 
@@ -3301,7 +3303,9 @@ namespace DoPENetConnect
                 IConfiguration config = builder.Build();
                 var correctionTable = ParseStiffnessCorrection(config.GetSection("SensorCorrection"));
 
-                DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetStiffnessCorrection(ref correctionTable);
+                DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetSensorCorrection(DoPE.SENSOR.SENSOR_E, ref correctionTable);
+
+                //DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetStiffnessCorrection(ref correctionTable);
             }
             else
             {
@@ -3309,7 +3313,6 @@ namespace DoPENetConnect
                 return;
             }
         }
-
 
 
         /// <summary>
