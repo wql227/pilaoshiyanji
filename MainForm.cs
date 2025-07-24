@@ -3256,7 +3256,7 @@ namespace DoPENetConnect
             for (int i = 0; i < corrNo; i ++)
             {
                 string strLoadIndex = string.Format(@"S1Data_{0}", i);
-                dLoad[i] = double.Parse(section[strLoadIndex] ?? "0");
+                dLoad[i] = double.Parse(section[strLoadIndex] ?? "0") * 1000;
 
                 string strDeformationIndex = string.Format(@"S2Data_{0}", i);
                 dDeformation[i] = double.Parse(section[strDeformationIndex] ?? "0");
@@ -3271,7 +3271,6 @@ namespace DoPENetConnect
             stiffnessCorrectionTable.CorrNo = corrNo;
             stiffnessCorrectionTable.S1Correction = dLoad;
             stiffnessCorrectionTable.S2Value = dDeformation;
-
 
             return stiffnessCorrectionTable;
         }
