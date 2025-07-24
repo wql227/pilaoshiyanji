@@ -29,6 +29,8 @@ namespace DoPENetConnect
             Ten,
         }
 
+        string strLanguage;
+
 
         /// <summary>
         /// 构造函数
@@ -59,7 +61,62 @@ namespace DoPENetConnect
 
             LoadIni();
         }
+        /// <summary>
+        /// 根据语言自适应控件位置参数
+        /// 由于语言长度不同 因此需要根据语言长度设置控件长度自适应
+        /// </summary>
+        private void UiAutoSize()
+        {
 
+            ///
+            tbX_Dyn_StartSpeed.Location = new Point(labelX3.Location.X+labelX3.Width, tbX_Dyn_StartSpeed.Location.Y);
+            cmbX_Dyn_EDC.Location=new Point(tbX_Dyn_StartSpeed.Location.X, cmbX_Dyn_EDC.Location.Y);
+            cmbX_Dyn_StartCtrl.Location = new Point(tbX_Dyn_StartSpeed.Location.X, cmbX_Dyn_StartCtrl.Location.Y);
+            cmbX_Dyn_MoveCtrl.Location = new Point(tbX_Dyn_StartSpeed.Location.X, cmbX_Dyn_MoveCtrl.Location.Y);
+            cmbX_Dyn_WaveFrom.Location = new Point(tbX_Dyn_StartSpeed.Location.X, cmbX_Dyn_WaveFrom.Location.Y);
+            cmbX_Dyn_PeakCtrl.Location = new Point(tbX_Dyn_StartSpeed.Location.X, cmbX_Dyn_PeakCtrl.Location.Y);
+            tbX_Dyn_PeakCtrl.Location = new Point(tbX_Dyn_StartSpeed.Location.X, tbX_Dyn_PeakCtrl.Location.Y);
+            cbX_Dyn_PeakCtrl.Location = new Point(tbX_Dyn_StartSpeed.Location.X+5+ tbX_Dyn_PeakCtrl.Width, cbX_Dyn_PeakCtrl.Location.Y);
+            tbX_Cycles.Location = new Point(tbX_Dyn_StartSpeed.Location.X, tbX_Cycles.Location.Y);
+            cbX_Dyn_FadeInOut.Location = new Point(tbX_Dyn_StartSpeed.Location.X+5+ tbX_Cycles.Width, cbX_Dyn_FadeInOut.Location.Y);
+            cmbX_Dyn_StartSpeed_Unit.Location = new Point(tbX_Dyn_StartSpeed.Location.X+cmbX_Dyn_StartSpeed_Unit.Width+15, cmbX_Dyn_StartSpeed_Unit.Location.Y);
+            cmbX_Dyn_MoveCtrl_Unit.Location = new Point(tbX_Dyn_StartSpeed.Location.X +cmbX_Dyn_MoveCtrl_Unit.Width+ 15, cmbX_Dyn_MoveCtrl_Unit.Location.Y);
+        }
+
+            /// <summary>
+            /// 语言文件
+            /// </summary>
+            private void ReplaceLanguage()
+        {
+            StringBuilder strTmp = new StringBuilder();
+            IniFileHelper.GetIniString("Setting", "Language", "0", strTmp, strTmp.Capacity);
+             strLanguage = strTmp.ToString();
+            var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
+
+            //循环界面控件替换成指定的语言
+            if (langData.TryGetValue(this.Name, out var frmSystemSetting))
+            {
+
+                foreach (var kvp in frmSystemSetting)
+                {
+                    var controlName = kvp.Key;
+                    var textValue = kvp.Value;
+
+                    // 首先尝试从主窗体的控件集合中查找控件
+                    var ctrl = this.Controls.Find(controlName, true).FirstOrDefault();
+
+                    if (ctrl == null)
+                    {
+
+                    }
+                    else
+                    {
+                        ctrl.Text = textValue;
+                    }
+
+                }
+            }
+        }
         private void cbX_PeakCtrl_CheckedChanged(object sender, EventArgs e)
         {
             if (cbX_Dyn_PeakCtrl.Checked)
@@ -446,6 +503,12 @@ namespace DoPENetConnect
                     break;
 
             }
+        }
+
+        private void FrmDynCtrl_Load(object sender, EventArgs e)
+        {
+            ReplaceLanguage();
+            UiAutoSize();
         }
     }
 }

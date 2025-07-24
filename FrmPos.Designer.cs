@@ -235,12 +235,14 @@
             // btnX_PosSend
             // 
             this.btnX_PosSend.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_PosSend.AutoSize = true;
             this.btnX_PosSend.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_PosSend.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_PosSend.Image = ((System.Drawing.Image)(resources.GetObject("btnX_PosSend.Image")));
             this.btnX_PosSend.Location = new System.Drawing.Point(3, 3);
+            this.btnX_PosSend.MaximumSize = new System.Drawing.Size(0, 23);
             this.btnX_PosSend.Name = "btnX_PosSend";
-            this.btnX_PosSend.Size = new System.Drawing.Size(75, 23);
+            this.btnX_PosSend.Size = new System.Drawing.Size(75, 27);
             this.btnX_PosSend.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_PosSend.TabIndex = 0;
             this.btnX_PosSend.Text = "发送";
@@ -267,7 +269,9 @@
             this.MaximizeBox = false;
             this.Name = "FrmPos";
             this.Text = "FrmPos";
+            this.Load += new System.EventHandler(this.FrmPos_Load);
             this.panelEx_POS.ResumeLayout(false);
+            this.panelEx_POS.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -96,6 +96,7 @@
             // 
             // labelX1
             // 
+            this.labelX1.AutoSize = true;
             // 
             // 
             // 
@@ -103,12 +104,13 @@
             this.labelX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX1.Location = new System.Drawing.Point(12, 45);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(99, 23);
+            this.labelX1.Size = new System.Drawing.Size(57, 23);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "控制器";
             // 
             // labelX2
             // 
+            this.labelX2.AutoSize = true;
             // 
             // 
             // 
@@ -116,12 +118,13 @@
             this.labelX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX2.Location = new System.Drawing.Point(12, 74);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(99, 23);
+            this.labelX2.Size = new System.Drawing.Size(74, 23);
             this.labelX2.TabIndex = 0;
             this.labelX2.Text = "趋近控制";
             // 
             // labelX3
             // 
+            this.labelX3.AutoSize = true;
             // 
             // 
             // 
@@ -129,12 +132,13 @@
             this.labelX3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX3.Location = new System.Drawing.Point(12, 103);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(99, 23);
+            this.labelX3.Size = new System.Drawing.Size(74, 23);
             this.labelX3.TabIndex = 0;
             this.labelX3.Text = "趋近速度";
             // 
             // labelX4
             // 
+            this.labelX4.AutoSize = true;
             // 
             // 
             // 
@@ -142,12 +146,13 @@
             this.labelX4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX4.Location = new System.Drawing.Point(12, 132);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(99, 23);
+            this.labelX4.Size = new System.Drawing.Size(74, 23);
             this.labelX4.TabIndex = 0;
             this.labelX4.Text = "控制方式";
             // 
             // labelX5
             // 
+            this.labelX5.AutoSize = true;
             // 
             // 
             // 
@@ -155,12 +160,13 @@
             this.labelX5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX5.Location = new System.Drawing.Point(12, 161);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(99, 23);
+            this.labelX5.Size = new System.Drawing.Size(74, 23);
             this.labelX5.TabIndex = 0;
             this.labelX5.Text = "波形方式";
             // 
             // labelX6
             // 
+            this.labelX6.AutoSize = true;
             // 
             // 
             // 
@@ -168,12 +174,13 @@
             this.labelX6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX6.Location = new System.Drawing.Point(12, 190);
             this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(99, 23);
+            this.labelX6.Size = new System.Drawing.Size(74, 23);
             this.labelX6.TabIndex = 0;
             this.labelX6.Text = "峰值控制";
             // 
             // labelX7
             // 
+            this.labelX7.AutoSize = true;
             // 
             // 
             // 
@@ -181,7 +188,7 @@
             this.labelX7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX7.Location = new System.Drawing.Point(12, 219);
             this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(99, 23);
+            this.labelX7.Size = new System.Drawing.Size(74, 23);
             this.labelX7.TabIndex = 0;
             this.labelX7.Text = "循环次数";
             // 
@@ -195,7 +202,7 @@
             this.cmbX_Dyn_EDC.ItemHeight = 21;
             this.cmbX_Dyn_EDC.Items.AddRange(new object[] {
             this.comboItem1});
-            this.cmbX_Dyn_EDC.Location = new System.Drawing.Point(117, 41);
+            this.cmbX_Dyn_EDC.Location = new System.Drawing.Point(160, 41);
             this.cmbX_Dyn_EDC.Name = "cmbX_Dyn_EDC";
             this.cmbX_Dyn_EDC.Size = new System.Drawing.Size(199, 27);
             this.cmbX_Dyn_EDC.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -213,7 +220,7 @@
             this.cmbX_Dyn_StartCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbX_Dyn_StartCtrl.FormattingEnabled = true;
             this.cmbX_Dyn_StartCtrl.ItemHeight = 21;
-            this.cmbX_Dyn_StartCtrl.Location = new System.Drawing.Point(117, 70);
+            this.cmbX_Dyn_StartCtrl.Location = new System.Drawing.Point(160, 70);
             this.cmbX_Dyn_StartCtrl.Name = "cmbX_Dyn_StartCtrl";
             this.cmbX_Dyn_StartCtrl.Size = new System.Drawing.Size(103, 27);
             this.cmbX_Dyn_StartCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -234,7 +241,7 @@
             this.comboItem4,
             this.comboItem5,
             this.comboItem6});
-            this.cmbX_Dyn_StartSpeed_Unit.Location = new System.Drawing.Point(223, 99);
+            this.cmbX_Dyn_StartSpeed_Unit.Location = new System.Drawing.Point(266, 99);
             this.cmbX_Dyn_StartSpeed_Unit.Name = "cmbX_Dyn_StartSpeed_Unit";
             this.cmbX_Dyn_StartSpeed_Unit.Size = new System.Drawing.Size(93, 27);
             this.cmbX_Dyn_StartSpeed_Unit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -268,7 +275,7 @@
             this.cmbX_Dyn_MoveCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbX_Dyn_MoveCtrl.FormattingEnabled = true;
             this.cmbX_Dyn_MoveCtrl.ItemHeight = 21;
-            this.cmbX_Dyn_MoveCtrl.Location = new System.Drawing.Point(117, 128);
+            this.cmbX_Dyn_MoveCtrl.Location = new System.Drawing.Point(160, 128);
             this.cmbX_Dyn_MoveCtrl.Name = "cmbX_Dyn_MoveCtrl";
             this.cmbX_Dyn_MoveCtrl.Size = new System.Drawing.Size(103, 27);
             this.cmbX_Dyn_MoveCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -283,7 +290,7 @@
             this.cmbX_Dyn_WaveFrom.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbX_Dyn_WaveFrom.FormattingEnabled = true;
             this.cmbX_Dyn_WaveFrom.ItemHeight = 21;
-            this.cmbX_Dyn_WaveFrom.Location = new System.Drawing.Point(117, 157);
+            this.cmbX_Dyn_WaveFrom.Location = new System.Drawing.Point(160, 157);
             this.cmbX_Dyn_WaveFrom.Name = "cmbX_Dyn_WaveFrom";
             this.cmbX_Dyn_WaveFrom.Size = new System.Drawing.Size(199, 27);
             this.cmbX_Dyn_WaveFrom.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -297,7 +304,7 @@
             this.tbX_Dyn_StartSpeed.Border.Class = "TextBoxBorder";
             this.tbX_Dyn_StartSpeed.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_Dyn_StartSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_Dyn_StartSpeed.Location = new System.Drawing.Point(117, 100);
+            this.tbX_Dyn_StartSpeed.Location = new System.Drawing.Point(160, 100);
             this.tbX_Dyn_StartSpeed.Name = "tbX_Dyn_StartSpeed";
             this.tbX_Dyn_StartSpeed.PreventEnterBeep = true;
             this.tbX_Dyn_StartSpeed.Size = new System.Drawing.Size(103, 26);
@@ -315,7 +322,7 @@
             this.comboItem7,
             this.comboItem8,
             this.comboItem9});
-            this.cmbX_Dyn_MoveCtrl_Unit.Location = new System.Drawing.Point(223, 128);
+            this.cmbX_Dyn_MoveCtrl_Unit.Location = new System.Drawing.Point(266, 128);
             this.cmbX_Dyn_MoveCtrl_Unit.Name = "cmbX_Dyn_MoveCtrl_Unit";
             this.cmbX_Dyn_MoveCtrl_Unit.Size = new System.Drawing.Size(93, 27);
             this.cmbX_Dyn_MoveCtrl_Unit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -340,7 +347,7 @@
             // 
             this.cbX_Dyn_PeakCtrl.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_Dyn_PeakCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_Dyn_PeakCtrl.Location = new System.Drawing.Point(227, 191);
+            this.cbX_Dyn_PeakCtrl.Location = new System.Drawing.Point(270, 191);
             this.cbX_Dyn_PeakCtrl.Name = "cbX_Dyn_PeakCtrl";
             this.cbX_Dyn_PeakCtrl.Size = new System.Drawing.Size(100, 23);
             this.cbX_Dyn_PeakCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -355,9 +362,9 @@
             // 
             this.cbX_Dyn_FadeInOut.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_Dyn_FadeInOut.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_Dyn_FadeInOut.Location = new System.Drawing.Point(226, 219);
+            this.cbX_Dyn_FadeInOut.Location = new System.Drawing.Point(269, 211);
             this.cbX_Dyn_FadeInOut.Name = "cbX_Dyn_FadeInOut";
-            this.cbX_Dyn_FadeInOut.Size = new System.Drawing.Size(100, 23);
+            this.cbX_Dyn_FadeInOut.Size = new System.Drawing.Size(100, 39);
             this.cbX_Dyn_FadeInOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_Dyn_FadeInOut.TabIndex = 3;
             this.cbX_Dyn_FadeInOut.Text = "淡入淡出";
@@ -369,7 +376,7 @@
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX8.Location = new System.Drawing.Point(117, 248);
+            this.labelX8.Location = new System.Drawing.Point(141, 248);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(103, 23);
             this.labelX8.TabIndex = 0;
@@ -383,7 +390,7 @@
             this.tbX_Dyn_PeakCtrl.Border.Class = "TextBoxBorder";
             this.tbX_Dyn_PeakCtrl.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_Dyn_PeakCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_Dyn_PeakCtrl.Location = new System.Drawing.Point(117, 187);
+            this.tbX_Dyn_PeakCtrl.Location = new System.Drawing.Point(160, 187);
             this.tbX_Dyn_PeakCtrl.Name = "tbX_Dyn_PeakCtrl";
             this.tbX_Dyn_PeakCtrl.PreventEnterBeep = true;
             this.tbX_Dyn_PeakCtrl.Size = new System.Drawing.Size(103, 26);
@@ -397,7 +404,7 @@
             this.tbX_Cycles.Border.Class = "TextBoxBorder";
             this.tbX_Cycles.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_Cycles.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_Cycles.Location = new System.Drawing.Point(117, 216);
+            this.tbX_Cycles.Location = new System.Drawing.Point(160, 216);
             this.tbX_Cycles.Name = "tbX_Cycles";
             this.tbX_Cycles.PreventEnterBeep = true;
             this.tbX_Cycles.Size = new System.Drawing.Size(103, 26);
@@ -408,7 +415,7 @@
             this.btnX_Dyn_Offset_S1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Offset_S1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Offset_S1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Offset_S1.Location = new System.Drawing.Point(86, 276);
+            this.btnX_Dyn_Offset_S1.Location = new System.Drawing.Point(110, 276);
             this.btnX_Dyn_Offset_S1.Name = "btnX_Dyn_Offset_S1";
             this.btnX_Dyn_Offset_S1.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Offset_S1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -424,7 +431,7 @@
             this.tbX_Dyn_Offset.Border.Class = "TextBoxBorder";
             this.tbX_Dyn_Offset.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_Dyn_Offset.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_Dyn_Offset.Location = new System.Drawing.Point(117, 275);
+            this.tbX_Dyn_Offset.Location = new System.Drawing.Point(141, 275);
             this.tbX_Dyn_Offset.Name = "tbX_Dyn_Offset";
             this.tbX_Dyn_Offset.PreventEnterBeep = true;
             this.tbX_Dyn_Offset.Size = new System.Drawing.Size(103, 26);
@@ -436,7 +443,7 @@
             this.btnX_Dyn_Offset_S2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Offset_S2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Offset_S2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Offset_S2.Location = new System.Drawing.Point(55, 276);
+            this.btnX_Dyn_Offset_S2.Location = new System.Drawing.Point(79, 276);
             this.btnX_Dyn_Offset_S2.Name = "btnX_Dyn_Offset_S2";
             this.btnX_Dyn_Offset_S2.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Offset_S2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -450,7 +457,7 @@
             this.btnX_Dyn_Offset_S3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Offset_S3.Enabled = false;
             this.btnX_Dyn_Offset_S3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Offset_S3.Location = new System.Drawing.Point(24, 276);
+            this.btnX_Dyn_Offset_S3.Location = new System.Drawing.Point(48, 276);
             this.btnX_Dyn_Offset_S3.Name = "btnX_Dyn_Offset_S3";
             this.btnX_Dyn_Offset_S3.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Offset_S3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -465,7 +472,7 @@
             // 
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX10.Location = new System.Drawing.Point(117, 307);
+            this.labelX10.Location = new System.Drawing.Point(141, 307);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(103, 23);
             this.labelX10.TabIndex = 0;
@@ -479,7 +486,7 @@
             this.tbX_Dyn_Amplitude.Border.Class = "TextBoxBorder";
             this.tbX_Dyn_Amplitude.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_Dyn_Amplitude.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_Dyn_Amplitude.Location = new System.Drawing.Point(117, 336);
+            this.tbX_Dyn_Amplitude.Location = new System.Drawing.Point(141, 336);
             this.tbX_Dyn_Amplitude.Name = "tbX_Dyn_Amplitude";
             this.tbX_Dyn_Amplitude.PreventEnterBeep = true;
             this.tbX_Dyn_Amplitude.Size = new System.Drawing.Size(103, 26);
@@ -492,7 +499,7 @@
             // 
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX12.Location = new System.Drawing.Point(117, 368);
+            this.labelX12.Location = new System.Drawing.Point(143, 368);
             this.labelX12.Name = "labelX12";
             this.labelX12.Size = new System.Drawing.Size(103, 23);
             this.labelX12.TabIndex = 0;
@@ -503,7 +510,7 @@
             this.btnX_Dyn_Offset_P1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Offset_P1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Offset_P1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Offset_P1.Location = new System.Drawing.Point(226, 276);
+            this.btnX_Dyn_Offset_P1.Location = new System.Drawing.Point(250, 276);
             this.btnX_Dyn_Offset_P1.Name = "btnX_Dyn_Offset_P1";
             this.btnX_Dyn_Offset_P1.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Offset_P1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -516,7 +523,7 @@
             this.btnX_Dyn_Offset_P2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Offset_P2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Offset_P2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Offset_P2.Location = new System.Drawing.Point(257, 276);
+            this.btnX_Dyn_Offset_P2.Location = new System.Drawing.Point(281, 276);
             this.btnX_Dyn_Offset_P2.Name = "btnX_Dyn_Offset_P2";
             this.btnX_Dyn_Offset_P2.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Offset_P2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -530,7 +537,7 @@
             this.btnX_Dyn_Offset_P3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Offset_P3.Enabled = false;
             this.btnX_Dyn_Offset_P3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Offset_P3.Location = new System.Drawing.Point(288, 276);
+            this.btnX_Dyn_Offset_P3.Location = new System.Drawing.Point(312, 276);
             this.btnX_Dyn_Offset_P3.Name = "btnX_Dyn_Offset_P3";
             this.btnX_Dyn_Offset_P3.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Offset_P3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -543,7 +550,7 @@
             this.btnX_Dyn_Amplitude_S1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Amplitude_S1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Amplitude_S1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Amplitude_S1.Location = new System.Drawing.Point(86, 337);
+            this.btnX_Dyn_Amplitude_S1.Location = new System.Drawing.Point(110, 337);
             this.btnX_Dyn_Amplitude_S1.Name = "btnX_Dyn_Amplitude_S1";
             this.btnX_Dyn_Amplitude_S1.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Amplitude_S1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -556,7 +563,7 @@
             this.btnX_Dyn_Amplitude_S2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Amplitude_S2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Amplitude_S2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Amplitude_S2.Location = new System.Drawing.Point(55, 337);
+            this.btnX_Dyn_Amplitude_S2.Location = new System.Drawing.Point(79, 337);
             this.btnX_Dyn_Amplitude_S2.Name = "btnX_Dyn_Amplitude_S2";
             this.btnX_Dyn_Amplitude_S2.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Amplitude_S2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -570,7 +577,7 @@
             this.btnX_Dyn_Amplitude_S3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Amplitude_S3.Enabled = false;
             this.btnX_Dyn_Amplitude_S3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Amplitude_S3.Location = new System.Drawing.Point(24, 337);
+            this.btnX_Dyn_Amplitude_S3.Location = new System.Drawing.Point(48, 337);
             this.btnX_Dyn_Amplitude_S3.Name = "btnX_Dyn_Amplitude_S3";
             this.btnX_Dyn_Amplitude_S3.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Amplitude_S3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -583,7 +590,7 @@
             this.btnX_Dyn_Amplitude_P1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Amplitude_P1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Amplitude_P1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Amplitude_P1.Location = new System.Drawing.Point(226, 337);
+            this.btnX_Dyn_Amplitude_P1.Location = new System.Drawing.Point(250, 337);
             this.btnX_Dyn_Amplitude_P1.Name = "btnX_Dyn_Amplitude_P1";
             this.btnX_Dyn_Amplitude_P1.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Amplitude_P1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -596,7 +603,7 @@
             this.btnX_Dyn_Amplitude_P2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Amplitude_P2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Amplitude_P2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Amplitude_P2.Location = new System.Drawing.Point(257, 337);
+            this.btnX_Dyn_Amplitude_P2.Location = new System.Drawing.Point(281, 337);
             this.btnX_Dyn_Amplitude_P2.Name = "btnX_Dyn_Amplitude_P2";
             this.btnX_Dyn_Amplitude_P2.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Amplitude_P2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -610,7 +617,7 @@
             this.btnX_Dyn_Amplitude_P3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Amplitude_P3.Enabled = false;
             this.btnX_Dyn_Amplitude_P3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Amplitude_P3.Location = new System.Drawing.Point(288, 337);
+            this.btnX_Dyn_Amplitude_P3.Location = new System.Drawing.Point(312, 337);
             this.btnX_Dyn_Amplitude_P3.Name = "btnX_Dyn_Amplitude_P3";
             this.btnX_Dyn_Amplitude_P3.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Amplitude_P3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -626,7 +633,7 @@
             this.tbX_Dyn_Frequency.Border.Class = "TextBoxBorder";
             this.tbX_Dyn_Frequency.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_Dyn_Frequency.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_Dyn_Frequency.Location = new System.Drawing.Point(117, 397);
+            this.tbX_Dyn_Frequency.Location = new System.Drawing.Point(141, 397);
             this.tbX_Dyn_Frequency.Name = "tbX_Dyn_Frequency";
             this.tbX_Dyn_Frequency.PreventEnterBeep = true;
             this.tbX_Dyn_Frequency.Size = new System.Drawing.Size(103, 26);
@@ -637,7 +644,7 @@
             this.btnX_Dyn_Freq_P1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Freq_P1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Freq_P1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Freq_P1.Location = new System.Drawing.Point(226, 398);
+            this.btnX_Dyn_Freq_P1.Location = new System.Drawing.Point(250, 398);
             this.btnX_Dyn_Freq_P1.Name = "btnX_Dyn_Freq_P1";
             this.btnX_Dyn_Freq_P1.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Freq_P1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -650,7 +657,7 @@
             this.btnX_Dyn_Freq_P2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Freq_P2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Freq_P2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Freq_P2.Location = new System.Drawing.Point(257, 398);
+            this.btnX_Dyn_Freq_P2.Location = new System.Drawing.Point(281, 398);
             this.btnX_Dyn_Freq_P2.Name = "btnX_Dyn_Freq_P2";
             this.btnX_Dyn_Freq_P2.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Freq_P2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -664,7 +671,7 @@
             this.btnX_Dyn_Freq_P3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Freq_P3.Enabled = false;
             this.btnX_Dyn_Freq_P3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Freq_P3.Location = new System.Drawing.Point(288, 398);
+            this.btnX_Dyn_Freq_P3.Location = new System.Drawing.Point(312, 398);
             this.btnX_Dyn_Freq_P3.Name = "btnX_Dyn_Freq_P3";
             this.btnX_Dyn_Freq_P3.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Freq_P3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -677,7 +684,7 @@
             this.btnX_Dyn_Freq_S1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Freq_S1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Freq_S1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Freq_S1.Location = new System.Drawing.Point(86, 397);
+            this.btnX_Dyn_Freq_S1.Location = new System.Drawing.Point(110, 397);
             this.btnX_Dyn_Freq_S1.Name = "btnX_Dyn_Freq_S1";
             this.btnX_Dyn_Freq_S1.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Freq_S1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -690,7 +697,7 @@
             this.btnX_Dyn_Freq_S2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_Dyn_Freq_S2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Freq_S2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Freq_S2.Location = new System.Drawing.Point(55, 397);
+            this.btnX_Dyn_Freq_S2.Location = new System.Drawing.Point(79, 397);
             this.btnX_Dyn_Freq_S2.Name = "btnX_Dyn_Freq_S2";
             this.btnX_Dyn_Freq_S2.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Freq_S2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -704,7 +711,7 @@
             this.btnX_Dyn_Freq_S3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Freq_S3.Enabled = false;
             this.btnX_Dyn_Freq_S3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_Dyn_Freq_S3.Location = new System.Drawing.Point(24, 397);
+            this.btnX_Dyn_Freq_S3.Location = new System.Drawing.Point(48, 397);
             this.btnX_Dyn_Freq_S3.Name = "btnX_Dyn_Freq_S3";
             this.btnX_Dyn_Freq_S3.Size = new System.Drawing.Size(25, 25);
             this.btnX_Dyn_Freq_S3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
@@ -720,8 +727,9 @@
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
+            this.panelEx1.MaximumSize = new System.Drawing.Size(0, 75);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(328, 30);
+            this.panelEx1.Size = new System.Drawing.Size(378, 30);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -734,12 +742,14 @@
             // btnX_Dyn_Send
             // 
             this.btnX_Dyn_Send.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_Dyn_Send.AutoSize = true;
             this.btnX_Dyn_Send.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Send.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Dyn_Send.Image = ((System.Drawing.Image)(resources.GetObject("btnX_Dyn_Send.Image")));
-            this.btnX_Dyn_Send.Location = new System.Drawing.Point(5, 4);
+            this.btnX_Dyn_Send.Location = new System.Drawing.Point(3, 3);
+            this.btnX_Dyn_Send.MaximumSize = new System.Drawing.Size(0, 23);
             this.btnX_Dyn_Send.Name = "btnX_Dyn_Send";
-            this.btnX_Dyn_Send.Size = new System.Drawing.Size(75, 23);
+            this.btnX_Dyn_Send.Size = new System.Drawing.Size(75, 27);
             this.btnX_Dyn_Send.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_Dyn_Send.TabIndex = 0;
             this.btnX_Dyn_Send.Text = "发送";
@@ -751,6 +761,7 @@
             this.cmbX_Dyn_PeakCtrl.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbX_Dyn_PeakCtrl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbX_Dyn_PeakCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_Dyn_PeakCtrl.ForeColor = System.Drawing.Color.Black;
             this.cmbX_Dyn_PeakCtrl.FormattingEnabled = true;
             this.cmbX_Dyn_PeakCtrl.ItemHeight = 21;
             this.cmbX_Dyn_PeakCtrl.Items.AddRange(new object[] {
@@ -760,7 +771,7 @@
             this.comboItem13,
             this.comboItem14,
             this.comboItem15});
-            this.cmbX_Dyn_PeakCtrl.Location = new System.Drawing.Point(117, 187);
+            this.cmbX_Dyn_PeakCtrl.Location = new System.Drawing.Point(160, 187);
             this.cmbX_Dyn_PeakCtrl.Name = "cmbX_Dyn_PeakCtrl";
             this.cmbX_Dyn_PeakCtrl.Size = new System.Drawing.Size(103, 27);
             this.cmbX_Dyn_PeakCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -797,7 +808,7 @@
             // 
             this.cbX_DynCtrl_ModifyParam.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_DynCtrl_ModifyParam.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_DynCtrl_ModifyParam.Location = new System.Drawing.Point(24, 438);
+            this.cbX_DynCtrl_ModifyParam.Location = new System.Drawing.Point(48, 438);
             this.cbX_DynCtrl_ModifyParam.Name = "cbX_DynCtrl_ModifyParam";
             this.cbX_DynCtrl_ModifyParam.Size = new System.Drawing.Size(103, 23);
             this.cbX_DynCtrl_ModifyParam.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -812,7 +823,7 @@
             // 
             this.cbX_DynCtrl_RelativeDestinations.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_DynCtrl_RelativeDestinations.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_DynCtrl_RelativeDestinations.Location = new System.Drawing.Point(133, 438);
+            this.cbX_DynCtrl_RelativeDestinations.Location = new System.Drawing.Point(157, 438);
             this.cbX_DynCtrl_RelativeDestinations.Name = "cbX_DynCtrl_RelativeDestinations";
             this.cbX_DynCtrl_RelativeDestinations.Size = new System.Drawing.Size(121, 23);
             this.cbX_DynCtrl_RelativeDestinations.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -824,7 +835,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 471);
+            this.ClientSize = new System.Drawing.Size(378, 471);
             this.Controls.Add(this.cmbX_Dyn_PeakCtrl);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.btnX_Dyn_Freq_S3);
@@ -877,8 +888,11 @@
             this.Name = "FrmDynCtrl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DynCtrl";
+            this.Load += new System.EventHandler(this.FrmDynCtrl_Load);
             this.panelEx1.ResumeLayout(false);
+            this.panelEx1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
