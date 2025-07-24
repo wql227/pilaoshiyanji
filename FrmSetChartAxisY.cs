@@ -221,7 +221,7 @@ namespace DoPENetConnect
             {
                 this.Width = 850;
             }
-            else
+            else if(strLanguage == "Español")
                 this.Width = 1600;
 
             int startPos = (this.Width-231- btn_FrmSerAxisY_OK.Width)/ 2;
