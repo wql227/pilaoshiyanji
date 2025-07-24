@@ -109,6 +109,20 @@
 	        "labelX15": "Nombre del Archivo：",
 	        "labelX16": "Uso de Memoria："
 	  },
+	
+	"FrmSetChartAxisY":{
+		"labelX1":"Establecer el nombre del proyecto",
+		"labelX3":"máximo",
+		"labelX2":"mínimo",
+		"labelX4":"Ajustar la cantidad",
+		"cbX_FrmSetChartAxisY_TimeEnable":"Hora",
+		"cbX_FrmSetChartAxisY_PosEnable":"desplazamiento",
+		"cbX_FrmSetChartAxisY_LoadEnable":"Potencia experimental",
+		"cbX_FrmSetChartAxisY_ExtEnable":"deformación",
+		"cbX_FrmSetChartAxisY_CommandEnable":"mandar",
+		"btn_FrmSerAxisY_OK":"Aceptar",
+		"btn_FrmSerAxisY_Cancel":"Cancelar"
+		},
 	  
 	"FrmSystemSetting": {
 			"superTabItem5": "Configuración del sistema",

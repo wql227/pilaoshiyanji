@@ -25,6 +25,8 @@ namespace DoPENetConnect
             UiAutoSize();
         }
 
+        string strLanguage;
+
 
         public void LoadIni()
         {
@@ -159,9 +161,75 @@ namespace DoPENetConnect
         /// </summary>
         private void UiAutoSize()
         {
+            int maxCtrlLen = 0;
+            foreach (Control ctrl in panelEx1.Controls)
+            {
+                if (ctrl.Width > maxCtrlLen) maxCtrlLen = ctrl.Width;
+            }
 
-            ///
-           
+            labelX1.Width = maxCtrlLen;
+            cbX_FrmSetChartAxisY_TimeEnable.Width = maxCtrlLen;
+            cbX_FrmSetChartAxisY_PosEnable.Width = maxCtrlLen;
+            cbX_FrmSetChartAxisY_LoadEnable.Width = maxCtrlLen;
+            cbX_FrmSetChartAxisY_ExtEnable.Width = maxCtrlLen;
+            cbX_FrmSetChartAxisY_CommandEnable.Width = maxCtrlLen;
+            cbX_FrmSetChartAxisY_TimeEnable.Location = new Point(labelX1.Location.X + maxCtrlLen + 10, labelX1.Location.Y);
+            cbX_FrmSetChartAxisY_PosEnable.Location = new Point(cbX_FrmSetChartAxisY_TimeEnable.Location.X + maxCtrlLen + 10, labelX1.Location.Y);
+            cbX_FrmSetChartAxisY_LoadEnable.Location = new Point(cbX_FrmSetChartAxisY_PosEnable.Location.X + maxCtrlLen + 10, labelX1.Location.Y);
+            cbX_FrmSetChartAxisY_ExtEnable.Location = new Point(cbX_FrmSetChartAxisY_LoadEnable.Location.X + maxCtrlLen + 10, labelX1.Location.Y);
+            cbX_FrmSetChartAxisY_CommandEnable.Location = new Point(cbX_FrmSetChartAxisY_ExtEnable.Location.X + maxCtrlLen + 10, labelX1.Location.Y);
+
+            labelX3.Location = new Point(labelX1.Location.X, labelX3.Location.Y);
+
+            labelX2.Location = new Point(labelX1.Location.X, labelX2.Location.Y);
+
+            labelX4.Location = new Point(labelX1.Location.X, labelX4.Location.Y);
+
+            tbX_FrmSetChartAxisY_TimeY_Max.Location = new Point(cbX_FrmSetChartAxisY_TimeEnable.Location.X, tbX_FrmSetChartAxisY_TimeY_Max.Location.Y);
+
+            tbX_FrmSetChartAxisY_PosY_Max.Location = new Point(cbX_FrmSetChartAxisY_PosEnable.Location.X, tbX_FrmSetChartAxisY_PosY_Max.Location.Y);
+
+            tbX_FrmSetChartAxisY_LoadY_Max.Location = new Point(cbX_FrmSetChartAxisY_LoadEnable.Location.X, tbX_FrmSetChartAxisY_LoadY_Max.Location.Y);
+
+            tbX_FrmSetChartAxisY_ExtY_Max.Location = new Point(cbX_FrmSetChartAxisY_ExtEnable.Location.X, tbX_FrmSetChartAxisY_ExtY_Max.Location.Y);
+
+            tbX_FrmSetChartAxisY_CommandY_Max.Location = new Point(cbX_FrmSetChartAxisY_CommandEnable.Location.X, tbX_FrmSetChartAxisY_CommandY_Max.Location.Y);
+
+
+            tbX_FrmSetChartAxisY_TimeY_Min.Location = new Point(cbX_FrmSetChartAxisY_TimeEnable.Location.X, tbX_FrmSetChartAxisY_TimeY_Min.Location.Y);
+
+            tbX_FrmSetChartAxisY_PosY_Min.Location = new Point(cbX_FrmSetChartAxisY_PosEnable.Location.X, tbX_FrmSetChartAxisY_PosY_Min.Location.Y);
+
+            tbX_FrmSetChartAxisY_LoadY_Min.Location = new Point(cbX_FrmSetChartAxisY_LoadEnable.Location.X, tbX_FrmSetChartAxisY_LoadY_Min.Location.Y);
+
+            tbX_FrmSetChartAxisY_ExtY_Min.Location = new Point(cbX_FrmSetChartAxisY_ExtEnable.Location.X, tbX_FrmSetChartAxisY_ExtY_Min.Location.Y);
+
+            tbX_FrmSetChartAxisY_CommandY_Min.Location = new Point(cbX_FrmSetChartAxisY_CommandEnable.Location.X, tbX_FrmSetChartAxisY_CommandY_Min.Location.Y);
+
+
+            cbX_Time_Range.Location = new Point(cbX_FrmSetChartAxisY_TimeEnable.Location.X, cbX_Time_Range.Location.Y);
+
+            cbX_Pos_Range.Location = new Point(cbX_FrmSetChartAxisY_PosEnable.Location.X, cbX_Pos_Range.Location.Y);
+
+            cbX_Load_Range.Location = new Point(cbX_FrmSetChartAxisY_LoadEnable.Location.X, cbX_Load_Range.Location.Y);
+
+            cbX_Ext_Range.Location = new Point(cbX_FrmSetChartAxisY_ExtEnable.Location.X, cbX_Ext_Range.Location.Y);
+
+            cbX_Command_Range.Location = new Point(cbX_FrmSetChartAxisY_CommandEnable.Location.X, cbX_Command_Range.Location.Y);
+
+            if (strLanguage == "English" || strLanguage == "简体中文")
+            {
+                this.Width = 850;
+            }
+            else
+                this.Width = 1600;
+
+            int startPos = (this.Width-231- btn_FrmSerAxisY_OK.Width)/ 2;
+            int btn2 = startPos + 231;
+
+            btn_FrmSerAxisY_OK.Location = new Point(startPos, btn_FrmSerAxisY_OK.Location.Y);
+            btn_FrmSerAxisY_Cancel.Location = new Point(btn2, btn_FrmSerAxisY_Cancel.Location.Y);
+
         }
 
         /// <summary>
@@ -171,7 +239,7 @@ namespace DoPENetConnect
         {
             StringBuilder strTmp = new StringBuilder();
             IniFileHelper.GetIniString("Setting", "Language", "0", strTmp, strTmp.Capacity);
-            string strLanguage = strTmp.ToString();
+             strLanguage = strTmp.ToString();
             var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
 
             //循环界面控件替换成指定的语言

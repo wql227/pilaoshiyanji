@@ -96,6 +96,8 @@
             // 
             // labelX1
             // 
+            this.labelX1.AutoSize = true;
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -103,7 +105,7 @@
             this.labelX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX1.Location = new System.Drawing.Point(12, 12);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(101, 23);
+            this.labelX1.Size = new System.Drawing.Size(90, 23);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "设置项名称";
             // 
@@ -141,7 +143,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(551, 208);
+            this.panelEx1.Size = new System.Drawing.Size(834, 208);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -167,7 +169,7 @@
             this.comboItem26,
             this.comboItem27,
             this.comboItem28});
-            this.cbX_Command_Range.Location = new System.Drawing.Point(472, 101);
+            this.cbX_Command_Range.Location = new System.Drawing.Point(472, 104);
             this.cbX_Command_Range.Name = "cbX_Command_Range";
             this.cbX_Command_Range.Size = new System.Drawing.Size(67, 27);
             this.cbX_Command_Range.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -217,7 +219,7 @@
             this.comboItem19,
             this.comboItem20,
             this.comboItem21});
-            this.cbX_Ext_Range.Location = new System.Drawing.Point(399, 101);
+            this.cbX_Ext_Range.Location = new System.Drawing.Point(399, 104);
             this.cbX_Ext_Range.Name = "cbX_Ext_Range";
             this.cbX_Ext_Range.Size = new System.Drawing.Size(67, 27);
             this.cbX_Ext_Range.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -267,7 +269,7 @@
             this.comboItem12,
             this.comboItem13,
             this.comboItem14});
-            this.cbX_Load_Range.Location = new System.Drawing.Point(314, 101);
+            this.cbX_Load_Range.Location = new System.Drawing.Point(314, 104);
             this.cbX_Load_Range.Name = "cbX_Load_Range";
             this.cbX_Load_Range.Size = new System.Drawing.Size(67, 27);
             this.cbX_Load_Range.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -318,7 +320,7 @@
             this.comboItem33,
             this.comboItem34,
             this.comboItem35});
-            this.cbX_Time_Range.Location = new System.Drawing.Point(119, 101);
+            this.cbX_Time_Range.Location = new System.Drawing.Point(119, 104);
             this.cbX_Time_Range.Name = "cbX_Time_Range";
             this.cbX_Time_Range.Size = new System.Drawing.Size(67, 27);
             this.cbX_Time_Range.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -375,7 +377,7 @@
             this.comboItem5,
             this.comboItem6,
             this.comboItem7});
-            this.cbX_Pos_Range.Location = new System.Drawing.Point(210, 101);
+            this.cbX_Pos_Range.Location = new System.Drawing.Point(210, 104);
             this.cbX_Pos_Range.Name = "cbX_Pos_Range";
             this.cbX_Pos_Range.Size = new System.Drawing.Size(67, 27);
             this.cbX_Pos_Range.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -418,6 +420,7 @@
             // 
             // cbX_FrmSetChartAxisY_CommandEnable
             // 
+            this.cbX_FrmSetChartAxisY_CommandEnable.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -432,6 +435,7 @@
             // 
             // cbX_FrmSetChartAxisY_ExtEnable
             // 
+            this.cbX_FrmSetChartAxisY_ExtEnable.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -446,6 +450,7 @@
             // 
             // cbX_FrmSetChartAxisY_LoadEnable
             // 
+            this.cbX_FrmSetChartAxisY_LoadEnable.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -460,6 +465,7 @@
             // 
             // cbX_FrmSetChartAxisY_TimeEnable
             // 
+            this.cbX_FrmSetChartAxisY_TimeEnable.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -478,6 +484,8 @@
             // 
             // cbX_FrmSetChartAxisY_PosEnable
             // 
+            this.cbX_FrmSetChartAxisY_PosEnable.AutoSize = true;
+            this.cbX_FrmSetChartAxisY_PosEnable.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -485,7 +493,7 @@
             this.cbX_FrmSetChartAxisY_PosEnable.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbX_FrmSetChartAxisY_PosEnable.Location = new System.Drawing.Point(211, 12);
             this.cbX_FrmSetChartAxisY_PosEnable.Name = "cbX_FrmSetChartAxisY_PosEnable";
-            this.cbX_FrmSetChartAxisY_PosEnable.Size = new System.Drawing.Size(67, 23);
+            this.cbX_FrmSetChartAxisY_PosEnable.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmSetChartAxisY_PosEnable.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmSetChartAxisY_PosEnable.TabIndex = 3;
             this.cbX_FrmSetChartAxisY_PosEnable.Text = "位移";
@@ -495,7 +503,7 @@
             this.btn_FrmSerAxisY_Cancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_FrmSerAxisY_Cancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btn_FrmSerAxisY_Cancel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_FrmSerAxisY_Cancel.Location = new System.Drawing.Point(225, 156);
+            this.btn_FrmSerAxisY_Cancel.Location = new System.Drawing.Point(499, 156);
             this.btn_FrmSerAxisY_Cancel.Name = "btn_FrmSerAxisY_Cancel";
             this.btn_FrmSerAxisY_Cancel.Size = new System.Drawing.Size(91, 40);
             this.btn_FrmSerAxisY_Cancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -508,7 +516,7 @@
             this.btn_FrmSerAxisY_OK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_FrmSerAxisY_OK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btn_FrmSerAxisY_OK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_FrmSerAxisY_OK.Location = new System.Drawing.Point(119, 156);
+            this.btn_FrmSerAxisY_OK.Location = new System.Drawing.Point(268, 156);
             this.btn_FrmSerAxisY_OK.Name = "btn_FrmSerAxisY_OK";
             this.btn_FrmSerAxisY_OK.Size = new System.Drawing.Size(91, 40);
             this.btn_FrmSerAxisY_OK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -524,7 +532,7 @@
             this.tbX_FrmSetChartAxisY_CommandY_Max.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_CommandY_Max.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_CommandY_Max.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_CommandY_Max.Location = new System.Drawing.Point(472, 37);
+            this.tbX_FrmSetChartAxisY_CommandY_Max.Location = new System.Drawing.Point(472, 41);
             this.tbX_FrmSetChartAxisY_CommandY_Max.Name = "tbX_FrmSetChartAxisY_CommandY_Max";
             this.tbX_FrmSetChartAxisY_CommandY_Max.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_CommandY_Max.Size = new System.Drawing.Size(67, 26);
@@ -538,7 +546,7 @@
             this.tbX_FrmSetChartAxisY_LoadY_Max.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_LoadY_Max.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_LoadY_Max.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_LoadY_Max.Location = new System.Drawing.Point(314, 37);
+            this.tbX_FrmSetChartAxisY_LoadY_Max.Location = new System.Drawing.Point(314, 41);
             this.tbX_FrmSetChartAxisY_LoadY_Max.Name = "tbX_FrmSetChartAxisY_LoadY_Max";
             this.tbX_FrmSetChartAxisY_LoadY_Max.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_LoadY_Max.Size = new System.Drawing.Size(67, 26);
@@ -552,7 +560,7 @@
             this.tbX_FrmSetChartAxisY_CommandY_Min.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_CommandY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_CommandY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_CommandY_Min.Location = new System.Drawing.Point(472, 69);
+            this.tbX_FrmSetChartAxisY_CommandY_Min.Location = new System.Drawing.Point(472, 73);
             this.tbX_FrmSetChartAxisY_CommandY_Min.Name = "tbX_FrmSetChartAxisY_CommandY_Min";
             this.tbX_FrmSetChartAxisY_CommandY_Min.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_CommandY_Min.Size = new System.Drawing.Size(67, 26);
@@ -566,7 +574,7 @@
             this.tbX_FrmSetChartAxisY_LoadY_Min.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_LoadY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_LoadY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_LoadY_Min.Location = new System.Drawing.Point(314, 69);
+            this.tbX_FrmSetChartAxisY_LoadY_Min.Location = new System.Drawing.Point(314, 73);
             this.tbX_FrmSetChartAxisY_LoadY_Min.Name = "tbX_FrmSetChartAxisY_LoadY_Min";
             this.tbX_FrmSetChartAxisY_LoadY_Min.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_LoadY_Min.Size = new System.Drawing.Size(67, 26);
@@ -580,7 +588,7 @@
             this.tbX_FrmSetChartAxisY_ExtY_Max.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_ExtY_Max.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_ExtY_Max.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_ExtY_Max.Location = new System.Drawing.Point(399, 37);
+            this.tbX_FrmSetChartAxisY_ExtY_Max.Location = new System.Drawing.Point(399, 41);
             this.tbX_FrmSetChartAxisY_ExtY_Max.Name = "tbX_FrmSetChartAxisY_ExtY_Max";
             this.tbX_FrmSetChartAxisY_ExtY_Max.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_ExtY_Max.Size = new System.Drawing.Size(67, 26);
@@ -594,7 +602,7 @@
             this.tbX_FrmSetChartAxisY_TimeY_Max.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_TimeY_Max.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_TimeY_Max.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_TimeY_Max.Location = new System.Drawing.Point(119, 37);
+            this.tbX_FrmSetChartAxisY_TimeY_Max.Location = new System.Drawing.Point(119, 41);
             this.tbX_FrmSetChartAxisY_TimeY_Max.Name = "tbX_FrmSetChartAxisY_TimeY_Max";
             this.tbX_FrmSetChartAxisY_TimeY_Max.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_TimeY_Max.Size = new System.Drawing.Size(67, 26);
@@ -608,7 +616,7 @@
             this.tbX_FrmSetChartAxisY_PosY_Max.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_PosY_Max.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_PosY_Max.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_PosY_Max.Location = new System.Drawing.Point(211, 37);
+            this.tbX_FrmSetChartAxisY_PosY_Max.Location = new System.Drawing.Point(211, 41);
             this.tbX_FrmSetChartAxisY_PosY_Max.Name = "tbX_FrmSetChartAxisY_PosY_Max";
             this.tbX_FrmSetChartAxisY_PosY_Max.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_PosY_Max.Size = new System.Drawing.Size(67, 26);
@@ -622,7 +630,7 @@
             this.tbX_FrmSetChartAxisY_TimeY_Min.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_TimeY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_TimeY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_TimeY_Min.Location = new System.Drawing.Point(119, 69);
+            this.tbX_FrmSetChartAxisY_TimeY_Min.Location = new System.Drawing.Point(119, 73);
             this.tbX_FrmSetChartAxisY_TimeY_Min.Name = "tbX_FrmSetChartAxisY_TimeY_Min";
             this.tbX_FrmSetChartAxisY_TimeY_Min.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_TimeY_Min.Size = new System.Drawing.Size(67, 26);
@@ -636,7 +644,7 @@
             this.tbX_FrmSetChartAxisY_ExtY_Min.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_ExtY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_ExtY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_ExtY_Min.Location = new System.Drawing.Point(399, 69);
+            this.tbX_FrmSetChartAxisY_ExtY_Min.Location = new System.Drawing.Point(399, 73);
             this.tbX_FrmSetChartAxisY_ExtY_Min.Name = "tbX_FrmSetChartAxisY_ExtY_Min";
             this.tbX_FrmSetChartAxisY_ExtY_Min.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_ExtY_Min.Size = new System.Drawing.Size(67, 26);
@@ -650,7 +658,7 @@
             this.tbX_FrmSetChartAxisY_PosY_Min.Border.Class = "TextBoxBorder";
             this.tbX_FrmSetChartAxisY_PosY_Min.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_FrmSetChartAxisY_PosY_Min.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_FrmSetChartAxisY_PosY_Min.Location = new System.Drawing.Point(211, 69);
+            this.tbX_FrmSetChartAxisY_PosY_Min.Location = new System.Drawing.Point(211, 73);
             this.tbX_FrmSetChartAxisY_PosY_Min.Name = "tbX_FrmSetChartAxisY_PosY_Min";
             this.tbX_FrmSetChartAxisY_PosY_Min.PreventEnterBeep = true;
             this.tbX_FrmSetChartAxisY_PosY_Min.Size = new System.Drawing.Size(67, 26);
@@ -658,6 +666,7 @@
             // 
             // labelX3
             // 
+            this.labelX3.AutoSize = true;
             // 
             // 
             // 
@@ -665,33 +674,35 @@
             this.labelX3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX3.Location = new System.Drawing.Point(12, 43);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(101, 23);
+            this.labelX3.Size = new System.Drawing.Size(57, 23);
             this.labelX3.TabIndex = 0;
             this.labelX3.Text = "最大值";
             // 
             // labelX4
             // 
+            this.labelX4.AutoSize = true;
             // 
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX4.Location = new System.Drawing.Point(12, 105);
+            this.labelX4.Location = new System.Drawing.Point(12, 106);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(90, 23);
+            this.labelX4.Size = new System.Drawing.Size(57, 23);
             this.labelX4.TabIndex = 0;
             this.labelX4.Text = "调整量";
             // 
             // labelX2
             // 
+            this.labelX2.AutoSize = true;
             // 
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX2.Location = new System.Drawing.Point(12, 72);
+            this.labelX2.Location = new System.Drawing.Point(12, 75);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(90, 23);
+            this.labelX2.Size = new System.Drawing.Size(57, 23);
             this.labelX2.TabIndex = 0;
             this.labelX2.Text = "最小值";
             // 
@@ -699,13 +710,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 208);
+            this.ClientSize = new System.Drawing.Size(834, 208);
             this.Controls.Add(this.panelEx1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(850, 39);
             this.Name = "FrmSetChartAxisY";
             this.Text = "FrmSetChartAxisY";
             this.Load += new System.EventHandler(this.FrmSetChartAxisY_Load);
             this.panelEx1.ResumeLayout(false);
+            this.panelEx1.PerformLayout();
             this.ResumeLayout(false);
 
         }

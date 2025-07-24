@@ -50,7 +50,7 @@
 		"lblTestCycles": "Test Count",
 		"ShowLogToolStripMenuItem":"Show Log",
 		"startStopDrawToolStripMenuItem":"Suspend Draw",
-		"startStopDrawToolStripMenuItemPause":"Start Draw",
+		"startStopDrawToolStripMenuItemPause":"Start Draw",	
 		"AdjustToolStripMenuItem":"Correct",
 		"AutoSetYAxisToolStripMenuItem":"Curve Adaptive",		
 		"ChartSetToolStripMenuItem":"ChartSet",
@@ -109,6 +109,20 @@
 		"labelX14":"CLR",
 		"labelX15":"File Name",
 		"labelX16":"Memory Usage",
+		},
+	
+	"FrmSetChartAxisY":{
+		"labelX1":"SetProjName",
+		"labelX3":"MaxVal",
+		"labelX2":"MinVal",
+		"labelX4":"AdjustVal",
+		"cbX_FrmSetChartAxisY_TimeEnable":"Time",
+		"cbX_FrmSetChartAxisY_PosEnable":"Displacement",
+		"cbX_FrmSetChartAxisY_LoadEnable":"Load",
+		"cbX_FrmSetChartAxisY_ExtEnable":"Extension",
+		"cbX_FrmSetChartAxisY_CommandEnable":"Command",
+		"btn_FrmSerAxisY_OK":"OK",
+		"btn_FrmSerAxisY_Cancel":"Cancel"
 		},
 		
 	"FrmSystemSetting":{
