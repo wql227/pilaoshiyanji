@@ -477,8 +477,8 @@ namespace DoPENetConnect
                     // for a 300 ms display refresh
                     DoPE.Machine Machine = new DoPE.Machine(0);
                     MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
-                    double aaa = (0.01 / Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2);
-                    MyEdc.Eh.SetOnDataBlockSize((Int32)(aaa));
+                    double aaa = (0.01 / Machine.MDef.SystemTime /*+ Machine.MDef.SystemTime / 2*/);
+                    MyEdc.Eh.SetOnDataBlockSize((Int32)(aaa)); 
                     MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
                     MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
                     MyEdc.Eh.OnPosMsgHdlr += new DoPE.OnPosMsgHdlr(OnPosMsg);
@@ -1067,11 +1067,11 @@ namespace DoPENetConnect
 
                     //if ((Sample.Cycles) % 2 == 0)
                     {
-                        strCSVLog += (Sample.Cycles << 1).ToString() + ",";
-                        tbX_TestCycles.Text = (Sample.Cycles /*>> 1*/).ToString();
+                        strCSVLog += (Sample.Cycles /*<< 1*/).ToString() + ",";
+                        tbX_TestCycles.Text = (Sample.Cycles >> 1).ToString();
 
                         //试验次数
-                        if (Sample.Cycles >= nTestCount )
+                        if (Sample.Cycles >> 1 >= nTestCount )
                         {
                             isRunning = false;
                             SetControlEnable(!isRunning);
@@ -2080,7 +2080,7 @@ namespace DoPENetConnect
             //try
             //{
             //X轴坐标长度 = dStep * nTotal
-
+            dStep = 0.01;
             //if (MyEdc.IsConnected() && bConnected)
             if (chart_machine != null)
             {
@@ -2088,9 +2088,9 @@ namespace DoPENetConnect
                 {
                     //for (int i = 50; Block.Data.Length > i; i += 2500)
                     //for (int i = 30; Block.Data.Length >= i; i += 60)
-                    for (int i = 20; Block.Data.Length > i; i += 2000)
+                    //for (int i = 20; Block.Data.Length > i; i += 200)
+                    for (int i = 10; Block.Data.Length > i; i += 100)
                     {
-
                         //绘制Position
                         double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
                         //x_Position += nAxisStep;
@@ -2102,7 +2102,7 @@ namespace DoPENetConnect
                             if (chart_machine.Series[0].Points.Count - 1 == nTotal)
                             {
                                 chart_machine.Series[0].Points.Clear();
-                                chart_machine.Series[1].Points.AddXY(0.0, y_Position);
+                                //chart_machine.Series[1].Points.AddXY(0.0, y_Position);
 
                                 x_Position = 0.0;
                             }
@@ -2120,7 +2120,7 @@ namespace DoPENetConnect
                             {
                                 chart_machine.Series[1].Points.Clear();
 
-                                chart_machine.Series[1].Points.AddXY(0.0, y_Load);
+                                //chart_machine.Series[1].Points.AddXY(0.0, y_Load);
                                 x_Load = 0.0;
                             }
 
@@ -2138,7 +2138,7 @@ namespace DoPENetConnect
                             {
                                 chart_machine.Series[2].Points.Clear();
 
-                                chart_machine.Series[2].Points.AddXY(0.0, y_Extension);
+                                //chart_machine.Series[2].Points.AddXY(0.0, y_Extension);
                                 x_Extension = 0.0;
                             }
                         }
@@ -2160,7 +2160,7 @@ namespace DoPENetConnect
                             {
                                 chart_machine.Series[3].Points.Clear();
 
-                                chart_machine.Series[3].Points.AddXY(0.0, y_Command);
+                                //chart_machine.Series[3].Points.AddXY(0.0, y_Command);
                                 x_Command = 0.0;
                             }
                         }
@@ -3278,7 +3278,15 @@ namespace DoPENetConnect
 
         private void btnX_AxisPOSY_MinUp_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Minimum += Chart_Pos_Step;
+            if (Chart_Pos_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                chart_machine.ChartAreas[0].AxisY.Minimum += Chart_Pos_Step;
+            }
         }
 
         private void btnX_AsixPOSY_MinDown_Click(object sender, EventArgs e)
@@ -3288,14 +3296,21 @@ namespace DoPENetConnect
 
         private void btnX_AxisPOSY_MaxUp_Click(object sender, EventArgs e)
         {
-            //if (CheckYAxis(chart_machine.ChartAreas[0].AxisY.Maximum, chart_machine.ChartAreas[0].AxisY.Minimum))
-
             chart_machine.ChartAreas[0].AxisY.Maximum += Chart_Pos_Step;
         }
 
         private void btnX_AxisPOSY_MaxDown_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Maximum -= Chart_Pos_Step;
+            if (Chart_Pos_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                chart_machine.ChartAreas[0].AxisY.Maximum -= Chart_Pos_Step;
+            }
+
         }
 
         private void btnX_AxisLoadY_MaxUp_Click(object sender, EventArgs e)
@@ -3305,12 +3320,28 @@ namespace DoPENetConnect
 
         private void btnX_AxisLoadY_MaxDown_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY2.Maximum -= Chart_Load_Step;
+            if (Chart_Load_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                chart_machine.ChartAreas[0].AxisY2.Maximum -= Chart_Load_Step;
+            }
         }
 
         private void btnX_AxisLoadY_MinUp_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY2.Minimum += Chart_Load_Step;
+            if (Chart_Load_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            { 
+                chart_machine.ChartAreas[0].AxisY2.Minimum += Chart_Load_Step;
+            }
         }
 
         private void btnX_AxisLoadY_MinDown_Click(object sender, EventArgs e)
