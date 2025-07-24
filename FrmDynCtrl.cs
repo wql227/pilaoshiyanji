@@ -29,8 +29,6 @@ namespace DoPENetConnect
             Ten,
         }
 
-        string strLanguage;
-
 
         /// <summary>
         /// 构造函数
@@ -86,11 +84,11 @@ namespace DoPENetConnect
             /// <summary>
             /// 语言文件
             /// </summary>
-            private void ReplaceLanguage()
+        private void ReplaceLanguage()
         {
             StringBuilder strTmp = new StringBuilder();
             IniFileHelper.GetIniString("Setting", "Language", "0", strTmp, strTmp.Capacity);
-             strLanguage = strTmp.ToString();
+            string strLanguage = strTmp.ToString();
             var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
 
             //循环界面控件替换成指定的语言

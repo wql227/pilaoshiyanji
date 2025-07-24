@@ -21,6 +21,8 @@ namespace DoPENetConnect
         private void FrmSetChartAxisY_Load(object sender, EventArgs e)
         {
             LoadIni();
+            ReplaceLanguage();
+            UiAutoSize();
         }
 
 
@@ -151,7 +153,51 @@ namespace DoPENetConnect
             strTmp = tbX_FrmSetChartAxisY_TimeY_Max.Text.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "TimeX_MIN", strTmp);
         }
+        /// <summary>
+        /// 根据语言自适应控件位置参数
+        /// 由于语言长度不同 因此需要根据语言长度设置控件长度自适应
+        /// </summary>
+        private void UiAutoSize()
+        {
 
+            ///
+           
+        }
+
+        /// <summary>
+        /// 语言文件
+        /// </summary>
+        private void ReplaceLanguage()
+        {
+            StringBuilder strTmp = new StringBuilder();
+            IniFileHelper.GetIniString("Setting", "Language", "0", strTmp, strTmp.Capacity);
+            string strLanguage = strTmp.ToString();
+            var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
+
+            //循环界面控件替换成指定的语言
+            if (langData.TryGetValue(this.Name, out var frmSystemSetting))
+            {
+
+                foreach (var kvp in frmSystemSetting)
+                {
+                    var controlName = kvp.Key;
+                    var textValue = kvp.Value;
+
+                    // 首先尝试从主窗体的控件集合中查找控件
+                    var ctrl = this.Controls.Find(controlName, true).FirstOrDefault();
+
+                    if (ctrl == null)
+                    {
+
+                    }
+                    else
+                    {
+                        ctrl.Text = textValue;
+                    }
+
+                }
+            }
+        }
 
         private void btn_FrmSerAxisY_OK_Click(object sender, EventArgs e)
         {
