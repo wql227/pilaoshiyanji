@@ -552,11 +552,13 @@ namespace DoPENetConnect
             MainForm.mainform.protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp);
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Force", strTmp);
 
-
-            strTmp = DESEncrypt.Encrypt(tbX_DeviceID.Text); 
-            MainForm.mainform.RefreshDeviceID(tbX_DeviceID.Text);
-            IniFileHelper.WriteIniString("Device", "DeviceID", strTmp);
-            tbX_DeviceID.Clear();
+            if (tbX_DeviceID.Text != "")
+            {
+                strTmp = DESEncrypt.Encrypt(tbX_DeviceID.Text);
+                MainForm.mainform.RefreshDeviceID(tbX_DeviceID.Text);
+                IniFileHelper.WriteIniString("Device", "DeviceID", strTmp);
+                tbX_DeviceID.Clear();
+            }
 
             //按钮常量设置
             strTmp = tbX_upval.Text;
