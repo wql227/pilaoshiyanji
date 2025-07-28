@@ -1068,10 +1068,10 @@ namespace DoPENetConnect
                     //if ((Sample.Cycles) % 2 == 0)
                     {
                         strCSVLog += (Sample.Cycles /*<< 1*/).ToString() + ",";
-                        tbX_TestCycles.Text = (Sample.Cycles >> 1).ToString();
+                        tbX_TestCycles.Text = (Sample.Cycles /*>> 1*/).ToString();
 
                         //试验次数
-                        if (Sample.Cycles >> 1 >= nTestCount )
+                        if (Sample.Cycles /*>> 1*/ >= nTestCount )
                         {
                             isRunning = false;
                             SetControlEnable(!isRunning);
@@ -1993,6 +1993,7 @@ namespace DoPENetConnect
 
                 GetXaxisScale();
 
+                bntX_GUIOn.Checked = true;
                 btnX_SetLow.Checked = true;
                 btnX_SetHigh.Checked = false;
 
@@ -2013,6 +2014,7 @@ namespace DoPENetConnect
         {
             OffEDC();
 
+            bntX_GUIOn.Checked = false;
             this.MaximizeBox = true;
         }
 
@@ -2313,6 +2315,14 @@ namespace DoPENetConnect
             bool RelativeDestination, double SpeedToStart, double Offset, double Amplitude, double HaltAtPlusAmplitude, double HaltAtMinusAmplitude, 
             double Frequency, int HalfCycles, double SpeedToDestination, double Destination, DoPE.DYN_SWEEP SweepFrequencyMode)
         {
+            if (isRunning)
+            {
+                Modify = true;
+            }
+            else
+            {
+                Modify = false;
+            }
             DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0, 
                 0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode, 
                 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);

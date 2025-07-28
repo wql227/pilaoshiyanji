@@ -137,6 +137,15 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_Dyn_Send_Click(object sender, EventArgs e)
         {
+            SendCommand();
+        }
+
+
+        /// <summary>
+        /// 发送命令
+        /// </summary>
+        private void SendCommand()
+        {
             if (!MainForm.mainform.bActivated)
             {
                 MessageBox.Show("请先激活控制器！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -175,7 +184,7 @@ namespace DoPENetConnect
             Offset = double.Parse(tbX_Dyn_Offset.Text);
             Amplitude = double.Parse(tbX_Dyn_Amplitude.Text);
             Frequency = double.Parse(tbX_Dyn_Frequency.Text);
-            HalfCycles = int.Parse(tbX_Cycles.Text); /** 2;*/
+            HalfCycles = int.Parse(tbX_Cycles.Text) * 2;
 
             if (MainForm.mainform.isRunning)
             {
@@ -246,92 +255,110 @@ namespace DoPENetConnect
         private void btnX_Dyn_Offset_P1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Deci, true).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Offset_P2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.One, true).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Offset_P3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Ten, true).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Offset_S1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Deci, false).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Offset_S2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.One, false).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Offset_S3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Ten, false).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Amplitude_P1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Deci, true).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Amplitude_P2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.One, true).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Amplitude_P3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Ten, true).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Amplitude_S1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Deci, false).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Amplitude_S2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, false).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Amplitude_S3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, false).ToString();
+            SendCommand();
         }
 
 
         private void btnX_Dyn_Freq_P1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Deci, true).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Freq_P2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, true).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Freq_P3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, true).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Freq_S1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Deci, false).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Freq_S2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, false).ToString();
+            SendCommand();
         }
 
         private void btnX_Dyn_Freq_S3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, false).ToString();
+            SendCommand();
         }
 
         private void tbX_Dyn_Offset_KeyPress(object sender, KeyPressEventArgs e)

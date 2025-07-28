@@ -68,7 +68,14 @@ namespace DoPENetConnect
             tbX_FrmSetChartAxisY_TimeY_Max.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString(strConfigSetion, "TimeX_MIN", "0", strTmp, strTmp.Capacity);
-            tbX_FrmSetChartAxisY_TimeY_Min.Text = strTmp.ToString();
+            if (strTmp.ToString() != "0")
+            {
+                tbX_FrmSetChartAxisY_TimeY_Min.Text = "0";
+            }
+            else
+            {
+                tbX_FrmSetChartAxisY_TimeY_Min.Text = strTmp.ToString();
+            }
 
             IniFileHelper.GetIniString(strConfigSetion, "PositionY_MAX", "0", strTmp, strTmp.Capacity);
             tbX_FrmSetChartAxisY_PosY_Max.Text = strTmp.ToString();

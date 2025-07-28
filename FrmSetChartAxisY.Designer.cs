@@ -633,8 +633,10 @@
             this.tbX_FrmSetChartAxisY_TimeY_Min.Location = new System.Drawing.Point(119, 73);
             this.tbX_FrmSetChartAxisY_TimeY_Min.Name = "tbX_FrmSetChartAxisY_TimeY_Min";
             this.tbX_FrmSetChartAxisY_TimeY_Min.PreventEnterBeep = true;
+            this.tbX_FrmSetChartAxisY_TimeY_Min.ReadOnly = true;
             this.tbX_FrmSetChartAxisY_TimeY_Min.Size = new System.Drawing.Size(67, 26);
             this.tbX_FrmSetChartAxisY_TimeY_Min.TabIndex = 1;
+            this.tbX_FrmSetChartAxisY_TimeY_Min.Text = "0";
             // 
             // tbX_FrmSetChartAxisY_ExtY_Min
             // 
