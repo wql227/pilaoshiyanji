@@ -1059,40 +1059,38 @@ namespace DoPENetConnect
 
                     text = String.Format("{0}", Sample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
                     strCSVLog += text + ",";
+                    strCSVLog += (Sample.Cycles /*<< 1*/).ToString() + ",";
 
                     if (nCount >= 100)
                     {
                         nCount = 0;
                     }
 
-                    //if ((Sample.Cycles) % 2 == 0)
-                    {
-                        strCSVLog += (Sample.Cycles /*<< 1*/).ToString() + ",";
-                        tbX_TestCycles.Text = (Sample.Cycles /*>> 1*/).ToString();
-
-                        //试验次数
-                        if (Sample.Cycles /*>> 1*/ >= nTestCount )
-                        {
-                            isRunning = false;
-                            SetControlEnable(!isRunning);
-                        }
-                    }
-
-                    strBlockLog += ( strCSVLog + "\r\n");
-
                     if (isRunning)
                     {
-                        if ((Sample.Cycles >> 1) % nCountLog == 0)
+                        strBlockLog += (strCSVLog + "\r\n");
+                        strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");
+
+                        //按配置的次数存储日志
+                        if ((Sample.Cycles /*>> 1*/) % nCountLog == 0)
                         {
                             LogHelper.SaveCsvData(strBlockLog);
                             strBlockLog = "";
                         }
                     }
 
+                    //if ((Sample.Cycles) % 2 == 0)
+                    {
+                        tbX_TestCycles.Text = (Sample.Cycles /*>> 1*/).ToString();
+
+                        //试验次数
+                        if (Sample.Cycles /*>> 1*/ >= nTestCount)
+                        {
+                            isRunning = false;
+                            SetControlEnable(!isRunning);
+                        }
+                    }
                 }
-
-
-                //tb_MaxPos.Text =  FindPeaks(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
 
                 //波形图
                 if (bConnected && bActivated)
@@ -1100,15 +1098,8 @@ namespace DoPENetConnect
                     ShowWave(Block);
                 }
 
-                //for (int pointIndex = 0; pointIndex < pointPacksToGenerate; pointIndex++)
-                //{
-                //    multiChannelData[channelIndex][pointIndex].X = _pointsOutput + pointIndex; //Use index as X value for the data point
-                //    multiChannelData[channelIndex][pointIndex].Y = Decimal.ToDouble(data_display1); // generating y value (using random in this point is way too heavy with multiple channels
-                //                                                                                    //multiChannelData[channelIndex][pointIndex].Y = Math.Sin((double)(_pointsOutput + pointIndex) / 150.0) * 50; // generating y value (using random in this point is way too heavy with multiple channels
-                //}
-
-
             }
+
             return 0;
         }
 
