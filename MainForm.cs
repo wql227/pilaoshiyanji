@@ -130,7 +130,6 @@ namespace DoPENetConnect
         /// </summary>
         private const string CommandFailedString = "Command failed. Please make sure, that the Edc is successfully initialized. \n";
 
-
         /// <summary>
         /// 是否已经连接控制器
         /// </summary>
@@ -140,16 +139,6 @@ namespace DoPENetConnect
         /// 是否已经激活控制器
         /// </summary>
         public bool bActivated = false;
-
-        /// <summary>
-        /// 数据线程
-        /// </summary>
-        private Thread _thread = null;
-
-        /// <summary>
-        /// Random value generator.
-        /// </summary>
-        private Random[] _rand;
 
         /// <summary>
         /// 是否暂停绘制
@@ -175,39 +164,11 @@ namespace DoPENetConnect
         /// 
         /// </summary>
         readonly double[] Values = new double[25];
-        readonly Stopwatch Stopwatch = Stopwatch.StartNew();
+        //readonly Stopwatch Stopwatch = Stopwatch.StartNew();
 
         decimal[] array_display1 = new decimal[150];         //波形显示数据1
         decimal[] array_display2 = new decimal[150];         //波形显示数据2
         decimal[] array_display3 = new decimal[150];         //波形显示数据3
-
-        //位移
-        decimal data_display1 ;
-
-        //力反馈
-        decimal data_display2 ;
-
-        //拉伸
-        decimal data_display3 ;
-        decimal data_displayEnable = 0;
-
-
-        double _pointsPerSec = 2000;    // Data rate for each channel
-        int _channelCount = 0;          // Channel count.
-        double _xLength = 0;            // X axis length.
-        double _previousX = 0;          // Latest X value on axis.
-        long _startTicks;               // Controls timing.
-        double _pointsOutput;
-        long _renderingTime;
-
-        // Constants
-        const double YMin = -20;       // Minimal y-value.
-        const double YMax = 20;        // Maximal y-value.
-
-        private volatile bool _stop;    // Stops thread work.
-        private bool _bFormClosing = false;
-
-        double[] _previousTemperature;
 
         /// <summary>
         /// 
@@ -218,38 +179,12 @@ namespace DoPENetConnect
         double x_Command = 0.0;
 
         /// <summary>
-        /// Position 峰谷值
-        /// </summary>
-        float maxPos = 0.0F;
-        float minPos = 0.0F;
-
-        /// <summary>
-        /// Load 峰谷值
-        /// </summary>
-        float maxLoad = 0.0F;
-        float minLoad = 0.0F;
-
-        /// <summary>
-        /// Load 峰谷值
-        /// </summary>
-        float maxExt = 0.0F;
-        float minExt = 0.0F;
-
-        /// <summary>
         /// 记录试验次数
         /// </summary>
         int nTestCount = 0;
 
         double nAxisStep = 0;
 
-
-        /// <summary>
-        /// Boolean for random data
-        /// </summary>
-        public bool randomdata = false;
-
-        //Stopwatch for controlling the timing 
-        Stopwatch _stopWatch;
 
         /// <summary>
         /// 记录位移峰谷值的队列
@@ -291,7 +226,9 @@ namespace DoPENetConnect
         /// </summary>
         public List<ChartAxisYParm> m_ChartAxixYParmList;
 
-
+        /// <summary>
+        /// 每行日志内容
+        /// </summary>
         public string strBlockLog = "";
 
         /// <summary>
@@ -323,10 +260,31 @@ namespace DoPENetConnect
         public double Chart_Ext_Step = 5.0;
         public double Chart_Command_Step = 5.0;
 
-        //
+        /// <summary>
+        /// X轴最大长度（秒）
+        /// </summary>
         public double AxisXMax = 5;
+
+        /// <summary>
+        /// 每个循环前进的秒数
+        /// </summary>
         public double dStep = 0.01;
+
+        /// <summary>
+        /// 总共前进次数
+        /// </summary>
         public double nTotal = 500;
+
+        /// <summary>
+        /// 单次实验记录循环次数
+        /// </summary>
+        public long nTotalTestCount = 0;
+
+        /// <summary>
+        /// 记录当前试验次数
+        /// </summary>
+        public long nCurrentCount = 0;
+
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -338,10 +296,10 @@ namespace DoPENetConnect
             // Initialize graphical-user-interface.
             InitializeComponent();
 
-            _stop = false;
-            _thread = null;
-            _stopWatch = new Stopwatch();
-            _stopWatch.Start();
+            //_stop = false;
+            //_thread = null;
+            //_stopWatch = new Stopwatch();
+            //_stopWatch.Start();
 
             bPause = false;
 
@@ -1079,16 +1037,33 @@ namespace DoPENetConnect
                         }
                     }
 
-                    //if ((Sample.Cycles) % 2 == 0)
+                    if (!isRunning)
                     {
-                        tbX_TestCycles.Text = (Sample.Cycles >> 1).ToString();
-
-                        //试验次数
-                        if (Sample.Cycles /*>> 1*/ >= nTestCount)
+                        if ((Sample.Cycles >> 1) > 0)
                         {
-                            isRunning = false;
-                            SetControlEnable(!isRunning);
+                            tbX_TestCycles.Text = "0";
                         }
+                    }
+                    else
+                    {
+                        if (cb_TareTime.Checked)
+                        {
+                            nTotalTestCount = (Sample.Cycles >> 1) - nCurrentCount;
+                            tbX_TestCycles.Text = nTotalTestCount.ToString();
+                        }
+                        else
+                        {
+                            nTotalTestCount = (Sample.Cycles >> 1);
+                            tbX_TestCycles.Text = nTotalTestCount.ToString();
+                        }
+                    }
+
+                    //labelX33.Text = (Sample.Cycles >> 1).ToString();
+                    //试验次数
+                    if (Sample.Cycles >> 1 >= nTestCount)
+                    {
+                        isRunning = false;
+                        SetControlEnable(!isRunning);
                     }
                 }
 
@@ -2241,28 +2216,28 @@ namespace DoPENetConnect
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        private double CalculateYValue(int i)
-        {
-            // Use the latest value and generate some difference to it.
-            double nextY = (_previousTemperature[i] + (_rand[i].NextDouble() - 0.5)) / 1000 /** 8*/;
+        //private double CalculateYValue(int i)
+        //{
+        //    // Use the latest value and generate some difference to it.
+        //    double nextY = (_previousTemperature[i] + (_rand[i].NextDouble() - 0.5)) / 1000 /** 8*/;
 
-            // Limit the value between 100...
-            if (nextY > 50)
-            {
-                nextY = 50;
-            }
+        //    // Limit the value between 100...
+        //    if (nextY > 50)
+        //    {
+        //        nextY = 50;
+        //    }
 
-            // ... and 0.
-            if (nextY < -50)
-            {
-                nextY = -50;
-            }
+        //    // ... and 0.
+        //    if (nextY < -50)
+        //    {
+        //        nextY = -50;
+        //    }
 
-            // Update the latest values.
-            _previousTemperature[i] = nextY;
+        //    // Update the latest values.
+        //    _previousTemperature[i] = nextY;
 
-            return nextY;
-        }
+        //    return nextY;
+        //}
 
 
         /// <summary>
@@ -3540,6 +3515,10 @@ namespace DoPENetConnect
 
         private void cb_TareTime_CheckedChanged(object sender, EventArgs e)
         {
+            if (cb_TareTime.Checked)
+            {
+                nCurrentCount = int.Parse(tbX_TestCycles.Text);
+            }
 
         }
 
