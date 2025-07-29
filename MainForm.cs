@@ -285,6 +285,11 @@ namespace DoPENetConnect
         /// </summary>
         public long nCurrentCount = 0;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public long nPreTestCount = 0;
+
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -1053,7 +1058,7 @@ namespace DoPENetConnect
                         }
                         else
                         {
-                            nTotalTestCount = (Sample.Cycles >> 1);
+                            nTotalTestCount = (Sample.Cycles >> 1) + nPreTestCount;
                             tbX_TestCycles.Text = nTotalTestCount.ToString();
                         }
                     }
@@ -2064,6 +2069,11 @@ namespace DoPENetConnect
                         //x_Position += nAxisStep;
                         x_Position += dStep;
 
+                        if (chart_machine.Series == null)
+                        {
+                            return;
+                        }
+
                         if (chart_machine.Series[0] != null)
                         {
                             chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
@@ -2745,6 +2755,11 @@ namespace DoPENetConnect
             {
                 devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             }
+
+            //读取上次的试验次数
+            IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
+            nPreTestCount = int.Parse(strTmp.ToString());
+
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
             nCountLog = int.Parse(strTmp.ToString());
