@@ -16,6 +16,8 @@ namespace DoPENetConnect
             Application.SetCompatibleTextRenderingDefault(false);
 
             //配置日志
+            LogHelper tmpLoger = new LogHelper();
+            tmpLoger.SetLogIndex();
             log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo(System.IO.Directory.GetCurrentDirectory() + "\\log4net.config"));
 
             Application.Run(new MainForm());

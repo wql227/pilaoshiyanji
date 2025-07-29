@@ -155,6 +155,12 @@ namespace DoPENetConnect
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string logPath = Path.Combine(baseDirectory, "Logs");
                 string dateStr = DateTime.Now.ToString("yyyy-MM-dd");
+
+                StringBuilder tmpStr = new StringBuilder(255);
+                IniFileHelper.GetIniString("AppOpenIndex", "IndexVal", "-1", tmpStr, tmpStr.Capacity);
+                
+                logPath = Path.Combine(logPath, dateStr);        //添加日期文件夹
+                logPath = Path.Combine(logPath, tmpStr.ToString());
                 string filename = Path.Combine(logPath, $"{dateStr}.CSV");
 
                 // 创建目录（如果不存在）
@@ -213,5 +219,34 @@ namespace DoPENetConnect
                 // MessageBox.Show(ex.Message);
             }
         }
-    }
+
+        public void SetLogIndex() {
+            IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
+            StringBuilder tmpStr = new StringBuilder(255);
+            IniFileHelper.GetIniString("AppOpenIndex", "Today", "-1", tmpStr, tmpStr.Capacity);
+            string testStr = IniFileHelper.strIniFilePath;
+            string dateStr = DateTime.Now.ToString("yyyy-MM-dd");
+            if (tmpStr.ToString() is "-1" || tmpStr.ToString()!=dateStr) {
+
+                IniFileHelper.WriteIniString("AppOpenIndex", "Today", dateStr);
+                IniFileHelper.WriteIniString("AppOpenIndex", "IndexVal", "1");
+                return;
+
+            }
+
+
+            IniFileHelper.GetIniString("AppOpenIndex", "IndexVal", "-1", tmpStr, tmpStr.Capacity);
+            if (tmpStr.ToString() is "-1")
+            {
+                IniFileHelper.WriteIniString("AppOpenIndex", "IndexVal", "1");
+                return;
+            }
+
+            int newIndex = (int.Parse(tmpStr.ToString()) + 1);
+
+            IniFileHelper.WriteIniString("AppOpenIndex", "IndexVal", newIndex.ToString());
+
+
+        }
+}
 }
