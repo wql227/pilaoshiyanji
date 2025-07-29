@@ -1073,6 +1073,7 @@ namespace DoPENetConnect
                     ShowWave(Block);
                 }
 
+                IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
             }
 
             return 0;
