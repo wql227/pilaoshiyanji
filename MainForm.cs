@@ -1081,7 +1081,7 @@ namespace DoPENetConnect
 
                     //if ((Sample.Cycles) % 2 == 0)
                     {
-                        tbX_TestCycles.Text = (Sample.Cycles /*>> 1*/).ToString();
+                        tbX_TestCycles.Text = (Sample.Cycles >> 1).ToString();
 
                         //试验次数
                         if (Sample.Cycles /*>> 1*/ >= nTestCount)
