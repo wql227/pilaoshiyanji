@@ -522,12 +522,18 @@ namespace DoPENetConnect
             {
                 case "POS":
                     cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "mm" };
+                    labelX9.Text = "mm";
+                    labelX11.Text = "mm";
                     break;
                 case "LOAD":
                     cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "N" };
+                    labelX9.Text = "N";
+                    labelX11.Text = "N";
                     break;
                 case "EXTENSION":
                     cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "mm" };
+                    labelX9.Text = "mm";
+                    labelX11.Text = "mm";
                     break;
                 default:
                     cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "Unit" };

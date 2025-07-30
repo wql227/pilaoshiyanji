@@ -91,6 +91,9 @@
             this.comboItem15 = new DevComponents.Editors.ComboItem();
             this.cbX_DynCtrl_ModifyParam = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbX_DynCtrl_RelativeDestinations = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
+            this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -376,11 +379,13 @@
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX8.Location = new System.Drawing.Point(141, 248);
+            this.labelX8.Location = new System.Drawing.Point(139, 251);
+            this.labelX8.Margin = new System.Windows.Forms.Padding(0);
             this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(103, 23);
+            this.labelX8.Size = new System.Drawing.Size(59, 23);
             this.labelX8.TabIndex = 0;
-            this.labelX8.Text = "偏移量 mm";
+            this.labelX8.Text = "偏移量";
+            this.labelX8.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // tbX_Dyn_PeakCtrl
             // 
@@ -472,11 +477,14 @@
             // 
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX10.Location = new System.Drawing.Point(141, 307);
+            this.labelX10.Location = new System.Drawing.Point(139, 310);
+            this.labelX10.Margin = new System.Windows.Forms.Padding(0);
             this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(103, 23);
+            this.labelX10.Size = new System.Drawing.Size(57, 23);
             this.labelX10.TabIndex = 0;
-            this.labelX10.Text = "振幅 mm";
+            this.labelX10.Text = "振  幅";
+            this.labelX10.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.labelX10.WordWrap = true;
             // 
             // tbX_Dyn_Amplitude
             // 
@@ -499,11 +507,13 @@
             // 
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX12.Location = new System.Drawing.Point(143, 368);
+            this.labelX12.Location = new System.Drawing.Point(143, 371);
             this.labelX12.Name = "labelX12";
-            this.labelX12.Size = new System.Drawing.Size(103, 23);
+            this.labelX12.Size = new System.Drawing.Size(55, 23);
             this.labelX12.TabIndex = 0;
-            this.labelX12.Text = "频率 Hz";
+            this.labelX12.Text = "频  率";
+            this.labelX12.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.labelX12.WordWrap = true;
             // 
             // btnX_Dyn_Offset_P1
             // 
@@ -831,11 +841,53 @@
             this.cbX_DynCtrl_RelativeDestinations.Text = "相对目的地";
             this.cbX_DynCtrl_RelativeDestinations.Visible = false;
             // 
+            // labelX9
+            // 
+            // 
+            // 
+            // 
+            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX9.Location = new System.Drawing.Point(202, 251);
+            this.labelX9.Name = "labelX9";
+            this.labelX9.Size = new System.Drawing.Size(34, 18);
+            this.labelX9.TabIndex = 13;
+            this.labelX9.Text = "mm";
+            // 
+            // labelX11
+            // 
+            // 
+            // 
+            // 
+            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX11.Location = new System.Drawing.Point(202, 310);
+            this.labelX11.Name = "labelX11";
+            this.labelX11.Size = new System.Drawing.Size(34, 20);
+            this.labelX11.TabIndex = 14;
+            this.labelX11.Text = "mm";
+            // 
+            // labelX13
+            // 
+            // 
+            // 
+            // 
+            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX13.Location = new System.Drawing.Point(201, 371);
+            this.labelX13.Name = "labelX13";
+            this.labelX13.Size = new System.Drawing.Size(34, 23);
+            this.labelX13.TabIndex = 15;
+            this.labelX13.Text = "Hz";
+            // 
             // FrmDynCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(378, 471);
+            this.Controls.Add(this.labelX13);
+            this.Controls.Add(this.labelX11);
+            this.Controls.Add(this.labelX9);
             this.Controls.Add(this.cmbX_Dyn_PeakCtrl);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.btnX_Dyn_Freq_S3);
@@ -960,5 +1012,8 @@
         private DevComponents.Editors.ComboItem comboItem15;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbX_DynCtrl_ModifyParam;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbX_DynCtrl_RelativeDestinations;
+        private DevComponents.DotNetBar.LabelX labelX9;
+        private DevComponents.DotNetBar.LabelX labelX11;
+        private DevComponents.DotNetBar.LabelX labelX13;
     }
 }
