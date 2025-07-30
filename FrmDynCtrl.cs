@@ -506,6 +506,9 @@ namespace DoPENetConnect
                 case "LOAD":
                     cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s" };
                     break;
+                case "EXTENSION":
+                    cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
+                    break;
                 default:
                     cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "Unit/s" };
                     break;
@@ -522,6 +525,9 @@ namespace DoPENetConnect
                     break;
                 case "LOAD":
                     cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "N" };
+                    break;
+                case "EXTENSION":
+                    cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "mm" };
                     break;
                 default:
                     cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "Unit" };
