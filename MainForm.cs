@@ -588,7 +588,7 @@ namespace DoPENetConnect
                 btnX_SetLow.Checked = false;
                 btnX_SetHigh.Checked = false;
 
-                SetControlEnable(isRunning);
+                SetControlEnable(true);
 
                 if (stopwatch.IsRunning)
                 {
@@ -2196,6 +2196,8 @@ namespace DoPENetConnect
                 MyEdc.Dispose();
                 bConnected = false;
 
+                SetControlEnable(true);
+
                 EnableButton();
             }
         }
@@ -2441,6 +2443,13 @@ namespace DoPENetConnect
             cb_TarePos.Enabled = bState;
             cb_TareLoad.Enabled = bState;
             cb_TareExt.Enabled = bState;
+            cb_TareTime.Enabled = bState;
+
+            //上下控制禁用
+            btnX_MoveQuickUp.Enabled = bState;
+            bntX_MoveUp.Enabled = bState;
+            bntX_MoveDown.Enabled = bState;
+            btnX_QuickMoveDown.Enabled = bState;
         }
 
 
