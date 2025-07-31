@@ -270,6 +270,9 @@
             this.ToolStripMenuItem_Adout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbX_TestCount = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -407,6 +410,7 @@
             // 
             this.panelEx10.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx10.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx10.Controls.Add(this.tbX_TestCount);
             this.panelEx10.Controls.Add(this.line2);
             this.panelEx10.Controls.Add(this.line1);
             this.panelEx10.Controls.Add(this.cb_DrawPosition);
@@ -417,6 +421,8 @@
             this.panelEx10.Controls.Add(this.btnX_AxisLoadY_MaxUp);
             this.panelEx10.Controls.Add(this.btnX_AxisPOSY_MaxDown);
             this.panelEx10.Controls.Add(this.btnX_AxisLoadY_MinUp);
+            this.panelEx10.Controls.Add(this.label2);
+            this.panelEx10.Controls.Add(this.label1);
             this.panelEx10.Controls.Add(this.btnX_AxisLoadY_MaxDown);
             this.panelEx10.Controls.Add(this.btnX_AsixYMin);
             this.panelEx10.Controls.Add(this.btnX_AxisLoadY_MinDown);
@@ -3334,6 +3340,42 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1235, 398);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 20);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "初始总计数";
+            this.label1.Click += new System.EventHandler(this.lblTime_Click);
+            // 
+            // tbX_TestCount
+            // 
+            // 
+            // 
+            // 
+            this.tbX_TestCount.Border.Class = "TextBoxBorder";
+            this.tbX_TestCount.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_TestCount.Location = new System.Drawing.Point(1239, 424);
+            this.tbX_TestCount.Name = "tbX_TestCount";
+            this.tbX_TestCount.PreventEnterBeep = true;
+            this.tbX_TestCount.ReadOnly = true;
+            this.tbX_TestCount.Size = new System.Drawing.Size(90, 21);
+            this.tbX_TestCount.TabIndex = 68;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(1333, 425);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 20);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "次";
+            this.label2.Click += new System.EventHandler(this.lblTime_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3358,6 +3400,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelEx10.ResumeLayout(false);
+            this.panelEx10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_machine)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -3627,6 +3670,9 @@
         private DevComponents.DotNetBar.Controls.Line line2;
         private System.Windows.Forms.CheckBox cb_TareTime;
         private DevComponents.DotNetBar.LabelX labelX33;
+        private System.Windows.Forms.Label label1;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_TestCount;
+        private System.Windows.Forms.Label label2;
     }
 }
 
