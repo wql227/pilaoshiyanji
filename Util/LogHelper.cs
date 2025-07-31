@@ -11,6 +11,9 @@ namespace DoPENetConnect
     {
         private static ILog log;
 
+        //本次开机是否建立日志目录标志 false：没有，true：有
+        public static bool bLogDirBuildedFlag = false;
+
         static LogHelper()
         {
             log = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);//通过反射获取日志对象实例
@@ -135,6 +138,7 @@ namespace DoPENetConnect
                 {
                     sw.WriteLine($"{dt} {input}");
                 }
+
             }
             catch (Exception e)
             {
@@ -212,6 +216,8 @@ namespace DoPENetConnect
 
                     sw.WriteLine(strs);
                 }
+
+                bLogDirBuildedFlag = true;
             }
             catch (Exception ex)
             {
@@ -247,6 +253,20 @@ namespace DoPENetConnect
             IniFileHelper.WriteIniString("AppOpenIndex", "IndexVal", newIndex.ToString());
 
 
+        }
+
+        public static void ResetLogParamsIni()
+        {
+            if (!bLogDirBuildedFlag) {   //没有写log文件
+                StringBuilder tmpStr = new StringBuilder(255);
+                IniFileHelper.GetIniString("AppOpenIndex", "IndexVal", "-1", tmpStr, tmpStr.Capacity);
+
+                if (tmpStr.ToString() != "-1") {
+                    int newIndex = int.Parse(tmpStr.ToString()) - 1;
+
+                    IniFileHelper.WriteIniString("AppOpenIndex", "IndexVal", newIndex.ToString());
+                }
+            }
         }
 }
 }

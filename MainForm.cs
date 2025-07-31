@@ -2197,6 +2197,7 @@ namespace DoPENetConnect
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+           LogHelper.ResetLogParamsIni();
         }
 
 
