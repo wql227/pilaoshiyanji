@@ -290,6 +290,11 @@ namespace DoPENetConnect
         /// </summary>
         public long nPreTestCount = 0;
 
+        /// <summary>
+        /// 循环次数
+        /// </summary>
+        public long nCycleCount = 0;
+
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -590,10 +595,17 @@ namespace DoPENetConnect
 
                 SetControlEnable(true);
 
+                bntX_GUIOn.Checked = false;
+                this.MaximizeBox = true;
+
+                nCycleCount = 0;
                 if (stopwatch.IsRunning)
                 {
                     stopwatch.Stop();
                 }
+
+                IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
+
             }
             catch (NullReferenceException)
             {
@@ -1046,7 +1058,7 @@ namespace DoPENetConnect
                     {
                         if ((Sample.Cycles >> 1) > 0)
                         {
-                            tbX_TestCycles.Text = "0";
+                            tbX_TestCycles.Text = nTotalTestCount.ToString();
                         }
                     }
                     else
@@ -1065,12 +1077,19 @@ namespace DoPENetConnect
 
                     //labelX33.Text = (Sample.Cycles >> 1).ToString();
                     //试验次数达到指定的试验次数
-                    if (isRunning)
+                    if (isRunning) 
                     {
-                        if (Sample.Cycles >> 1 >= nTestCount)
+                        nCycleCount++;
+
+                        if (nCycleCount > 1 && Sample.Cycles /*>> 1*/ >= nTestCount)
                         {
                             isRunning = false;
                             SetControlEnable(!isRunning);
+
+                            //最后一次的试验次数写入配置文件
+                            IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
+
+                            nCycleCount = 0;
                         }
                     }
                 }
@@ -1835,7 +1854,12 @@ namespace DoPENetConnect
                     DisplayError(error, "Halt");
 
                     isRunning = false;
+
+                    nCycleCount = 0;
+
                     SetControlEnable(true);
+
+                    IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
                 }
                 catch (NullReferenceException)
                 {
@@ -1977,9 +2001,6 @@ namespace DoPENetConnect
         private void bntX_GUIOff_Click(object sender, EventArgs e)
         {
             OffEDC();
-
-            bntX_GUIOn.Checked = false;
-            this.MaximizeBox = true;
         }
 
 
@@ -2305,6 +2326,11 @@ namespace DoPENetConnect
                 SetControlEnable(false);
                 nTestCount = HalfCycles;
                 stopwatch.Start();
+
+                //读取最后一次实验次数
+                StringBuilder strTmp = new StringBuilder(255);
+                IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
+                nPreTestCount = int.Parse(strTmp.ToString());
             }
 
         }
@@ -2760,6 +2786,7 @@ namespace DoPENetConnect
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
             nPreTestCount = int.Parse(strTmp.ToString());
+            tbX_TestCount.Text = strTmp.ToString();
 
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
@@ -3537,6 +3564,7 @@ namespace DoPENetConnect
             if (cb_TareTime.Checked)
             {
                 nCurrentCount = int.Parse(tbX_TestCycles.Text);
+                IniFileHelper.WriteIniString("Setting", "TestCount", "0");
             }
 
         }
