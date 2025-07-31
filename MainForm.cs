@@ -1088,6 +1088,7 @@ namespace DoPENetConnect
                         {
                             isRunning = false;
                             SetControlEnable(!isRunning);
+                            timer_UpdateData.Stop();
 
                             //最后一次的试验次数写入配置文件
                             IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
