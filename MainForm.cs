@@ -1819,10 +1819,6 @@ namespace DoPENetConnect
         private void bntX_MoveHalt_Click(object sender, EventArgs e)
         {
             MoveHalt();
-
-            isRunning = false;
-
-            SetControlEnable(true);
         }
 
 
@@ -1837,6 +1833,9 @@ namespace DoPENetConnect
                 {
                     DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
                     DisplayError(error, "Halt");
+
+                    isRunning = false;
+                    SetControlEnable(true);
                 }
                 catch (NullReferenceException)
                 {
@@ -3490,6 +3489,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void AutoSetYAxisToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //位移曲线自适应
             if (Math.Abs(double.Parse(tb_MaxPos.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinPos.Text)) <= 0.01)
             {
                 chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
@@ -3512,7 +3512,8 @@ namespace DoPENetConnect
 
             }
 
-            if (double.Parse(tb_MaxLoad.Text) <= 0.01 )
+            //试验力曲线自适应
+            if (Math.Abs(double.Parse(tb_MaxLoad.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinLoad.Text)) <= 0.01)
             {
                 chart_machine.ChartAreas[0].AxisY2.Maximum = 0.1;
                 chart_machine.ChartAreas[0].AxisY2.Minimum = -0.1;
@@ -3528,6 +3529,7 @@ namespace DoPENetConnect
                 chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2;
                 chart_machine.ChartAreas[0].AxisY2.LabelStyle.Format = "F2";
             }
+   
         }
 
         private void cb_TareTime_CheckedChanged(object sender, EventArgs e)
