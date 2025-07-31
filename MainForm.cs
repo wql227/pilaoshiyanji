@@ -599,6 +599,9 @@ namespace DoPENetConnect
                 this.MaximizeBox = true;
 
                 nCycleCount = 0;
+
+                timer_UpdateData.Stop();
+
                 if (stopwatch.IsRunning)
                 {
                     stopwatch.Stop();
@@ -1315,7 +1318,6 @@ namespace DoPENetConnect
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
 
             timer_UpdateData.Interval = 300;
-            timer_UpdateData.Start();
 
             btn_ConState.BackColor = Color.Red;
 
@@ -1857,6 +1859,9 @@ namespace DoPENetConnect
 
                     nCycleCount = 0;
 
+                    timer_UpdateData.Stop();
+
+
                     SetControlEnable(true);
 
                     IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
@@ -2322,6 +2327,9 @@ namespace DoPENetConnect
             //正常返回，开始计时
             if (error == DoPE.ERR.NOERROR)
             {
+                //开始计时
+                timer_UpdateData.Start();
+
                 isRunning = true;
                 SetControlEnable(false);
                 nTestCount = HalfCycles;
