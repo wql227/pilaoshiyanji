@@ -80,6 +80,12 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_PosSend_Click(object sender, EventArgs e)
         {
+            if (!MainForm.mainform.bActivated)
+            {
+                MessageBox.Show("请先激活控制器！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             MainForm.mainform.MovePos((DoPE.CTRL)cmbX_Pos_MoveCtrl.SelectedIndex, double.Parse(tbX_Pos_SpeedCtrl.Text), double.Parse(tbX_Pos_Destnation.Text));
 
             WriteIni();
