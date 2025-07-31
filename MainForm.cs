@@ -735,7 +735,7 @@ namespace DoPENetConnect
                         tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
                         tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
 
-                        if (bActivated)
+                        if (bActivated && isRunning)
                         {
                             //判断是否处于正常峰值区间
                             if (protectOption.ProtectOption_PosMaxOut_Effect)
@@ -828,7 +828,7 @@ namespace DoPENetConnect
                     {
                         tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
                         tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
-                        if (bActivated)
+                        if (bActivated && isRunning)
                         {
                             //判断是否处于合理的试验力峰值区间 峰值外保护
                             if (protectOption.ProtectOption_LoadMaxOut_Effect)
@@ -929,7 +929,7 @@ namespace DoPENetConnect
                         tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
                         tb_MaxExt.Text = PVExtensionQueue.Min().ToString("0.000");
 
-                        if (bActivated)
+                        if (bActivated && isRunning)
                         {
                             //判断是否处于合理的试验力峰值区间 峰值外保护
                             if (protectOption.ProtectOption_LoadMaxOut_Effect)
@@ -1064,11 +1064,14 @@ namespace DoPENetConnect
                     }
 
                     //labelX33.Text = (Sample.Cycles >> 1).ToString();
-                    //试验次数
-                    if (Sample.Cycles >> 1 >= nTestCount)
+                    //试验次数达到指定的试验次数
+                    if (isRunning)
                     {
-                        isRunning = false;
-                        SetControlEnable(!isRunning);
+                        if (Sample.Cycles >> 1 >= nTestCount)
+                        {
+                            isRunning = false;
+                            SetControlEnable(!isRunning);
+                        }
                     }
                 }
 
@@ -1953,17 +1956,7 @@ namespace DoPENetConnect
 
             if (MyEdc.IsConnected() && bActivated)
             {
-                //位移
-                //chart_machine.Series[0].Points.Clear();
-                //x_Position = 0.0;
-                //chart_machine.Series[0].Points.AddXY(0.0, 0.0);
-
-                ////试验力
-                //chart_machine.Series[1].Points.Clear();
-                //x_Load = 0.0;
-                //chart_machine.Series[1].Points.AddXY(0.0, 0.0);
-
-                GetXaxisScale();
+                //GetXaxisScale();
 
                 bntX_GUIOn.Checked = true;
                 btnX_SetLow.Checked = true;
@@ -2220,7 +2213,7 @@ namespace DoPENetConnect
             TimeSpan elapsed = stopwatch.Elapsed;
             guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
 
-            EnableButton();
+            //EnableButton();
         }
 
 
@@ -2310,7 +2303,7 @@ namespace DoPENetConnect
             if (error == DoPE.ERR.NOERROR)
             {
                 isRunning = true;
-                SetControlEnable(!isRunning);
+                SetControlEnable(false);
                 nTestCount = HalfCycles;
                 stopwatch.Start();
             }
@@ -2549,7 +2542,6 @@ namespace DoPENetConnect
                 {
                     nAxisStep = 0.1;
                 }
-
             }
         }
 
@@ -2779,84 +2771,84 @@ namespace DoPENetConnect
 
 
             //停机保护选项
-            IniFileHelper.GetIniString("FrmProtectOption", "限位保护选项", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "限位保护选项", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOptionType = strTmp.ToString();
 
             #region 位移保护
-            IniFileHelper.GetIniString("FrmProtectOption", "位移峰值外保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "位移峰值外保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_PosMaxOut = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "位移峰值外保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "位移峰值外保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_PosMaxOut_Effect = strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmProtectOption", "位移谷值外保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "位移谷值外保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_PosMinOut = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "位移谷值外保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "位移谷值外保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_PosMinOut_Effect = strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmProtectOption", "位移峰值内保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "位移峰值内保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_PosMaxIn = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "位移峰值内保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "位移峰值内保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_PosMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmProtectOption", "位移谷值内保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "位移谷值内保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_PosMinIn = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "位移谷值内保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "位移谷值内保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_PosMinIn_Effect = strTmp.ToString() == "0" ? false : true;
             #endregion 位移保护
 
             #region 试验力保护
-            IniFileHelper.GetIniString("FrmProtectOption", "试验力峰值外保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "试验力峰值外保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_LoadMaxOut = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "试验力峰值外保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "试验力峰值外保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_LoadMaxOut_Effect = strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmProtectOption", "试验力谷值外保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "试验力谷值外保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_LoadMinOut = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "试验力谷值外保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "试验力谷值外保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_LoadMinOut_Effect = strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmProtectOption", "试验力峰值内保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "试验力峰值内保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_LoadMaxIn = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "试验力峰值内保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "试验力峰值内保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_LoadMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmProtectOption", "试验力谷值内保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "试验力谷值内保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_LoadMinIn = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "试验力谷值内保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "试验力谷值内保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_LoadMinIn_Effect = strTmp.ToString() == "0" ? false : true;
             #endregion 试验力保护
 
             #region 变形保护
-            IniFileHelper.GetIniString("FrmProtectOption", "变形峰值外保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "变形峰值外保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_ExtMaxOut = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "变形峰值外保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "变形峰值外保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_ExtMaxOut_Effect = strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmProtectOption", "变形谷值外保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "变形谷值外保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_ExtMinOut = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "变形谷值外保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "变形谷值外保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_ExtMinOut_Effect = strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmProtectOption", "变形峰值内保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "变形峰值内保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_ExtMaxIn = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "变形峰值内保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "变形峰值内保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_ExtMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmProtectOption", "变形谷值内保护", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "变形谷值内保护", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_ExtMinIn = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("FrmProtectOption", "变形谷值内保护生效", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSystemSetting", "变形谷值内保护生效", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_ExtMinIn_Effect = strTmp.ToString() == "0" ? false : true;
             #endregion 变形保护
 
