@@ -2922,16 +2922,16 @@ namespace DoPENetConnect
             chart_machine.ChartAreas[0].AxisX.Maximum = AxisXMax;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawPosition.Checked = strTmp.ToString() == "0" ? false : true;
+            cb_DrawPosition.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "LoadEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawLoad.Checked = strTmp.ToString() == "0" ? false : true;
+            cb_DrawLoad.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "ExtEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawExtension.Checked = strTmp.ToString() == "0" ? false : true;
+            cb_DrawExtension.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawCommand.Checked = strTmp.ToString() == "0" ? false : true;
+            cb_DrawCommand.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
         }
 
