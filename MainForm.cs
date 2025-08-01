@@ -942,12 +942,12 @@ namespace DoPENetConnect
                     if (PVExtensionQueue.Count >= 100)
                     {
                         tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
-                        tb_MaxExt.Text = PVExtensionQueue.Min().ToString("0.000");
+                        tb_MinExt.Text = PVExtensionQueue.Min().ToString("0.000");
 
                         if (bActivated && isRunning)
                         {
-                            //判断是否处于合理的试验力峰值区间 峰值外保护
-                            if (protectOption.ProtectOption_LoadMaxOut_Effect)
+                            //判断是否处于合理的变形峰值区间 峰值外保护
+                            if (protectOption.ProtectOption_ExtMaxOut_Effect)
                             {
                                 if (PVExtensionQueue.Max() > protectOption.ProtectOption_ExtMaxOut)
                                 {
@@ -964,8 +964,8 @@ namespace DoPENetConnect
                                 }
                             }
 
-                            //判断是否处于合理的试验力峰值区间 峰值内保护
-                            if (protectOption.ProtectOption_LoadMaxIn_Effect)
+                            //判断是否处于合理的变形峰值区间 峰值内保护
+                            if (protectOption.ProtectOption_ExtMaxIn_Effect)
                             {
                                 if (PVExtensionQueue.Max() < protectOption.ProtectOption_ExtMaxIn)
                                 {
@@ -982,8 +982,8 @@ namespace DoPENetConnect
                                 }
                             }
 
-                            //判断是否处于合理的试验力谷值区间 谷值外保护
-                            if (protectOption.ProtectOption_LoadMinOut_Effect)
+                            //判断是否处于合理的变形谷值区间 谷值外保护
+                            if (protectOption.ProtectOption_ExtMinOut_Effect)
                             {
                                 if (PVExtensionQueue.Min() < protectOption.ProtectOption_ExtMinOut)
                                 {
@@ -1000,8 +1000,8 @@ namespace DoPENetConnect
                                 }
                             }
 
-                            //判断是否处于合理的试验力谷值区间 谷值内保护
-                            if (protectOption.ProtectOption_LoadMinIn_Effect)
+                            //判断是否处于合理的变形谷值区间 谷值内保护
+                            if (protectOption.ProtectOption_ExtMinIn_Effect)
                             {
                                 if (PVExtensionQueue.Min() > protectOption.ProtectOption_ExtMinIn)
                                 {
@@ -2791,6 +2791,7 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
             nPreTestCount = int.Parse(strTmp.ToString());
             tbX_TestCount.Text = strTmp.ToString();
+            tbX_TestCycles.Text = tbX_TestCount.Text;
 
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
@@ -2916,16 +2917,16 @@ namespace DoPENetConnect
             chart_machine.ChartAreas[0].AxisX.Maximum = AxisXMax;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawPosition.Checked = strTmp.ToString() == "0" ? false : true;
+            cb_DrawPosition.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "LoadEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawLoad.Checked = strTmp.ToString() == "0" ? false : true;
+            cb_DrawLoad.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "ExtEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawExtension.Checked = strTmp.ToString() == "0" ? false : true;
+            cb_DrawExtension.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawCommand.Checked = strTmp.ToString() == "0" ? false : true;
+            cb_DrawCommand.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
         }
 
