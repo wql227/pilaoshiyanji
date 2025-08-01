@@ -257,16 +257,18 @@ namespace DoPENetConnect
 
         public static void ResetLogParamsIni()
         {
-            if (!bLogDirBuildedFlag) {   //没有写log文件
+            if (!bLogDirBuildedFlag)
+            {   //没有写log文件
                 StringBuilder tmpStr = new StringBuilder(255);
                 IniFileHelper.GetIniString("AppOpenIndex", "IndexVal", "-1", tmpStr, tmpStr.Capacity);
 
-                if (tmpStr.ToString() != "-1") {
+                if (tmpStr.ToString() != "-1")
+                {
                     int newIndex = int.Parse(tmpStr.ToString()) - 1;
 
                     IniFileHelper.WriteIniString("AppOpenIndex", "IndexVal", newIndex.ToString());
                 }
             }
         }
-}
+    }
 }

@@ -255,110 +255,164 @@ namespace DoPENetConnect
         private void btnX_Dyn_Offset_P1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Deci, true).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Offset_P2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.One, true).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Offset_P3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Ten, true).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Offset_S1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Deci, false).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Offset_S2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.One, false).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Offset_S3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Ten, false).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Amplitude_P1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Deci, true).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Amplitude_P2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.One, true).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Amplitude_P3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Ten, true).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Amplitude_S1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Deci, false).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Amplitude_S2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, false).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Amplitude_S3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, false).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
 
         private void btnX_Dyn_Freq_P1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Deci, true).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Freq_P2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, true).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Freq_P3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, true).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Freq_S1_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Deci, false).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Freq_S2_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, false).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void btnX_Dyn_Freq_S3_Click(object sender, EventArgs e)
         {
             tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, false).ToString();
-            SendCommand();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
         }
 
         private void tbX_Dyn_Offset_KeyPress(object sender, KeyPressEventArgs e)
@@ -501,17 +555,25 @@ namespace DoPENetConnect
             switch (cmbX_Dyn_StartCtrl.SelectedValue.ToString())
             {
                 case "POS":
-                    cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
-                    break;
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
+                        break;
+                    }
                 case "LOAD":
-                    cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s" };
-                    break;
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s" };
+                        break;
+                    }
                 case "EXTENSION":
-                    cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
-                    break;
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
+                        break;
+                    }
                 default:
-                    cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "Unit/s" };
-                    break;
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "Unit/s" };
+                        break;
+                    }
 
             }
         }
@@ -521,24 +583,31 @@ namespace DoPENetConnect
             switch (cmbX_Dyn_MoveCtrl.SelectedValue.ToString())
             {
                 case "POS":
-                    cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "mm" };
-                    labelX9.Text = "mm";
-                    labelX11.Text = "mm";
-                    break;
+                    {
+                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "mm" };
+                        labelX9.Text = "mm";
+                        labelX11.Text = "mm";
+                        break;
+                    }
                 case "LOAD":
-                    cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "N" };
-                    labelX9.Text = "N";
-                    labelX11.Text = "N";
-                    break;
+                    {
+                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "N" };
+                        labelX9.Text = "N";
+                        labelX11.Text = "N";
+                        break;
+                    }
                 case "EXTENSION":
-                    cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "mm" };
-                    labelX9.Text = "mm";
-                    labelX11.Text = "mm";
-                    break;
+                    {
+                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "mm" };
+                        labelX9.Text = "mm";
+                        labelX11.Text = "mm";
+                        break;
+                    }
                 default:
-                    cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "Unit" };
-                    break;
-
+                    {
+                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "Unit" };
+                        break;
+                    }
             }
         }
 
