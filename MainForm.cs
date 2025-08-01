@@ -942,7 +942,7 @@ namespace DoPENetConnect
                     if (PVExtensionQueue.Count >= 100)
                     {
                         tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
-                        tb_MaxExt.Text = PVExtensionQueue.Min().ToString("0.000");
+                        tb_MinExt.Text = PVExtensionQueue.Min().ToString("0.000");
 
                         if (bActivated && isRunning)
                         {
