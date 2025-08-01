@@ -3565,12 +3565,12 @@ namespace DoPENetConnect
                 }
                 else
                 {
-                    double range = double.Parse(tb_MaxPos.Text) - double.Parse(tb_MinPos.Text);
+                    double range = double.Parse(tb_MaxLoad.Text) - double.Parse(tb_MinLoad.Text);
                     double totalHeight = range / 0.85;        // Y 轴总高度的85%
                     double padding = (totalHeight - range) / 2.0;  // 上下留白
 
-                    double yAxisMax = double.Parse(tb_MaxPos.Text) + padding;
-                    double yAxisMin = double.Parse(tb_MinPos.Text) - padding;
+                    double yAxisMax = double.Parse(tb_MaxLoad.Text) + padding;
+                    double yAxisMin = double.Parse(tb_MinLoad.Text) - padding;
 
                     chart_machine.ChartAreas[0].AxisY2.Maximum = yAxisMax;
                     chart_machine.ChartAreas[0].AxisY2.Minimum = yAxisMin;
