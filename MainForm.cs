@@ -858,7 +858,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -876,7 +876,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -894,7 +894,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -912,7 +912,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -946,8 +946,8 @@ namespace DoPENetConnect
 
                         if (bActivated && isRunning)
                         {
-                            //判断是否处于合理的试验力峰值区间 峰值外保护
-                            if (protectOption.ProtectOption_LoadMaxOut_Effect)
+                            //判断是否处于合理的变形峰值区间 峰值外保护
+                            if (protectOption.ProtectOption_ExtMaxOut_Effect)
                             {
                                 if (PVExtensionQueue.Max() > protectOption.ProtectOption_ExtMaxOut)
                                 {
@@ -959,13 +959,13 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
 
-                            //判断是否处于合理的试验力峰值区间 峰值内保护
-                            if (protectOption.ProtectOption_LoadMaxIn_Effect)
+                            //判断是否处于合理的变形峰值区间 峰值内保护
+                            if (protectOption.ProtectOption_ExtMaxIn_Effect)
                             {
                                 if (PVExtensionQueue.Max() < protectOption.ProtectOption_ExtMaxIn)
                                 {
@@ -977,13 +977,13 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
 
-                            //判断是否处于合理的试验力谷值区间 谷值外保护
-                            if (protectOption.ProtectOption_LoadMinOut_Effect)
+                            //判断是否处于合理的变形谷值区间 谷值外保护
+                            if (protectOption.ProtectOption_ExtMinOut_Effect)
                             {
                                 if (PVExtensionQueue.Min() < protectOption.ProtectOption_ExtMinOut)
                                 {
@@ -995,13 +995,13 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
 
-                            //判断是否处于合理的试验力谷值区间 谷值内保护
-                            if (protectOption.ProtectOption_LoadMinIn_Effect)
+                            //判断是否处于合理的变形谷值区间 谷值内保护
+                            if (protectOption.ProtectOption_ExtMinIn_Effect)
                             {
                                 if (PVExtensionQueue.Min() > protectOption.ProtectOption_ExtMinIn)
                                 {
@@ -1013,7 +1013,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
