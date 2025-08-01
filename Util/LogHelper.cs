@@ -157,7 +157,7 @@ namespace DoPENetConnect
             try
             {
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string logPath = Path.Combine(baseDirectory, "Logs");
+                string logPath = Path.Combine(baseDirectory, "DynmaticData");
                 string dateStr = DateTime.Now.ToString("yyyy-MM-dd");
 
                 StringBuilder tmpStr = new StringBuilder(255);
@@ -173,7 +173,7 @@ namespace DoPENetConnect
                     Directory.CreateDirectory(logPath);
                 }
 
-                int maxFileSize = 1 * 1024 * 1024; // 10 MB
+                int maxFileSize = 1*1024 * 1024; // 10 MB
                 FileInfo fi = new FileInfo(filename);
 
                 // 如果文件存在且超过最大大小，则进行滚动
@@ -182,8 +182,8 @@ namespace DoPENetConnect
                     // 滚动旧文件，保留最多5个备份
                     for (int i = 4; i >= 1; i--)
                     {
-                        string oldFile = Path.Combine(logPath, $"{dateStr}.CSV.{i}");
-                        string prevFile = Path.Combine(logPath, $"{dateStr}.CSV.{i - 1}");
+                        string oldFile = Path.Combine(logPath, $"{dateStr}.{i}.CSV");
+                        string prevFile = Path.Combine(logPath, $"{dateStr}.{i - 1}.CSV");
 
                         if (File.Exists(oldFile))
                         {
@@ -195,8 +195,8 @@ namespace DoPENetConnect
                             File.Move(prevFile, oldFile);
                         }
                     }
-
-                    string firstBackup = Path.Combine(logPath, $"{dateStr}.CSV.0");
+                    string firstIndex = "0";
+                    string firstBackup = Path.Combine(logPath, $"{dateStr}.{firstIndex}.CSV");
                     if (File.Exists(firstBackup))
                     {
                         File.Delete(firstBackup);
