@@ -2797,6 +2797,7 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
             nPreTestCount = int.Parse(strTmp.ToString());
             tbX_TestCount.Text = strTmp.ToString();
+            tbX_TestCycles.Text = tbX_TestCount.Text;
 
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
