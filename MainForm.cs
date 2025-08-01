@@ -607,6 +607,8 @@ namespace DoPENetConnect
                     stopwatch.Stop();
                 }
 
+                tbX_TestCount.Text = tbX_TestCycles.Text;
+
                 IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
 
             }
@@ -745,7 +747,7 @@ namespace DoPENetConnect
                 {
                     //位移队列
                     PVPositionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
-                    if (PVPositionQueue.Count >= 100)
+                    if (PVPositionQueue.Count >= 50)
                     {
                         tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
                         tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
@@ -829,7 +831,7 @@ namespace DoPENetConnect
                     // TODO:判断峰谷值是否超过外保护
                     double dPosition = 0; 
 
-                    if (nCount >= 100)
+                    if (nCount >= 50)
                     {
                         guiPosition.Text = text;
                     }
@@ -839,7 +841,7 @@ namespace DoPENetConnect
 
                     //试验力队列
                     PVLoadQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                    if (PVLoadQueue.Count >= 100)
+                    if (PVLoadQueue.Count >= 50)
                     {
                         tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
                         tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
@@ -928,7 +930,7 @@ namespace DoPENetConnect
                     }
                     //ProtectOption_PosMaxOut
 
-                    if (nCount >= 100)
+                    if (nCount >= 50)
                     {
                         guiLoad.Text = text;
                     }
@@ -939,7 +941,7 @@ namespace DoPENetConnect
 
                     //变形队列
                     PVExtensionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
-                    if (PVExtensionQueue.Count >= 100)
+                    if (PVExtensionQueue.Count >= 50)
                     {
                         tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
                         tb_MinExt.Text = PVExtensionQueue.Min().ToString("0.000");
@@ -1021,7 +1023,7 @@ namespace DoPENetConnect
                         PVExtensionQueue.Clear();
                     }
 
-                    if (nCount >= 100)
+                    if (nCount >= 50)
                     {
                         guiExtension.Text = text;
                     }
@@ -1033,7 +1035,7 @@ namespace DoPENetConnect
                     strCSVLog += text + ",";
                     strCSVLog += (Sample.Cycles /*<< 1*/).ToString() + ",";
 
-                    if (nCount >= 100)
+                    if (nCount >= 50)
                     {
                         nCount = 0;
                     }
@@ -1053,9 +1055,9 @@ namespace DoPENetConnect
 
                     if (!isRunning)
                     {
-                        if ((Sample.Cycles >> 1) > 0)
+                        if ((Sample.Cycles >> 1) > 0 && nTotalTestCount == 0)
                         {
-                            tbX_TestCycles.Text = nTotalTestCount.ToString();
+                            tbX_TestCycles.Text = nPreTestCount.ToString();
                         }
                     }
                     else
@@ -1083,6 +1085,8 @@ namespace DoPENetConnect
                             isRunning = false;
                             SetControlEnable(!isRunning);
                             timer_UpdateData.Stop();
+
+                            tbX_TestCount.Text = tbX_TestCycles.Text;
 
                             //最后一次的试验次数写入配置文件
                             IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
@@ -1856,8 +1860,9 @@ namespace DoPENetConnect
 
                     timer_UpdateData.Stop();
 
-
                     SetControlEnable(true);
+
+                    tbX_TestCount.Text = tbX_TestCycles.Text;
 
                     IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
                 }
