@@ -196,7 +196,7 @@ namespace DoPENetConnect
             HaltAtPlusAmplitude = 0.0;
             HaltAtMinusAmplitude = 0.0;
             SpeedToDestination = 0.0;
-            Destination = 0.0;
+            Destination = double.Parse(tbX_Dyn_Offset.Text);
             SweepFrequencyMode = 0;
 
             MainForm.mainform.MoveDynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination, SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode);

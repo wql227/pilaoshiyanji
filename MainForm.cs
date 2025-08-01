@@ -858,7 +858,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -876,7 +876,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -894,7 +894,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -912,7 +912,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -959,7 +959,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -977,7 +977,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -995,7 +995,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1013,19 +1013,13 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
                         }
                         PVExtensionQueue.Clear();
                     }
-
-                    //if (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E] > 7.0)
-                    //{
-                    //    //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                    //    OffEDC();
-                    //}
 
                     if (nCount >= 100)
                     {
@@ -2918,7 +2912,7 @@ namespace DoPENetConnect
             #endregion 按键功能常数
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "TimeX_MAX", "5", strTmp, strTmp.Capacity);
-            AxisXMax = int.Parse(strTmp.ToString());
+            AxisXMax = double.Parse(strTmp.ToString());
             chart_machine.ChartAreas[0].AxisX.Maximum = AxisXMax;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
@@ -3577,6 +3571,8 @@ namespace DoPENetConnect
             if (cb_TareTime.Checked)
             {
                 nCurrentCount = int.Parse(tbX_TestCycles.Text);
+                tbX_TestCycles.Text = "0";
+                nCurrentCount = 0;
                 IniFileHelper.WriteIniString("Setting", "TestCount", "0");
             }
 
