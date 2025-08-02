@@ -2150,6 +2150,7 @@ namespace DoPENetConnect
                         // 获取X轴的最小值和最大值
                         double minValue = Axis.Minimum;
                         double maxValue = Axis.Maximum;
+
                         if (chart_machine.Series[3] != null)
                         {
                             chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
@@ -3526,7 +3527,10 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void AutoSetYAxisToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            #region postion axis auto fitting
             //位移曲线自适应
+            /*
             if (Math.Abs(double.Parse(tb_MaxPos.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinPos.Text)) <= 0.01)
             {
                 chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
@@ -3555,8 +3559,28 @@ namespace DoPENetConnect
                 chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "F2";
 
             }
+*/
+            if (chart_machine.Series[0].Points.Count > 0)
+            {
+                double maxSeriesMaxYVal = chart_machine.Series[0].Points.Max(point => point.YValues[0]);
+                double maxSeriesMinYVal = chart_machine.Series[0].Points.Min(point => point.YValues[0]);
+
+                double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+                double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+                double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+
+                double yAxisMax1 = maxSeriesMaxYVal + padding1;
+                double yAxisMin1 = maxSeriesMinYVal - padding1;
+
+                chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
+                chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
+            }
+            #endregion postion axis auto fitting
+
 
             //试验力曲线自适应
+            #region load auto fitting
+            /*
             if (Math.Abs(double.Parse(tb_MaxLoad.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinLoad.Text)) <= 0.01)
             {
                 chart_machine.ChartAreas[0].AxisY2.Maximum = 0.1;
@@ -3583,7 +3607,27 @@ namespace DoPENetConnect
                 }
                 chart_machine.ChartAreas[0].AxisY2.LabelStyle.Format = "F2";
             }
-   
+            */
+            if (chart_machine.Series[1].Points.Count > 0)
+            {
+                double maxSeriesMaxYVal = chart_machine.Series[1].Points.Max(point => point.YValues[0]);
+                double maxSeriesMinYVal = chart_machine.Series[1].Points.Min(point => point.YValues[0]);
+
+                double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+                double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+                double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+
+                double yAxisMax1 = maxSeriesMaxYVal + padding1;
+                double yAxisMin1 = maxSeriesMinYVal - padding1;
+                if (yAxisMax1 != yAxisMin1)
+                {
+                    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
+                    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
+                }
+
+            }
+            #endregion load auto fitting
+
         }
 
         private void cb_TareTime_CheckedChanged(object sender, EventArgs e)
