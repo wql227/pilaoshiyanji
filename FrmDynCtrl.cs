@@ -346,7 +346,7 @@ namespace DoPENetConnect
 
         private void btnX_Dyn_Amplitude_S2_Click(object sender, EventArgs e)
         {
-            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, false).ToString();
+            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.One, false).ToString();
             if (MainForm.mainform.isRunning)
             {
                 SendCommand();
@@ -355,7 +355,7 @@ namespace DoPENetConnect
 
         private void btnX_Dyn_Amplitude_S3_Click(object sender, EventArgs e)
         {
-            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, false).ToString();
+            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Ten, false).ToString();
             if (MainForm.mainform.isRunning)
             {
                 SendCommand();
