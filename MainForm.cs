@@ -2073,6 +2073,7 @@ namespace DoPENetConnect
             //{
             //X轴坐标长度 = dStep * nTotal
             dStep = 0.01;
+            //dStep = 0.0005;
             //if (MyEdc.IsConnected() && bConnected)
             if (chart_machine != null)
             {
@@ -2082,11 +2083,11 @@ namespace DoPENetConnect
                     //for (int i = 30; Block.Data.Length >= i; i += 60)
                     //for (int i = 20; Block.Data.Length > i; i += 200)
                     for (int i = 10; Block.Data.Length > i; i += 100)
+                        //for (int i = 1; Block.Data.Length > i; i ++)
                     {
                         //绘制Position
                         double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
                         //x_Position += nAxisStep;
-                        x_Position += dStep;
 
                         if (chart_machine.Series == null)
                         {
@@ -2096,7 +2097,10 @@ namespace DoPENetConnect
                         if (chart_machine.Series[0] != null)
                         {
                             chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
-                            if (chart_machine.Series[0].Points.Count - 1 == nTotal)
+
+                            x_Position += dStep;
+
+                            if (chart_machine.Series[0].Points.Count >= nTotal )
                             {
                                 chart_machine.Series[0].Points.Clear();
                                 //chart_machine.Series[1].Points.AddXY(0.0, y_Position);
@@ -2108,11 +2112,11 @@ namespace DoPENetConnect
                         //绘制Load
                         double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
                         //x_Load += nAxisStep;
-                        x_Load += dStep;
 
                         if (chart_machine.Series[1] != null)
                         {
                             chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
+                            x_Load += dStep;
                             if (chart_machine.Series[1].Points.Count - 1 == nTotal)
                             {
                                 chart_machine.Series[1].Points.Clear();
@@ -2126,11 +2130,11 @@ namespace DoPENetConnect
                         //绘制Extension
                         double y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
                         //x_Load += nAxisStep;
-                        x_Extension += dStep;
 
                         if (chart_machine.Series[2] != null)
                         {
                             chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
+                            x_Extension += dStep;
                             if (chart_machine.Series[2].Points.Count - 1 == nTotal)
                             {
                                 chart_machine.Series[2].Points.Clear();
@@ -2141,10 +2145,8 @@ namespace DoPENetConnect
                         }
 
                         //绘制Command
-                        //double y_Command = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_DP];
                         double y_Command = Block.Data[i].Data.Command;
                         //x_Load += nAxisStep;
-                        x_Command += dStep;
 
                         var Axis = chart_machine.ChartAreas[0].AxisX;
                         // 获取X轴的最小值和最大值
@@ -2153,6 +2155,7 @@ namespace DoPENetConnect
                         if (chart_machine.Series[3] != null)
                         {
                             chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
+                            x_Command += dStep;
                             if (chart_machine.Series[3].Points.Count - 1 == nTotal)
                             {
                                 chart_machine.Series[3].Points.Clear();
