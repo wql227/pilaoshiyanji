@@ -17,7 +17,7 @@
 		"chartSeries2":"变形",
 		"chartSeries3":"命令",
 		"X axis":"时间(s)",
-		"Y (Value) axis":"位 \n\n移 \n\n(mm)",
+		"Y (Value) axis":"位 \n\n移\n\n/\n\n变\n\n形 \n\n(mm)",
 		"Secondary X axis":"",
 		"Secondary Y (Value) axis":"试 \n\n验\n\n力\n\n(N)",
 		"lblTime": "运行时间 [s]",
