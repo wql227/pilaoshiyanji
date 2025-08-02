@@ -3695,8 +3695,11 @@ namespace DoPENetConnect
             {
                 nCurrentCount = int.Parse(tbX_TestCycles.Text);
                 tbX_TestCycles.Text = "0";
+                tbX_TestCount.Text = "0";
                 nCurrentCount = 0;
                 IniFileHelper.WriteIniString("Setting", "TestCount", "0");
+
+                cb_TareTime.Checked = false;
             }
 
         }
