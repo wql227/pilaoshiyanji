@@ -137,6 +137,8 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_Dyn_Send_Click(object sender, EventArgs e)
         {
+            MainForm.mainform.currentCmd = cmbX_Dyn_MoveCtrl.SelectedIndex;
+            MainForm.mainform.SetCmdSeriesAxisY(cmbX_Dyn_MoveCtrl.SelectedIndex);
             SendCommand();
         }
 
