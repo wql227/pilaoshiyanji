@@ -2121,7 +2121,7 @@ namespace DoPENetConnect
                         {
                             chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
                             x_Load += dStep;
-                            if (chart_machine.Series[1].Points.Count - 1 == nTotal)
+                            if (chart_machine.Series[1].Points.Count >= nTotal)
                             {
                                 chart_machine.Series[1].Points.Clear();
 
@@ -2139,7 +2139,7 @@ namespace DoPENetConnect
                         {
                             chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
                             x_Extension += dStep;
-                            if (chart_machine.Series[2].Points.Count - 1 == nTotal)
+                            if (chart_machine.Series[2].Points.Count >= nTotal)
                             {
                                 chart_machine.Series[2].Points.Clear();
 
@@ -2161,7 +2161,7 @@ namespace DoPENetConnect
                         {
                             chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
                             x_Command += dStep;
-                            if (chart_machine.Series[3].Points.Count - 1 == nTotal)
+                            if (chart_machine.Series[3].Points.Count >= nTotal)
                             {
                                 chart_machine.Series[3].Points.Clear();
 
