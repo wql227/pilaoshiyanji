@@ -155,7 +155,9 @@
     <Compile Include="FrmPosExt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPosExt.Designer.cs" />
+    <Compile Include="FrmPosExt.Designer.cs">
+      <DependentUpon>FrmPosExt.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSetChartAxisY.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,7 +219,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmPosExt.resx" />
+    <EmbeddedResource Include="FrmPosExt.resx">
+      <DependentUpon>FrmPosExt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSetChartAxisY.resx">
       <DependentUpon>FrmSetChartAxisY.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,7 +296,7 @@
   <ItemGroup />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Enabled="1" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Deploy="1" />
+      <UserProperties Reactor_Deploy="1" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Configuration="" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

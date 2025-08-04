@@ -39,10 +39,6 @@
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
-            this.superTabControlPanel7 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.panelEx9 = new DevComponents.DotNetBar.PanelEx();
-            this.guiDebug = new System.Windows.Forms.RichTextBox();
-            this.superTabItem7 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -204,6 +200,10 @@
             this.guiTime = new System.Windows.Forms.TextBox();
             this.guiLoad = new System.Windows.Forms.TextBox();
             this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
+            this.superTabControlPanel7 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.panelEx9 = new DevComponents.DotNetBar.PanelEx();
+            this.guiDebug = new System.Windows.Forms.RichTextBox();
+            this.superTabItem7 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx7 = new DevComponents.DotNetBar.PanelEx();
@@ -321,8 +321,6 @@
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
-            this.superTabControlPanel7.SuspendLayout();
-            this.panelEx9.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -339,6 +337,8 @@
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.pl_DataShow.SuspendLayout();
+            this.superTabControlPanel7.SuspendLayout();
+            this.panelEx9.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx6.SuspendLayout();
@@ -405,53 +405,6 @@
             this.superTabItem1,
             this.superTabItem7});
             this.superTabControl1.Text = "superTabControl1";
-            // 
-            // superTabControlPanel7
-            // 
-            this.superTabControlPanel7.Controls.Add(this.panelEx9);
-            this.superTabControlPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel7.Location = new System.Drawing.Point(0, 52);
-            this.superTabControlPanel7.Name = "superTabControlPanel7";
-            this.superTabControlPanel7.Size = new System.Drawing.Size(1418, 707);
-            this.superTabControlPanel7.TabIndex = 0;
-            this.superTabControlPanel7.TabItem = this.superTabItem7;
-            // 
-            // panelEx9
-            // 
-            this.panelEx9.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx9.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx9.Controls.Add(this.guiDebug);
-            this.panelEx9.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx9.Location = new System.Drawing.Point(0, 0);
-            this.panelEx9.Name = "panelEx9";
-            this.panelEx9.Size = new System.Drawing.Size(1418, 707);
-            this.panelEx9.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx9.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx9.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx9.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx9.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx9.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx9.Style.GradientAngle = 90;
-            this.panelEx9.TabIndex = 0;
-            // 
-            // guiDebug
-            // 
-            this.guiDebug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guiDebug.HideSelection = false;
-            this.guiDebug.Location = new System.Drawing.Point(0, 0);
-            this.guiDebug.Name = "guiDebug";
-            this.guiDebug.ReadOnly = true;
-            this.guiDebug.Size = new System.Drawing.Size(1418, 707);
-            this.guiDebug.TabIndex = 1;
-            this.guiDebug.Text = "Starting Communication\n";
-            // 
-            // superTabItem7
-            // 
-            this.superTabItem7.AttachedControl = this.superTabControlPanel7;
-            this.superTabItem7.GlobalItem = false;
-            this.superTabItem7.Name = "superTabItem7";
-            this.superTabItem7.Text = "日志消息";
             // 
             // superTabControlPanel2
             // 
@@ -2334,6 +2287,53 @@
             this.superTabItem2.Name = "superTabItem2";
             this.superTabItem2.Text = "控制器实时曲线";
             // 
+            // superTabControlPanel7
+            // 
+            this.superTabControlPanel7.Controls.Add(this.panelEx9);
+            this.superTabControlPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel7.Location = new System.Drawing.Point(0, 52);
+            this.superTabControlPanel7.Name = "superTabControlPanel7";
+            this.superTabControlPanel7.Size = new System.Drawing.Size(1418, 707);
+            this.superTabControlPanel7.TabIndex = 0;
+            this.superTabControlPanel7.TabItem = this.superTabItem7;
+            // 
+            // panelEx9
+            // 
+            this.panelEx9.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx9.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx9.Controls.Add(this.guiDebug);
+            this.panelEx9.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx9.Location = new System.Drawing.Point(0, 0);
+            this.panelEx9.Name = "panelEx9";
+            this.panelEx9.Size = new System.Drawing.Size(1418, 707);
+            this.panelEx9.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx9.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx9.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx9.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx9.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx9.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx9.Style.GradientAngle = 90;
+            this.panelEx9.TabIndex = 0;
+            // 
+            // guiDebug
+            // 
+            this.guiDebug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guiDebug.HideSelection = false;
+            this.guiDebug.Location = new System.Drawing.Point(0, 0);
+            this.guiDebug.Name = "guiDebug";
+            this.guiDebug.ReadOnly = true;
+            this.guiDebug.Size = new System.Drawing.Size(1418, 707);
+            this.guiDebug.TabIndex = 1;
+            this.guiDebug.Text = "Starting Communication\n";
+            // 
+            // superTabItem7
+            // 
+            this.superTabItem7.AttachedControl = this.superTabControlPanel7;
+            this.superTabItem7.GlobalItem = false;
+            this.superTabItem7.Name = "superTabItem7";
+            this.superTabItem7.Text = "日志消息";
+            // 
             // superTabControlPanel1
             // 
             this.superTabControlPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
@@ -3982,8 +3982,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
             this.superTabControl1.PerformLayout();
-            this.superTabControlPanel7.ResumeLayout(false);
-            this.panelEx9.ResumeLayout(false);
             this.superTabControlPanel2.ResumeLayout(false);
             this.panelEx1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -4006,6 +4004,8 @@
             this.menuStrip2.PerformLayout();
             this.pl_DataShow.ResumeLayout(false);
             this.pl_DataShow.PerformLayout();
+            this.superTabControlPanel7.ResumeLayout(false);
+            this.panelEx9.ResumeLayout(false);
             this.superTabControlPanel1.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
             this.panelEx6.ResumeLayout(false);
