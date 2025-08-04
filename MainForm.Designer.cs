@@ -898,6 +898,7 @@
             this.comboBoxEx9.Size = new System.Drawing.Size(117, 27);
             this.comboBoxEx9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx9.TabIndex = 4;
+            this.comboBoxEx9.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx9_SelectedIndexChanged);
             // 
             // comboBoxEx7
             // 
@@ -926,6 +927,7 @@
             this.cmbX_Dyn_StartCtrl.Size = new System.Drawing.Size(117, 27);
             this.cmbX_Dyn_StartCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbX_Dyn_StartCtrl.TabIndex = 4;
+            this.cmbX_Dyn_StartCtrl.SelectedIndexChanged += new System.EventHandler(this.cmbX_Dyn_StartCtrl_SelectedIndexChanged);
             // 
             // labelX39
             // 

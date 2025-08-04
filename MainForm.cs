@@ -3736,5 +3736,65 @@ namespace DoPENetConnect
                 MainForm.mainform.comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
             }
         }
+
+        private void cmbX_Dyn_StartCtrl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbX_Dyn_StartCtrl.SelectedValue.ToString())
+            {
+                case "POS":
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
+                        comboBoxEx8.DataSource = new string[] { "mm/s" };
+                        break;
+                    }
+                case "LOAD":
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s" };
+                        comboBoxEx8.DataSource = new string[] { "N/s" };
+                        break;
+                    }
+                case "EXTENSION":
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
+                        comboBoxEx8.DataSource = new string[] { "mm/s" };
+                        break;
+                    }
+                default:
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "Unit/s" };
+                        comboBoxEx8.DataSource = new string[] { "Unit/s" };
+                        break;
+                    }
+
+            }
+        }
+
+        private void comboBoxEx9_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBoxEx9.SelectedValue.ToString())
+            {
+                case "POS":
+                    {
+                        comboBoxEx10.DataSource = new string[] { "mm/s" };
+                        break;
+                    }
+                case "LOAD":
+                    {
+                        comboBoxEx10.DataSource = new string[] { "N/s" };
+                        break;
+                    }
+                case "EXTENSION":
+                    {
+                        comboBoxEx10.DataSource = new string[] { "mm/s" };
+                        break;
+                    }
+                default:
+                    {
+                        comboBoxEx10.DataSource = new string[] { "Unit/s" };
+                        break;
+                    }
+
+            }
+        }
     }
 }
