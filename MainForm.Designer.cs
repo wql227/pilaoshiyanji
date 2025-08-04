@@ -271,6 +271,8 @@
             this.ToolStripMenuItem_Adout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
+            this.MultiSensorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保存静态数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -1020,7 +1022,9 @@
             this.startStopDrawToolStripMenuItem,
             this.AdjustToolStripMenuItem,
             this.ChartSetToolStripMenuItem,
-            this.AutoSetYAxisToolStripMenuItem});
+            this.AutoSetYAxisToolStripMenuItem,
+            this.MultiSensorToolStripMenuItem,
+            this.保存静态数据ToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(3, 17);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(1412, 25);
@@ -3361,6 +3365,19 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
+            // MultiSensorToolStripMenuItem
+            // 
+            this.MultiSensorToolStripMenuItem.Name = "MultiSensorToolStripMenuItem";
+            this.MultiSensorToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.MultiSensorToolStripMenuItem.Text = "多传感器";
+            this.MultiSensorToolStripMenuItem.Click += new System.EventHandler(this.MultiSensorToolStripMenuItem_Click);
+            // 
+            // 保存静态数据ToolStripMenuItem
+            // 
+            this.保存静态数据ToolStripMenuItem.Name = "保存静态数据ToolStripMenuItem";
+            this.保存静态数据ToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
+            this.保存静态数据ToolStripMenuItem.Text = "保存静态数据";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3656,6 +3673,8 @@
         private System.Windows.Forms.Label label1;
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_TestCount;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem MultiSensorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 保存静态数据ToolStripMenuItem;
     }
 }
 

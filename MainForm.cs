@@ -118,6 +118,8 @@ namespace DoPENetConnect
         /// </summary>
         public EdcList MyEdcList = null;
 
+        public DoPE.Data Sample;
+
         /// <summary>
         /// TAN number assigned to a DoPE command.
         /// (To get informed when a task has been performed.)
@@ -300,6 +302,11 @@ namespace DoPENetConnect
         /// </summary>
         public int currentCmd;
 
+        /// <summary>
+        /// 多传感器窗口
+        /// </summary>
+        public FrmMultiSensor frmMultiSensor = null;
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -329,7 +336,7 @@ namespace DoPENetConnect
         }
 
         ///----------------------------------------------------------------------
-        /// <summary>FormShown initialzes GUI and starts communication with EDC</summary>
+        /// <summary>FormShown initialzes    GUI and starts communication with EDC</summary>
         ///----------------------------------------------------------------------
         private void MainForm_Shown(object sender, EventArgs e)
         {
@@ -739,7 +746,7 @@ namespace DoPENetConnect
             {
                 nCount++;
                 // refesh edit controls with the latest sample
-                DoPE.Data Sample = Block.Data[Block.Data.Length - 1].Data;
+                Sample = Block.Data[Block.Data.Length - 1].Data;
                 string text;
 
                 text = String.Format("{0}", Sample.Time.ToString("0.000"));
@@ -3708,6 +3715,19 @@ namespace DoPENetConnect
         {
             FrmSystemSetting frmSystemSetting = new FrmSystemSetting();
             frmSystemSetting.ShowDialog();
+        }
+
+        private void MultiSensorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmMultiSensor == null || frmMultiSensor.IsDisposed)
+            {
+                frmMultiSensor = new FrmMultiSensor(this); // 传入父窗口引用
+                frmMultiSensor.Show();
+            }
+            else
+            {
+                frmMultiSensor.BringToFront();
+            }
         }
     }
 }
