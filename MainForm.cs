@@ -3704,5 +3704,10 @@ namespace DoPENetConnect
 
         }
 
+        private void ToolStripMenuItem_Setting_Click(object sender, EventArgs e)
+        {
+            FrmSystemSetting frmSystemSetting = new FrmSystemSetting();
+            frmSystemSetting.ShowDialog();
+        }
     }
 }
