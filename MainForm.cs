@@ -3704,5 +3704,18 @@ namespace DoPENetConnect
 
         }
 
+        private void buttonX15_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                FrmPosExt frmDynCtrl = new FrmPosExt();
+                frmDynCtrl.Show();
+            }
+            else
+            {
+                MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
     }
 }

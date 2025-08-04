@@ -132,9 +132,9 @@
   </data>
   <data name="buttonX16.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAE9JREFUOE9j
-        GDyAu3ilO2fxyidA/B8vLln5kKNklRNUGwJwFq96hlUDNly08j5UGxQ07GfBqhA3/g3VCQWjBgwLA4CA
-        soQEBBQn5QECDAwAExg6ghu9i24AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAAEhJREFUOE9j
+        oArgKFnugA9DlaECjuJV+zmKV/4ngHdBlUMAR8lKFyyKcOBVNlBtoxox8YBqBAGgAOkJAAawJTNkDFVG
+        CWBgAABAggE0waD5kQAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="buttonX15.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -645,7 +645,7 @@
     <value>394, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>50</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
