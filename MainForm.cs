@@ -3709,12 +3709,31 @@ namespace DoPENetConnect
             if (bConnected)
             {
                 FrmPosExt frmDynCtrl = new FrmPosExt();
-                frmDynCtrl.Show();
+                //frmDynCtrl.Show();
+                frmDynCtrl.send_FrmPosExts_command();
             }
             else
             {
                 MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+        }
+
+        private void superTabControl4_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
+        {
+            if (superTabControl4.SelectedTabIndex == 1) {
+                if (MainForm.mainform.cmbX_Dyn_EDC.Items.Count >= 1)
+                {
+                    MainForm.mainform.cmbX_Dyn_EDC.SelectedIndex = 0;
+                }
+
+                MainForm.mainform.cmbX_Dyn_StartCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+
+                MainForm.mainform.comboBoxEx7.DataSource = System.Enum.GetNames(typeof(DoPE.LIMITMODE));
+
+                MainForm.mainform.comboBoxEx9.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+
+                MainForm.mainform.comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
             }
         }
     }
