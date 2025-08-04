@@ -3312,6 +3312,9 @@
             this.bntX_MoveUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveUp.TabIndex = 69;
             this.bntX_MoveUp.Text = "向     上";
+            this.bntX_MoveUp.Click += new System.EventHandler(this.bntX_MoveUp_Click);
+            this.bntX_MoveUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseDown);
+            this.bntX_MoveUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseUp);
             // 
             // btnX_MoveQuickUp
             // 
@@ -3326,6 +3329,9 @@
             this.btnX_MoveQuickUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_MoveQuickUp.TabIndex = 70;
             this.btnX_MoveQuickUp.Text = " 快速向上";
+            this.btnX_MoveQuickUp.Click += new System.EventHandler(this.btnX_MoveQuickUp_Click);
+            this.btnX_MoveQuickUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnX_MoveQuickUp_MouseDown);
+            this.btnX_MoveQuickUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnX_MoveQuickUp_MouseUp);
             // 
             // bntX_MoveHalt
             // 
@@ -3340,6 +3346,7 @@
             this.bntX_MoveHalt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveHalt.TabIndex = 71;
             this.bntX_MoveHalt.Text = "保     持";
+            this.bntX_MoveHalt.Click += new System.EventHandler(this.bntX_MoveHalt_Click);
             // 
             // bntX_MoveDown
             // 
@@ -3354,6 +3361,9 @@
             this.bntX_MoveDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveDown.TabIndex = 72;
             this.bntX_MoveDown.Text = "向     下";
+            this.bntX_MoveDown.Click += new System.EventHandler(this.bntX_MoveDown_Click);
+            this.bntX_MoveDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveDown_MouseDown);
+            this.bntX_MoveDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveDown_MouseUp);
             // 
             // btnX_QuickMoveDown
             // 
@@ -3368,6 +3378,9 @@
             this.btnX_QuickMoveDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_QuickMoveDown.TabIndex = 73;
             this.btnX_QuickMoveDown.Text = " 快速向下";
+            this.btnX_QuickMoveDown.Click += new System.EventHandler(this.btnX_QuickMoveDown_Click);
+            this.btnX_QuickMoveDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnX_QuickMoveDown_MouseDown);
+            this.btnX_QuickMoveDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnX_QuickMoveDown_MouseUp);
             // 
             // btn_ConState
             // 
@@ -3393,6 +3406,7 @@
             this.bntX_GUIOn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_GUIOn.TabIndex = 74;
             this.bntX_GUIOn.Text = "ON";
+            this.bntX_GUIOn.Click += new System.EventHandler(this.bntX_GUIOn_Click);
             // 
             // btnX_SetLow
             // 
@@ -3406,6 +3420,7 @@
             this.btnX_SetLow.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_SetLow.TabIndex = 75;
             this.btnX_SetLow.Text = "LOW";
+            this.btnX_SetLow.Click += new System.EventHandler(this.btnX_SetLow_Click);
             // 
             // bntX_GUIOff
             // 
@@ -3419,6 +3434,7 @@
             this.bntX_GUIOff.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_GUIOff.TabIndex = 76;
             this.bntX_GUIOff.Text = "OFF";
+            this.bntX_GUIOff.Click += new System.EventHandler(this.bntX_GUIOff_Click);
             // 
             // btnX_SetHigh
             // 
@@ -3432,6 +3448,7 @@
             this.btnX_SetHigh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_SetHigh.TabIndex = 77;
             this.btnX_SetHigh.Text = "HIGH";
+            this.btnX_SetHigh.Click += new System.EventHandler(this.btnX_SetHigh_Click);
             // 
             // MainForm
             // 
