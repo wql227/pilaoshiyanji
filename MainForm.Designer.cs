@@ -122,6 +122,8 @@
             this.AdjustToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ChartSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutoSetYAxisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MultiSensorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveStaticDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pl_DataShow = new System.Windows.Forms.Panel();
             this.labelX33 = new DevComponents.DotNetBar.LabelX();
             this.cb_TareTime = new System.Windows.Forms.CheckBox();
@@ -271,8 +273,6 @@
             this.ToolStripMenuItem_Adout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
-            this.MultiSensorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.保存静态数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -1024,7 +1024,7 @@
             this.ChartSetToolStripMenuItem,
             this.AutoSetYAxisToolStripMenuItem,
             this.MultiSensorToolStripMenuItem,
-            this.保存静态数据ToolStripMenuItem});
+            this.SaveStaticDataToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(3, 17);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(1412, 25);
@@ -1314,6 +1314,20 @@
             this.AutoSetYAxisToolStripMenuItem.Size = new System.Drawing.Size(104, 21);
             this.AutoSetYAxisToolStripMenuItem.Text = "曲线坐标自适应";
             this.AutoSetYAxisToolStripMenuItem.Click += new System.EventHandler(this.AutoSetYAxisToolStripMenuItem_Click);
+            // 
+            // MultiSensorToolStripMenuItem
+            // 
+            this.MultiSensorToolStripMenuItem.Name = "MultiSensorToolStripMenuItem";
+            this.MultiSensorToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.MultiSensorToolStripMenuItem.Text = "多传感器";
+            this.MultiSensorToolStripMenuItem.Click += new System.EventHandler(this.MultiSensorToolStripMenuItem_Click);
+            // 
+            // SaveStaticDataToolStripMenuItem
+            // 
+            this.SaveStaticDataToolStripMenuItem.Name = "SaveStaticDataToolStripMenuItem";
+            this.SaveStaticDataToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
+            this.SaveStaticDataToolStripMenuItem.Text = "保存静态数据";
+            this.SaveStaticDataToolStripMenuItem.Click += new System.EventHandler(this.SaveStaticDataToolStripMenuItem_Click);
             // 
             // pl_DataShow
             // 
@@ -3365,19 +3379,6 @@
             // 
             this.timer_UpdateData.Tick += new System.EventHandler(this.timer_UpdateData_Tick);
             // 
-            // MultiSensorToolStripMenuItem
-            // 
-            this.MultiSensorToolStripMenuItem.Name = "MultiSensorToolStripMenuItem";
-            this.MultiSensorToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.MultiSensorToolStripMenuItem.Text = "多传感器";
-            this.MultiSensorToolStripMenuItem.Click += new System.EventHandler(this.MultiSensorToolStripMenuItem_Click);
-            // 
-            // 保存静态数据ToolStripMenuItem
-            // 
-            this.保存静态数据ToolStripMenuItem.Name = "保存静态数据ToolStripMenuItem";
-            this.保存静态数据ToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
-            this.保存静态数据ToolStripMenuItem.Text = "保存静态数据";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3674,7 +3675,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_TestCount;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem MultiSensorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 保存静态数据ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveStaticDataToolStripMenuItem;
     }
 }
 

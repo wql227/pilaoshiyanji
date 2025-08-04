@@ -3729,5 +3729,16 @@ namespace DoPENetConnect
                 frmMultiSensor.BringToFront();
             }
         }
+
+
+        /// <summary>
+        /// 保存当前屏幕数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveStaticDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chart_machine.SaveImage(String.Format(@"D:\{0}.png", DateTime.Now.ToString("yyyyMMddhhmmssfff")), ChartImageFormat.Png);
+        }
     }
 }
