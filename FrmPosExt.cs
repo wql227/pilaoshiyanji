@@ -1,0 +1,622 @@
+﻿using DevComponents.DotNetBar.Controls;
+using Doli.DoPE10;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static Doli.DoPE10.DoPE;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+namespace DoPENetConnect
+{
+    public partial class FrmPosExt : Form
+    {
+
+        /// <summary>
+        /// 加减系数枚举
+        /// </summary>
+        public enum AddSubScale
+        {
+            None = -1,
+            Deci,
+            One,
+            Ten,
+        }
+
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public FrmPosExt()
+        {
+            InitializeComponent();
+
+            this.TopMost = true;
+
+            if (cmbX_Dyn_EDC.Items.Count >= 1)
+            {
+                cmbX_Dyn_EDC.SelectedIndex = 0;
+            }
+
+            cmbX_Dyn_PeakCtrl.Visible = false;
+
+            cmbX_Dyn_StartCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+
+            cmbX_Dyn_WaveFrom.DataSource = System.Enum.GetNames(typeof(DoPE.DYN_WAVEFORM));
+
+            cmbX_Dyn_MoveCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+
+            if (MainForm.mainform.isRunning)
+            {
+                cbX_DynCtrl_ModifyParam.Checked = true;
+            }
+
+            LoadIni();
+        }
+        /// <summary>
+        /// 根据语言自适应控件位置参数
+        /// 由于语言长度不同 因此需要根据语言长度设置控件长度自适应
+        /// </summary>
+        private void UiAutoSize()
+        {
+
+            ///
+            tbX_Dyn_StartSpeed.Location = new Point(labelX3.Location.X+labelX3.Width, tbX_Dyn_StartSpeed.Location.Y);
+            cmbX_Dyn_EDC.Location=new Point(tbX_Dyn_StartSpeed.Location.X, cmbX_Dyn_EDC.Location.Y);
+            cmbX_Dyn_StartCtrl.Location = new Point(tbX_Dyn_StartSpeed.Location.X, cmbX_Dyn_StartCtrl.Location.Y);
+            cmbX_Dyn_MoveCtrl.Location = new Point(tbX_Dyn_StartSpeed.Location.X, cmbX_Dyn_MoveCtrl.Location.Y);
+            cmbX_Dyn_WaveFrom.Location = new Point(tbX_Dyn_StartSpeed.Location.X, cmbX_Dyn_WaveFrom.Location.Y);
+            cmbX_Dyn_PeakCtrl.Location = new Point(tbX_Dyn_StartSpeed.Location.X, cmbX_Dyn_PeakCtrl.Location.Y);
+            tbX_Dyn_PeakCtrl.Location = new Point(tbX_Dyn_StartSpeed.Location.X, tbX_Dyn_PeakCtrl.Location.Y);
+            cbX_Dyn_PeakCtrl.Location = new Point(tbX_Dyn_StartSpeed.Location.X+5+ tbX_Dyn_PeakCtrl.Width, cbX_Dyn_PeakCtrl.Location.Y);
+            tbX_Cycles.Location = new Point(tbX_Dyn_StartSpeed.Location.X, tbX_Cycles.Location.Y);
+            cbX_Dyn_FadeInOut.Location = new Point(tbX_Dyn_StartSpeed.Location.X+5+ tbX_Cycles.Width, cbX_Dyn_FadeInOut.Location.Y);
+            cmbX_Dyn_StartSpeed_Unit.Location = new Point(tbX_Dyn_StartSpeed.Location.X+cmbX_Dyn_StartSpeed_Unit.Width+15, cmbX_Dyn_StartSpeed_Unit.Location.Y);
+            cmbX_Dyn_MoveCtrl_Unit.Location = new Point(tbX_Dyn_StartSpeed.Location.X +cmbX_Dyn_MoveCtrl_Unit.Width+ 15, cmbX_Dyn_MoveCtrl_Unit.Location.Y);
+        }
+
+            /// <summary>
+            /// 语言文件
+            /// </summary>
+        private void ReplaceLanguage()
+        {
+            StringBuilder strTmp = new StringBuilder();
+            IniFileHelper.GetIniString("Setting", "Language", "0", strTmp, strTmp.Capacity);
+            string strLanguage = strTmp.ToString();
+            var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
+
+            //循环界面控件替换成指定的语言
+            if (langData.TryGetValue(this.Name, out var frmSystemSetting))
+            {
+
+                foreach (var kvp in frmSystemSetting)
+                {
+                    var controlName = kvp.Key;
+                    var textValue = kvp.Value;
+
+                    // 首先尝试从主窗体的控件集合中查找控件
+                    var ctrl = this.Controls.Find(controlName, true).FirstOrDefault();
+
+                    if (ctrl == null)
+                    {
+
+                    }
+                    else
+                    {
+                        ctrl.Text = textValue;
+                    }
+
+                }
+            }
+        }
+        private void cbX_PeakCtrl_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbX_Dyn_PeakCtrl.Checked)
+            {
+                cmbX_Dyn_PeakCtrl.Visible = true;
+                tbX_Dyn_PeakCtrl.Visible = false;
+            }
+            else
+            {
+                cmbX_Dyn_PeakCtrl.Visible = false;
+                tbX_Dyn_PeakCtrl.Visible = true;
+            }
+        }
+
+
+        /// <summary>
+        /// 发送
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_Dyn_Send_Click(object sender, EventArgs e)
+        {
+            MainForm.mainform.currentCmd = cmbX_Dyn_MoveCtrl.SelectedIndex;
+            MainForm.mainform.SetCmdSeriesAxisY(cmbX_Dyn_MoveCtrl.SelectedIndex);
+            SendCommand();
+        }
+
+
+        /// <summary>
+        /// 发送命令
+        /// </summary>
+        private void SendCommand()
+        {
+            if (!MainForm.mainform.bActivated)
+            {
+                MessageBox.Show("请先激活控制器！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DoPE.DYN_WAVEFORM WaveForm;
+            bool Modify;
+            DoPE.DYN_PEAKCTRL PeakCtrl;
+            DoPE.CTRL MoveCtrl;
+            bool RelativeDestination;
+            double SpeedToStart;
+            double Offset;
+            double Amplitude;
+            double HaltAtPlusAmplitude;
+            double HaltAtMinusAmplitude;
+            double Frequency;
+            int HalfCycles;
+            double SpeedToDestination;
+            double Destination;
+            DoPE.DYN_SWEEP SweepFrequencyMode;
+
+            WaveForm = (DoPE.DYN_WAVEFORM)cmbX_Dyn_WaveFrom.SelectedIndex;
+
+            if (cbX_Dyn_PeakCtrl.Checked)
+            {
+                PeakCtrl = (DoPE.DYN_PEAKCTRL)int.Parse(cmbX_Dyn_PeakCtrl.Text);
+            }
+            else
+            {
+                PeakCtrl = (DoPE.DYN_PEAKCTRL)int.Parse(tbX_Dyn_PeakCtrl.Text);
+            }
+
+            MoveCtrl = (DoPE.CTRL)cmbX_Dyn_MoveCtrl.SelectedIndex;
+            SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text);
+            Offset = double.Parse(tbX_Dyn_Offset.Text);
+            Amplitude = double.Parse(tbX_Dyn_Amplitude.Text);
+            Frequency = double.Parse(tbX_Dyn_Frequency.Text);
+            HalfCycles = int.Parse(tbX_Cycles.Text) * 2;
+
+            if (MainForm.mainform.isRunning)
+            {
+                cbX_DynCtrl_ModifyParam.Checked = true;
+            }
+
+            Modify = cbX_DynCtrl_ModifyParam.Checked;
+            RelativeDestination = cbX_DynCtrl_RelativeDestinations.Checked;
+            HaltAtPlusAmplitude = 0.0;
+            HaltAtMinusAmplitude = 0.0;
+            SpeedToDestination = 0.0;
+            Destination = double.Parse(tbX_Dyn_Offset.Text);
+            SweepFrequencyMode = 0;
+
+            MainForm.mainform.MoveDynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination, SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode);
+
+            cbX_DynCtrl_ModifyParam.Checked = true;
+
+            WriteIni();
+        }
+
+
+        /// <summary>
+        /// 增加和减小偏移量
+        /// </summary>
+        private double OffsetAddSub(double dOffset, AddSubScale addSubScale, bool isadd )
+        {
+            double Offset = dOffset;
+
+            if (addSubScale == AddSubScale.Deci)
+            {
+                if (isadd)
+                {
+                    Offset += 0.1;
+                }
+                else
+                {
+                    Offset += -0.1;
+                }
+            }
+            else if (addSubScale == AddSubScale.One)
+            {
+                if (isadd)
+                {
+                    Offset += 1;
+                }
+                else
+                {
+                    Offset += -1;
+                }
+            }
+            else if (addSubScale == AddSubScale.Ten)
+            {
+                if (isadd)
+                {
+                    Offset += 10;
+                }
+                else
+                {
+                    Offset += -10;
+                }
+            }
+
+            return Offset;
+        }
+
+
+        private void btnX_Dyn_Offset_P1_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Deci, true).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Offset_P2_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.One, true).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Offset_P3_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Ten, true).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Offset_S1_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Deci, false).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Offset_S2_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.One, false).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Offset_S3_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Offset.Text = OffsetAddSub(double.Parse(tbX_Dyn_Offset.Text), AddSubScale.Ten, false).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Amplitude_P1_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Deci, true).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Amplitude_P2_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.One, true).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Amplitude_P3_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Ten, true).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Amplitude_S1_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Deci, false).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Amplitude_S2_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.One, false).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Amplitude_S3_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Amplitude.Text = OffsetAddSub(double.Parse(tbX_Dyn_Amplitude.Text), AddSubScale.Ten, false).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+
+        private void btnX_Dyn_Freq_P1_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Deci, true).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Freq_P2_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, true).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Freq_P3_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, true).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Freq_S1_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Deci, false).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Freq_S2_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.One, false).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void btnX_Dyn_Freq_S3_Click(object sender, EventArgs e)
+        {
+            tbX_Dyn_Frequency.Text = OffsetAddSub(double.Parse(tbX_Dyn_Frequency.Text), AddSubScale.Ten, false).ToString();
+            if (MainForm.mainform.isRunning)
+            {
+                SendCommand();
+            }
+        }
+
+        private void tbX_Dyn_Offset_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            // 允许数字
+            if (char.IsDigit(e.KeyChar))
+            {
+                return;
+            }
+
+            // 允许一个小数点
+            if (e.KeyChar == '.' && !tbX_Dyn_Offset.Text.Contains("."))
+            {
+                return;
+            }
+
+            // 允许负号（只能在最前面）
+            if (e.KeyChar == '-' && tbX_Dyn_Offset.SelectionStart == 0 && tbX_Dyn_Offset.Text.IndexOf('-') == -1)
+            {
+                return;
+            }
+
+            // 不符合要求的字符禁止输入
+            e.Handled = true;
+        }
+
+
+        /// <summary>
+        /// 加载配置文件参数
+        /// </summary>
+        public void LoadIni()
+        {
+            IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
+            StringBuilder strTmp = new StringBuilder(255);
+            IniFileHelper.GetIniString("DynCtrl", "StartCtrl", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_StartCtrl.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("DynCtrl", "StartSpeed", "0", strTmp, strTmp.Capacity);
+            tbX_Dyn_StartSpeed.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("DynCtrl", "StartSpeedUnit", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_StartSpeed_Unit.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("DynCtrl", "MoveCtrl", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_MoveCtrl.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("DynCtrl", "MoveCtrlUnit", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_MoveCtrl_Unit.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("DynCtrl", "WaveFrom", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_WaveFrom.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("DynCtrl", "PeakCtrl", "0", strTmp, strTmp.Capacity);
+            cmbX_Dyn_PeakCtrl.SelectedIndex = int.Parse(strTmp.ToString());
+
+            tbX_Dyn_PeakCtrl.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("DynCtrl", "PeakCtrlCheck", "0", strTmp, strTmp.Capacity);
+            cbX_Dyn_PeakCtrl.Checked = strTmp.ToString() == "1";
+
+            IniFileHelper.GetIniString("DynCtrl", "Cycles", "0", strTmp, strTmp.Capacity);
+            tbX_Cycles.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("DynCtrl", "FadeInOut", "0", strTmp, strTmp.Capacity);
+            cbX_Dyn_FadeInOut.Checked = strTmp.ToString() == "1";
+
+            IniFileHelper.GetIniString("DynCtrl", "OffSet", "0", strTmp, strTmp.Capacity);
+            tbX_Dyn_Offset.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("DynCtrl", "Amplitude", "0", strTmp, strTmp.Capacity);
+            tbX_Dyn_Amplitude.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("DynCtrl", "Frequency", "0", strTmp, strTmp.Capacity);
+            tbX_Dyn_Frequency.Text = strTmp.ToString();
+        }
+
+
+        /// <summary>
+        /// 保存配置文件参数
+        /// </summary>
+        public void WriteIni()
+        {
+            IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
+            string strTmp = "";
+            strTmp = cmbX_Dyn_StartCtrl.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "StartCtrl", strTmp);
+
+            strTmp = tbX_Dyn_StartSpeed.Text;
+            IniFileHelper.WriteIniString("DynCtrl", "StartSpeed", strTmp);
+
+            strTmp = cmbX_Dyn_StartSpeed_Unit.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "StartSpeedUnit", strTmp);
+
+            strTmp = cmbX_Dyn_MoveCtrl.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "MoveCtrl", strTmp);
+
+            strTmp = cmbX_Dyn_MoveCtrl_Unit.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "MoveCtrlUnit", strTmp);
+
+            strTmp = cmbX_Dyn_WaveFrom.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "WaveFrom", strTmp);
+
+            if (cbX_Dyn_PeakCtrl.Checked)
+            {
+                strTmp = cmbX_Dyn_PeakCtrl.SelectedIndex.ToString();
+                IniFileHelper.WriteIniString("DynCtrl", "PeakCtrl", strTmp);
+            }
+            else
+            {
+                strTmp = tbX_Dyn_PeakCtrl.Text;
+                IniFileHelper.WriteIniString("DynCtrl", "PeakCtrl", strTmp);
+            }
+
+            strTmp = cbX_Dyn_PeakCtrl.Checked.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "PeakCtrlCheck", strTmp);
+
+            strTmp = tbX_Cycles.Text;
+            IniFileHelper.WriteIniString("DynCtrl", "Cycles", strTmp);
+
+            strTmp = cbX_Dyn_FadeInOut.Checked.ToString();
+            IniFileHelper.WriteIniString("DynCtrl", "FadeInOut", strTmp);
+
+            strTmp = tbX_Dyn_Offset.Text;
+            IniFileHelper.WriteIniString("DynCtrl", "OffSet", strTmp);
+
+            strTmp = tbX_Dyn_Amplitude.Text;
+            IniFileHelper.WriteIniString("DynCtrl", "Amplitude", strTmp);
+
+            strTmp = tbX_Dyn_Frequency.Text;
+            IniFileHelper.WriteIniString("DynCtrl", "Frequency", strTmp);
+        }
+
+        private void cmbX_Dyn_StartCtrl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbX_Dyn_StartCtrl.SelectedValue.ToString())
+            {
+                case "POS":
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
+                        break;
+                    }
+                case "LOAD":
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s" };
+                        break;
+                    }
+                case "EXTENSION":
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
+                        break;
+                    }
+                default:
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "Unit/s" };
+                        break;
+                    }
+
+            }
+        }
+
+        private void cmbX_Dyn_MoveCtrl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbX_Dyn_MoveCtrl.SelectedValue.ToString())
+            {
+                case "POS":
+                    {
+                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "mm" };
+                        labelX9.Text = "mm";
+                        labelX11.Text = "mm";
+                        break;
+                    }
+                case "LOAD":
+                    {
+                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "N" };
+                        labelX9.Text = "N";
+                        labelX11.Text = "N";
+                        break;
+                    }
+                case "EXTENSION":
+                    {
+                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "mm" };
+                        labelX9.Text = "mm";
+                        labelX11.Text = "mm";
+                        break;
+                    }
+                default:
+                    {
+                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "Unit" };
+                        break;
+                    }
+            }
+        }
+
+        private void FrmPosExt_Load(object sender, EventArgs e)
+        {
+            ReplaceLanguage();
+            UiAutoSize();
+        }
+    }
+}
