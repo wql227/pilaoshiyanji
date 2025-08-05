@@ -397,7 +397,7 @@
             this.superTabControl1.ReorderTabsEnabled = true;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl1.SelectedTabIndex = -1;
-            this.superTabControl1.Size = new System.Drawing.Size(1418, 759);
+            this.superTabControl1.Size = new System.Drawing.Size(1418, 803);
             this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl1.TabIndex = 57;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -412,7 +412,7 @@
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel2.Location = new System.Drawing.Point(0, 52);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(1418, 707);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(1418, 751);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItem2;
             // 
@@ -426,7 +426,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1418, 707);
+            this.panelEx1.Size = new System.Drawing.Size(1418, 751);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -442,7 +442,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 82);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1418, 625);
+            this.panel2.Size = new System.Drawing.Size(1418, 669);
             this.panel2.TabIndex = 57;
             // 
             // groupBox1
@@ -455,7 +455,7 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1418, 625);
+            this.groupBox1.Size = new System.Drawing.Size(1418, 669);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             // 
@@ -491,7 +491,7 @@
             this.panelEx10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx10.Location = new System.Drawing.Point(3, 42);
             this.panelEx10.Name = "panelEx10";
-            this.panelEx10.Size = new System.Drawing.Size(1412, 554);
+            this.panelEx10.Size = new System.Drawing.Size(1412, 598);
             this.panelEx10.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx10.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx10.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -509,7 +509,7 @@
             this.buttonX18.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX18.Image = ((System.Drawing.Image)(resources.GetObject("buttonX18.Image")));
             this.buttonX18.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX18.Location = new System.Drawing.Point(1349, 424);
+            this.buttonX18.Location = new System.Drawing.Point(1349, 427);
             this.buttonX18.Name = "buttonX18";
             this.buttonX18.Size = new System.Drawing.Size(62, 40);
             this.buttonX18.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -524,7 +524,7 @@
             this.buttonX16.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX16.Image = ((System.Drawing.Image)(resources.GetObject("buttonX16.Image")));
             this.buttonX16.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX16.Location = new System.Drawing.Point(1281, 424);
+            this.buttonX16.Location = new System.Drawing.Point(1281, 427);
             this.buttonX16.Name = "buttonX16";
             this.buttonX16.Size = new System.Drawing.Size(62, 40);
             this.buttonX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -539,7 +539,7 @@
             this.buttonX15.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX15.Image = ((System.Drawing.Image)(resources.GetObject("buttonX15.Image")));
             this.buttonX15.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX15.Location = new System.Drawing.Point(1213, 424);
+            this.buttonX15.Location = new System.Drawing.Point(1213, 427);
             this.buttonX15.Name = "buttonX15";
             this.buttonX15.Size = new System.Drawing.Size(62, 40);
             this.buttonX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -566,8 +566,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel10);
             this.superTabControl4.Controls.Add(this.superTabControlPanel9);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel10);
             this.superTabControl4.Location = new System.Drawing.Point(1213, 3);
             this.superTabControl4.MaximumSize = new System.Drawing.Size(0, 419);
             this.superTabControl4.MinimumSize = new System.Drawing.Size(199, 419);
@@ -599,7 +599,7 @@
             this.superTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel9.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel9.Name = "superTabControlPanel9";
-            this.superTabControlPanel9.Size = new System.Drawing.Size(199, 364);
+            this.superTabControlPanel9.Size = new System.Drawing.Size(199, 391);
             this.superTabControlPanel9.TabIndex = 1;
             this.superTabControlPanel9.TabItem = this.superTabItem9;
             // 
@@ -610,9 +610,9 @@
             this.bntX_MoveUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.bntX_MoveUp.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bntX_MoveUp.Image = ((System.Drawing.Image)(resources.GetObject("bntX_MoveUp.Image")));
-            this.bntX_MoveUp.Location = new System.Drawing.Point(0, 96);
+            this.bntX_MoveUp.Location = new System.Drawing.Point(0, 97);
             this.bntX_MoveUp.Name = "bntX_MoveUp";
-            this.bntX_MoveUp.Size = new System.Drawing.Size(199, 40);
+            this.bntX_MoveUp.Size = new System.Drawing.Size(199, 45);
             this.bntX_MoveUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveUp.TabIndex = 69;
             this.bntX_MoveUp.Text = "向     上";
@@ -627,9 +627,9 @@
             this.btnX_MoveQuickUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_MoveQuickUp.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_MoveQuickUp.Image = ((System.Drawing.Image)(resources.GetObject("btnX_MoveQuickUp.Image")));
-            this.btnX_MoveQuickUp.Location = new System.Drawing.Point(0, 51);
+            this.btnX_MoveQuickUp.Location = new System.Drawing.Point(0, 49);
             this.btnX_MoveQuickUp.Name = "btnX_MoveQuickUp";
-            this.btnX_MoveQuickUp.Size = new System.Drawing.Size(199, 40);
+            this.btnX_MoveQuickUp.Size = new System.Drawing.Size(199, 45);
             this.btnX_MoveQuickUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_MoveQuickUp.TabIndex = 70;
             this.btnX_MoveQuickUp.Text = " 快速向上";
@@ -644,9 +644,9 @@
             this.bntX_MoveHalt.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.bntX_MoveHalt.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bntX_MoveHalt.Image = ((System.Drawing.Image)(resources.GetObject("bntX_MoveHalt.Image")));
-            this.bntX_MoveHalt.Location = new System.Drawing.Point(0, 141);
+            this.bntX_MoveHalt.Location = new System.Drawing.Point(0, 146);
             this.bntX_MoveHalt.Name = "bntX_MoveHalt";
-            this.bntX_MoveHalt.Size = new System.Drawing.Size(199, 40);
+            this.bntX_MoveHalt.Size = new System.Drawing.Size(199, 45);
             this.bntX_MoveHalt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveHalt.TabIndex = 71;
             this.bntX_MoveHalt.Text = "保     持";
@@ -659,9 +659,9 @@
             this.bntX_MoveDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.bntX_MoveDown.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bntX_MoveDown.Image = ((System.Drawing.Image)(resources.GetObject("bntX_MoveDown.Image")));
-            this.bntX_MoveDown.Location = new System.Drawing.Point(0, 186);
+            this.bntX_MoveDown.Location = new System.Drawing.Point(0, 195);
             this.bntX_MoveDown.Name = "bntX_MoveDown";
-            this.bntX_MoveDown.Size = new System.Drawing.Size(199, 40);
+            this.bntX_MoveDown.Size = new System.Drawing.Size(199, 45);
             this.bntX_MoveDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveDown.TabIndex = 72;
             this.bntX_MoveDown.Text = "向     下";
@@ -676,9 +676,9 @@
             this.btnX_QuickMoveDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_QuickMoveDown.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_QuickMoveDown.Image = ((System.Drawing.Image)(resources.GetObject("btnX_QuickMoveDown.Image")));
-            this.btnX_QuickMoveDown.Location = new System.Drawing.Point(0, 231);
+            this.btnX_QuickMoveDown.Location = new System.Drawing.Point(0, 245);
             this.btnX_QuickMoveDown.Name = "btnX_QuickMoveDown";
-            this.btnX_QuickMoveDown.Size = new System.Drawing.Size(199, 40);
+            this.btnX_QuickMoveDown.Size = new System.Drawing.Size(199, 45);
             this.btnX_QuickMoveDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_QuickMoveDown.TabIndex = 73;
             this.btnX_QuickMoveDown.Text = " 快速向下";
@@ -691,9 +691,9 @@
             this.btn_ConState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_ConState.Enabled = false;
             this.btn_ConState.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_ConState.Location = new System.Drawing.Point(0, 3);
+            this.btn_ConState.Location = new System.Drawing.Point(0, 2);
             this.btn_ConState.Name = "btn_ConState";
-            this.btn_ConState.Size = new System.Drawing.Size(199, 42);
+            this.btn_ConState.Size = new System.Drawing.Size(199, 45);
             this.btn_ConState.TabIndex = 78;
             this.btn_ConState.Text = "OFFLINE";
             this.btn_ConState.UseVisualStyleBackColor = true;
@@ -704,9 +704,9 @@
             this.bntX_GUIOn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bntX_GUIOn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.bntX_GUIOn.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bntX_GUIOn.Location = new System.Drawing.Point(0, 276);
+            this.bntX_GUIOn.Location = new System.Drawing.Point(2, 294);
             this.bntX_GUIOn.Name = "bntX_GUIOn";
-            this.bntX_GUIOn.Size = new System.Drawing.Size(93, 40);
+            this.bntX_GUIOn.Size = new System.Drawing.Size(93, 45);
             this.bntX_GUIOn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_GUIOn.TabIndex = 74;
             this.bntX_GUIOn.Text = "ON";
@@ -718,9 +718,9 @@
             this.btnX_SetLow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_SetLow.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_SetLow.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_SetLow.Location = new System.Drawing.Point(103, 322);
+            this.btnX_SetLow.Location = new System.Drawing.Point(104, 344);
             this.btnX_SetLow.Name = "btnX_SetLow";
-            this.btnX_SetLow.Size = new System.Drawing.Size(96, 40);
+            this.btnX_SetLow.Size = new System.Drawing.Size(93, 45);
             this.btnX_SetLow.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_SetLow.TabIndex = 75;
             this.btnX_SetLow.Text = "LOW";
@@ -732,9 +732,9 @@
             this.bntX_GUIOff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bntX_GUIOff.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.bntX_GUIOff.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bntX_GUIOff.Location = new System.Drawing.Point(103, 276);
+            this.bntX_GUIOff.Location = new System.Drawing.Point(104, 294);
             this.bntX_GUIOff.Name = "bntX_GUIOff";
-            this.bntX_GUIOff.Size = new System.Drawing.Size(96, 40);
+            this.bntX_GUIOff.Size = new System.Drawing.Size(93, 45);
             this.bntX_GUIOff.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_GUIOff.TabIndex = 76;
             this.bntX_GUIOff.Text = "OFF";
@@ -746,9 +746,9 @@
             this.btnX_SetHigh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_SetHigh.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_SetHigh.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_SetHigh.Location = new System.Drawing.Point(0, 322);
+            this.btnX_SetHigh.Location = new System.Drawing.Point(2, 344);
             this.btnX_SetHigh.Name = "btnX_SetHigh";
-            this.btnX_SetHigh.Size = new System.Drawing.Size(93, 40);
+            this.btnX_SetHigh.Size = new System.Drawing.Size(93, 45);
             this.btnX_SetHigh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_SetHigh.TabIndex = 77;
             this.btnX_SetHigh.Text = "HIGH";
@@ -1337,7 +1337,7 @@
             this.btnX_AxisLoadY_MinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MinUp.Location = new System.Drawing.Point(996, 450);
+            this.btnX_AxisLoadY_MinUp.Location = new System.Drawing.Point(996, 494);
             this.btnX_AxisLoadY_MinUp.Name = "btnX_AxisLoadY_MinUp";
             this.btnX_AxisLoadY_MinUp.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1387,7 +1387,7 @@
             this.btnX_AsixYMin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AsixYMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AsixYMin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AsixYMin.Location = new System.Drawing.Point(91, 481);
+            this.btnX_AsixYMin.Location = new System.Drawing.Point(91, 525);
             this.btnX_AsixYMin.Name = "btnX_AsixYMin";
             this.btnX_AsixYMin.Size = new System.Drawing.Size(25, 25);
             this.btnX_AsixYMin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1400,7 +1400,7 @@
             this.btnX_AxisLoadY_MinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MinDown.Location = new System.Drawing.Point(996, 481);
+            this.btnX_AxisLoadY_MinDown.Location = new System.Drawing.Point(996, 525);
             this.btnX_AxisLoadY_MinDown.Name = "btnX_AxisLoadY_MinDown";
             this.btnX_AxisLoadY_MinDown.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1413,7 +1413,7 @@
             this.btnX_AxisYMax.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisYMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AxisYMax.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisYMax.Location = new System.Drawing.Point(91, 450);
+            this.btnX_AxisYMax.Location = new System.Drawing.Point(91, 494);
             this.btnX_AxisYMax.Name = "btnX_AxisYMax";
             this.btnX_AxisYMax.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisYMax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1494,7 +1494,7 @@
             this.chart_machine.Series.Add(series2);
             this.chart_machine.Series.Add(series3);
             this.chart_machine.Series.Add(series4);
-            this.chart_machine.Size = new System.Drawing.Size(1212, 554);
+            this.chart_machine.Size = new System.Drawing.Size(1212, 598);
             this.chart_machine.TabIndex = 63;
             // 
             // btnX_Connect
@@ -1539,7 +1539,7 @@
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel_SystemTime});
-            this.statusStrip1.Location = new System.Drawing.Point(3, 596);
+            this.statusStrip1.Location = new System.Drawing.Point(3, 640);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1412, 26);
             this.statusStrip1.TabIndex = 66;
@@ -3975,7 +3975,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1418, 759);
+            this.ClientSize = new System.Drawing.Size(1418, 803);
             this.Controls.Add(this.superTabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
