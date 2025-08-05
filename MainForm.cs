@@ -2406,7 +2406,9 @@ namespace DoPENetConnect
         {
             if (bConnected)
             {
-                FrmDynCtrl frmDynCtrl = new FrmDynCtrl();
+                //FrmDynCtrl frmDynCtrl = new FrmDynCtrl();
+                //frmDynCtrl.Show();
+                FrmPosExt frmDynCtrl = new FrmPosExt();
                 frmDynCtrl.Show();
             }
             else
