@@ -253,6 +253,7 @@
             this.tbX_Dyn_StartSpeed.PreventEnterBeep = true;
             this.tbX_Dyn_StartSpeed.Size = new System.Drawing.Size(103, 27);
             this.tbX_Dyn_StartSpeed.TabIndex = 2;
+            this.tbX_Dyn_StartSpeed.Text = "10";
             // 
             // panelEx1
             // 
@@ -420,6 +421,7 @@
             this.textBoxX1.PreventEnterBeep = true;
             this.textBoxX1.Size = new System.Drawing.Size(103, 27);
             this.textBoxX1.TabIndex = 21;
+            this.textBoxX1.Text = "0";
             // 
             // textBoxX2
             // 
@@ -435,6 +437,7 @@
             this.textBoxX2.PreventEnterBeep = true;
             this.textBoxX2.Size = new System.Drawing.Size(103, 27);
             this.textBoxX2.TabIndex = 22;
+            this.textBoxX2.Text = "10";
             // 
             // FrmPosExt
             // 

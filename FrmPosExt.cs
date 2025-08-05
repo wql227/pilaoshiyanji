@@ -129,6 +129,20 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_Dyn_Send_Click(object sender, EventArgs e)
         {
+            if (this.tbX_Dyn_StartSpeed.Text == "" || this.textBoxX1.Text == "" || this.textBoxX2.Text == "")
+            {
+                MessageBox.Show("输入不能为空，请重新输入！");
+                return;
+            }
+            double tmpDobleNum;
+
+            if (!double.TryParse(this.tbX_Dyn_StartSpeed.Text, out tmpDobleNum) || !double.TryParse(this.textBoxX1.Text, out tmpDobleNum) || !double.TryParse(this.textBoxX2.Text, out tmpDobleNum))
+            {
+                MessageBox.Show("请输入数字！");
+                return;
+            }
+
+
             MainForm.mainform.currentCmd = cmbX_Dyn_MoveCtrl.SelectedIndex;
             MainForm.mainform.SetCmdSeriesAxisY(cmbX_Dyn_MoveCtrl.SelectedIndex);
             SendCommand();

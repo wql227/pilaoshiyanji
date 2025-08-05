@@ -3731,6 +3731,19 @@ namespace DoPENetConnect
         {
             if (bConnected)
             {
+                if (this.tbX_Dyn_StartSpeed.Text == "" || this.textBoxX14.Text == "" || this.textBoxX15.Text == "")
+                {
+                    MessageBox.Show("输入不能为空，请重新输入！");
+                    return;
+                }
+                double tmpDobleNum;
+
+                if (!double.TryParse(this.tbX_Dyn_StartSpeed.Text, out tmpDobleNum) || !double.TryParse(this.textBoxX14.Text, out tmpDobleNum) || !double.TryParse(this.textBoxX15.Text, out tmpDobleNum))
+                {
+                    MessageBox.Show("请输入数字！");
+                    return;
+                }
+
                 FrmPosExt frmPosExt = new FrmPosExt();
                 frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex,double.Parse(tbX_Dyn_StartSpeed.Text),(LIMITMODE)comboBoxEx7.SelectedIndex,double.Parse(textBoxX14.Text),
                                                  (CTRL)comboBoxEx9.SelectedIndex,double.Parse(textBoxX15.Text),(DESTMODE)comboBoxEx11.SelectedIndex);
@@ -3817,6 +3830,20 @@ namespace DoPENetConnect
                         break;
                     }
 
+            }
+        }
+
+        private void posExtToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                FrmPosExt frmPosExt = new FrmPosExt();
+                frmPosExt.Show();
+            }
+            else
+            {
+                MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
         }
     }
