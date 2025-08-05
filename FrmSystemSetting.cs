@@ -980,5 +980,10 @@ namespace DoPENetConnect
             }
 
         }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            MainForm.mainform.SetupResetXHead();
+        }
     }
 }

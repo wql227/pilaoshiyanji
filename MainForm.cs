@@ -2373,7 +2373,16 @@ namespace DoPENetConnect
             }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="MoveCtrl"></param>
+        /// <param name="Speed"></param>
+        /// <param name="LimitMode"></param>
+        /// <param name="Limit"></param>
+        /// <param name="DestinationCtrl"></param>
+        /// <param name="Destination"></param>
+        /// <param name="DestMode"></param>
         public void MovePosExt(DoPE.CTRL MoveCtrl, double Speed, LIMITMODE LimitMode, double Limit, CTRL DestinationCtrl, double Destination,
             DESTMODE DestMode)
         {
@@ -2395,6 +2404,11 @@ namespace DoPENetConnect
                 IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
                 nPreTestCount = int.Parse(strTmp.ToString());
             }
+        }
+
+        public void SetupResetXHead()
+        {
+            DoPE.ERR error = MyEdc.Setup.InitializeResetXHead();
         }
 
 
