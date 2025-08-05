@@ -15,9 +15,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DoPENetConnect
 {
+
+
     public partial class FrmPosExt : Form
     {
-
         /// <summary>
         /// 加减系数枚举
         /// </summary>
@@ -29,7 +30,22 @@ namespace DoPENetConnect
             Ten,
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        struct PosExtParams
+        {
+            public DoPE.CTRL MoveCtrl;
+            public double SpeedToStart;
+            public DoPE.LIMITMODE LimitMode;
+            public double LimitVal;
+            public DoPE.CTRL DestinationCtrl;
+            public double DestinationVal;
+            public DESTMODE DestMode;
+        }
 
+
+        PosExtParams tmpParams;
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -118,11 +134,12 @@ namespace DoPENetConnect
             SendCommand();
         }
 
+       
 
-        public void send_FrmPosExts_command()
+        public void send_FrmPosExts_command(DoPE.CTRL MoveCtrl, double Speed, LIMITMODE LimitMode, double Limit, CTRL DestinationCtrl, double Destination,
+            DESTMODE DestMode)
         {
-               
-            
+            MainForm.mainform.MovePosExt(MoveCtrl, Speed, LimitMode, Limit, DestinationCtrl, Destination, DestMode);
         }
 
         /// <summary>
@@ -136,81 +153,21 @@ namespace DoPENetConnect
                 return;
             }
 
-            DoPE.DYN_WAVEFORM WaveForm;
-            bool Modify;
-            DoPE.DYN_PEAKCTRL PeakCtrl;
-            DoPE.CTRL MoveCtrl;
-            bool RelativeDestination;
-            double SpeedToStart;
-            double Offset;
-            double Amplitude;
-            double HaltAtPlusAmplitude;
-            double HaltAtMinusAmplitude;
-            double Frequency;
-            int HalfCycles;
-            double SpeedToDestination;
-            double Destination;
-            DoPE.DYN_SWEEP SweepFrequencyMode;
 
-            WaveForm = (DoPE.DYN_WAVEFORM)cmbX_Limit_Mode.SelectedIndex;
-
-            MoveCtrl = (DoPE.CTRL)cmbX_Dyn_MoveCtrl.SelectedIndex;
-            SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text);
-
-            
-            HaltAtPlusAmplitude = 0.0;
-            HaltAtMinusAmplitude = 0.0;
-            SpeedToDestination = 0.0;
-            SweepFrequencyMode = 0;
-
-            //MainForm.mainform.MoveDynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination, SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode);
+            tmpParams.MoveCtrl = (DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex;
+            tmpParams.SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text);
+            tmpParams.LimitMode = (DoPE.LIMITMODE)cmbX_Limit_Mode.SelectedIndex;
+            tmpParams.LimitVal = double.Parse(textBoxX1.Text);
+            tmpParams.DestinationCtrl = (DoPE.CTRL)cmbX_Dyn_MoveCtrl.SelectedIndex;
+            tmpParams.DestinationVal = double.Parse(textBoxX2.Text);
+            tmpParams.DestMode = (DESTMODE)comboBoxEx5.SelectedIndex;
 
 
-            WriteIni();
-        }
 
-        /// <summary>
-        /// 发送命令
-        /// </summary>
-        private void sendPosExt()
-        {
-            if (!MainForm.mainform.bActivated)
-            {
-                MessageBox.Show("请先激活控制器！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            MainForm.mainform.MovePosExt(tmpParams.MoveCtrl, tmpParams.SpeedToStart, tmpParams.LimitMode, tmpParams.LimitVal, tmpParams.DestinationCtrl, tmpParams.DestinationVal, tmpParams.DestMode);
 
-            DoPE.DYN_WAVEFORM WaveForm;
-            bool Modify;
-            DoPE.DYN_PEAKCTRL PeakCtrl;
-            DoPE.CTRL MoveCtrl;
-            bool RelativeDestination;
-            double SpeedToStart;
-            double Offset;
-            double Amplitude;
-            double HaltAtPlusAmplitude;
-            double HaltAtMinusAmplitude;
-            double Frequency;
-            int HalfCycles;
-            double SpeedToDestination;
-            double Destination;
-            DoPE.DYN_SWEEP SweepFrequencyMode;
-
-            WaveForm = (DoPE.DYN_WAVEFORM)cmbX_Limit_Mode.SelectedIndex;
-
-            MoveCtrl = (DoPE.CTRL)cmbX_Dyn_MoveCtrl.SelectedIndex;
-            SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text);
-
-            HaltAtPlusAmplitude = 0.0;
-            HaltAtMinusAmplitude = 0.0;
-            SpeedToDestination = 0.0;
-            SweepFrequencyMode = 0;
-
-            //MainForm.mainform.MoveDynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination, SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode);
-
-
-            WriteIni();
-        }
+            //WriteIni();
+        }       
 
 
         /// <summary>

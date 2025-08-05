@@ -2374,15 +2374,38 @@ namespace DoPENetConnect
 
         }
 
+        public void MovePosExt(DoPE.CTRL MoveCtrl, double Speed, LIMITMODE LimitMode, double Limit, CTRL DestinationCtrl, double Destination,
+            DESTMODE DestMode)
+        {
+            DoPE.ERR error = MyEdc.Move.PosExt(MoveCtrl, Speed, LimitMode, Limit, DestinationCtrl, Destination, DestMode, ref MyTan);
 
-        #region 快捷工具栏消息响应事件
+            //正常返回，开始计时
+            if (error == DoPE.ERR.NOERROR)
+            {
+                //开始计时
+                timer_UpdateData.Start();
 
-        /// <summary>
-        /// 工具栏POS
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void posToolStripMenuItem_Click(object sender, EventArgs e)
+                isRunning = true;
+                SetControlEnable(false);
+                //nTestCount = HalfCycles;
+                stopwatch.Start();
+
+                //读取最后一次实验次数
+                StringBuilder strTmp = new StringBuilder(255);
+                IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
+                nPreTestCount = int.Parse(strTmp.ToString());
+            }
+        }
+
+
+            #region 快捷工具栏消息响应事件
+
+            /// <summary>
+            /// 工具栏POS
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            private void posToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (bConnected)
             {
@@ -2406,9 +2429,7 @@ namespace DoPENetConnect
         {
             if (bConnected)
             {
-                //FrmDynCtrl frmDynCtrl = new FrmDynCtrl();
-                //frmDynCtrl.Show();
-                FrmPosExt frmDynCtrl = new FrmPosExt();
+                FrmDynCtrl frmDynCtrl = new FrmDynCtrl();
                 frmDynCtrl.Show();
             }
             else
@@ -3710,9 +3731,9 @@ namespace DoPENetConnect
         {
             if (bConnected)
             {
-                FrmPosExt frmDynCtrl = new FrmPosExt();
-                //frmDynCtrl.Show();
-                frmDynCtrl.send_FrmPosExts_command();
+                FrmPosExt frmPosExt = new FrmPosExt();
+                frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex,double.Parse(tbX_Dyn_StartSpeed.Text),(LIMITMODE)comboBoxEx7.SelectedIndex,double.Parse(textBoxX14.Text),
+                                                 (CTRL)comboBoxEx9.SelectedIndex,double.Parse(textBoxX15.Text),(DESTMODE)comboBoxEx11.SelectedIndex);
             }
             else
             {
