@@ -180,7 +180,7 @@ namespace DoPENetConnect
 
             MainForm.mainform.MovePosExt(tmpParams.MoveCtrl, tmpParams.SpeedToStart, tmpParams.LimitMode, tmpParams.LimitVal, tmpParams.DestinationCtrl, tmpParams.DestinationVal, tmpParams.DestMode);
 
-            //WriteIni();
+            WriteIni();
         }       
 
 
@@ -236,17 +236,9 @@ namespace DoPENetConnect
         {
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             StringBuilder strTmp = new StringBuilder(255);
-            IniFileHelper.GetIniString("DynCtrl", "StartCtrl", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("PosExt", "StartCtrl", "0", strTmp, strTmp.Capacity);
             cmbX_Dyn_StartCtrl.SelectedIndex = int.Parse(strTmp.ToString());
             
-            IniFileHelper.GetIniString("DynCtrl", "StartSpeedUnit", "0", strTmp, strTmp.Capacity);
-            cmbX_Dyn_StartSpeed_Unit.SelectedIndex = int.Parse(strTmp.ToString());
-
-            IniFileHelper.GetIniString("DynCtrl", "MoveCtrl", "0", strTmp, strTmp.Capacity);
-            cmbX_Dyn_MoveCtrl.SelectedIndex = int.Parse(strTmp.ToString());
-
-            IniFileHelper.GetIniString("DynCtrl", "WaveFrom", "0", strTmp, strTmp.Capacity);
-            cmbX_Limit_Mode.SelectedIndex = int.Parse(strTmp.ToString());
             
            
         }
@@ -260,19 +252,36 @@ namespace DoPENetConnect
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             string strTmp = "";
             strTmp = cmbX_Dyn_StartCtrl.SelectedIndex.ToString();
-            IniFileHelper.WriteIniString("DynCtrl", "StartCtrl", strTmp);
+            IniFileHelper.WriteIniString("PosExt", "StartCtrl", strTmp);
 
             strTmp = tbX_Dyn_StartSpeed.Text;
-            IniFileHelper.WriteIniString("DynCtrl", "StartSpeed", strTmp);
+            IniFileHelper.WriteIniString("PosExt", "StartSpeed", strTmp);
 
             strTmp = cmbX_Dyn_StartSpeed_Unit.SelectedIndex.ToString();
-            IniFileHelper.WriteIniString("DynCtrl", "StartSpeedUnit", strTmp);
-
-            strTmp = cmbX_Dyn_MoveCtrl.SelectedIndex.ToString();
-            IniFileHelper.WriteIniString("DynCtrl", "MoveCtrl", strTmp);
+            IniFileHelper.WriteIniString("PosExt", "StartSpeedUnit", strTmp);
 
             strTmp = cmbX_Limit_Mode.SelectedIndex.ToString();
-            IniFileHelper.WriteIniString("DynCtrl", "WaveFrom", strTmp);
+            IniFileHelper.WriteIniString("PosExt", "LimitMode", strTmp);
+
+            strTmp = textBoxX1.Text;
+            IniFileHelper.WriteIniString("PosExt", "Limit", strTmp);
+
+            strTmp = comboBoxEx2.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("PosExt", "LimitUnit", strTmp);
+
+
+            strTmp = cmbX_Dyn_MoveCtrl.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("PosExt", "MoveCtrl", strTmp);
+
+            strTmp = textBoxX2.Text;
+            IniFileHelper.WriteIniString("PosExt", "Destination", strTmp);
+
+            strTmp = comboBoxEx3.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("PosExt", "DestinationUnit", strTmp);
+
+
+            strTmp = comboBoxEx5.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("PosExt", "DestMode", strTmp);
         }
 
         private void cmbX_Dyn_StartCtrl_SelectedIndexChanged(object sender, EventArgs e)

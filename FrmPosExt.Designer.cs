@@ -469,7 +469,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmPosExt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "DynCtrl";
+            this.Text = "FrmPosExt";
             this.Load += new System.EventHandler(this.FrmPosExt_Load);
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
