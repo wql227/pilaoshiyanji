@@ -300,6 +300,23 @@ namespace DoPENetConnect
         /// </summary>
         public int currentCmd;
 
+        public int autoFittingFlag = 0;
+        /// <summary>
+        /// 
+        /// </summary>
+
+        double maxSeries0 = 0;
+        double maxSeries1 = 0;
+        double maxSeries2 = 0;
+        double maxSeries3 = 0;
+
+        double minSeries0 = 0;
+        double minSeries1 = 0;
+        double minSeries2 = 0;
+        double minSeries3 = 0;
+
+        public bool valInScaleSetted = false;
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -2073,6 +2090,8 @@ namespace DoPENetConnect
         /// <param name="Block"></param>
         private async void ShowWave(DoPE.OnDataBlock Block)
         {
+
+
             //try
             //{
             //X轴坐标长度 = dStep * nTotal
@@ -2092,7 +2111,29 @@ namespace DoPENetConnect
                         //绘制Position
                         double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
                         //x_Position += nAxisStep;
+                        //获取位移曲线最大最小值
+                        //if (x_Position == 0)
+                        //{
+                        //    maxSeries0 = 0;
+                        //    minSeries0 = 0;
+                        //    maxSeries1 = 0;
+                        //    minSeries1 = 0;
+                        //    maxSeries2 = 0;
+                        //    minSeries2 = 0;
+                        //    maxSeries3 = 0;
+                        //    minSeries3 = 0;
+                        //}
+                        //Console.WriteLine("glm1-{0}", y_Position);
+                        if (!valInScaleSetted )
+                        {
+                            valInScaleSetted = true;
+                            maxSeries0 = y_Position;
+                            minSeries0 = y_Position;
+                        }
+                        if (maxSeries0 <y_Position)maxSeries0 = y_Position;
+                        if (minSeries0 > y_Position)minSeries0 = y_Position;
 
+                        Console.WriteLine("glm-{0}-{1}-{2}-{3}", y_Position, i,maxSeries0,minSeries0);
                         if (chart_machine.Series == null)
                         {
                             return;
@@ -2116,6 +2157,16 @@ namespace DoPENetConnect
                         //绘制Load
                         double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
                         //x_Load += nAxisStep;
+                       // Console.WriteLine("glm2-{0}", y_Load);
+
+                        //获取力曲线最大最小值
+                        if (x_Load == 0)
+                        {
+                            maxSeries1 =  y_Load;
+                            minSeries1 = y_Load;
+                        }
+                        if (maxSeries1 < y_Load) maxSeries1 = y_Load;
+                        if (minSeries1 > y_Load) minSeries1 = y_Load;
 
                         if (chart_machine.Series[1] != null)
                         {
@@ -2134,7 +2185,16 @@ namespace DoPENetConnect
                         //绘制Extension
                         double y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
                         //x_Load += nAxisStep;
+                        //Console.WriteLine("glm3-{0}", y_Extension);
 
+                        //获取形变曲线最大最小值
+                        if (x_Extension == 0)
+                        {
+                            maxSeries2 =  y_Extension;
+                            minSeries2 = y_Extension;
+                        }
+                        if (maxSeries2 < y_Extension) maxSeries2 = y_Extension;
+                        if (minSeries2 > y_Extension) minSeries2 = y_Extension;
                         if (chart_machine.Series[2] != null)
                         {
                             chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
@@ -2151,7 +2211,15 @@ namespace DoPENetConnect
                         //绘制Command
                         double y_Command = Block.Data[i].Data.Command;
                         //x_Load += nAxisStep;
-
+                        //获取命令曲线最大最小值
+                        //Console.WriteLine("glm4-{0}", y_Command);
+                        if (x_Command == 0)
+                        {
+                            maxSeries3 = y_Command;
+                            minSeries3 = y_Command;
+                        }
+                        if (maxSeries3 < y_Command) maxSeries3 = y_Command;
+                        if (minSeries3 > y_Command) minSeries3 = y_Command;
                         var Axis = chart_machine.ChartAreas[0].AxisX;
                         // 获取X轴的最小值和最大值
                         double minValue = Axis.Minimum;
@@ -2169,6 +2237,16 @@ namespace DoPENetConnect
                                 x_Command = 0.0;
                             }
                         }
+                        
+                    }
+
+
+                    //autoFittingFlag++;
+                    //if (autoFittingFlag == nTotal)
+                    {
+
+                        autoFittingFlag = 0;
+                        AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);
                     }
                 }
 
@@ -2182,7 +2260,64 @@ namespace DoPENetConnect
             }
 
         }
+       
+        public void AutoFittingCurve(double series0maxY, double series0minY, double series1maxY, double series1minY, double series2maxY, double series2minY, double series3maxY, double series3minY)
+        {
+            //Console.WriteLine("glmxxx-{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}", series0maxY, series0minY, series1maxY, series1minY, series2maxY, series2minY, series3maxY, series3minY);
+            //位移y轴自适应
+            double series02MaxY = series0maxY;// series0maxY >= series2maxY ? series0maxY : series2maxY;
+            double series02minY = series0minY;// series0minY >= series2minY ? series2minY : series0minY;
 
+            double maxSeriesMaxYVal = series02MaxY;
+            double maxSeriesMinYVal = series02minY;
+            if (chart_machine.Series[3].YAxisType == chart_machine.Series[0].YAxisType)
+            {
+                if (cb_DrawCommand.Checked)
+                {
+
+                    if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
+                    if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
+                }
+            }
+
+            double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+            double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+            double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+
+            double yAxisMax1 = maxSeriesMaxYVal + padding1;
+            double yAxisMin1 = maxSeriesMinYVal - padding1;
+            if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
+            {
+                chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
+                chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
+            }
+            //Console.WriteLine("glmyyy-{0}-{1}", yAxisMax1, yAxisMin1);
+            //力y轴自适应
+             maxSeriesMaxYVal = series1maxY;
+             maxSeriesMinYVal = series1minY;
+
+            if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
+            {
+                if ( cb_DrawCommand.Checked)
+                {
+                    if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
+                    if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
+                }
+            }
+
+             range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+             totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+             padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+
+             yAxisMax1 = maxSeriesMaxYVal + padding1;
+             yAxisMin1 = maxSeriesMinYVal - padding1;
+            if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
+            {
+                chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
+                chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
+            }
+            //Console.WriteLine("glmzzz-{0}-{1}", yAxisMax1, yAxisMin1);
+        }
 
         /// <summary>
         /// 
