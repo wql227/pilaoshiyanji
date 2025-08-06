@@ -317,6 +317,12 @@ namespace DoPENetConnect
 
         public bool valInScaleSetted = false;
 
+
+        public bool valInScaleSetted1 = false;
+
+
+        public bool valInScaleSetted2 = false;
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -2124,7 +2130,8 @@ namespace DoPENetConnect
                         //    minSeries3 = 0;
                         //}
                         //Console.WriteLine("glm1-{0}", y_Position);
-                        if (!valInScaleSetted )
+                        //if (x_Position ==0 )
+                        if(!valInScaleSetted)
                         {
                             valInScaleSetted = true;
                             maxSeries0 = y_Position;
@@ -2213,8 +2220,9 @@ namespace DoPENetConnect
                         //x_Load += nAxisStep;
                         //获取命令曲线最大最小值
                         //Console.WriteLine("glm4-{0}", y_Command);
-                        if (x_Command == 0)
-                        {
+                        // if (x_Command == 0)
+                        if (!valInScaleSetted2) {
+                            valInScaleSetted2 = true;
                             maxSeries3 = y_Command;
                             minSeries3 = y_Command;
                         }
@@ -2275,8 +2283,8 @@ namespace DoPENetConnect
                 if (cb_DrawCommand.Checked)
                 {
 
-                    if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
-                    if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
+                    //if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
+                    //if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
                 }
             }
 
