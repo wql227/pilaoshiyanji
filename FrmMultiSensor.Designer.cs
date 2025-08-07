@@ -35,15 +35,15 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.labelX20 = new DevComponents.DotNetBar.LabelX();
+            this.labelX24 = new DevComponents.DotNetBar.LabelX();
+            this.labelX23 = new DevComponents.DotNetBar.LabelX();
+            this.labelX21 = new DevComponents.DotNetBar.LabelX();
             this.tb_Sensor7 = new System.Windows.Forms.TextBox();
             this.tb_Sensor4 = new System.Windows.Forms.TextBox();
             this.tb_Sensor6 = new System.Windows.Forms.TextBox();
             this.tb_Sensor5 = new System.Windows.Forms.TextBox();
             this.timer_ShowData = new System.Windows.Forms.Timer(this.components);
-            this.labelX20 = new DevComponents.DotNetBar.LabelX();
-            this.labelX21 = new DevComponents.DotNetBar.LabelX();
-            this.labelX23 = new DevComponents.DotNetBar.LabelX();
-            this.labelX24 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,6 +129,58 @@
             this.labelX1.TabIndex = 41;
             this.labelX1.Text = "蓄能器2";
             // 
+            // labelX20
+            // 
+            // 
+            // 
+            // 
+            this.labelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX20.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX20.Location = new System.Drawing.Point(117, 12);
+            this.labelX20.Name = "labelX20";
+            this.labelX20.Size = new System.Drawing.Size(52, 23);
+            this.labelX20.TabIndex = 41;
+            this.labelX20.Text = "MPa";
+            // 
+            // labelX24
+            // 
+            // 
+            // 
+            // 
+            this.labelX24.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX24.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX24.Location = new System.Drawing.Point(606, 12);
+            this.labelX24.Name = "labelX24";
+            this.labelX24.Size = new System.Drawing.Size(52, 23);
+            this.labelX24.TabIndex = 41;
+            this.labelX24.Text = "MPa";
+            // 
+            // labelX23
+            // 
+            // 
+            // 
+            // 
+            this.labelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX23.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX23.Location = new System.Drawing.Point(443, 12);
+            this.labelX23.Name = "labelX23";
+            this.labelX23.Size = new System.Drawing.Size(52, 23);
+            this.labelX23.TabIndex = 41;
+            this.labelX23.Text = "MPa";
+            // 
+            // labelX21
+            // 
+            // 
+            // 
+            // 
+            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX21.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX21.Location = new System.Drawing.Point(280, 12);
+            this.labelX21.Name = "labelX21";
+            this.labelX21.Size = new System.Drawing.Size(52, 23);
+            this.labelX21.TabIndex = 41;
+            this.labelX21.Text = "MPa";
+            // 
             // tb_Sensor7
             // 
             this.tb_Sensor7.BackColor = System.Drawing.Color.Black;
@@ -181,58 +233,6 @@
             // 
             this.timer_ShowData.Tick += new System.EventHandler(this.timer_ShowData_Tick);
             // 
-            // labelX20
-            // 
-            // 
-            // 
-            // 
-            this.labelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX20.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX20.Location = new System.Drawing.Point(117, 12);
-            this.labelX20.Name = "labelX20";
-            this.labelX20.Size = new System.Drawing.Size(52, 23);
-            this.labelX20.TabIndex = 41;
-            this.labelX20.Text = "MPa";
-            // 
-            // labelX21
-            // 
-            // 
-            // 
-            // 
-            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX21.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX21.Location = new System.Drawing.Point(280, 12);
-            this.labelX21.Name = "labelX21";
-            this.labelX21.Size = new System.Drawing.Size(52, 23);
-            this.labelX21.TabIndex = 41;
-            this.labelX21.Text = "MPa";
-            // 
-            // labelX23
-            // 
-            // 
-            // 
-            // 
-            this.labelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX23.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX23.Location = new System.Drawing.Point(443, 12);
-            this.labelX23.Name = "labelX23";
-            this.labelX23.Size = new System.Drawing.Size(52, 23);
-            this.labelX23.TabIndex = 41;
-            this.labelX23.Text = "MPa";
-            // 
-            // labelX24
-            // 
-            // 
-            // 
-            // 
-            this.labelX24.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX24.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX24.Location = new System.Drawing.Point(606, 12);
-            this.labelX24.Name = "labelX24";
-            this.labelX24.Size = new System.Drawing.Size(52, 23);
-            this.labelX24.TabIndex = 41;
-            this.labelX24.Text = "MPa";
-            // 
             // FrmMultiSensor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -244,6 +244,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmMultiSensor";
             this.Text = "蓄能器压力显示";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMultiSensor_FormClosing);
             this.Load += new System.EventHandler(this.FrmMultiSensor_Load);
             this.panelEx1.ResumeLayout(false);

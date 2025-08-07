@@ -446,7 +446,10 @@ namespace DoPENetConnect
                 //MyEdcList = new EdcList(32);
                 //MyEdc = MyEdcList[0];
                 //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);02137E43 
-                if (devId != null) MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse(devId.ToString(), System.Globalization.NumberStyles.HexNumber));
+                if (devId != null)
+                {
+                    MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse(devId.ToString(), System.Globalization.NumberStyles.HexNumber));
+                }
                 else
                 {
                     return;
@@ -3882,7 +3885,39 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void SaveStaticDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            chart_machine.SaveImage(String.Format(@"D:\{0}.png", DateTime.Now.ToString("yyyyMMddhhmmssfff")), ChartImageFormat.Png);
+            //chart_machine.SaveImage(String.Format(@"D:\{0}.png", DateTime.Now.ToString("yyyyMMddhhmmssfff")), ChartImageFormat.Png);
+
+            if (bPause)
+            {
+                string strSaveStaticLog = "";
+                string strBlockLog = "";
+                List<double> listXPoint = chart_machine.Series[0].Points.Select(p => p.XValue).ToList();
+
+                List<double> listY0Point = chart_machine.Series[0].Points.Select(p => p.YValues[0]).ToList();
+                List<double> listY1Point = chart_machine.Series[1].Points.Select(p => p.YValues[0]).ToList();
+                List<double> listY2Point = chart_machine.Series[2].Points.Select(p => p.YValues[0]).ToList();
+                List<double> listY3Point = chart_machine.Series[3].Points.Select(p => p.YValues[0]).ToList();
+
+                if (listXPoint != null && listY0Point != null && listY1Point != null
+                    && listY2Point != null && listY3Point != null)
+                {
+                    for (int i = 0; i < listXPoint.Count - 1; i++)
+                    {
+                        strBlockLog = listXPoint[i].ToString("#0.0000") + "," + listY0Point[i].ToString("#0.0000") + ","
+                            + listY1Point[i].ToString("#0.0000") + "," + listY2Point[i].ToString("#0.0000")
+                            + "," + listY3Point[i].ToString("#0.0000");
+                        strSaveStaticLog = strBlockLog;
+                        LogHelper.SaveStaticCsvData(strSaveStaticLog);
+                    }
+
+                    MessageBox.Show("保存日志成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先暂停绘制！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
     }
 }
