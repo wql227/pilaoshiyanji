@@ -2130,8 +2130,8 @@ namespace DoPENetConnect
                         //    minSeries3 = 0;
                         //}
                         //Console.WriteLine("glm1-{0}", y_Position);
-                        //if (x_Position ==0 )
-                        if(!valInScaleSetted)
+                        //if(!valInScaleSetted)
+                        if (x_Position == 0)
                         {
                             valInScaleSetted = true;
                             maxSeries0 = y_Position;
@@ -2220,8 +2220,8 @@ namespace DoPENetConnect
                         //x_Load += nAxisStep;
                         //获取命令曲线最大最小值
                         //Console.WriteLine("glm4-{0}", y_Command);
-                        // if (x_Command == 0)
-                        if (!valInScaleSetted2) {
+                        //if (!valInScaleSetted2)
+                        if (x_Command == 0){
                             valInScaleSetted2 = true;
                             maxSeries3 = y_Command;
                             minSeries3 = y_Command;
@@ -2249,8 +2249,8 @@ namespace DoPENetConnect
                     }
 
 
-                    //autoFittingFlag++;
-                    //if (autoFittingFlag == nTotal)
+                    autoFittingFlag++;
+                    if (autoFittingFlag == nTotal/2)
                     {
 
                         autoFittingFlag = 0;
