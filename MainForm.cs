@@ -376,6 +376,11 @@ namespace DoPENetConnect
             //设置lightningchart参数
             CreateChart();
 
+            FormFloat floatMenus = new FormFloat();
+            floatMenus.Owner = this;
+            floatMenus.Show();
+            floatMenus.Location = new Point(100, 100);
+
         }
 
 
