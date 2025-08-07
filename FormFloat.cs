@@ -16,5 +16,10 @@ namespace DoPENetConnect
         {
             InitializeComponent();
         }
+
+        private void FormFloat_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
