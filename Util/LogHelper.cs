@@ -173,14 +173,14 @@ namespace DoPENetConnect
                     Directory.CreateDirectory(logPath);
                 }
 
-                int maxFileSize = 1*1024 * 1024; // 10 MB
+                int maxFileSize = 1 * 1024 * 1024; // 10 MB
                 FileInfo fi = new FileInfo(filename);
 
                 // 如果文件存在且超过最大大小，则进行滚动
                 if (fi.Exists && fi.Length > maxFileSize)
                 {
-                    // 滚动旧文件，保留最多5个备份
-                    for (int i = 4; i >= 1; i--)
+                    // 滚动旧文件
+                    for (int i = int.MaxValue; i >= 1; i--)
                     {
                         string oldFile = Path.Combine(logPath, $"{dateStr}.{i}.CSV");
                         string prevFile = Path.Combine(logPath, $"{dateStr}.{i - 1}.CSV");
