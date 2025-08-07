@@ -3919,19 +3919,21 @@ namespace DoPENetConnect
 
         private void superTabControl4_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
         {
-            if (superTabControl4.SelectedTabIndex == 1) {
-                if (MainForm.mainform.cmbX_Dyn_EDC.Items.Count >= 1)
+            Console.WriteLine("glm{0}", superTabControl4.SelectedTabIndex);
+            if (superTabControl4.SelectedTabIndex == 1)
+            {
+                if (cmbX_Dyn_EDC.Items.Count >= 1)
                 {
-                    MainForm.mainform.cmbX_Dyn_EDC.SelectedIndex = 0;
+                    cmbX_Dyn_EDC.SelectedIndex = 0;
                 }
 
-                MainForm.mainform.cmbX_Dyn_StartCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+                cmbX_Dyn_StartCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
-                MainForm.mainform.comboBoxEx7.DataSource = System.Enum.GetNames(typeof(DoPE.LIMITMODE));
+                comboBoxEx7.DataSource = System.Enum.GetNames(typeof(DoPE.LIMITMODE));
 
-                MainForm.mainform.comboBoxEx9.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+                comboBoxEx9.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
-                MainForm.mainform.comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
+                comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
             }
         }
 
