@@ -1129,9 +1129,7 @@ namespace DoPENetConnect
                             tbX_TestCycles.Text = nTotalTestCount.ToString();
                         }
                     }
-
-                    //labelX33.Text = (Sample.Cycles >> 1).ToString();
-                    //试验次数达到指定的试验次数
+                                      //试验次数达到指定的试验次数
                     //if (isRunning) 
                     //{
                     //    nCycleCount++;
