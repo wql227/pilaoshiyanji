@@ -4162,6 +4162,7 @@ namespace DoPENetConnect
             {
                 if (cmbX_Dyn_EDC.Items.Count >= 1)
                 {
+                    
                     cmbX_Dyn_EDC.SelectedIndex = 0;
                 }
 
