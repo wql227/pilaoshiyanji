@@ -201,6 +201,15 @@ namespace DoPENetConnect
             btn_ConState.Text = "OFFLINE";
             MainForm.mainform.FormFloat_btnX_Disconnect_Click();
         }
+
+        private void FormFloat_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                this.Visible = false;
+            }
+        }
     }
     
 }

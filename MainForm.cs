@@ -4248,5 +4248,12 @@ namespace DoPENetConnect
                 return;
             }
         }
+
+        private void pl_DataShow_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) {
+                floatMenus.Visible = true;
+            }
+        }
     }
 }

@@ -1979,6 +1979,7 @@
             this.pl_DataShow.Name = "pl_DataShow";
             this.pl_DataShow.Size = new System.Drawing.Size(1584, 82);
             this.pl_DataShow.TabIndex = 56;
+            this.pl_DataShow.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pl_DataShow_MouseClick);
             // 
             // labelX33
             // 

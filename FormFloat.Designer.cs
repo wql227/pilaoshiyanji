@@ -288,6 +288,7 @@
             this.MaximumSize = new System.Drawing.Size(156, 536);
             this.Name = "FormFloat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormFloat_FormClosing);
             this.Load += new System.EventHandler(this.FormFloat_Load);
             this.panelEx1.ResumeLayout(false);
             this.ResumeLayout(false);
