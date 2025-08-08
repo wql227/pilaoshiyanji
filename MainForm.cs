@@ -4275,5 +4275,16 @@ namespace DoPENetConnect
                 floatMenus.Visible = true;
             }
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("hello world!");
+        }
+
+        private void chart_machine_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) {
+                contextMenuStrip1.Show(MousePosition);            }
+        }
     }
 }
