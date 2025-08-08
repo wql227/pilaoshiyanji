@@ -4284,7 +4284,8 @@ namespace DoPENetConnect
         private void chart_machine_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right) {
-                contextMenuStrip1.Show(MousePosition);            }
+                contextMenuStrip1.Show(MousePosition);
+            }
         }
     }
 }
