@@ -653,9 +653,7 @@ namespace DoPENetConnect
                     stopwatch.Stop();
                 }
 
-                tbX_TestCount.Text = tbX_TestCycles.Text;
 
-                IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
 
             }
             catch (NullReferenceException)
@@ -1108,46 +1106,6 @@ namespace DoPENetConnect
                             strBlockLog = "";
                         }
                     }
-
-                    if (!isRunning)
-                    {
-                        if ((Sample.Cycles >> 1) > 0 && nTotalTestCount == 0)
-                        {
-                            tbX_TestCycles.Text = nPreTestCount.ToString();
-                        }
-                    }
-                    else
-                    {
-                        if (cb_TareTime.Checked)
-                        {
-                            nTotalTestCount = (Sample.Cycles >> 1) - nCurrentCount;
-                            tbX_TestCycles.Text = nTotalTestCount.ToString();
-                        }
-                        else
-                        {
-                            nTotalTestCount = (Sample.Cycles >> 1) + nPreTestCount;
-                            tbX_TestCycles.Text = nTotalTestCount.ToString();
-                        }
-                    }
-                                      //试验次数达到指定的试验次数
-                    //if (isRunning) 
-                    //{
-                    //    nCycleCount++;
-
-                    //    if (nCycleCount > 1 && Sample.Cycles /*>> 1*/ >= nTestCount)
-                    //    {
-                    //        isRunning = false;
-                    //        SetControlEnable(!isRunning);
-                    //        timer_UpdateData.Stop();
-
-                    //        tbX_TestCount.Text = tbX_TestCycles.Text;
-
-                    //        //最后一次的试验次数写入配置文件
-                    //        IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
-
-                    //        nCycleCount = 0;
-                    //    }
-                    //}
                 }
 
                 //波形图
@@ -1155,8 +1113,6 @@ namespace DoPENetConnect
                 {
                     ShowWave(Block);
                 }
-
-                //IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
             }
 
             return 0;
@@ -2005,10 +1961,6 @@ namespace DoPENetConnect
                     timer_UpdateData.Stop();
 
                     SetControlEnable(true);
-
-                    tbX_TestCount.Text = tbX_TestCycles.Text;
-
-                    IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
                 }
                 catch (NullReferenceException)
                 {
@@ -2930,7 +2882,6 @@ namespace DoPENetConnect
             cb_TarePos.Enabled = bState;
             cb_TareLoad.Enabled = bState;
             cb_TareExt.Enabled = bState;
-            cb_TareTime.Enabled = bState;
 
             //上下控制禁用
             btnX_MoveQuickUp.Enabled = bState;
@@ -3258,8 +3209,6 @@ namespace DoPENetConnect
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
             nPreTestCount = int.Parse(strTmp.ToString());
-            tbX_TestCount.Text = strTmp.ToString();
-            tbX_TestCycles.Text = tbX_TestCount.Text;
 
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
@@ -4119,21 +4068,6 @@ namespace DoPENetConnect
 
             }
             #endregion load auto fitting
-
-        }
-
-        private void cb_TareTime_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_TareTime.Checked)
-            {
-                nCurrentCount = int.Parse(tbX_TestCycles.Text);
-                tbX_TestCycles.Text = "0";
-                tbX_TestCount.Text = "0";
-                nCurrentCount = 0;
-                IniFileHelper.WriteIniString("Setting", "TestCount", "0");
-
-                cb_TareTime.Checked = false;
-            }
 
         }
 
