@@ -387,7 +387,7 @@ namespace DoPENetConnect
             //设置lightningchart参数
             CreateChart();
 
-
+            floatMenus.Activate();
         }
 
 
