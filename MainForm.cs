@@ -4157,7 +4157,26 @@ namespace DoPENetConnect
 
         private void superTabControl4_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
         {
-            Console.WriteLine("glm{0}", superTabControl4.SelectedTabIndex);
+           // Console.WriteLine("glm{0}", superTabControl4.SelectedTabIndex);
+            //if (superTabControl4.SelectedTabIndex == 1)
+            {
+                if (cmbX_Dyn_EDC.Items.Count >= 1)
+                {
+                    cmbX_Dyn_EDC.SelectedIndex = 0;
+                }
+
+                cmbX_Dyn_StartCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+
+                comboBoxEx7.DataSource = System.Enum.GetNames(typeof(DoPE.LIMITMODE));
+
+                comboBoxEx9.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+
+                comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
+            }
+        }
+
+        public void after_Controller_Online()
+        {
             if (superTabControl4.SelectedTabIndex == 1)
             {
                 if (cmbX_Dyn_EDC.Items.Count >= 1)
