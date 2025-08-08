@@ -276,6 +276,11 @@ namespace DoPENetConnect
         public double nTotal = 500;
 
         /// <summary>
+        /// x轴自适应间隔
+        /// </summary>
+        public double InterVal_XAxis = 3;
+
+        /// <summary>
         /// 单次实验记录循环次数
         /// </summary>
         public long nTotalTestCount = 0;
@@ -1127,28 +1132,28 @@ namespace DoPENetConnect
 
                     //labelX33.Text = (Sample.Cycles >> 1).ToString();
                     //试验次数达到指定的试验次数
-                    if (isRunning) 
-                    {
-                        nCycleCount++;
+                    //if (isRunning) 
+                    //{
+                    //    nCycleCount++;
 
-                        if (nCycleCount > 1 && Sample.Cycles /*>> 1*/ >= nTestCount)
-                        {
-                            isRunning = false;
-                            SetControlEnable(!isRunning);
-                            timer_UpdateData.Stop();
+                    //    if (nCycleCount > 1 && Sample.Cycles /*>> 1*/ >= nTestCount)
+                    //    {
+                    //        isRunning = false;
+                    //        SetControlEnable(!isRunning);
+                    //        timer_UpdateData.Stop();
 
-                            tbX_TestCount.Text = tbX_TestCycles.Text;
+                    //        tbX_TestCount.Text = tbX_TestCycles.Text;
 
-                            //最后一次的试验次数写入配置文件
-                            IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
+                    //        //最后一次的试验次数写入配置文件
+                    //        IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
 
-                            nCycleCount = 0;
-                        }
-                    }
+                    //        nCycleCount = 0;
+                    //    }
+                    //}
                 }
 
                 //波形图
-                if (bConnected && bActivated)
+                if (bConnected && bActivated&&isRunning)
                 {
                     ShowWave(Block);
                 }
@@ -1172,6 +1177,7 @@ namespace DoPENetConnect
             Display(string.Format("OnPosMsg: DoPError={0} Reached={1} Time={2} Control={3} Position={4} DControl={5} Destination={6} usTAN={7} \n",
               PosMsg.DoPError, PosMsg.Reached, PosMsg.Time, PosMsg.Control, PosMsg.Position, PosMsg.DControl, PosMsg.Destination, PosMsg.usTAN));
 
+            if (isRunning) isRunning = false;         //认为收到这个消息后就是指令停止了
             return 0;
         }
 
@@ -2371,16 +2377,16 @@ namespace DoPENetConnect
                         //}
                         //Console.WriteLine("glm1-{0}", y_Position);
                         //if(!valInScaleSetted)
-                        if (x_Position == 0)
-                        {
-                            valInScaleSetted = true;
-                            maxSeries0 = y_Position;
-                            minSeries0 = y_Position;
-                        }
+                        //if (x_Position == 0)
+                        //{
+                        //    //valInScaleSetted = true;
+                        //    maxSeries0 = y_Position;
+                        //    minSeries0 = y_Position;
+                        //}
                         if (maxSeries0 <y_Position)maxSeries0 = y_Position;
                         if (minSeries0 > y_Position)minSeries0 = y_Position;
 
-                        Console.WriteLine("glm-{0}-{1}-{2}-{3}", y_Position, i,maxSeries0,minSeries0);
+                       // Console.WriteLine("glm-{0}-{1}-{2}-{3}", y_Position, i,maxSeries0,minSeries0);
                         if (chart_machine.Series == null)
                         {
                             return;
@@ -2392,13 +2398,13 @@ namespace DoPENetConnect
 
                             x_Position += dStep;
 
-                            if (chart_machine.Series[0].Points.Count >= nTotal )
-                            {
-                                chart_machine.Series[0].Points.Clear();
-                                //chart_machine.Series[1].Points.AddXY(0.0, y_Position);
+                            //if (chart_machine.Series[0].Points.Count >= nTotal )
+                            //{
+                            //    chart_machine.Series[0].Points.Clear();
+                            //    //chart_machine.Series[1].Points.AddXY(0.0, y_Position);
 
-                                x_Position = 0.0;
-                            }
+                            //    x_Position = 0.0;
+                            //}
                         }
 
                         //绘制Load
@@ -2407,11 +2413,11 @@ namespace DoPENetConnect
                        // Console.WriteLine("glm2-{0}", y_Load);
 
                         //获取力曲线最大最小值
-                        if (x_Load == 0)
-                        {
-                            maxSeries1 =  y_Load;
-                            minSeries1 = y_Load;
-                        }
+                        //if (x_Load == 0)
+                        //{
+                        //    maxSeries1 =  y_Load;
+                        //    minSeries1 = y_Load;
+                        //}
                         if (maxSeries1 < y_Load) maxSeries1 = y_Load;
                         if (minSeries1 > y_Load) minSeries1 = y_Load;
 
@@ -2419,13 +2425,13 @@ namespace DoPENetConnect
                         {
                             chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
                             x_Load += dStep;
-                            if (chart_machine.Series[1].Points.Count >= nTotal)
-                            {
-                                chart_machine.Series[1].Points.Clear();
+                            //if (chart_machine.Series[1].Points.Count >= nTotal)
+                            //{
+                            //    chart_machine.Series[1].Points.Clear();
 
-                                //chart_machine.Series[1].Points.AddXY(0.0, y_Load);
-                                x_Load = 0.0;
-                            }
+                            //    //chart_machine.Series[1].Points.AddXY(0.0, y_Load);
+                            //    x_Load = 0.0;
+                            //}
 
                         }
 
@@ -2435,24 +2441,24 @@ namespace DoPENetConnect
                         //Console.WriteLine("glm3-{0}", y_Extension);
 
                         //获取形变曲线最大最小值
-                        if (x_Extension == 0)
-                        {
-                            maxSeries2 =  y_Extension;
-                            minSeries2 = y_Extension;
-                        }
+                        //if (x_Extension == 0)
+                        //{
+                        //    maxSeries2 =  y_Extension;
+                        //    minSeries2 = y_Extension;
+                        //}
                         if (maxSeries2 < y_Extension) maxSeries2 = y_Extension;
                         if (minSeries2 > y_Extension) minSeries2 = y_Extension;
                         if (chart_machine.Series[2] != null)
                         {
                             chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
                             x_Extension += dStep;
-                            if (chart_machine.Series[2].Points.Count >= nTotal)
-                            {
-                                chart_machine.Series[2].Points.Clear();
+                            //if (chart_machine.Series[2].Points.Count >= nTotal)
+                            //{
+                            //    chart_machine.Series[2].Points.Clear();
 
-                                //chart_machine.Series[2].Points.AddXY(0.0, y_Extension);
-                                x_Extension = 0.0;
-                            }
+                            //    //chart_machine.Series[2].Points.AddXY(0.0, y_Extension);
+                            //    x_Extension = 0.0;
+                            //}
                         }
 
                         //绘制Command
@@ -2461,11 +2467,11 @@ namespace DoPENetConnect
                         //获取命令曲线最大最小值
                         //Console.WriteLine("glm4-{0}", y_Command);
                         //if (!valInScaleSetted2)
-                        if (x_Command == 0){
-                            valInScaleSetted2 = true;
-                            maxSeries3 = y_Command;
-                            minSeries3 = y_Command;
-                        }
+                        //if (x_Command == 0){
+                        //    valInScaleSetted2 = true;
+                        //    maxSeries3 = y_Command;
+                        //    minSeries3 = y_Command;
+                        //}
                         if (maxSeries3 < y_Command) maxSeries3 = y_Command;
                         if (minSeries3 > y_Command) minSeries3 = y_Command;
                         var Axis = chart_machine.ChartAreas[0].AxisX;
@@ -2477,23 +2483,23 @@ namespace DoPENetConnect
                         {
                             chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
                             x_Command += dStep;
-                            if (chart_machine.Series[3].Points.Count >= nTotal)
-                            {
-                                chart_machine.Series[3].Points.Clear();
+                            //if (chart_machine.Series[3].Points.Count >= nTotal)
+                            //{
+                            //    chart_machine.Series[3].Points.Clear();
 
-                                //chart_machine.Series[3].Points.AddXY(0.0, y_Command);
-                                x_Command = 0.0;
-                            }
+                            //    //chart_machine.Series[3].Points.AddXY(0.0, y_Command);
+                            //    x_Command = 0.0;
+                            //}
                         }
                         
                     }
 
 
                     autoFittingFlag++;
-                    if (autoFittingFlag == nTotal/2)
+                    if (autoFittingFlag >= InterVal_XAxis/(2*dStep))
                     {
 
-                        autoFittingFlag = 0;
+                        //autoFittingFlag = 0;
                         AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);
                     }
                 }
@@ -2512,6 +2518,10 @@ namespace DoPENetConnect
         public void AutoFittingCurve(double series0maxY, double series0minY, double series1maxY, double series1minY, double series2maxY, double series2minY, double series3maxY, double series3minY)
         {
             //Console.WriteLine("glmxxx-{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}", series0maxY, series0minY, series1maxY, series1minY, series2maxY, series2minY, series3maxY, series3minY);
+            //x轴时间轴自适应
+            chart_machine.ChartAreas[0].AxisX.Maximum = x_Position;
+
+
             //位移y轴自适应
             double series02MaxY = series0maxY;// series0maxY >= series2maxY ? series0maxY : series2maxY;
             double series02minY = series0minY;// series0minY >= series2minY ? series2minY : series0minY;
@@ -2777,6 +2787,8 @@ namespace DoPENetConnect
                 //开始计时
                 timer_UpdateData.Start();
 
+                //开始前把曲线x轴调到0点
+                x_Position = 0;
                 isRunning = true;
                 SetControlEnable(false);
                 //nTestCount = HalfCycles;
