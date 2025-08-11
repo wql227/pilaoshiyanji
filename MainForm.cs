@@ -2738,7 +2738,7 @@ namespace DoPENetConnect
                 timer_UpdateData.Start();
 
                 //开始前把曲线x轴调到0点
-                x_Position = 0;
+                //x_Position = 0;
                 isRunning = true;
                 SetControlEnable(false);
                 //nTestCount = HalfCycles;
