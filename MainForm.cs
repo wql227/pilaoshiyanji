@@ -2739,6 +2739,7 @@ namespace DoPENetConnect
 
                 //开始前把曲线x轴调到0点
                 //x_Position = 0;
+                InitCurveBeforeExperment();
                 isRunning = true;
                 SetControlEnable(false);
                 //nTestCount = HalfCycles;
@@ -2749,6 +2750,15 @@ namespace DoPENetConnect
                 IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
                 nPreTestCount = int.Parse(strTmp.ToString());
             }
+        }
+
+        public void InitCurveBeforeExperment()
+        {
+            x_Position = 0;
+            chart_machine.Series[0].Points.Clear();
+            chart_machine.Series[1].Points.Clear();
+            chart_machine.Series[2].Points.Clear();
+            chart_machine.Series[3].Points.Clear();
         }
 
         public void SetupResetXHead()
