@@ -2756,8 +2756,11 @@ namespace DoPENetConnect
         {
             x_Position = 0;
             chart_machine.Series[0].Points.Clear();
+            x_Load = 0;
             chart_machine.Series[1].Points.Clear();
+            x_Extension = 0;
             chart_machine.Series[2].Points.Clear();
+            x_Command = 0;
             chart_machine.Series[3].Points.Clear();
         }
 
