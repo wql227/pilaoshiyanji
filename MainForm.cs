@@ -769,6 +769,7 @@ namespace DoPENetConnect
 
                 floatMenus.btn_ConState_color(Color.Lime);
                 floatMenus.btn_ConState_Text("ONLINE");
+                after_Controller_Online();
             }
             else if (LineState == DoPE.LineState.RESTART)
             {
