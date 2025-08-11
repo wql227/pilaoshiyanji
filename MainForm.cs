@@ -885,9 +885,11 @@ namespace DoPENetConnect
                     // TODO:判断峰谷值是否超过外保护
                     double dPosition = 0; 
 
-                    if (nCount >= 50)
+                    if (nCount >= 10)
                     {
+                        //Console.WriteLine("glmtest-{0}",text);
                         guiPosition.Text = text;
+                        guiPosition.Refresh();
                     }
                     strCSVLog += text + ",";
                     //data_display1 = decimal.Parse(guiPosition.Text == "" ? "" : "0");
@@ -984,9 +986,10 @@ namespace DoPENetConnect
                     }
                     //ProtectOption_PosMaxOut
 
-                    if (nCount >= 50)
+                    if (nCount >= 10)
                     {
                         guiLoad.Text = text;
+                        guiLoad.Refresh();
                     }
 
                     strCSVLog += text + ",";
@@ -1077,9 +1080,10 @@ namespace DoPENetConnect
                         PVExtensionQueue.Clear();
                     }
 
-                    if (nCount >= 50)
+                    if (nCount >= 10)
                     {
                         guiExtension.Text = text;
+                        guiExtension.Refresh();
                     }
 
                     strCSVLog += text + ",";
@@ -1089,7 +1093,7 @@ namespace DoPENetConnect
                     strCSVLog += text + ",";
                     strCSVLog += (Sample.Cycles /*<< 1*/).ToString() + ",";
 
-                    if (nCount >= 50)
+                    if (nCount >= 10)
                     {
                         nCount = 0;
                     }
