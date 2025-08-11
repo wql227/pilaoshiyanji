@@ -524,6 +524,7 @@
             this.buttonX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX16.TabIndex = 76;
             this.buttonX16.Text = "结束";
+            this.buttonX16.Click += new System.EventHandler(this.buttonX16_Click);
             // 
             // buttonX15
             // 

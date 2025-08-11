@@ -784,7 +784,7 @@ namespace DoPENetConnect
 
         private int OnDataBlock(ref DoPE.OnDataBlock Block, object Parameter)
         {
-            this.toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             statusStrip1.Refresh();
 
             string strCSVLog = "";
@@ -2761,7 +2761,7 @@ namespace DoPENetConnect
 
                 //开始前把曲线x轴调到0点
                 //x_Position = 0;
-                //InitCurveBeforeExperment();           //开始实验前初始化绘图，包括x轴调整至0点
+                //CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
                 isRunning = true;
                 SetControlEnable(false);
                 //nTestCount = HalfCycles;
@@ -2774,7 +2774,7 @@ namespace DoPENetConnect
             }
         }
 
-        public void InitCurveBeforeExperment()
+        public void CleanChart()
         {
             x_Position = 0;
             chart_machine.Series[0].Points.Clear();
@@ -4265,6 +4265,18 @@ namespace DoPENetConnect
             if (e.Button == MouseButtons.Right) {
                 contextMenuStrip1.Show(MousePosition);
             }
+        }
+
+        private void buttonX16_Click(object sender, EventArgs e)
+        {
+            MoveHalt();
+            //停止数据更新
+            //if (isRunning)
+            {
+                //isRunning = false;         
+                onExpermentStoped();
+            }
+           // CleanChart();
         }
     }
 }
