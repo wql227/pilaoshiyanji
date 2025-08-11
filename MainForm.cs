@@ -1149,11 +1149,11 @@ namespace DoPENetConnect
             Display(string.Format("OnPosMsg: DoPError={0} Reached={1} Time={2} Control={3} Position={4} DControl={5} Destination={6} usTAN={7} \n",
               PosMsg.DoPError, PosMsg.Reached, PosMsg.Time, PosMsg.Control, PosMsg.Position, PosMsg.DControl, PosMsg.Destination, PosMsg.usTAN));
 
-            if (isRunning)
-            {
-                isRunning = false;         //认为收到这个消息后就是指令停止了
-                onExpermentStoped();
-            }
+            //if (isRunning)
+            //{
+            //    isRunning = false;         //认为收到这个消息后就是指令停止了
+            //    onExpermentStoped();
+            //}
             return 0;
         }
 
