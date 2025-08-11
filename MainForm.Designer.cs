@@ -3988,10 +3988,8 @@
         private DevComponents.DotNetBar.SuperTabItem superTabItem1;
         private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel2;
         private DevComponents.DotNetBar.PanelEx panelEx1;
-        private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox guiExtension;
-        private System.Windows.Forms.TextBox guiTime;
         private System.Windows.Forms.TextBox guiLoad;
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.TextBox guiPosition;
@@ -4259,6 +4257,8 @@
         private DevComponents.DotNetBar.PanelEx panelEx11;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.TextBox guiTime;
     }
 }
 

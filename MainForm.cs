@@ -1120,10 +1120,21 @@ namespace DoPENetConnect
                 {
                     ShowWave(Block);
                 }
+
+                //更新时间
+                TimeSpan elapsed = stopwatch.Elapsed;
+                guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
+                guiTime.Refresh();
             }
 
             return 0;
         }
+
+        public void onExpermentStoped()
+        {
+            if (stopwatch.IsRunning) stopwatch.Stop();
+        }
+
 
         private int OnCommandError(ref DoPE.OnCommandError CommandError, object Parameter)
         {
@@ -1138,7 +1149,11 @@ namespace DoPENetConnect
             Display(string.Format("OnPosMsg: DoPError={0} Reached={1} Time={2} Control={3} Position={4} DControl={5} Destination={6} usTAN={7} \n",
               PosMsg.DoPError, PosMsg.Reached, PosMsg.Time, PosMsg.Control, PosMsg.Position, PosMsg.DControl, PosMsg.Destination, PosMsg.usTAN));
 
-            if (isRunning) isRunning = false;         //认为收到这个消息后就是指令停止了
+            if (isRunning)
+            {
+                isRunning = false;         //认为收到这个消息后就是指令停止了
+                onExpermentStoped();
+            }
             return 0;
         }
 
