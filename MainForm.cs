@@ -2586,13 +2586,13 @@ namespace DoPENetConnect
         {
             this.toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            if (!bConnected)
-            {
-                return;
-            }
+            //if (!bConnected)
+            //{
+            //    return;
+            //}
 
-            TimeSpan elapsed = stopwatch.Elapsed;
-            guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
+            //TimeSpan elapsed = stopwatch.Elapsed;
+            //guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
 
             //EnableButton();
         }
