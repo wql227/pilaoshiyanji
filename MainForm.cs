@@ -2739,7 +2739,7 @@ namespace DoPENetConnect
 
                 //开始前把曲线x轴调到0点
                 //x_Position = 0;
-                InitCurveBeforeExperment();
+                InitCurveBeforeExperment();           //开始实验前初始化绘图，包括x轴调整至0点
                 isRunning = true;
                 SetControlEnable(false);
                 //nTestCount = HalfCycles;
