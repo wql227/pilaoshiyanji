@@ -333,6 +333,8 @@ namespace DoPENetConnect
         /// </summary>
         FormFloat floatMenus;
 
+        int tickNum = 50;
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -1246,6 +1248,7 @@ namespace DoPENetConnect
             if (RuntimeError.ErrorNumber == DoPE.RTE.CTRL_DEVIATION) {             //结束后重置按钮状态
                 bActivated = false;
                 floatMenus.EnableButton(true);
+                MessageBox.Show("位移超出量程,请重新激活控制器！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             return 0;
@@ -2497,6 +2500,9 @@ namespace DoPENetConnect
         {
             //Console.WriteLine("glmxxx-{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}", series0maxY, series0minY, series1maxY, series1minY, series2maxY, series2minY, series3maxY, series3minY);
             //x轴时间轴自适应
+
+            int xMax =(int)Math.Ceiling(x_Position);
+
             chart_machine.ChartAreas[0].AxisX.Maximum = x_Position;
 
 
