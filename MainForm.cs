@@ -640,7 +640,7 @@ namespace DoPENetConnect
                 SetControlEnable(true);
 
                 bntX_GUIOn.Checked = false;
-                floatMenus.btnX_GUIOn_Checked(false);   //请与上边同步修改
+                floatMenus.btnX_GUIOn_Checked(false);   //请与上边一行同步修改
 
                 this.MaximizeBox = true;
 
@@ -1242,6 +1242,11 @@ namespace DoPENetConnect
         {
             Display(string.Format("OnRuntimeError: DoPError={0} ErrorNumber={1} Time={2} Device={3} Bits={4} usTAN={5} \n",
               RuntimeError.DoPError, RuntimeError.ErrorNumber, RuntimeError.Time, RuntimeError.Device, RuntimeError.Bits, RuntimeError.usTAN));
+
+            if (RuntimeError.ErrorNumber == DoPE.RTE.CTRL_DEVIATION) {             //结束后重置按钮状态
+                bActivated = false;
+                floatMenus.EnableButton(true);
+            }
 
             return 0;
         }
@@ -4109,7 +4114,7 @@ namespace DoPENetConnect
 
         private void buttonX15_Click(object sender, EventArgs e)
         {
-            if (bConnected)
+            if (bActivated)
             {
                 if (this.tbX_Dyn_StartSpeed.Text == "" || this.textBoxX14.Text == "" || this.textBoxX15.Text == "")
                 {
@@ -4279,5 +4284,6 @@ namespace DoPENetConnect
             }
            // CleanChart();
         }
+
     }
 }
