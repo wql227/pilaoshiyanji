@@ -904,7 +904,7 @@ namespace DoPENetConnect
                     if (PVLoadQueue.Count >= 50)
                     {
                         tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
-                        tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
+                        //tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
                         if (bActivated && isRunning)
                         {
                             //判断是否处于合理的试验力峰值区间 峰值外保护
@@ -1005,7 +1005,7 @@ namespace DoPENetConnect
                     if (PVExtensionQueue.Count >= 50)
                     {
                         tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
-                        tb_MinExt.Text = PVExtensionQueue.Min().ToString("0.000");
+                        //tb_MinExt.Text = PVExtensionQueue.Min().ToString("0.000");
 
                         if (bActivated && isRunning)
                         {
