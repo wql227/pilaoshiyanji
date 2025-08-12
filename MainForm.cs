@@ -808,7 +808,7 @@ namespace DoPENetConnect
                     if (PVPositionQueue.Count >= 50)
                     {
                         tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
-                        tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
+                        //tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
 
                         if (bActivated && isRunning)
                         {
