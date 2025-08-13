@@ -4206,20 +4206,20 @@ namespace DoPENetConnect
             {
                 case "POS":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
-                        comboBoxEx8.DataSource = new string[] { "mm/s" };
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s","mm/min" };
+                        comboBoxEx8.DataSource = new string[] { "mm" };
                         break;
                     }
                 case "LOAD":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s" };
-                        comboBoxEx8.DataSource = new string[] { "N/s" };
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s","kN/s" };
+                        comboBoxEx8.DataSource = new string[] { "N","kN"};
                         break;
                     }
                 case "EXTENSION":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
-                        comboBoxEx8.DataSource = new string[] { "mm/s" };
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s","mm/min" };
+                        comboBoxEx8.DataSource = new string[] { "mm" };
                         break;
                     }
                 default:
@@ -4238,22 +4238,22 @@ namespace DoPENetConnect
             {
                 case "POS":
                     {
-                        comboBoxEx10.DataSource = new string[] { "mm/s" };
+                        comboBoxEx10.DataSource = new string[] { "mm"};
                         break;
                     }
                 case "LOAD":
                     {
-                        comboBoxEx10.DataSource = new string[] { "N/s" };
+                        comboBoxEx10.DataSource = new string[] { "N","kN" };
                         break;
                     }
                 case "EXTENSION":
                     {
-                        comboBoxEx10.DataSource = new string[] { "mm/s" };
+                        comboBoxEx10.DataSource = new string[] { "mm" };
                         break;
                     }
                 default:
                     {
-                        comboBoxEx10.DataSource = new string[] { "Unit/s" };
+                        comboBoxEx10.DataSource = new string[] { "Unit" };
                         break;
                     }
 
