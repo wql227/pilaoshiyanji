@@ -333,7 +333,8 @@ namespace DoPENetConnect
         /// </summary>
         FormFloat floatMenus;
 
-        int tickNum = 50;
+        int tickNum = 25;
+        int tickNumAfter1k = 10;
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -2503,7 +2504,20 @@ namespace DoPENetConnect
 
             int xMax =(int)Math.Ceiling(x_Position);
 
-            chart_machine.ChartAreas[0].AxisX.Maximum = x_Position;
+            int dynInterval;
+            if (x_Position > 999) {
+                dynInterval = (int)Math.Ceiling((double)xMax / tickNumAfter1k);
+            }
+            else
+                dynInterval = (int)Math.Ceiling((double)xMax / tickNum);
+
+            int finalInterval = (int)Math.Ceiling((double)xMax / dynInterval);
+
+            int finalMax = finalInterval * dynInterval;
+
+            chart_machine.ChartAreas[0].AxisX.Maximum = finalMax;
+            
+            chart_machine.ChartAreas[0].AxisX.Interval = dynInterval;
 
 
             //位移y轴自适应
