@@ -4336,5 +4336,30 @@ namespace DoPENetConnect
                 return;
             }
         }
+
+        private void comboBoxEx10_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxEx9.Text == "LOAD")
+            {
+                if (comboBoxEx10.Text == "N")
+                {
+                    lblLoad.Text = string.Format("试验力 {0}", comboBoxEx10.Text);
+                }
+                else if (comboBoxEx10.Text == "kN")
+                {
+
+                    lblLoad.Text = string.Format("试验力{0}", comboBoxEx10.Text);
+                }
+            }
+            else if (comboBoxEx9.Text == "POS")
+            {
+
+            }
+            else if (comboBoxEx9.Text == "EXTENSION") {
+
+            }
+           
+            
+        }
     }
 }
