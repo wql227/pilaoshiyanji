@@ -4352,6 +4352,31 @@ namespace DoPENetConnect
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CurveSet("s", " kN",toolStripMenuItem1.Text);
+            chart_series_show(1);
+
+
+        }
+
+        public void chart_series_show(int seriesIndex)
+        {
+            if (seriesIndex == 0)
+            {
+                chart_machine.Series[0].Enabled = true;
+                chart_machine.Series[1].Enabled = false;
+                chart_machine.Series[2].Enabled = false;
+            }
+            else if (seriesIndex == 1)
+            {
+                chart_machine.Series[0].Enabled = false;
+                chart_machine.Series[1].Enabled = true;
+                chart_machine.Series[2].Enabled = false;
+            }
+            else if (seriesIndex == 2)
+            {
+                chart_machine.Series[0].Enabled = false;
+                chart_machine.Series[1].Enabled = false;
+                chart_machine.Series[2].Enabled = true;
+            }
         }
 
         private void chart_machine_MouseClick(object sender, MouseEventArgs e)
@@ -4469,11 +4494,13 @@ namespace DoPENetConnect
         private void 位移ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CurveSet("s", " mm", 位移ToolStripMenuItem.Text);
+            chart_series_show(0);
         }
 
         private void 变形时间曲线ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CurveSet("s", "mm",变形时间曲线ToolStripMenuItem.Text);
+            chart_series_show(2);
         }
     }
 }
