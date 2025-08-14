@@ -91,11 +91,21 @@ using Microsoft.Extensions.Configuration;
 
 namespace DoPENetConnect
 {
+    #region start struct
+    public struct MainParams
+    {
+        //public double timeParams;  
+        public double DisplacementVal;
+        public double LoadVal;
+        public double ExtenssionVal;
+    }
+    #endregion start struct
     /// <summary>
     /// Demo-application for the DoPE .NET library.
     /// </summary>
     public partial class MainForm : Form
     {
+
         #region Initialization
 
 
@@ -335,6 +345,13 @@ namespace DoPENetConnect
 
         int tickNum = 25;
         int tickNumAfter1k = 10;
+
+        /// <summary>
+        /// 实时参数记录
+        /// </summary>
+        MainParams realtimeParams;
+        MainParams originParams;
+        int firstCycleParamsSetFlag=0;
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -788,6 +805,7 @@ namespace DoPENetConnect
 
         private int OnDataBlock(ref DoPE.OnDataBlock Block, object Parameter)
         {
+            Console.WriteLine("glm-data is comming");
             toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             statusStrip1.Refresh();
 
@@ -807,6 +825,8 @@ namespace DoPENetConnect
                 if (bConnected)
                 {
                     //位移队列
+                    //填写实时值
+                    realtimeParams.DisplacementVal = Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S];
                     PVPositionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
                     if (PVPositionQueue.Count >= 50)
                     {
@@ -903,6 +923,8 @@ namespace DoPENetConnect
                     text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
 
                     //试验力队列
+                    //填写试验力实时值
+                    realtimeParams.LoadVal = Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F];
                     PVLoadQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
                     if (PVLoadQueue.Count >= 50)
                     {
@@ -1003,7 +1025,8 @@ namespace DoPENetConnect
                     //data_display2 = decimal.Parse(guiLoad.Text);
                     text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
 
-                    //变形队列
+                    //变形队列//填写试验力实时值
+                    realtimeParams.ExtenssionVal = Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E];
                     PVExtensionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
                     if (PVExtensionQueue.Count >= 50)
                     {
@@ -1130,12 +1153,20 @@ namespace DoPENetConnect
                 guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
                 guiTime.Refresh();
             }
-
+            ParamsSetFirstCycle();
             return 0;
         }
 
+        public void ParamsSetFirstCycle()
+        {
+            if (firstCycleParamsSetFlag == 0) {
+                firstCycleParamsSetFlag = 1;
+                originParams = realtimeParams;
+            }
+        }
         public void onExpermentStoped()
         {
+            buttonX15.Checked = false;
             if (stopwatch.IsRunning) stopwatch.Stop();
         }
 
@@ -4157,6 +4188,7 @@ namespace DoPENetConnect
                     return;
                 }
 
+                originParams = realtimeParams;
                 buttonX15.Checked = true;
                 FrmPosExt frmPosExt = new FrmPosExt();
                 frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), (LIMITMODE)comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
@@ -4339,7 +4371,7 @@ namespace DoPENetConnect
                 //FrmPosExt frmPosExt = new FrmPosExt();
                 //frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), (LIMITMODE)comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
                 //                                 (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text), (DESTMODE)comboBoxEx11.SelectedIndex);
-                MovePos(DoPE.CTRL.POS, double.Parse(tbX_Dyn_StartSpeed.Text), 0);
+                MovePos(DoPE.CTRL.POS, double.Parse(tbX_Dyn_StartSpeed.Text), originParams.DisplacementVal);
 
             }
             else
