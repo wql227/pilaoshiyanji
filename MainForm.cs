@@ -363,11 +363,11 @@ namespace DoPENetConnect
 
             nTotal = AxisXMax / dStep;
 
-//悬浮工具框
+            //悬浮工具框
             floatMenus = new FormFloat();
             floatMenus.Owner = this;
             floatMenus.Show();
-            floatMenus.Location = new Point(this.Location.X-floatMenus.Width, this.Location.Y);
+            floatMenus.Location = new Point(this.Location.X - floatMenus.Width, this.Location.Y);
         }
 
         ///----------------------------------------------------------------------
@@ -401,31 +401,31 @@ namespace DoPENetConnect
 
         private void CreateChart()
         {
-        //    //Disable rendering.
-        //    lightningChart1.BeginUpdate();
+            //    //Disable rendering.
+            //    lightningChart1.BeginUpdate();
 
-        //    //Set V-Sync to prevent 'tearing'
-        //    lightningChart1.RenderOptions.WaitForVSync = true;
+            //    //Set V-Sync to prevent 'tearing'
+            //    lightningChart1.RenderOptions.WaitForVSync = true;
 
-        //    // Change axis layout.
-        //    lightningChart1.ViewXY.AxisLayout.YAxesLayout = YAxesLayout.Stacked;
-        //    lightningChart1.ViewXY.AxisLayout.SegmentsGap = 10;
+            //    // Change axis layout.
+            //    lightningChart1.ViewXY.AxisLayout.YAxesLayout = YAxesLayout.Stacked;
+            //    lightningChart1.ViewXY.AxisLayout.SegmentsGap = 10;
 
-        //    lightningChart1.ViewXY.DropOldSeriesData = true; // Drop old data, increase preformance.
+            //    lightningChart1.ViewXY.DropOldSeriesData = true; // Drop old data, increase preformance.
 
-        //    // Zooming and panning horizontal mode.
-        //    lightningChart1.ViewXY.ZoomPanOptions.RectangleZoomMode = RectangleZoomMode.Horizontal;
-        //    lightningChart1.ViewXY.ZoomPanOptions.PanDirection = PanDirection.Horizontal;
+            //    // Zooming and panning horizontal mode.
+            //    lightningChart1.ViewXY.ZoomPanOptions.RectangleZoomMode = RectangleZoomMode.Horizontal;
+            //    lightningChart1.ViewXY.ZoomPanOptions.PanDirection = PanDirection.Horizontal;
 
-        //    // Configure x-axis
-        //    lightningChart1.ViewXY.XAxes[0].ScrollPosition = 0;
-        //    lightningChart1.ViewXY.XAxes[0].ScrollMode = XAxisScrollMode.Scrolling;
-        //    //Configure legend
-        //    lightningChart1.ViewXY.LegendBoxes[0].Visible = false;
-        //    lightningChart1.ViewXY.AxisLayout.AutoAdjustMargins = false;
+            //    // Configure x-axis
+            //    lightningChart1.ViewXY.XAxes[0].ScrollPosition = 0;
+            //    lightningChart1.ViewXY.XAxes[0].ScrollMode = XAxisScrollMode.Scrolling;
+            //    //Configure legend
+            //    lightningChart1.ViewXY.LegendBoxes[0].Visible = false;
+            //    lightningChart1.ViewXY.AxisLayout.AutoAdjustMargins = false;
 
-        //    //Allow rendering.
-        //    lightningChart1.EndUpdate();
+            //    //Allow rendering.
+            //    lightningChart1.EndUpdate();
         }
 
 
@@ -447,11 +447,11 @@ namespace DoPENetConnect
             this.Cursor = Cursors.WaitCursor;
 
             //改成线程访问，防止卡顿界面
-           // Task.Run(() =>
-           // {
-                try
-                {
-                    DoPE.ERR error;
+            // Task.Run(() =>
+            // {
+            try
+            {
+                DoPE.ERR error;
                 //DoPE.IgnoreTcpIpNIC(true);
                 // open the first EDC found on this PC
                 //打开edc列表
@@ -463,90 +463,90 @@ namespace DoPENetConnect
                 {
                     return;
                 }
-                    //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 3491251);
+                //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 3491251);
 
-                    //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
-                    if (MyEdc != null)
-                    {
-                        Display("连接成功，Name:" + MyEdc.ModuleInfo.Name + "; DeviceId = " + MyEdc.ModuleInfo.DeviceID + "; FunctionId = " + MyEdc.ModuleInfo.DeviceID + "; SerNr = " + MyEdc.ModuleInfo.SerNr + "\n");
-
-                        LogHelper.WriteLogFile("AAAA");
-
-                        lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
-
-                        toolStripStatusLabel4.Text = this.devId.ToString();
-
-                    }
-
-                    bConnected = MyEdc.IsConnected();
-
-                    EnableButton();
-
-                    //DoPEcheck dope_block = new DoPEcheck(MyEdc);
-
-                    //DoPE.ERR aaa = dope_block.ClrCheck();
-
-                    // hang in event-handler to receive DoPE-events
-                    MyEdc.Eh.OnLineHdlr += new DoPE.OnLineHdlr(OnLine);
-                    // Set number of samples for OnDataBlock events
-                    // for a 300 ms display refresh
-                    DoPE.Machine Machine = new DoPE.Machine(0);
-                    MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
-                    double aaa = (0.01 / Machine.MDef.SystemTime /*+ Machine.MDef.SystemTime / 2*/);
-                    MyEdc.Eh.SetOnDataBlockSize((Int32)(aaa)); 
-                    MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
-                    MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
-                    MyEdc.Eh.OnPosMsgHdlr += new DoPE.OnPosMsgHdlr(OnPosMsg);
-                    MyEdc.Eh.OnTPosMsgHdlr += new DoPE.OnTPosMsgHdlr(OnTPosMsg);
-                    MyEdc.Eh.OnLPosMsgHdlr += new DoPE.OnLPosMsgHdlr(OnLPosMsg);
-                    MyEdc.Eh.OnSftMsgHdlr += new DoPE.OnSftMsgHdlr(OnSftMsg);
-                    MyEdc.Eh.OnOffsCMsgHdlr += new DoPE.OnOffsCMsgHdlr(OnOffsCMsg);
-                    MyEdc.Eh.OnCheckMsgHdlr += new DoPE.OnCheckMsgHdlr(OnCheckMsg);
-                    MyEdc.Eh.OnRefSignalMsgHdlr += new DoPE.OnRefSignalMsgHdlr(OnRefSignalMsg);
-                    MyEdc.Eh.OnSensorMsgHdlr += new DoPE.OnSensorMsgHdlr(OnSensorMsg);
-                    MyEdc.Eh.OnIoSHaltMsgHdlr += new DoPE.OnIoSHaltMsgHdlr(OnIoSHaltMsg);
-                    MyEdc.Eh.OnGuardMsgHdlr += new DoPE.OnGuardMsgHdlr(OnGuardMsg);
-                    MyEdc.Eh.OnKeyMsgHdlr += new DoPE.OnKeyMsgHdlr(OnKeyMsg);
-                    MyEdc.Eh.OnRuntimeErrorHdlr += new DoPE.OnRuntimeErrorHdlr(OnRuntimeError);
-                    MyEdc.Eh.OnOverflowHdlr += new DoPE.OnOverflowHdlr(OnOverflow);
-                    MyEdc.Eh.OnSystemMsgHdlr += new DoPE.OnSystemMsgHdlr(OnSystemMsg);
-                    MyEdc.Eh.OnDebugMsgHdlr += new DoPE.OnDebugMsgHdlr(OnDebugMsg);
-                    MyEdc.Eh.OnRmcEventHdlr += new DoPE.OnRmcEventHdlr(OnRmcEvent);
-
-                    // Set UserScale
-                    DoPE.UserScale userScale = new DoPE.UserScale();
-                    // set position and extension scale to mm
-                    userScale[DoPE.SENSOR.SENSOR_S] = 1000;
-                    userScale[DoPE.SENSOR.SENSOR_E] = 1000;
-
-                    // Select machine setup and initialize
-                    error = MyEdc.Setup.SelMachine(DoPE.MACHINE_NUMBER.MACHINE_1, userScale);
-                    if (error != DoPE.ERR.NOERROR)
-                    {
-                        DisplayError(error, "SelectMachine");
-                    }
-                    else
-                    {
-                        Display("SelectMachine : OK !\n");
-                    }
-
-                    MyEdc.Rmc.Enable(-1, -1);
-                }
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine(ex.ToString());
-                //    Display(string.Format("{0}\n", ex));
-                //}
-                catch (DoPEException ex)
+                //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
+                if (MyEdc != null)
                 {
-                    // During the initialization and the
-                    // shut-down phase a DoPE Exception can arise.
-                    // Other errors are reported by the DoPE
-                    // error return codes.
-                    Display(string.Format("{0}\n", ex));
+                    Display("连接成功，Name:" + MyEdc.ModuleInfo.Name + "; DeviceId = " + MyEdc.ModuleInfo.DeviceID + "; FunctionId = " + MyEdc.ModuleInfo.DeviceID + "; SerNr = " + MyEdc.ModuleInfo.SerNr + "\n");
+
+                    LogHelper.WriteLogFile("AAAA");
+
+                    lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
+
+                    toolStripStatusLabel4.Text = this.devId.ToString();
+
                 }
 
-          //  });
+                bConnected = MyEdc.IsConnected();
+
+                EnableButton();
+
+                //DoPEcheck dope_block = new DoPEcheck(MyEdc);
+
+                //DoPE.ERR aaa = dope_block.ClrCheck();
+
+                // hang in event-handler to receive DoPE-events
+                MyEdc.Eh.OnLineHdlr += new DoPE.OnLineHdlr(OnLine);
+                // Set number of samples for OnDataBlock events
+                // for a 300 ms display refresh
+                DoPE.Machine Machine = new DoPE.Machine(0);
+                MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
+                double aaa = (0.01 / Machine.MDef.SystemTime /*+ Machine.MDef.SystemTime / 2*/);
+                MyEdc.Eh.SetOnDataBlockSize((Int32)(aaa));
+                MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
+                MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
+                MyEdc.Eh.OnPosMsgHdlr += new DoPE.OnPosMsgHdlr(OnPosMsg);
+                MyEdc.Eh.OnTPosMsgHdlr += new DoPE.OnTPosMsgHdlr(OnTPosMsg);
+                MyEdc.Eh.OnLPosMsgHdlr += new DoPE.OnLPosMsgHdlr(OnLPosMsg);
+                MyEdc.Eh.OnSftMsgHdlr += new DoPE.OnSftMsgHdlr(OnSftMsg);
+                MyEdc.Eh.OnOffsCMsgHdlr += new DoPE.OnOffsCMsgHdlr(OnOffsCMsg);
+                MyEdc.Eh.OnCheckMsgHdlr += new DoPE.OnCheckMsgHdlr(OnCheckMsg);
+                MyEdc.Eh.OnRefSignalMsgHdlr += new DoPE.OnRefSignalMsgHdlr(OnRefSignalMsg);
+                MyEdc.Eh.OnSensorMsgHdlr += new DoPE.OnSensorMsgHdlr(OnSensorMsg);
+                MyEdc.Eh.OnIoSHaltMsgHdlr += new DoPE.OnIoSHaltMsgHdlr(OnIoSHaltMsg);
+                MyEdc.Eh.OnGuardMsgHdlr += new DoPE.OnGuardMsgHdlr(OnGuardMsg);
+                MyEdc.Eh.OnKeyMsgHdlr += new DoPE.OnKeyMsgHdlr(OnKeyMsg);
+                MyEdc.Eh.OnRuntimeErrorHdlr += new DoPE.OnRuntimeErrorHdlr(OnRuntimeError);
+                MyEdc.Eh.OnOverflowHdlr += new DoPE.OnOverflowHdlr(OnOverflow);
+                MyEdc.Eh.OnSystemMsgHdlr += new DoPE.OnSystemMsgHdlr(OnSystemMsg);
+                MyEdc.Eh.OnDebugMsgHdlr += new DoPE.OnDebugMsgHdlr(OnDebugMsg);
+                MyEdc.Eh.OnRmcEventHdlr += new DoPE.OnRmcEventHdlr(OnRmcEvent);
+
+                // Set UserScale
+                DoPE.UserScale userScale = new DoPE.UserScale();
+                // set position and extension scale to mm
+                userScale[DoPE.SENSOR.SENSOR_S] = 1000;
+                userScale[DoPE.SENSOR.SENSOR_E] = 1000;
+
+                // Select machine setup and initialize
+                error = MyEdc.Setup.SelMachine(DoPE.MACHINE_NUMBER.MACHINE_1, userScale);
+                if (error != DoPE.ERR.NOERROR)
+                {
+                    DisplayError(error, "SelectMachine");
+                }
+                else
+                {
+                    Display("SelectMachine : OK !\n");
+                }
+
+                MyEdc.Rmc.Enable(-1, -1);
+            }
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.ToString());
+            //    Display(string.Format("{0}\n", ex));
+            //}
+            catch (DoPEException ex)
+            {
+                // During the initialization and the
+                // shut-down phase a DoPE Exception can arise.
+                // Other errors are reported by the DoPE
+                // error return codes.
+                Display(string.Format("{0}\n", ex));
+            }
+
+            //  });
 
 
             this.Cursor = Cursors.Default;
@@ -804,7 +804,7 @@ namespace DoPENetConnect
                 strCSVLog += text + ",";
                 text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
 
-                if (bConnected )
+                if (bConnected)
                 {
                     //位移队列
                     PVPositionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
@@ -890,7 +890,7 @@ namespace DoPENetConnect
                     }
 
                     // TODO:判断峰谷值是否超过外保护
-                    double dPosition = 0; 
+                    double dPosition = 0;
 
                     if (nCount >= 10)
                     {
@@ -1120,7 +1120,7 @@ namespace DoPENetConnect
                 }
 
                 //波形图
-                if (bConnected && bActivated&&isRunning)
+                if (bConnected && bActivated && isRunning)
                 {
                     ShowWave(Block);
                 }
@@ -1246,7 +1246,8 @@ namespace DoPENetConnect
             Display(string.Format("OnRuntimeError: DoPError={0} ErrorNumber={1} Time={2} Device={3} Bits={4} usTAN={5} \n",
               RuntimeError.DoPError, RuntimeError.ErrorNumber, RuntimeError.Time, RuntimeError.Device, RuntimeError.Bits, RuntimeError.usTAN));
 
-            if (RuntimeError.ErrorNumber == DoPE.RTE.CTRL_DEVIATION) {             //结束后重置按钮状态
+            if (RuntimeError.ErrorNumber == DoPE.RTE.CTRL_DEVIATION)
+            {             //结束后重置按钮状态
                 bActivated = false;
                 floatMenus.EnableButton(true);
                 MessageBox.Show("位移超出量程,请重新激活控制器！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1507,7 +1508,8 @@ namespace DoPENetConnect
                             }
                         }
                     }
-                    if (ctrl == null) {
+                    if (ctrl == null)
+                    {
                         foreach (SuperTabItem tabItem in superTabControl1.Tabs)
                         {
                             // 获取当前 TabItem 的内容区域
@@ -1526,8 +1528,10 @@ namespace DoPENetConnect
                             }
                         }
 
-                        if (controlName.Contains("chartSeries")){
-                            for (int i = 0; i < chart_machine.Series.Count(); i++) {
+                        if (controlName.Contains("chartSeries"))
+                        {
+                            for (int i = 0; i < chart_machine.Series.Count(); i++)
+                            {
                                 if (controlName.Contains(i.ToString()))
                                 {
                                     chart_machine.Series[i].Name = textValue;
@@ -1535,17 +1539,19 @@ namespace DoPENetConnect
                                 }
                             }
                         }
-                        if (controlName.Contains("toolStripStatusLabel")) {
+                        if (controlName.Contains("toolStripStatusLabel"))
+                        {
                             for (int i = 0; i < this.statusStrip1.Items.Count; i++)
                             {
-                                if (statusStrip1.Items[i].Name == controlName) {
+                                if (statusStrip1.Items[i].Name == controlName)
+                                {
                                     statusStrip1.Items[i].Text = textValue;
                                     break;
                                 }
                             }
                         }
                         //二级菜单
-                        if (controlName.Contains("ToolStripMenuItem")&& controlName.Contains("@"))
+                        if (controlName.Contains("ToolStripMenuItem") && controlName.Contains("@"))
                         {
                             string[] realCtrlName = controlName.Split('@');
 
@@ -1883,7 +1889,7 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void btnX_MoveQuickUp_Click(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -2012,7 +2018,7 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void bntX_MoveDown_Click(object sender, EventArgs e)
         {
-  
+
         }
 
 
@@ -2088,7 +2094,7 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void btnX_QuickMoveDown_Click(object sender, EventArgs e)
         {
- 
+
         }
 
 
@@ -2125,7 +2131,7 @@ namespace DoPENetConnect
             EndQuickDown = false;
 
             MoveHalt();
-         }
+        }
 
         /// <summary>
         /// 
@@ -2340,7 +2346,7 @@ namespace DoPENetConnect
                     //for (int i = 30; Block.Data.Length >= i; i += 60)
                     //for (int i = 20; Block.Data.Length > i; i += 200)
                     for (int i = 10; Block.Data.Length > i; i += 100)
-                        //for (int i = 1; Block.Data.Length > i; i ++)
+                    //for (int i = 1; Block.Data.Length > i; i ++)
                     {
                         //绘制Position
                         double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
@@ -2365,10 +2371,10 @@ namespace DoPENetConnect
                         //    maxSeries0 = y_Position;
                         //    minSeries0 = y_Position;
                         //}
-                        if (maxSeries0 <y_Position)maxSeries0 = y_Position;
-                        if (minSeries0 > y_Position)minSeries0 = y_Position;
+                        if (maxSeries0 < y_Position) maxSeries0 = y_Position;
+                        if (minSeries0 > y_Position) minSeries0 = y_Position;
 
-                       // Console.WriteLine("glm-{0}-{1}-{2}-{3}", y_Position, i,maxSeries0,minSeries0);
+                        // Console.WriteLine("glm-{0}-{1}-{2}-{3}", y_Position, i,maxSeries0,minSeries0);
                         if (chart_machine.Series == null)
                         {
                             return;
@@ -2392,7 +2398,7 @@ namespace DoPENetConnect
                         //绘制Load
                         double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
                         //x_Load += nAxisStep;
-                       // Console.WriteLine("glm2-{0}", y_Load);
+                        // Console.WriteLine("glm2-{0}", y_Load);
 
                         //获取力曲线最大最小值
                         //if (x_Load == 0)
@@ -2473,12 +2479,12 @@ namespace DoPENetConnect
                             //    x_Command = 0.0;
                             //}
                         }
-                        
+
                     }
 
 
                     autoFittingFlag++;
-                    if (autoFittingFlag >= InterVal_XAxis/(2*dStep))
+                    if (autoFittingFlag >= InterVal_XAxis / (2 * dStep))
                     {
 
                         //autoFittingFlag = 0;
@@ -2496,16 +2502,17 @@ namespace DoPENetConnect
             }
 
         }
-       
+
         public void AutoFittingCurve(double series0maxY, double series0minY, double series1maxY, double series1minY, double series2maxY, double series2minY, double series3maxY, double series3minY)
         {
             //Console.WriteLine("glmxxx-{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}", series0maxY, series0minY, series1maxY, series1minY, series2maxY, series2minY, series3maxY, series3minY);
             //x轴时间轴自适应
 
-            int xMax =(int)Math.Ceiling(x_Position);
+            int xMax = (int)Math.Ceiling(x_Position);
 
             int dynInterval;
-            if (x_Position > 999) {
+            if (x_Position > 999)
+            {
                 dynInterval = (int)Math.Ceiling((double)xMax / tickNumAfter1k);
             }
             else
@@ -2516,7 +2523,7 @@ namespace DoPENetConnect
             int finalMax = finalInterval * dynInterval;
 
             chart_machine.ChartAreas[0].AxisX.Maximum = finalMax;
-            
+
             chart_machine.ChartAreas[0].AxisX.Interval = dynInterval;
 
 
@@ -2549,24 +2556,24 @@ namespace DoPENetConnect
             }
             //Console.WriteLine("glmyyy-{0}-{1}", yAxisMax1, yAxisMin1);
             //力y轴自适应
-             maxSeriesMaxYVal = series1maxY;
-             maxSeriesMinYVal = series1minY;
+            maxSeriesMaxYVal = series1maxY;
+            maxSeriesMinYVal = series1minY;
 
             if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
             {
-                if ( cb_DrawCommand.Checked)
+                if (cb_DrawCommand.Checked)
                 {
                     if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
                     if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
                 }
             }
 
-             range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-             totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-             padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+            range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+            totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+            padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
 
-             yAxisMax1 = maxSeriesMaxYVal + padding1;
-             yAxisMin1 = maxSeriesMinYVal - padding1;
+            yAxisMax1 = maxSeriesMaxYVal + padding1;
+            yAxisMin1 = maxSeriesMinYVal - padding1;
             if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
             {
                 chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
@@ -2622,7 +2629,7 @@ namespace DoPENetConnect
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-           LogHelper.ResetLogParamsIni();
+            LogHelper.ResetLogParamsIni();
         }
 
 
@@ -2730,8 +2737,8 @@ namespace DoPENetConnect
             }
         }
 
-        public void MoveDynCycles(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl, 
-            bool RelativeDestination, double SpeedToStart, double Offset, double Amplitude, double HaltAtPlusAmplitude, double HaltAtMinusAmplitude, 
+        public void MoveDynCycles(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl,
+            bool RelativeDestination, double SpeedToStart, double Offset, double Amplitude, double HaltAtPlusAmplitude, double HaltAtMinusAmplitude,
             double Frequency, int HalfCycles, double SpeedToDestination, double Destination, DoPE.DYN_SWEEP SweepFrequencyMode)
         {
             if (isRunning)
@@ -2742,8 +2749,8 @@ namespace DoPENetConnect
             {
                 Modify = false;
             }
-            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0, 
-                0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode, 
+            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0,
+                0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode,
                 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
 
             //正常返回，开始计时
@@ -2818,14 +2825,14 @@ namespace DoPENetConnect
         }
 
 
-            #region 快捷工具栏消息响应事件
+        #region 快捷工具栏消息响应事件
 
-            /// <summary>
-            /// 工具栏POS
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
-            private void posToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 工具栏POS
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void posToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (bConnected)
             {
@@ -3261,7 +3268,7 @@ namespace DoPENetConnect
             //获取EDC设备id
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
-            string idEncry=devIdEncrypted.ToString();
+            string idEncry = devIdEncrypted.ToString();
             if (idEncry != "0" && idEncry != "")
             {
                 devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
@@ -3736,7 +3743,7 @@ namespace DoPENetConnect
         private void ToolStripMenuItem_OpenLogsDir_Click(object sender, EventArgs e)
         {
             string strLogFilePath = "Logs";
-            System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "\\"+ strLogFilePath);
+            System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "\\" + strLogFilePath);
         }
 
 
@@ -3755,7 +3762,7 @@ namespace DoPENetConnect
             double S2Data_0 = double.Parse(section["S2Data_0"] ?? "0");
             double S1Data_1 = double.Parse(section["S1Data_1"] ?? "0");
 
-            for (int i = 0; i < corrNo; i ++)
+            for (int i = 0; i < corrNo; i++)
             {
                 string strLoadIndex = string.Format(@"S1Data_{0}", i);
                 dLoad[i] = double.Parse(section[strLoadIndex] ?? "0") * 1000;
@@ -3841,7 +3848,7 @@ namespace DoPENetConnect
                 return;
             }
             else
-            { 
+            {
                 chart_machine.ChartAreas[0].AxisY2.Minimum += Chart_Load_Step;
             }
         }
@@ -4035,7 +4042,7 @@ namespace DoPENetConnect
 
             double maxSeriesMaxYValCmd = -1;
             double maxSeriesMinYValCmd = -1;
-            if (chart_machine.Series[3].Points.Count > 0 )
+            if (chart_machine.Series[3].Points.Count > 0)
             {
                 maxSeriesMaxYValCmd = chart_machine.Series[3].Points.Max(point => point.YValues[0]);
                 maxSeriesMinYValCmd = chart_machine.Series[3].Points.Min(point => point.YValues[0]);
@@ -4061,7 +4068,7 @@ namespace DoPENetConnect
 
                 double yAxisMax1 = maxSeriesMaxYVal + padding1;
                 double yAxisMin1 = maxSeriesMinYVal - padding1;
-                if (Math.Abs(yAxisMax1 - yAxisMin1)>=0.1)
+                if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
                 {
                     chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
                     chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
@@ -4136,6 +4143,7 @@ namespace DoPENetConnect
         {
             if (bActivated)
             {
+
                 if (this.tbX_Dyn_StartSpeed.Text == "" || this.textBoxX14.Text == "" || this.textBoxX15.Text == "")
                 {
                     MessageBox.Show("输入不能为空，请重新输入！");
@@ -4149,9 +4157,11 @@ namespace DoPENetConnect
                     return;
                 }
 
+                buttonX15.Checked = true;
                 FrmPosExt frmPosExt = new FrmPosExt();
-                frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex,double.Parse(tbX_Dyn_StartSpeed.Text),(LIMITMODE)comboBoxEx7.SelectedIndex,double.Parse(textBoxX14.Text),
-                                                 (CTRL)comboBoxEx9.SelectedIndex,double.Parse(textBoxX15.Text),(DESTMODE)comboBoxEx11.SelectedIndex);
+                frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), (LIMITMODE)comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
+                                                 (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text), (DESTMODE)comboBoxEx11.SelectedIndex);
+
             }
             else
             {
@@ -4162,12 +4172,12 @@ namespace DoPENetConnect
 
         private void superTabControl4_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
         {
-           // Console.WriteLine("glm{0}", superTabControl4.SelectedTabIndex);
+            // Console.WriteLine("glm{0}", superTabControl4.SelectedTabIndex);
             //if (superTabControl4.SelectedTabIndex == 1)
             {
                 if (cmbX_Dyn_EDC.Items.Count >= 1)
                 {
-                    
+
                     cmbX_Dyn_EDC.SelectedIndex = 0;
                 }
 
@@ -4206,19 +4216,19 @@ namespace DoPENetConnect
             {
                 case "POS":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s","mm/min" };
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s", "mm/min" };
                         comboBoxEx8.DataSource = new string[] { "mm" };
                         break;
                     }
                 case "LOAD":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s","kN/s" };
-                        comboBoxEx8.DataSource = new string[] { "N","kN"};
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s", "kN/s" };
+                        comboBoxEx8.DataSource = new string[] { "N", "kN" };
                         break;
                     }
                 case "EXTENSION":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s","mm/min" };
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s", "mm/min" };
                         comboBoxEx8.DataSource = new string[] { "mm" };
                         break;
                     }
@@ -4238,12 +4248,12 @@ namespace DoPENetConnect
             {
                 case "POS":
                     {
-                        comboBoxEx10.DataSource = new string[] { "mm"};
+                        comboBoxEx10.DataSource = new string[] { "mm" };
                         break;
                     }
                 case "LOAD":
                     {
-                        comboBoxEx10.DataSource = new string[] { "N","kN" };
+                        comboBoxEx10.DataSource = new string[] { "N", "kN" };
                         break;
                     }
                 case "EXTENSION":
@@ -4276,7 +4286,8 @@ namespace DoPENetConnect
 
         private void pl_DataShow_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right) {
+            if (e.Button == MouseButtons.Right)
+            {
                 floatMenus.Visible = true;
             }
         }
@@ -4288,7 +4299,8 @@ namespace DoPENetConnect
 
         private void chart_machine_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right) {
+            if (e.Button == MouseButtons.Right)
+            {
                 contextMenuStrip1.Show(MousePosition);
             }
         }
@@ -4302,12 +4314,12 @@ namespace DoPENetConnect
                 //isRunning = false;         
                 onExpermentStoped();
             }
-           // CleanChart();
+            // CleanChart();
         }
 
         private void buttonX18_Click(object sender, EventArgs e)
         {
-           
+
 
             if (bActivated)
             {
@@ -4355,11 +4367,46 @@ namespace DoPENetConnect
             {
 
             }
-            else if (comboBoxEx9.Text == "EXTENSION") {
+            else if (comboBoxEx9.Text == "EXTENSION")
+            {
 
             }
-           
-            
+
+
+        }
+
+        private void buttonX19_Click(object sender, EventArgs e)
+        {
+
+
+            if (bActivated)
+            {
+                if (isRunning)
+                {
+                    if (this.tbX_Dyn_StartSpeed.Text == "" || this.textBoxX14.Text == "" || this.textBoxX15.Text == "")
+                    {
+                        MessageBox.Show("输入不能为空，请重新输入！");
+                        return;
+                    }
+                    double tmpDobleNum;
+
+                    if (!double.TryParse(this.tbX_Dyn_StartSpeed.Text, out tmpDobleNum) || !double.TryParse(this.textBoxX14.Text, out tmpDobleNum) || !double.TryParse(this.textBoxX15.Text, out tmpDobleNum))
+                    {
+                        MessageBox.Show("请输入数字！");
+                        return;
+                    }
+                    buttonX15.Checked = true;
+                    FrmPosExt frmPosExt = new FrmPosExt();
+                    frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), (LIMITMODE)comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
+                                                     (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text), (DESTMODE)comboBoxEx11.SelectedIndex);
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
         }
     }
 }
