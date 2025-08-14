@@ -385,6 +385,18 @@ namespace DoPENetConnect
             floatMenus.Owner = this;
             floatMenus.Show();
             floatMenus.Location = new Point(this.Location.X - floatMenus.Width, this.Location.Y);
+
+            //设置曲线初始值
+            CurveSet("时间(s)", " 位 \n\n 移 \n\n(mm)");
+        }
+
+        /// <summary>
+        /// 设置曲线初始值
+        /// </summary>
+        public void CurveSet(string axisXTitle,string axisYTitle)
+        {
+            label1.Text = axisYTitle;
+            chart_machine.ChartAreas[0].AxisX.Title = axisXTitle;
         }
 
         ///----------------------------------------------------------------------
@@ -1554,7 +1566,7 @@ namespace DoPENetConnect
                         {
                             if (chart_machine.ChartAreas[0].Axes[i].Name == controlName)
                             {
-                                chart_machine.ChartAreas[0].Axes[i].Title = textValue;
+                                //chart_machine.ChartAreas[0].Axes[i].Title = textValue;               //去掉Title的命名
                                 break;
                             }
                         }
