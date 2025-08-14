@@ -44,6 +44,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelEx10 = new DevComponents.DotNetBar.PanelEx();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonX18 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX16 = new DevComponents.DotNetBar.ButtonX();
@@ -308,6 +309,10 @@
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.位移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.变形时间曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -454,6 +459,7 @@
             // 
             this.panelEx10.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx10.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx10.Controls.Add(this.label2);
             this.panelEx10.Controls.Add(this.label1);
             this.panelEx10.Controls.Add(this.buttonX18);
             this.panelEx10.Controls.Add(this.buttonX16);
@@ -489,13 +495,25 @@
             this.panelEx10.Style.GradientAngle = 90;
             this.panelEx10.TabIndex = 67;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(615, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 14);
+            this.label2.TabIndex = 79;
+            this.label2.Text = "label2";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(25, 221);
+            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(34, 288);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(56, 16);
             this.label1.TabIndex = 78;
             this.label1.Text = "label1";
             // 
@@ -1436,6 +1454,7 @@
             chartArea1.AxisX.Minimum = 0D;
             chartArea1.AxisX.MinorTickMark.Enabled = true;
             chartArea1.AxisX.MinorTickMark.Size = 0.5F;
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             chartArea1.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
             chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             chartArea1.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
@@ -3822,16 +3841,44 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.toolStripSeparator9,
+            this.位移ToolStripMenuItem,
+            this.toolStripSeparator10,
+            this.变形时间曲线ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(193, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 82);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
+            this.toolStripMenuItem1.Text = "试验力—时间曲线";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(170, 6);
+            // 
+            // 位移ToolStripMenuItem
+            // 
+            this.位移ToolStripMenuItem.Name = "位移ToolStripMenuItem";
+            this.位移ToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.位移ToolStripMenuItem.Text = "位移—时间曲线";
+            this.位移ToolStripMenuItem.Click += new System.EventHandler(this.位移ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(170, 6);
+            // 
+            // 变形时间曲线ToolStripMenuItem
+            // 
+            this.变形时间曲线ToolStripMenuItem.Name = "变形时间曲线ToolStripMenuItem";
+            this.变形时间曲线ToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.变形时间曲线ToolStripMenuItem.Text = "变形—时间曲线";
+            this.变形时间曲线ToolStripMenuItem.Click += new System.EventHandler(this.变形时间曲线ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -4175,6 +4222,11 @@
         private System.Windows.Forms.TextBox guiTime;
         private DevComponents.DotNetBar.ButtonX buttonX19;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripMenuItem 位移ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripMenuItem 变形时间曲线ToolStripMenuItem;
+        private System.Windows.Forms.Label label2;
     }
 }
 

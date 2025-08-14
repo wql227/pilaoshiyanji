@@ -387,16 +387,18 @@ namespace DoPENetConnect
             floatMenus.Location = new Point(this.Location.X - floatMenus.Width, this.Location.Y);
 
             //设置曲线初始值
-            CurveSet("时间(s)", " 位 \n\n 移 \n\n(mm)");
+            //CurveSet("时间(s)", " 位 \n\n 移 \n\n(mm)");
+            CurveSet("s", "mm", "位移—时间曲线");
         }
 
         /// <summary>
         /// 设置曲线初始值
         /// </summary>
-        public void CurveSet(string axisXTitle,string axisYTitle)
+        public void CurveSet(string axisXTitle,string axisYTitle,string seriesName)
         {
             label1.Text = axisYTitle;
             chart_machine.ChartAreas[0].AxisX.Title = axisXTitle;
+            label2.Text = seriesName;
         }
 
         ///----------------------------------------------------------------------
@@ -842,7 +844,11 @@ namespace DoPENetConnect
                     PVPositionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
                     if (PVPositionQueue.Count >= 50)
                     {
-                        tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
+                        if (double.Parse(tb_MaxPos.Text) < PVPositionQueue.Max())
+                        {
+                            tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
+                            tb_MaxPos.Refresh();
+                        }
                         //tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
 
                         if (bActivated && isRunning)
@@ -940,7 +946,11 @@ namespace DoPENetConnect
                     PVLoadQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
                     if (PVLoadQueue.Count >= 50)
                     {
-                        tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
+                        if (double.Parse(tb_MaxLoad.Text) < PVLoadQueue.Max())
+                        {
+                            tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
+                            tb_MaxLoad.Refresh();
+                        }
                         //tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
                         if (bActivated && isRunning)
                         {
@@ -1042,8 +1052,11 @@ namespace DoPENetConnect
                     PVExtensionQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
                     if (PVExtensionQueue.Count >= 50)
                     {
-                        tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
-                        //tb_MinExt.Text = PVExtensionQueue.Min().ToString("0.000");
+                        if (double.Parse(tb_MaxExt.Text) < PVExtensionQueue.Max())
+                        {
+                            tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
+                            //tb_MinExt.Text = PVExtensionQueue.Min().ToString("0.000");
+                        }
 
                         if (bActivated && isRunning)
                         {
@@ -4338,7 +4351,7 @@ namespace DoPENetConnect
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("hello world!");
+            CurveSet("s", " kN",toolStripMenuItem1.Text);
         }
 
         private void chart_machine_MouseClick(object sender, MouseEventArgs e)
@@ -4451,6 +4464,16 @@ namespace DoPENetConnect
                 MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        private void 位移ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CurveSet("s", " mm", 位移ToolStripMenuItem.Text);
+        }
+
+        private void 变形时间曲线ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CurveSet("s", "mm",变形时间曲线ToolStripMenuItem.Text);
         }
     }
 }
