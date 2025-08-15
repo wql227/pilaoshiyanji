@@ -36,6 +36,15 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -313,6 +322,8 @@
             this.位移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.变形时间曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemLoardDisplace = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemLoardExtenssion = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -1505,10 +1516,29 @@
             series4.Color = System.Drawing.Color.BlueViolet;
             series4.Legend = "Legend1";
             series4.Name = "命令";
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series5.Color = System.Drawing.Color.CadetBlue;
+            series5.Legend = "Legend1";
+            series5.Name = "试验力位移";
+            series5.Points.Add(dataPoint1);
+            series5.Points.Add(dataPoint2);
+            series5.Points.Add(dataPoint3);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series6.Color = System.Drawing.Color.Fuchsia;
+            series6.Legend = "Legend1";
+            series6.Name = "试验力变形";
+            series6.Points.Add(dataPoint4);
+            series6.Points.Add(dataPoint5);
+            series6.Points.Add(dataPoint6);
+            series6.Points.Add(dataPoint7);
             this.chart_machine.Series.Add(series1);
             this.chart_machine.Series.Add(series2);
             this.chart_machine.Series.Add(series3);
             this.chart_machine.Series.Add(series4);
+            this.chart_machine.Series.Add(series5);
+            this.chart_machine.Series.Add(series6);
             this.chart_machine.Size = new System.Drawing.Size(1303, 626);
             this.chart_machine.TabIndex = 63;
             this.chart_machine.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart_machine_MouseClick);
@@ -3840,43 +3870,57 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
+            this.ToolStripMenuItemLoardDisplace,
+            this.toolStripMenuItemLoardExtenssion,
             this.toolStripSeparator9,
             this.位移ToolStripMenuItem,
             this.toolStripSeparator10,
             this.变形时间曲线ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 104);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 126);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem1.Text = "试验力—时间曲线";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(170, 6);
             // 
             // 位移ToolStripMenuItem
             // 
             this.位移ToolStripMenuItem.Name = "位移ToolStripMenuItem";
-            this.位移ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.位移ToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.位移ToolStripMenuItem.Text = "位移—时间曲线";
             this.位移ToolStripMenuItem.Click += new System.EventHandler(this.位移ToolStripMenuItem_Click);
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(170, 6);
             // 
             // 变形时间曲线ToolStripMenuItem
             // 
             this.变形时间曲线ToolStripMenuItem.Name = "变形时间曲线ToolStripMenuItem";
-            this.变形时间曲线ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.变形时间曲线ToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.变形时间曲线ToolStripMenuItem.Text = "变形—时间曲线";
             this.变形时间曲线ToolStripMenuItem.Click += new System.EventHandler(this.变形时间曲线ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemLoardDisplace
+            // 
+            this.ToolStripMenuItemLoardDisplace.Name = "ToolStripMenuItemLoardDisplace";
+            this.ToolStripMenuItemLoardDisplace.Size = new System.Drawing.Size(173, 22);
+            this.ToolStripMenuItemLoardDisplace.Text = "试验力—位移曲线";
+            // 
+            // toolStripMenuItemLoardExtenssion
+            // 
+            this.toolStripMenuItemLoardExtenssion.Name = "toolStripMenuItemLoardExtenssion";
+            this.toolStripMenuItemLoardExtenssion.Size = new System.Drawing.Size(173, 22);
+            this.toolStripMenuItemLoardExtenssion.Text = "试验力—变形曲线";
             // 
             // MainForm
             // 
@@ -4225,6 +4269,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripMenuItem 变形时间曲线ToolStripMenuItem;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemLoardDisplace;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLoardExtenssion;
     }
 }
 
