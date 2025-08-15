@@ -98,6 +98,7 @@ namespace DoPENetConnect
         public double DisplacementVal;
         public double LoadVal;
         public double ExtenssionVal;
+        public int CurrentCurveType;       //当前显示的曲线类型 0：位移时间，1：试验力时间，2：变形时间，4：试验力位移，5：试验力变形
     }
     #endregion start struct
     /// <summary>
@@ -2586,18 +2587,67 @@ namespace DoPENetConnect
         public void AutoFittingCurve(double series0maxY, double series0minY, double series1maxY, double series1minY, double series2maxY, double series2minY, double series3maxY, double series3minY)
         {
             //Console.WriteLine("glmxxx-{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}", series0maxY, series0minY, series1maxY, series1minY, series2maxY, series2minY, series3maxY, series3minY);
-            //x轴时间轴自适应
-
+            //适应参数修改
             int xMax = (int)Math.Ceiling(x_Position);
+            double currentX_Position=x_Position;
+            double maxY = series0maxY;
+            double minY = series0minY;
+            switch (realtimeParams.CurrentCurveType) {
+                case 0:     //位移时间
+                    //x轴
+                    xMax = (int)Math.Ceiling(x_Position);
+                    currentX_Position = x_Position;
+                    //y轴
+                    maxY = series0maxY;
+                    minY = series0minY;
+                    break;
+                case 1:     //力时间
+                    xMax = (int)Math.Ceiling(x_Position);
+                    currentX_Position = x_Position;
+                    //y轴
+                    maxY = series1maxY;
+                    minY = series1minY;
+                    break;
+                case 2:     //变形时间
+                    xMax = (int)Math.Ceiling(x_Position);
+                    currentX_Position = x_Position;
+                    //y轴
+                    maxY = series2maxY;
+                    minY = series2minY;
+                    break;
+                case 3:     //命令
+                    break;
+                case 4:     //试验力位移
+                    xMax = (int)Math.Ceiling(series0maxY);
+                    currentX_Position = series0maxY;
+                    //y轴
+                    maxY = series1maxY;
+                    minY = series1minY;
+                    break;
+                case 5:    //试验力变形
+                    xMax = (int)Math.Ceiling(series2maxY);
+                    currentX_Position = series2maxY;
+                    //y轴
+                    maxY = series1maxY;
+                    minY = series1minY;
+                    break;
+                default:
+                    xMax = (int)Math.Ceiling(x_Position);
+                    currentX_Position = x_Position;
+                    //y轴
+                    maxY = series0maxY;
+                    minY = series0minY;
+                    break;
+            }
 
             int dynInterval;
-            if (x_Position > 999)
+            if (currentX_Position > 999)
             {
                 dynInterval = (int)Math.Ceiling((double)xMax / tickNumAfter1k);
             }
             else
                 dynInterval = (int)Math.Ceiling((double)xMax / tickNum);
-
+ 
             int finalInterval = (int)Math.Ceiling((double)xMax / dynInterval);
 
             int finalMax = finalInterval * dynInterval;
@@ -2608,8 +2658,10 @@ namespace DoPENetConnect
 
 
             //位移y轴自适应
-            double series02MaxY = series0maxY;// series0maxY >= series2maxY ? series0maxY : series2maxY;
-            double series02minY = series0minY;// series0minY >= series2minY ? series2minY : series0minY;
+            //double series02MaxY = series0maxY;// series0maxY >= series2maxY ? series0maxY : series2maxY;
+            //double series02minY = series0minY;// series0minY >= series2minY ? series2minY : series0minY;
+            double series02MaxY = maxY;// series0maxY >= series2maxY ? series0maxY : series2maxY;
+            double series02minY = minY;// series0minY >= series2minY ? series2minY : series0minY;
 
             double maxSeriesMaxYVal = series02MaxY;
             double maxSeriesMinYVal = series02minY;
@@ -2634,32 +2686,35 @@ namespace DoPENetConnect
                 chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
                 chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
             }
-            //Console.WriteLine("glmyyy-{0}-{1}", yAxisMax1, yAxisMin1);
-            //力y轴自适应
-            maxSeriesMaxYVal = series1maxY;
-            maxSeriesMinYVal = series1minY;
 
-            if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
-            {
-                if (cb_DrawCommand.Checked)
-                {
-                    if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
-                    if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
-                }
-            }
+            #region load auto fit
+            ////Console.WriteLine("glmyyy-{0}-{1}", yAxisMax1, yAxisMin1);
+            ////力y轴自适应
+            //maxSeriesMaxYVal = series1maxY;
+            //maxSeriesMinYVal = series1minY;
 
-            range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-            totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-            padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+            //if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
+            //{
+            //    if (cb_DrawCommand.Checked)
+            //    {
+            //        if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
+            //        if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
+            //    }
+            //}
 
-            yAxisMax1 = maxSeriesMaxYVal + padding1;
-            yAxisMin1 = maxSeriesMinYVal - padding1;
-            if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
-            {
-                chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
-                chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
-            }
-            //Console.WriteLine("glmzzz-{0}-{1}", yAxisMax1, yAxisMin1);
+            //range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+            //totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+            //padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+
+            //yAxisMax1 = maxSeriesMaxYVal + padding1;
+            //yAxisMin1 = maxSeriesMinYVal - padding1;
+            //if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
+            //{
+            //    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
+            //    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
+            //}
+            ////Console.WriteLine("glmzzz-{0}-{1}", yAxisMax1, yAxisMin1);
+            #endregion load auto fit
         }
 
         /// <summary>
@@ -4390,6 +4445,7 @@ namespace DoPENetConnect
                 chart_machine.Series[2].Enabled = false;
                 chart_machine.Series[4].Enabled = false;
                 chart_machine.Series[5].Enabled = false;
+                realtimeParams.CurrentCurveType = 0;
             }
             else if (seriesIndex == 1) //试验力时间曲线
             {
@@ -4398,6 +4454,7 @@ namespace DoPENetConnect
                 chart_machine.Series[2].Enabled = false;
                 chart_machine.Series[4].Enabled = false;
                 chart_machine.Series[5].Enabled = false;
+                realtimeParams.CurrentCurveType = 1;
             }
             else if (seriesIndex == 2)    //变形时间曲线
             {
@@ -4406,6 +4463,7 @@ namespace DoPENetConnect
                 chart_machine.Series[2].Enabled = true;
                 chart_machine.Series[4].Enabled = false;
                 chart_machine.Series[5].Enabled = false;
+                realtimeParams.CurrentCurveType = 2;
             }
             else if (seriesIndex == 3)           //命令曲线显示
             {
@@ -4422,6 +4480,7 @@ namespace DoPENetConnect
                 chart_machine.Series[2].Enabled = false;
                 chart_machine.Series[4].Enabled = true;
                 chart_machine.Series[5].Enabled = false;
+                realtimeParams.CurrentCurveType = 4;
             }
             else if (seriesIndex == 6)    //显示试验力变形曲线
             {
@@ -4430,6 +4489,7 @@ namespace DoPENetConnect
                 chart_machine.Series[2].Enabled = false;
                 chart_machine.Series[4].Enabled = false;
                 chart_machine.Series[5].Enabled = true;
+                realtimeParams.CurrentCurveType = 5;
             }
 
         }
