@@ -1441,6 +1441,11 @@ namespace DoPENetConnect
             //x_Extenssion= 0.0;
             chart_machine.Series[2].Points.AddXY(0.0, 0.0);
 
+            //试验力位移
+            chart_machine.Series[4].Points.Clear();
+            //x_Extenssion= 0.0;
+            chart_machine.Series[4].Points.AddXY(0.0, 0.0);
+
 
 
             //// 获取或创建 ChartArea
@@ -4366,23 +4371,29 @@ namespace DoPENetConnect
 
         public void chart_series_show(int seriesIndex)
         {
-            if (seriesIndex == 0)
+            if (seriesIndex == 0)     //显示位移时间曲线
             {
                 chart_machine.Series[0].Enabled = true;
                 chart_machine.Series[1].Enabled = false;
                 chart_machine.Series[2].Enabled = false;
+                chart_machine.Series[4].Enabled = false;
+                chart_machine.Series[5].Enabled = false;
             }
-            else if (seriesIndex == 1)
+            else if (seriesIndex == 1) //试验力时间曲线
             {
                 chart_machine.Series[0].Enabled = false;
                 chart_machine.Series[1].Enabled = true;
                 chart_machine.Series[2].Enabled = false;
+                chart_machine.Series[4].Enabled = false;
+                chart_machine.Series[5].Enabled = false;
             }
-            else if (seriesIndex == 2)
+            else if (seriesIndex == 2)    //变形时间曲线
             {
                 chart_machine.Series[0].Enabled = false;
                 chart_machine.Series[1].Enabled = false;
                 chart_machine.Series[2].Enabled = true;
+                chart_machine.Series[4].Enabled = false;
+                chart_machine.Series[5].Enabled = false;
             }
             else if (seriesIndex == 3)           //命令曲线显示
             {
@@ -4392,6 +4403,23 @@ namespace DoPENetConnect
             {
                 chart_machine.Series[3].Enabled = false;
             }
+            else if (seriesIndex == 5)    //显示试验力位移曲线
+            {
+                chart_machine.Series[0].Enabled = false;
+                chart_machine.Series[1].Enabled = false;
+                chart_machine.Series[2].Enabled = false;
+                chart_machine.Series[4].Enabled = true;
+                chart_machine.Series[5].Enabled = false;
+            }
+            else if (seriesIndex == 6)    //显示试验力变形曲线
+            {
+                chart_machine.Series[0].Enabled = false;
+                chart_machine.Series[1].Enabled = false;
+                chart_machine.Series[2].Enabled = false;
+                chart_machine.Series[4].Enabled = false;
+                chart_machine.Series[5].Enabled = true;
+            }
+
         }
 
         private void chart_machine_MouseClick(object sender, MouseEventArgs e)
@@ -4516,6 +4544,18 @@ namespace DoPENetConnect
         {
             CurveSet("s", "mm",变形时间曲线ToolStripMenuItem.Text);
             chart_series_show(2);
+        }
+
+        private void ToolStripMenuItemLoardDisplace_Click(object sender, EventArgs e)
+        {
+            CurveSet("mm", "kN", ToolStripMenuItemLoardDisplace.Text);
+            chart_series_show(5);
+        }
+
+        private void toolStripMenuItemLoardExtenssion_Click(object sender, EventArgs e)
+        {
+             CurveSet("mm", "kN", toolStripMenuItemLoardExtenssion.Text);
+            chart_series_show(6);
         }
     }
 }
