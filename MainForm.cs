@@ -1434,6 +1434,11 @@ namespace DoPENetConnect
             //x_Load = 0.0;
             chart_machine.Series[1].Points.AddXY(0.0, 0.0);
 
+            //变形
+            chart_machine.Series[2].Points.Clear();
+            //x_Extenssion= 0.0;
+            chart_machine.Series[2].Points.AddXY(0.0, 0.0);
+
 
 
             //// 获取或创建 ChartArea
