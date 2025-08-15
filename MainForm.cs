@@ -389,6 +389,7 @@ namespace DoPENetConnect
             //设置曲线初始值
             //CurveSet("时间(s)", " 位 \n\n 移 \n\n(mm)");
             CurveSet("s", "mm", "位移—时间曲线");   //默认显示位移时间曲线
+            chart_series_show(0);
             chart_series_show(4);   //不显示命令曲线
         }
 
