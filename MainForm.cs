@@ -388,7 +388,8 @@ namespace DoPENetConnect
 
             //设置曲线初始值
             //CurveSet("时间(s)", " 位 \n\n 移 \n\n(mm)");
-            CurveSet("s", "mm", "位移—时间曲线");
+            CurveSet("s", "mm", "位移—时间曲线");   //默认显示位移时间曲线
+            chart_series_show(4);   //不显示命令曲线
         }
 
         /// <summary>
@@ -4381,6 +4382,14 @@ namespace DoPENetConnect
                 chart_machine.Series[0].Enabled = false;
                 chart_machine.Series[1].Enabled = false;
                 chart_machine.Series[2].Enabled = true;
+            }
+            else if (seriesIndex == 3)           //命令曲线显示
+            {
+                chart_machine.Series[3].Enabled = true;
+            }
+            else if (seriesIndex == 4)          //命令曲线不显示
+            {
+                chart_machine.Series[3].Enabled = false;
             }
         }
 
