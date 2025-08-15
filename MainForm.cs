@@ -2548,6 +2548,18 @@ namespace DoPENetConnect
                             //}
                         }
 
+                        if (chart_machine.Series[4] != null)          //试验力-位移曲线添加数据
+                        {
+                            chart_machine.Series[4].Points.AddXY(y_Position, y_Load);
+
+                        }
+
+                        if (chart_machine.Series[5] != null)            //试验力-位移变形曲线添加数据
+                        {
+                            chart_machine.Series[5].Points.AddXY(y_Extension, y_Load);
+
+                        }
+
                     }
 
 
