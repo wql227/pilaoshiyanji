@@ -4436,7 +4436,7 @@ namespace DoPENetConnect
         {
             CurveSet("s", " kN",toolStripMenuItem1.Text);
             chart_series_show(1);
-
+            AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
 
         }
 
@@ -4622,6 +4622,7 @@ namespace DoPENetConnect
         {
             CurveSet("s", " mm", 位移ToolStripMenuItem.Text);
             chart_series_show(0);
+            AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
         }
 
         private void 变形时间曲线ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4634,12 +4635,14 @@ namespace DoPENetConnect
         {
             CurveSet("mm", "kN", ToolStripMenuItemLoardDisplace.Text);
             chart_series_show(5);
+            AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
         }
 
         private void toolStripMenuItemLoardExtenssion_Click(object sender, EventArgs e)
         {
              CurveSet("mm", "kN", toolStripMenuItemLoardExtenssion.Text);
             chart_series_show(6);
+            AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
         }
     }
 }
