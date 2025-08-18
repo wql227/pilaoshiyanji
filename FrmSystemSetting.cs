@@ -296,6 +296,18 @@ namespace DoPENetConnect
             if (cbX_ProtectOption.Items.Count > indexToBeSetted)
                 cbX_ProtectOption.SelectedIndex = indexToBeSetted;
 
+            //采样频率
+            IniFileHelper.GetIniString("Setting", "SampleFrequency", "0", strTmp, strTmp.Capacity);
+            textBoxX1.Text = strTmp.ToString();
+
+            //数据刷新频率
+            IniFileHelper.GetIniString("Setting", "DataRefreshFrequency", "0", strTmp, strTmp.Capacity);
+            textBoxX2.Text = strTmp.ToString();
+
+            //曲线刷新频率
+            IniFileHelper.GetIniString("Setting", "WaveRefreshFrequency", "0", strTmp, strTmp.Capacity);
+            textBoxX3.Text = strTmp.ToString();
+
             //峰值保护选项
             IniFileHelper.GetIniString(strConfigSetion, "位移峰值外保护", "0", strTmp, strTmp.Capacity);
             tbX_FrmProtectOption_PosMaxOut.Text = strTmp.ToString();

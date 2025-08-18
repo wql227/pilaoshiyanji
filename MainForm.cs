@@ -343,6 +343,26 @@ namespace DoPENetConnect
         /// </summary>
         public FrmMultiSensor frmMultiSensor = null;
 
+        /// <summary>
+        /// 试验力单位
+        /// </summary>
+        public string LoadUnit = "N";
+
+        public double g_Position = 0.0d;
+
+        public double g_Load = 0.0d;
+
+        public double g_Command = 0.0d;
+
+        public double g_Extension = 0.0d;
+
+        public double SampleFrequency = 0.001;
+
+        public int DataRefreshFrequency = 200;
+
+        public int WaveRefreshFrequency = 200;
+
+
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -447,12 +467,9 @@ namespace DoPENetConnect
 
             this.Cursor = Cursors.WaitCursor;
 
-            //改成线程访问，防止卡顿界面
-           // Task.Run(() =>
-           // {
-                try
-                {
-                    DoPE.ERR error;
+            try
+            {
+                DoPE.ERR error;
                 //DoPE.IgnoreTcpIpNIC(true);
                 // open the first EDC found on this PC
                 //打开edc列表
@@ -467,91 +484,87 @@ namespace DoPENetConnect
                 {
                     return;
                 }
-                    //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 3491251);
 
-                    //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
-                    if (MyEdc != null)
-                    {
-                        Display("连接成功，Name:" + MyEdc.ModuleInfo.Name + "; DeviceId = " + MyEdc.ModuleInfo.DeviceID + "; FunctionId = " + MyEdc.ModuleInfo.DeviceID + "; SerNr = " + MyEdc.ModuleInfo.SerNr + "\n");
-
-                        LogHelper.WriteLogFile("AAAA");
-
-                        lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
-
-                        toolStripStatusLabel4.Text = this.devId.ToString();
-
-                    }
-
-                    bConnected = MyEdc.IsConnected();
-
-                    EnableButton();
-
-                    //DoPEcheck dope_block = new DoPEcheck(MyEdc);
-
-                    //DoPE.ERR aaa = dope_block.ClrCheck();
-
-                    // hang in event-handler to receive DoPE-events
-                    MyEdc.Eh.OnLineHdlr += new DoPE.OnLineHdlr(OnLine);
-                    // Set number of samples for OnDataBlock events
-                    // for a 300 ms display refresh
-                    DoPE.Machine Machine = new DoPE.Machine(0);
-                    MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
-                    double aaa = (0.001 / Machine.MDef.SystemTime /*+ Machine.MDef.SystemTime / 2*/);
-                    MyEdc.Eh.SetOnDataBlockSize((Int32)(aaa)); 
-                    MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
-                    MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
-                    MyEdc.Eh.OnPosMsgHdlr += new DoPE.OnPosMsgHdlr(OnPosMsg);
-                    MyEdc.Eh.OnTPosMsgHdlr += new DoPE.OnTPosMsgHdlr(OnTPosMsg);
-                    MyEdc.Eh.OnLPosMsgHdlr += new DoPE.OnLPosMsgHdlr(OnLPosMsg);
-                    MyEdc.Eh.OnSftMsgHdlr += new DoPE.OnSftMsgHdlr(OnSftMsg);
-                    MyEdc.Eh.OnOffsCMsgHdlr += new DoPE.OnOffsCMsgHdlr(OnOffsCMsg);
-                    MyEdc.Eh.OnCheckMsgHdlr += new DoPE.OnCheckMsgHdlr(OnCheckMsg);
-                    MyEdc.Eh.OnRefSignalMsgHdlr += new DoPE.OnRefSignalMsgHdlr(OnRefSignalMsg);
-                    MyEdc.Eh.OnSensorMsgHdlr += new DoPE.OnSensorMsgHdlr(OnSensorMsg);
-                    MyEdc.Eh.OnIoSHaltMsgHdlr += new DoPE.OnIoSHaltMsgHdlr(OnIoSHaltMsg);
-                    MyEdc.Eh.OnGuardMsgHdlr += new DoPE.OnGuardMsgHdlr(OnGuardMsg);
-                    MyEdc.Eh.OnKeyMsgHdlr += new DoPE.OnKeyMsgHdlr(OnKeyMsg);
-                    MyEdc.Eh.OnRuntimeErrorHdlr += new DoPE.OnRuntimeErrorHdlr(OnRuntimeError);
-                    MyEdc.Eh.OnOverflowHdlr += new DoPE.OnOverflowHdlr(OnOverflow);
-                    MyEdc.Eh.OnSystemMsgHdlr += new DoPE.OnSystemMsgHdlr(OnSystemMsg);
-                    MyEdc.Eh.OnDebugMsgHdlr += new DoPE.OnDebugMsgHdlr(OnDebugMsg);
-                    MyEdc.Eh.OnRmcEventHdlr += new DoPE.OnRmcEventHdlr(OnRmcEvent);
-
-                    // Set UserScale
-                    DoPE.UserScale userScale = new DoPE.UserScale();
-                    // set position and extension scale to mm
-                    userScale[DoPE.SENSOR.SENSOR_S] = 1000;
-                    userScale[DoPE.SENSOR.SENSOR_E] = 1000;
-
-                    // Select machine setup and initialize
-                    error = MyEdc.Setup.SelMachine(DoPE.MACHINE_NUMBER.MACHINE_1, userScale);
-                    if (error != DoPE.ERR.NOERROR)
-                    {
-                        DisplayError(error, "SelectMachine");
-                    }
-                    else
-                    {
-                        Display("SelectMachine : OK !\n");
-                    }
-
-                    MyEdc.Rmc.Enable(-1, -1);
-                }
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine(ex.ToString());
-                //    Display(string.Format("{0}\n", ex));
-                //}
-                catch (DoPEException ex)
+                //MyEdc = new Edc(DoPE.OpenBy.FunctionId, 0);
+                if (MyEdc != null)
                 {
-                    // During the initialization and the
-                    // shut-down phase a DoPE Exception can arise.
-                    // Other errors are reported by the DoPE
-                    // error return codes.
-                    Display(string.Format("{0}\n", ex));
+                    Display("连接成功，Name:" + MyEdc.ModuleInfo.Name + "; DeviceId = " + MyEdc.ModuleInfo.DeviceID + "; FunctionId = " + MyEdc.ModuleInfo.DeviceID + "; SerNr = " + MyEdc.ModuleInfo.SerNr + "\n");
+
+                    LogHelper.WriteLogFile("AAAA");
+
+                    lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
+
+                    toolStripStatusLabel4.Text = this.devId.ToString();
+
                 }
 
-          //  });
+                bConnected = MyEdc.IsConnected();
 
+                EnableButton();
+
+                //DoPEcheck dope_block = new DoPEcheck(MyEdc);
+
+                //DoPE.ERR aaa = dope_block.ClrCheck();
+
+                // hang in event-handler to receive DoPE-events
+                MyEdc.Eh.OnLineHdlr += new DoPE.OnLineHdlr(OnLine);
+                // Set number of samples for OnDataBlock events
+                // for a 300 ms display refresh
+                DoPE.Machine Machine = new DoPE.Machine(0);
+                MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
+                double aaa = (SampleFrequency / Machine.MDef.SystemTime /*+ Machine.MDef.SystemTime / 2*/);
+                MyEdc.Eh.SetOnDataBlockSize((Int32)(aaa));
+                MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
+                MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
+                MyEdc.Eh.OnPosMsgHdlr += new DoPE.OnPosMsgHdlr(OnPosMsg);
+                MyEdc.Eh.OnTPosMsgHdlr += new DoPE.OnTPosMsgHdlr(OnTPosMsg);
+                MyEdc.Eh.OnLPosMsgHdlr += new DoPE.OnLPosMsgHdlr(OnLPosMsg);
+                MyEdc.Eh.OnSftMsgHdlr += new DoPE.OnSftMsgHdlr(OnSftMsg);
+                MyEdc.Eh.OnOffsCMsgHdlr += new DoPE.OnOffsCMsgHdlr(OnOffsCMsg);
+                MyEdc.Eh.OnCheckMsgHdlr += new DoPE.OnCheckMsgHdlr(OnCheckMsg);
+                MyEdc.Eh.OnRefSignalMsgHdlr += new DoPE.OnRefSignalMsgHdlr(OnRefSignalMsg);
+                MyEdc.Eh.OnSensorMsgHdlr += new DoPE.OnSensorMsgHdlr(OnSensorMsg);
+                MyEdc.Eh.OnIoSHaltMsgHdlr += new DoPE.OnIoSHaltMsgHdlr(OnIoSHaltMsg);
+                MyEdc.Eh.OnGuardMsgHdlr += new DoPE.OnGuardMsgHdlr(OnGuardMsg);
+                MyEdc.Eh.OnKeyMsgHdlr += new DoPE.OnKeyMsgHdlr(OnKeyMsg);
+                MyEdc.Eh.OnRuntimeErrorHdlr += new DoPE.OnRuntimeErrorHdlr(OnRuntimeError);
+                MyEdc.Eh.OnOverflowHdlr += new DoPE.OnOverflowHdlr(OnOverflow);
+                MyEdc.Eh.OnSystemMsgHdlr += new DoPE.OnSystemMsgHdlr(OnSystemMsg);
+                MyEdc.Eh.OnDebugMsgHdlr += new DoPE.OnDebugMsgHdlr(OnDebugMsg);
+                MyEdc.Eh.OnRmcEventHdlr += new DoPE.OnRmcEventHdlr(OnRmcEvent);
+
+                // Set UserScale
+                DoPE.UserScale userScale = new DoPE.UserScale();
+                // set position and extension scale to mm
+                userScale[DoPE.SENSOR.SENSOR_S] = 1000;
+                userScale[DoPE.SENSOR.SENSOR_E] = 1000;
+
+                // Select machine setup and initialize
+                error = MyEdc.Setup.SelMachine(DoPE.MACHINE_NUMBER.MACHINE_1, userScale);
+                if (error != DoPE.ERR.NOERROR)
+                {
+                    DisplayError(error, "SelectMachine");
+                }
+                else
+                {
+                    Display("SelectMachine : OK !\n");
+                }
+
+                MyEdc.Rmc.Enable(-1, -1);
+            }
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.ToString());
+            //    Display(string.Format("{0}\n", ex));
+            //}
+            catch (DoPEException ex)
+            {
+                // During the initialization and the
+                // shut-down phase a DoPE Exception can arise.
+                // Other errors are reported by the DoPE
+                // error return codes.
+                Display(string.Format("{0}\n", ex));
+            }
 
             this.Cursor = Cursors.Default;
 
@@ -613,6 +626,22 @@ namespace DoPENetConnect
                 bActivated = true;
                 //StartCommunicationWithEdcTimer.Start();
                 DisplayError(error, "On");
+
+                if (MyEdc.IsConnected() && bActivated)
+                {
+                    //GetXaxisScale();
+
+                    bntX_GUIOn.Checked = true;
+                    btnX_SetLow.Checked = true;
+                    btnX_SetHigh.Checked = false;
+
+                    this.MaximizeBox = false;
+
+                    timer_UpdateData.Start();
+
+                    //timer_ShowWave.Start();
+                }
+
             }
             catch (NullReferenceException)
             {
@@ -654,7 +683,6 @@ namespace DoPENetConnect
                 timer_UpdateData.Stop();
 
                 //timer_ShowWave.Stop();
-
 
                 if (stopwatch.IsRunning)
                 {
@@ -799,6 +827,7 @@ namespace DoPENetConnect
                 //记录位移
                 strCSVLog += text + ",";
                 text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
+                g_Position = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S];
 
                 if (bConnected )
                 {
@@ -894,7 +923,7 @@ namespace DoPENetConnect
                         //{
                         //    this.BeginInvoke(new Action(() =>
                         //{
-                        guiPosition.Text = text;
+                        //guiPosition.Text = text;
                         //}));
                         //}
                         //Invalidate();
@@ -905,13 +934,23 @@ namespace DoPENetConnect
                     strCSVLog += text + ",";
                     //data_display1 = decimal.Parse(guiPosition.Text == "" ? "" : "0");
                     text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
+                    g_Load = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F];
 
                     //试验力队列
                     PVLoadQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
                     if (PVLoadQueue.Count >= 50)
                     {
-                        tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
-                        tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
+                        if (LoadUnit.ToUpper() == "KN")
+                        {
+                            tb_MaxLoad.Text = (PVLoadQueue.Max() / 1000).ToString("0.0");
+                            tb_MinLoad.Text = (PVLoadQueue.Min() / 1000).ToString("0.0");
+                        }
+                        else
+                        {
+                            tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
+                            tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
+                        }
+
                         if (bActivated && isRunning)
                         {
                             //判断是否处于合理的试验力峰值区间 峰值外保护
@@ -990,16 +1029,9 @@ namespace DoPENetConnect
                         PVLoadQueue.Clear();
                     }
 
-                    //if (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F] > 3.0)
-                    {
-                        //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                        //OffEDC();
-                    }
-                    //ProtectOption_PosMaxOut
-
                     if (nCount >= nCountREfresh)
                     {
-                        guiLoad.Text = text;
+                        //guiLoad.Text = text;
                     }
 
                     //记录变形
@@ -1162,7 +1194,7 @@ namespace DoPENetConnect
                     {
                         nCycleCount++;
 
-                        if (nCycleCount > 1 && gSample.Cycles /*>> 1*/ >= nTestCount)
+                        if (nCycleCount > 20 && gSample.Cycles /*>> 1*/ >= nTestCount)
                         {
                             isRunning = false;
                             SetControlEnable(!isRunning);
@@ -1181,7 +1213,7 @@ namespace DoPENetConnect
                 //波形图
                 if (bConnected && bActivated)
                 {
-                    ShowWave(Block);
+                    //ShowWave(Block);
                 }
 
                 //IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
@@ -1398,7 +1430,7 @@ namespace DoPENetConnect
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
 
-            timer_UpdateData.Interval = 300;
+            timer_UpdateData.Interval = DataRefreshFrequency;
             //timer_ShowWave.Interval = 200;
 
             btn_ConState.BackColor = Color.Red;
@@ -2066,19 +2098,6 @@ namespace DoPENetConnect
         private void bntX_GUIOn_Click(object sender, EventArgs e)
         {
             OnEDC();
-
-            if (MyEdc.IsConnected() && bActivated)
-            {
-                //GetXaxisScale();
-
-                bntX_GUIOn.Checked = true;
-                btnX_SetLow.Checked = true;
-                btnX_SetHigh.Checked = false;
-
-                this.MaximizeBox = false;
-
-                //timer_ShowWave.Start();
-            }
         }
 
 
@@ -2459,6 +2478,18 @@ namespace DoPENetConnect
 
             TimeSpan elapsed = stopwatch.Elapsed;
             guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
+
+            guiPosition.Text = g_Position.ToString("0.000");
+
+            if (LoadUnit.ToUpper() == "KN")
+            {
+                guiLoad.Text = (g_Load / 1e3).ToString("0.0");
+            }
+            else
+            {
+                guiLoad.Text = g_Load.ToString("0.000");
+            }
+
 
             //EnableButton();
         }
@@ -3045,9 +3076,25 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
             nCountLog = int.Parse(strTmp.ToString());
 
+            //语言
             IniFileHelper.GetIniString("Setting", "Language", "0", strTmp, strTmp.Capacity);
             strLanguage = strTmp.ToString();
 
+            //试验力单位
+            IniFileHelper.GetIniString("Setting", "LoadUnit", "0", strTmp, strTmp.Capacity);
+            LoadUnit = strTmp.ToString();
+
+            //采样频率
+            IniFileHelper.GetIniString("Setting", "SampleFrequency", "0", strTmp, strTmp.Capacity);
+            SampleFrequency = double.Parse(strTmp.ToString());
+
+            //数据刷新频率
+            IniFileHelper.GetIniString("Setting", "DataRefreshFrequency", "0", strTmp, strTmp.Capacity);
+            DataRefreshFrequency = int.Parse(strTmp.ToString());
+
+            //曲线刷新频率
+            IniFileHelper.GetIniString("Setting", "WaveRefreshFrequency", "0", strTmp, strTmp.Capacity);
+            WaveRefreshFrequency = int.Parse(strTmp.ToString());
 
             //停机保护选项
             IniFileHelper.GetIniString("FrmSystemSetting", "限位保护选项", "0", strTmp, strTmp.Capacity);
