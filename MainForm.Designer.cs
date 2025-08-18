@@ -595,16 +595,16 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel10);
-            this.superTabControl4.Location = new System.Drawing.Point(1305, 3);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
+            this.superTabControl4.Location = new System.Drawing.Point(1297, 3);
             this.superTabControl4.MaximumSize = new System.Drawing.Size(0, 419);
-            this.superTabControl4.MinimumSize = new System.Drawing.Size(272, 419);
+            this.superTabControl4.MinimumSize = new System.Drawing.Size(285, 419);
             this.superTabControl4.Name = "superTabControl4";
             this.superTabControl4.ReorderTabsEnabled = true;
             this.superTabControl4.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl4.SelectedTabIndex = 0;
-            this.superTabControl4.Size = new System.Drawing.Size(272, 419);
+            this.superTabControl4.Size = new System.Drawing.Size(285, 419);
             this.superTabControl4.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl4.TabIndex = 69;
             this.superTabControl4.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -815,7 +815,7 @@
             this.superTabControlPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel10.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel10.Name = "superTabControlPanel10";
-            this.superTabControlPanel10.Size = new System.Drawing.Size(272, 391);
+            this.superTabControlPanel10.Size = new System.Drawing.Size(285, 391);
             this.superTabControlPanel10.TabIndex = 0;
             this.superTabControlPanel10.TabItem = this.superTabItem10;
             // 
@@ -828,7 +828,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.tabControl1.SelectedTabIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(273, 391);
+            this.tabControl1.Size = new System.Drawing.Size(281, 391);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
             this.tabControl1.Tabs.Add(this.tabItem1);
@@ -861,7 +861,7 @@
             this.tabControlPanel1.Location = new System.Drawing.Point(0, 26);
             this.tabControlPanel1.Name = "tabControlPanel1";
             this.tabControlPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel1.Size = new System.Drawing.Size(273, 365);
+            this.tabControlPanel1.Size = new System.Drawing.Size(281, 365);
             this.tabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
             this.tabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
             this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -879,7 +879,7 @@
             this.buttonX19.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX19.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX19.Image = ((System.Drawing.Image)(resources.GetObject("buttonX19.Image")));
-            this.buttonX19.Location = new System.Drawing.Point(94, 303);
+            this.buttonX19.Location = new System.Drawing.Point(102, 303);
             this.buttonX19.Name = "buttonX19";
             this.buttonX19.Size = new System.Drawing.Size(90, 35);
             this.buttonX19.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -897,7 +897,7 @@
             this.comboBoxEx11.ItemHeight = 21;
             this.comboBoxEx11.Location = new System.Drawing.Point(79, 242);
             this.comboBoxEx11.Name = "comboBoxEx11";
-            this.comboBoxEx11.Size = new System.Drawing.Size(190, 27);
+            this.comboBoxEx11.Size = new System.Drawing.Size(196, 27);
             this.comboBoxEx11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx11.TabIndex = 12;
             // 
@@ -932,7 +932,7 @@
             this.comboItem16});
             this.comboBoxEx10.Location = new System.Drawing.Point(198, 208);
             this.comboBoxEx10.Name = "comboBoxEx10";
-            this.comboBoxEx10.Size = new System.Drawing.Size(72, 27);
+            this.comboBoxEx10.Size = new System.Drawing.Size(77, 27);
             this.comboBoxEx10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx10.TabIndex = 10;
             this.comboBoxEx10.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx10_SelectedIndexChanged);
@@ -1004,7 +1004,7 @@
             this.comboItem11});
             this.comboBoxEx8.Location = new System.Drawing.Point(198, 142);
             this.comboBoxEx8.Name = "comboBoxEx8";
-            this.comboBoxEx8.Size = new System.Drawing.Size(72, 27);
+            this.comboBoxEx8.Size = new System.Drawing.Size(77, 27);
             this.comboBoxEx8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx8.TabIndex = 7;
             // 
@@ -1044,7 +1044,7 @@
             this.comboItem6});
             this.cmbX_Dyn_StartSpeed_Unit.Location = new System.Drawing.Point(198, 75);
             this.cmbX_Dyn_StartSpeed_Unit.Name = "cmbX_Dyn_StartSpeed_Unit";
-            this.cmbX_Dyn_StartSpeed_Unit.Size = new System.Drawing.Size(72, 27);
+            this.cmbX_Dyn_StartSpeed_Unit.Size = new System.Drawing.Size(79, 27);
             this.cmbX_Dyn_StartSpeed_Unit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbX_Dyn_StartSpeed_Unit.TabIndex = 7;
             // 
@@ -1539,7 +1539,7 @@
             this.chart_machine.Series.Add(series4);
             this.chart_machine.Series.Add(series5);
             this.chart_machine.Series.Add(series6);
-            this.chart_machine.Size = new System.Drawing.Size(1303, 626);
+            this.chart_machine.Size = new System.Drawing.Size(1295, 626);
             this.chart_machine.TabIndex = 63;
             this.chart_machine.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart_machine_MouseClick);
             // 
