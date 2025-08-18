@@ -4292,11 +4292,15 @@ namespace DoPENetConnect
                     return;
                 }
 
-                originParams = realtimeParams;
-                buttonX15.Checked = true;
-                FrmPosExt frmPosExt = new FrmPosExt();
-                frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), (LIMITMODE)comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
-                                                 (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text), (DESTMODE)comboBoxEx11.SelectedIndex);
+                if (!isRunning)
+                {
+                    originParams = realtimeParams;
+                    buttonX15.Checked = true;
+                    buttonX16.Checked = false;
+                     FrmPosExt frmPosExt = new FrmPosExt();
+                    frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), (LIMITMODE)comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
+                                                     (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text), (DESTMODE)comboBoxEx11.SelectedIndex);
+                }
 
             }
             else
@@ -4504,14 +4508,19 @@ namespace DoPENetConnect
 
         private void buttonX16_Click(object sender, EventArgs e)
         {
-            MoveHalt();
-            //停止数据更新
-            //if (isRunning)
+            if (isRunning)
             {
-                //isRunning = false;         
-                onExpermentStoped();
+                buttonX16.Checked = true;
+                buttonX15.Checked = false;
+                MoveHalt();
+                //停止数据更新
+                //if (isRunning)
+                {
+                    isRunning = false;         
+                    onExpermentStoped();
+                }
+                // CleanChart();
             }
-            // CleanChart();
         }
 
         private void buttonX18_Click(object sender, EventArgs e)
@@ -4536,7 +4545,10 @@ namespace DoPENetConnect
                 //FrmPosExt frmPosExt = new FrmPosExt();
                 //frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), (LIMITMODE)comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
                 //                                 (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text), (DESTMODE)comboBoxEx11.SelectedIndex);
-                MovePos(DoPE.CTRL.POS, double.Parse(tbX_Dyn_StartSpeed.Text), originParams.DisplacementVal);
+                if (!isRunning)
+                {
+                    MovePos(DoPE.CTRL.POS, double.Parse(tbX_Dyn_StartSpeed.Text), originParams.DisplacementVal);
+                }
 
             }
             else
