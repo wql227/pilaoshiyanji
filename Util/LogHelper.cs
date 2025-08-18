@@ -179,8 +179,10 @@ namespace DoPENetConnect
                 // 如果文件存在且超过最大大小，则进行滚动
                 if (fi.Exists && fi.Length > maxFileSize)
                 {
+                    int maxBackupFiles = 100; // 最多保留 5 个备份文件
+
                     // 滚动旧文件
-                    for (int i = int.MaxValue; i >= 1; i--)
+                    for (int i = maxBackupFiles - 1; i >= 1; i--)
                     {
                         string oldFile = Path.Combine(logPath, $"{dateStr}.{i}.CSV");
                         string prevFile = Path.Combine(logPath, $"{dateStr}.{i - 1}.CSV");
@@ -210,7 +212,7 @@ namespace DoPENetConnect
                 {
                     if (writeHeader)
                     {
-                        string header = "Time [s],Position [mm],Load [N],Extension [Rev],Command [ ],Cycles [ ]";
+                        string header = "时间[s],位移[mm],试验力[N],变形[mm],命令,循环,输出[%],反馈,半循环";
                         sw.WriteLine(header);
                     }
 

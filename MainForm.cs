@@ -283,7 +283,7 @@ namespace DoPENetConnect
         /// <summary>
         /// 每个循环前进的秒数
         /// </summary>
-        public double dStep = 0.001;
+        public double dStep = 0.01;
 
         /// <summary>
         /// 总共前进次数
@@ -496,7 +496,7 @@ namespace DoPENetConnect
                     // for a 300 ms display refresh
                     DoPE.Machine Machine = new DoPE.Machine(0);
                     MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
-                    double aaa = (0.01 / Machine.MDef.SystemTime /*+ Machine.MDef.SystemTime / 2*/);
+                    double aaa = (0.001 / Machine.MDef.SystemTime /*+ Machine.MDef.SystemTime / 2*/);
                     MyEdc.Eh.SetOnDataBlockSize((Int32)(aaa)); 
                     MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
                     MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
@@ -796,6 +796,7 @@ namespace DoPENetConnect
 
                 text = String.Format("{0}", gSample.Time.ToString("0.000"));
 
+                //记录位移
                 strCSVLog += text + ",";
                 text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
 
@@ -899,6 +900,8 @@ namespace DoPENetConnect
                         //Invalidate();
 
                     }
+
+                    //记录试验力
                     strCSVLog += text + ",";
                     //data_display1 = decimal.Parse(guiPosition.Text == "" ? "" : "0");
                     text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
@@ -999,6 +1002,7 @@ namespace DoPENetConnect
                         guiLoad.Text = text;
                     }
 
+                    //记录变形
                     strCSVLog += text + ",";
                     //data_display2 = decimal.Parse(guiLoad.Text);
                     text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
@@ -1092,12 +1096,25 @@ namespace DoPENetConnect
                         guiExtension.Text = text;
                     }
 
+                    //记录命令
                     strCSVLog += text + ",";
-                    //data_display3 = decimal.Parse(guiExtension.Text);
-
                     text = String.Format("{0}", gSample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
+
+                    //记录半周期
                     strCSVLog += text + ",";
-                    strCSVLog += (gSample.Cycles /*<< 1*/).ToString() + ",";
+                    text = (gSample.Cycles /*<< 1*/).ToString();
+
+                    //记录输出
+                    strCSVLog += text + ",";
+                    text = String.Format("{0}", gSample.Output.ToString("0.000"));
+
+                    //记录反馈
+                    strCSVLog += text + ",";
+                    text = String.Format("{0}", gSample.Feedback.ToString("0.000"));
+
+                    //记录周期
+                    strCSVLog += text + ",";
+                    strCSVLog +=(gSample.Cycles >> 1 ).ToString();
 
                     if (nCount >= nCountREfresh)
                     {
@@ -2151,8 +2168,8 @@ namespace DoPENetConnect
                 if (!bPause)
                 {
                     //for (int i = 20; Block.Data.Length > i; i += 200)
-                    //for (int i = 0; Block.Data.Length > i; i += 10)
-                    for (int i = 10; Block.Data.Length > i; i += 100)
+                    for (int i = 0; Block.Data.Length > i; i += 10)
+                        //for (int i = 5; Block.Data.Length > i; i += 10)
                     {
                         //绘制Position
                         double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
