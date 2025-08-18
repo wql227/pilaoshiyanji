@@ -177,11 +177,12 @@
             this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.label45 = new System.Windows.Forms.Label();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_SampleFrequency = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label46 = new System.Windows.Forms.Label();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_DataRefreshFrequency = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbX_WaveRefreshFrequency = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label47 = new System.Windows.Forms.Label();
+            this.comboItem25 = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel5.SuspendLayout();
@@ -286,9 +287,9 @@
             // 
             this.groupPanel6.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel6.Controls.Add(this.textBoxX3);
-            this.groupPanel6.Controls.Add(this.textBoxX2);
-            this.groupPanel6.Controls.Add(this.textBoxX1);
+            this.groupPanel6.Controls.Add(this.tbX_WaveRefreshFrequency);
+            this.groupPanel6.Controls.Add(this.tbX_DataRefreshFrequency);
+            this.groupPanel6.Controls.Add(this.tbX_SampleFrequency);
             this.groupPanel6.Controls.Add(this.tbX_DeviceID);
             this.groupPanel6.Controls.Add(this.label47);
             this.groupPanel6.Controls.Add(this.label46);
@@ -1435,7 +1436,8 @@
             this.comboBoxEx_ForceUnit.FormattingEnabled = true;
             this.comboBoxEx_ForceUnit.ItemHeight = 21;
             this.comboBoxEx_ForceUnit.Items.AddRange(new object[] {
-            this.comboItem38});
+            this.comboItem38,
+            this.comboItem25});
             this.comboBoxEx_ForceUnit.Location = new System.Drawing.Point(161, 20);
             this.comboBoxEx_ForceUnit.Name = "comboBoxEx_ForceUnit";
             this.comboBoxEx_ForceUnit.Size = new System.Drawing.Size(121, 27);
@@ -2195,19 +2197,19 @@
             this.label45.Text = "采样周期(毫秒)";
             this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBoxX1
+            // tbX_SampleFrequency
             // 
             // 
             // 
             // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(169, 54);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(125, 26);
-            this.textBoxX1.TabIndex = 3;
-            this.textBoxX1.WordWrap = false;
+            this.tbX_SampleFrequency.Border.Class = "TextBoxBorder";
+            this.tbX_SampleFrequency.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_SampleFrequency.Location = new System.Drawing.Point(169, 54);
+            this.tbX_SampleFrequency.Name = "tbX_SampleFrequency";
+            this.tbX_SampleFrequency.PreventEnterBeep = true;
+            this.tbX_SampleFrequency.Size = new System.Drawing.Size(125, 26);
+            this.tbX_SampleFrequency.TabIndex = 3;
+            this.tbX_SampleFrequency.WordWrap = false;
             // 
             // label46
             // 
@@ -2222,33 +2224,33 @@
             this.label46.Text = "显示刷新周期(毫秒)";
             this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBoxX2
+            // tbX_DataRefreshFrequency
             // 
             // 
             // 
             // 
-            this.textBoxX2.Border.Class = "TextBoxBorder";
-            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.Location = new System.Drawing.Point(169, 86);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.PreventEnterBeep = true;
-            this.textBoxX2.Size = new System.Drawing.Size(125, 26);
-            this.textBoxX2.TabIndex = 3;
-            this.textBoxX2.WordWrap = false;
+            this.tbX_DataRefreshFrequency.Border.Class = "TextBoxBorder";
+            this.tbX_DataRefreshFrequency.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_DataRefreshFrequency.Location = new System.Drawing.Point(169, 86);
+            this.tbX_DataRefreshFrequency.Name = "tbX_DataRefreshFrequency";
+            this.tbX_DataRefreshFrequency.PreventEnterBeep = true;
+            this.tbX_DataRefreshFrequency.Size = new System.Drawing.Size(125, 26);
+            this.tbX_DataRefreshFrequency.TabIndex = 3;
+            this.tbX_DataRefreshFrequency.WordWrap = false;
             // 
-            // textBoxX3
-            // 
-            // 
+            // tbX_WaveRefreshFrequency
             // 
             // 
-            this.textBoxX3.Border.Class = "TextBoxBorder";
-            this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX3.Location = new System.Drawing.Point(169, 118);
-            this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.PreventEnterBeep = true;
-            this.textBoxX3.Size = new System.Drawing.Size(125, 26);
-            this.textBoxX3.TabIndex = 3;
-            this.textBoxX3.WordWrap = false;
+            // 
+            // 
+            this.tbX_WaveRefreshFrequency.Border.Class = "TextBoxBorder";
+            this.tbX_WaveRefreshFrequency.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_WaveRefreshFrequency.Location = new System.Drawing.Point(169, 118);
+            this.tbX_WaveRefreshFrequency.Name = "tbX_WaveRefreshFrequency";
+            this.tbX_WaveRefreshFrequency.PreventEnterBeep = true;
+            this.tbX_WaveRefreshFrequency.Size = new System.Drawing.Size(125, 26);
+            this.tbX_WaveRefreshFrequency.TabIndex = 3;
+            this.tbX_WaveRefreshFrequency.WordWrap = false;
             // 
             // label47
             // 
@@ -2262,6 +2264,10 @@
             this.label47.TabIndex = 0;
             this.label47.Text = "曲线刷新周期(毫秒)";
             this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboItem25
+            // 
+            this.comboItem25.Text = "N";
             // 
             // FrmSystemSetting
             // 
@@ -2463,11 +2469,12 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label lbX_MaxForce;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_SampleFrequency;
         private System.Windows.Forms.Label label45;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_DataRefreshFrequency;
         private System.Windows.Forms.Label label46;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_WaveRefreshFrequency;
         private System.Windows.Forms.Label label47;
+        private DevComponents.Editors.ComboItem comboItem25;
     }
 }

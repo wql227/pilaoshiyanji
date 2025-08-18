@@ -294,25 +294,25 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString(strConfigSetion, "限位保护选项", "0", strTmp, strTmp.Capacity);
             int indexToBeSetted = int.Parse(strTmp.ToString());
             if (cbX_ProtectOption.Items.Count > indexToBeSetted)
+            {
                 cbX_ProtectOption.SelectedIndex = indexToBeSetted;
+            }
 
             //采样频率
             IniFileHelper.GetIniString("Setting", "SampleFrequency", "0", strTmp, strTmp.Capacity);
-            textBoxX1.Text = strTmp.ToString();
+            tbX_SampleFrequency.Text = strTmp.ToString();
 
             //数据刷新频率
             IniFileHelper.GetIniString("Setting", "DataRefreshFrequency", "0", strTmp, strTmp.Capacity);
-            textBoxX2.Text = strTmp.ToString();
+            tbX_DataRefreshFrequency.Text = strTmp.ToString();
 
             //曲线刷新频率
             IniFileHelper.GetIniString("Setting", "WaveRefreshFrequency", "0", strTmp, strTmp.Capacity);
-            textBoxX3.Text = strTmp.ToString();
+            tbX_WaveRefreshFrequency.Text = strTmp.ToString();
 
             //峰值保护选项
             IniFileHelper.GetIniString(strConfigSetion, "位移峰值外保护", "0", strTmp, strTmp.Capacity);
             tbX_FrmProtectOption_PosMaxOut.Text = strTmp.ToString();
-
-            double aaa = MainForm.mainform.protectOption.ProtectOption_ExtMaxIn;
 
             IniFileHelper.GetIniString(strConfigSetion, "位移峰值外保护生效", "0", strTmp, strTmp.Capacity);
             cbX_FrmProtectOption_PosMaxOut_Effect.Checked = strTmp.ToString() == "0" ? false : true;
@@ -443,6 +443,15 @@ namespace DoPENetConnect
             strTmp = NUD_CountLog.Text;
             MainForm.mainform.nCountLog = int.Parse(strTmp);
             IniFileHelper.WriteIniString("Setting", "CountLog", strTmp);
+
+            strTmp = tbX_SampleFrequency.Text;
+            IniFileHelper.WriteIniString("Setting", "SampleFrequency", strTmp);
+
+            strTmp = tbX_DataRefreshFrequency.Text;
+            IniFileHelper.WriteIniString("Setting", "DataRefreshFrequency", strTmp);
+
+            strTmp = tbX_WaveRefreshFrequency.Text;
+            IniFileHelper.WriteIniString("Setting", "WaveRefreshFrequency", strTmp);
 
             strTmp = cbX_ProtectOption.SelectedIndex.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "限位保护选项", strTmp);
