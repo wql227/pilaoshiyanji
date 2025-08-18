@@ -184,7 +184,7 @@ namespace DoPENetConnect
         /// <summary>
         /// 
         /// </summary>
-        double x_Position = 0.0;
+        double x_Position = 10.0;
         double x_Load = 0.0;
         double x_Extension = 0.0;
         double x_Command = 0.0;
@@ -321,15 +321,15 @@ namespace DoPENetConnect
         /// 曲线自动自适应
         /// </summary>
 
-        double maxSeries0 = 0;
-        double maxSeries1 = 0;
-        double maxSeries2 = 0;
-        double maxSeries3 = 0;
+        double maxSeries0 = 10;
+        double maxSeries1 = 10;
+        double maxSeries2 = 10;
+        double maxSeries3 = 10;
 
-        double minSeries0 = 0;
-        double minSeries1 = 0;
-        double minSeries2 = 0;
-        double minSeries3 = 0;
+        double minSeries0 = 10;
+        double minSeries1 = 10;
+        double minSeries2 = 10;
+        double minSeries3 = 10;
 
         public bool valInScaleSetted = false;
 
@@ -4645,5 +4645,14 @@ namespace DoPENetConnect
             AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
         }
 
+        private void labelX33_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Show(MousePosition);
+        }
+
+        private void labelX42_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
