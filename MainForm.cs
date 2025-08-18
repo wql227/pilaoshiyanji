@@ -4393,7 +4393,7 @@ namespace DoPENetConnect
                     }
                 case "LOAD":
                     {
-                        comboBoxEx10.DataSource = new string[] { "N", "kN" };
+                        comboBoxEx10.DataSource = new string[] {"kN" };
                         break;
                     }
                 case "EXTENSION":
@@ -4562,11 +4562,11 @@ namespace DoPENetConnect
         {
             if (comboBoxEx9.Text == "LOAD")
             {
-                if (comboBoxEx10.Text == "N")
-                {
-                    lblLoad.Text = string.Format("试验力 {0}", comboBoxEx10.Text);
-                }
-                else if (comboBoxEx10.Text == "kN")
+                //if (comboBoxEx10.Text == "N")
+                //{
+                //    lblLoad.Text = string.Format("试验力 {0}", comboBoxEx10.Text);
+                //}
+                //else if (comboBoxEx10.Text == "kN")
                 {
 
                     lblLoad.Text = string.Format("试验力{0}", comboBoxEx10.Text);
