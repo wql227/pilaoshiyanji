@@ -4644,5 +4644,6 @@ namespace DoPENetConnect
             chart_series_show(6);
             AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
         }
+
     }
 }
