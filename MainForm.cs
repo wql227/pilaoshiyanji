@@ -356,6 +356,8 @@ namespace DoPENetConnect
 
         public double g_Extension = 0.0d;
 
+        public long g_Count = 0;
+
         public double SampleFrequency = 0.001;
 
         public int DataRefreshFrequency = 200;
@@ -1151,7 +1153,7 @@ namespace DoPENetConnect
                     if (nCount >= nCountREfresh)
                     {
                         nCount = 0;
-                        Invalidate();
+                        //Invalidate();
                     }
 
                     if (isRunning)
@@ -1184,7 +1186,8 @@ namespace DoPENetConnect
                         else
                         {
                             nTotalTestCount = (gSample.Cycles >> 1) + nPreTestCount;
-                            tbX_TestCycles.Text = nTotalTestCount.ToString();
+                            //tbX_TestCycles.Text = nTotalTestCount.ToString();
+                            g_Count = nTotalTestCount;
                         }
                     }
 
@@ -1213,7 +1216,7 @@ namespace DoPENetConnect
                 //波形图
                 if (bConnected && bActivated)
                 {
-                    //ShowWave(Block);
+                   ShowWave(Block);
                 }
 
                 //IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
@@ -1444,6 +1447,8 @@ namespace DoPENetConnect
             chart_machine.Series[0].Points.Clear();
             //x_Position = 0.0;
             chart_machine.Series[0].Points.AddXY(0.0, 0.0);
+
+            SetLoadUnint();
 
             //试验力
             chart_machine.Series[1].Points.Clear();
@@ -1975,7 +1980,7 @@ namespace DoPENetConnect
 
                     nCycleCount = 0;
 
-                    timer_UpdateData.Stop();
+                    //timer_UpdateData.Stop();
 
                     SetControlEnable(true);
 
@@ -2179,7 +2184,7 @@ namespace DoPENetConnect
             //{
             //X轴坐标长度 = dStep * nTotal
             dStep = 0.01;
-            //dStep = 0.001;
+          //dStep = 0.001;
             //nTotal = 100;
             //if (MyEdc.IsConnected() && bConnected)
             if (chart_machine != null)
@@ -2211,17 +2216,20 @@ namespace DoPENetConnect
 
                         if (chart_machine.Series[0] != null)
                         {
-                            this.BeginInvoke(new Action(() =>
+                            //this.BeginInvoke(new Action(() =>
                             {
                                 chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
                                 x_Position += dStep;
-                            }));
 
-                            if (chart_machine.Series[0].Points.Count >= nTotal)
-                            {
-                                chart_machine.Series[0].Points.Clear();
-                                x_Position = 0.0;
+                                if (chart_machine.Series[0].Points.Count >= nTotal)
+                                {
+                                    chart_machine.Series[0].Points.Clear();
+                                    x_Position = 0.0;
+                                }
                             }
+                            //));
+
+                 
                         }
 
                         //绘制Load
@@ -2240,11 +2248,12 @@ namespace DoPENetConnect
 
                         if (chart_machine.Series[1] != null)
                         {
-                            this.BeginInvoke(new Action(() =>
+                            //this.BeginInvoke(new Action(() =>
                             {
                                 chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
                                 x_Load += dStep;
-                            }));
+                            }
+                            //));
 
                             if (chart_machine.Series[1].Points.Count >= nTotal)
                             {
@@ -2269,17 +2278,16 @@ namespace DoPENetConnect
 
                         if (chart_machine.Series[2] != null)
                         {
-                            this.BeginInvoke(new Action(() =>
+                            //this.BeginInvoke(new Action(() =>
                             {
                                 chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
                                 x_Extension += dStep;
-                            }));
+                            }
+                            //));
 
                             if (chart_machine.Series[2].Points.Count >= nTotal)
                             {
                                 chart_machine.Series[2].Points.Clear();
-
-                                //chart_machine.Series[2].Points.AddXY(0.0, y_Extension);
                                 x_Extension = 0.0;
                             }
                         }
@@ -2307,21 +2315,19 @@ namespace DoPENetConnect
 
                         if (chart_machine.Series[3] != null)
                         {
-                            this.BeginInvoke(new Action(() =>
+                            //this.BeginInvoke(new Action(() =>
                             {
                                 chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
                                 x_Command += dStep;
-                            }));
+                            }
+                            //));
 
                             if (chart_machine.Series[3].Points.Count >= nTotal)
                             {
                                 chart_machine.Series[3].Points.Clear();
-
-                                //chart_machine.Series[3].Points.AddXY(0.0, y_Command);
                                 x_Command = 0.0;
                             }
                         }
-
                     }
 
 
@@ -2469,7 +2475,7 @@ namespace DoPENetConnect
         {
             this.toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            //Invalidate();
+            Invalidate();
 
             if (!bConnected)
             {
@@ -2481,6 +2487,11 @@ namespace DoPENetConnect
 
             guiPosition.Text = g_Position.ToString("0.000");
 
+            if (isRunning)
+            {
+                tbX_TestCycles.Text = g_Count.ToString();
+            }
+
             if (LoadUnit.ToUpper() == "KN")
             {
                 guiLoad.Text = (g_Load / 1e3).ToString("0.0");
@@ -2490,8 +2501,21 @@ namespace DoPENetConnect
                 guiLoad.Text = g_Load.ToString("0.000");
             }
 
-
             //EnableButton();
+        }
+
+        public void SetLoadUnint()
+        {
+            if (LoadUnit.ToUpper() == "KN")
+            {
+                label3.Text = "kN";
+                chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(kN)";
+            }
+            else
+            {
+                label3.Text = "N";
+                chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(N)";
+            }
         }
 
 

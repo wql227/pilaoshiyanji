@@ -149,8 +149,8 @@ namespace DoPENetConnect
                     cmbX_Pos_DestnationUnit.DataSource = new string[]{ "mm"};
                     break;
                 case "LOAD":
-                    cmbX_Pos_SpeedUnit.DataSource = new string[]{"N/s"};
-                    cmbX_Pos_DestnationUnit.DataSource = new string[]{"N"};
+                    cmbX_Pos_SpeedUnit.DataSource = new string[]{"N/s", "kN/s" };
+                    cmbX_Pos_DestnationUnit.DataSource = new string[]{"N", "kN"};
                     break;
                 case "EXTENSION":
                     cmbX_Pos_SpeedUnit.DataSource = new string[] { "mm/s" };

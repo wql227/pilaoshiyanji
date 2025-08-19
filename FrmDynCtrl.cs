@@ -563,7 +563,7 @@ namespace DoPENetConnect
                     }
                 case "LOAD":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s" };
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s", "kN/s" };
                         break;
                     }
                 case "EXTENSION":
@@ -593,9 +593,19 @@ namespace DoPENetConnect
                     }
                 case "LOAD":
                     {
-                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "N" };
-                        labelX9.Text = "N";
-                        labelX11.Text = "N";
+                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "N", "kN" };
+
+                        if (MainForm.mainform.LoadUnit.ToUpper() == "KN")
+                        {
+                            labelX9.Text = "kN";
+                            labelX11.Text = "kN";
+                        }
+                        else
+                        {
+                            labelX9.Text = "N";
+                            labelX11.Text = "N";
+                        }
+      
                         break;
                     }
                 case "EXTENSION":

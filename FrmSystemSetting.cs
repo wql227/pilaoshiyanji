@@ -581,6 +581,27 @@ namespace DoPENetConnect
                 tbX_DeviceID.Clear();
             }
 
+            //采样频率
+            strTmp = tbX_SampleFrequency.Text;
+            MainForm.mainform.SampleFrequency = double.Parse(strTmp);
+            IniFileHelper.WriteIniString("Setting", "SampleFrequency", strTmp);
+
+            //数据刷新频率
+            strTmp = tbX_DataRefreshFrequency.Text;
+            MainForm.mainform.DataRefreshFrequency = int.Parse(strTmp);
+            IniFileHelper.WriteIniString("Setting", "DataRefreshFrequency", strTmp);
+
+            //曲线刷新频率
+            strTmp = comboBoxEx_ForceUnit.Text;
+            MainForm.mainform.LoadUnit = strTmp;
+            IniFileHelper.WriteIniString("Setting", "LoadUnit", strTmp);
+
+            //试验力单位
+            strTmp = tbX_WaveRefreshFrequency.Text;
+            MainForm.mainform.WaveRefreshFrequency = int.Parse(strTmp);
+            IniFileHelper.WriteIniString("Setting", "WaveRefreshFrequency", strTmp);
+
+
             //按钮常量设置
             strTmp = tbX_upval.Text;
             MainForm.mainform.btnUpConstantVal = double.Parse(strTmp);
@@ -953,6 +974,9 @@ namespace DoPENetConnect
             }
 
             WriteIni();
+
+            MainForm.mainform.SetLoadUnint();
+
             this.Close();
         }
 
