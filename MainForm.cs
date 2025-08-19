@@ -4654,5 +4654,10 @@ namespace DoPENetConnect
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridViewX1.Width = chart_machine.Width;
+        }
     }
 }

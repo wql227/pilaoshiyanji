@@ -29,6 +29,8 @@
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -44,8 +46,6 @@
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -54,9 +54,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.itemPanel1 = new DevComponents.DotNetBar.ItemPanel();
+            this.line1 = new DevComponents.DotNetBar.Controls.Line();
+            this.labelX42 = new DevComponents.DotNetBar.LabelX();
             this.labelX33 = new DevComponents.DotNetBar.LabelX();
             this.panelEx10 = new DevComponents.DotNetBar.PanelEx();
-            this.panelEx12 = new DevComponents.DotNetBar.PanelEx();
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonX18 = new DevComponents.DotNetBar.ButtonX();
@@ -329,9 +331,10 @@
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.变形时间曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.labelX42 = new DevComponents.DotNetBar.LabelX();
-            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -342,11 +345,6 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -355,7 +353,7 @@
             this.groupBox1.SuspendLayout();
             this.itemPanel1.SuspendLayout();
             this.panelEx10.SuspendLayout();
-            this.panelEx12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl4)).BeginInit();
             this.superTabControl4.SuspendLayout();
             this.superTabControlPanel9.SuspendLayout();
@@ -390,7 +388,6 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
             // StartCommunicationWithEdcTimer
@@ -495,7 +492,8 @@
             // 
             // itemPanel1
             // 
-            this.itemPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.itemPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.itemPanel1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
@@ -505,6 +503,7 @@
             this.itemPanel1.BackgroundStyle.Class = "ItemPanel";
             this.itemPanel1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.itemPanel1.ContainerControlProcessDialogKey = true;
+            this.itemPanel1.Controls.Add(this.line1);
             this.itemPanel1.Controls.Add(this.labelX42);
             this.itemPanel1.Controls.Add(this.labelX33);
             this.itemPanel1.DragDropSupport = true;
@@ -514,6 +513,36 @@
             this.itemPanel1.Size = new System.Drawing.Size(1295, 32);
             this.itemPanel1.TabIndex = 0;
             this.itemPanel1.Text = "itemPanel1";
+            // 
+            // line1
+            // 
+            this.line1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.line1.BackColor = System.Drawing.Color.White;
+            this.line1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
+            this.line1.Location = new System.Drawing.Point(0, 0);
+            this.line1.Name = "line1";
+            this.line1.Size = new System.Drawing.Size(1295, 2);
+            this.line1.TabIndex = 2;
+            this.line1.Text = "line1";
+            // 
+            // labelX42
+            // 
+            // 
+            // 
+            // 
+            this.labelX42.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labelX42.BackgroundStyle.BorderLeftColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemCheckedBorder;
+            this.labelX42.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labelX42.BackgroundStyle.BorderRightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemDisabledText;
+            this.labelX42.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX42.Image = ((System.Drawing.Image)(resources.GetObject("labelX42.Image")));
+            this.labelX42.Location = new System.Drawing.Point(38, 0);
+            this.labelX42.Name = "labelX42";
+            this.labelX42.SingleLineColor = System.Drawing.SystemColors.ActiveBorder;
+            this.labelX42.Size = new System.Drawing.Size(26, 32);
+            this.labelX42.TabIndex = 1;
+            this.labelX42.Click += new System.EventHandler(this.labelX42_Click);
             // 
             // labelX33
             // 
@@ -537,7 +566,7 @@
             // 
             this.panelEx10.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx10.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx10.Controls.Add(this.panelEx12);
+            this.panelEx10.Controls.Add(this.dataGridViewX1);
             this.panelEx10.Controls.Add(this.label2);
             this.panelEx10.Controls.Add(this.label1);
             this.panelEx10.Controls.Add(this.buttonX18);
@@ -574,28 +603,41 @@
             this.panelEx10.Style.GradientAngle = 90;
             this.panelEx10.TabIndex = 67;
             // 
-            // panelEx12
+            // dataGridViewX1
             // 
-            this.panelEx12.AutoSize = true;
-            this.panelEx12.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx12.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx12.Controls.Add(this.dataGridViewX1);
-            this.panelEx12.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx12.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx12.Location = new System.Drawing.Point(0, 482);
-            this.panelEx12.Name = "panelEx12";
-            this.panelEx12.Size = new System.Drawing.Size(1578, 144);
-            this.panelEx12.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx12.Style.BackColor1.Alpha = ((byte)(10));
-            this.panelEx12.Style.BackColor1.Color = System.Drawing.Color.DodgerBlue;
-            this.panelEx12.Style.BackColor2.Alpha = ((byte)(15));
-            this.panelEx12.Style.BackColor2.Color = System.Drawing.Color.DodgerBlue;
-            this.panelEx12.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx12.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx12.Style.BorderSide = DevComponents.DotNetBar.eBorderSide.Top;
-            this.panelEx12.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx12.Style.GradientAngle = 90;
-            this.panelEx12.TabIndex = 80;
+            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewX1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column12,
+            this.Column13,
+            this.Column14,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 516);
+            this.dataGridViewX1.Name = "dataGridViewX1";
+            this.dataGridViewX1.RowTemplate.Height = 23;
+            this.dataGridViewX1.Size = new System.Drawing.Size(1295, 110);
+            this.dataGridViewX1.TabIndex = 91;
             // 
             // label2
             // 
@@ -4015,64 +4057,25 @@
             this.变形时间曲线ToolStripMenuItem.Text = "变形—时间曲线";
             this.变形时间曲线ToolStripMenuItem.Click += new System.EventHandler(this.变形时间曲线ToolStripMenuItem_Click);
             // 
-            // labelX42
-            // 
-            // 
-            // 
-            // 
-            this.labelX42.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labelX42.BackgroundStyle.BorderLeftColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemCheckedBorder;
-            this.labelX42.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labelX42.BackgroundStyle.BorderRightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemDisabledText;
-            this.labelX42.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX42.Image = ((System.Drawing.Image)(resources.GetObject("labelX42.Image")));
-            this.labelX42.Location = new System.Drawing.Point(38, 0);
-            this.labelX42.Name = "labelX42";
-            this.labelX42.SingleLineColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelX42.Size = new System.Drawing.Size(26, 32);
-            this.labelX42.TabIndex = 1;
-            this.labelX42.Click += new System.EventHandler(this.labelX42_Click);
-            // 
-            // dataGridViewX1
-            // 
-            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11,
-            this.Column12,
-            this.Column13,
-            this.Column14,
-            this.Column15,
-            this.Column16});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(24, 32);
-            this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1271, 109);
-            this.dataGridViewX1.TabIndex = 0;
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "Column1";
             this.Column1.Name = "Column1";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Column12";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Column13";
+            this.Column13.Name = "Column13";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Column14";
+            this.Column14.Name = "Column14";
             // 
             // Column2
             // 
@@ -4124,31 +4127,6 @@
             this.Column11.HeaderText = "Column11";
             this.Column11.Name = "Column11";
             // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Column12";
-            this.Column12.Name = "Column12";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Column13";
-            this.Column13.Name = "Column13";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "Column14";
-            this.Column14.Name = "Column14";
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "Column15";
-            this.Column15.Name = "Column15";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "Column16";
-            this.Column16.Name = "Column16";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4175,7 +4153,7 @@
             this.itemPanel1.ResumeLayout(false);
             this.panelEx10.ResumeLayout(false);
             this.panelEx10.PerformLayout();
-            this.panelEx12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl4)).EndInit();
             this.superTabControl4.ResumeLayout(false);
             this.superTabControlPanel9.ResumeLayout(false);
@@ -4215,7 +4193,6 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
 
     }
@@ -4349,9 +4326,6 @@
         private System.Windows.Forms.Timer timer_UpdateData;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel pl_DataShow;
-        private DevComponents.DotNetBar.ButtonX btnX_Connect;
-        private DevComponents.DotNetBar.ButtonX btnX_Disconnect;
-        public System.Windows.Forms.DataVisualization.Charting.Chart chart_machine;
         private System.Windows.Forms.CheckBox cb_TarePos;
         private System.Windows.Forms.CheckBox cb_TareExt;
         private System.Windows.Forms.CheckBox cb_TareLoad;
@@ -4361,19 +4335,12 @@
         private System.Windows.Forms.TextBox tb_MaxLoad;
         private System.Windows.Forms.Label lblExtensionMaxMin;
         private System.Windows.Forms.TextBox tb_MaxExt;
-        private DevComponents.DotNetBar.ButtonX btnX_AxisYMax;
-        private DevComponents.DotNetBar.ButtonX btnX_AsixYMin;
-        private System.Windows.Forms.CheckBox cb_DrawPosition;
-        private System.Windows.Forms.CheckBox cb_DrawExtension;
-        private System.Windows.Forms.CheckBox cb_DrawLoad;
-        private System.Windows.Forms.CheckBox cb_DrawCommand;
         private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel7;
         private DevComponents.DotNetBar.PanelEx panelEx9;
         private DevComponents.DotNetBar.SuperTabItem superTabItem7;
         private System.Windows.Forms.RichTextBox guiDebug;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_SystemSetting;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private DevComponents.DotNetBar.PanelEx panelEx10;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem commandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moveToolStripMenuItem;
@@ -4415,12 +4382,6 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Language;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_OpenLangDir;
         private System.Windows.Forms.ToolStripMenuItem AdjustToolStripMenuItem;
-        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MinUp;
-        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MinDown;
-        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MaxUp;
-        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MaxDown;
-        private DevComponents.DotNetBar.ButtonX btnX_AxisPOSY_MaxUp;
-        private DevComponents.DotNetBar.ButtonX btnX_AxisPOSY_MaxDown;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel lbX_EDCName;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
@@ -4429,85 +4390,104 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripMenuItem ChartSetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AutoSetYAxisToolStripMenuItem;
-        private DevComponents.DotNetBar.Controls.Line line2;
-        private DevComponents.DotNetBar.SuperTabControl superTabControl4;
-        private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel9;
-        private DevComponents.DotNetBar.SuperTabItem superTabItem9;
-        private DevComponents.DotNetBar.ButtonX bntX_MoveUp;
-        private DevComponents.DotNetBar.ButtonX btnX_MoveQuickUp;
-        private DevComponents.DotNetBar.ButtonX bntX_MoveHalt;
-        private DevComponents.DotNetBar.ButtonX bntX_MoveDown;
-        private DevComponents.DotNetBar.ButtonX btnX_QuickMoveDown;
-        private System.Windows.Forms.Button btn_ConState;
-        private DevComponents.DotNetBar.ButtonX bntX_GUIOn;
-        private DevComponents.DotNetBar.ButtonX btnX_SetLow;
-        private DevComponents.DotNetBar.ButtonX bntX_GUIOff;
-        private DevComponents.DotNetBar.ButtonX btnX_SetHigh;
-        private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel10;
-        private DevComponents.DotNetBar.SuperTabItem superTabItem10;
-        private DevComponents.DotNetBar.TabControl tabControl1;
-        private DevComponents.DotNetBar.TabControlPanel tabControlPanel1;
-        private DevComponents.DotNetBar.TabItem tabItem1;
-        private DevComponents.DotNetBar.LabelX labelX34;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Dyn_EDC;
         private DevComponents.Editors.ComboItem comboItem1;
-        private DevComponents.DotNetBar.LabelX labelX35;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Dyn_StartCtrl;
-        private DevComponents.DotNetBar.LabelX labelX36;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbX_Dyn_StartSpeed;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Dyn_StartSpeed_Unit;
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.Editors.ComboItem comboItem4;
         private DevComponents.Editors.ComboItem comboItem5;
         private DevComponents.Editors.ComboItem comboItem6;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx7;
-        private DevComponents.DotNetBar.LabelX labelX37;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx8;
         private DevComponents.Editors.ComboItem comboItem7;
         private DevComponents.Editors.ComboItem comboItem8;
         private DevComponents.Editors.ComboItem comboItem9;
         private DevComponents.Editors.ComboItem comboItem10;
         private DevComponents.Editors.ComboItem comboItem11;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX14;
-        private DevComponents.DotNetBar.LabelX labelX38;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx9;
-        private DevComponents.DotNetBar.LabelX labelX39;
-        private DevComponents.DotNetBar.LabelX labelX40;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx11;
-        private DevComponents.DotNetBar.LabelX labelX41;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx10;
         private DevComponents.Editors.ComboItem comboItem12;
         private DevComponents.Editors.ComboItem comboItem13;
         private DevComponents.Editors.ComboItem comboItem14;
         private DevComponents.Editors.ComboItem comboItem15;
         private DevComponents.Editors.ComboItem comboItem16;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX15;
-        private DevComponents.DotNetBar.ButtonX buttonX18;
-        private DevComponents.DotNetBar.ButtonX buttonX16;
-        private DevComponents.DotNetBar.ButtonX buttonX15;
         private System.Windows.Forms.ToolStripMenuItem posExtToolStripMenuItem1;
-        private DevComponents.DotNetBar.PanelEx panelEx11;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.TextBox guiTime;
-        private DevComponents.DotNetBar.ButtonX buttonX19;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem 位移ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripMenuItem 变形时间曲线ToolStripMenuItem;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemLoardDisplace;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLoardExtenssion;
-        private DevComponents.DotNetBar.PanelEx panelEx12;
         private DevComponents.DotNetBar.ItemPanel itemPanel1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private DevComponents.DotNetBar.LabelX labelX33;
         private DevComponents.DotNetBar.LabelX labelX42;
+        private DevComponents.DotNetBar.PanelEx panelEx10;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private DevComponents.DotNetBar.ButtonX buttonX18;
+        private DevComponents.DotNetBar.ButtonX buttonX16;
+        private DevComponents.DotNetBar.ButtonX buttonX15;
+        private DevComponents.DotNetBar.SuperTabControl superTabControl4;
+        private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel9;
+        private DevComponents.DotNetBar.PanelEx panelEx11;
+        private System.Windows.Forms.Button btn_ConState;
+        private DevComponents.DotNetBar.ButtonX btnX_SetLow;
+        private DevComponents.DotNetBar.ButtonX bntX_GUIOn;
+        private DevComponents.DotNetBar.ButtonX btnX_SetHigh;
+        private DevComponents.DotNetBar.ButtonX bntX_GUIOff;
+        private DevComponents.DotNetBar.ButtonX bntX_MoveUp;
+        private DevComponents.DotNetBar.ButtonX btnX_QuickMoveDown;
+        private DevComponents.DotNetBar.ButtonX btnX_MoveQuickUp;
+        private DevComponents.DotNetBar.ButtonX bntX_MoveDown;
+        private DevComponents.DotNetBar.ButtonX bntX_MoveHalt;
+        private DevComponents.DotNetBar.SuperTabItem superTabItem9;
+        private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel10;
+        private DevComponents.DotNetBar.TabControl tabControl1;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel1;
+        private DevComponents.DotNetBar.ButtonX buttonX19;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx11;
+        private DevComponents.DotNetBar.LabelX labelX41;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx10;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX15;
+        private DevComponents.DotNetBar.LabelX labelX40;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx8;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Dyn_StartSpeed_Unit;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX14;
+        private DevComponents.DotNetBar.LabelX labelX38;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_Dyn_StartSpeed;
+        private DevComponents.DotNetBar.LabelX labelX36;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx9;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx7;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Dyn_StartCtrl;
+        private DevComponents.DotNetBar.LabelX labelX39;
+        private DevComponents.DotNetBar.LabelX labelX37;
+        private DevComponents.DotNetBar.LabelX labelX35;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Dyn_EDC;
+        private DevComponents.DotNetBar.LabelX labelX34;
+        private DevComponents.DotNetBar.TabItem tabItem1;
+        private DevComponents.DotNetBar.SuperTabItem superTabItem10;
+        private DevComponents.DotNetBar.Controls.Line line2;
+        private System.Windows.Forms.CheckBox cb_DrawPosition;
+        private System.Windows.Forms.CheckBox cb_DrawCommand;
+        private System.Windows.Forms.CheckBox cb_DrawExtension;
+        private System.Windows.Forms.CheckBox cb_DrawLoad;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisPOSY_MaxUp;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MaxUp;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisPOSY_MaxDown;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MinUp;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MaxDown;
+        private DevComponents.DotNetBar.ButtonX btnX_AsixYMin;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisLoadY_MinDown;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisYMax;
+        public System.Windows.Forms.DataVisualization.Charting.Chart chart_machine;
+        private DevComponents.DotNetBar.ButtonX btnX_Connect;
+        private DevComponents.DotNetBar.ButtonX btnX_Disconnect;
+        private DevComponents.DotNetBar.Controls.Line line1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -4518,11 +4498,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
     }
 }
 
