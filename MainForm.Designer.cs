@@ -3938,6 +3938,7 @@
             this.ToolStripMenuItemSampleInfo.Name = "ToolStripMenuItemSampleInfo";
             this.ToolStripMenuItemSampleInfo.Size = new System.Drawing.Size(108, 20);
             this.ToolStripMenuItemSampleInfo.Text = "试样信息(&S)";
+            this.ToolStripMenuItemSampleInfo.Click += new System.EventHandler(this.ToolStripMenuItemSampleInfo_Click);
             // 
             // ToolStripMenuItem_Result
             // 

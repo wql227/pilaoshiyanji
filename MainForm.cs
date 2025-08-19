@@ -4659,5 +4659,11 @@ namespace DoPENetConnect
         {
             dataGridViewX1.Width = chart_machine.Width;
         }
+
+        private void ToolStripMenuItemSampleInfo_Click(object sender, EventArgs e)
+        {
+            FormTest doTest = new FormTest();
+            doTest.Show();
+        }
     }
 }
