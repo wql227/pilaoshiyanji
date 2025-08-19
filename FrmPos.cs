@@ -86,7 +86,19 @@ namespace DoPENetConnect
                 return;
             }
 
-            MainForm.mainform.MovePos((DoPE.CTRL)cmbX_Pos_MoveCtrl.SelectedIndex, double.Parse(tbX_Pos_SpeedCtrl.Text), double.Parse(tbX_Pos_Destnation.Text));
+            double Pos_SpeedCtrl = 0.0d;
+            double Pos_Destnation = 0.0d;
+            if (cmbX_Pos_SpeedUnit.Text == "kN/s")
+            {
+                Pos_SpeedCtrl = double.Parse(tbX_Pos_SpeedCtrl.Text) * 1000;
+            }
+
+            if (cmbX_Pos_DestnationUnit.Text == "kN")
+            {
+                Pos_Destnation = double.Parse(tbX_Pos_Destnation.Text) * 1000;
+            }
+
+            MainForm.mainform.MovePos((DoPE.CTRL)cmbX_Pos_MoveCtrl.SelectedIndex, Pos_SpeedCtrl, Pos_Destnation);
 
             WriteIni();
         }

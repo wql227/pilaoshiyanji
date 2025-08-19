@@ -2517,7 +2517,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void timer_UpdateData_Tick(object sender, EventArgs e)
         {
-            this.toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            //this.toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             Invalidate();
 
