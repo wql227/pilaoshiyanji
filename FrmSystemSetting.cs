@@ -298,6 +298,12 @@ namespace DoPENetConnect
                 cbX_ProtectOption.SelectedIndex = indexToBeSetted;
             }
 
+            #region 系统设置页面
+
+            //系统设置-设备id
+            //IniFileHelper.GetIniString("Device", "DeviceID", "0", strTmp, strTmp.Capacity);
+            //tbX_DeviceID.Text = strTmp.ToString();
+
             //采样频率
             IniFileHelper.GetIniString("Setting", "SampleFrequency", "0", strTmp, strTmp.Capacity);
             tbX_SampleFrequency.Text = strTmp.ToString();
@@ -309,6 +315,39 @@ namespace DoPENetConnect
             //曲线刷新频率
             IniFileHelper.GetIniString("Setting", "WaveRefreshFrequency", "0", strTmp, strTmp.Capacity);
             tbX_WaveRefreshFrequency.Text = strTmp.ToString();
+
+            #endregion 系统设置页面
+
+            #region 试验机参数页面
+
+            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_MaxForce", "0", strTmp, strTmp.Capacity);
+            comboBoxEx_MaxForce.SelectedIndex = int.Parse(strTmp.ToString());
+            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_MaxTrip", "0", strTmp, strTmp.Capacity);
+            comboBoxEx_MaxTrip.SelectedIndex = int.Parse(strTmp.ToString());
+            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_TripSensor", "0", strTmp, strTmp.Capacity);
+            indexToBeSetted = int.Parse(strTmp.ToString());
+            if (comboBoxEx_TripSensor.Items.Count > indexToBeSetted)
+            {
+                comboBoxEx_TripSensor.SelectedIndex = indexToBeSetted;
+            }
+            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_ForceUnit", "0", strTmp, strTmp.Capacity);
+            comboBoxEx_ForceUnit.SelectedIndex = int.Parse(strTmp.ToString());
+
+            //位移小数位数
+            IniFileHelper.GetIniString("Setting", "numericUpDown_Pos", "0", strTmp, strTmp.Capacity);
+            numericUpDown_Pos.Value = decimal.Parse(strTmp.ToString());
+
+            //试验力小数位数
+            IniFileHelper.GetIniString("Setting", "numericUpDown_Load", "0", strTmp, strTmp.Capacity);
+            numericUpDown_Load.Value = decimal.Parse(strTmp.ToString());
+
+            //变形小数位数
+            IniFileHelper.GetIniString("Setting", "numericUpDown_Ext", "0", strTmp, strTmp.Capacity);
+            numericUpDown_Ext.Value = decimal.Parse(strTmp.ToString());
+
+            #endregion 试验机参数页面
+
+            #region 动态试验过程保护
 
             //峰值保护选项
             IniFileHelper.GetIniString(strConfigSetion, "位移峰值外保护", "0", strTmp, strTmp.Capacity);
@@ -397,10 +436,10 @@ namespace DoPENetConnect
 
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Flag", "0", strTmp, strTmp.Capacity);
             checkBoxX4.Checked = strTmp.ToString() == "0" ? false : true;
-            //系统设置-设备id
-            //IniFileHelper.GetIniString("Device", "DeviceID", "0", strTmp, strTmp.Capacity);
-            //tbX_DeviceID.Text = strTmp.ToString();
 
+            #endregion 动态试验过程保护
+
+            #region 按键常数
             //按钮常量设置
             IniFileHelper.GetIniString("PushButtonFunctionConstant", "Up", "0", strTmp, strTmp.Capacity);
             tbX_upval.Text = strTmp.ToString();
@@ -414,19 +453,12 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDown", "0", strTmp, strTmp.Capacity);
             tbX_hurrydownval.Text = strTmp.ToString();
 
+            #endregion 按键常数
+
             ///ui 选中状态
             //IniFileHelper.GetIniString("UIDefault", "cbX_ProtectOption", "0", strTmp, strTmp.Capacity);
             //cbX_ProtectOption.SelectedIndex = int.Parse(strTmp.ToString());
-            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_MaxForce", "0", strTmp, strTmp.Capacity);
-            comboBoxEx_MaxForce.SelectedIndex = int.Parse(strTmp.ToString());
-            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_MaxTrip", "0", strTmp, strTmp.Capacity);
-            comboBoxEx_MaxTrip.SelectedIndex = int.Parse(strTmp.ToString());
-            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_TripSensor", "0", strTmp, strTmp.Capacity);
-            indexToBeSetted = int.Parse(strTmp.ToString());
-            if (comboBoxEx_TripSensor.Items.Count > indexToBeSetted)
-                comboBoxEx_TripSensor.SelectedIndex = indexToBeSetted;
-            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_ForceUnit", "0", strTmp, strTmp.Capacity);
-            comboBoxEx_ForceUnit.SelectedIndex = int.Parse(strTmp.ToString());
+
         }
 
 
@@ -601,6 +633,22 @@ namespace DoPENetConnect
             MainForm.mainform.WaveRefreshFrequency = int.Parse(strTmp);
             IniFileHelper.WriteIniString("Setting", "WaveRefreshFrequency", strTmp);
 
+            //位移小数位
+            strTmp = numericUpDown_Pos.Text;
+            MainForm.mainform.PosDigit = int.Parse(strTmp);
+            IniFileHelper.WriteIniString("Setting", "numericUpDown_Pos", strTmp);
+
+            //试验力小数位
+            strTmp = numericUpDown_Load.Text;
+            MainForm.mainform.LoadDigit = int.Parse(strTmp);
+            IniFileHelper.WriteIniString("Setting", "numericUpDown_Load", strTmp);
+
+            //变形小数位
+            strTmp = numericUpDown_Ext.Text;
+            MainForm.mainform.ExtDigit = int.Parse(strTmp);
+            IniFileHelper.WriteIniString("Setting", "numericUpDown_Ext", strTmp);
+
+            #region 按键常数
 
             //按钮常量设置
             strTmp = tbX_upval.Text;
@@ -619,10 +667,11 @@ namespace DoPENetConnect
             MainForm.mainform.btnHurryDownConstantVal = double.Parse(strTmp);
             IniFileHelper.WriteIniString("PushButtonFunctionConstant", "HurryDown", strTmp);
 
+            #endregion 按键常数
 
             ///ui 选中状态
             //strTmp = cbX_ProtectOption.SelectedIndex.ToString();
-           // IniFileHelper.WriteIniString("UIDefault ", "cbX_ProtectOption", strTmp);
+            // IniFileHelper.WriteIniString("UIDefault ", "cbX_ProtectOption", strTmp);
 
             strTmp = comboBoxEx_MaxForce.SelectedIndex.ToString();
             IniFileHelper.WriteIniString("UIDefault ", "comboBoxEx_MaxForce", strTmp);

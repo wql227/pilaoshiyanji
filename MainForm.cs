@@ -301,7 +301,7 @@ namespace DoPENetConnect
         public long nCurrentCount = 0;
 
         /// <summary>
-        /// 
+        /// 上一次运行次数
         /// </summary>
         public long nPreTestCount = 0;
 
@@ -350,19 +350,58 @@ namespace DoPENetConnect
 
         public double g_Position = 0.0d;
 
+        public double g_MaxPosition = 0.0d;
+
+        public double g_MinPosition = 0.0d;
+
         public double g_Load = 0.0d;
+
+        public double g_MaxLoad = 0.0d;
+
+        public double g_MinLoad = 0.0d;
 
         public double g_Command = 0.0d;
 
         public double g_Extension = 0.0d;
 
+        public double g_MaxExtension = 0.0d;
+
+        public double g_MinExtension = 0.0d;
+
+        /// <summary>
+        /// 周期
+        /// </summary>
         public long g_Count = 0;
 
+        /// <summary>
+        /// 采样频率
+        /// </summary>
         public double SampleFrequency = 0.001;
 
+        /// <summary>
+        /// 数据刷新频率
+        /// </summary>
         public int DataRefreshFrequency = 200;
 
+        /// <summary>
+        /// 波形显示频率
+        /// </summary>
         public int WaveRefreshFrequency = 200;
+
+        /// <summary>
+        /// 位移小数显示位数
+        /// </summary>
+        public decimal PosDigit = 3;
+
+        /// <summary>
+        /// 试验力小数显示位数
+        /// </summary>
+        public decimal LoadDigit = 3;
+
+        /// <summary>
+        /// 变形小数显示位数
+        /// </summary>
+        public decimal ExtDigit = 3;
 
 
 
@@ -837,8 +876,8 @@ namespace DoPENetConnect
                     PVPositionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
                     if (PVPositionQueue.Count >= 50)
                     {
-                        tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
-                        tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
+                        g_MaxPosition = PVPositionQueue.Max();
+                        g_MinPosition = PVPositionQueue.Min();
 
                         if (bActivated && isRunning)
                         {
@@ -944,13 +983,13 @@ namespace DoPENetConnect
                     {
                         if (LoadUnit.ToUpper() == "KN")
                         {
-                            tb_MaxLoad.Text = (PVLoadQueue.Max() / 1000).ToString("0.0");
-                            tb_MinLoad.Text = (PVLoadQueue.Min() / 1000).ToString("0.0");
+                            g_MaxLoad = PVLoadQueue.Max() / 1000;
+                            g_MinLoad = PVLoadQueue.Min() / 1000;
                         }
                         else
                         {
-                            tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
-                            tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
+                            g_MaxLoad = PVLoadQueue.Max();
+                            g_MinLoad = PVLoadQueue.Min();
                         }
 
                         if (bActivated && isRunning)
@@ -1045,8 +1084,8 @@ namespace DoPENetConnect
                     PVExtensionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
                     if (PVExtensionQueue.Count >= 50)
                     {
-                        tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
-                        tb_MinExt.Text = PVExtensionQueue.Min().ToString("0.000");
+                        g_MaxExtension = PVExtensionQueue.Max();
+                        g_MinExtension = PVExtensionQueue.Min();
 
                         if (bActivated && isRunning)
                         {
@@ -2471,6 +2510,11 @@ namespace DoPENetConnect
         }
 
 
+        /// <summary>
+        /// 数据更新定时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer_UpdateData_Tick(object sender, EventArgs e)
         {
             this.toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -2485,7 +2529,10 @@ namespace DoPENetConnect
             TimeSpan elapsed = stopwatch.Elapsed;
             guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
 
-            guiPosition.Text = g_Position.ToString("0.000");
+            guiPosition.Text = g_Position.ToString($"F{PosDigit}");
+
+            tb_MaxPos.Text = g_MaxPosition.ToString($"F{PosDigit}");
+            tb_MinPos.Text = g_MinPosition.ToString($"F{PosDigit}");
 
             if (isRunning)
             {
@@ -2494,13 +2541,18 @@ namespace DoPENetConnect
 
             if (LoadUnit.ToUpper() == "KN")
             {
-                guiLoad.Text = (g_Load / 1e3).ToString("0.0");
+                guiLoad.Text = (g_Load / 1e3).ToString($"F{LoadDigit}");
             }
             else
             {
-                guiLoad.Text = g_Load.ToString("0.000");
+                guiLoad.Text = g_Load.ToString($"F{LoadDigit}");
             }
 
+            tb_MaxLoad.Text = g_MaxLoad.ToString($"F{LoadDigit}");
+            tb_MinLoad.Text = g_MinLoad.ToString($"F{LoadDigit}");
+
+            tb_MaxExt.Text = g_MaxExtension.ToString($"F{ExtDigit}");
+            tb_MinExt.Text = g_MinExtension.ToString($"F{ExtDigit}");
             //EnableButton();
         }
 

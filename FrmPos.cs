@@ -145,21 +145,37 @@ namespace DoPENetConnect
             switch (cmbX_Pos_MoveCtrl.SelectedValue.ToString())
             {
                 case "POS":
-                    cmbX_Pos_SpeedUnit.DataSource = new string[]{"mm/s" };
-                    cmbX_Pos_DestnationUnit.DataSource = new string[]{ "mm"};
-                    break;
+                    {
+                        cmbX_Pos_SpeedUnit.DataSource = new string[] { "mm/s" };
+                        cmbX_Pos_DestnationUnit.DataSource = new string[] { "mm" };
+                        break;
+                    }
                 case "LOAD":
-                    cmbX_Pos_SpeedUnit.DataSource = new string[]{"N/s", "kN/s" };
-                    cmbX_Pos_DestnationUnit.DataSource = new string[]{"N", "kN"};
-                    break;
+                    {
+                        if (MainForm.mainform.LoadUnit.ToUpper() == "KN")
+                        {
+                            cmbX_Pos_SpeedUnit.DataSource = new string[] { "kN/s" };
+                            cmbX_Pos_DestnationUnit.DataSource = new string[] { "kN" };
+                        }
+                        else
+                        {
+                            cmbX_Pos_SpeedUnit.DataSource = new string[] { "N/s" };
+                            cmbX_Pos_DestnationUnit.DataSource = new string[] { "N" };
+                        }
+                        break;
+                    }
                 case "EXTENSION":
-                    cmbX_Pos_SpeedUnit.DataSource = new string[] { "mm/s" };
-                    cmbX_Pos_DestnationUnit.DataSource = new string[] { "mm" };
-                    break;
+                    {
+                        cmbX_Pos_SpeedUnit.DataSource = new string[] { "mm/s" };
+                        cmbX_Pos_DestnationUnit.DataSource = new string[] { "mm" };
+                        break;
+                    }
                 default:
-                    cmbX_Pos_SpeedUnit.DataSource = new string[] { "Unit/s" };
-                    cmbX_Pos_DestnationUnit.DataSource = new string[] { "Unit" };
-                    break;
+                    {
+                        cmbX_Pos_SpeedUnit.DataSource = new string[] { "Unit/s" };
+                        cmbX_Pos_DestnationUnit.DataSource = new string[] { "Unit" };
+                        break;
+                    }
 
             }
         }

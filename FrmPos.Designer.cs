@@ -140,6 +140,7 @@
             // 
             this.cmbX_Pos_MoveCtrl.DisplayMember = "Text";
             this.cmbX_Pos_MoveCtrl.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Pos_MoveCtrl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbX_Pos_MoveCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbX_Pos_MoveCtrl.FormattingEnabled = true;
             this.cmbX_Pos_MoveCtrl.ItemHeight = 21;
@@ -169,6 +170,7 @@
             // 
             this.cmbX_Pos_SpeedUnit.DisplayMember = "Text";
             this.cmbX_Pos_SpeedUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Pos_SpeedUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbX_Pos_SpeedUnit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbX_Pos_SpeedUnit.FormattingEnabled = true;
             this.cmbX_Pos_SpeedUnit.ItemHeight = 21;
@@ -188,6 +190,7 @@
             // 
             this.cmbX_Pos_DestnationUnit.DisplayMember = "Text";
             this.cmbX_Pos_DestnationUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Pos_DestnationUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbX_Pos_DestnationUnit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbX_Pos_DestnationUnit.FormattingEnabled = true;
             this.cmbX_Pos_DestnationUnit.ItemHeight = 21;
