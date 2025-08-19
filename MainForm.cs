@@ -354,6 +354,11 @@ namespace DoPENetConnect
         MainParams originParams;
         int firstCycleParamsSetFlag=0;
 
+        /// <summary>
+        /// 试验&试验信息
+        /// </summary>
+        FormTest doTest;
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -385,7 +390,10 @@ namespace DoPENetConnect
             floatMenus = new FormFloat();
             floatMenus.Owner = this;
             floatMenus.Show();
-            floatMenus.Location = new Point(this.Location.X - floatMenus.Width, this.Location.Y);
+
+            //初始化试验信息
+            doTest = new FormTest();
+            doTest.Owner = this;
 
             //设置曲线初始值
             //CurveSet("时间(s)", " 位 \n\n 移 \n\n(mm)");
@@ -424,11 +432,12 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+           // ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
 
+            
             floatMenus.Activate();
         }
 
@@ -4526,7 +4535,6 @@ namespace DoPENetConnect
         private void buttonX18_Click(object sender, EventArgs e)
         {
 
-
             if (bActivated)
             {
                 if (this.tbX_Dyn_StartSpeed.Text == "" || this.textBoxX14.Text == "" || this.textBoxX15.Text == "")
@@ -4662,8 +4670,10 @@ namespace DoPENetConnect
 
         private void ToolStripMenuItemSampleInfo_Click(object sender, EventArgs e)
         {
-            FormTest doTest = new FormTest();
-            doTest.Show();
+            if (doTest != null)
+            {
+                doTest.Show();
+            }
         }
     }
 }
