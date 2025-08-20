@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
@@ -50,11 +51,23 @@
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
+            this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.sampleCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleNo1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleShape1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleOperator1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleChecker1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleDependation1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleNotes1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleLoad1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
             // superTabControl1
@@ -83,7 +96,7 @@
             this.superTabControl1.ReorderTabsEnabled = true;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl1.SelectedTabIndex = 0;
-            this.superTabControl1.Size = new System.Drawing.Size(661, 619);
+            this.superTabControl1.Size = new System.Drawing.Size(653, 619);
             this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl1.TabIndex = 15;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -95,7 +108,7 @@
             this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(661, 591);
+            this.superTabControlPanel1.Size = new System.Drawing.Size(653, 591);
             this.superTabControlPanel1.TabIndex = 1;
             this.superTabControlPanel1.TabItem = this.superTabItem1;
             // 
@@ -106,11 +119,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.dataGridViewX1);
+            this.panelEx1.Controls.Add(this.btnX_FrmProtectOption_Cencel);
+            this.panelEx1.Controls.Add(this.btnX_FrmProtectOption_OK);
             this.panelEx1.Controls.Add(this.groupPanel1);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Location = new System.Drawing.Point(1, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(659, 590);
+            this.panelEx1.Size = new System.Drawing.Size(651, 590);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -147,7 +163,7 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(7, 9);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(646, 231);
+            this.groupPanel1.Size = new System.Drawing.Size(638, 231);
             // 
             // 
             // 
@@ -414,11 +430,102 @@
             this.superTabItem1.Name = "superTabItem1";
             this.superTabItem1.Text = "试样信息";
             // 
+            // btnX_FrmProtectOption_Cencel
+            // 
+            this.btnX_FrmProtectOption_Cencel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_FrmProtectOption_Cencel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_FrmProtectOption_Cencel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnX_FrmProtectOption_Cencel.Location = new System.Drawing.Point(355, 457);
+            this.btnX_FrmProtectOption_Cencel.Name = "btnX_FrmProtectOption_Cencel";
+            this.btnX_FrmProtectOption_Cencel.Size = new System.Drawing.Size(95, 36);
+            this.btnX_FrmProtectOption_Cencel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_FrmProtectOption_Cencel.TabIndex = 5;
+            this.btnX_FrmProtectOption_Cencel.Text = "取消";
+            // 
+            // btnX_FrmProtectOption_OK
+            // 
+            this.btnX_FrmProtectOption_OK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_FrmProtectOption_OK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_FrmProtectOption_OK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnX_FrmProtectOption_OK.Location = new System.Drawing.Point(186, 457);
+            this.btnX_FrmProtectOption_OK.Name = "btnX_FrmProtectOption_OK";
+            this.btnX_FrmProtectOption_OK.Size = new System.Drawing.Size(95, 36);
+            this.btnX_FrmProtectOption_OK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_FrmProtectOption_OK.TabIndex = 6;
+            this.btnX_FrmProtectOption_OK.Text = "确定";
+            // 
+            // dataGridViewX1
+            // 
+            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.sampleCode1,
+            this.sampleNo1,
+            this.sampleShape1,
+            this.sampleOperator1,
+            this.sampleChecker1,
+            this.sampleDependation1,
+            this.sampleNotes1,
+            this.sampleLoad1});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(7, 263);
+            this.dataGridViewX1.Name = "dataGridViewX1";
+            this.dataGridViewX1.RowTemplate.Height = 23;
+            this.dataGridViewX1.Size = new System.Drawing.Size(638, 150);
+            this.dataGridViewX1.TabIndex = 7;
+            // 
+            // sampleCode1
+            // 
+            this.sampleCode1.HeaderText = "试样编号";
+            this.sampleCode1.Name = "sampleCode1";
+            // 
+            // sampleNo1
+            // 
+            this.sampleNo1.HeaderText = "试样批次";
+            this.sampleNo1.Name = "sampleNo1";
+            // 
+            // sampleShape1
+            // 
+            this.sampleShape1.HeaderText = "试样形状";
+            this.sampleShape1.Name = "sampleShape1";
+            // 
+            // sampleOperator1
+            // 
+            this.sampleOperator1.HeaderText = "试验人员";
+            this.sampleOperator1.Name = "sampleOperator1";
+            // 
+            // sampleChecker1
+            // 
+            this.sampleChecker1.HeaderText = "校核人员";
+            this.sampleChecker1.Name = "sampleChecker1";
+            // 
+            // sampleDependation1
+            // 
+            this.sampleDependation1.HeaderText = "试验依据";
+            this.sampleDependation1.Name = "sampleDependation1";
+            // 
+            // sampleNotes1
+            // 
+            this.sampleNotes1.HeaderText = "备注";
+            this.sampleNotes1.Name = "sampleNotes1";
+            // 
+            // sampleLoad1
+            // 
+            this.sampleLoad1.HeaderText = "破坏荷载";
+            this.sampleLoad1.Name = "sampleLoad1";
+            // 
             // FormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 619);
+            this.ClientSize = new System.Drawing.Size(653, 619);
             this.Controls.Add(this.superTabControl1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -431,6 +538,7 @@
             this.superTabControlPanel1.ResumeLayout(false);
             this.panelEx1.ResumeLayout(false);
             this.groupPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -459,5 +567,16 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
+        private DevComponents.DotNetBar.ButtonX btnX_FrmProtectOption_Cencel;
+        private DevComponents.DotNetBar.ButtonX btnX_FrmProtectOption_OK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sampleCode1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sampleNo1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sampleShape1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sampleOperator1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sampleChecker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sampleDependation1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sampleNotes1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sampleLoad1;
     }
 }
