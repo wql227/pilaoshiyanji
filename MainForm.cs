@@ -429,6 +429,9 @@ namespace DoPENetConnect
         /// </summary>
         public List<double> chartExtY = new List<double>();
 
+        public double PositionYMax = 0.0;
+
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
