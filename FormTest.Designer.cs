@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
@@ -138,7 +138,6 @@
             // 
             // dataGridViewX1
             // 
-            this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sampleCode1,
@@ -149,14 +148,14 @@
             this.sampleDependation1,
             this.sampleNotes1,
             this.sampleLoad1});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(7, 263);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -209,24 +208,26 @@
             this.btnX_FrmProtectOption_Cencel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_FrmProtectOption_Cencel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_FrmProtectOption_Cencel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_FrmProtectOption_Cencel.Location = new System.Drawing.Point(355, 457);
+            this.btnX_FrmProtectOption_Cencel.Location = new System.Drawing.Point(370, 457);
             this.btnX_FrmProtectOption_Cencel.Name = "btnX_FrmProtectOption_Cencel";
             this.btnX_FrmProtectOption_Cencel.Size = new System.Drawing.Size(95, 36);
             this.btnX_FrmProtectOption_Cencel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_FrmProtectOption_Cencel.TabIndex = 5;
             this.btnX_FrmProtectOption_Cencel.Text = "取消";
+            this.btnX_FrmProtectOption_Cencel.Click += new System.EventHandler(this.btnX_FrmProtectOption_Cencel_Click);
             // 
             // btnX_FrmProtectOption_OK
             // 
             this.btnX_FrmProtectOption_OK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_FrmProtectOption_OK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_FrmProtectOption_OK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_FrmProtectOption_OK.Location = new System.Drawing.Point(186, 457);
+            this.btnX_FrmProtectOption_OK.Location = new System.Drawing.Point(201, 457);
             this.btnX_FrmProtectOption_OK.Name = "btnX_FrmProtectOption_OK";
             this.btnX_FrmProtectOption_OK.Size = new System.Drawing.Size(95, 36);
             this.btnX_FrmProtectOption_OK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_FrmProtectOption_OK.TabIndex = 6;
             this.btnX_FrmProtectOption_OK.Text = "确定";
+            this.btnX_FrmProtectOption_OK.Click += new System.EventHandler(this.btnX_FrmProtectOption_OK_Click);
             // 
             // groupPanel1
             // 

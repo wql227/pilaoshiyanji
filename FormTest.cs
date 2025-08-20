@@ -60,6 +60,7 @@ namespace DoPENetConnect
 
         public void RemoveDataGridView()
         {
+            dataGridViewX1.AllowUserToAddRows = false;
             while (dataGridViewX1.RowCount > 0) {
                 dataGridViewX1.Rows.RemoveAt(0);
             }
@@ -116,11 +117,6 @@ namespace DoPENetConnect
             //    isThereOneRows = false;
             //    dataGridViewX1.Rows.RemoveAt(0);
             //}
-            int columnN = dataGridViewX1.ColumnCount;
-            if (grpControls.Count < dataGridViewX1.ColumnCount)
-            {
-                columnN = grpControls.Count;
-            }
             int j = 0;
             for (int i = grpControls.Count - 1; i >= 0; i--)
             {
@@ -149,6 +145,17 @@ namespace DoPENetConnect
                 e.Cancel = true;
                 this.Visible = false;
             }
+        }
+
+        private void btnX_FrmProtectOption_Cencel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnX_FrmProtectOption_OK_Click(object sender, EventArgs e)
+        {
+            MainForm.mainform.SetTestInfo(dataGridViewX1);
+            this.Close();
         }
     }
 }

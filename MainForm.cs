@@ -4672,5 +4672,40 @@ namespace DoPENetConnect
                 doTest.Show();
             }
         }
+
+        public void RemoveDataGridView()
+        {
+            dataGridViewX2.AllowUserToAddRows = false;
+            while (dataGridViewX2.RowCount > 0)
+            {
+                dataGridViewX2.Rows.RemoveAt(0);
+            }
+        }
+
+        public void SetTestInfo(DataGridView tmpGridview)
+        {
+            RemoveDataGridView();
+            if (tmpGridview.RowCount != 0)
+            {
+                foreach (DataGridViewRow tmpRow in tmpGridview.Rows)
+                {
+                    DataGridViewRow newRow = new DataGridViewRow();
+                    newRow.CreateCells(dataGridViewX2);
+                    int j = 0;
+                    for (int i=0; i < dataGridViewX2.ColumnCount; i++)
+                    {
+                        
+                            newRow.Cells[j].Value = tmpRow.Cells[i].Value;
+                            j++;
+                      
+                    }
+                    //if (isThereOneRows == false)
+                    dataGridViewX2.Rows.Add(newRow);
+                    newRow.HeaderCell.Value = (dataGridViewX2.Rows.Count).ToString();
+                }
+
+            }
+
+        }
     }
 }
