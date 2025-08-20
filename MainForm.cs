@@ -376,7 +376,7 @@ namespace DoPENetConnect
         /// <summary>
         /// 采样频率
         /// </summary>
-        public double SampleFrequency = 0.001;
+        public double SampleFrequency = 1;
 
         /// <summary>
         /// 数据刷新频率
@@ -553,8 +553,8 @@ namespace DoPENetConnect
                 // for a 300 ms display refresh
                 DoPE.Machine Machine = new DoPE.Machine(0);
                 MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
-                double aaa = (SampleFrequency / Machine.MDef.SystemTime /*+ Machine.MDef.SystemTime / 2*/);
-                MyEdc.Eh.SetOnDataBlockSize((Int32)(aaa));
+
+                MyEdc.Eh.SetOnDataBlockSize((Int32)((SampleFrequency / 1000)/ Machine.MDef.SystemTime /*+ Machine.MDef.SystemTime / 2*/));
                 MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
                 MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
                 MyEdc.Eh.OnPosMsgHdlr += new DoPE.OnPosMsgHdlr(OnPosMsg);
@@ -956,19 +956,23 @@ namespace DoPENetConnect
                     }
 
                     // TODO:判断峰谷值是否超过外保护
-                    double dPosition = 0; 
+                    double dPosition = 0;
+
 
                     if (nCount >= nCountREfresh)
                     {
-                        //if (this.IsHandleCreated)
-                        //{
-                        //    this.BeginInvoke(new Action(() =>
-                        //{
-                        //guiPosition.Text = text;
-                        //}));
-                        //}
-                        //Invalidate();
-
+                        if (this.IsHandleCreated)
+                        {
+                            this.BeginInvoke(new Action(() =>
+                            {
+                                //guiPosition.Text = text;
+                                guiPosition.Text = g_Position.ToString($"F{PosDigit}");
+                                tb_MaxPos.Text = g_MaxPosition.ToString($"F{PosDigit}");
+                                tb_MinPos.Text = g_MinPosition.ToString($"F{PosDigit}");
+                            }
+                            ));
+                        }
+                        Invalidate();
                     }
 
                     //记录试验力
@@ -1072,13 +1076,33 @@ namespace DoPENetConnect
 
                     if (nCount >= nCountREfresh)
                     {
-                        //guiLoad.Text = text;
+                        //if (this.IsHandleCreated)
+                        {
+                            //this.BeginInvoke(new Action(() =>
+                            //{
+
+                                //guiLoad.Text = text;
+                                if (LoadUnit.ToUpper() == "KN")
+                                {
+                                    guiLoad.Text = (g_Load / 1e3).ToString($"F{LoadDigit}");
+                                }
+                                else
+                                {
+                                    guiLoad.Text = g_Load.ToString($"F{LoadDigit}");
+                                }
+
+                                tb_MaxLoad.Text = g_MaxLoad.ToString($"F{LoadDigit}");
+                                tb_MinLoad.Text = g_MinLoad.ToString($"F{LoadDigit}");
+                            //}
+                            //));
+                        }
                     }
 
                     //记录变形
                     strCSVLog += text + ",";
                     //data_display2 = decimal.Parse(guiLoad.Text);
                     text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
+                    g_Extension = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E];
 
                     //变形队列
                     PVExtensionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
@@ -1166,7 +1190,10 @@ namespace DoPENetConnect
 
                     if (nCount >= nCountREfresh)
                     {
-                        guiExtension.Text = text;
+                        guiExtension.Text = g_Extension.ToString();
+
+                        tb_MaxExt.Text = g_MaxExtension.ToString($"F{ExtDigit}");
+                        tb_MinExt.Text = g_MinExtension.ToString($"F{ExtDigit}");
                     }
 
                     //记录命令
@@ -1225,12 +1252,11 @@ namespace DoPENetConnect
                         else
                         {
                             nTotalTestCount = (gSample.Cycles >> 1) + nPreTestCount;
-                            //tbX_TestCycles.Text = nTotalTestCount.ToString();
-                            g_Count = nTotalTestCount;
+                            tbX_TestCycles.Text = nTotalTestCount.ToString();
+                            //g_Count = nTotalTestCount;
                         }
                     }
 
-                    //labelX33.Text = (Sample.Cycles >> 1).ToString();
                     //试验次数达到指定的试验次数
                     if (isRunning) 
                     {
@@ -1487,7 +1513,7 @@ namespace DoPENetConnect
             //x_Position = 0.0;
             chart_machine.Series[0].Points.AddXY(0.0, 0.0);
 
-            SetLoadUnint();
+            SetMemberParam();
 
             //试验力
             chart_machine.Series[1].Points.Clear();
@@ -2211,8 +2237,6 @@ namespace DoPENetConnect
         #endregion 
 
 
-
-
         /// <summary>
         /// 示波
         /// </summary>
@@ -2222,9 +2246,9 @@ namespace DoPENetConnect
             //try
             //{
             //X轴坐标长度 = dStep * nTotal
-            dStep = 0.01;
-          //dStep = 0.001;
-            //nTotal = 100;
+            //dStep = 0.01;
+            dStep = 0.001;
+            nTotal = 2000;
             //if (MyEdc.IsConnected() && bConnected)
             if (chart_machine != null)
             {
@@ -2255,7 +2279,7 @@ namespace DoPENetConnect
 
                         if (chart_machine.Series[0] != null)
                         {
-                            //this.BeginInvoke(new Action(() =>
+                            this.BeginInvoke(new Action(() =>
                             {
                                 chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
                                 x_Position += dStep;
@@ -2266,9 +2290,9 @@ namespace DoPENetConnect
                                     x_Position = 0.0;
                                 }
                             }
-                            //));
+                            ));
 
-                 
+
                         }
 
                         //绘制Load
@@ -2529,35 +2553,15 @@ namespace DoPENetConnect
             TimeSpan elapsed = stopwatch.Elapsed;
             guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
 
-            guiPosition.Text = g_Position.ToString($"F{PosDigit}");
+            //guiPosition.Text = g_Position.ToString($"F{PosDigit}");
 
-            tb_MaxPos.Text = g_MaxPosition.ToString($"F{PosDigit}");
-            tb_MinPos.Text = g_MinPosition.ToString($"F{PosDigit}");
-
-            if (isRunning)
-            {
-                tbX_TestCycles.Text = g_Count.ToString();
-            }
-
-            if (LoadUnit.ToUpper() == "KN")
-            {
-                guiLoad.Text = (g_Load / 1e3).ToString($"F{LoadDigit}");
-            }
-            else
-            {
-                guiLoad.Text = g_Load.ToString($"F{LoadDigit}");
-            }
-
-            tb_MaxLoad.Text = g_MaxLoad.ToString($"F{LoadDigit}");
-            tb_MinLoad.Text = g_MinLoad.ToString($"F{LoadDigit}");
-
-            tb_MaxExt.Text = g_MaxExtension.ToString($"F{ExtDigit}");
-            tb_MinExt.Text = g_MinExtension.ToString($"F{ExtDigit}");
             //EnableButton();
         }
 
-        public void SetLoadUnint()
+        public void SetMemberParam()
         {
+            nCountREfresh = DataRefreshFrequency / (int)SampleFrequency;
+
             if (LoadUnit.ToUpper() == "KN")
             {
                 label3.Text = "kN";

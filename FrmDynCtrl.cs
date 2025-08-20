@@ -182,9 +182,27 @@ namespace DoPENetConnect
             }
 
             MoveCtrl = (DoPE.CTRL)cmbX_Dyn_MoveCtrl.SelectedIndex;
-            SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text);
-            Offset = double.Parse(tbX_Dyn_Offset.Text);
-            Amplitude = double.Parse(tbX_Dyn_Amplitude.Text);
+
+            if (cmbX_Dyn_StartSpeed_Unit.Text == "kN/s")
+            {
+                SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) * 1000;
+            }
+            else
+            {
+                SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text);
+            }
+
+            if (cmbX_Dyn_MoveCtrl_Unit.Text == "kN")
+            {
+                Offset = double.Parse(tbX_Dyn_Offset.Text) * 1000;
+                Amplitude = double.Parse(tbX_Dyn_Amplitude.Text) * 1000;
+            }
+            else
+            {
+                Offset = double.Parse(tbX_Dyn_Offset.Text);
+                Amplitude = double.Parse(tbX_Dyn_Amplitude.Text);
+            }
+
             Frequency = double.Parse(tbX_Dyn_Frequency.Text);
             HalfCycles = int.Parse(tbX_Cycles.Text) * 2;
 
@@ -563,7 +581,14 @@ namespace DoPENetConnect
                     }
                 case "LOAD":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s", "kN/s" };
+                        if (MainForm.mainform.LoadUnit.ToUpper() == "KN")
+                        {
+                            cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "kN/s" };
+                        }
+                        else
+                        {
+                            cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s" };
+                        }
                         break;
                     }
                 case "EXTENSION":
@@ -593,15 +618,16 @@ namespace DoPENetConnect
                     }
                 case "LOAD":
                     {
-                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "N", "kN" };
 
                         if (MainForm.mainform.LoadUnit.ToUpper() == "KN")
                         {
+                            cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "kN" };
                             labelX9.Text = "kN";
                             labelX11.Text = "kN";
                         }
                         else
                         {
+                            cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "N" };
                             labelX9.Text = "N";
                             labelX11.Text = "N";
                         }

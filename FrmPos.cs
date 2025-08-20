@@ -92,10 +92,18 @@ namespace DoPENetConnect
             {
                 Pos_SpeedCtrl = double.Parse(tbX_Pos_SpeedCtrl.Text) * 1000;
             }
+            else
+            {
+                Pos_SpeedCtrl = double.Parse(tbX_Pos_SpeedCtrl.Text);
+            }
 
             if (cmbX_Pos_DestnationUnit.Text == "kN")
             {
                 Pos_Destnation = double.Parse(tbX_Pos_Destnation.Text) * 1000;
+            }
+            else
+            {
+                Pos_Destnation = double.Parse(tbX_Pos_Destnation.Text);
             }
 
             MainForm.mainform.MovePos((DoPE.CTRL)cmbX_Pos_MoveCtrl.SelectedIndex, Pos_SpeedCtrl, Pos_Destnation);

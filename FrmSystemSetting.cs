@@ -1024,7 +1024,7 @@ namespace DoPENetConnect
 
             WriteIni();
 
-            MainForm.mainform.SetLoadUnint();
+            MainForm.mainform.SetMemberParam();
 
             this.Close();
         }
