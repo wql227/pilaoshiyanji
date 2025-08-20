@@ -29,6 +29,7 @@
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
@@ -45,8 +46,6 @@
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -55,6 +54,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelEx10 = new DevComponents.DotNetBar.PanelEx();
+            this.dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.sampleCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleShape = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleOperator = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleChecker = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleDependation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.line1 = new DevComponents.DotNetBar.Controls.Line();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -329,30 +337,6 @@
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.变形时间曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.sampleCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleShape = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleOperator = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleChecker = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleDependation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -360,6 +344,7 @@
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelEx10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl4)).BeginInit();
             this.superTabControl4.SuspendLayout();
             this.superTabControlPanel9.SuspendLayout();
@@ -394,8 +379,6 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX2)).BeginInit();
             this.SuspendLayout();
             // 
             // StartCommunicationWithEdcTimer
@@ -503,7 +486,6 @@
             this.panelEx10.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx10.Controls.Add(this.dataGridViewX2);
             this.panelEx10.Controls.Add(this.line1);
-            this.panelEx10.Controls.Add(this.dataGridViewX1);
             this.panelEx10.Controls.Add(this.label2);
             this.panelEx10.Controls.Add(this.label1);
             this.panelEx10.Controls.Add(this.buttonX18);
@@ -539,6 +521,77 @@
             this.panelEx10.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx10.Style.GradientAngle = 90;
             this.panelEx10.TabIndex = 67;
+            // 
+            // dataGridViewX2
+            // 
+            this.dataGridViewX2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewX2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewX2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewX2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewX2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.sampleCode,
+            this.sampleNo,
+            this.sampleShape,
+            this.sampleOperator,
+            this.sampleChecker,
+            this.sampleDependation,
+            this.sampleNotes,
+            this.sampleLoad});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX2.Location = new System.Drawing.Point(0, 511);
+            this.dataGridViewX2.Name = "dataGridViewX2";
+            this.dataGridViewX2.RowTemplate.Height = 23;
+            this.dataGridViewX2.Size = new System.Drawing.Size(1295, 140);
+            this.dataGridViewX2.TabIndex = 92;
+            // 
+            // sampleCode
+            // 
+            this.sampleCode.HeaderText = "试样编号";
+            this.sampleCode.Name = "sampleCode";
+            // 
+            // sampleNo
+            // 
+            this.sampleNo.HeaderText = "试样批次";
+            this.sampleNo.Name = "sampleNo";
+            // 
+            // sampleShape
+            // 
+            this.sampleShape.HeaderText = "试样形状";
+            this.sampleShape.Name = "sampleShape";
+            // 
+            // sampleOperator
+            // 
+            this.sampleOperator.HeaderText = "试验人员";
+            this.sampleOperator.Name = "sampleOperator";
+            // 
+            // sampleChecker
+            // 
+            this.sampleChecker.HeaderText = "校核人员";
+            this.sampleChecker.Name = "sampleChecker";
+            // 
+            // sampleDependation
+            // 
+            this.sampleDependation.HeaderText = "试验依据";
+            this.sampleDependation.Name = "sampleDependation";
+            // 
+            // sampleNotes
+            // 
+            this.sampleNotes.HeaderText = "备注";
+            this.sampleNotes.Name = "sampleNotes";
+            // 
+            // sampleLoad
+            // 
+            this.sampleLoad.HeaderText = "破坏载荷";
+            this.sampleLoad.Name = "sampleLoad";
             // 
             // line1
             // 
@@ -3979,184 +4032,6 @@
             this.变形时间曲线ToolStripMenuItem.Text = "变形—时间曲线";
             this.变形时间曲线ToolStripMenuItem.Click += new System.EventHandler(this.变形时间曲线ToolStripMenuItem_Click);
             // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Column11";
-            this.Column11.Name = "Column11";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Column10";
-            this.Column10.Name = "Column10";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Column9";
-            this.Column9.Name = "Column9";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Column8";
-            this.Column8.Name = "Column8";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Column7";
-            this.Column7.Name = "Column7";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Column6";
-            this.Column6.Name = "Column6";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "Column14";
-            this.Column14.Name = "Column14";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Column13";
-            this.Column13.Name = "Column13";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Column12";
-            this.Column12.Name = "Column12";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
-            // dataGridViewX1
-            // 
-            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewX1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column12,
-            this.Column13,
-            this.Column14,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(-18, 153);
-            this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1295, 141);
-            this.dataGridViewX1.TabIndex = 91;
-            this.dataGridViewX1.Visible = false;
-            // 
-            // dataGridViewX2
-            // 
-            this.dataGridViewX2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewX2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewX2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewX2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewX2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.sampleCode,
-            this.sampleNo,
-            this.sampleShape,
-            this.sampleOperator,
-            this.sampleChecker,
-            this.sampleDependation,
-            this.sampleNotes,
-            this.sampleLoad});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX2.Location = new System.Drawing.Point(0, 511);
-            this.dataGridViewX2.Name = "dataGridViewX2";
-            this.dataGridViewX2.RowTemplate.Height = 23;
-            this.dataGridViewX2.Size = new System.Drawing.Size(1295, 140);
-            this.dataGridViewX2.TabIndex = 92;
-            // 
-            // sampleCode
-            // 
-            this.sampleCode.HeaderText = "试样编号";
-            this.sampleCode.Name = "sampleCode";
-            // 
-            // sampleNo
-            // 
-            this.sampleNo.HeaderText = "试样批次";
-            this.sampleNo.Name = "sampleNo";
-            // 
-            // sampleShape
-            // 
-            this.sampleShape.HeaderText = "试样形状";
-            this.sampleShape.Name = "sampleShape";
-            // 
-            // sampleOperator
-            // 
-            this.sampleOperator.HeaderText = "试验人员";
-            this.sampleOperator.Name = "sampleOperator";
-            // 
-            // sampleChecker
-            // 
-            this.sampleChecker.HeaderText = "校核人员";
-            this.sampleChecker.Name = "sampleChecker";
-            // 
-            // sampleDependation
-            // 
-            this.sampleDependation.HeaderText = "试验依据";
-            this.sampleDependation.Name = "sampleDependation";
-            // 
-            // sampleNotes
-            // 
-            this.sampleNotes.HeaderText = "备注";
-            this.sampleNotes.Name = "sampleNotes";
-            // 
-            // sampleLoad
-            // 
-            this.sampleLoad.HeaderText = "破坏载荷";
-            this.sampleLoad.Name = "sampleLoad";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4182,6 +4057,7 @@
             this.groupBox1.PerformLayout();
             this.panelEx10.ResumeLayout(false);
             this.panelEx10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl4)).EndInit();
             this.superTabControl4.ResumeLayout(false);
             this.superTabControlPanel9.ResumeLayout(false);
@@ -4221,8 +4097,6 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX2)).EndInit();
             this.ResumeLayout(false);
 
     }
@@ -4520,21 +4394,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleDependation;
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleNotes;
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleLoad;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
     }
 }
 
