@@ -188,6 +188,7 @@ namespace DoPENetConnect
         /// <summary>
         /// 
         /// </summary>
+        double x_Data = 0.0;
         double x_Position = 0.0;
         double x_Load = 0.0;
         double x_Extension = 0.0;
@@ -403,7 +404,30 @@ namespace DoPENetConnect
         /// </summary>
         public decimal ExtDigit = 3;
 
+        /// <summary>
+        /// X轴列表
+        /// </summary>
+        public List<double> chartX = new List< double > ();
 
+        /// <summary>
+        /// 位移Y轴列表
+        /// </summary>
+        public List<double> chartPosY = new List<double>();
+
+        /// <summary>
+        ///试验力移Y轴列表
+        /// </summary>
+        public List<double> chartLoadY = new List<double>();
+
+        /// <summary>
+        /// 命令Y轴列表
+        /// </summary>
+        public List<double> chartCommandY = new List<double>();
+
+        /// <summary>
+        /// 变形Y轴列表
+        /// </summary>
+        public List<double> chartExtY = new List<double>();
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -429,6 +453,8 @@ namespace DoPENetConnect
             mainform = this;
 
             LoadIni();
+
+            dStep = SampleFrequency / 1000;
 
             nTotal = AxisXMax / dStep;
         }
@@ -1081,18 +1107,18 @@ namespace DoPENetConnect
                             //this.BeginInvoke(new Action(() =>
                             //{
 
-                                //guiLoad.Text = text;
-                                if (LoadUnit.ToUpper() == "KN")
-                                {
-                                    guiLoad.Text = (g_Load / 1e3).ToString($"F{LoadDigit}");
-                                }
-                                else
-                                {
-                                    guiLoad.Text = g_Load.ToString($"F{LoadDigit}");
-                                }
+                            //guiLoad.Text = text;
+                            if (LoadUnit.ToUpper() == "KN")
+                            {
+                                guiLoad.Text = (g_Load / 1e3).ToString($"F{LoadDigit}");
+                            }
+                            else
+                            {
+                                guiLoad.Text = g_Load.ToString($"F{LoadDigit}");
+                            }
 
-                                tb_MaxLoad.Text = g_MaxLoad.ToString($"F{LoadDigit}");
-                                tb_MinLoad.Text = g_MinLoad.ToString($"F{LoadDigit}");
+                            tb_MaxLoad.Text = g_MaxLoad.ToString($"F{LoadDigit}");
+                            tb_MinLoad.Text = g_MinLoad.ToString($"F{LoadDigit}");
                             //}
                             //));
                         }
@@ -1216,11 +1242,7 @@ namespace DoPENetConnect
                     strCSVLog += text + ",";
                     strCSVLog +=(gSample.Cycles >> 1 ).ToString();
 
-                    if (nCount >= nCountREfresh)
-                    {
-                        nCount = 0;
-                        //Invalidate();
-                    }
+  
 
                     if (isRunning)
                     {
@@ -1282,6 +1304,12 @@ namespace DoPENetConnect
                 if (bConnected && bActivated)
                 {
                    ShowWave(Block);
+                }
+
+                if (nCount >= nCountREfresh)
+                {
+                    nCount = 0;
+                    //Invalidate();
                 }
 
                 //IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
@@ -2247,159 +2275,127 @@ namespace DoPENetConnect
             //{
             //X轴坐标长度 = dStep * nTotal
             //dStep = 0.01;
-            dStep = 0.001;
-            nTotal = 2000;
+            //dStep = 0.001;
+            //nTotal = 2000;
             //if (MyEdc.IsConnected() && bConnected)
             if (chart_machine != null)
             {
                 if (!bPause)
                 {
                     //for (int i = 20; Block.Data.Length > i; i += 200)
-                    for (int i = 0; Block.Data.Length > i; i += 10)
-                        //for (int i = 5; Block.Data.Length > i; i += 10)
+                    for (int i = 0; Block.Data.Length > i; i +=5)
+                    //for (int i = 5; Block.Data.Length >= i; i += 50)
                     {
                         //绘制Position
                         double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
-                        //x_Position += nAxisStep;
 
-                        //if (x_Position == 0)
-                        //{
-                        //    valInScaleSetted = true;
-                        //    maxSeries0 = y_Position;
-                        //    minSeries0 = y_Position;
-                        //}
-                        //if (maxSeries0 <y_Position)maxSeries0 = y_Position;
-                        //if (minSeries0 > y_Position)minSeries0 = y_Position;
+                        //绘制Load
+                        double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
 
-                        //Console.WriteLine("glm-{0}-{1}-{2}-{3}", y_Position, i,maxSeries0,minSeries0);
-                        //if (chart_machine.Series == null)
-                        //{
-                        //    return;
-                        //}
+                        //绘制Extension
+                        double y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
 
-                        if (chart_machine.Series[0] != null)
+                        //绘制Command
+                        double y_Command = Block.Data[i].Data.Command;
+
+
+                        //批量添加点
+                        //if (chart_machine.Series[0] != null)
                         {
-                            this.BeginInvoke(new Action(() =>
+                            //this.BeginInvoke(new Action(() =>
                             {
-                                chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
-                                x_Position += dStep;
+                                //暂停重绘提高性能
+                                chart_machine.SuspendLayout();
+
+                                chartX.Add(x_Data);
+                                chartPosY.Add(y_Position);
+                                chartLoadY.Add(y_Load);
+                                chartExtY.Add(y_Extension);
+                                chartCommandY.Add(y_Command);
+
+                                if (chartX.Count % 200 == 0)
+                                {
+                                    chart_machine.Series[0].Points.DataBindXY(chartX, chartPosY);
+                                    chart_machine.Series[1].Points.DataBindXY(chartX, chartLoadY);
+                                    chart_machine.Series[2].Points.DataBindXY(chartX, chartExtY);
+                                    chart_machine.Series[3].Points.DataBindXY(chartX, chartCommandY);
+                                    //chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
+                                    chart_machine.ResumeLayout();
+                                }
 
                                 if (chart_machine.Series[0].Points.Count >= nTotal)
                                 {
                                     chart_machine.Series[0].Points.Clear();
-                                    x_Position = 0.0;
+                                    chart_machine.Series[1].Points.Clear();
+                                    chart_machine.Series[2].Points.Clear();
+                                    chart_machine.Series[3].Points.Clear();
+                                    x_Data = 0.0;
+
+                                    chartX.Clear();
+                                    chartPosY.Clear();
+                                    chartLoadY.Clear();
+                                    chartExtY.Clear();
+                                    chartCommandY.Clear();
                                 }
-                            }
-                            ));
+                                else
+                                {
+                                    x_Data += dStep;
+                                }
 
-
-                        }
-
-                        //绘制Load
-                        double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
-                        //x_Load += nAxisStep;
-                        // Console.WriteLine("glm2-{0}", y_Load);
-
-                        //获取力曲线最大最小值
-                        //if (x_Load == 0)
-                        //{
-                        //    maxSeries1 = y_Load;
-                        //    minSeries1 = y_Load;
-                        //}
-                        //if (maxSeries1 < y_Load) maxSeries1 = y_Load;
-                        //if (minSeries1 > y_Load) minSeries1 = y_Load;
-
-                        if (chart_machine.Series[1] != null)
-                        {
-                            //this.BeginInvoke(new Action(() =>
-                            {
-                                chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
-                                x_Load += dStep;
                             }
                             //));
-
-                            if (chart_machine.Series[1].Points.Count >= nTotal)
-                            {
-                                chart_machine.Series[1].Points.Clear();
-                                x_Load = 0.0;
-                            }
                         }
 
-                        //绘制Extension
-                        double y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
-                        //x_Load += nAxisStep;
-                        //Console.WriteLine("glm3-{0}", y_Extension);
-
-                        //获取形变曲线最大最小值
-                        //if (x_Extension == 0)
+                 
+                        //if (chart_machine.Series[1] != null)
                         //{
-                        //    maxSeries2 = y_Extension;
-                        //    minSeries2 = y_Extension;
-                        //}
-                        //if (maxSeries2 < y_Extension) maxSeries2 = y_Extension;
-                        //if (minSeries2 > y_Extension) minSeries2 = y_Extension;
-
-                        if (chart_machine.Series[2] != null)
-                        {
-                            //this.BeginInvoke(new Action(() =>
-                            {
-                                chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
-                                x_Extension += dStep;
-                            }
-                            //));
-
-                            if (chart_machine.Series[2].Points.Count >= nTotal)
-                            {
-                                chart_machine.Series[2].Points.Clear();
-                                x_Extension = 0.0;
-                            }
-                        }
-
-                        //绘制Command
-                        double y_Command = Block.Data[i].Data.Command;
-                        //x_Load += nAxisStep;
-                        //获取命令曲线最大最小值
-                        //Console.WriteLine("glm4-{0}", y_Command);
-                        //if (!valInScaleSetted2)
-                        //{
-                        //    if (x_Command == 0)
+                        //    //this.BeginInvoke(new Action(() =>
                         //    {
-                        //        valInScaleSetted2 = true;
-                        //        maxSeries3 = y_Command;
-                        //        minSeries3 = y_Command;
+                        //        chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
+                        //        x_Data += dStep;
+                        //    }
+                        //    //));
+
+                        //    if (chart_machine.Series[1].Points.Count >= nTotal)
+                        //    {
+                        //        chart_machine.Series[1].Points.Clear();
+                        //        x_Data = 0.0;
                         //    }
                         //}
-                        //if (maxSeries3 < y_Command) maxSeries3 = y_Command;
-                        //if (minSeries3 > y_Command) minSeries3 = y_Command;
-                        //var Axis = chart_machine.ChartAreas[0].AxisX;
-                        //// 获取X轴的最小值和最大值
-                        //double minValue = Axis.Minimum;
-                        //double maxValue = Axis.Maximum;
 
-                        if (chart_machine.Series[3] != null)
-                        {
-                            //this.BeginInvoke(new Action(() =>
-                            {
-                                chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
-                                x_Command += dStep;
-                            }
-                            //));
+                        //if (chart_machine.Series[2] != null)
+                        //{
+                        //    //this.BeginInvoke(new Action(() =>
+                        //    {
+                        //        chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
+                        //        x_Extension += dStep;
+                        //    }
+                        //    //));
 
-                            if (chart_machine.Series[3].Points.Count >= nTotal)
-                            {
-                                chart_machine.Series[3].Points.Clear();
-                                x_Command = 0.0;
-                            }
-                        }
+                        //    if (chart_machine.Series[2].Points.Count >= nTotal)
+                        //    {
+                        //        chart_machine.Series[2].Points.Clear();
+                        //        x_Extension = 0.0;
+                        //    }
+                        //}
+
+      
+                        //if (chart_machine.Series[3] != null)
+                        //{
+                        //    //this.BeginInvoke(new Action(() =>
+                        //    {
+                        //        chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
+                        //        x_Command += dStep;
+                        //    }
+                        //    //));
+
+                        //    if (chart_machine.Series[3].Points.Count >= nTotal)
+                        //    {
+                        //        chart_machine.Series[3].Points.Clear();
+                        //        x_Command = 0.0;
+                        //    }
+                        //}
                     }
-
-
-                    //autoFittingFlag++;
-                    //if (autoFittingFlag == nTotal / 2)
-                    //{
-                    //    autoFittingFlag = 0;
-                    //    AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);
-                    //}
                 }
 
             }
@@ -2438,7 +2434,6 @@ namespace DoPENetConnect
             {
                 if (cb_DrawCommand.Checked)
                 {
-
                     //if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
                     //if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
                 }
@@ -3945,33 +3940,47 @@ namespace DoPENetConnect
             //#region postion axis auto fitting
             //位移曲线自适应
 
-            if (Math.Abs(double.Parse(tb_MaxPos.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinPos.Text)) <= 0.01)
+            if (!double.TryParse(tb_MaxPos.Text, out double maxPos) ||
+              !double.TryParse(tb_MinPos.Text, out double minPos))
+            {
+                // 解析失败，使用默认范围或不处理
+                chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
+                chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
+                chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "F2";
+                return;
+            }
+
+            // 处理绝对值过小的情况（接近0）
+            if (Math.Abs(maxPos) <= 0.01 && Math.Abs(minPos) <= 0.01)
             {
                 chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
                 chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
             }
             else
             {
-                if (double.Parse(tb_MaxPos.Text) == double.Parse(tb_MinPos.Text))
+                // 使用一个小的 epsilon 避免除以0或范围过小
+                const double epsilon = 1e-10;
+                double range = Math.Max(Math.Abs(maxPos - minPos), epsilon);
+
+                // 如果 max 和 min 非常接近，强制设置一个对称范围
+                if (range < epsilon * 100) // 可调阈值
                 {
-                    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2 + 1;
-                    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2 - 1;
+                    double center = (maxPos + minPos) / 2.0;
+                    chart_machine.ChartAreas[0].AxisY.Maximum = center + 0.1;
+                    chart_machine.ChartAreas[0].AxisY.Minimum = center - 0.1;
                 }
                 else
                 {
-                    double range = double.Parse(tb_MaxPos.Text) - double.Parse(tb_MinPos.Text);
-                    double totalHeight = range / 0.85;        // Y 轴总高度的85%
-                    double padding = (totalHeight - range) / 2.0;  // 上下留白
+                    // 正常情况：保留 85% 的数据范围，上下各留 7.5%
+                    double totalHeight = range / 0.85;
+                    double padding = (totalHeight - range) / 2.0;
 
-                    double yAxisMax = double.Parse(tb_MaxPos.Text) + padding;
-                    double yAxisMin = double.Parse(tb_MinPos.Text) - padding;
-
-                    chart_machine.ChartAreas[0].AxisY.Maximum = yAxisMax;
-                    chart_machine.ChartAreas[0].AxisY.Minimum = yAxisMin;
+                    chart_machine.ChartAreas[0].AxisY.Maximum = maxPos + padding;
+                    chart_machine.ChartAreas[0].AxisY.Minimum = minPos - padding;
                 }
 
+                // 统一设置标签格式
                 chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "F2";
-
             }
 
 
