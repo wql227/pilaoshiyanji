@@ -28,10 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.sampleCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleNo1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleShape1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleOperator1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleChecker1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleDependation1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleNotes1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleLoad1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.textBoxX8 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -51,23 +62,12 @@
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
-            this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
-            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.sampleCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleNo1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleShape1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleOperator1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleChecker1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleDependation1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleNotes1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleLoad1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
             this.panelEx1.SuspendLayout();
-            this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
+            this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // superTabControl1
@@ -135,6 +135,98 @@
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 4;
+            // 
+            // dataGridViewX1
+            // 
+            this.dataGridViewX1.AllowUserToAddRows = false;
+            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.sampleCode1,
+            this.sampleNo1,
+            this.sampleShape1,
+            this.sampleOperator1,
+            this.sampleChecker1,
+            this.sampleDependation1,
+            this.sampleNotes1,
+            this.sampleLoad1});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(7, 263);
+            this.dataGridViewX1.Name = "dataGridViewX1";
+            this.dataGridViewX1.RowTemplate.Height = 23;
+            this.dataGridViewX1.Size = new System.Drawing.Size(638, 150);
+            this.dataGridViewX1.TabIndex = 7;
+            // 
+            // sampleCode1
+            // 
+            this.sampleCode1.HeaderText = "试样编号";
+            this.sampleCode1.Name = "sampleCode1";
+            // 
+            // sampleNo1
+            // 
+            this.sampleNo1.HeaderText = "试样批次";
+            this.sampleNo1.Name = "sampleNo1";
+            // 
+            // sampleShape1
+            // 
+            this.sampleShape1.HeaderText = "试样形状";
+            this.sampleShape1.Name = "sampleShape1";
+            // 
+            // sampleOperator1
+            // 
+            this.sampleOperator1.HeaderText = "试验人员";
+            this.sampleOperator1.Name = "sampleOperator1";
+            // 
+            // sampleChecker1
+            // 
+            this.sampleChecker1.HeaderText = "校核人员";
+            this.sampleChecker1.Name = "sampleChecker1";
+            // 
+            // sampleDependation1
+            // 
+            this.sampleDependation1.HeaderText = "试验依据";
+            this.sampleDependation1.Name = "sampleDependation1";
+            // 
+            // sampleNotes1
+            // 
+            this.sampleNotes1.HeaderText = "备注";
+            this.sampleNotes1.Name = "sampleNotes1";
+            // 
+            // sampleLoad1
+            // 
+            this.sampleLoad1.HeaderText = "破坏荷载";
+            this.sampleLoad1.Name = "sampleLoad1";
+            // 
+            // btnX_FrmProtectOption_Cencel
+            // 
+            this.btnX_FrmProtectOption_Cencel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_FrmProtectOption_Cencel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_FrmProtectOption_Cencel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnX_FrmProtectOption_Cencel.Location = new System.Drawing.Point(355, 457);
+            this.btnX_FrmProtectOption_Cencel.Name = "btnX_FrmProtectOption_Cencel";
+            this.btnX_FrmProtectOption_Cencel.Size = new System.Drawing.Size(95, 36);
+            this.btnX_FrmProtectOption_Cencel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_FrmProtectOption_Cencel.TabIndex = 5;
+            this.btnX_FrmProtectOption_Cencel.Text = "取消";
+            // 
+            // btnX_FrmProtectOption_OK
+            // 
+            this.btnX_FrmProtectOption_OK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_FrmProtectOption_OK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_FrmProtectOption_OK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnX_FrmProtectOption_OK.Location = new System.Drawing.Point(186, 457);
+            this.btnX_FrmProtectOption_OK.Name = "btnX_FrmProtectOption_OK";
+            this.btnX_FrmProtectOption_OK.Size = new System.Drawing.Size(95, 36);
+            this.btnX_FrmProtectOption_OK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_FrmProtectOption_OK.TabIndex = 6;
+            this.btnX_FrmProtectOption_OK.Text = "确定";
             // 
             // groupPanel1
             // 
@@ -323,7 +415,7 @@
             this.textBoxX4.Border.Class = "TextBoxBorder";
             this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX4.Location = new System.Drawing.Point(171, 111);
+            this.textBoxX4.Location = new System.Drawing.Point(166, 111);
             this.textBoxX4.Name = "textBoxX4";
             this.textBoxX4.PreventEnterBeep = true;
             this.textBoxX4.Size = new System.Drawing.Size(100, 26);
@@ -336,7 +428,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(97, 111);
+            this.labelX4.Location = new System.Drawing.Point(92, 111);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(59, 26);
             this.labelX4.TabIndex = 8;
@@ -350,7 +442,7 @@
             this.textBoxX3.Border.Class = "TextBoxBorder";
             this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX3.Location = new System.Drawing.Point(171, 79);
+            this.textBoxX3.Location = new System.Drawing.Point(166, 79);
             this.textBoxX3.Name = "textBoxX3";
             this.textBoxX3.PreventEnterBeep = true;
             this.textBoxX3.Size = new System.Drawing.Size(100, 26);
@@ -363,7 +455,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(97, 79);
+            this.labelX3.Location = new System.Drawing.Point(92, 79);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(59, 26);
             this.labelX3.TabIndex = 6;
@@ -377,7 +469,7 @@
             this.textBoxX2.Border.Class = "TextBoxBorder";
             this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX2.Location = new System.Drawing.Point(171, 47);
+            this.textBoxX2.Location = new System.Drawing.Point(166, 47);
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.PreventEnterBeep = true;
             this.textBoxX2.Size = new System.Drawing.Size(100, 26);
@@ -390,7 +482,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(97, 47);
+            this.labelX2.Location = new System.Drawing.Point(92, 47);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(59, 26);
             this.labelX2.TabIndex = 4;
@@ -404,7 +496,7 @@
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX1.Location = new System.Drawing.Point(171, 15);
+            this.textBoxX1.Location = new System.Drawing.Point(166, 15);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
             this.textBoxX1.Size = new System.Drawing.Size(100, 26);
@@ -417,7 +509,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(97, 15);
+            this.labelX1.Location = new System.Drawing.Point(92, 15);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(59, 26);
             this.labelX1.TabIndex = 0;
@@ -429,97 +521,6 @@
             this.superTabItem1.GlobalItem = false;
             this.superTabItem1.Name = "superTabItem1";
             this.superTabItem1.Text = "试样信息";
-            // 
-            // btnX_FrmProtectOption_Cencel
-            // 
-            this.btnX_FrmProtectOption_Cencel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_FrmProtectOption_Cencel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_FrmProtectOption_Cencel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_FrmProtectOption_Cencel.Location = new System.Drawing.Point(355, 457);
-            this.btnX_FrmProtectOption_Cencel.Name = "btnX_FrmProtectOption_Cencel";
-            this.btnX_FrmProtectOption_Cencel.Size = new System.Drawing.Size(95, 36);
-            this.btnX_FrmProtectOption_Cencel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_FrmProtectOption_Cencel.TabIndex = 5;
-            this.btnX_FrmProtectOption_Cencel.Text = "取消";
-            // 
-            // btnX_FrmProtectOption_OK
-            // 
-            this.btnX_FrmProtectOption_OK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_FrmProtectOption_OK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_FrmProtectOption_OK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnX_FrmProtectOption_OK.Location = new System.Drawing.Point(186, 457);
-            this.btnX_FrmProtectOption_OK.Name = "btnX_FrmProtectOption_OK";
-            this.btnX_FrmProtectOption_OK.Size = new System.Drawing.Size(95, 36);
-            this.btnX_FrmProtectOption_OK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_FrmProtectOption_OK.TabIndex = 6;
-            this.btnX_FrmProtectOption_OK.Text = "确定";
-            // 
-            // dataGridViewX1
-            // 
-            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.sampleCode1,
-            this.sampleNo1,
-            this.sampleShape1,
-            this.sampleOperator1,
-            this.sampleChecker1,
-            this.sampleDependation1,
-            this.sampleNotes1,
-            this.sampleLoad1});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(7, 263);
-            this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(638, 150);
-            this.dataGridViewX1.TabIndex = 7;
-            // 
-            // sampleCode1
-            // 
-            this.sampleCode1.HeaderText = "试样编号";
-            this.sampleCode1.Name = "sampleCode1";
-            // 
-            // sampleNo1
-            // 
-            this.sampleNo1.HeaderText = "试样批次";
-            this.sampleNo1.Name = "sampleNo1";
-            // 
-            // sampleShape1
-            // 
-            this.sampleShape1.HeaderText = "试样形状";
-            this.sampleShape1.Name = "sampleShape1";
-            // 
-            // sampleOperator1
-            // 
-            this.sampleOperator1.HeaderText = "试验人员";
-            this.sampleOperator1.Name = "sampleOperator1";
-            // 
-            // sampleChecker1
-            // 
-            this.sampleChecker1.HeaderText = "校核人员";
-            this.sampleChecker1.Name = "sampleChecker1";
-            // 
-            // sampleDependation1
-            // 
-            this.sampleDependation1.HeaderText = "试验依据";
-            this.sampleDependation1.Name = "sampleDependation1";
-            // 
-            // sampleNotes1
-            // 
-            this.sampleNotes1.HeaderText = "备注";
-            this.sampleNotes1.Name = "sampleNotes1";
-            // 
-            // sampleLoad1
-            // 
-            this.sampleLoad1.HeaderText = "破坏荷载";
-            this.sampleLoad1.Name = "sampleLoad1";
             // 
             // FormTest
             // 
@@ -537,8 +538,8 @@
             this.superTabControl1.ResumeLayout(false);
             this.superTabControlPanel1.ResumeLayout(false);
             this.panelEx1.ResumeLayout(false);
-            this.groupPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            this.groupPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

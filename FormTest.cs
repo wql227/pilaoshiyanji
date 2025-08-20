@@ -57,8 +57,83 @@ namespace DoPENetConnect
             InitializeComponent();
         }
 
+
+        public void RemoveDataGridView()
+        {
+            while (dataGridViewX1.RowCount > 0) {
+                dataGridViewX1.Rows.RemoveAt(0);
+            }
+        }
+
+        bool isThereOneRows = true;
         private void buttonX1_Click(object sender, EventArgs e)
         {
+
+            //var grpControls = groupPanel1.Controls;
+            //DataGridViewRow newRow;
+
+            //if (isThereOneRows == true)
+            //{
+            //    newRow = dataGridViewX1.Rows[0];
+            //}
+            //else
+            //{
+            //    newRow = new DataGridViewRow();
+            //    newRow.CreateCells(dataGridViewX1);
+            //}
+            //int columnN = dataGridViewX1.ColumnCount;
+            //if (grpControls.Count < dataGridViewX1.ColumnCount)
+            //{
+            //    columnN = grpControls.Count;
+            //}
+            //int j = 0;
+            //for (int i = grpControls.Count - 1; i >= 0; i--)
+            //{
+            //    if (grpControls[i].Name.Contains("textBox"))
+            //    {
+            //        newRow.Cells[j].Value = grpControls[i].Text;
+            //        j++;
+            //    }
+            //}
+            //if(isThereOneRows == false)
+            //    dataGridViewX1.Rows.Add(newRow);
+
+
+            //newRow.HeaderCell.Value = (dataGridViewX1.Rows.Count).ToString();
+
+            //if (isThereOneRows == true) {
+
+            //    isThereOneRows = false;
+            //}
+            //for (int i = 0; i < dataGridViewX1.Rows.Count; i++) {
+            //    Console.WriteLine(dataGridViewX1.Rows[i].HeaderCell.Value);
+            //}
+
+            var grpControls = groupPanel1.Controls;
+            DataGridViewRow newRow = new DataGridViewRow();
+            newRow.CreateCells(dataGridViewX1);
+            //if (dataGridViewX1.Rows.Count != 0&&isThereOneRows) {
+            //    isThereOneRows = false;
+            //    dataGridViewX1.Rows.RemoveAt(0);
+            //}
+            int columnN = dataGridViewX1.ColumnCount;
+            if (grpControls.Count < dataGridViewX1.ColumnCount)
+            {
+                columnN = grpControls.Count;
+            }
+            int j = 0;
+            for (int i = grpControls.Count - 1; i >= 0; i--)
+            {
+                if (grpControls[i].Name.Contains("textBox"))
+                {
+                    newRow.Cells[j].Value = grpControls[i].Text;
+                    j++;
+                }
+            }
+            //if (isThereOneRows == false)
+            dataGridViewX1.Rows.Add(newRow);
+            newRow.HeaderCell.Value = (dataGridViewX1.Rows.Count).ToString();
+          
 
         }
 

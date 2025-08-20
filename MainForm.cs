@@ -389,6 +389,7 @@ namespace DoPENetConnect
             //悬浮工具框
             floatMenus = new FormFloat();
             floatMenus.Owner = this;
+            floatMenus.Location = new Point(this.Location.X - floatMenus.Width, this.Location.Y);
             floatMenus.Show();
 
             //初始化试验信息
@@ -4667,6 +4668,7 @@ namespace DoPENetConnect
         {
             if (doTest != null)
             {
+                doTest.RemoveDataGridView();
                 doTest.Show();
             }
         }
