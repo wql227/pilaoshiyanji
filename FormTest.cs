@@ -52,6 +52,12 @@ namespace DoPENetConnect
             get;
         }
 
+        public string sampleTime
+        {
+            set;
+            get;
+        }
+
         public FormTest()
         {
             InitializeComponent();

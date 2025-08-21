@@ -4302,6 +4302,14 @@ namespace DoPENetConnect
                     return;
                 }
 
+                if (dataGridViewX2.RowCount != 0)
+                {
+                    SetExpertmentParams();     //设置试验参数
+                }
+                else {
+                    MessageBox.Show("试验列表为空请重新输入！");
+                }
+
                 if (!isRunning)
                 {
                     originParams = realtimeParams;
@@ -4706,6 +4714,19 @@ namespace DoPENetConnect
 
             }
 
+        }
+
+        public void SetExpertmentParams()
+        {
+            doTest.sampleCode = dataGridViewX2.CurrentRow.Cells[0].Value.ToString();
+            doTest.sampleNo = dataGridViewX2.CurrentRow.Cells[1].Value.ToString();
+            doTest.sampleShape = dataGridViewX2.CurrentRow.Cells[2].Value.ToString();
+            doTest.sampleOperator = dataGridViewX2.CurrentRow.Cells[3].Value.ToString();
+            doTest.sampleChecker = dataGridViewX2.CurrentRow.Cells[4].Value.ToString();
+            doTest.sampleDependation = dataGridViewX2.CurrentRow.Cells[5].Value.ToString();
+            doTest.sampleLoad = dataGridViewX2.CurrentRow.Cells[7].Value.ToString();
+
+            doTest.sampleTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
         }
     }
 }
