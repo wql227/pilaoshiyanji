@@ -2942,7 +2942,6 @@ namespace DoPENetConnect
                 //开始前把曲线x轴调到0点
                 //x_Position = 0;
                 //CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
-                AutoFitMaxMinValClear();
                 isRunning = true;
                 SetControlEnable(false);
                 //nTestCount = HalfCycles;
@@ -4331,6 +4330,7 @@ namespace DoPENetConnect
                 if (!isRunning)
                 {
                     originParams = realtimeParams;
+                    AutoFitMaxMinValClear();      //曲线参数初始化
                     buttonX15.Checked = true;
                     buttonX16.Checked = false;
                      FrmPosExt frmPosExt = new FrmPosExt();
