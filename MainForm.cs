@@ -99,6 +99,7 @@ namespace DoPENetConnect
         public double LoadVal;
         public double ExtenssionVal;
         public int CurrentCurveType;       //当前显示的曲线类型 0：位移时间，1：试验力时间，2：变形时间，4：试验力位移，5：试验力变形
+    
     }
     #endregion start struct
     /// <summary>
@@ -184,7 +185,7 @@ namespace DoPENetConnect
         /// <summary>
         /// 
         /// </summary>
-        double x_Position = 0.0;
+        double x_Position = 10.0;
         double x_Load = 0.0;
         double x_Extension = 0.0;
         double x_Command = 0.0;
@@ -321,15 +322,15 @@ namespace DoPENetConnect
         /// 曲线自动自适应
         /// </summary>
 
-        double maxSeries0 = 0;
-        double maxSeries1 = 0;
-        double maxSeries2 = 0;
-        double maxSeries3 = 0;
+        double maxSeries0 = 10;
+        double maxSeries1 = 10;
+        double maxSeries2 = 10;
+        double maxSeries3 = 10;
 
-        double minSeries0 = 0;
-        double minSeries1 = 0;
-        double minSeries2 = 0;
-        double minSeries3 = 0;
+        double minSeries0 = 10;
+        double minSeries1 = 10;
+        double minSeries2 = 10;
+        double minSeries3 = 10;
 
         public bool valInScaleSetted = false;
 
@@ -1482,6 +1483,7 @@ namespace DoPENetConnect
 
             chart_machine.ChartAreas[0].AxisX.Minimum = 0;
             //chart_machine.ChartAreas[0].AxisX.Maximum = 5;
+            
 
         }
 
@@ -2940,6 +2942,7 @@ namespace DoPENetConnect
                 //开始前把曲线x轴调到0点
                 //x_Position = 0;
                 //CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
+                AutoFitMaxMinValClear();
                 isRunning = true;
                 SetControlEnable(false);
                 //nTestCount = HalfCycles;
@@ -2950,6 +2953,20 @@ namespace DoPENetConnect
                 IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
                 nPreTestCount = int.Parse(strTmp.ToString());
             }
+        }
+
+        public void AutoFitMaxMinValClear()
+        {
+            x_Position = 0;
+             maxSeries0 = 10;
+             maxSeries1 = 10;
+             maxSeries2 = 10;
+             maxSeries3 = 10;
+
+             minSeries0 = 10;
+             minSeries1 = 10;
+             minSeries2 = 10;
+             minSeries3 = 10;
         }
 
         public void CleanChart()
