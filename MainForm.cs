@@ -1174,7 +1174,7 @@ namespace DoPENetConnect
 
                         //按配置的次数存储日志
                         //if ((Sample.Cycles /*>> 1*/) % nCountLog == 0)
-                        Console.WriteLine("glmseconds-{0}-{1}", stopwatch.Elapsed.TotalSeconds, stopwatch.Elapsed.TotalMilliseconds);
+                        //Console.WriteLine("glmseconds-{0}-{1}", stopwatch.Elapsed.TotalSeconds, stopwatch.Elapsed.TotalMilliseconds);
                         long elapsedMillSeconds = (int)stopwatch.Elapsed.TotalMilliseconds;
                         if(elapsedMillSeconds % nCountLog ==0)
                         {
