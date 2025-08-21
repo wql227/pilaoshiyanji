@@ -2978,6 +2978,10 @@ namespace DoPENetConnect
             chart_machine.Series[2].Points.Clear();
             x_Command = 0;
             chart_machine.Series[3].Points.Clear();
+
+            chart_machine.Series[4].Points.Clear();
+
+            chart_machine.Series[5].Points.Clear();
         }
 
         public void SetupResetXHead()
@@ -4331,6 +4335,7 @@ namespace DoPENetConnect
                 {
                     originParams = realtimeParams;
                     AutoFitMaxMinValClear();      //曲线参数初始化
+                    CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
                     buttonX15.Checked = true;
                     buttonX16.Checked = false;
                      FrmPosExt frmPosExt = new FrmPosExt();
