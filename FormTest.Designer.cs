@@ -28,26 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTest));
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.sampleCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleNo1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleShape1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleOperator1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleChecker1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleDependation1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleNotes1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleLoad1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
             this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.textBoxX8 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX7 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -63,6 +53,13 @@
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
+            this.sampleCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleNo1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleShape1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleOperator1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleChecker1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleDependation1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleNotes1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
@@ -147,16 +144,15 @@
             this.sampleOperator1,
             this.sampleChecker1,
             this.sampleDependation1,
-            this.sampleNotes1,
-            this.sampleLoad1});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.sampleNotes1});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(7, 263);
@@ -164,46 +160,6 @@
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(638, 150);
             this.dataGridViewX1.TabIndex = 7;
-            // 
-            // sampleCode1
-            // 
-            this.sampleCode1.HeaderText = "试样编号";
-            this.sampleCode1.Name = "sampleCode1";
-            // 
-            // sampleNo1
-            // 
-            this.sampleNo1.HeaderText = "试样批次";
-            this.sampleNo1.Name = "sampleNo1";
-            // 
-            // sampleShape1
-            // 
-            this.sampleShape1.HeaderText = "试样形状";
-            this.sampleShape1.Name = "sampleShape1";
-            // 
-            // sampleOperator1
-            // 
-            this.sampleOperator1.HeaderText = "试验人员";
-            this.sampleOperator1.Name = "sampleOperator1";
-            // 
-            // sampleChecker1
-            // 
-            this.sampleChecker1.HeaderText = "校核人员";
-            this.sampleChecker1.Name = "sampleChecker1";
-            // 
-            // sampleDependation1
-            // 
-            this.sampleDependation1.HeaderText = "试验依据";
-            this.sampleDependation1.Name = "sampleDependation1";
-            // 
-            // sampleNotes1
-            // 
-            this.sampleNotes1.HeaderText = "备注";
-            this.sampleNotes1.Name = "sampleNotes1";
-            // 
-            // sampleLoad1
-            // 
-            this.sampleLoad1.HeaderText = "破坏荷载";
-            this.sampleLoad1.Name = "sampleLoad1";
             // 
             // btnX_FrmProtectOption_Cencel
             // 
@@ -239,8 +195,6 @@
             this.groupPanel1.CanvasColor = System.Drawing.Color.Transparent;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.buttonX1);
-            this.groupPanel1.Controls.Add(this.textBoxX8);
-            this.groupPanel1.Controls.Add(this.labelX8);
             this.groupPanel1.Controls.Add(this.textBoxX7);
             this.groupPanel1.Controls.Add(this.labelX7);
             this.groupPanel1.Controls.Add(this.textBoxX6);
@@ -301,33 +255,6 @@
             this.buttonX1.TabIndex = 4;
             this.buttonX1.Text = "新建";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
-            // 
-            // textBoxX8
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX8.Border.Class = "TextBoxBorder";
-            this.textBoxX8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX8.Location = new System.Drawing.Point(430, 113);
-            this.textBoxX8.Name = "textBoxX8";
-            this.textBoxX8.PreventEnterBeep = true;
-            this.textBoxX8.Size = new System.Drawing.Size(100, 26);
-            this.textBoxX8.TabIndex = 13;
-            // 
-            // labelX8
-            // 
-            this.labelX8.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(356, 113);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(59, 26);
-            this.labelX8.TabIndex = 12;
-            this.labelX8.Text = "破坏荷载";
             // 
             // textBoxX7
             // 
@@ -525,6 +452,41 @@
             this.superTabItem1.Name = "superTabItem1";
             this.superTabItem1.Text = "试样信息";
             // 
+            // sampleCode1
+            // 
+            this.sampleCode1.HeaderText = "试样编号";
+            this.sampleCode1.Name = "sampleCode1";
+            // 
+            // sampleNo1
+            // 
+            this.sampleNo1.HeaderText = "试样批次";
+            this.sampleNo1.Name = "sampleNo1";
+            // 
+            // sampleShape1
+            // 
+            this.sampleShape1.HeaderText = "试样形状";
+            this.sampleShape1.Name = "sampleShape1";
+            // 
+            // sampleOperator1
+            // 
+            this.sampleOperator1.HeaderText = "试验人员";
+            this.sampleOperator1.Name = "sampleOperator1";
+            // 
+            // sampleChecker1
+            // 
+            this.sampleChecker1.HeaderText = "校核人员";
+            this.sampleChecker1.Name = "sampleChecker1";
+            // 
+            // sampleDependation1
+            // 
+            this.sampleDependation1.HeaderText = "试验依据";
+            this.sampleDependation1.Name = "sampleDependation1";
+            // 
+            // sampleNotes1
+            // 
+            this.sampleNotes1.HeaderText = "备注";
+            this.sampleNotes1.Name = "sampleNotes1";
+            // 
             // FormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -556,8 +518,6 @@
         private DevComponents.DotNetBar.SuperTabItem superTabItem1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX8;
-        private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX7;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX6;
@@ -583,6 +543,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleChecker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleDependation1;
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleNotes1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sampleLoad1;
     }
 }

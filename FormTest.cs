@@ -46,11 +46,6 @@ namespace DoPENetConnect
             set;
             get;
         }
-        public string sampleLoad
-        {
-            set;
-            get;
-        }
 
         public string sampleTime
         {

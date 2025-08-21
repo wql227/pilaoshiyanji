@@ -4702,9 +4702,16 @@ namespace DoPENetConnect
                     int j = 0;
                     for (int i=0; i < dataGridViewX2.ColumnCount; i++)
                     {
-                        
-                            newRow.Cells[j].Value = tmpRow.Cells[i].Value;
-                            j++;
+
+                        if (i < 1)
+                        {
+                            newRow.Cells[i].Value = tmpRow.Cells[i].Value;
+                            //j++;
+                        }
+                        else if (i > 1) {
+                            newRow.Cells[i].Value = tmpRow.Cells[i-1].Value;
+                            //j++;
+                        }
                       
                     }
                     //if (isThereOneRows == false)
@@ -4719,12 +4726,12 @@ namespace DoPENetConnect
         public void SetExpertmentParams()
         {
             doTest.sampleCode = dataGridViewX2.CurrentRow.Cells[0].Value.ToString();
-            doTest.sampleNo = dataGridViewX2.CurrentRow.Cells[1].Value.ToString();
-            doTest.sampleShape = dataGridViewX2.CurrentRow.Cells[2].Value.ToString();
-            doTest.sampleOperator = dataGridViewX2.CurrentRow.Cells[3].Value.ToString();
-            doTest.sampleChecker = dataGridViewX2.CurrentRow.Cells[4].Value.ToString();
-            doTest.sampleDependation = dataGridViewX2.CurrentRow.Cells[5].Value.ToString();
-            doTest.sampleLoad = dataGridViewX2.CurrentRow.Cells[7].Value.ToString();
+            doTest.sampleNo = dataGridViewX2.CurrentRow.Cells[2].Value.ToString();
+            doTest.sampleShape = dataGridViewX2.CurrentRow.Cells[3].Value.ToString();
+            doTest.sampleOperator = dataGridViewX2.CurrentRow.Cells[4].Value.ToString();
+            doTest.sampleChecker = dataGridViewX2.CurrentRow.Cells[5].Value.ToString();
+            doTest.sampleDependation = dataGridViewX2.CurrentRow.Cells[6].Value.ToString();
+            doTest.sampleNotes = dataGridViewX2.CurrentRow.Cells[7].Value.ToString();
 
             doTest.sampleTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
         }
