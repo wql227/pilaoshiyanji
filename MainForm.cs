@@ -433,7 +433,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-           // ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -4302,12 +4302,13 @@ namespace DoPENetConnect
                     return;
                 }
 
-                if (dataGridViewX2.RowCount != 0)
+                if (dataGridViewX2.RowCount != 0&&!DtaGridViewIsSelectedEmpty())
                 {
                     SetExpertmentParams();     //设置试验参数
                 }
                 else {
-                    MessageBox.Show("试验列表为空请重新输入！");
+                    MessageBox.Show("未选中或试验列表为空请重新输入！");
+                    return;
                 }
 
                 if (!isRunning)
@@ -4734,6 +4735,26 @@ namespace DoPENetConnect
             doTest.sampleNotes = dataGridViewX2.CurrentRow.Cells[7].Value.ToString();
 
             doTest.sampleTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+        }
+
+        public bool DtaGridViewIsSelectedEmpty()
+        {
+            bool isEmpty = true;
+            int rowCount = dataGridViewX2.SelectedRows.Count;
+            if (rowCount == 0)
+            {
+                isEmpty = true;
+                return isEmpty;
+            }
+            DataGridViewRow tmpRow = dataGridViewX2.SelectedRows[0];
+            for(int i=0;i<tmpRow.Cells.Count;i++) {
+                if (tmpRow.Cells[i].Value != null) {
+                    isEmpty = false;
+                    break;
+                }
+            }
+
+            return isEmpty;
         }
     }
 }
