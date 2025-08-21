@@ -4703,12 +4703,12 @@ namespace DoPENetConnect
                     for (int i=0; i < dataGridViewX2.ColumnCount; i++)
                     {
 
-                        if (i < 1)
+                        if (i < 3)
                         {
                             newRow.Cells[i].Value = tmpRow.Cells[i].Value;
                             //j++;
                         }
-                        else if (i > 1) {
+                        else if (i > 3) {
                             newRow.Cells[i].Value = tmpRow.Cells[i-1].Value;
                             //j++;
                         }
@@ -4726,8 +4726,8 @@ namespace DoPENetConnect
         public void SetExpertmentParams()
         {
             doTest.sampleCode = dataGridViewX2.CurrentRow.Cells[0].Value.ToString();
-            doTest.sampleNo = dataGridViewX2.CurrentRow.Cells[2].Value.ToString();
-            doTest.sampleShape = dataGridViewX2.CurrentRow.Cells[3].Value.ToString();
+            doTest.sampleNo = dataGridViewX2.CurrentRow.Cells[1].Value.ToString();
+            doTest.sampleShape = dataGridViewX2.CurrentRow.Cells[2].Value.ToString();
             doTest.sampleOperator = dataGridViewX2.CurrentRow.Cells[4].Value.ToString();
             doTest.sampleChecker = dataGridViewX2.CurrentRow.Cells[5].Value.ToString();
             doTest.sampleDependation = dataGridViewX2.CurrentRow.Cells[6].Value.ToString();

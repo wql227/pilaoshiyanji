@@ -56,9 +56,9 @@
             this.panelEx10 = new DevComponents.DotNetBar.PanelEx();
             this.dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.sampleCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sampleNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sampleShape = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sampleOperator = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sampleChecker = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sampleDependation = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -532,9 +532,9 @@
             this.dataGridViewX2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sampleCode,
-            this.sampleLoad,
             this.sampleNo,
             this.sampleShape,
+            this.sampleLoad,
             this.sampleOperator,
             this.sampleChecker,
             this.sampleDependation,
@@ -560,11 +560,6 @@
             this.sampleCode.HeaderText = "试样编号";
             this.sampleCode.Name = "sampleCode";
             // 
-            // sampleLoad
-            // 
-            this.sampleLoad.HeaderText = "破坏载荷";
-            this.sampleLoad.Name = "sampleLoad";
-            // 
             // sampleNo
             // 
             this.sampleNo.HeaderText = "试样批次";
@@ -574,6 +569,11 @@
             // 
             this.sampleShape.HeaderText = "试样形状";
             this.sampleShape.Name = "sampleShape";
+            // 
+            // sampleLoad
+            // 
+            this.sampleLoad.HeaderText = "破坏载荷";
+            this.sampleLoad.Name = "sampleLoad";
             // 
             // sampleOperator
             // 
@@ -4389,9 +4389,9 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX2;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sampleLoad;
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleShape;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sampleLoad;
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleOperator;
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleChecker;
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleDependation;
