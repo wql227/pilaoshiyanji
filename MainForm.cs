@@ -4302,14 +4302,14 @@ namespace DoPENetConnect
                     return;
                 }
 
-                if (dataGridViewX2.RowCount != 0&&!DtaGridViewIsSelectedEmpty())
-                {
-                    SetExpertmentParams();     //设置试验参数
-                }
-                else {
-                    MessageBox.Show("未选中或试验列表为空请重新输入！");
-                    return;
-                }
+                //if (dataGridViewX2.RowCount != 0&&!DtaGridViewIsSelectedEmpty())
+                //{
+                //    SetExpertmentParams();     //设置试验参数
+                //}
+                //else {
+                //    MessageBox.Show("未选中或试验列表为空请重新输入！");
+                //    return;
+                //}
 
                 if (!isRunning)
                 {
