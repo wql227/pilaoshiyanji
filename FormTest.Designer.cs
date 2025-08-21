@@ -34,6 +34,13 @@
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.sampleCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleNo1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleShape1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleOperator1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleChecker1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleDependation1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleNotes1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
             this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -53,13 +60,6 @@
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
-            this.sampleCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleNo1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleShape1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleOperator1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleChecker1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleDependation1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sampleNotes1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
@@ -158,8 +158,43 @@
             this.dataGridViewX1.Location = new System.Drawing.Point(7, 263);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(638, 150);
+            this.dataGridViewX1.Size = new System.Drawing.Size(638, 154);
             this.dataGridViewX1.TabIndex = 7;
+            // 
+            // sampleCode1
+            // 
+            this.sampleCode1.HeaderText = "试样编号";
+            this.sampleCode1.Name = "sampleCode1";
+            // 
+            // sampleNo1
+            // 
+            this.sampleNo1.HeaderText = "试样批次";
+            this.sampleNo1.Name = "sampleNo1";
+            // 
+            // sampleShape1
+            // 
+            this.sampleShape1.HeaderText = "试样形状";
+            this.sampleShape1.Name = "sampleShape1";
+            // 
+            // sampleOperator1
+            // 
+            this.sampleOperator1.HeaderText = "试验人员";
+            this.sampleOperator1.Name = "sampleOperator1";
+            // 
+            // sampleChecker1
+            // 
+            this.sampleChecker1.HeaderText = "校核人员";
+            this.sampleChecker1.Name = "sampleChecker1";
+            // 
+            // sampleDependation1
+            // 
+            this.sampleDependation1.HeaderText = "试验依据";
+            this.sampleDependation1.Name = "sampleDependation1";
+            // 
+            // sampleNotes1
+            // 
+            this.sampleNotes1.HeaderText = "备注";
+            this.sampleNotes1.Name = "sampleNotes1";
             // 
             // btnX_FrmProtectOption_Cencel
             // 
@@ -451,41 +486,6 @@
             this.superTabItem1.GlobalItem = false;
             this.superTabItem1.Name = "superTabItem1";
             this.superTabItem1.Text = "试样信息";
-            // 
-            // sampleCode1
-            // 
-            this.sampleCode1.HeaderText = "试样编号";
-            this.sampleCode1.Name = "sampleCode1";
-            // 
-            // sampleNo1
-            // 
-            this.sampleNo1.HeaderText = "试样批次";
-            this.sampleNo1.Name = "sampleNo1";
-            // 
-            // sampleShape1
-            // 
-            this.sampleShape1.HeaderText = "试样形状";
-            this.sampleShape1.Name = "sampleShape1";
-            // 
-            // sampleOperator1
-            // 
-            this.sampleOperator1.HeaderText = "试验人员";
-            this.sampleOperator1.Name = "sampleOperator1";
-            // 
-            // sampleChecker1
-            // 
-            this.sampleChecker1.HeaderText = "校核人员";
-            this.sampleChecker1.Name = "sampleChecker1";
-            // 
-            // sampleDependation1
-            // 
-            this.sampleDependation1.HeaderText = "试验依据";
-            this.sampleDependation1.Name = "sampleDependation1";
-            // 
-            // sampleNotes1
-            // 
-            this.sampleNotes1.HeaderText = "备注";
-            this.sampleNotes1.Name = "sampleNotes1";
             // 
             // FormTest
             // 
