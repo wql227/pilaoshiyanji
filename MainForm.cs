@@ -2945,7 +2945,7 @@ namespace DoPENetConnect
                 isRunning = true;
                 SetControlEnable(false);
                 //nTestCount = HalfCycles;
-                stopwatch.Start();
+                stopwatch.Restart();
 
                 //读取最后一次实验次数
                 StringBuilder strTmp = new StringBuilder(255);
