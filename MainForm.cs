@@ -431,6 +431,16 @@ namespace DoPENetConnect
 
         public double PositionYMax = 0.0;
 
+        /// <summary>
+        /// 启用高压
+        /// </summary>
+        public string EnableHigh = "0";
+
+        /// <summary>
+        /// 启用低压
+        /// </summary>
+        public string EnableLow = "0";
+
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -1575,6 +1585,17 @@ namespace DoPENetConnect
             //chart_machine.ChartAreas[0].AxisX.Maximum = 5;
 
             this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
+
+            if (EnableHigh == "0")
+            {
+                btnX_SetHigh.Visible = false;
+            }
+
+            if (EnableLow == "0")
+            {
+                btnX_SetLow.Visible = false;
+
+            }
 
         }
 
@@ -3148,6 +3169,14 @@ namespace DoPENetConnect
             //曲线刷新频率
             IniFileHelper.GetIniString("Setting", "WaveRefreshFrequency", "200", strTmp, strTmp.Capacity);
             WaveRefreshFrequency = int.Parse(strTmp.ToString());
+
+            //曲线刷新频率
+            IniFileHelper.GetIniString("Setting", "EnableHigh", "0", strTmp, strTmp.Capacity);
+            EnableHigh = strTmp.ToString();
+
+            //曲线刷新频率
+            IniFileHelper.GetIniString("Setting", "EnableLow", "0", strTmp, strTmp.Capacity);
+            EnableLow = strTmp.ToString();
 
             //停机保护选项
             IniFileHelper.GetIniString("FrmSystemSetting", "限位保护选项", "0", strTmp, strTmp.Capacity);

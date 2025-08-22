@@ -492,7 +492,7 @@ namespace DoPENetConnect
             cmbX_Dyn_WaveFrom.SelectedIndex = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("DynCtrl", "PeakCtrl", "0", strTmp, strTmp.Capacity);
-            cmbX_Dyn_PeakCtrl.SelectedIndex = 0/*int.Parse(strTmp.ToString())*/;
+            cmbX_Dyn_PeakCtrl.SelectedIndex = 1/*int.Parse(strTmp.ToString())*/;
 
             tbX_Dyn_PeakCtrl.Text = strTmp.ToString();
 

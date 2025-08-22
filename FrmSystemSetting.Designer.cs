@@ -194,6 +194,8 @@
             this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.label54 = new System.Windows.Forms.Label();
+            this.cbX_EnableHigh = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbX_EnableLow = new DevComponents.DotNetBar.Controls.CheckBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel4.SuspendLayout();
@@ -244,10 +246,10 @@
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel3);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Location = new System.Drawing.Point(1, 0);
             this.superTabControl1.MaximumSize = new System.Drawing.Size(800, 597);
@@ -2056,7 +2058,9 @@
             this.groupPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel6.Controls.Add(this.tbX_WaveRefreshFrequency);
             this.groupPanel6.Controls.Add(this.tbX_DataRefreshFrequency);
+            this.groupPanel6.Controls.Add(this.cbX_EnableLow);
             this.groupPanel6.Controls.Add(this.tbX_SampleFrequency);
+            this.groupPanel6.Controls.Add(this.cbX_EnableHigh);
             this.groupPanel6.Controls.Add(this.tbX_DeviceID);
             this.groupPanel6.Controls.Add(this.label47);
             this.groupPanel6.Controls.Add(this.label46);
@@ -2068,7 +2072,7 @@
             this.groupPanel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupPanel6.Location = new System.Drawing.Point(0, 194);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(784, 158);
+            this.groupPanel6.Size = new System.Drawing.Size(784, 220);
             // 
             // 
             // 
@@ -2457,6 +2461,34 @@
             this.label54.Text = "需要重启程序";
             this.label54.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // cbX_EnableHigh
+            // 
+            this.cbX_EnableHigh.AutoSize = true;
+            // 
+            // 
+            // 
+            this.cbX_EnableHigh.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_EnableHigh.Location = new System.Drawing.Point(12, 125);
+            this.cbX_EnableHigh.Name = "cbX_EnableHigh";
+            this.cbX_EnableHigh.Size = new System.Drawing.Size(94, 23);
+            this.cbX_EnableHigh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_EnableHigh.TabIndex = 1;
+            this.cbX_EnableHigh.Text = "启用高压";
+            // 
+            // cbX_EnableLow
+            // 
+            this.cbX_EnableLow.AutoSize = true;
+            // 
+            // 
+            // 
+            this.cbX_EnableLow.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbX_EnableLow.Location = new System.Drawing.Point(13, 154);
+            this.cbX_EnableLow.Name = "cbX_EnableLow";
+            this.cbX_EnableLow.Size = new System.Drawing.Size(94, 23);
+            this.cbX_EnableLow.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_EnableLow.TabIndex = 1;
+            this.cbX_EnableLow.Text = "启用低压";
+            // 
             // FrmSystemSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2680,5 +2712,7 @@
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Label label54;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_EnableLow;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbX_EnableHigh;
     }
 }

@@ -685,6 +685,12 @@ namespace DoPENetConnect
             strTmp = comboBoxEx_ForceUnit.SelectedIndex.ToString();
             IniFileHelper.WriteIniString("UIDefault ", "comboBoxEx_ForceUnit", strTmp);
 
+            strTmp = cbX_EnableHigh.Checked == false ? "0" : "1";
+            IniFileHelper.WriteIniString("Setting ", "EnableHigh", strTmp);
+
+            strTmp = cbX_EnableLow.Checked == false ? "0" : "1";
+            IniFileHelper.WriteIniString("Setting ", "EnableLow", strTmp);
+
         }
 
 

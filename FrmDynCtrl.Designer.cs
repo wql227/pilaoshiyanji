@@ -395,12 +395,14 @@
             // 
             this.tbX_Dyn_PeakCtrl.Border.Class = "TextBoxBorder";
             this.tbX_Dyn_PeakCtrl.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_Dyn_PeakCtrl.Enabled = false;
             this.tbX_Dyn_PeakCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tbX_Dyn_PeakCtrl.Location = new System.Drawing.Point(160, 187);
             this.tbX_Dyn_PeakCtrl.Name = "tbX_Dyn_PeakCtrl";
             this.tbX_Dyn_PeakCtrl.PreventEnterBeep = true;
             this.tbX_Dyn_PeakCtrl.Size = new System.Drawing.Size(103, 26);
             this.tbX_Dyn_PeakCtrl.TabIndex = 2;
+            this.tbX_Dyn_PeakCtrl.Text = "1";
             // 
             // tbX_Cycles
             // 
@@ -771,6 +773,7 @@
             this.cmbX_Dyn_PeakCtrl.DisplayMember = "Text";
             this.cmbX_Dyn_PeakCtrl.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbX_Dyn_PeakCtrl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbX_Dyn_PeakCtrl.Enabled = false;
             this.cmbX_Dyn_PeakCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbX_Dyn_PeakCtrl.ForeColor = System.Drawing.Color.Black;
             this.cmbX_Dyn_PeakCtrl.FormattingEnabled = true;
@@ -782,7 +785,7 @@
             this.comboItem13,
             this.comboItem14,
             this.comboItem15});
-            this.cmbX_Dyn_PeakCtrl.Location = new System.Drawing.Point(160, 187);
+            this.cmbX_Dyn_PeakCtrl.Location = new System.Drawing.Point(160, 186);
             this.cmbX_Dyn_PeakCtrl.Name = "cmbX_Dyn_PeakCtrl";
             this.cmbX_Dyn_PeakCtrl.Size = new System.Drawing.Size(103, 27);
             this.cmbX_Dyn_PeakCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
