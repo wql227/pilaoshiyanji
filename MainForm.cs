@@ -2288,7 +2288,7 @@ namespace DoPENetConnect
                 {
                     //for (int i = 20; Block.Data.Length > i; i += 200)
                     //for (int i = 5; Block.Data.Length >= i; i += 50)
-                    for (int i = 0; Block.Data.Length > i; i += 5)
+                    for (int i = 0; Block.Data.Length > i; i += (int)SampleFrequency * 5)
                     {
                         //绘制Position
                         double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
@@ -2296,6 +2296,10 @@ namespace DoPENetConnect
                         //绘制Load
                         double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
 
+                        if (LoadUnit.ToUpper() == "KN")
+                        {
+                            y_Load = y_Load / 1000;
+                        }
                         //绘制Extension
                         double y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
 
@@ -2304,30 +2308,33 @@ namespace DoPENetConnect
 
                         chartX.Add(x_Data);
 
+                        chart_machine.SuspendLayout();
+
                         //批量添加点
-                        if (chart_machine.Series[0] != null)
+                        //if (chart_machine.Series[0] != null)
                         {
                             //this.BeginInvoke(new Action(() =>
                             {
                                 //暂停重绘提高性能
-                                chart_machine.SuspendLayout();
-
                                 chartPosY.Add(y_Position);
+                                chartLoadY.Add(y_Load);
+                                chartExtY.Add(y_Extension);
+                                chartCommandY.Add(y_Command);
                                 try
                                 {
-                                    //20 跟频率相关
-                                    double aaa = DataRefreshFrequency / SampleFrequency;
-                                    if (chartX.Count % aaa == 0)
+                                    //每多少个点绘制一次
+                                    //double aaa = DataRefreshFrequency / SampleFrequency;
+                                    if (chartX.Count % (DataRefreshFrequency / SampleFrequency) == 0)
                                     {
                                         chart_machine.Series[0].Points.DataBindXY(chartX, chartPosY);
-                                        //chart_machine.Series[0].Points.DataBindXY(chartArrayX, chartPosArrayY);
+                                        chart_machine.Series[1].Points.DataBindXY(chartX, chartLoadY);
+                                        chart_machine.Series[2].Points.DataBindXY(chartX, chartExtY);
+                                        chart_machine.Series[3].Points.DataBindXY(chartX, chartCommandY);
                                         //chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
                                     }
 
                                     if (chart_machine.Series[0].Points.Count >= nTotal)
                                     {
-                                        //导致闪烁
-                                        //chart_machine.Series[0].Points.Clear();
                                         for (int n = 0; n < chart_machine.Series[0].Points.Count; n++)
                                         {
                                             chart_machine.Series[0].Points.RemoveAt(n);
@@ -2335,6 +2342,39 @@ namespace DoPENetConnect
                                         x_Data = 0.0;
                                         chartX.Clear();
                                         chartPosY.Clear();
+                                    }
+
+                                    if (chart_machine.Series[1].Points.Count >= nTotal)
+                                    {
+                                        for (int n = 0; n < chart_machine.Series[1].Points.Count; n++)
+                                        {
+                                            chart_machine.Series[1].Points.RemoveAt(n);
+                                        }
+                                        x_Data = 0.0;
+                                        chartX.Clear();
+                                        chartLoadY.Clear();
+                                    }
+
+                                    if (chart_machine.Series[2].Points.Count >= nTotal)
+                                    {
+                                        for (int n = 0; n < chart_machine.Series[2].Points.Count; n++)
+                                        {
+                                            chart_machine.Series[2].Points.RemoveAt(n);
+                                        }
+                                        x_Data = 0.0;
+                                        chartX.Clear();
+                                        chartExtY.Clear();
+                                    }
+
+                                    if (chart_machine.Series[3].Points.Count >= nTotal)
+                                    {
+                                        for (int n = 0; n < chart_machine.Series[3].Points.Count; n++)
+                                        {
+                                            chart_machine.Series[3].Points.RemoveAt(n);
+                                        }
+                                        x_Data = 0.0;
+                                        chartX.Clear();
+                                        chartCommandY.Clear();
                                     }
                                 }
                                 finally
@@ -2348,76 +2388,6 @@ namespace DoPENetConnect
 
                         x_Data += dStep;
 
-
-                        //if (chart_machine.Series[1] != null)
-                        //{
-                        //    //this.BeginInvoke(new Action(() =>
-                        //    {
-                        //        chartLoadY.Add(y_Load);
-                        //        if (chartX.Count % 200 == 0)
-                        //        {
-                        //            chart_machine.Series[1].Points.DataBindXY(chartX, chartLoadY);
-                        //            //chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
-                        //            x_Data += dStep;
-                        //        }
-                        //    }
-                        //    //));
-
-                        //    if (chart_machine.Series[1].Points.Count >= nTotal)
-                        //    {
-                        //        chart_machine.Series[1].Points.Clear();
-                        //        x_Data = 0.0;
-                        //        chartLoadY.Clear();
-                        //    }
-                        //}
-
-                        //if (chart_machine.Series[2] != null)
-                        //{
-                        //    chartExtY.Add(y_Extension);
-
-                        //    //this.BeginInvoke(new Action(() =>
-                        //    {
-                        //        if (chartX.Count % 200 == 0)
-                        //        {
-
-                        //            chart_machine.Series[2].Points.DataBindXY(chartX, chartExtY);
-                        //            //chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
-                        //            x_Extension += dStep;
-                        //        }
-                        //    }
-                        //    //));
-
-                        //    if (chart_machine.Series[2].Points.Count >= nTotal)
-                        //    {
-                        //        chart_machine.Series[2].Points.Clear();
-                        //        x_Extension = 0.0;
-                        //        chartExtY.Clear();
-                        //    }
-                        //}
-
-
-                        //if (chart_machine.Series[3] != null)
-                        //{
-                        //    chartCommandY.Add(y_Command);
-
-                        //    //this.BeginInvoke(new Action(() =>
-                        //    {
-                        //        if (chartX.Count % 200 == 0)
-                        //        {
-                        //            chart_machine.Series[3].Points.DataBindXY(chartX, chartCommandY);
-                        //            //chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
-                        //            x_Command += dStep;
-                        //        }
-                        //    }
-                        //    //));
-
-                        //    if (chart_machine.Series[3].Points.Count >= nTotal)
-                        //    {
-                        //        chart_machine.Series[3].Points.Clear();
-                        //        x_Command = 0.0;
-                        //        chartCommandY.Clear();
-                        //    }
-                        //}
                     }
                 }
             
