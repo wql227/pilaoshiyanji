@@ -44,7 +44,8 @@ namespace DoPENetConnect
                 cmbX_Dyn_EDC.SelectedIndex = 0;
             }
 
-            cmbX_Dyn_PeakCtrl.Visible = false;
+            cmbX_Dyn_PeakCtrl.Visible = true;
+            tbX_Dyn_PeakCtrl.Visible = false;
 
             cmbX_Dyn_StartCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
@@ -119,13 +120,13 @@ namespace DoPENetConnect
         {
             if (cbX_Dyn_PeakCtrl.Checked)
             {
-                cmbX_Dyn_PeakCtrl.Visible = true;
-                tbX_Dyn_PeakCtrl.Visible = false;
+                cmbX_Dyn_PeakCtrl.Visible = false;
+                tbX_Dyn_PeakCtrl.Visible = true;
             }
             else
             {
-                cmbX_Dyn_PeakCtrl.Visible = false;
-                tbX_Dyn_PeakCtrl.Visible = true;
+                cmbX_Dyn_PeakCtrl.Visible = true;
+                tbX_Dyn_PeakCtrl.Visible = false;
             }
         }
 
@@ -491,7 +492,7 @@ namespace DoPENetConnect
             cmbX_Dyn_WaveFrom.SelectedIndex = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("DynCtrl", "PeakCtrl", "0", strTmp, strTmp.Capacity);
-            cmbX_Dyn_PeakCtrl.SelectedIndex = int.Parse(strTmp.ToString());
+            cmbX_Dyn_PeakCtrl.SelectedIndex = 0/*int.Parse(strTmp.ToString())*/;
 
             tbX_Dyn_PeakCtrl.Text = strTmp.ToString();
 

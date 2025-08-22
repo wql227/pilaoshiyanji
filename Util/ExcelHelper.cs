@@ -66,6 +66,12 @@ namespace DoPENetConnect
                         else
                         {
                             string[] array2 = text.Split(',');
+
+                            if (array2.Length <= 1)
+                            {
+                                continue;
+                            }
+
                             DataRow dataRow = dataTable.NewRow();
                             for (int j = 0; j < dataTable.Columns.Count; j++)
                             {

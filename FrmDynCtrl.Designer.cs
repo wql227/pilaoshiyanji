@@ -371,6 +371,7 @@
             this.cbX_Dyn_FadeInOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_Dyn_FadeInOut.TabIndex = 3;
             this.cbX_Dyn_FadeInOut.Text = "淡入淡出";
+            this.cbX_Dyn_FadeInOut.Visible = false;
             // 
             // labelX8
             // 

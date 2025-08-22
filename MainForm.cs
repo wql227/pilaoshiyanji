@@ -901,7 +901,7 @@ namespace DoPENetConnect
                 {
                     //位移队列
                     PVPositionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
-                    if (PVPositionQueue.Count >= 50)
+                    if (PVPositionQueue.Count >= 100)
                     {
                         g_MaxPosition = PVPositionQueue.Max();
                         g_MinPosition = PVPositionQueue.Min();
@@ -1010,7 +1010,7 @@ namespace DoPENetConnect
 
                     //试验力队列
                     PVLoadQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                    if (PVLoadQueue.Count >= 50)
+                    if (PVLoadQueue.Count >= 100)
                     {
                         if (LoadUnit.ToUpper() == "KN")
                         {
@@ -1134,7 +1134,7 @@ namespace DoPENetConnect
 
                     //变形队列
                     PVExtensionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
-                    if (PVExtensionQueue.Count >= 50)
+                    if (PVExtensionQueue.Count >= 100)
                     {
                         g_MaxExtension = PVExtensionQueue.Max();
                         g_MinExtension = PVExtensionQueue.Min();
@@ -1220,7 +1220,7 @@ namespace DoPENetConnect
 
                     if (nCount >= nCountREfresh)
                     {
-                        guiExtension.Text = g_Extension.ToString();
+                        guiExtension.Text = g_Extension.ToString($"F{ExtDigit}");
 
                         tb_MaxExt.Text = g_MaxExtension.ToString($"F{ExtDigit}");
                         tb_MinExt.Text = g_MinExtension.ToString($"F{ExtDigit}");
@@ -2590,7 +2590,7 @@ namespace DoPENetConnect
             //正常返回，开始计时
             if (error == DoPE.ERR.NOERROR)
             {
-                stopwatch.Start();
+                //stopwatch.Start();
             }
         }
 
@@ -2608,7 +2608,7 @@ namespace DoPENetConnect
             //正常返回，开始计时
             if (error == DoPE.ERR.NOERROR)
             {
-                stopwatch.Start();
+                //stopwatch.Start();
             }
 
         }
@@ -3126,27 +3126,27 @@ namespace DoPENetConnect
             tbX_TestCycles.Text = tbX_TestCount.Text;
 
             //按试验次数记录日志
-            IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("Setting", "CountLog", "100", strTmp, strTmp.Capacity);
             nCountLog = int.Parse(strTmp.ToString());
 
             //语言
-            IniFileHelper.GetIniString("Setting", "Language", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("Setting", "Language", "简体中文", strTmp, strTmp.Capacity);
             strLanguage = strTmp.ToString();
 
             //试验力单位
-            IniFileHelper.GetIniString("Setting", "LoadUnit", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("Setting", "LoadUnit", "N", strTmp, strTmp.Capacity);
             LoadUnit = strTmp.ToString();
 
             //采样频率
-            IniFileHelper.GetIniString("Setting", "SampleFrequency", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("Setting", "SampleFrequency", "1", strTmp, strTmp.Capacity);
             SampleFrequency = double.Parse(strTmp.ToString());
 
             //数据刷新频率
-            IniFileHelper.GetIniString("Setting", "DataRefreshFrequency", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("Setting", "DataRefreshFrequency", "200", strTmp, strTmp.Capacity);
             DataRefreshFrequency = int.Parse(strTmp.ToString());
 
             //曲线刷新频率
-            IniFileHelper.GetIniString("Setting", "WaveRefreshFrequency", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("Setting", "WaveRefreshFrequency", "200", strTmp, strTmp.Capacity);
             WaveRefreshFrequency = int.Parse(strTmp.ToString());
 
             //停机保护选项
@@ -3247,16 +3247,16 @@ namespace DoPENetConnect
             #endregion 系统保护
 
             #region 按键功能常数
-            IniFileHelper.GetIniString("PushButtonFunctionConstant", "Up", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "Up", "1", strTmp, strTmp.Capacity);
             btnUpConstantVal = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryUp", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryUp", "10", strTmp, strTmp.Capacity);
             btnHurryUpConstantVal = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("PushButtonFunctionConstant", "Down", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "Down", "1", strTmp, strTmp.Capacity);
             btnDownConstantVal = double.Parse(strTmp.ToString());
 
-            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDown", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDown", "10", strTmp, strTmp.Capacity);
             btnHurryDownConstantVal = double.Parse(strTmp.ToString());
             #endregion 按键功能常数
 
@@ -3270,10 +3270,10 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("FrmSetChartAxisY", "LoadEnable", "0", strTmp, strTmp.Capacity);
             cb_DrawLoad.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmSetChartAxisY", "ExtEnable", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "ExtEnable", "1", strTmp, strTmp.Capacity);
             cb_DrawExtension.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "1", strTmp, strTmp.Capacity);
             cb_DrawCommand.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
         }
@@ -3625,10 +3625,28 @@ namespace DoPENetConnect
                     DataPoint dpCommand = null;
 
                     //List<DataPoint> points = new List<DataPoint>();
-                    chart_machine.Series[0].Points.Clear();
-                    chart_machine.Series[1].Points.Clear();
-                    chart_machine.Series[2].Points.Clear();
-                    chart_machine.Series[3].Points.Clear();
+
+                    for (int i = 0; i < chart_machine.Series[0].Points.Count; i++)
+                    {
+                        chart_machine.Series[0].Points.RemoveAt(i);
+                    }
+                    for (int i = 0; i < chart_machine.Series[1].Points.Count; i++)
+                    {
+                        chart_machine.Series[1].Points.RemoveAt(i);
+                    }
+                    for (int i = 0; i < chart_machine.Series[2].Points.Count; i++)
+                    {
+                        chart_machine.Series[2].Points.RemoveAt(i);
+                    }
+                    for (int i = 0; i < chart_machine.Series[3].Points.Count; i++)
+                    {
+                        chart_machine.Series[3].Points.RemoveAt(i);
+                    }
+
+                    //chart_machine.Series[0].Points.Clear();
+                    //chart_machine.Series[1].Points.Clear();
+                    //chart_machine.Series[2].Points.Clear();
+                    //chart_machine.Series[3].Points.Clear();
 
                     if (trCsvData != null && trCsvData.Rows.Count >= 1)
                     {
@@ -3644,7 +3662,7 @@ namespace DoPENetConnect
                             dpLoad = new DataPoint(strX, strYLoad);
                             dpExt = new DataPoint(strX, strYExt);
                             dpCommand = new DataPoint(strX, strYCommand);
-      
+
                             chart_machine.Series[0].Points.Add(dpPos);
                             chart_machine.Series[1].Points.Add(dpLoad);
                             chart_machine.Series[2].Points.Add(dpExt);
@@ -3656,7 +3674,6 @@ namespace DoPENetConnect
                         MessageBox.Show("所选的文件内无数据！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-
                 }
             }
 
@@ -4122,7 +4139,7 @@ namespace DoPENetConnect
                     {
                         strBlockLog = listXPoint[i].ToString("#0.0000") + "," + listY0Point[i].ToString("#0.0000") + ","
                             + listY1Point[i].ToString("#0.0000") + "," + listY2Point[i].ToString("#0.0000")
-                            + "," + listY3Point[i].ToString("#0.0000");
+                            + "," + listY3Point[i].ToString("#0.0000") + ",0";
                         strSaveStaticLog = strBlockLog;
                         LogHelper.SaveStaticCsvData(strSaveStaticLog);
                     }
