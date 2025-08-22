@@ -1001,7 +1001,6 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(72, 21);
             this.toolStripStatusLabel2.Text = "系统时间：";
-            this.toolStripStatusLabel2.Visible = false;
             // 
             // toolStripStatusLabel_SystemTime
             // 
@@ -1011,7 +1010,6 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatusLabel_SystemTime.Name = "toolStripStatusLabel_SystemTime";
             this.toolStripStatusLabel_SystemTime.Size = new System.Drawing.Size(160, 21);
-            this.toolStripStatusLabel_SystemTime.Visible = false;
             // 
             // menuStrip2
             // 
