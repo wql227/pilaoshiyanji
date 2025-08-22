@@ -478,6 +478,7 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(1, 1);
             this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
             this.groupBox1.Size = new System.Drawing.Size(1582, 695);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
@@ -512,9 +513,9 @@
             this.panelEx10.Controls.Add(this.btnX_Disconnect);
             this.panelEx10.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx10.Location = new System.Drawing.Point(3, 42);
+            this.panelEx10.Location = new System.Drawing.Point(0, 14);
             this.panelEx10.Name = "panelEx10";
-            this.panelEx10.Size = new System.Drawing.Size(1576, 624);
+            this.panelEx10.Size = new System.Drawing.Size(1582, 655);
             this.panelEx10.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx10.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx10.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -550,11 +551,11 @@
             this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX2.Location = new System.Drawing.Point(0, 484);
+            this.dataGridViewX2.Location = new System.Drawing.Point(0, 515);
             this.dataGridViewX2.MultiSelect = false;
             this.dataGridViewX2.Name = "dataGridViewX2";
             this.dataGridViewX2.RowTemplate.Height = 23;
-            this.dataGridViewX2.Size = new System.Drawing.Size(1293, 140);
+            this.dataGridViewX2.Size = new System.Drawing.Size(1299, 140);
             this.dataGridViewX2.TabIndex = 92;
             // 
             // sampleCode
@@ -603,9 +604,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.line1.BackColor = System.Drawing.Color.White;
             this.line1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
-            this.line1.Location = new System.Drawing.Point(0, 482);
+            this.line1.Location = new System.Drawing.Point(0, 513);
             this.line1.Name = "line1";
-            this.line1.Size = new System.Drawing.Size(1293, 2);
+            this.line1.Size = new System.Drawing.Size(1299, 2);
             this.line1.TabIndex = 2;
             this.line1.Text = "line1";
             // 
@@ -639,7 +640,7 @@
             this.buttonX18.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX18.Image = ((System.Drawing.Image)(resources.GetObject("buttonX18.Image")));
             this.buttonX18.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX18.Location = new System.Drawing.Point(1502, 427);
+            this.buttonX18.Location = new System.Drawing.Point(1508, 427);
             this.buttonX18.Name = "buttonX18";
             this.buttonX18.Size = new System.Drawing.Size(62, 40);
             this.buttonX18.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -655,7 +656,7 @@
             this.buttonX16.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX16.Image = ((System.Drawing.Image)(resources.GetObject("buttonX16.Image")));
             this.buttonX16.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX16.Location = new System.Drawing.Point(1412, 427);
+            this.buttonX16.Location = new System.Drawing.Point(1418, 427);
             this.buttonX16.Name = "buttonX16";
             this.buttonX16.Size = new System.Drawing.Size(62, 40);
             this.buttonX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -671,7 +672,7 @@
             this.buttonX15.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX15.Image = ((System.Drawing.Image)(resources.GetObject("buttonX15.Image")));
             this.buttonX15.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX15.Location = new System.Drawing.Point(1320, 427);
+            this.buttonX15.Location = new System.Drawing.Point(1326, 427);
             this.buttonX15.Name = "buttonX15";
             this.buttonX15.Size = new System.Drawing.Size(62, 40);
             this.buttonX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -700,7 +701,7 @@
             this.superTabControl4.ControlBox.CloseBox});
             this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel10);
-            this.superTabControl4.Location = new System.Drawing.Point(1295, 3);
+            this.superTabControl4.Location = new System.Drawing.Point(1301, 3);
             this.superTabControl4.MaximumSize = new System.Drawing.Size(0, 419);
             this.superTabControl4.MinimumSize = new System.Drawing.Size(285, 419);
             this.superTabControl4.Name = "superTabControl4";
@@ -1378,7 +1379,7 @@
             this.line2.Location = new System.Drawing.Point(0, -1);
             this.line2.Name = "line2";
             this.line2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.line2.Size = new System.Drawing.Size(1576, 4);
+            this.line2.Size = new System.Drawing.Size(1582, 4);
             this.line2.TabIndex = 67;
             this.line2.Text = "line2";
             this.line2.Thickness = 4;
@@ -1389,7 +1390,7 @@
             this.cb_DrawPosition.BackColor = System.Drawing.Color.White;
             this.cb_DrawPosition.Checked = true;
             this.cb_DrawPosition.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_DrawPosition.Location = new System.Drawing.Point(1240, 108);
+            this.cb_DrawPosition.Location = new System.Drawing.Point(1246, 108);
             this.cb_DrawPosition.Name = "cb_DrawPosition";
             this.cb_DrawPosition.Size = new System.Drawing.Size(100, 16);
             this.cb_DrawPosition.TabIndex = 65;
@@ -1404,7 +1405,7 @@
             this.cb_DrawCommand.BackColor = System.Drawing.Color.White;
             this.cb_DrawCommand.Checked = true;
             this.cb_DrawCommand.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_DrawCommand.Location = new System.Drawing.Point(1240, 175);
+            this.cb_DrawCommand.Location = new System.Drawing.Point(1246, 175);
             this.cb_DrawCommand.Name = "cb_DrawCommand";
             this.cb_DrawCommand.Size = new System.Drawing.Size(100, 16);
             this.cb_DrawCommand.TabIndex = 65;
@@ -1419,7 +1420,7 @@
             this.cb_DrawExtension.BackColor = System.Drawing.Color.White;
             this.cb_DrawExtension.Checked = true;
             this.cb_DrawExtension.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_DrawExtension.Location = new System.Drawing.Point(1240, 153);
+            this.cb_DrawExtension.Location = new System.Drawing.Point(1246, 153);
             this.cb_DrawExtension.Name = "cb_DrawExtension";
             this.cb_DrawExtension.Size = new System.Drawing.Size(100, 16);
             this.cb_DrawExtension.TabIndex = 65;
@@ -1434,7 +1435,7 @@
             this.cb_DrawLoad.BackColor = System.Drawing.Color.White;
             this.cb_DrawLoad.Checked = true;
             this.cb_DrawLoad.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_DrawLoad.Location = new System.Drawing.Point(1240, 131);
+            this.cb_DrawLoad.Location = new System.Drawing.Point(1246, 131);
             this.cb_DrawLoad.Name = "cb_DrawLoad";
             this.cb_DrawLoad.Size = new System.Drawing.Size(100, 16);
             this.cb_DrawLoad.TabIndex = 65;
@@ -1461,7 +1462,7 @@
             this.btnX_AxisLoadY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MaxUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MaxUp.Location = new System.Drawing.Point(1263, 6);
+            this.btnX_AxisLoadY_MaxUp.Location = new System.Drawing.Point(1269, 6);
             this.btnX_AxisLoadY_MaxUp.Name = "btnX_AxisLoadY_MaxUp";
             this.btnX_AxisLoadY_MaxUp.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1488,7 +1489,7 @@
             this.btnX_AxisLoadY_MinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MinUp.Location = new System.Drawing.Point(1263, 401);
+            this.btnX_AxisLoadY_MinUp.Location = new System.Drawing.Point(1269, 432);
             this.btnX_AxisLoadY_MinUp.Name = "btnX_AxisLoadY_MinUp";
             this.btnX_AxisLoadY_MinUp.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1502,7 +1503,7 @@
             this.btnX_AxisLoadY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MaxDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MaxDown.Location = new System.Drawing.Point(1263, 37);
+            this.btnX_AxisLoadY_MaxDown.Location = new System.Drawing.Point(1269, 37);
             this.btnX_AxisLoadY_MaxDown.Name = "btnX_AxisLoadY_MaxDown";
             this.btnX_AxisLoadY_MaxDown.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1516,7 +1517,7 @@
             this.btnX_AsixYMin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AsixYMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AsixYMin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AsixYMin.Location = new System.Drawing.Point(24, 432);
+            this.btnX_AsixYMin.Location = new System.Drawing.Point(24, 463);
             this.btnX_AsixYMin.Name = "btnX_AsixYMin";
             this.btnX_AsixYMin.Size = new System.Drawing.Size(25, 25);
             this.btnX_AsixYMin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1530,7 +1531,7 @@
             this.btnX_AxisLoadY_MinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MinDown.Location = new System.Drawing.Point(1263, 432);
+            this.btnX_AxisLoadY_MinDown.Location = new System.Drawing.Point(1269, 463);
             this.btnX_AxisLoadY_MinDown.Name = "btnX_AxisLoadY_MinDown";
             this.btnX_AxisLoadY_MinDown.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1544,7 +1545,7 @@
             this.btnX_AxisYMax.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisYMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AxisYMax.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisYMax.Location = new System.Drawing.Point(24, 401);
+            this.btnX_AxisYMax.Location = new System.Drawing.Point(24, 432);
             this.btnX_AxisYMax.Name = "btnX_AxisYMax";
             this.btnX_AxisYMax.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisYMax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1642,7 +1643,7 @@
             this.chart_machine.Series.Add(series4);
             this.chart_machine.Series.Add(series5);
             this.chart_machine.Series.Add(series6);
-            this.chart_machine.Size = new System.Drawing.Size(1293, 483);
+            this.chart_machine.Size = new System.Drawing.Size(1299, 514);
             this.chart_machine.TabIndex = 63;
             this.chart_machine.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart_machine_MouseClick);
             // 
@@ -1654,7 +1655,7 @@
             this.btnX_Connect.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Connect.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Connect.Image = ((System.Drawing.Image)(resources.GetObject("btnX_Connect.Image")));
-            this.btnX_Connect.Location = new System.Drawing.Point(1383, 504);
+            this.btnX_Connect.Location = new System.Drawing.Point(1389, 504);
             this.btnX_Connect.Name = "btnX_Connect";
             this.btnX_Connect.Size = new System.Drawing.Size(120, 39);
             this.btnX_Connect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1671,7 +1672,7 @@
             this.btnX_Disconnect.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Disconnect.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Disconnect.Image = ((System.Drawing.Image)(resources.GetObject("btnX_Disconnect.Image")));
-            this.btnX_Disconnect.Location = new System.Drawing.Point(1383, 549);
+            this.btnX_Disconnect.Location = new System.Drawing.Point(1389, 549);
             this.btnX_Disconnect.Name = "btnX_Disconnect";
             this.btnX_Disconnect.Size = new System.Drawing.Size(120, 40);
             this.btnX_Disconnect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1690,9 +1691,9 @@
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel_SystemTime});
-            this.statusStrip1.Location = new System.Drawing.Point(3, 666);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 669);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1576, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1582, 26);
             this.statusStrip1.TabIndex = 66;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -1767,11 +1768,12 @@
             this.AdjustToolStripMenuItem,
             this.ChartSetToolStripMenuItem,
             this.AutoSetYAxisToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(3, 17);
+            this.menuStrip2.Location = new System.Drawing.Point(0, 14);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1576, 25);
+            this.menuStrip2.Size = new System.Drawing.Size(1582, 25);
             this.menuStrip2.TabIndex = 61;
             this.menuStrip2.Text = "menuStrip2";
+            this.menuStrip2.Visible = false;
             // 
             // commandsToolStripMenuItem
             // 
