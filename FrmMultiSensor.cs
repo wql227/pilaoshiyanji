@@ -24,9 +24,7 @@ namespace DoPENetConnect
 
         private void FrmMultiSensor_Load(object sender, EventArgs e)
         {
-            //timer_ShowData = new Timer();
             timer_ShowData.Interval = 500; // 每 500ms 检查一次
-            //timer_ShowData.Tick += (s, e) => UpdateData();
             timer_ShowData.Start();
         }
 
@@ -43,11 +41,9 @@ namespace DoPENetConnect
             if (_parent.bConnected)
             {
                 tb_Sensor4.Text = String.Format("{0}", (_parent.gSample.Sensor[(int)DoPE.SENSOR.SENSOR_4] / 1000000).ToString("0.000"));
-
                 tb_Sensor5.Text = String.Format("{0}", (_parent.gSample.Sensor[(int)DoPE.SENSOR.SENSOR_5] / 1000000).ToString("0.000"));
                 tb_Sensor6.Text = String.Format("{0}", (_parent.gSample.Sensor[(int)DoPE.SENSOR.SENSOR_6] / 1000000).ToString("0.000"));
                 tb_Sensor7.Text = String.Format("{0}", (_parent.gSample.Sensor[(int)DoPE.SENSOR.SENSOR_7] / 1000000).ToString("0.000"));
-       
             }
         }
 

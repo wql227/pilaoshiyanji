@@ -245,12 +245,12 @@ namespace DoPENetConnect
         /// <summary>
         /// 每行日志内容
         /// </summary>
-        public string strBlockLog = "";
+        public StringBuilder strBlockLog = new StringBuilder();
 
         /// <summary>
         /// 设备id
         /// </summary>
-        StringBuilder devId;
+        public StringBuilder devId;
 
         /// <summary>
         /// 向上向下按动标识
@@ -885,8 +885,6 @@ namespace DoPENetConnect
             string strCSVLog = "";
             if (Block.Data.Length > 0)
             {
-                //gBlock = Block;
-
                 nCount++;
                 // refesh edit controls with the latest sample
                 gSample = Block.Data[Block.Data.Length - 1].Data;
@@ -899,7 +897,7 @@ namespace DoPENetConnect
                 text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
                 g_Position = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S];
 
-                if (bConnected )
+                if (bConnected)
                 {
                     //位移队列
                     PVPositionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
@@ -995,11 +993,11 @@ namespace DoPENetConnect
                         //{
                             //this.BeginInvoke(new Action(() =>
                             {
-                                //guiPosition.Text = text;
-                                guiPosition.Text = g_Position.ToString($"F{PosDigit}");
-                                tb_MaxPos.Text = g_MaxPosition.ToString($"F{PosDigit}");
-                                tb_MinPos.Text = g_MinPosition.ToString($"F{PosDigit}");
-                            }
+                            //guiPosition.Text = text;
+                            guiPosition.Text = g_Position.ToString($"F{PosDigit}");
+                            tb_MaxPos.Text = g_MaxPosition.ToString($"F{PosDigit}");
+                            tb_MinPos.Text = g_MinPosition.ToString($"F{PosDigit}");
+                        }
                             //));
                         //}
                         //Invalidate();
@@ -1007,7 +1005,6 @@ namespace DoPENetConnect
 
                     //记录试验力
                     strCSVLog += text + ",";
-                    //data_display1 = decimal.Parse(guiPosition.Text == "" ? "" : "0");
                     text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
                     g_Load = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F];
 
@@ -1113,7 +1110,6 @@ namespace DoPENetConnect
                             //this.BeginInvoke(new Action(() =>
                             //{
 
-                            //guiLoad.Text = text;
                             if (LoadUnit.ToUpper() == "KN")
                             {
                                 guiLoad.Text = (g_Load / 1e3).ToString($"F{LoadDigit}");
@@ -1238,7 +1234,7 @@ namespace DoPENetConnect
                     strCSVLog += text + ",";
                     text = (gSample.Cycles /*<< 1*/).ToString();
 
-                    //记录输出
+                    ////记录输出
                     strCSVLog += text + ",";
                     text = String.Format("{0}", gSample.Output.ToString("0.000"));
 
@@ -1248,18 +1244,18 @@ namespace DoPENetConnect
 
                     //记录周期
                     strCSVLog += text + ",";
-                    strCSVLog +=(gSample.Cycles >> 1 ).ToString();
+                    strCSVLog += (gSample.Cycles >> 1).ToString();
 
                     if (isRunning)
                     {
-                        strBlockLog += (strCSVLog + "\r\n");
-                        strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");
+                        strBlockLog.Append(strCSVLog + "\r\n");
+                        //strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");
 
-                        //按配置的次数存储日志
+                        ////按配置的次数存储日志
                         if ((gSample.Cycles /*>> 1*/) % nCountLog == 0)
                         {
-                            LogHelper.SaveCsvData(strBlockLog);
-                            strBlockLog = "";
+                            LogHelper.SaveCsvData(strBlockLog.ToString());
+                            strBlockLog.Clear();
                         }
                     }
 
@@ -1315,10 +1311,8 @@ namespace DoPENetConnect
                 if (nCount >= nCountREfresh)
                 {
                     nCount = 0;
-                    //Invalidate();
                 }
 
-                //IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
             }
 
             return 0;
