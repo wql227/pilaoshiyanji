@@ -111,6 +111,9 @@ namespace DoPENetConnect
             //    Console.WriteLine(dataGridViewX1.Rows[i].HeaderCell.Value);
             //}
 
+
+            #region 多行同时插入  
+            /*
             var grpControls = groupPanel1.Controls;
             DataGridViewRow newRow = new DataGridViewRow();
             newRow.CreateCells(dataGridViewX1);
@@ -130,7 +133,40 @@ namespace DoPENetConnect
             //if (isThereOneRows == false)
             dataGridViewX1.Rows.Add(newRow);
             newRow.HeaderCell.Value = (dataGridViewX1.Rows.Count).ToString();
-          
+            */
+            #endregion 多行同时插入
+            #region 只插入一行
+            var grpControls = groupPanel1.Controls;
+            DataGridViewRow newRow = new DataGridViewRow();
+            newRow.CreateCells(dataGridViewX1);
+            //if (dataGridViewX1.Rows.Count != 0&&isThereOneRows) {
+            //    isThereOneRows = false;
+            //    dataGridViewX1.Rows.RemoveAt(0);
+            //}
+            int j = 0;
+            for (int i = grpControls.Count - 1; i >= 0; i--)
+            {
+                if (grpControls[i].Name.Contains("textBox"))
+                {
+                    newRow.Cells[j].Value = grpControls[i].Text;
+                    j++;
+                }
+            }
+            if (dataGridViewX1.RowCount == 0)
+            {
+                dataGridViewX1.Rows.Add(newRow);
+                newRow.HeaderCell.Value = (dataGridViewX1.Rows.Count).ToString();
+            }
+            else
+            {
+                dataGridViewX1.Rows.RemoveAt(0);
+                dataGridViewX1.Rows.Add(newRow);
+                newRow.HeaderCell.Value = (dataGridViewX1.Rows.Count).ToString();
+            }
+
+            #endregion 只插入一行
+
+
 
         }
 
