@@ -287,6 +287,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximumSize = new System.Drawing.Size(156, 536);
             this.Name = "FormFloat";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormFloat_FormClosing);
             this.Load += new System.EventHandler(this.FormFloat_Load);
