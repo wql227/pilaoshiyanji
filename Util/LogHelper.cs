@@ -156,9 +156,7 @@ namespace DoPENetConnect
         {
             try
             {
-
-                #region save_dynmaticdata
-                /*
+                #region save_dynmaticdata                
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string logPath = Path.Combine(baseDirectory, "DynmaticData");
                 string dateStr = DateTime.Now.ToString("yyyy-MM-dd");
@@ -220,14 +218,25 @@ namespace DoPENetConnect
                     sw.WriteLine(strs);
                 }
 
-                bLogDirBuildedFlag = true;
-                */
+                bLogDirBuildedFlag = true;                
                 #endregion save_dynmaticdata
 
+            }
+            catch (Exception ex)
+            {
+                // 可选：记录错误日志或弹出提示
+                // MessageBox.Show(ex.Message);
+            }
+        }
+
+        public static void SaveCsvStaticData(string strs,DateTime timeVal)
+        {
+            try
+            {
                 #region save_staticdata 
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string logPath = Path.Combine(baseDirectory, "StaticData");
-                string dataTimeStr = DateTime.Now.ToString("yyyy-MM-dd-hhmmss");
+                string dataTimeStr = timeVal.ToString("yyyy-MM-dd-hhmmss");
                 string dateStr = dataTimeStr.Substring(0, 10);
 
                 StringBuilder tmpStr = new StringBuilder(255);
@@ -242,7 +251,7 @@ namespace DoPENetConnect
                 {
                     Directory.CreateDirectory(logPath);
                 }
-                
+
                 /*  禁止滚动文件
                 //int maxFileSize = 1 * 1024 * 1024; // 10 MB
                 //FileInfo fi = new FileInfo(filename);

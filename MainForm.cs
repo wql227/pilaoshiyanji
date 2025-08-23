@@ -1178,7 +1178,7 @@ namespace DoPENetConnect
                         long elapsedMillSeconds = (int)stopwatch.Elapsed.TotalMilliseconds;
                         if(elapsedMillSeconds % nCountLog ==0)
                         {
-                            LogHelper.SaveCsvData(strBlockLog);
+                            LogHelper.SaveCsvStaticData(strBlockLog,doTest.sampleTime);
                             strBlockLog = "";
                         }
                     }
