@@ -47,7 +47,7 @@ namespace DoPENetConnect
             get;
         }
 
-        public string sampleTime
+        public DateTime sampleTime
         {
             set;
             get;

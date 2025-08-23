@@ -4325,14 +4325,15 @@ namespace DoPENetConnect
                     return;
                 }
 
-                //if (dataGridViewX2.RowCount != 0&&!DtaGridViewIsSelectedEmpty())
-                //{
-                //    SetExpertmentParams();     //设置试验参数
-                //}
-                //else {
-                //    MessageBox.Show("未选中或试验列表为空请重新输入！");
-                //    return;
-                //}
+                if (dataGridViewX2.RowCount != 0 && !DtaGridViewIsSelectedEmpty())
+                {
+                    SetExpertmentParams();     //设置试验参数
+                }
+                else
+                {
+                    MessageBox.Show("未选中或试验列表为空，请新建试验后再开始试验！");
+                    return;
+                }
 
                 if (!isRunning)
                 {
@@ -4759,7 +4760,7 @@ namespace DoPENetConnect
             doTest.sampleDependation = dataGridViewX2.CurrentRow.Cells[6].Value.ToString();
             doTest.sampleNotes = dataGridViewX2.CurrentRow.Cells[7].Value.ToString();
 
-            doTest.sampleTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            doTest.sampleTime = DateTime.Now;
         }
 
         public bool DtaGridViewIsSelectedEmpty()
