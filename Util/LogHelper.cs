@@ -156,6 +156,9 @@ namespace DoPENetConnect
         {
             try
             {
+
+                #region save_dynmaticdata
+                /*
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string logPath = Path.Combine(baseDirectory, "DynmaticData");
                 string dateStr = DateTime.Now.ToString("yyyy-MM-dd");
@@ -218,6 +221,76 @@ namespace DoPENetConnect
                 }
 
                 bLogDirBuildedFlag = true;
+                */
+                #endregion save_dynmaticdata
+
+                #region save_staticdata 
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string logPath = Path.Combine(baseDirectory, "StaticData");
+                string dataTimeStr = DateTime.Now.ToString("yyyy-MM-dd-hhmmss");
+                string dateStr = dataTimeStr.Substring(0, 10);
+
+                StringBuilder tmpStr = new StringBuilder(255);
+                IniFileHelper.GetIniString("AppOpenIndex", "IndexVal", "-1", tmpStr, tmpStr.Capacity);
+
+                logPath = Path.Combine(logPath, dateStr);        //添加日期文件夹
+                logPath = Path.Combine(logPath, tmpStr.ToString());
+                string filename = Path.Combine(logPath, $"{dataTimeStr}.CSV");
+
+                // 创建目录（如果不存在）
+                if (!Directory.Exists(logPath))
+                {
+                    Directory.CreateDirectory(logPath);
+                }
+                
+                /*  禁止滚动文件
+                //int maxFileSize = 1 * 1024 * 1024; // 10 MB
+                //FileInfo fi = new FileInfo(filename);
+
+                //// 如果文件存在且超过最大大小，则进行滚动
+                //if (fi.Exists && fi.Length > maxFileSize)
+                //{
+                //    // 滚动旧文件，保留最多5个备份
+                //    for (int i = 4; i >= 1; i--)
+                //    {
+                //        string oldFile = Path.Combine(logPath, $"{dateStr}.{i}.CSV");
+                //        string prevFile = Path.Combine(logPath, $"{dateStr}.{i - 1}.CSV");
+
+                //        if (File.Exists(oldFile))
+                //        {
+                //            File.Delete(oldFile);
+                //        }
+
+                //        if (File.Exists(prevFile))
+                //        {
+                //            File.Move(prevFile, oldFile);
+                //        }
+                //    }
+                //    string firstIndex = "0";
+                //    string firstBackup = Path.Combine(logPath, $"{dateStr}.{firstIndex}.CSV");
+                //    if (File.Exists(firstBackup))
+                //    {
+                //        File.Delete(firstBackup);
+                //    }
+                //    File.Move(filename, firstBackup);
+                //}
+                */
+
+                // 如果文件不存在，先写入表头
+                bool writeHeader = !File.Exists(filename);
+                using (StreamWriter sw = new StreamWriter(filename, true, Encoding.Default))
+                {
+                    if (writeHeader)
+                    {
+                        string header = "Time [s],Position [mm],Load [N],Extension [Rev],Command [ ],Cycles [ ]";
+                        sw.WriteLine(header);
+                    }
+
+                    sw.WriteLine(strs);
+                }
+
+                bLogDirBuildedFlag = true;
+                #endregion save_staticdata
             }
             catch (Exception ex)
             {
