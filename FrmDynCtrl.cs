@@ -220,11 +220,18 @@ namespace DoPENetConnect
             Destination = double.Parse(tbX_Dyn_Offset.Text);
             SweepFrequencyMode = 0;
 
+            //MainForm.mainform.PVPositionQueue.Clear();
+
             MainForm.mainform.MoveDynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination, SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode);
 
             cbX_DynCtrl_ModifyParam.Checked = true;
 
             WriteIni();
+
+
+            MainForm.mainform.PVPositionQueue.Clear();
+            MainForm.mainform.PeakValues.Clear();
+            MainForm.mainform.ValleyValues.Clear();
         }
 
 

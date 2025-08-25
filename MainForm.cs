@@ -205,12 +205,12 @@ namespace DoPENetConnect
         /// <summary>
         /// 记录位移峰谷值的队列
         /// </summary>
-        Queue<double> PVPositionQueue = new Queue<double>(1000);
+        public Queue<double> PVPositionQueue = new Queue<double>(1000);
 
         /// <summary>
         /// 记录试验力峰谷值的队列
         /// </summary>
-        Queue<double> PVLoadQueue = new Queue<double>(1000);
+        public Queue<double> PVLoadQueue = new Queue<double>(1000);
 
         /// <summary>
         /// 记录试验力峰谷值的队列
@@ -440,6 +440,11 @@ namespace DoPENetConnect
         /// 启用低压
         /// </summary>
         public string EnableLow = "0";
+
+        //public List<double> g_peaks = new List<double>();
+
+        public List<double> PeakValues = new List<double>();          // 存储检测到的峰值
+        public List<double> ValleyValues = new List<double>();        // 存储检测到的谷值
 
 
         ///----------------------------------------------------------------------
@@ -909,12 +914,61 @@ namespace DoPENetConnect
 
                 if (bConnected)
                 {
+                    //TODO
                     //位移队列
                     PVPositionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
-                    if (PVPositionQueue.Count >= 100)
+                    if (PVPositionQueue.Count >= 50)
                     {
-                        g_MaxPosition = PVPositionQueue.Max();
-                        g_MinPosition = PVPositionQueue.Min();
+                        var dataList = PVPositionQueue.ToList();
+
+                        if (dataList.Count >= 3)
+                        {
+                            for (int i = 0; i <= dataList.Count; i++)
+                            {
+                                bool isPeak = false;
+                                bool isValley = false;
+
+                                // 判断是否为峰值： //PVPositionQueue.Count
+                                if (i < 3 || i > 48)
+                                {
+                                    continue;
+                                }
+
+                                if (dataList[i - 1] < dataList[i] && dataList[i ] > dataList[i + 1])
+                                {
+                                    PeakValues.Add(dataList[i]);
+                                }
+
+                                // 判断是否为谷值：小于左右相邻的数据（或绝对值阈值）
+                                if (dataList[i - 2] > dataList[i - 1] && dataList[i - 1] < dataList[i ])
+                                {
+                                    ValleyValues.Add(dataList[i]);
+                                }
+
+                                // 如果是新检测到的峰或谷，并且不是最近刚记录的（防重复）
+                                //if (/*isPeak &&*/ (PeakValues.Count == 0 || PeakValues.Last() != dataList[i]))
+                                //{
+                                //    PeakValues.Add(dataList[i]);
+                                //}
+                                //if (/*isValley &&*/ (ValleyValues.Count == 0 || ValleyValues.Last() != dataList[i]))
+                                //{
+                                //    ValleyValues.Add(dataList[i]);
+                                //}
+                            }
+                        }
+
+                        if (PeakValues.Count >= 1)
+                        {
+                            g_MaxPosition = PeakValues.Max();  // 所有峰值中的最大值
+                        }
+
+                        if (ValleyValues.Count >= 1)
+                        {
+                            g_MinPosition = ValleyValues.Min(); // 所有谷值中的最小值
+                        }
+
+                        //g_MaxPosition = PVPositionQueue.Max();
+                        //g_MinPosition = PVPositionQueue.Min();
 
                         if (bActivated && isRunning)
                         {
@@ -2095,6 +2149,7 @@ namespace DoPENetConnect
                     nCycleCount = 0;
 
                     //timer_UpdateData.Stop();
+                    stopwatch.Stop();
 
                     SetControlEnable(true);
 
