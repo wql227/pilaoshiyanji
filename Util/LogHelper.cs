@@ -229,14 +229,14 @@ namespace DoPENetConnect
             }
         }
 
-        public static void SaveCsvStaticData(string strs,DateTime timeVal)
+        public static void SaveCsvStaticData(string strs,FormTest dotest)// string sampleCode,string sampleNo,string sampleShape,string sampleOperator,string sampleChecker,string sampleDependation,string sampleNotes, DateTime timeVal)
         {
             try
             {
                 #region save_staticdata 
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string logPath = Path.Combine(baseDirectory, "StaticData");
-                string dataTimeStr = timeVal.ToString("yyyy-MM-dd-hhmmss");
+                string dataTimeStr = dotest.sampleTime.ToString("yyyy-MM-dd-hhmmss");
                 string dateStr = dataTimeStr.Substring(0, 10);
 
                 StringBuilder tmpStr = new StringBuilder(255);
@@ -291,6 +291,19 @@ namespace DoPENetConnect
                 {
                     if (writeHeader)
                     {
+                        string headStr;
+                        headStr = string.Format("试样编号:{0}", dotest.sampleCode);
+                        sw.WriteLine(headStr);
+                        headStr = string.Format("试样批次:{0}", dotest.sampleNo);
+                        sw.WriteLine(headStr);
+                        headStr = string.Format("试样形状:{0}", dotest.sampleShape);
+                        sw.WriteLine(headStr);
+                        headStr = string.Format("校核人员:{0}", dotest.sampleChecker);
+                        sw.WriteLine(headStr);
+                        headStr = string.Format("试验依据:{0}", dotest.sampleDependation);
+                        sw.WriteLine(headStr);
+                        headStr = string.Format("备注:{0}", dotest.sampleNotes);
+                        sw.WriteLine(headStr);
                         string header = "Time [s],Position [mm],Load [N],Extension [Rev],Command [ ],Cycles [ ]";
                         sw.WriteLine(header);
                     }
