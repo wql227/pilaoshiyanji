@@ -1169,15 +1169,21 @@ namespace DoPENetConnect
 
                     if (isRunning)
                     {
-                        strBlockLog += (strCSVLog + "\r\n");
-                        strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");
+                        //strBlockLog += (strCSVLog + "\r\n");
+                        //strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");
 
                         //按配置的次数存储日志
                         //if ((Sample.Cycles /*>> 1*/) % nCountLog == 0)
                         //Console.WriteLine("glmseconds-{0}-{1}", stopwatch.Elapsed.TotalSeconds, stopwatch.Elapsed.TotalMilliseconds);
                         long elapsedMillSeconds = (int)stopwatch.Elapsed.TotalMilliseconds;
-                        if(elapsedMillSeconds % nCountLog ==0)
+                        if(elapsedMillSeconds % 1 ==0)
                         {
+                            strBlockLog += (strCSVLog );
+                            //strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");
+                            //if (strBlockLog =="")
+                            {
+                                Console.WriteLine("hello kitty{0}",strBlockLog);
+                            }
                             LogHelper.SaveCsvStaticData(strBlockLog,doTest);
                             strBlockLog = "";
                         }
@@ -1210,6 +1216,8 @@ namespace DoPENetConnect
         {
             buttonX15.Checked = false;
             if (stopwatch.IsRunning) stopwatch.Stop();
+            LogHelper.SaveResult(tb_MaxLoad.Text, doTest);
+            
         }
 
 

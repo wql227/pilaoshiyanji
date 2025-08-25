@@ -292,17 +292,17 @@ namespace DoPENetConnect
                     if (writeHeader)
                     {
                         string headStr;
-                        headStr = string.Format("试样编号:{0}", dotest.sampleCode);
+                        headStr = string.Format("试样编号,{0}", dotest.sampleCode);
                         sw.WriteLine(headStr);
-                        headStr = string.Format("试样批次:{0}", dotest.sampleNo);
+                        headStr = string.Format("试样批次,{0}", dotest.sampleNo);
                         sw.WriteLine(headStr);
-                        headStr = string.Format("试样形状:{0}", dotest.sampleShape);
+                        headStr = string.Format("试样形状,{0}", dotest.sampleShape);
                         sw.WriteLine(headStr);
-                        headStr = string.Format("校核人员:{0}", dotest.sampleChecker);
+                        headStr = string.Format("校核人员,{0}", dotest.sampleChecker);
                         sw.WriteLine(headStr);
-                        headStr = string.Format("试验依据:{0}", dotest.sampleDependation);
+                        headStr = string.Format("试验依据,{0}", dotest.sampleDependation);
                         sw.WriteLine(headStr);
-                        headStr = string.Format("备注:{0}", dotest.sampleNotes);
+                        headStr = string.Format("备注,{0}", dotest.sampleNotes);
                         sw.WriteLine(headStr);
                         string header = "Time [s],Position [mm],Load [N],Extension [Rev],Command [ ],Cycles [ ]";
                         sw.WriteLine(header);
@@ -319,6 +319,38 @@ namespace DoPENetConnect
                 // 可选：记录错误日志或弹出提示
                 // MessageBox.Show(ex.Message);
             }
+        }
+
+        public static void SaveResult(string maxLoad,FormTest dotest)
+        {
+            #region save_staticdata 
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string logPath = Path.Combine(baseDirectory, "StaticData");
+            string dataTimeStr = dotest.sampleTime.ToString("yyyy-MM-dd-hhmmss");
+            string dateStr = dataTimeStr.Substring(0, 10);
+
+            StringBuilder tmpStr = new StringBuilder(255);
+            IniFileHelper.GetIniString("AppOpenIndex", "IndexVal", "-1", tmpStr, tmpStr.Capacity);
+
+            logPath = Path.Combine(logPath, dateStr);        //添加日期文件夹
+            logPath = Path.Combine(logPath, tmpStr.ToString());
+            string filename = Path.Combine(logPath, $"{dataTimeStr}.CSV");
+
+            // 创建目录（如果不存在）
+            if (!Directory.Exists(logPath))
+            {
+                Directory.CreateDirectory(logPath);
+            }
+
+            // 如果文件不存在，先写入表头
+            bool writeHeader = !File.Exists(filename);
+            using (StreamWriter sw = new StreamWriter(filename, true, Encoding.Default))
+            {
+                sw.WriteLine("破坏载荷,{0}", maxLoad);
+            }
+
+            bLogDirBuildedFlag = true;
+            #endregion save_staticdata       
         }
 
         public void SetLogIndex() {

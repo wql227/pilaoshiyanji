@@ -53,6 +53,12 @@ namespace DoPENetConnect
             get;
         }
 
+        public string sampleMaxLoad
+        {
+            set;
+            get;
+        }
+
         public FormTest()
         {
             InitializeComponent();
