@@ -4782,5 +4782,10 @@ namespace DoPENetConnect
 
             return isEmpty;
         }
+
+        private void chart_machine_Paint(object sender, PaintEventArgs e)
+        {
+            label1.Location = new Point(label1.Location.X ,(int)52.5*chart_machine.Height /120+chart_machine.Location.Y);
+        }
     }
 }
