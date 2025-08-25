@@ -1213,7 +1213,8 @@ namespace DoPENetConnect
         {
             buttonX15.Checked = false;
             if (stopwatch.IsRunning) stopwatch.Stop();
-            LogHelper.SaveResult(tb_MaxLoad.Text, doTest);
+            LogHelper.SaveResult(tb_MaxLoad.Text, doTest);    //存取最大力
+            dataGridViewX2.Rows[0].Cells[3].Value = tb_MaxLoad.Text;
             
         }
 
