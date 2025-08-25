@@ -833,7 +833,7 @@ namespace DoPENetConnect
 
         private int OnDataBlock(ref DoPE.OnDataBlock Block, object Parameter)
         {
-            Console.WriteLine("glm-data is comming");
+            //Console.WriteLine("glm-data is comming");
             toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             statusStrip1.Refresh();
 
@@ -1180,10 +1180,7 @@ namespace DoPENetConnect
                         {
                             strBlockLog += (strCSVLog );
                             //strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");
-                            //if (strBlockLog =="")
-                            {
-                                Console.WriteLine("hello kitty{0}",strBlockLog);
-                            }
+                            
                             LogHelper.SaveCsvStaticData(strBlockLog,doTest);
                             strBlockLog = "";
                         }
