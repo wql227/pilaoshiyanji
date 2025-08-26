@@ -208,24 +208,40 @@ namespace DoPENetConnect
         public Queue<double> PVPositionQueue = new Queue<double>(1000);
 
         /// <summary>
+        /// 判断位移峰谷值的列表
+        /// </summary>
+        public List<double> PVPositionList = new List<double>();
+
+
+        /// <summary>
         /// 记录试验力峰谷值的队列
         /// </summary>
         public Queue<double> PVLoadQueue = new Queue<double>(1000);
 
         /// <summary>
-        /// 记录试验力峰谷值的队列
+        /// 判断位移峰谷值的列表
         /// </summary>
-        Queue<double> PVExtensionQueue = new Queue<double>(1000);
+        public List<double> PVLoadList = new List<double>();
 
         /// <summary>
-        /// 峰值列表
+        /// 位移峰值平均值列表
         /// </summary>
-        Queue<double> PeakQueue = new Queue<double>(2000);
+        public List<double> PVLoadMaxAverageList = new List<double>();
 
         /// <summary>
-        /// 谷值列表
+        /// 位移谷值平均值列表
         /// </summary>
-        Queue<double> ValleyQueue = new Queue<double>(2000);
+        public List<double> PVLoadMinAverageList = new List<double>();
+
+        /// <summary>
+        /// 记录变形峰谷值的队列
+        /// </summary>
+        public Queue<double> PVExtensionQueue = new Queue<double>(1000);
+
+        /// <summary>
+        /// 判断变形峰谷值的列表
+        /// </summary>
+        public List<double> PVExtensionList = new List<double>();
 
         /// <summary>
         /// 日志试验记录次数
@@ -317,10 +333,10 @@ namespace DoPENetConnect
         public int currentCmd;
 
         public int autoFittingFlag = 0;
+
         /// <summary>
         /// 
         /// </summary>
-
         double maxSeries0 = 0;
         double maxSeries1 = 0;
         double maxSeries2 = 0;
@@ -440,11 +456,6 @@ namespace DoPENetConnect
         /// 启用低压
         /// </summary>
         public string EnableLow = "0";
-
-        //public List<double> g_peaks = new List<double>();
-
-        public List<double> PeakValues = new List<double>();          // 存储检测到的峰值
-        public List<double> ValleyValues = new List<double>();        // 存储检测到的谷值
 
 
         ///----------------------------------------------------------------------
@@ -778,6 +789,8 @@ namespace DoPENetConnect
 
                 IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
 
+                tbX_TestCount.Enabled = true;
+
             }
             catch (NullReferenceException)
             {
@@ -919,53 +932,28 @@ namespace DoPENetConnect
                     PVPositionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
                     if (PVPositionQueue.Count >= 50)
                     {
-                        var dataList = PVPositionQueue.ToList();
+                        PVPositionList = PVPositionQueue.ToList();
 
-                        if (dataList.Count >= 3)
+                        for (int i = 0; i <= PVPositionList.Count; i++)
                         {
-                            for (int i = 0; i <= dataList.Count; i++)
+                            // 判断是否为峰值： //PVPositionQueue.Count
+                            if (i < 3 || i > 48)
                             {
-                                bool isPeak = false;
-                                bool isValley = false;
+                                continue;
+                            }
 
-                                // 判断是否为峰值： //PVPositionQueue.Count
-                                if (i < 3 || i > 48)
-                                {
-                                    continue;
-                                }
+                            if (PVPositionList[i - 1] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 1])
+                            {
+                                g_MaxPosition = PVPositionList[i];
+                            }
 
-                                if (dataList[i - 1] < dataList[i] && dataList[i ] > dataList[i + 1])
-                                {
-                                    PeakValues.Add(dataList[i]);
-                                }
-
-                                // 判断是否为谷值：小于左右相邻的数据（或绝对值阈值）
-                                if (dataList[i - 2] > dataList[i - 1] && dataList[i - 1] < dataList[i ])
-                                {
-                                    ValleyValues.Add(dataList[i]);
-                                }
-
-                                // 如果是新检测到的峰或谷，并且不是最近刚记录的（防重复）
-                                //if (/*isPeak &&*/ (PeakValues.Count == 0 || PeakValues.Last() != dataList[i]))
-                                //{
-                                //    PeakValues.Add(dataList[i]);
-                                //}
-                                //if (/*isValley &&*/ (ValleyValues.Count == 0 || ValleyValues.Last() != dataList[i]))
-                                //{
-                                //    ValleyValues.Add(dataList[i]);
-                                //}
+                            // 判断是否为谷值：小于左右相邻的数据
+                            if (PVPositionList[i - 2] > PVPositionList[i - 1] && PVPositionList[i - 1] < PVPositionList[i])
+                            {
+                                g_MinPosition = PVPositionList[i];
                             }
                         }
 
-                        if (PeakValues.Count >= 1)
-                        {
-                            g_MaxPosition = PeakValues.Max();  // 所有峰值中的最大值
-                        }
-
-                        if (ValleyValues.Count >= 1)
-                        {
-                            g_MinPosition = ValleyValues.Min(); // 所有谷值中的最小值
-                        }
 
                         //g_MaxPosition = PVPositionQueue.Max();
                         //g_MinPosition = PVPositionQueue.Min();
@@ -1045,7 +1033,10 @@ namespace DoPENetConnect
                             #endregion 判断位移峰谷值
                         }
 
-                        PVPositionQueue.Clear();
+                        while (PVPositionQueue.Count > 100)
+                        {
+                            PVPositionQueue.Dequeue();
+                        }
                     }
 
                     // TODO:判断峰谷值是否超过外保护
@@ -1074,18 +1065,104 @@ namespace DoPENetConnect
 
                     //试验力队列
                     PVLoadQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                    if (PVLoadQueue.Count >= 100)
+                    if (PVLoadQueue.Count >= 200)
                     {
-                        if (LoadUnit.ToUpper() == "KN")
+                        PVLoadList = PVLoadQueue.ToList();
+
+                        for (int i = 0; i < PVLoadList.Count; i++)
                         {
-                            g_MaxLoad = PVLoadQueue.Max() / 1000;
-                            g_MinLoad = PVLoadQueue.Min() / 1000;
+                            if (i < 4 || i > 198)
+                            {
+                                continue;
+                            }
+
+                            // 判断是否为峰值：大于左右相邻的数据
+                            if (PVLoadList[i - 1] < PVLoadList[i] && PVLoadList[i] > PVLoadList[i + 1])
+                            {
+                                if (LoadUnit.ToUpper() == "KN")
+                                {
+                                    PVLoadMaxAverageList.Add(PVLoadList[i]);
+
+                                    double average = 0;
+                                    if (PVLoadMaxAverageList.Count > 0)
+                                    {
+                                        average = PVLoadMaxAverageList.Average();
+                                    }
+
+                                    if (PVLoadList[i] >= average)
+                                    {
+                                        g_MaxLoad = PVLoadList[i] / 1000;
+                                    }
+
+                                    //g_MaxLoad = PVLoadList[i] / 1000;
+                                }
+                                else
+                                {
+                                    PVLoadMaxAverageList.Add(PVLoadList[i]);
+
+                                    double average = 0;
+                                    if (PVLoadMaxAverageList.Count > 0)
+                                    {
+                                        average = PVLoadMaxAverageList.Average();
+                                    }
+
+                                    if (PVLoadList[i] >= average)
+                                    {
+                                        g_MaxLoad = PVLoadList[i];
+                                    }
+                                    //g_MaxLoad = PVLoadList[i];
+                                }
+                            }
+
+                            // 判断是否为谷值：小于左右相邻的数据
+                            if (PVLoadList[i - 1] > PVLoadList[i] && PVLoadList[i] < PVLoadList[i + 1] &&
+                                (PVLoadList[i - 1] + PVLoadList[i + 1]) / 2 > PVLoadList[i])
+                            {
+                                if (LoadUnit.ToUpper() == "KN")
+                                {
+                                    PVLoadMinAverageList.Add(PVLoadList[i]);
+
+                                    double dLoadMinAverage = 0;
+                                    if (PVLoadMinAverageList.Count > 0)
+                                    {
+                                        dLoadMinAverage = PVLoadMinAverageList.Average();
+                                    }
+
+                                    if (PVLoadList[i] <= dLoadMinAverage)
+                                    {
+                                        g_MinLoad = PVLoadList[i] / 1000;
+                                    }
+                                    //g_MinLoad = PVLoadList[i] / 1000;
+                                }
+                                else
+                                {
+                                    PVLoadMinAverageList.Add(PVLoadList[i]);
+
+                                    double dLoadMinAverage = 0;
+                                    if (PVLoadMinAverageList.Count > 0)
+                                    {
+                                        dLoadMinAverage = PVLoadMinAverageList.Average();
+                                    }
+
+                                    if (PVLoadList[i] <= dLoadMinAverage)
+                                    {
+                                        g_MinLoad = PVLoadList[i];
+                                    }
+                                    //g_MinLoad = PVLoadList[i];
+                                }
+                            }
                         }
-                        else
-                        {
-                            g_MaxLoad = PVLoadQueue.Max();
-                            g_MinLoad = PVLoadQueue.Min();
-                        }
+
+                        //if (LoadUnit.ToUpper() == "KN")
+                        //{
+                        //    g_MaxLoad = PVLoadQueue.Max() / 1000;
+                        //    g_MinLoad = PVLoadQueue.Min() / 1000;
+                        //}
+                        //else
+                        //{
+                        //    g_MaxLoad = PVLoadQueue.Max();
+                        //    g_MinLoad = PVLoadQueue.Min();
+                        //}
 
                         if (bActivated && isRunning)
                         {
@@ -1164,7 +1241,20 @@ namespace DoPENetConnect
                             #endregion 判断试验力峰谷值
                         }
 
-                        PVLoadQueue.Clear();
+                        while (PVLoadQueue.Count > 100)
+                        {
+                            PVLoadQueue.Dequeue();
+                        }
+
+                        if (PVLoadMaxAverageList.Count > 100)
+                        {
+                            PVLoadMaxAverageList.Clear();
+                        }
+
+                        if (PVLoadMinAverageList.Count > 100)
+                        {
+                            PVLoadMinAverageList.Clear();
+                        }
                     }
 
                     if (nCount >= nCountREfresh)
@@ -1198,10 +1288,31 @@ namespace DoPENetConnect
 
                     //变形队列
                     PVExtensionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
-                    if (PVExtensionQueue.Count >= 100)
+                    if (PVExtensionQueue.Count >= 50)
                     {
-                        g_MaxExtension = PVExtensionQueue.Max();
-                        g_MinExtension = PVExtensionQueue.Min();
+                        PVExtensionList = PVExtensionQueue.ToList();
+                        for (int i = 0; i <= PVExtensionList.Count; i++)
+                        {
+                            // 判断是否为峰值： //PVPositionQueue.Count
+                            if (i < 3 || i > 48)
+                            {
+                                continue;
+                            }
+
+                            if (PVExtensionList[i - 1] < PVExtensionList[i] && PVExtensionList[i] > PVExtensionList[i + 1])
+                            {
+                                g_MaxExtension = PVExtensionList[i];
+                            }
+
+                            // 判断是否为谷值：小于左右相邻的数据
+                            if (PVExtensionList[i - 2] > PVExtensionList[i - 1] && PVExtensionList[i - 1] < PVExtensionList[i])
+                            {
+                                g_MinExtension = PVExtensionList[i];
+                            }
+                        }
+
+                        //g_MaxExtension = PVExtensionQueue.Max();
+                        //g_MinExtension = PVExtensionQueue.Min();
 
                         if (bActivated && isRunning)
                         {
@@ -1279,7 +1390,11 @@ namespace DoPENetConnect
                             }
                             #endregion 判断变形峰谷值
                         }
-                        PVExtensionQueue.Clear();
+
+                        while (PVExtensionQueue.Count > 100)
+                        {
+                            PVExtensionQueue.Dequeue();
+                        }
                     }
 
                     if (nCount >= nCountREfresh)
@@ -2020,10 +2135,10 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         /// <summary>Sends a move-command with direction "up" to the EDC.</summary>
         ///----------------------------------------------------------------------
-        private void bntX_MoveUp_Click(object sender, EventArgs e)
-        {
+        //private void bntX_MoveUp_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
 
         /// <summary>
@@ -2044,7 +2159,8 @@ namespace DoPENetConnect
                     {
                         speed = btnUpConstantVal;
 
-                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
+                        //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
+                        DoPE.ERR error = MyEdc.Move.FMove(DoPE.MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FDPoti");
                     }
                     catch (NullReferenceException)
@@ -2077,10 +2193,10 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         /// <summary>Sends a move-command with direction "up" to the EDC.</summary>
         ///----------------------------------------------------------------------
-        private void btnX_MoveQuickUp_Click(object sender, EventArgs e)
-        {
+        //private void btnX_MoveQuickUp_Click(object sender, EventArgs e)
+        //{
             
-        }
+        //}
 
 
         private void btnX_MoveQuickUp_MouseDown(object sender, MouseEventArgs e)
@@ -2096,8 +2212,8 @@ namespace DoPENetConnect
                     try
                     {
                         speed = btnHurryUpConstantVal;
-
-                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
+                        //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
+                        DoPE.ERR error = MyEdc.Move.FMove(DoPE.MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FDPoti");
                         //DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
                         //DisplayError(error, "FMove_A");
@@ -2156,6 +2272,8 @@ namespace DoPENetConnect
                     tbX_TestCount.Text = tbX_TestCycles.Text;
 
                     IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
+
+                    tbX_TestCount.Enabled = true;
                 }
                 catch (NullReferenceException)
                 {
@@ -2192,7 +2310,8 @@ namespace DoPENetConnect
                     {
                         speed = btnDownConstantVal;
 
-                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                        //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                        DoPE.ERR error = MyEdc.Move.FMove(DoPE.MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FDPoti");
                     }
                     catch (NullReferenceException)
@@ -2238,7 +2357,8 @@ namespace DoPENetConnect
                     {
                         speed = btnHurryDownConstantVal;
 
-                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                        //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
+                        DoPE.ERR error = MyEdc.Move.FMove(DoPE.MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FDPoti");
 
                         //DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
@@ -2739,10 +2859,15 @@ namespace DoPENetConnect
                 nTestCount = HalfCycles;
                 stopwatch.Start();
 
+                IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCount.Text);
+
                 //读取最后一次实验次数
                 StringBuilder strTmp = new StringBuilder(255);
                 IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
                 nPreTestCount = int.Parse(strTmp.ToString());
+         
+                //实验开始禁用次数修改
+                tbX_TestCount.Enabled = false;
             }
 
         }
@@ -4252,5 +4377,32 @@ namespace DoPENetConnect
 
         }
 
+
+        /// <summary>
+        /// 初始化试验次数判断
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbX_TestCount_Leave(object sender, EventArgs e)
+        {
+            if (int.TryParse(tbX_TestCount.Text.Trim(), out int value))
+            {
+                if (value < 0)
+                {
+                    MessageBox.Show("请输入正整数的试验次数。");
+                    tbX_TestCount.Focus();
+                    tbX_TestCount.SelectAll();
+                    return;
+                }
+                else
+                {
+                    IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCount.Text);
+                }
+            }
+            else
+            {
+                MessageBox.Show("请输入一个有效的数字。");
+            }
+        }
     }
 }

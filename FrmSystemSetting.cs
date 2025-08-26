@@ -316,6 +316,14 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("Setting", "WaveRefreshFrequency", "0", strTmp, strTmp.Capacity);
             tbX_WaveRefreshFrequency.Text = strTmp.ToString();
 
+            //启用高压
+            IniFileHelper.GetIniString("Setting", "EnableHigh", "0", strTmp, strTmp.Capacity);
+            cbX_EnableHigh.Checked = strTmp.ToString() == "0" ? false : true;
+
+            //启用低压
+            IniFileHelper.GetIniString("Setting", "EnableLow", "0", strTmp, strTmp.Capacity);
+            cbX_EnableLow.Checked = strTmp.ToString() == "0" ? false : true;
+
             #endregion 系统设置页面
 
             #region 试验机参数页面

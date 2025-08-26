@@ -2,9 +2,9 @@
 
 ; 安装程序初始定义常量
 !define PRODUCT_NAME "DOLI试验测试系统"
-!define PRODUCT_MAIN_FILE "DoPENetConnect"
+!define PRODUCT_MAIN_FILE "DoPEConnect"
 !define PRODUCT_VERSION "1.1"
-!define PRODUCT_PUBLISHER "济南新测仪器有限公司"
+!define PRODUCT_PUBLISHER ""
 !define PRODUCT_WEB_SITE "http://www.jnxince.cn/"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
@@ -39,8 +39,8 @@ SetCompressor lzma
 ; ------ MUI 现代界面定义结束 ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "试验测试系统安装文件.exe"
-InstallDir "D:\XINCEDevice"
+OutFile "试验系统安装文件_v1.0.exe"
+InstallDir "D:\DoPEConnect"
 ShowInstDetails show
 ShowUnInstDetails show
 
@@ -52,9 +52,9 @@ Section "MainSection" SEC01
 SectionEnd
 
 Section -AdditionalIcons
-  CreateDirectory "$SMPROGRAMS\XINCEDevice"
-  CreateShortCut "$SMPROGRAMS\XINCEDevice\${PRODUCT_NAME}.lnk" "$INSTDIR\${PRODUCT_MAIN_FILE}"
-  CreateShortCut "$SMPROGRAMS\XINCEDevice\Uninstall.lnk" "$INSTDIR\uninst.exe"
+  CreateDirectory "$SMPROGRAMS\DoPEConnect"
+  CreateShortCut "$SMPROGRAMS\DoPEConnect\${PRODUCT_NAME}.lnk" "$INSTDIR\${PRODUCT_MAIN_FILE}"
+  CreateShortCut "$SMPROGRAMS\DoPEConnect\Uninstall.lnk" "$INSTDIR\uninst.exe"
 SectionEnd
 
 Section -Post
@@ -76,13 +76,13 @@ Section Uninstall
   Delete "$DESKTOP\${PRODUCT_NAME}.lnk"
   Delete "$DESKTOP\${PRODUCT_NAME}"
 
-  Delete "$SMPROGRAMS\XINCEDevice\Uninstall.lnk"
-  Delete "$SMPROGRAMS\XINCEDevice\ETCHISCash.lnk"
-  Delete "$SMPROGRAMS\XINCEDevice\Uninstall"
-  Delete "$SMPROGRAMS\XINCEDevice\ETCHISCash"
+  Delete "$SMPROGRAMS\DoPEConnect\Uninstall.lnk"
+  Delete "$SMPROGRAMS\DoPEConnect\ETCHISCash.lnk"
+  Delete "$SMPROGRAMS\DoPEConnect\Uninstall"
+  Delete "$SMPROGRAMS\DoPEConnect\ETCHISCash"
 
 
-  RMDir "$SMPROGRAMS\XINCEDevice"
+  RMDir "$SMPROGRAMS\DoPEConnect"
 
   RMDir /r "$INSTDIR\*.*"
   RMDir /r "$INSTDIR\Lang"

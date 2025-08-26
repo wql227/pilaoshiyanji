@@ -228,10 +228,7 @@ namespace DoPENetConnect
 
             WriteIni();
 
-
             MainForm.mainform.PVPositionQueue.Clear();
-            MainForm.mainform.PeakValues.Clear();
-            MainForm.mainform.ValleyValues.Clear();
         }
 
 
