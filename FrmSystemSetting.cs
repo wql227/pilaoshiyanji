@@ -985,5 +985,12 @@ namespace DoPENetConnect
         {
             MainForm.mainform.SetupResetXHead();
         }
+
+        private void superTabItem5_DoubleClick(object sender, EventArgs e)
+        {
+            FormInputBox tmpInput = new FormInputBox();
+            tmpInput.Show();
+            //IniFileHelper.WriteIniString("")
+        }
     }
 }

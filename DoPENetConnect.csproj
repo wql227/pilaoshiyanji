@@ -159,6 +159,12 @@
     <Compile Include="FormFloat.Designer.cs">
       <DependentUpon>FormFloat.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormInputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInputBox.Designer.cs">
+      <DependentUpon>FormInputBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormFloat.resx">
       <DependentUpon>FormFloat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInputBox.resx">
+      <DependentUpon>FormInputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTest.resx">
       <DependentUpon>FormTest.cs</DependentUpon>
@@ -316,7 +325,7 @@
   <ItemGroup />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Deploy="1" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Configuration="" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="1" />
+      <UserProperties Reactor_Enabled="1" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Deploy="1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

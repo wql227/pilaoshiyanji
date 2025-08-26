@@ -2129,6 +2129,7 @@
             this.superTabItem5.GlobalItem = false;
             this.superTabItem5.Name = "superTabItem5";
             this.superTabItem5.Text = "系统设置";
+            this.superTabItem5.DoubleClick += new System.EventHandler(this.superTabItem5_DoubleClick);
             // 
             // superTabControlPanel7
             // 
