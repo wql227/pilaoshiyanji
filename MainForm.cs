@@ -360,6 +360,9 @@ namespace DoPENetConnect
         /// </summary>
         FormTest doTest;
 
+        //开始点
+        int startPoint = 10;
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -434,7 +437,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -842,7 +845,7 @@ namespace DoPENetConnect
             {
                 nCount++;
                 // refesh edit controls with the latest sample
-                DoPE.Data Sample = Block.Data[Block.Data.Length - 1].Data;
+                DoPE.Data Sample = Block.Data[startPoint].Data;
                 string text;
 
                 text = String.Format("{0}", Sample.Time.ToString("0.000"));
@@ -2435,7 +2438,7 @@ namespace DoPENetConnect
                     //for (int i = 50; Block.Data.Length > i; i += 2500)
                     //for (int i = 30; Block.Data.Length >= i; i += 60)
                     //for (int i = 20; Block.Data.Length > i; i += 200)
-                    for (int i = 10; Block.Data.Length > i; i += 100)
+                    for (int i = startPoint; Block.Data.Length > i; i += 100)
                     //for (int i = 1; Block.Data.Length > i; i ++)
                     {
                         //绘制Position
@@ -3969,7 +3972,8 @@ namespace DoPENetConnect
 
                     if (trCsvData != null && trCsvData.Rows.Count >= 1)
                     {
-                        for (int i = 0; i < trCsvData.Rows.Count; i++)
+                        //int j
+                        for (int i = 10; i < trCsvData.Rows.Count; i+=100)
                         {
                             double strX = double.Parse(trCsvData.Rows[i][0].ToString());
                             double strYPos = double.Parse(trCsvData.Rows[i][1].ToString());
@@ -4658,6 +4662,7 @@ namespace DoPENetConnect
 
         private void buttonX16_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("x_Position{0}", x_Position);
             if (isRunning)
             {
                 buttonX16.Checked = true;
