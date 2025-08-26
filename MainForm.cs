@@ -437,7 +437,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -3943,37 +3943,45 @@ namespace DoPENetConnect
                     DataPoint dpCommand = null;
                     DataPoint dpLoadPos = null;
                     DataPoint dpLoadExt = null;
+                    DataPoint dpZero = null;
 
                     //List<DataPoint> points = new List<DataPoint>();
 
-                    for (int i = 0; i < chart_machine.Series[0].Points.Count; i++)
-                    {
-                        chart_machine.Series[0].Points.RemoveAt(i);
-                    }
-                    for (int i = 0; i < chart_machine.Series[1].Points.Count; i++)
-                    {
-                        chart_machine.Series[1].Points.RemoveAt(i);
-                    }
-                    for (int i = 0; i < chart_machine.Series[2].Points.Count; i++)
-                    {
-                        chart_machine.Series[2].Points.RemoveAt(i);
-                    }
-                    for (int i = 0; i < chart_machine.Series[3].Points.Count; i++)
-                    {
-                        chart_machine.Series[3].Points.RemoveAt(i);
-                    }
+                    //for (int i = 0; i < chart_machine.Series[0].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[0].Points.RemoveAt(i);
+                    //}
+                    //for (int i = 0; i < chart_machine.Series[1].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[1].Points.RemoveAt(i);
+                    //}
+                    //for (int i = 0; i < chart_machine.Series[2].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[2].Points.RemoveAt(i);
+                    //}
+                    //for (int i = 0; i < chart_machine.Series[3].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[3].Points.RemoveAt(i);
+                    //}
 
-                    //chart_machine.Series[0].Points.Clear();
-                    //chart_machine.Series[1].Points.Clear();
-                    //chart_machine.Series[2].Points.Clear();
-                    //chart_machine.Series[3].Points.Clear();
-                    //chart_machine.Series[4].Points.Clear();
-                    //chart_machine.Series[5].Points.Clear();
+                    chart_machine.Series[0].Points.Clear();
+                    chart_machine.Series[1].Points.Clear();
+                    chart_machine.Series[2].Points.Clear();
+                    chart_machine.Series[3].Points.Clear();
+                    chart_machine.Series[4].Points.Clear();
+                    chart_machine.Series[5].Points.Clear();
 
                     if (trCsvData != null && trCsvData.Rows.Count >= 1)
                     {
-                        //int j
-                        for (int i = 10; i < trCsvData.Rows.Count; i+=100)
+                        //dpZero = new DataPoint(0, 0);
+                        //chart_machine.Series[0].Points.Add(dpZero);
+                        //chart_machine.Series[1].Points.Add(dpZero);
+                        //chart_machine.Series[2].Points.Add(dpZero);
+                        //chart_machine.Series[3].Points.Add(dpZero);
+                        //chart_machine.Series[4].Points.Add(dpZero);
+                        //chart_machine.Series[5].Points.Add(dpZero);
+
+                        for (int i = 0; i < trCsvData.Rows.Count; i++)
                         {
                             double strX = double.Parse(trCsvData.Rows[i][0].ToString());
                             double strYPos = double.Parse(trCsvData.Rows[i][1].ToString());
@@ -3981,12 +3989,18 @@ namespace DoPENetConnect
                             double strYExt = double.Parse(trCsvData.Rows[i][3].ToString());
                             double strYCommand = double.Parse(trCsvData.Rows[i][4].ToString());
 
-                            dpPos = new DataPoint(strX, strYPos);
+                            double realX = 0;
+                            //if (i != 7)
+                            {
+                                realX = strX - double.Parse(trCsvData.Rows[0][0].ToString())+0.01; 
+                            }
+                            
+                            dpPos = new DataPoint(realX, strYPos);
                             dpLoad = new DataPoint(strX, strYLoad);
                             dpExt = new DataPoint(strX, strYExt);
                             dpCommand = new DataPoint(strX, strYCommand);
-                            dpLoadPos = new DataPoint(strYLoad, strYPos);
-                            dpLoadExt = new DataPoint(strYLoad, strYExt);
+                            dpLoadPos = new DataPoint(strYPos, strYLoad);
+                            dpLoadExt = new DataPoint(strYExt, strYLoad);
 
                             chart_machine.Series[0].Points.Add(dpPos);
                             chart_machine.Series[1].Points.Add(dpLoad);
@@ -4007,7 +4021,7 @@ namespace DoPENetConnect
                             if (maxSeries3 < strYCommand) maxSeries3 = strYCommand;
                             if (minSeries3 > strYCommand) minSeries3 = strYCommand;
 
-                            x_Position = strX;
+                            x_Position = realX;
 
                         }
 
