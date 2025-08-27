@@ -3946,15 +3946,6 @@ namespace DoPENetConnect
                     doTest.sampleNotes = testInfo[6];
 
                     SetTestInfo(testInfo);
-                    //dataGridViewX2.CurrentRow.Cells[0].Value = "100";
-                    //Console.WriteLine("glm-+testInfo{0}", dataGridViewX2.CurrentRow.Index);
-                    //dataGridViewX2.CurrentRow.Cells[1].Value = testInfo[1];
-                    //dataGridViewX2.CurrentRow.Cells[2].Value = testInfo[2];
-                    //dataGridViewX2.CurrentRow.Cells[3].Value = testInfo[7];
-                    //dataGridViewX2.CurrentRow.Cells[4].Value = testInfo[3];
-                    //dataGridViewX2.CurrentRow.Cells[5].Value = testInfo[4];
-                    //dataGridViewX2.CurrentRow.Cells[6].Value = testInfo[5];
-                    //dataGridViewX2.CurrentRow.Cells[7].Value = testInfo[6];
 
                     #endregion 
                     //foreach (DataRow dr2 in trCsvData.Rows)
