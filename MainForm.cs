@@ -3931,8 +3931,32 @@ namespace DoPENetConnect
                 {
                     ExcelHelper excelHelper = new ExcelHelper(selectedFilePath);
 
-                    DataTable trCsvData = excelHelper.CSVToDataTableStatic(true);
+                    string[] testInfo = { "", "", "", "", "", "", "", "" };
+                    DataTable trCsvData = excelHelper.CSVToDataTableStatic(true,testInfo);
+                    //Console.WriteLine("glm-+testInfo{0}", testInfo);
 
+                    #region 设置结果到试验列表信息,以及试验
+                    doTest.sampleFinished = true;     //标识为一个已经完成的试验
+                    doTest.sampleCode = testInfo[0];
+                    doTest.sampleNo = testInfo[1];
+                    doTest.sampleShape = testInfo[2];
+                    doTest.sampleOperator = testInfo[3];
+                    doTest.sampleChecker = testInfo[4];
+                    doTest.sampleDependation = testInfo[5];
+                    doTest.sampleNotes = testInfo[6];
+
+                    SetTestInfo(testInfo);
+                    //dataGridViewX2.CurrentRow.Cells[0].Value = "100";
+                    //Console.WriteLine("glm-+testInfo{0}", dataGridViewX2.CurrentRow.Index);
+                    //dataGridViewX2.CurrentRow.Cells[1].Value = testInfo[1];
+                    //dataGridViewX2.CurrentRow.Cells[2].Value = testInfo[2];
+                    //dataGridViewX2.CurrentRow.Cells[3].Value = testInfo[7];
+                    //dataGridViewX2.CurrentRow.Cells[4].Value = testInfo[3];
+                    //dataGridViewX2.CurrentRow.Cells[5].Value = testInfo[4];
+                    //dataGridViewX2.CurrentRow.Cells[6].Value = testInfo[5];
+                    //dataGridViewX2.CurrentRow.Cells[7].Value = testInfo[6];
+
+                    #endregion 
                     //foreach (DataRow dr2 in trCsvData.Rows)
                     //{
                     //    Console.WriteLine(dr2["Time [s]"].ToString() + "<br>");
@@ -4872,6 +4896,43 @@ namespace DoPENetConnect
 
             }
 
+        }
+
+        public void SetTestInfo(string[] testInfo)
+        {
+            RemoveDataGridView();
+            if (testInfo.Length != 0)
+            {
+                //foreach (string tmpStr in testInfo)
+                {
+                    DataGridViewRow newRow = new DataGridViewRow();
+                    newRow.CreateCells(dataGridViewX2);
+          
+                    for (int i = 0; i < dataGridViewX2.ColumnCount; i++)
+                    {
+
+                        if (i < 3)
+                        {
+                            newRow.Cells[i].Value = testInfo[i];
+                            //j++;
+                        }
+                        else if (i > 3)
+                        {
+                            newRow.Cells[i].Value = testInfo[i - 1];
+                            //j++;
+                        }
+                        else if (i == 3)
+                        {
+                            newRow.Cells[i].Value = testInfo[7];
+                        }
+
+                    }
+                    //if (isThereOneRows == false)
+                    dataGridViewX2.Rows.Add(newRow);
+                    //newRow.HeaderCell.Value = "1";
+                }
+
+            }
         }
 
         public void SetExpertmentParams()

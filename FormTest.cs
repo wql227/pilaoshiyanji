@@ -58,6 +58,11 @@ namespace DoPENetConnect
             set;
             get;
         }
+        public bool sampleFinished
+        {
+            set;
+            get;
+        }
 
         public FormTest()
         {
@@ -178,6 +183,7 @@ namespace DoPENetConnect
 
         private void FormTest_Load(object sender, EventArgs e)
         {
+            this.sampleFinished = false;
             this.Activate();
         }
 

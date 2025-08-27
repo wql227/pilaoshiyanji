@@ -98,7 +98,7 @@ namespace DoPENetConnect
         }
 
 
-        public DataTable CSVToDataTableStatic(bool isFirstRowColumn)
+        public DataTable CSVToDataTableStatic(bool isFirstRowColumn,string[] testInfo)
         {
             DataTable dataTable = new DataTable();
             string text = "H";
@@ -112,12 +112,21 @@ namespace DoPENetConnect
                 while (text != null)
                 {
                     text = streamReader.ReadLine();
-                    if (text.Contains("破坏载荷")) break;
+                    if (text.Contains("破坏载荷"))
+                    {
+                        testInfo[7] = text.Split(',').ElementAt(1);
+                        break;
+                    }
                     num++;
-                    if (num < 7) continue;
+                    if (num < 8)
+                    {
+                        testInfo[num - 1] = text.Split(',').ElementAt(1);                       
+                        continue;
+                    }
+
                     if (text != null)
                     {
-                        if (7 == num)
+                        if (8 == num)
                         {
                             string[] array = text.Split(',');
                             for (int i = 0; i < array.Length; i++)
