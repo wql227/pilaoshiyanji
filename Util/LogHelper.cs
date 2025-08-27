@@ -212,7 +212,7 @@ namespace DoPENetConnect
                 {
                     if (writeHeader)
                     {
-                        string header = "时间[s],位移[mm],试验力[N],变形[mm],命令,循环,输出[%],反馈,半循环";
+                        string header = "时间[s],位移[mm],试验力[N],变形[mm],命令,半循环,输出[%],反馈,循环";
                         sw.WriteLine(header);
                     }
 
