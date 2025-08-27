@@ -298,6 +298,8 @@ namespace DoPENetConnect
                         sw.WriteLine(headStr);
                         headStr = string.Format("试样形状,{0}", dotest.sampleShape);
                         sw.WriteLine(headStr);
+                        headStr = string.Format("试验人员,{0}", dotest.sampleOperator);
+                        sw.WriteLine(headStr);
                         headStr = string.Format("校核人员,{0}", dotest.sampleChecker);
                         sw.WriteLine(headStr);
                         headStr = string.Format("试验依据,{0}", dotest.sampleDependation);
