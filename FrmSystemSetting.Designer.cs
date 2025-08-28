@@ -2414,43 +2414,43 @@
             // 
             // comboItem34
             // 
-            this.comboItem34.Text = "com1";
+            this.comboItem34.Text = "COM1";
             // 
             // comboItem35
             // 
-            this.comboItem35.Text = "com2";
+            this.comboItem35.Text = "COM2";
             // 
             // comboItem36
             // 
-            this.comboItem36.Text = "com3";
+            this.comboItem36.Text = "COM3";
             // 
             // comboItem37
             // 
-            this.comboItem37.Text = "com4";
+            this.comboItem37.Text = "COM4";
             // 
             // comboItem39
             // 
-            this.comboItem39.Text = "com5";
+            this.comboItem39.Text = "COM5";
             // 
             // comboItem40
             // 
-            this.comboItem40.Text = "com6";
+            this.comboItem40.Text = "COM6";
             // 
             // comboItem41
             // 
-            this.comboItem41.Text = "com7";
+            this.comboItem41.Text = "COM7";
             // 
             // comboItem42
             // 
-            this.comboItem42.Text = "com8";
+            this.comboItem42.Text = "COM8";
             // 
             // comboItem43
             // 
-            this.comboItem43.Text = "com9";
+            this.comboItem43.Text = "COM9";
             // 
             // comboItem44
             // 
-            this.comboItem44.Text = "com10";
+            this.comboItem44.Text = "COM10";
             // 
             // comboBoxSendInterval
             // 

@@ -54,6 +54,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelEx10 = new DevComponents.DotNetBar.PanelEx();
+            this.buttonX22 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX21 = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.sampleCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -527,6 +528,18 @@
             this.panelEx10.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx10.Style.GradientAngle = 90;
             this.panelEx10.TabIndex = 67;
+            // 
+            // buttonX22
+            // 
+            this.buttonX22.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX22.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX22.Location = new System.Drawing.Point(1185, 49);
+            this.buttonX22.Name = "buttonX22";
+            this.buttonX22.Size = new System.Drawing.Size(75, 23);
+            this.buttonX22.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX22.TabIndex = 94;
+            this.buttonX22.Text = "buttonXsend";
+            this.buttonX22.Click += new System.EventHandler(this.buttonX22_Click);
             // 
             // buttonX21
             // 
@@ -2089,6 +2102,7 @@
             // 
             // pl_DataShow
             // 
+            this.pl_DataShow.Controls.Add(this.buttonX22);
             this.pl_DataShow.Controls.Add(this.cb_TareExt);
             this.pl_DataShow.Controls.Add(this.cb_TareLoad);
             this.pl_DataShow.Controls.Add(this.cb_TarePos);
@@ -4422,6 +4436,7 @@
         public System.Windows.Forms.DataVisualization.Charting.Chart chart_machine;
         private DevComponents.DotNetBar.ButtonX buttonX21;
         private System.IO.Ports.SerialPort serialPort1;
+        private DevComponents.DotNetBar.ButtonX buttonX22;
     }
 }
 

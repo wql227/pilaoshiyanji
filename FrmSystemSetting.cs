@@ -418,10 +418,10 @@ namespace DoPENetConnect
 
             //通信
             IniFileHelper.GetIniString("Communication", "Com", "0", strTmp, strTmp.Capacity);
-            comboBoxComSelect.SelectedIndex = int.Parse(strTmp.ToString())-1;
+            comboBoxComSelect.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("Communication", "Interval", "0", strTmp, strTmp.Capacity);
-            comboBoxSendInterval.SelectedIndex = int.Parse(strTmp.ToString());
+            comboBoxSendInterval.Text = strTmp.ToString();
         }
 
 
@@ -602,11 +602,14 @@ namespace DoPENetConnect
             IniFileHelper.WriteIniString("UIDefault ", "comboBoxEx_ForceUnit", strTmp);
 
             //串口设定
-            strTmp = (comboBoxComSelect.SelectedIndex+1).ToString();      //端口号
+            strTmp = comboBoxComSelect.Text;      //端口号
             IniFileHelper.WriteIniString("communication ", "Com", strTmp);
 
-            strTmp = (comboBoxSendInterval.SelectedIndex).ToString();      //发送周期
+            strTmp = comboBoxSendInterval.Text;      //发送周期
             IniFileHelper.WriteIniString("communication ", "Interval", strTmp);
+
+            MainForm.mainform.SetRealtimeParamComParams(comboBoxComSelect.Text,comboBoxSendInterval.Text);
+            
         }
 
 

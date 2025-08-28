@@ -99,7 +99,13 @@ namespace DoPENetConnect
         public double LoadVal;
         public double ExtenssionVal;
         public int CurrentCurveType;       //当前显示的曲线类型 0：位移时间，1：试验力时间，2：变形时间，4：试验力位移，5：试验力变形
-    
+
+        //设置通信
+        public string comNo;
+        public int sendInterval;   //发送间隔
+
+        //数据接收次数
+        public long dataRecvTimes;   //试验开始后（isrunning = true) 数据接收次数
     }
     #endregion start struct
     /// <summary>
@@ -415,6 +421,17 @@ namespace DoPENetConnect
             label1.Text = axisYTitle;
             chart_machine.ChartAreas[0].AxisX.Title = axisXTitle;
             label2.Text = seriesName;
+        }
+
+        public void SetRealtimeParamComParams(string comNo, string interval)
+        {
+            realtimeParams.comNo = comNo;
+            realtimeParams.sendInterval = int.Parse(interval);
+            serialPort1.PortName = comNo;
+
+
+            //修改后接着打开串口
+            OpenCom();
         }
 
         ///----------------------------------------------------------------------
@@ -1200,10 +1217,22 @@ namespace DoPENetConnect
                 TimeSpan elapsed = stopwatch.Elapsed;
                 guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
                 guiTime.Refresh();
+
+                //发送
+                if (bConnected && bActivated && isRunning)
+                {
+                    realtimeParams.dataRecvTimes++;
+                    if (realtimeParams.dataRecvTimes % (realtimeParams.sendInterval / 10) == 0 && serialPort1.IsOpen)
+                    {
+                        string sendStr = $"B{realtimeParams.DisplacementVal},{realtimeParams.LoadVal}";
+                        serialPort1.Write(sendStr);
+                    }
+                }
             }
             ParamsSetFirstCycle();
             return 0;
         }
+
 
         public void SaveTestPath(string path,string imageName)
         {
@@ -1500,8 +1529,28 @@ namespace DoPENetConnect
 
             chart_machine.ChartAreas[0].AxisX.Minimum = 0;
             //chart_machine.ChartAreas[0].AxisX.Maximum = 5;
-            
 
+            //开串口
+            OpenCom();
+        }
+
+        public bool OpenCom()
+        {
+            try
+            {
+                serialPort1.Open();
+                return true;
+            }
+            catch (Exception ex) {
+                if (serialPort1.IsOpen)
+                {
+                }
+                else
+                {
+                    MessageBox.Show($"Error: {ex.Message}", $"打开{realtimeParams.comNo}", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return false;
+            }
         }
 
 
@@ -3595,6 +3644,14 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "0", strTmp, strTmp.Capacity);
             cb_DrawCommand.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
+
+            //tongxin
+            IniFileHelper.GetIniString("Communication", "Com", "0", strTmp, strTmp.Capacity);
+            string comNo = strTmp.ToString();
+            IniFileHelper.GetIniString("Communication", "Interval", "0", strTmp, strTmp.Capacity);
+            string interval = strTmp.ToString();
+            SetRealtimeParamComParams(comNo, interval);
+
         }
 
         private void ToolStripMenuItem_SystemSetting_Click(object sender, EventArgs e)
@@ -4485,6 +4542,7 @@ namespace DoPENetConnect
 
                 if (!isRunning)
                 {
+                    realtimeParams.dataRecvTimes = 0;
                     originParams = realtimeParams;
                     AutoFitMaxMinValClear();      //曲线参数初始化
                     CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
@@ -5065,6 +5123,11 @@ namespace DoPENetConnect
             //bitmap.Dispose();
 
             File.Delete(imagePath);
+        }
+
+        private void buttonX22_Click(object sender, EventArgs e)
+        {
+            serialPort1.Write("hello everyone");
         }
     }
 }
