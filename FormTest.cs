@@ -63,6 +63,16 @@ namespace DoPENetConnect
             set;
             get;
         }
+        public string sampleLogPath
+        {
+            set;
+            get;
+        }
+        public string sampleImageName
+        {
+            set;
+            get;
+        }
 
         public FormTest()
         {

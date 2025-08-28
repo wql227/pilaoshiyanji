@@ -437,7 +437,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -1205,6 +1205,11 @@ namespace DoPENetConnect
             return 0;
         }
 
+        public void SaveTestPath(string path,string imageName)
+        {
+            doTest.sampleLogPath = path;
+            doTest.sampleImageName = imageName;
+        }
         public void ParamsSetFirstCycle()
         {
             if (firstCycleParamsSetFlag == 0) {
@@ -4975,6 +4980,76 @@ namespace DoPENetConnect
         private void chart_machine_Paint(object sender, PaintEventArgs e)
         {
             label1.Location = new Point(label1.Location.X ,(int)52.5*chart_machine.Height /120+chart_machine.Location.Y);
+        }
+
+        private void buttonX21_Click(object sender, EventArgs e)
+        {
+            string path = doTest.sampleLogPath;
+            DialogResult = MessageBox.Show($"确定将图片保存至：{path}", "询问", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (DialogResult == DialogResult.Cancel) {
+                return;
+            }
+            string tampName=Path.Combine(path, "StaticData");
+            string picName = "D:\\projects\\DoPENet_Connect\\bin\\x64\\Debug\\StaticData\\2025-08-23\\a.png";
+            string picName1 = "D:\\projects\\DoPENet_Connect\\bin\\x64\\Debug\\StaticData\\2025-08-23\\a1.png";
+            chart_machine.SaveImage("D:\\projects\\DoPENet_Connect\\bin\\x64\\Debug\\StaticData\\2025-08-23\\a.png",ChartImageFormat.Png);
+            AddTextToImage(picName, "kN", "宋体",12, picName1);
+        }
+
+        private string GetCurrentCurveName()
+        {
+            string name;
+            switch (realtimeParams.CurrentCurveType)
+            {
+                case 0:
+                    name = "位移时间";
+                    break;
+                case 1:
+                    name = "试验力时间";
+                    break;
+                case 2:
+                    name = "变形时间";
+                    break;
+                case 4:
+                    name = "试验力位移";
+                    break;
+                case 5:
+                    name = "试验力变形";
+                    break;
+                default:
+                    name = "位移时间";
+                    break;
+            }
+
+            return name;
+        }
+
+        public void AddTextToImage(string imagePath, string text, string fontName, int fontSize, string savePath)
+        {
+            // 加载图片
+            Image image = Image.FromFile(imagePath);
+
+            // 创建一个Bitmap对象，并设置其大小和分辨率与图片相同
+            Bitmap bitmap = new Bitmap(image);
+            image.Dispose();
+
+            // 创建一个Graphics对象，用于在图片上绘制文字
+            Graphics graphics = Graphics.FromImage(bitmap);
+
+            // 根据字体名和字体大小创建一个字体对象
+            Font font = new Font(fontName, fontSize);
+
+            // 创建一个画刷对象，用于设置文字的颜色
+            Brush brush = new SolidBrush(Color.Black);
+
+            // 在图片上绘制文字
+            graphics.DrawString(text, font, brush, new PointF(10, 10));
+
+            // 保存修改后的图片
+            bitmap.Save(savePath);
+            //bitmap.Dispose();
+
+            File.Delete(imagePath);
         }
     }
 }
