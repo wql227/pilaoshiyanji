@@ -3950,6 +3950,11 @@ namespace DoPENetConnect
                     doTest.sampleDependation = testInfo[5];
                     doTest.sampleNotes = testInfo[6];
 
+                    string[] tmpStrs = selectedFilePath.Split('\\');
+                    string[] tmpStr2 = new string[tmpStrs.Length-1];
+                    Array.Copy(tmpStrs, tmpStr2, tmpStrs.Length - 1);
+                    SaveTestPath(string.Join("\\", tmpStr2),tmpStrs[tmpStrs.Length-1].Split('.').ElementAt(0));
+
                     SetTestInfo(testInfo);
 
                     #endregion 
@@ -4985,15 +4990,21 @@ namespace DoPENetConnect
         private void buttonX21_Click(object sender, EventArgs e)
         {
             string path = doTest.sampleLogPath;
+            if (path == null)
+            {
+                MessageBox.Show("路径为空，请在载入试验或者完成试验后进行该操作","警告",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
             DialogResult = MessageBox.Show($"确定将图片保存至：{path}", "询问", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (DialogResult == DialogResult.Cancel) {
                 return;
             }
-            string tampName=Path.Combine(path, "StaticData");
-            string picName = "D:\\projects\\DoPENet_Connect\\bin\\x64\\Debug\\StaticData\\2025-08-23\\a.png";
-            string picName1 = "D:\\projects\\DoPENet_Connect\\bin\\x64\\Debug\\StaticData\\2025-08-23\\a1.png";
-            chart_machine.SaveImage("D:\\projects\\DoPENet_Connect\\bin\\x64\\Debug\\StaticData\\2025-08-23\\a.png",ChartImageFormat.Png);
-            AddTextToImage(picName, "kN", "宋体",12, picName1);
+            //string tampName=Path.Combine(path, "StaticData");
+            string picName = Path.Combine(path, "tmp.png");
+            string chartName = GetCurrentCurveName();
+            string picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
+            chart_machine.SaveImage(picName, ChartImageFormat.Png);
+            AddTextToImage(picName, label1.Text, "宋体",12, picName1,label2.Text);
         }
 
         private string GetCurrentCurveName()
@@ -5024,7 +5035,7 @@ namespace DoPENetConnect
             return name;
         }
 
-        public void AddTextToImage(string imagePath, string text, string fontName, int fontSize, string savePath)
+        public void AddTextToImage(string imagePath, string text, string fontName, int fontSize, string savePath,string text1)
         {
             // 加载图片
             Image image = Image.FromFile(imagePath);
@@ -5043,7 +5054,8 @@ namespace DoPENetConnect
             Brush brush = new SolidBrush(Color.Black);
 
             // 在图片上绘制文字
-            graphics.DrawString(text, font, brush, new PointF(10, 10));
+            graphics.DrawString(text, font, brush, new PointF(30, (int)(9*chart_machine.Height/20)));
+            graphics.DrawString(text1, font, brush, new PointF((int)(9.5 * chart_machine.Width / 20), 3));
 
             // 保存修改后的图片
             bitmap.Save(savePath);
