@@ -437,7 +437,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -4985,6 +4985,7 @@ namespace DoPENetConnect
         private void chart_machine_Paint(object sender, PaintEventArgs e)
         {
             label1.Location = new Point(label1.Location.X ,(int)52.5*chart_machine.Height /120+chart_machine.Location.Y);
+            label2.Location = new Point((int)(9.5 * chart_machine.Width / 20), label2.Location.Y);
         }
 
         private void buttonX21_Click(object sender, EventArgs e)
@@ -4992,10 +4993,10 @@ namespace DoPENetConnect
             string path = doTest.sampleLogPath;
             if (path == null)
             {
-                MessageBox.Show("路径为空，请在载入试验或者完成试验后进行该操作","警告",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("路径为空，请在载入试验或者完成试验后进行该操作","图像保存",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
-            DialogResult = MessageBox.Show($"确定将图片保存至：{path}", "询问", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult = MessageBox.Show($"确定将图片保存至：{path}", "图像保存", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (DialogResult == DialogResult.Cancel) {
                 return;
             }
@@ -5054,8 +5055,10 @@ namespace DoPENetConnect
             Brush brush = new SolidBrush(Color.Black);
 
             // 在图片上绘制文字
-            graphics.DrawString(text, font, brush, new PointF(30, (int)(9*chart_machine.Height/20)));
-            graphics.DrawString(text1, font, brush, new PointF((int)(9.5 * chart_machine.Width / 20), 3));
+            //graphics.DrawString(text, font, brush, new PointF(30, (int)(9*chart_machine.Height/20)));
+            //graphics.DrawString(text1, font, brush, new PointF((int)(9.5 * chart_machine.Width / 20), 3));
+            graphics.DrawString(text, font, brush,label1.Location);
+            graphics.DrawString(text1, font, brush, label2.Location);
 
             // 保存修改后的图片
             bitmap.Save(savePath);

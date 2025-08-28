@@ -531,9 +531,9 @@
             // 
             this.buttonX21.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX21.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX21.Location = new System.Drawing.Point(579, 221);
+            this.buttonX21.Location = new System.Drawing.Point(1406, 494);
             this.buttonX21.Name = "buttonX21";
-            this.buttonX21.Size = new System.Drawing.Size(75, 23);
+            this.buttonX21.Size = new System.Drawing.Size(91, 35);
             this.buttonX21.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX21.TabIndex = 93;
             this.buttonX21.Text = "buttonX21";
@@ -657,7 +657,7 @@
             this.buttonX18.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX18.Image = ((System.Drawing.Image)(resources.GetObject("buttonX18.Image")));
             this.buttonX18.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX18.Location = new System.Drawing.Point(1508, 427);
+            this.buttonX18.Location = new System.Drawing.Point(1508, 433);
             this.buttonX18.Name = "buttonX18";
             this.buttonX18.Size = new System.Drawing.Size(62, 40);
             this.buttonX18.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -673,7 +673,7 @@
             this.buttonX16.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX16.Image = ((System.Drawing.Image)(resources.GetObject("buttonX16.Image")));
             this.buttonX16.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX16.Location = new System.Drawing.Point(1418, 427);
+            this.buttonX16.Location = new System.Drawing.Point(1418, 433);
             this.buttonX16.Name = "buttonX16";
             this.buttonX16.Size = new System.Drawing.Size(62, 40);
             this.buttonX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -689,7 +689,7 @@
             this.buttonX15.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX15.Image = ((System.Drawing.Image)(resources.GetObject("buttonX15.Image")));
             this.buttonX15.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX15.Location = new System.Drawing.Point(1326, 427);
+            this.buttonX15.Location = new System.Drawing.Point(1326, 433);
             this.buttonX15.Name = "buttonX15";
             this.buttonX15.Size = new System.Drawing.Size(62, 40);
             this.buttonX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
