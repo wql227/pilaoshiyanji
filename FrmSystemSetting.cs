@@ -415,6 +415,13 @@ namespace DoPENetConnect
                 comboBoxEx_TripSensor.SelectedIndex = indexToBeSetted;
             IniFileHelper.GetIniString("UIDefault", "comboBoxEx_ForceUnit", "0", strTmp, strTmp.Capacity);
             comboBoxEx_ForceUnit.SelectedIndex = int.Parse(strTmp.ToString());
+
+            //通信
+            IniFileHelper.GetIniString("Communication", "Com", "0", strTmp, strTmp.Capacity);
+            comboBoxComSelect.SelectedIndex = int.Parse(strTmp.ToString())-1;
+
+            IniFileHelper.GetIniString("Communication", "Interval", "0", strTmp, strTmp.Capacity);
+            comboBoxSendInterval.SelectedIndex = int.Parse(strTmp.ToString());
         }
 
 
@@ -594,6 +601,12 @@ namespace DoPENetConnect
             strTmp = comboBoxEx_ForceUnit.SelectedIndex.ToString();
             IniFileHelper.WriteIniString("UIDefault ", "comboBoxEx_ForceUnit", strTmp);
 
+            //串口设定
+            strTmp = (comboBoxComSelect.SelectedIndex+1).ToString();      //端口号
+            IniFileHelper.WriteIniString("communication ", "Com", strTmp);
+
+            strTmp = (comboBoxSendInterval.SelectedIndex).ToString();      //发送周期
+            IniFileHelper.WriteIniString("communication ", "Interval", strTmp);
         }
 
 
