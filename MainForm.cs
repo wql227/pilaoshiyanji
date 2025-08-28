@@ -4514,7 +4514,10 @@ namespace DoPENetConnect
 
                 cmbX_Dyn_StartCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
-                comboBoxEx7.DataSource = System.Enum.GetNames(typeof(DoPE.LIMITMODE));
+                //comboBoxEx7.DataSource = System.Enum.GetNames(typeof(DoPE.LIMITMODE));
+                comboBoxEx7.Items.Add("RELATIVE");
+                //comboBoxEx7.Items.Add("NOT_ACTIVE");
+                comboBoxEx7.SelectedIndex = 0;
 
                 comboBoxEx9.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
@@ -4533,7 +4536,9 @@ namespace DoPENetConnect
 
                 cmbX_Dyn_StartCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
-                comboBoxEx7.DataSource = System.Enum.GetNames(typeof(DoPE.LIMITMODE));
+                //comboBoxEx7.DataSource = System.Enum.GetNames(typeof(DoPE.LIMITMODE));
+                //comboBoxEx7.Items.Add("RELATIVE");
+                //comboBoxEx7.Items.Add("NOT_ACTIVE");
 
                 comboBoxEx9.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 

@@ -153,7 +153,7 @@ namespace DoPENetConnect
         public void send_FrmPosExts_command(DoPE.CTRL MoveCtrl, double Speed, LIMITMODE LimitMode, double Limit, CTRL DestinationCtrl, double Destination,
             DESTMODE DestMode)
         {
-            MainForm.mainform.MovePosExt(MoveCtrl, Speed, LimitMode, Limit, DestinationCtrl, Destination, DestMode);
+            MainForm.mainform.MovePosExt(MoveCtrl, Speed, LIMITMODE.RELATIVE, Limit, DestinationCtrl, Destination, DestMode);
         }
 
         /// <summary>
