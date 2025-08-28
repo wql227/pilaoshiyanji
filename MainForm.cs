@@ -437,7 +437,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -4478,6 +4478,7 @@ namespace DoPENetConnect
                     originParams = realtimeParams;
                     AutoFitMaxMinValClear();      //曲线参数初始化
                     CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
+                    SetMaxMinControlsZero();
                     buttonX15.Checked = true;
                     buttonX16.Checked = false;
                      FrmPosExt frmPosExt = new FrmPosExt();
@@ -4491,6 +4492,13 @@ namespace DoPENetConnect
                 MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        public void SetMaxMinControlsZero()
+        {
+            tb_MaxPos.Text = "0.00";
+            tb_MaxLoad.Text = "0.00";
+            tb_MaxExt.Text = "0.00";
         }
 
         private void superTabControl4_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
