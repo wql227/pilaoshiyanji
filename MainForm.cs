@@ -454,7 +454,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -5096,25 +5096,21 @@ namespace DoPENetConnect
 
         public void AddTextToImage(string imagePath, string text, string fontName, int fontSize, string savePath,string text1)
         {
-            // 加载图片
+          
             Image image = Image.FromFile(imagePath);
-
-            // 创建一个Bitmap对象，并设置其大小和分辨率与图片相同
+            
             Bitmap bitmap = new Bitmap(image);
-            image.Dispose();
+            image.Dispose();    //释放图像资源
 
-            // 创建一个Graphics对象，用于在图片上绘制文字
+            
             Graphics graphics = Graphics.FromImage(bitmap);
-
-            // 根据字体名和字体大小创建一个字体对象
+            
+            
             Font font = new Font(fontName, fontSize);
 
-            // 创建一个画刷对象，用于设置文字的颜色
+         
             Brush brush = new SolidBrush(Color.Black);
 
-            // 在图片上绘制文字
-            //graphics.DrawString(text, font, brush, new PointF(30, (int)(9*chart_machine.Height/20)));
-            //graphics.DrawString(text1, font, brush, new PointF((int)(9.5 * chart_machine.Width / 20), 3));
             graphics.DrawString(text, font, brush,label1.Location);
             graphics.DrawString(text1, font, brush, label2.Location);
 
