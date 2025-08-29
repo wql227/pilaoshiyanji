@@ -5133,5 +5133,21 @@ namespace DoPENetConnect
         {
             this.Refresh();
         }
+
+        private void buttonX22_Click_1(object sender, EventArgs e)
+        {
+            //MyEdc.Check.SetCheck(CHK_ID.ID0, DoPE.SENSOR.SENSOR_F, 2000, CHK_MODE.ABOVE, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0,ref MyTan);
+
+            //MyEdc.Check.SetCheck(CHK_ID.ID0, DoPE.SENSOR.SENSOR_F, 2000, CHK_MODE.ABOVE, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
+        }
+
+
+        private void LoadSystemLimitSet()
+        {
+            if(protectOption.ProtectOption_OverLoadPercent_Flag)
+                MyEdc.Check.SetCheck(CHK_ID.ID0, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadPercent, CHK_MODE.PERCENT_MIN, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
+            if(protectOption.ProtectOption_OverLoadForce_Flag)
+                MyEdc.Check.SetCheck(CHK_ID.ID1, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadForce, CHK_MODE.ABOVE, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
+        }
     }
 }
