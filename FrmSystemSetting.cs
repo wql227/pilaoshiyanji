@@ -54,8 +54,8 @@ namespace DoPENetConnect
             label11.Location = new Point(label12.Location.X , label11.Location.Y);
 
             ///groupPanne5
-            NUD_CountLog.Location = new Point(lineStart, NUD_CountLog.Location.Y);
-            label2.Location = new Point(NUD_CountLog.Location.X + NUD_CountLog.Width + 5, label2.Location.Y);
+            //NUD_CountLog.Location = new Point(lineStart, NUD_CountLog.Location.Y);
+            //label2.Location = new Point(NUD_CountLog.Location.X + NUD_CountLog.Width + 5, label2.Location.Y);
 
             ///groupPanel6
             label3.Location = new Point(lineStart, label3.Location.Y);
@@ -288,8 +288,12 @@ namespace DoPENetConnect
             StringBuilder strTmp = new StringBuilder(255);
             string strConfigSetion = this.Name;
 
-            IniFileHelper.GetIniString("Setting", "CountLog", "0", strTmp, strTmp.Capacity);
-            NUD_CountLog.Text = strTmp.ToString();
+            IniFileHelper.GetIniString("Setting", "CountLog", "100", strTmp, strTmp.Capacity);
+            cbX_CountLog.Text = strTmp.ToString();
+            if (string.IsNullOrEmpty(cbX_CountLog.Text))
+            {
+                cbX_CountLog.Text = "100";
+            }
 
             IniFileHelper.GetIniString(strConfigSetion, "限位保护选项", "0", strTmp, strTmp.Capacity);
             int indexToBeSetted = int.Parse(strTmp.ToString());
@@ -480,7 +484,7 @@ namespace DoPENetConnect
             string strConfigSetion = this.Name;
 
             //按试验次数记录日志
-            strTmp = NUD_CountLog.Text;
+            strTmp = cbX_CountLog.Text;
             MainForm.mainform.nCountLog = int.Parse(strTmp);
             IniFileHelper.WriteIniString("Setting", "CountLog", strTmp);
 
