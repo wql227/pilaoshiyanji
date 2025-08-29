@@ -1314,7 +1314,8 @@ namespace DoPENetConnect
         {
             Display(string.Format("OnCheckMsg: DoPError={0} Action={1} Time={2} CheckId={3} Position={4} SensorNo={5} usTAN={6} \n",
               CheckMsg.DoPError, CheckMsg.Action, CheckMsg.Time, CheckMsg.CheckId, CheckMsg.Position, CheckMsg.SensorNo, CheckMsg.usTAN));
-
+            MyEdc.Check.ClrCheck(CheckMsg.CheckId);
+            floatMenus.EnableButton(true);
             return 0;
         }
 
@@ -2998,6 +2999,7 @@ namespace DoPENetConnect
         public void MovePosExt(DoPE.CTRL MoveCtrl, double Speed, LIMITMODE LimitMode, double Limit, CTRL DestinationCtrl, double Destination,
             DESTMODE DestMode)
         {
+            LoadSystemLimitSet();
             DoPE.ERR error = MyEdc.Move.PosExt(MoveCtrl, Speed, LimitMode, Limit, DestinationCtrl, Destination, DestMode, ref MyTan);
             
             //正常返回，开始计时
@@ -5133,15 +5135,7 @@ namespace DoPENetConnect
         {
             this.Refresh();
         }
-
-        private void buttonX22_Click_1(object sender, EventArgs e)
-        {
-            //MyEdc.Check.SetCheck(CHK_ID.ID0, DoPE.SENSOR.SENSOR_F, 2000, CHK_MODE.ABOVE, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0,ref MyTan);
-
-            //MyEdc.Check.SetCheck(CHK_ID.ID0, DoPE.SENSOR.SENSOR_F, 2000, CHK_MODE.ABOVE, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
-        }
-
-
+               
         private void LoadSystemLimitSet()
         {
             if(protectOption.ProtectOption_OverLoadPercent_Flag)
