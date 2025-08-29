@@ -5128,5 +5128,10 @@ namespace DoPENetConnect
         {
             serialPort1.Write("hello everyone");
         }
+
+        private void superTabControl1_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
+        {
+            this.Refresh();
+        }
     }
 }
