@@ -427,6 +427,7 @@ namespace DoPENetConnect
         {
             realtimeParams.comNo = comNo;
             realtimeParams.sendInterval = int.Parse(interval);
+            serialPort1.Close();
             serialPort1.PortName = comNo;
 
 
@@ -454,7 +455,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -2998,9 +2999,9 @@ namespace DoPENetConnect
             DESTMODE DestMode)
         {
             DoPE.ERR error = MyEdc.Move.PosExt(MoveCtrl, Speed, LimitMode, Limit, DestinationCtrl, Destination, DestMode, ref MyTan);
-
+            
             //正常返回，开始计时
-            if (error == DoPE.ERR.NOERROR)
+            //if (error == DoPE.ERR.NOERROR)
             {
                 //开始计时
                 timer_UpdateData.Start();
@@ -3052,6 +3053,8 @@ namespace DoPENetConnect
 
         public void SetupResetXHead()
         {
+            buttonX16_Click(this, new EventArgs());
+            FormFloat_bntX_GUIOff_Click();
             DoPE.ERR error = MyEdc.Setup.InitializeResetXHead();
         }
 
