@@ -949,22 +949,19 @@ namespace DoPENetConnect
                     //TODO
                     //位移队列
                     PVPositionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
-                    if (PVPositionQueue.Count >= 2000)
+                    if (PVPositionQueue.Count >= 200)
                     {
-                        PVPositionList = PVPositionQueue.ToList();
+                        PVPositionList = PVPositionQueue.Distinct().ToList();
 
                         for (int i = 0; i <= PVPositionList.Count; i++)
                         {
                             // 判断是否为峰值： //PVPositionQueue.Count
-                            if (i < 6 || i > 1994)
+                            if (i < 3 || i > PVPositionList.Count - 2)
                             {
                                 continue;
                             }
 
-                            if (PVPositionList[i - 1] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 1] ||
-                                PVPositionList[i - 2] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 2] ||
-                                PVPositionList[i - 3] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 3] ||
-                                PVPositionList[i - 4] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 4] )
+                            if (PVPositionList[i - 1] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 1])
                             {
                                 PVPositionMaxAverageList.Add(PVPositionList[i]);
                                 if (PVPositionMaxAverageList.Count > 0)
@@ -979,11 +976,7 @@ namespace DoPENetConnect
                             }
 
                             // 判断是否为谷值：小于左右相邻的数据
-                            if (PVPositionList[i - 1] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 1] ||
-                                PVPositionList[i - 2] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 2] ||
-                                PVPositionList[i - 3] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 3] ||
-                                PVPositionList[i - 4] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 4] ||
-                                PVPositionList[i - 5] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 5])
+                            if (PVPositionList[i - 1] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 1])
                             {
                                 PVPositionMinAverageList.Add(PVPositionList[i]);
                                 if (PVPositionMinAverageList.Count > 0)
@@ -1076,7 +1069,7 @@ namespace DoPENetConnect
                             #endregion 判断位移峰谷值
                         }
 
-                        if  (PVPositionQueue.Count >= 2000)
+                        if (PVPositionQueue.Count >= 200)
                         {
                             //PVPositionQueue.Dequeue();
                             PVPositionQueue.Clear();
@@ -1084,7 +1077,7 @@ namespace DoPENetConnect
 
                         if (PVPositionMaxAverageList.Count > 100)
                         {
-                            PVPositionMaxAverageList.RemoveRange(0, PVPositionMaxAverageList.Count / 2 );
+                            PVPositionMaxAverageList.RemoveRange(0, PVPositionMaxAverageList.Count / 2);
                         }
 
                         if (PVPositionMinAverageList.Count > 100)
@@ -1121,11 +1114,11 @@ namespace DoPENetConnect
                     PVLoadQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
                     if (PVLoadQueue.Count >= 200)
                     {
-                        PVLoadList = PVLoadQueue.ToList();
+                        PVLoadList = PVLoadQueue.Distinct().ToList();
 
                         for (int i = 0; i < PVLoadList.Count; i++)
                         {
-                            if (i < 4 || i > 198)
+                            if (i < 4 || i > PVLoadList.Count - 2)
                             {
                                 continue;
                             }
@@ -1345,11 +1338,11 @@ namespace DoPENetConnect
                     PVExtensionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
                     if (PVExtensionQueue.Count >= 200)
                     {
-                        PVExtensionList = PVExtensionQueue.ToList();
+                        PVExtensionList = PVExtensionQueue.Distinct().ToList();
                         for (int i = 0; i <= PVExtensionList.Count; i++)
                         {
                             // 判断是否为峰值： //PVPositionQueue.Count
-                            if (i < 3 || i > 197)
+                            if (i < 3 || i > PVExtensionList.Count - 2)
                             {
                                 continue;
                             }
@@ -2567,25 +2560,29 @@ namespace DoPENetConnect
             {
                 if (!bPause)
                 {
+                    double y_Position = 0.0d;
+                    double y_Load = 0.0d;
+                    double y_Extension = 0.0d;
+                    double y_Command = 0.0d;
                     //for (int i = 20; Block.Data.Length > i; i += 200)
                     //for (int i = 5; Block.Data.Length >= i; i += 50)
                     for (int i = 0; Block.Data.Length > i; i += (int)SampleFrequency * 5)
                     {
                         //绘制Position
-                        double y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
+                         y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
 
                         //绘制Load
-                        double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
+                        y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
 
                         if (LoadUnit.ToUpper() == "KN")
                         {
                             y_Load = y_Load / 1000;
                         }
                         //绘制Extension
-                        double y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
+                         y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
 
                         //绘制Command
-                        double y_Command = Block.Data[i].Data.Command;
+                        y_Command = Block.Data[i].Data.Command;
 
                         chartX.Add(x_Data);
 
