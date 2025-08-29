@@ -283,6 +283,11 @@ namespace DoPENetConnect
         public StringBuilder strBlockLog = new StringBuilder();
 
         /// <summary>
+        /// 记录上一次记录峰谷值的半循环序号
+        /// </summary>
+        public int LastRecordedHalfCycle = -1;
+
+        /// <summary>
         /// 设备id
         /// </summary>
         public StringBuilder devId;
@@ -929,7 +934,11 @@ namespace DoPENetConnect
 
         private int OnDataBlock(ref DoPE.OnDataBlock Block, object Parameter)
         {
+            //CSV日志
             string strCSVLog = "";
+
+            //峰谷值日志
+            string strPVLog = "";
             if (Block.Data.Length > 0)
             {
                 nCount++;
@@ -966,7 +975,7 @@ namespace DoPENetConnect
                                 PVPositionMaxAverageList.Add(PVPositionList[i]);
                                 if (PVPositionMaxAverageList.Count > 0)
                                 {
-                                    if (PVPositionList[i] > PVPositionMaxAverageList.Average())
+                                    //if (PVPositionList[i] > PVPositionMaxAverageList.Average())
                                     {
                                         g_MaxPosition = PVPositionList[i];
                                     }
@@ -981,7 +990,7 @@ namespace DoPENetConnect
                                 PVPositionMinAverageList.Add(PVPositionList[i]);
                                 if (PVPositionMinAverageList.Count > 0)
                                 {
-                                    if (PVPositionList[i] < PVPositionMinAverageList.Average())
+                                    //if (PVPositionList[i] < PVPositionMinAverageList.Average())
                                     {
                                         g_MinPosition = PVPositionList[i];
                                     }
@@ -1130,15 +1139,13 @@ namespace DoPENetConnect
                                 {
                                     PVLoadMaxAverageList.Add(PVLoadList[i]);
 
-                                    double dLoadMaxAverage = 0;
+                                    //double dLoadMaxAverage = 0;
                                     if (PVLoadMaxAverageList.Count > 0)
                                     {
-                                        dLoadMaxAverage = PVLoadMaxAverageList.Average();
-                                    }
-
-                                    if (PVLoadList[i] >= dLoadMaxAverage)
-                                    {
-                                        g_MaxLoad = PVLoadList[i] / 1000;
+                                        if (PVLoadList[i] >= PVLoadMaxAverageList.Average())
+                                        {
+                                            g_MaxLoad = PVLoadList[i] / 1000;
+                                        }
                                     }
 
                                     //g_MaxLoad = PVLoadList[i] / 1000;
@@ -1147,16 +1154,15 @@ namespace DoPENetConnect
                                 {
                                     PVLoadMaxAverageList.Add(PVLoadList[i]);
 
-                                    double dLoadMaxAverage = 0;
+                                    //double dLoadMaxAverage = 0;
                                     if (PVLoadMaxAverageList.Count > 0)
                                     {
-                                        dLoadMaxAverage = PVLoadMaxAverageList.Average();
+                                        if (PVLoadList[i] >= PVLoadMaxAverageList.Average())
+                                        {
+                                            g_MaxLoad = PVLoadList[i];
+                                        }
                                     }
-
-                                    if (PVLoadList[i] >= dLoadMaxAverage)
-                                    {
-                                        g_MaxLoad = PVLoadList[i];
-                                    }
+                        
                                     //g_MaxLoad = PVLoadList[i];
                                 }
                             }
@@ -1169,16 +1175,15 @@ namespace DoPENetConnect
                                 {
                                     PVLoadMinAverageList.Add(PVLoadList[i]);
 
-                                    double dLoadMinAverage = 0;
+                                    //double dLoadMinAverage = 0;
                                     if (PVLoadMinAverageList.Count > 0)
                                     {
-                                        dLoadMinAverage = PVLoadMinAverageList.Average();
+                                        if (PVLoadList[i] <= PVLoadMinAverageList.Average())
+                                        {
+                                            g_MinLoad = PVLoadList[i] / 1000;
+                                        }
                                     }
-
-                                    if (PVLoadList[i] <= dLoadMinAverage)
-                                    {
-                                        g_MinLoad = PVLoadList[i] / 1000;
-                                    }
+                    
                                     //g_MinLoad = PVLoadList[i] / 1000;
                                 }
                                 else
@@ -1188,13 +1193,12 @@ namespace DoPENetConnect
                                     double dLoadMinAverage = 0;
                                     if (PVLoadMinAverageList.Count > 0)
                                     {
-                                        dLoadMinAverage = PVLoadMinAverageList.Average();
+                                        if (PVLoadList[i] <= PVLoadMinAverageList.Average())
+                                        {
+                                            g_MinLoad = PVLoadList[i];
+                                        }
                                     }
-
-                                    if (PVLoadList[i] <= dLoadMinAverage)
-                                    {
-                                        g_MinLoad = PVLoadList[i];
-                                    }
+                        
                                     //g_MinLoad = PVLoadList[i];
                                 }
                             }
@@ -1497,7 +1501,7 @@ namespace DoPENetConnect
                     strCSVLog += text + ",";
                     text = (gSample.Cycles /*<< 1*/).ToString();
 
-                    ////记录输出
+                    //记录输出
                     strCSVLog += text + ",";
                     text = String.Format("{0}", gSample.Output.ToString("0.000"));
 
@@ -1514,12 +1518,27 @@ namespace DoPENetConnect
                         strBlockLog.Append(strCSVLog + "\r\n");
                         //strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");
 
-                        ////按配置的次数存储日志
+                        //按配置的次数存储日志
                         if ((gSample.Cycles /*>> 1*/) % nCountLog == 0)
                         {
                             LogHelper.SaveCsvData(strBlockLog.ToString());
                             strBlockLog.Clear();
                         }
+
+                        int currentHalfCycle = gSample.Cycles >> 1;
+
+                        //按配置的次数存储峰谷值日志
+                        if ((gSample.Cycles >> 1) % 100 == 0)
+                        {
+                            //防止同一秒记录多次
+                            if (currentHalfCycle != LastRecordedHalfCycle)
+                            {
+                                strPVLog = g_MaxPosition.ToString("F6") + "," + g_MinPosition.ToString("F6") + "," + g_MaxLoad.ToString("F6") + "," + g_MinLoad.ToString("F6") + "," + g_MaxExtension.ToString("F6") + "," + g_MinExtension.ToString("F6") + "," + (gSample.Cycles >> 1);
+                                LogHelper.SavePeakValleyData(strPVLog);
+                                LastRecordedHalfCycle = currentHalfCycle;
+                            }
+                        }
+
                     }
 
                     if (!isRunning)
