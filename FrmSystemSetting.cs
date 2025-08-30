@@ -545,7 +545,7 @@ namespace DoPENetConnect
             strTmp = checkBoxX3.Checked == false ? "0" : "1";
             MainForm.mainform.protectOption.ProtectOption_OverLoadPercent_Flag = checkBoxX3.Checked;
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadPercent_Flag", strTmp);
-
+          
             strTmp = numericUpDown1.Value.ToString();
             MainForm.mainform.protectOption.ProtectOption_OverLoadPercent = double.Parse(strTmp);
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Percent", strTmp);

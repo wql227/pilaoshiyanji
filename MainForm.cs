@@ -1310,13 +1310,61 @@ namespace DoPENetConnect
             return 0;
         }
 
+        DoPE.OnCheckMsg myCheckMsg;
         private int OnCheckMsg(ref DoPE.OnCheckMsg CheckMsg, object Parameter)
         {
             Display(string.Format("OnCheckMsg: DoPError={0} Action={1} Time={2} CheckId={3} Position={4} SensorNo={5} usTAN={6} \n",
               CheckMsg.DoPError, CheckMsg.Action, CheckMsg.Time, CheckMsg.CheckId, CheckMsg.Position, CheckMsg.SensorNo, CheckMsg.usTAN));
+            MoveHalt();
+            //停止数据更新
+            //if (isRunning)
+            {
+                isRunning = false;
+                onExpermentStoped();
+            }
+
+            //if (CheckMsg.CheckId == CHK_ID.ID0)
+            //{    //percented
+                //if (this.InvokeRequired)
+                {
+                myCheckMsg = CheckMsg;
+                    this.Invoke(new MethodInvoker(ShowMessageBox));
+                    //MessageBox.Show($"试验力超出系统限制:{protectOption.ProtectOption_OverLoadPercent}%", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                }
+            //}
+            //else
+            //{
+            //    if (this.InvokeRequired)
+            //    {
+            //        MessageBox.Show($"试验力超出系统限制：{protectOption.ProtectOption_OverLoadPercent}kN", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+
+            //}            //}
+            //else
+            //{
+            //    if (this.InvokeRequired)
+            //    {
+            //        MessageBox.Show($"试验力超出系统限制：{protectOption.ProtectOption_OverLoadPercent}kN", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+
+            //}
             MyEdc.Check.ClrCheck(CheckMsg.CheckId);
             floatMenus.EnableButton(true);
             return 0;
+        }
+
+        public void ShowMessageBox()
+        {
+            //MessageBox.Show("试验力超出系统限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (myCheckMsg.CheckId == CHK_ID.ID0)
+            {
+                MessageBox.Show($"试验力超出系统限制:{protectOption.ProtectOption_OverLoadPercent}%", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+              
+            }
+            else
+            {
+                    MessageBox.Show($"试验力超出系统限制：{protectOption.ProtectOption_OverLoadForce}kN", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }  
         }
 
         private int OnRefSignalMsg(ref DoPE.OnRefSignalMsg RefSignalMsg, object Parameter)
