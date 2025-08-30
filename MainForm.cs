@@ -1264,7 +1264,7 @@ namespace DoPENetConnect
 
             return 0;
         }
-
+        
         private int OnPosMsg(ref DoPE.OnPosMsg PosMsg, object Parameter)
         {
             Display(string.Format("OnPosMsg: DoPError={0} Reached={1} Time={2} Control={3} Position={4} DControl={5} Destination={6} usTAN={7} \n",
@@ -1291,7 +1291,13 @@ namespace DoPENetConnect
             Display(string.Format("OnLPosMsg: DoPError={0} Reached={1} Time={2} Control={3} Position={4} DControl={5} Destination={6} usTAN={7} \n",
               PosMsg.DoPError, PosMsg.Reached, PosMsg.Time, PosMsg.Control, PosMsg.Position, PosMsg.DControl, PosMsg.Destination, PosMsg.usTAN));
 
+            this.Invoke(new MethodInvoker(ShowOnPosMsgInfos));
             return 0;
+        }
+
+        public void ShowOnPosMsgInfos()
+        {
+            MessageBox.Show("到达限位", "限位触发", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private int OnSftMsg(ref DoPE.OnSftMsg SftMsg, object Parameter)
