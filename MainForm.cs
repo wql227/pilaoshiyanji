@@ -5188,7 +5188,7 @@ namespace DoPENetConnect
             if(protectOption.ProtectOption_OverLoadPercent_Flag)
                 MyEdc.Check.SetCheck(CHK_ID.ID0, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadPercent, CHK_MODE.PERCENT_MIN, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
             if(protectOption.ProtectOption_OverLoadForce_Flag)
-                MyEdc.Check.SetCheck(CHK_ID.ID1, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadForce, CHK_MODE.ABOVE, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
+                MyEdc.Check.SetCheck(CHK_ID.ID1, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadForce*1000, CHK_MODE.ABOVE, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
         }
     }
 }
