@@ -328,15 +328,15 @@ namespace DoPENetConnect
         /// 曲线自动自适应
         /// </summary>
 
-        double maxSeries0 = 10;
-        double maxSeries1 = 10;
-        double maxSeries2 = 10;
-        double maxSeries3 = 10;
+        double maxSeries0 = 1;
+        double maxSeries1 = 1;
+        double maxSeries2 = 1;
+        double maxSeries3 = 1;
 
-        double minSeries0 = 10;
-        double minSeries1 = 10;
-        double minSeries2 = 10;
-        double minSeries3 = 10;
+        double minSeries0 = 0;
+        double minSeries1 = 0;
+        double minSeries2 = 0;
+        double minSeries3 = 0;
 
         public bool valInScaleSetted = false;
 
@@ -973,7 +973,7 @@ namespace DoPENetConnect
                     }
                     strCSVLog += text + ",";
                     //data_display1 = decimal.Parse(guiPosition.Text == "" ? "" : "0");
-                    text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
+                    text = String.Format("{0}", (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F] / 1000).ToString("0.000"));
 
                     //试验力队列
                     //填写试验力实时值
@@ -981,9 +981,9 @@ namespace DoPENetConnect
                     PVLoadQueue.Enqueue(Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
                     if (PVLoadQueue.Count >= 50)
                     {
-                        if (double.Parse(tb_MaxLoad.Text) < PVLoadQueue.Max())
+                        if (double.Parse(tb_MaxLoad.Text) < (PVLoadQueue.Max() / 1000))
                         {
-                            tb_MaxLoad.Text = PVLoadQueue.Max().ToString("0.000");
+                            tb_MaxLoad.Text = (PVLoadQueue.Max()/1000).ToString("0.000");
                             tb_MaxLoad.Refresh();
                         }
                         //tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
@@ -2591,7 +2591,7 @@ namespace DoPENetConnect
                         }
 
                         //绘制Load
-                        double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
+                        double y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F]/1000;
                         //x_Load += nAxisStep;
                         // Console.WriteLine("glm2-{0}", y_Load);
 
@@ -3072,15 +3072,15 @@ namespace DoPENetConnect
         public void AutoFitMaxMinValClear()
         {
             x_Position = 0;
-             maxSeries0 = 10;
-             maxSeries1 = 10;
-             maxSeries2 = 10;
-             maxSeries3 = 10;
+             maxSeries0 = 1;
+             maxSeries1 = 1;
+             maxSeries2 = 1;
+             maxSeries3 = 1;
 
-             minSeries0 = 10;
-             minSeries1 = 10;
-             minSeries2 = 10;
-             minSeries3 = 10;
+             minSeries0 = 0;
+             minSeries1 = 0;
+             minSeries2 = 0;
+             minSeries3 = 0;
         }
 
         public void CleanChart()
@@ -4129,9 +4129,9 @@ namespace DoPENetConnect
                             }
                             
                             dpPos = new DataPoint(realX, strYPos);
-                            dpLoad = new DataPoint(strX, strYLoad);
-                            dpExt = new DataPoint(strX, strYExt);
-                            dpCommand = new DataPoint(strX, strYCommand);
+                            dpLoad = new DataPoint(realX, strYLoad);
+                            dpExt = new DataPoint(realX, strYExt);
+                            dpCommand = new DataPoint(realX, strYCommand);
                             dpLoadPos = new DataPoint(strYPos, strYLoad);
                             dpLoadExt = new DataPoint(strYExt, strYLoad);
 
@@ -4148,8 +4148,8 @@ namespace DoPENetConnect
                             if (maxSeries1 < strYLoad) maxSeries1 = strYLoad;
                             if (minSeries1 > strYLoad) minSeries1 = strYLoad;
 
-                            if (maxSeries1 < strYExt) maxSeries2 = strYExt;
-                            if (minSeries1 > strYExt) minSeries2 = strYExt;
+                            if (maxSeries2 < strYExt) maxSeries2 = strYExt;
+                            if (minSeries2 > strYExt) minSeries2 = strYExt;
 
                             if (maxSeries3 < strYCommand) maxSeries3 = strYCommand;
                             if (minSeries3 > strYCommand) minSeries3 = strYCommand;

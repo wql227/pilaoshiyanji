@@ -307,7 +307,7 @@ namespace DoPENetConnect
                         sw.WriteLine(headStr);
                         headStr = string.Format("备注,{0}", dotest.sampleNotes);
                         sw.WriteLine(headStr);
-                        string header = "Time [s],Position [mm],Load [N],Extension [Rev],Command [ ],Cycles [ ]";
+                        string header = "Time [s],Position [mm],Load [kN],Extension [Rev],Command [ ],Cycles [ ]";
                         sw.WriteLine(header);
                     }
 
