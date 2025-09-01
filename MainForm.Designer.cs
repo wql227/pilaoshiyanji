@@ -1594,6 +1594,7 @@
             chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
             chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY.MajorTickMark.Interval = 0D;
             chartArea1.AxisY.Maximum = 20D;
             chartArea1.AxisY.Minimum = -20D;
             chartArea1.AxisY.MinorTickMark.Enabled = true;

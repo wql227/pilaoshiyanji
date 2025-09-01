@@ -333,10 +333,10 @@ namespace DoPENetConnect
         double maxSeries2 = 1;
         double maxSeries3 = 1;
 
-        double minSeries0 = 0;
-        double minSeries1 = 0;
-        double minSeries2 = 0;
-        double minSeries3 = 0;
+        double minSeries0 = -1;
+        double minSeries1 = -1;
+        double minSeries2 = -1;
+        double minSeries3 = -1;
 
         public bool valInScaleSetted = false;
 
@@ -2809,8 +2809,8 @@ namespace DoPENetConnect
             double yAxisMin1 = maxSeriesMinYVal - padding1;
             if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
             {
-                chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
-                chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
+                chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 0);
+                chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 0);
             }
 
             #region load auto fit
@@ -3077,10 +3077,10 @@ namespace DoPENetConnect
              maxSeries2 = 1;
              maxSeries3 = 1;
 
-             minSeries0 = 0;
-             minSeries1 = 0;
-             minSeries2 = 0;
-             minSeries3 = 0;
+             minSeries0 = -1;
+             minSeries1 = -1;
+             minSeries2 = -1;
+             minSeries3 = -1;
         }
 
         public void CleanChart()
