@@ -1295,9 +1295,19 @@ namespace DoPENetConnect
             return 0;
         }
 
+        private int iLposMsgBox = 0;
         public void ShowOnPosMsgInfos()
         {
-            MessageBox.Show("到达限位", "限位触发", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (iLposMsgBox == 0)
+            {
+                MoveHalt();
+                //停止数据更新               
+                isRunning = false;
+                onExpermentStoped();
+               
+                MessageBox.Show("到达限位", "限位触发", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                iLposMsgBox = 1;
+            }
         }
 
         private int OnSftMsg(ref DoPE.OnSftMsg SftMsg, object Parameter)
@@ -1329,31 +1339,13 @@ namespace DoPENetConnect
                 onExpermentStoped();
             }
 
-            //if (CheckMsg.CheckId == CHK_ID.ID0)
-            //{    //percented
-                //if (this.InvokeRequired)
-                {
-                myCheckMsg = CheckMsg;
-                    this.Invoke(new MethodInvoker(ShowMessageBox));
+           
+               
+            myCheckMsg = CheckMsg;
+            this.Invoke(new MethodInvoker(ShowMessageBox));
                     //MessageBox.Show($"试验力超出系统限制:{protectOption.ProtectOption_OverLoadPercent}%", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                }
-            //}
-            //else
-            //{
-            //    if (this.InvokeRequired)
-            //    {
-            //        MessageBox.Show($"试验力超出系统限制：{protectOption.ProtectOption_OverLoadPercent}kN", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-
-            //}            //}
-            //else
-            //{
-            //    if (this.InvokeRequired)
-            //    {
-            //        MessageBox.Show($"试验力超出系统限制：{protectOption.ProtectOption_OverLoadPercent}kN", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-
-            //}
+              
+           
             MyEdc.Check.ClrCheck(CheckMsg.CheckId);
             floatMenus.EnableButton(true);
             return 0;
@@ -4601,6 +4593,7 @@ namespace DoPENetConnect
 
                 if (!isRunning)
                 {
+                    iLposMsgBox = 0;    //每次开始前清空显示限位信息标志
                     realtimeParams.dataRecvTimes = 0;
                     originParams = realtimeParams;
                     AutoFitMaxMinValClear();      //曲线参数初始化
