@@ -150,10 +150,10 @@ namespace DoPENetConnect
 
        
 
-        public void send_FrmPosExts_command(DoPE.CTRL MoveCtrl, double Speed, LIMITMODE LimitMode, double Limit, CTRL DestinationCtrl, double Destination,
+        public void send_FrmPosExts_command(DoPE.CTRL MoveCtrl, double Speed, int LimitMode, double Limit, CTRL DestinationCtrl, double Destination,
             DESTMODE DestMode)
-        {
-            MainForm.mainform.MovePosExt(MoveCtrl, Speed, LIMITMODE.RELATIVE, Limit, DestinationCtrl, Destination, DestMode);
+        {           
+            MainForm.mainform.MovePosExt(MoveCtrl, Speed, (LIMITMODE)LimitMode == 0 ? LIMITMODE.RELATIVE : LIMITMODE.NOT_ACTIVE, Limit, DestinationCtrl, Destination, DestMode);
         }
 
         /// <summary>

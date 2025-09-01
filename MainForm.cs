@@ -4602,7 +4602,7 @@ namespace DoPENetConnect
                     buttonX15.Checked = true;
                     buttonX16.Checked = false;
                      FrmPosExt frmPosExt = new FrmPosExt();
-                    frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), (LIMITMODE)comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
+                    frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
                                                      (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text), (DESTMODE)comboBoxEx11.SelectedIndex);
                 }
 
@@ -4636,8 +4636,8 @@ namespace DoPENetConnect
 
                 //comboBoxEx7.DataSource = System.Enum.GetNames(typeof(DoPE.LIMITMODE));
                 comboBoxEx7.Items.Add("RELATIVE");
-                //comboBoxEx7.Items.Add("NOT_ACTIVE");
-                comboBoxEx7.SelectedIndex = 0;
+                comboBoxEx7.Items.Add("NOT_ACTIVE");
+                comboBoxEx7.SelectedIndex = 1;
 
                 comboBoxEx9.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
@@ -4922,7 +4922,7 @@ namespace DoPENetConnect
                     }
                     buttonX15.Checked = true;
                     FrmPosExt frmPosExt = new FrmPosExt();
-                    frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), (LIMITMODE)comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
+                    frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
                                                      (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text), (DESTMODE)comboBoxEx11.SelectedIndex);
 
                 }
