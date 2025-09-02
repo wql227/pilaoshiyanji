@@ -4149,7 +4149,7 @@ namespace DoPENetConnect
                             double realX = 0;
                             //if (i != 7)
                             {
-                                realX = strX - double.Parse(trCsvData.Rows[0][0].ToString())+0.01; 
+                                realX = strX - double.Parse(trCsvData.Rows[0][0].ToString()); 
                             }
                             
                             dpPos = new DataPoint(realX, strYPos);
