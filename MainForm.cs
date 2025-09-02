@@ -1009,7 +1009,7 @@ namespace DoPENetConnect
                             //判断是否处于正常峰值区间
                             if (protectOption.ProtectOption_PosMaxOut_Effect)
                             {
-                                if (PVPositionQueue.Max() > protectOption.ProtectOption_PosMaxOut)
+                                if (g_MaxPosition > protectOption.ProtectOption_PosMaxOut)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1026,7 +1026,7 @@ namespace DoPENetConnect
 
                             if (protectOption.ProtectOption_PosMaxIn_Effect)
                             {
-                                if (PVPositionQueue.Max() < protectOption.ProtectOption_PosMaxIn)
+                                if (g_MaxPosition < protectOption.ProtectOption_PosMaxIn)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1044,7 +1044,7 @@ namespace DoPENetConnect
                             //判断是否处于正常谷值区间
                             if (protectOption.ProtectOption_PosMinOut_Effect)
                             {
-                                if (PVPositionQueue.Min() < protectOption.ProtectOption_PosMinOut)
+                                if (g_MinPosition < protectOption.ProtectOption_PosMinOut)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1061,7 +1061,7 @@ namespace DoPENetConnect
 
                             if (protectOption.ProtectOption_PosMinIn_Effect)
                             {
-                                if (PVPositionQueue.Min() > protectOption.ProtectOption_PosMinIn)
+                                if (g_MinPosition > protectOption.ProtectOption_PosMinIn)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1221,7 +1221,7 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力峰值区间 峰值外保护
                             if (protectOption.ProtectOption_LoadMaxOut_Effect)
                             {
-                                if (PVLoadQueue.Max() > protectOption.ProtectOption_LoadMaxOut)
+                                if (g_MaxLoad > protectOption.ProtectOption_LoadMaxOut)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1239,7 +1239,7 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力峰值区间 峰值内保护
                             if (protectOption.ProtectOption_LoadMaxIn_Effect)
                             {
-                                if (PVLoadQueue.Max() < protectOption.ProtectOption_LoadMaxIn)
+                                if (g_MaxLoad < protectOption.ProtectOption_LoadMaxIn)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1249,7 +1249,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("试验力峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力峰值小于内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1257,7 +1257,7 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力谷值区间 谷值外保护
                             if (protectOption.ProtectOption_LoadMinOut_Effect)
                             {
-                                if (PVLoadQueue.Min() < protectOption.ProtectOption_LoadMinOut)
+                                if (g_MinLoad < protectOption.ProtectOption_LoadMinOut)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1267,7 +1267,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("试验力峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力谷值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1275,7 +1275,7 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力谷值区间 谷值内保护
                             if (protectOption.ProtectOption_LoadMinIn_Effect)
                             {
-                                if (PVLoadQueue.Min() > protectOption.ProtectOption_LoadMinIn)
+                                if (g_MinLoad > protectOption.ProtectOption_LoadMinIn)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1285,7 +1285,7 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("试验力峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力谷值小于内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1397,7 +1397,7 @@ namespace DoPENetConnect
                             //判断是否处于合理的变形峰值区间 峰值外保护
                             if (protectOption.ProtectOption_ExtMaxOut_Effect)
                             {
-                                if (PVExtensionQueue.Max() > protectOption.ProtectOption_ExtMaxOut)
+                                if (g_MaxExtension > protectOption.ProtectOption_ExtMaxOut)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1415,7 +1415,7 @@ namespace DoPENetConnect
                             //判断是否处于合理的变形峰值区间 峰值内保护
                             if (protectOption.ProtectOption_ExtMaxIn_Effect)
                             {
-                                if (PVExtensionQueue.Max() < protectOption.ProtectOption_ExtMaxIn)
+                                if (g_MaxExtension < protectOption.ProtectOption_ExtMaxIn)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1433,7 +1433,7 @@ namespace DoPENetConnect
                             //判断是否处于合理的变形谷值区间 谷值外保护
                             if (protectOption.ProtectOption_ExtMinOut_Effect)
                             {
-                                if (PVExtensionQueue.Min() < protectOption.ProtectOption_ExtMinOut)
+                                if (g_MinExtension < protectOption.ProtectOption_ExtMinOut)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1451,7 +1451,7 @@ namespace DoPENetConnect
                             //判断是否处于合理的变形谷值区间 谷值内保护
                             if (protectOption.ProtectOption_ExtMinIn_Effect)
                             {
-                                if (PVExtensionQueue.Min() > protectOption.ProtectOption_ExtMinIn)
+                                if (g_MinExtension > protectOption.ProtectOption_ExtMinIn)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
