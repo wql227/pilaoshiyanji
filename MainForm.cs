@@ -2709,7 +2709,6 @@ namespace DoPENetConnect
             }
 
         }
-
         public void AutoFittingCurve(double series0maxY, double series0minY, double series1maxY, double series1minY, double series2maxY, double series2minY, double series3maxY, double series3minY)
         {
             //Console.WriteLine("glmxxx-{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}", series0maxY, series0minY, series1maxY, series1minY, series2maxY, series2minY, series3maxY, series3minY);
@@ -2809,6 +2808,8 @@ namespace DoPENetConnect
             double yAxisMin1 = maxSeriesMinYVal - padding1;
             if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
             {
+
+                chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "N2";
                 chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 0);
                 chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 0);
             }
