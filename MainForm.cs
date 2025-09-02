@@ -461,7 +461,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -4070,6 +4070,7 @@ namespace DoPENetConnect
 
                     string[] testInfo = { "", "", "", "", "", "", "", "" };
                     DataTable trCsvData = excelHelper.CSVToDataTableStatic(true,testInfo);
+                    if (trCsvData == null) return;
                     //Console.WriteLine("glm-+testInfo{0}", testInfo);
 
                     #region 设置结果到试验列表信息,以及试验
