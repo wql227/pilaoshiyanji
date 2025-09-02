@@ -369,6 +369,12 @@ namespace DoPENetConnect
         //开始点
         int startPoint = 10;
 
+        /// <summary>
+        /// 采样频率
+        /// </summary>
+        public int sampleRate = 0;
+
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -3703,6 +3709,17 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("Communication", "Interval", "0", strTmp, strTmp.Capacity);
             string interval = strTmp.ToString();
             SetRealtimeParamComParams(comNo, interval);
+
+            //采样
+            IniFileHelper.GetIniString("Sample", "Rate", "0", strTmp, strTmp.Capacity);
+            string sampleRateVal;
+            if (int.Parse(strTmp.ToString()) == 0)
+            {
+                sampleRateVal = "10";
+            }
+            else
+                sampleRateVal = strTmp.ToString();
+            sampleRate = int.Parse(strTmp.ToString());
 
         }
 

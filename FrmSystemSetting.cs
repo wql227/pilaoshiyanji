@@ -422,6 +422,17 @@ namespace DoPENetConnect
 
             IniFileHelper.GetIniString("Communication", "Interval", "0", strTmp, strTmp.Capacity);
             comboBoxSendInterval.Text = strTmp.ToString();
+
+            //采样
+            IniFileHelper.GetIniString("Sample", "Rate", "0", strTmp, strTmp.Capacity);
+            string sampleRateVal;
+            if (int.Parse(strTmp.ToString()) == 0)
+            {
+                sampleRateVal = "10";
+            }
+            else
+                sampleRateVal = strTmp.ToString();
+            numericUpDown3.Value = decimal.Parse(sampleRateVal);
         }
 
 
@@ -609,6 +620,11 @@ namespace DoPENetConnect
             IniFileHelper.WriteIniString("communication ", "Interval", strTmp);
 
             MainForm.mainform.SetRealtimeParamComParams(comboBoxComSelect.Text,comboBoxSendInterval.Text);
+
+            //采样频率添加
+            strTmp = numericUpDown3.Value.ToString();
+            IniFileHelper.WriteIniString("Sample", "Rate", strTmp);
+            MainForm.mainform.sampleRate = int.Parse(strTmp);
             
         }
 
@@ -1013,12 +1029,12 @@ namespace DoPENetConnect
         {
             double tmpValue =double.Parse(numericUpDown3.Value.ToString());
             double tmpLast = tmpValue % 10;
-            double tmpCurrentVal = 0;
+            double tmpCurrentVal = tmpValue;
             if (tmpLast != 0) {
                 tmpCurrentVal = tmpValue - tmpLast + 10;
             }
             numericUpDown3.Value = decimal.Parse(Math.Ceiling(tmpCurrentVal).ToString());
-            Console.WriteLine("glm-value{0}", tmpValue);
+       
         }
     }
 }
