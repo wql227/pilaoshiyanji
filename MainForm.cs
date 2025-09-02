@@ -1019,7 +1019,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("位移峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1036,7 +1037,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移峰值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("位移峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1054,7 +1056,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移谷值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("位移谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1071,7 +1074,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("位移谷值超过内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("位移谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1084,15 +1088,15 @@ namespace DoPENetConnect
                             PVPositionQueue.Clear();
                         }
 
-                        if (PVPositionMaxAverageList.Count > 100)
-                        {
-                            PVPositionMaxAverageList.RemoveRange(0, PVPositionMaxAverageList.Count / 2);
-                        }
+                        //if (PVPositionMaxAverageList.Count > 100)
+                        //{
+                        //    PVPositionMaxAverageList.RemoveRange(0, PVPositionMaxAverageList.Count / 2);
+                        //}
 
-                        if (PVPositionMinAverageList.Count > 100)
-                        {
-                            PVPositionMinAverageList.RemoveRange(0, PVPositionMinAverageList.Count / 2);
-                        }
+                        //if (PVPositionMinAverageList.Count > 100)
+                        //{
+                        //    PVPositionMinAverageList.RemoveRange(0, PVPositionMinAverageList.Count / 2);
+                        //}
                     }
 
                     // TODO:判断峰谷值是否超过外保护
@@ -1231,7 +1235,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("试验力峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("试验力峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1249,7 +1254,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("试验力峰值小于内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("试验力峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1267,7 +1273,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("试验力谷值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("试验力谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1285,7 +1292,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("试验力谷值小于内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("试验力谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1294,19 +1302,20 @@ namespace DoPENetConnect
 
                         while (PVLoadQueue.Count > 100)
                         {
-                            PVLoadQueue.Dequeue();
+                            //PVLoadQueue.Dequeue();
+                            PVLoadQueue.Clear();
                         }
 
-                        if (PVLoadMaxAverageList.Count > 100)
-                        {
-                            //PVLoadMaxAverageList.Clear();
-                            PVLoadMaxAverageList.RemoveRange(0, PVLoadMaxAverageList.Count / 2);
-                        }
+                        //if (PVLoadMaxAverageList.Count > 100)
+                        //{
+                        //    //PVLoadMaxAverageList.Clear();
+                        //    PVLoadMaxAverageList.RemoveRange(0, PVLoadMaxAverageList.Count / 2);
+                        //}
 
-                        if (PVLoadMinAverageList.Count > 100)
-                        {
-                            PVLoadMinAverageList.RemoveRange(0, PVLoadMinAverageList.Count / 2);
-                        }
+                        //if (PVLoadMinAverageList.Count > 100)
+                        //{
+                        //    PVLoadMinAverageList.RemoveRange(0, PVLoadMinAverageList.Count / 2);
+                        //}
                     }
 
                     if (nCount >= nCountREfresh)
@@ -1407,7 +1416,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("变形峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1425,7 +1435,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("变形峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1443,7 +1454,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("变形谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -1461,7 +1473,8 @@ namespace DoPENetConnect
                                     {
                                         OffEDC();
                                     }
-                                    MessageBox.Show("变形峰值超过外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    PauseDrawWave();
+                                    MessageBox.Show("变形谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return 0;
                                 }
                             }
@@ -3069,8 +3082,13 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void startStopDrawToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bPause = !bPause;
+            PauseDrawWave();
+        }
 
+
+        public void PauseDrawWave()
+        {
+            bPause = !bPause;
 
             if (bPause)
             {
@@ -3083,6 +3101,7 @@ namespace DoPENetConnect
 
             chart_machine.Enabled = false;
         }
+
 
 
         # endregion 快捷工具栏消息响应事件
