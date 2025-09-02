@@ -1008,5 +1008,17 @@ namespace DoPENetConnect
             tmpInput.Show();
             //IniFileHelper.WriteIniString("")
         }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            double tmpValue =double.Parse(numericUpDown3.Value.ToString());
+            double tmpLast = tmpValue % 10;
+            double tmpCurrentVal = 0;
+            if (tmpLast != 0) {
+                tmpCurrentVal = tmpValue - tmpLast + 10;
+            }
+            numericUpDown3.Value = decimal.Parse(Math.Ceiling(tmpCurrentVal).ToString());
+            Console.WriteLine("glm-value{0}", tmpValue);
+        }
     }
 }
