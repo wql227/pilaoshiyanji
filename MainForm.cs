@@ -461,7 +461,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -879,6 +879,8 @@ namespace DoPENetConnect
 
                 if (bConnected)
                 {
+
+                    realtimeParams.dataRecvTimes++;//记录次数累计
                     //位移队列
                     //填写实时值
                     realtimeParams.DisplacementVal = Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S];
@@ -1202,8 +1204,10 @@ namespace DoPENetConnect
                         //按配置的次数存储日志
                         //if ((Sample.Cycles /*>> 1*/) % nCountLog == 0)
                         //Console.WriteLine("glmseconds-{0}-{1}", stopwatch.Elapsed.TotalSeconds, stopwatch.Elapsed.TotalMilliseconds);
-                        long elapsedMillSeconds = (int)stopwatch.Elapsed.TotalMilliseconds;
-                        if(elapsedMillSeconds % 1 ==0)
+                        //long elapsedMillSeconds = (int)stopwatch.Elapsed.TotalMilliseconds;
+                        //if(elapsedMillSeconds % 1 ==0)
+                        int recordDataTimes = sampleRate / 10;   //计算多少次进行一次数据记录
+                        if((realtimeParams.dataRecvTimes-1)% recordDataTimes==0)
                         {
                             strBlockLog += (strCSVLog );
                             //strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");
@@ -1217,7 +1221,9 @@ namespace DoPENetConnect
                 //波形图
                 if (bConnected && bActivated && isRunning)
                 {
-                    ShowWave(Block);
+                    int recordDataTimes = sampleRate / 10;   //计算多少次进行一次数据记录
+                    if ((realtimeParams.dataRecvTimes - 1) % recordDataTimes == 0)
+                        ShowWave(Block);
                 }
 
                 //更新时间
@@ -1228,7 +1234,7 @@ namespace DoPENetConnect
                 //发送
                 if (bConnected && bActivated && isRunning)
                 {
-                    realtimeParams.dataRecvTimes++;
+                    
                     if (realtimeParams.dataRecvTimes % (realtimeParams.sendInterval / 10) == 0 && serialPort1.IsOpen)
                     {
                         string sendStr = $"B{realtimeParams.DisplacementVal},{realtimeParams.LoadVal}";
@@ -2536,7 +2542,7 @@ namespace DoPENetConnect
             //try
             //{
             //X轴坐标长度 = dStep * nTotal
-            dStep = 0.01;
+            dStep = 0.01*sampleRate/10;
             //dStep = 0.0005;
             //if (MyEdc.IsConnected() && bConnected)
             if (chart_machine != null)
