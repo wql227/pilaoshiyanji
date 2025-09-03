@@ -1749,6 +1749,7 @@
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(72, 21);
             this.toolStripStatusLabel3.Text = "设备编号：";
+            this.toolStripStatusLabel3.Visible = false;
             // 
             // toolStripStatusLabel4
             // 
@@ -1758,6 +1759,7 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
             this.toolStripStatusLabel4.Size = new System.Drawing.Size(80, 21);
+            this.toolStripStatusLabel4.Visible = false;
             // 
             // toolStripStatusLabel2
             // 
