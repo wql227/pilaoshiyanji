@@ -4768,7 +4768,8 @@ namespace DoPENetConnect
         private void pl_DataShow_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
-            {
+            {                
+                floatMenus.Location = new Point(System.Windows.Forms.Cursor.Position.X, System.Windows.Forms.Cursor.Position.Y);
                 floatMenus.Visible = true;
             }
         }
