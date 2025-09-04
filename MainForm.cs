@@ -405,7 +405,7 @@ namespace DoPENetConnect
             //悬浮工具框
             floatMenus = new FormFloat();
             floatMenus.Owner = this;
-            floatMenus.Location = new Point(this.Location.X - floatMenus.Width, this.Location.Y);
+            floatMenus.Location = new Point(300, 300);
             floatMenus.Show();
 
             //初始化试验信息
@@ -2149,8 +2149,8 @@ namespace DoPENetConnect
                     {
                         speed = btnHurryUpConstantVal;
 
-                        DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
-                        DisplayError(error, "FDPoti");
+                        DoPE.ERR error = MyEdc.Move.FMove(MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
+                        DisplayError(error, "FMove");
                         //DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
                         //DisplayError(error, "FMove_A");
                     }
