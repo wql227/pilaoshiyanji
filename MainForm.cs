@@ -4618,11 +4618,11 @@ namespace DoPENetConnect
 
                 if (!isRunning)
                 {
+                    CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
                     iLposMsgBox = 0;    //每次开始前清空显示限位信息标志
                     realtimeParams.dataRecvTimes = 0;
                     originParams = realtimeParams;
                     AutoFitMaxMinValClear();      //曲线参数初始化
-                    CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
                     SetMaxMinControlsZero();
                     buttonX15.Checked = true;
                     buttonX16.Checked = false;
