@@ -405,7 +405,7 @@ namespace DoPENetConnect
             //悬浮工具框
             floatMenus = new FormFloat();
             floatMenus.Owner = this;
-            floatMenus.Location = new Point(this.Location.X - floatMenus.Width,this.Location.Y);
+            floatMenus.Location = new Point(this.Location.X + floatMenus.Width,this.Location.Y);
             floatMenus.Show();
 
             //初始化试验信息
@@ -4627,8 +4627,12 @@ namespace DoPENetConnect
                     buttonX15.Checked = true;
                     buttonX16.Checked = false;
                      FrmPosExt frmPosExt = new FrmPosExt();
+                    double destinationVal = double.Parse(textBoxX15.Text);
+                    if (comboBoxEx10.Text == "kN") {
+                        destinationVal = double.Parse(textBoxX15.Text) * 1000;
+                    }
                     frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
-                                                     (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text)*1000, (DESTMODE)comboBoxEx11.SelectedIndex);
+                                                     (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
                 }
 
             }
@@ -4948,8 +4952,15 @@ namespace DoPENetConnect
                     }
                     buttonX15.Checked = true;
                     FrmPosExt frmPosExt = new FrmPosExt();
+
+                    double destinationVal = double.Parse(textBoxX15.Text);
+                    if (comboBoxEx10.Text == "kN")
+                    {
+                        destinationVal = double.Parse(textBoxX15.Text) * 1000;
+                    }
+
                     frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
-                                                     (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text), (DESTMODE)comboBoxEx11.SelectedIndex);
+                                                     (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
 
                 }
             }
