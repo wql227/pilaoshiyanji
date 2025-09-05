@@ -1627,15 +1627,18 @@
             this.chart_machine.Name = "chart_machine";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series1.Color = System.Drawing.Color.DodgerBlue;
             series1.Legend = "Legend1";
             series1.Name = "位移";
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             series2.Legend = "Legend1";
             series2.Name = "试验力";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series3.Color = System.Drawing.Color.Red;
             series3.Legend = "Legend1";
             series3.Name = "变形";
             series4.ChartArea = "ChartArea1";
@@ -1645,7 +1648,7 @@
             series4.Name = "命令";
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series5.Color = System.Drawing.Color.CadetBlue;
+            series5.Color = System.Drawing.Color.DarkTurquoise;
             series5.Legend = "Legend1";
             series5.Name = "试验力位移";
             series5.Points.Add(dataPoint1);
@@ -1653,7 +1656,7 @@
             series5.Points.Add(dataPoint3);
             series6.ChartArea = "ChartArea1";
             series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series6.Color = System.Drawing.Color.Fuchsia;
+            series6.Color = System.Drawing.Color.Violet;
             series6.Legend = "Legend1";
             series6.Name = "试验力变形";
             series6.Points.Add(dataPoint4);
