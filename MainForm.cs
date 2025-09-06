@@ -4659,7 +4659,10 @@ namespace DoPENetConnect
                         MessageBox.Show("正在清理图标数据，请稍后再试！", "开始试验", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
+                    {
+                        ResetStartPoindOfSeries();
                         timerDataClean.Start();
+                    }
 
                 }
 
@@ -4669,6 +4672,17 @@ namespace DoPENetConnect
                 MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        public void ResetStartPoindOfSeries()
+        {
+            x_Position = 0;
+           
+            x_Load = 0;
+           
+            x_Extension = 0;
+            
+            x_Command = 0;
         }
 
         public void StartExperment()
