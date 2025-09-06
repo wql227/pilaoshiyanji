@@ -2619,6 +2619,7 @@ namespace DoPENetConnect
                         if (chart_machine.Series[1] != null)
                         {
                             chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
+                           // Console.WriteLine("loadpoints-{0}-{1}", x_Load, y_Load);
                             x_Load += dStep;
                             //if (chart_machine.Series[1].Points.Count >= nTotal)
                             //{
@@ -3065,7 +3066,7 @@ namespace DoPENetConnect
             //if (error == DoPE.ERR.NOERROR)
             {
                 //开始计时
-                timer_UpdateData.Start();
+                //timer_UpdateData.Start();
 
                 //开始前把曲线x轴调到0点
                 //x_Position = 0;
@@ -3099,17 +3100,36 @@ namespace DoPENetConnect
         public void CleanChart()
         {
             x_Position = 0;
-            chart_machine.Series[0].Points.Clear();
+            //chart_machine.Series[0].Points.Clear();
             x_Load = 0;
-            chart_machine.Series[1].Points.Clear();
+            //chart_machine.Series[1].Points.Clear();
             x_Extension = 0;
-            chart_machine.Series[2].Points.Clear();
+            //chart_machine.Series[2].Points.Clear();
             x_Command = 0;
-            chart_machine.Series[3].Points.Clear();
+            //chart_machine.Series[3].Points.Clear();
 
-            chart_machine.Series[4].Points.Clear();
+            //chart_machine.Series[4].Points.Clear();
 
-            chart_machine.Series[5].Points.Clear();
+            //chart_machine.Series[5].Points.Clear();
+            int j = chart_machine.Series[0].Points.Count;
+            if (j < chart_machine.Series[1].Points.Count) j = chart_machine.Series[1].Points.Count;
+
+            if (j < chart_machine.Series[2].Points.Count) j = chart_machine.Series[2].Points.Count;
+
+            if (j < chart_machine.Series[3].Points.Count) j = chart_machine.Series[3].Points.Count;
+
+            if (j < chart_machine.Series[4].Points.Count) j = chart_machine.Series[4].Points.Count;
+
+            if (j < chart_machine.Series[5].Points.Count) j = chart_machine.Series[5].Points.Count;
+
+            for (int i = 0; i < j; i++) {
+                if (chart_machine.Series[0].Points.Count > 0) chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
+                if (chart_machine.Series[1].Points.Count > 0) chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
+                if (chart_machine.Series[2].Points.Count > 0) chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
+                if (chart_machine.Series[3].Points.Count > 0) chart_machine.Series[3].Points.RemoveAt(chart_machine.Series[3].Points.Count - 1);
+                if (chart_machine.Series[4].Points.Count > 0) chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
+                if (chart_machine.Series[5].Points.Count > 0) chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
+            }
         }
 
         public void SetupResetXHead()
@@ -4618,21 +4638,29 @@ namespace DoPENetConnect
 
                 if (!isRunning)
                 {
-                    CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
-                    iLposMsgBox = 0;    //每次开始前清空显示限位信息标志
-                    realtimeParams.dataRecvTimes = 0;
-                    originParams = realtimeParams;
-                    AutoFitMaxMinValClear();      //曲线参数初始化
-                    SetMaxMinControlsZero();
-                    buttonX15.Checked = true;
-                    buttonX16.Checked = false;
-                     FrmPosExt frmPosExt = new FrmPosExt();
-                    double destinationVal = double.Parse(textBoxX15.Text);
-                    if (comboBoxEx10.Text == "kN") {
-                        destinationVal = double.Parse(textBoxX15.Text) * 1000;
+                    //CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
+                    //iLposMsgBox = 0;    //每次开始前清空显示限位信息标志
+                    //realtimeParams.dataRecvTimes = 0;
+                    //originParams = realtimeParams;
+                    //AutoFitMaxMinValClear();      //曲线参数初始化
+                    //SetMaxMinControlsZero();
+                    //buttonX15.Checked = true;
+                    //buttonX16.Checked = false;
+                    //FrmPosExt frmPosExt = new FrmPosExt();
+                    //double destinationVal = double.Parse(textBoxX15.Text);
+                    //if (comboBoxEx10.Text == "kN")
+                    //{
+                    //    destinationVal = double.Parse(textBoxX15.Text) * 1000;
+                    //}
+                    //frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
+                    //                                 (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
+                    if (timerDataClean.Enabled)
+                    {
+                        MessageBox.Show("正在清理图标数据，请稍后再试！", "开始试验", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
-                                                     (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
+                    else
+                        timerDataClean.Start();
+
                 }
 
             }
@@ -4641,6 +4669,25 @@ namespace DoPENetConnect
                 MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        public void StartExperment()
+        {
+            iLposMsgBox = 0;    //每次开始前清空显示限位信息标志
+            realtimeParams.dataRecvTimes = 0;
+            originParams = realtimeParams;
+            AutoFitMaxMinValClear();      //曲线参数初始化
+            SetMaxMinControlsZero();
+            buttonX15.Checked = true;
+            buttonX16.Checked = false;
+            FrmPosExt frmPosExt = new FrmPosExt();
+            double destinationVal = double.Parse(textBoxX15.Text);
+            if (comboBoxEx10.Text == "kN")
+            {
+                destinationVal = double.Parse(textBoxX15.Text) * 1000;
+            }
+            frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
+                                             (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
         }
 
         public void SetMaxMinControlsZero()
@@ -5226,6 +5273,32 @@ namespace DoPENetConnect
                 MyEdc.Check.SetCheck(CHK_ID.ID0, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadPercent, CHK_MODE.PERCENT_MIN, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
             if(protectOption.ProtectOption_OverLoadForce_Flag)
                 MyEdc.Check.SetCheck(CHK_ID.ID1, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadForce*1000, CHK_MODE.ABOVE, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
+        }
+
+        private void timerDataClean_Tick(object sender, EventArgs e)
+        {
+            if (chart_machine.Series[0].Points.Count == 0
+                && chart_machine.Series[1].Points.Count == 0
+                && chart_machine.Series[2].Points.Count == 0 
+                && chart_machine.Series[3].Points.Count == 0
+                && chart_machine.Series[4].Points.Count == 0
+                && chart_machine.Series[5].Points.Count == 0)
+            {
+                timerDataClean.Stop();
+                StartExperment();
+                return;
+            }
+
+            for (int i = 0; i < 30000; i++)
+            {
+                if (chart_machine.Series[0].Points.Count > 0) chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
+                if (chart_machine.Series[1].Points.Count > 0) chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
+                if (chart_machine.Series[2].Points.Count > 0) chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
+                if (chart_machine.Series[3].Points.Count > 0) chart_machine.Series[3].Points.RemoveAt(chart_machine.Series[3].Points.Count - 1);
+                if (chart_machine.Series[4].Points.Count > 0) chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
+                if (chart_machine.Series[5].Points.Count > 0) chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
+            }
+
         }
     }
 }

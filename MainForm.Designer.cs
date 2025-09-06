@@ -340,6 +340,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.timerDataClean = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -4066,6 +4067,11 @@
             this.变形时间曲线ToolStripMenuItem.Text = "变形—时间曲线";
             this.变形时间曲线ToolStripMenuItem.Click += new System.EventHandler(this.变形时间曲线ToolStripMenuItem_Click);
             // 
+            // timerDataClean
+            // 
+            this.timerDataClean.Interval = 10;
+            this.timerDataClean.Tick += new System.EventHandler(this.timerDataClean_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4431,6 +4437,7 @@
         public System.Windows.Forms.DataVisualization.Charting.Chart chart_machine;
         private DevComponents.DotNetBar.ButtonX buttonX21;
         private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Timer timerDataClean;
     }
 }
 
