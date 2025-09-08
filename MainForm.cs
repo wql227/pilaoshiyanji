@@ -4679,6 +4679,7 @@ namespace DoPENetConnect
                     {
                         ResetStartPoindOfSeries();
                         timerDataClean.Start();
+                        //StartExperment();
                     }
 
                 }
@@ -5308,12 +5309,12 @@ namespace DoPENetConnect
 
         private void timerDataClean_Tick(object sender, EventArgs e)
         {
-            if (chart_machine.Series[0].Points.Count == 0
-                && chart_machine.Series[1].Points.Count == 0
-                && chart_machine.Series[2].Points.Count == 0 
+            if (chart_machine.Series[0].Points.Count == 1
+                && chart_machine.Series[1].Points.Count == 1
+                && chart_machine.Series[2].Points.Count == 1 
                 && chart_machine.Series[3].Points.Count == 0
-                && chart_machine.Series[4].Points.Count == 0
-                && chart_machine.Series[5].Points.Count == 0)
+                && chart_machine.Series[4].Points.Count == 1
+                && chart_machine.Series[5].Points.Count == 1)
             {
                 timerDataClean.Stop();
                 StartExperment();
@@ -5322,12 +5323,67 @@ namespace DoPENetConnect
 
             for (int i = 0; i < 30000; i++)
             {
-                if (chart_machine.Series[0].Points.Count > 0) chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
-                if (chart_machine.Series[1].Points.Count > 0) chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
-                if (chart_machine.Series[2].Points.Count > 0) chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
-                if (chart_machine.Series[3].Points.Count > 0) chart_machine.Series[3].Points.RemoveAt(chart_machine.Series[3].Points.Count - 1);
-                if (chart_machine.Series[4].Points.Count > 0) chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
-                if (chart_machine.Series[5].Points.Count > 0) chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
+                if (chart_machine.Series[0].Points.Count > 1)
+                {
+                    chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
+                }
+                else if (chart_machine.Series[0].Points.Count == 0)
+                {
+                    chart_machine.Series[0].Points[0].XValue = 0;
+                    chart_machine.Series[0].Points[0].YValues[0] = 0;
+                }
+
+                if (chart_machine.Series[1].Points.Count > 1)
+                {
+                    chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
+                }
+                else if (chart_machine.Series[1].Points.Count == 0)
+                {
+                    chart_machine.Series[1].Points[0].XValue = 0;
+                    chart_machine.Series[1].Points[0].YValues[0] = 0;
+                }
+
+                if (chart_machine.Series[2].Points.Count > 1)
+                {
+                    chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
+                }
+                else if (chart_machine.Series[2].Points.Count == 0)
+                {
+                    chart_machine.Series[2].Points[0].XValue = 0;
+                    chart_machine.Series[2].Points[0].YValues[0] = 0;
+                }
+
+
+                if (chart_machine.Series[3].Points.Count > 0)
+                {
+                    chart_machine.Series[3].Points.RemoveAt(chart_machine.Series[3].Points.Count - 1);
+                }
+                //else if (chart_machine.Series[3].Points.Count == 0)
+                //{
+                //    chart_machine.Series[3].Points[0].XValue = 0;
+                //    chart_machine.Series[3].Points[0].YValues[0] = 0;
+                //}
+
+                if (chart_machine.Series[4].Points.Count > 1)
+                {
+                    chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
+                }
+                else if (chart_machine.Series[4].Points.Count == 0)
+                {
+                    chart_machine.Series[4].Points[0].XValue = 0;
+                    chart_machine.Series[4].Points[0].YValues[0] = 0;
+                }
+
+                if (chart_machine.Series[5].Points.Count > 1)
+                {
+                    chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
+                }
+                else if (chart_machine.Series[5].Points.Count == 0)
+                {
+                    chart_machine.Series[5].Points[0].XValue = 0;
+                    chart_machine.Series[5].Points[0].YValues[0] = 0;
+                }
+
             }
 
         }
