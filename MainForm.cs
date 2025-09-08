@@ -1282,7 +1282,9 @@ namespace DoPENetConnect
             if (stopwatch.IsRunning) stopwatch.Stop();
             LogHelper.SaveResult(tb_MaxLoad.Text, doTest);    //存取最大力
             dataGridViewX2.Rows[0].Cells[3].Value = tb_MaxLoad.Text;
-            
+
+            chart_machine.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+
         }
 
 
@@ -3112,6 +3114,13 @@ namespace DoPENetConnect
              minSeries1 = -1;
              minSeries2 = -1;
              minSeries3 = -1;
+
+            chart_machine.ChartAreas[0].CursorX.IsUserSelectionEnabled = false;
+            while (chart_machine.ChartAreas[0].AxisX.ScaleView.IsZoomed)
+            {
+                chart_machine.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+            }
+           
         }
 
         public void CleanChart()
@@ -5309,6 +5318,7 @@ namespace DoPENetConnect
 
         private void timerDataClean_Tick(object sender, EventArgs e)
         {
+
             if (chart_machine.Series[0].Points.Count == 1
                 && chart_machine.Series[1].Points.Count == 1
                 && chart_machine.Series[2].Points.Count == 1 
@@ -5387,5 +5397,6 @@ namespace DoPENetConnect
             }
 
         }
+
     }
 }

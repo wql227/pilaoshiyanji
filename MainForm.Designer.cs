@@ -1621,9 +1621,7 @@
             chartArea1.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
             chartArea1.BackColor = System.Drawing.Color.White;
-            chartArea1.CursorX.IsUserEnabled = true;
             chartArea1.CursorX.IsUserSelectionEnabled = true;
-            chartArea1.CursorY.IsUserEnabled = true;
             chartArea1.Name = "ChartArea1";
             this.chart_machine.ChartAreas.Add(chartArea1);
             legend1.Enabled = false;
