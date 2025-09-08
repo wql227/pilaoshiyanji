@@ -1278,6 +1278,7 @@ namespace DoPENetConnect
         }
         public void onExpermentStoped()
         {
+            doTest.sampleFinished = true;
             buttonX15.Checked = false;
             if (stopwatch.IsRunning) stopwatch.Stop();
             LogHelper.SaveResult(tb_MaxLoad.Text, doTest);    //存取最大力
@@ -4668,7 +4669,12 @@ namespace DoPENetConnect
 
                 if (dataGridViewX2.RowCount != 0 && !DtaGridViewIsSelectedEmpty())
                 {
-                    SetExpertmentParams();     //设置试验参数
+                    if (doTest.sampleFinished == true) {
+                        MessageBox.Show("这个试验已经结束，请重新填写试验信息后开始试验！");
+                        return;
+                    }
+                    else
+                        SetExpertmentParams();     //设置试验参数
                 }
                 else
                 {
@@ -4721,7 +4727,7 @@ namespace DoPENetConnect
            
             x_Load = 0;
            
-            x_Extension = 0;
+            x_Extension = 0; 
             
             x_Command = 0;
         }

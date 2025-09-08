@@ -214,6 +214,7 @@ namespace DoPENetConnect
         private void btnX_FrmProtectOption_OK_Click(object sender, EventArgs e)
         {
             MainForm.mainform.SetTestInfo(dataGridViewX1);
+            this.sampleFinished = false;    //标志此次试验没有完成
             this.Close();
         }
     }
