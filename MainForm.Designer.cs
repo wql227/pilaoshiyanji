@@ -1590,6 +1590,7 @@
             chartArea1.AxisX.Minimum = 0D;
             chartArea1.AxisX.MinorTickMark.Enabled = true;
             chartArea1.AxisX.MinorTickMark.Size = 0.5F;
+            chartArea1.AxisX.ScrollBar.Enabled = false;
             chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             chartArea1.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
             chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
@@ -1603,6 +1604,7 @@
             chartArea1.AxisY.MinorTickMark.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.NotSet;
             chartArea1.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.NotSet;
             chartArea1.AxisY.MinorTickMark.Size = 0.5F;
+            chartArea1.AxisY.ScrollBar.Enabled = false;
             chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
             chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
@@ -1619,6 +1621,9 @@
             chartArea1.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
             chartArea1.BackColor = System.Drawing.Color.White;
+            chartArea1.CursorX.IsUserEnabled = true;
+            chartArea1.CursorX.IsUserSelectionEnabled = true;
+            chartArea1.CursorY.IsUserEnabled = true;
             chartArea1.Name = "ChartArea1";
             this.chart_machine.ChartAreas.Add(chartArea1);
             legend1.Enabled = false;

@@ -417,6 +417,9 @@ namespace DoPENetConnect
             CurveSet("s", "mm", "位移—时间曲线");   //默认显示位移时间曲线
             chart_series_show(0);
             chart_series_show(4);   //不显示命令曲线
+
+            //添加图标滚轮响应事件
+            this.chart_machine.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_machine_MouseWheel);
         }
 
         /// <summary>
@@ -427,6 +430,20 @@ namespace DoPENetConnect
             label1.Text = axisYTitle;
             chart_machine.ChartAreas[0].AxisX.Title = axisXTitle;
             label2.Text = seriesName;
+        }
+
+        private void chart_machine_MouseWheel(object sender, MouseEventArgs e)
+        {
+            // 实验发现鼠标滚轮滚动一圈时e.Delta = 120，正反转对应正负120
+            if (chart_machine.ChartAreas[0].AxisX.ScaleView.Size > 0) // 防止越过左边界
+            {
+                chart_machine.ChartAreas[0].AxisX.ScaleView.Size += (e.Delta / 120); // 每次缩放1
+            }
+            else if (e.Delta > 0)
+            {
+                //chart_machine.ChartAreas[0].AxisY.ScaleView.Size += (e.Delta*10 / 120); // 每次缩放1
+                chart_machine.ChartAreas[0].AxisX.ScaleView.Size += (e.Delta * 10 / 120); // 每次缩放1
+            }
         }
 
         public void SetRealtimeParamComParams(string comNo, string interval)
