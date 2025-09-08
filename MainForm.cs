@@ -4137,6 +4137,9 @@ namespace DoPENetConnect
                     SetTestInfo(testInfo);
 
                     #endregion 
+
+
+
                     //foreach (DataRow dr2 in trCsvData.Rows)
                     //{
                     //    Console.WriteLine(dr2["Time [s]"].ToString() + "<br>");
@@ -4151,29 +4154,37 @@ namespace DoPENetConnect
 
                     //List<DataPoint> points = new List<DataPoint>();
 
-                    //for (int i = 0; i < chart_machine.Series[0].Points.Count; i++)
-                    //{
-                    //    chart_machine.Series[0].Points.RemoveAt(i);
-                    //}
-                    //for (int i = 0; i < chart_machine.Series[1].Points.Count; i++)
-                    //{
-                    //    chart_machine.Series[1].Points.RemoveAt(i);
-                    //}
-                    //for (int i = 0; i < chart_machine.Series[2].Points.Count; i++)
-                    //{
-                    //    chart_machine.Series[2].Points.RemoveAt(i);
-                    //}
-                    //for (int i = 0; i < chart_machine.Series[3].Points.Count; i++)
-                    //{
-                    //    chart_machine.Series[3].Points.RemoveAt(i);
-                    //}
+                    for (int i = 0; i < chart_machine.Series[0].Points.Count; i++)
+                    {
+                        chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
+                    }
+                    for (int i = 0; i < chart_machine.Series[1].Points.Count; i++)
+                    {
+                        chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
+                    }
+                    for (int i = 0; i < chart_machine.Series[2].Points.Count; i++)
+                    {
+                        chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
+                    }
+                    for (int i = 0; i < chart_machine.Series[3].Points.Count; i++)
+                    {
+                        chart_machine.Series[3].Points.RemoveAt(chart_machine.Series[3].Points.Count - 1);
+                    }
+                    for (int i = 0; i < chart_machine.Series[4].Points.Count; i++)
+                    {
+                        chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
+                    }
+                    for (int i = 0; i < chart_machine.Series[5].Points.Count; i++)
+                    {
+                        chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
+                    }
 
-                    chart_machine.Series[0].Points.Clear();
-                    chart_machine.Series[1].Points.Clear();
-                    chart_machine.Series[2].Points.Clear();
-                    chart_machine.Series[3].Points.Clear();
-                    chart_machine.Series[4].Points.Clear();
-                    chart_machine.Series[5].Points.Clear();
+                    //chart_machine.Series[0].Points.Clear();
+                    //chart_machine.Series[1].Points.Clear();
+                    //chart_machine.Series[2].Points.Clear();
+                    //chart_machine.Series[3].Points.Clear();
+                    //chart_machine.Series[4].Points.Clear();
+                    //chart_machine.Series[5].Points.Clear();
 
                     if (trCsvData != null && trCsvData.Rows.Count >= 1)
                     {
