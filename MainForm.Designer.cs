@@ -856,7 +856,6 @@
             this.bntX_MoveUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveUp.TabIndex = 69;
             this.bntX_MoveUp.Text = "向     上";
-            this.bntX_MoveUp.Click += new System.EventHandler(this.bntX_MoveUp_Click);
             this.bntX_MoveUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseDown);
             this.bntX_MoveUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseUp);
             // 

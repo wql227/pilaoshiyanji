@@ -2018,10 +2018,6 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         /// <summary>Sends a move-command with direction "up" to the EDC.</summary>
         ///----------------------------------------------------------------------
-        private void bntX_MoveUp_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         /// <summary>
@@ -4136,8 +4132,15 @@ namespace DoPENetConnect
 
                     SetTestInfo(testInfo);
 
-                    #endregion 
+                    #endregion
 
+                    #region reset chart zoom
+                    while (chart_machine.ChartAreas[0].AxisX.ScaleView.IsZoomed)
+                    {
+                        chart_machine.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+                    }
+
+                    #endregion
 
 
                     //foreach (DataRow dr2 in trCsvData.Rows)
@@ -4154,27 +4157,27 @@ namespace DoPENetConnect
 
                     //List<DataPoint> points = new List<DataPoint>();
 
-                    for (int i = 0; i < chart_machine.Series[0].Points.Count; i++)
+                    while(chart_machine.Series[0].Points.Count>0)
                     {
                         chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
                     }
-                    for (int i = 0; i < chart_machine.Series[1].Points.Count; i++)
+                    while (chart_machine.Series[1].Points.Count > 0)
                     {
                         chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
                     }
-                    for (int i = 0; i < chart_machine.Series[2].Points.Count; i++)
+                    while (chart_machine.Series[2].Points.Count > 0)
                     {
                         chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
                     }
-                    for (int i = 0; i < chart_machine.Series[3].Points.Count; i++)
+                    while (chart_machine.Series[3].Points.Count > 0)
                     {
                         chart_machine.Series[3].Points.RemoveAt(chart_machine.Series[3].Points.Count - 1);
                     }
-                    for (int i = 0; i < chart_machine.Series[4].Points.Count; i++)
+                    while (chart_machine.Series[4].Points.Count > 0)
                     {
                         chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
                     }
-                    for (int i = 0; i < chart_machine.Series[5].Points.Count; i++)
+                    while (chart_machine.Series[5].Points.Count > 0)
                     {
                         chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
                     }
