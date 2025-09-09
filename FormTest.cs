@@ -133,6 +133,13 @@ namespace DoPENetConnect
             //}
 
 
+            if(textBoxX1.Text == ""|| textBoxX2.Text == ""|| textBoxX3.Text == ""|| textBoxX4.Text == ""|| textBoxX5.Text == ""|| textBoxX6.Text == ""|| textBoxX7.Text == "")
+            {
+                MessageBox.Show("输入为不能为空，请重新输入！");
+                return;
+            }
+
+
             #region 多行同时插入  
             /*
             var grpControls = groupPanel1.Controls;

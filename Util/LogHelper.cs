@@ -243,7 +243,7 @@ namespace DoPENetConnect
                 IniFileHelper.GetIniString("AppOpenIndex", "IndexVal", "-1", tmpStr, tmpStr.Capacity);
 
                 logPath = Path.Combine(logPath, dateStr);        //添加日期文件夹
-                logPath = Path.Combine(logPath, tmpStr.ToString());
+                logPath = Path.Combine(logPath, dotest.sampleCode);   //以试样编号作为写入目录
                 MainForm.mainform.SaveTestPath(logPath,dataTimeStr);
                 string filename = Path.Combine(logPath, $"{dataTimeStr}.CSV");
 
