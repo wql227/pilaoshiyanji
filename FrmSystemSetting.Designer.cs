@@ -45,6 +45,12 @@
             this.label45 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupPanel5 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.cbX_CountLog = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem26 = new DevComponents.Editors.ComboItem();
+            this.comboItem27 = new DevComponents.Editors.ComboItem();
+            this.comboItem28 = new DevComponents.Editors.ComboItem();
+            this.comboItem29 = new DevComponents.Editors.ComboItem();
+            this.comboItem30 = new DevComponents.Editors.ComboItem();
             this.label2 = new System.Windows.Forms.Label();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -54,11 +60,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.superTabItem5 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel4 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.superTabItem4 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx7 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel9 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -192,15 +193,14 @@
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.label1 = new System.Windows.Forms.Label();
             this.superTabItem6 = new DevComponents.DotNetBar.SuperTabItem();
+            this.superTabControlPanel4 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
+            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.superTabItem4 = new DevComponents.DotNetBar.SuperTabItem();
             this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
             this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.cbX_CountLog = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem26 = new DevComponents.Editors.ComboItem();
-            this.comboItem27 = new DevComponents.Editors.ComboItem();
-            this.comboItem28 = new DevComponents.Editors.ComboItem();
-            this.comboItem29 = new DevComponents.Editors.ComboItem();
-            this.comboItem30 = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel5.SuspendLayout();
@@ -210,8 +210,6 @@
             this.groupPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.superTabControlPanel4.SuspendLayout();
-            this.panelEx4.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
             this.panelEx7.SuspendLayout();
             this.groupPanel9.SuspendLayout();
@@ -229,6 +227,8 @@
             this.groupPanel2.SuspendLayout();
             this.groupPanel4.SuspendLayout();
             this.groupPanel1.SuspendLayout();
+            this.superTabControlPanel4.SuspendLayout();
+            this.panelEx4.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -250,11 +250,11 @@
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel4);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Location = new System.Drawing.Point(1, 0);
             this.superTabControl1.MaximumSize = new System.Drawing.Size(800, 597);
             this.superTabControl1.MinimumSize = new System.Drawing.Size(550, 597);
@@ -551,6 +551,44 @@
             this.groupPanel5.TabIndex = 4;
             this.groupPanel5.Text = "日志记录";
             // 
+            // cbX_CountLog
+            // 
+            this.cbX_CountLog.DisplayMember = "Text";
+            this.cbX_CountLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_CountLog.FormattingEnabled = true;
+            this.cbX_CountLog.ItemHeight = 21;
+            this.cbX_CountLog.Items.AddRange(new object[] {
+            this.comboItem26,
+            this.comboItem27,
+            this.comboItem28,
+            this.comboItem29,
+            this.comboItem30});
+            this.cbX_CountLog.Location = new System.Drawing.Point(13, 13);
+            this.cbX_CountLog.Name = "cbX_CountLog";
+            this.cbX_CountLog.Size = new System.Drawing.Size(121, 27);
+            this.cbX_CountLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbX_CountLog.TabIndex = 3;
+            // 
+            // comboItem26
+            // 
+            this.comboItem26.Text = "100";
+            // 
+            // comboItem27
+            // 
+            this.comboItem27.Text = "200";
+            // 
+            // comboItem28
+            // 
+            this.comboItem28.Text = "300";
+            // 
+            // comboItem29
+            // 
+            this.comboItem29.Text = "400";
+            // 
+            // comboItem30
+            // 
+            this.comboItem30.Text = "500";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -680,70 +718,6 @@
             this.superTabItem5.GlobalItem = false;
             this.superTabItem5.Name = "superTabItem5";
             this.superTabItem5.Text = "系统设置";
-            // 
-            // superTabControlPanel4
-            // 
-            this.superTabControlPanel4.Controls.Add(this.panelEx4);
-            this.superTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel4.Location = new System.Drawing.Point(0, 28);
-            this.superTabControlPanel4.Name = "superTabControlPanel4";
-            this.superTabControlPanel4.Size = new System.Drawing.Size(784, 569);
-            this.superTabControlPanel4.TabIndex = 0;
-            this.superTabControlPanel4.TabItem = this.superTabItem4;
-            // 
-            // panelEx4
-            // 
-            this.panelEx4.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx4.Controls.Add(this.comboBoxEx1);
-            this.panelEx4.Controls.Add(this.labelX1);
-            this.panelEx4.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx4.Location = new System.Drawing.Point(0, 0);
-            this.panelEx4.Name = "panelEx4";
-            this.panelEx4.Size = new System.Drawing.Size(784, 569);
-            this.panelEx4.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx4.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx4.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(255)))));
-            this.panelEx4.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx4.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx4.Style.GradientAngle = 90;
-            this.panelEx4.TabIndex = 4;
-            // 
-            // comboBoxEx1
-            // 
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 21;
-            this.comboBoxEx1.Location = new System.Drawing.Point(93, 53);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(121, 27);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 1;
-            // 
-            // labelX1
-            // 
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX1.Location = new System.Drawing.Point(12, 57);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
-            this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "语言：";
-            // 
-            // superTabItem4
-            // 
-            this.superTabItem4.AttachedControl = this.superTabControlPanel4;
-            this.superTabItem4.GlobalItem = false;
-            this.superTabItem4.Name = "superTabItem4";
-            this.superTabItem4.Text = "其他";
-            this.superTabItem4.Visible = false;
             // 
             // superTabControlPanel1
             // 
@@ -2433,6 +2407,70 @@
             this.superTabItem6.Name = "superTabItem6";
             this.superTabItem6.Text = "动态实验过程保护选项";
             // 
+            // superTabControlPanel4
+            // 
+            this.superTabControlPanel4.Controls.Add(this.panelEx4);
+            this.superTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel4.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel4.Name = "superTabControlPanel4";
+            this.superTabControlPanel4.Size = new System.Drawing.Size(784, 569);
+            this.superTabControlPanel4.TabIndex = 0;
+            this.superTabControlPanel4.TabItem = this.superTabItem4;
+            // 
+            // panelEx4
+            // 
+            this.panelEx4.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx4.Controls.Add(this.comboBoxEx1);
+            this.panelEx4.Controls.Add(this.labelX1);
+            this.panelEx4.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx4.Location = new System.Drawing.Point(0, 0);
+            this.panelEx4.Name = "panelEx4";
+            this.panelEx4.Size = new System.Drawing.Size(784, 569);
+            this.panelEx4.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx4.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx4.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(255)))));
+            this.panelEx4.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx4.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx4.Style.GradientAngle = 90;
+            this.panelEx4.TabIndex = 4;
+            // 
+            // comboBoxEx1
+            // 
+            this.comboBoxEx1.DisplayMember = "Text";
+            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxEx1.FormattingEnabled = true;
+            this.comboBoxEx1.ItemHeight = 21;
+            this.comboBoxEx1.Location = new System.Drawing.Point(93, 53);
+            this.comboBoxEx1.Name = "comboBoxEx1";
+            this.comboBoxEx1.Size = new System.Drawing.Size(121, 27);
+            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx1.TabIndex = 1;
+            // 
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX1.Location = new System.Drawing.Point(12, 57);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(75, 23);
+            this.labelX1.TabIndex = 0;
+            this.labelX1.Text = "语言：";
+            // 
+            // superTabItem4
+            // 
+            this.superTabItem4.AttachedControl = this.superTabControlPanel4;
+            this.superTabItem4.GlobalItem = false;
+            this.superTabItem4.Name = "superTabItem4";
+            this.superTabItem4.Text = "其他";
+            this.superTabItem4.Visible = false;
+            // 
             // btnX_FrmProtectOption_OK
             // 
             this.btnX_FrmProtectOption_OK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -2485,45 +2523,6 @@
             this.panelEx1.TabIndex = 4;
             this.panelEx1.Text = "panelEx1";
             // 
-            // cbX_CountLog
-            // 
-            this.cbX_CountLog.DisplayMember = "Text";
-            this.cbX_CountLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbX_CountLog.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbX_CountLog.FormattingEnabled = true;
-            this.cbX_CountLog.ItemHeight = 21;
-            this.cbX_CountLog.Items.AddRange(new object[] {
-            this.comboItem26,
-            this.comboItem27,
-            this.comboItem28,
-            this.comboItem29,
-            this.comboItem30});
-            this.cbX_CountLog.Location = new System.Drawing.Point(13, 13);
-            this.cbX_CountLog.Name = "cbX_CountLog";
-            this.cbX_CountLog.Size = new System.Drawing.Size(121, 27);
-            this.cbX_CountLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbX_CountLog.TabIndex = 3;
-            // 
-            // comboItem26
-            // 
-            this.comboItem26.Text = "100";
-            // 
-            // comboItem27
-            // 
-            this.comboItem27.Text = "200";
-            // 
-            // comboItem28
-            // 
-            this.comboItem28.Text = "300";
-            // 
-            // comboItem29
-            // 
-            this.comboItem29.Text = "400";
-            // 
-            // comboItem30
-            // 
-            this.comboItem30.Text = "500";
-            // 
             // FrmSystemSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2547,8 +2546,6 @@
             this.groupPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.superTabControlPanel4.ResumeLayout(false);
-            this.panelEx4.ResumeLayout(false);
             this.superTabControlPanel1.ResumeLayout(false);
             this.panelEx7.ResumeLayout(false);
             this.groupPanel9.ResumeLayout(false);
@@ -2574,6 +2571,8 @@
             this.groupPanel4.PerformLayout();
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();
+            this.superTabControlPanel4.ResumeLayout(false);
+            this.panelEx4.ResumeLayout(false);
             this.panelEx1.ResumeLayout(false);
             this.ResumeLayout(false);
 
