@@ -5343,8 +5343,8 @@ namespace DoPENetConnect
                 && chart_machine.Series[1].Points.Count == 1
                 && chart_machine.Series[2].Points.Count == 1 
                 && chart_machine.Series[3].Points.Count == 0
-                && chart_machine.Series[4].Points.Count == 1
-                && chart_machine.Series[5].Points.Count == 1)
+                && chart_machine.Series[4].Points.Count == 0
+                && chart_machine.Series[5].Points.Count == 0)
             {
                 timerDataClean.Stop();
                 StartExperment();
@@ -5357,7 +5357,7 @@ namespace DoPENetConnect
                 {
                     chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
                 }
-                else if (chart_machine.Series[0].Points.Count == 0)
+                else if (chart_machine.Series[0].Points.Count == 1)
                 {
                     chart_machine.Series[0].Points[0].XValue = 0;
                     chart_machine.Series[0].Points[0].YValues[0] = 0;
@@ -5367,7 +5367,7 @@ namespace DoPENetConnect
                 {
                     chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
                 }
-                else if (chart_machine.Series[1].Points.Count == 0)
+                else if (chart_machine.Series[1].Points.Count == 1)
                 {
                     chart_machine.Series[1].Points[0].XValue = 0;
                     chart_machine.Series[1].Points[0].YValues[0] = 0;
@@ -5377,7 +5377,7 @@ namespace DoPENetConnect
                 {
                     chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
                 }
-                else if (chart_machine.Series[2].Points.Count == 0)
+                else if (chart_machine.Series[2].Points.Count == 1)
                 {
                     chart_machine.Series[2].Points[0].XValue = 0;
                     chart_machine.Series[2].Points[0].YValues[0] = 0;
@@ -5398,20 +5398,23 @@ namespace DoPENetConnect
                 {
                     chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
                 }
-                else if (chart_machine.Series[4].Points.Count == 0)
+                else if (chart_machine.Series[4].Points.Count == 1)
                 {
-                    chart_machine.Series[4].Points[0].XValue = 0;
-                    chart_machine.Series[4].Points[0].YValues[0] = 0;
+                    //chart_machine.Series[4].Points[0].XValue = 0;
+                    //chart_machine.Series[4].Points[0].YValues[0] = 0;
+                    chart_machine.Series[4].Points.Clear();
                 }
 
                 if (chart_machine.Series[5].Points.Count > 1)
                 {
                     chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
                 }
-                else if (chart_machine.Series[5].Points.Count == 0)
+                else if (chart_machine.Series[5].Points.Count == 1)
                 {
-                    chart_machine.Series[5].Points[0].XValue = 0;
-                    chart_machine.Series[5].Points[0].YValues[0] = 0;
+                    //chart_machine.Series[5].Points[0].XValue = 0;
+                    //chart_machine.Series[5].Points[0].YValues[0] = 0;
+
+                    chart_machine.Series[5].Points.Clear();
                 }
 
             }
