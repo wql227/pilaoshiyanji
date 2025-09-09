@@ -4750,7 +4750,22 @@ namespace DoPENetConnect
             {
                 destinationVal = double.Parse(textBoxX15.Text) * 1000;
             }
-            frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
+            double ctrlSpeed = 0;
+            switch (cmbX_Dyn_StartSpeed_Unit.Text)
+            {
+                case "mm/min":
+                    ctrlSpeed = double.Parse(tbX_Dyn_StartSpeed.Text) / 60;
+                    break;
+                case "kN/s":
+                    ctrlSpeed = double.Parse(tbX_Dyn_StartSpeed.Text) * 1000;
+                    break;
+            }
+            double limitValue = double.Parse(textBoxX14.Text);
+            if (comboBoxEx8.Text == "kN") {
+                limitValue = double.Parse(textBoxX14.Text) * 1000;
+            }
+
+            frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, ctrlSpeed, comboBoxEx7.SelectedIndex, limitValue,
                                              (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
         }
 
@@ -4807,24 +4822,24 @@ namespace DoPENetConnect
         }
 
         private void cmbX_Dyn_StartCtrl_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {                       
             switch (cmbX_Dyn_StartCtrl.SelectedValue.ToString())
             {
                 case "POS":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s", "mm/min" };
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] {"mm/min" };
                         comboBoxEx8.DataSource = new string[] { "mm" };
                         break;
                     }
                 case "LOAD":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s", "kN/s" };
-                        comboBoxEx8.DataSource = new string[] { "N", "kN" };
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] {"kN/s" };
+                        comboBoxEx8.DataSource = new string[] {"kN" };
                         break;
                     }
                 case "EXTENSION":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s", "mm/min" };
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] {"mm/min" };
                         comboBoxEx8.DataSource = new string[] { "mm" };
                         break;
                     }
