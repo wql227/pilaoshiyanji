@@ -2719,8 +2719,9 @@ namespace DoPENetConnect
                     }
 
 
-                    autoFittingFlag++;
-                    if (autoFittingFlag >= InterVal_XAxis / (2 * dStep))
+                    //autoFittingFlag++;
+                    //if (autoFittingFlag >= InterVal_XAxis / (2 * dStep))
+                    //if (autoFittingFlag >100)
                     {
 
                         //autoFittingFlag = 0;
@@ -2740,7 +2741,7 @@ namespace DoPENetConnect
         }
         public void AutoFittingCurve(double series0maxY, double series0minY, double series1maxY, double series1minY, double series2maxY, double series2minY, double series3maxY, double series3minY)
         {
-            //Console.WriteLine("glmxxx-{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}", series0maxY, series0minY, series1maxY, series1minY, series2maxY, series2minY, series3maxY, series3minY);
+            //Console.WriteLine("glmxxx-{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}-{8}",x_Position, series0maxY, series0minY, series1maxY, series1minY, series2maxY, series2minY, series3maxY, series3minY);
             //适应参数修改
             int xMax = (int)Math.Ceiling(x_Position);
             double currentX_Position=x_Position;
@@ -2832,6 +2833,8 @@ namespace DoPENetConnect
             double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
             double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
             double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+
+            if (padding1 < 0.5) padding1 = 0.5;   //限制最小适应单位0.5
 
             double yAxisMax1 = maxSeriesMaxYVal + padding1;
             double yAxisMin1 = maxSeriesMinYVal - padding1;
