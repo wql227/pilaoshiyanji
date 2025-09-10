@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
@@ -265,6 +265,23 @@
             this.保存数据问题及ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.保存当前曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SelectProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aSTMD3039D3039M2017聚合物基复合材料拉伸性能测试方法ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hB52871996金属材料轴向加载疲劳试验方法ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第1部分通则ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第2部分线性或线性化应力寿命SN和应变ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第3部分拉拉疲劳ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第4部分拉压和压压疲劳ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第5部分弯曲疲劳ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第6部分胶粘剂拉伸剪切疲劳ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aSTME8E8M金厘材料拉伸试验方法ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.金厘材料拉伸试验第1部分室温试验方法GBT22812010ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.预应力混凝土用钢纹线拉伸试验GBT52242003ISO69344ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.金属材料室温压缩试验方法GBT73142005ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.焊接接头弯曲试验方法GBT26532008ISO51732000ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.金属弯曲力学性能试验方法三点弯曲YBT53492006ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.金属弯曲力学性能试验方法四点弯曲YBT53492006ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Result = new System.Windows.Forms.ToolStripMenuItem();
             this.拷贝当前曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打印当前曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -680,74 +697,74 @@
             this.chart_machine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.AxisX.Interval = 1D;
-            chartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea2.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea2.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisX.Maximum = 10D;
-            chartArea2.AxisX.MaximumAutoSize = 100F;
-            chartArea2.AxisX.Minimum = 0D;
-            chartArea2.AxisX.MinorTickMark.Enabled = true;
-            chartArea2.AxisX.MinorTickMark.Size = 0.5F;
-            chartArea2.AxisX.Title = "时间(s)";
-            chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea2.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea2.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
-            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisY.Maximum = 20D;
-            chartArea2.AxisY.Minimum = -20D;
-            chartArea2.AxisY.MinorTickMark.Enabled = true;
-            chartArea2.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-            chartArea2.AxisY.MinorTickMark.Size = 0.5F;
-            chartArea2.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea2.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
-            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
-            chartArea2.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea2.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea2.AxisY2.LineColor = System.Drawing.Color.Orange;
-            chartArea2.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea2.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisY2.Maximum = 20D;
-            chartArea2.AxisY2.Minimum = -20D;
-            chartArea2.AxisY2.MinorTickMark.Enabled = true;
-            chartArea2.AxisY2.MinorTickMark.Size = 0.5F;
-            chartArea2.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea2.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(N)";
-            chartArea2.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
-            chartArea2.Name = "ChartArea1";
-            this.chart_machine.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart_machine.Legends.Add(legend2);
+            chartArea4.AxisX.Interval = 1D;
+            chartArea4.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea4.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea4.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea4.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea4.AxisX.Maximum = 10D;
+            chartArea4.AxisX.MaximumAutoSize = 100F;
+            chartArea4.AxisX.Minimum = 0D;
+            chartArea4.AxisX.MinorTickMark.Enabled = true;
+            chartArea4.AxisX.MinorTickMark.Size = 0.5F;
+            chartArea4.AxisX.Title = "时间(s)";
+            chartArea4.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea4.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea4.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
+            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
+            chartArea4.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea4.AxisY.Maximum = 20D;
+            chartArea4.AxisY.Minimum = -20D;
+            chartArea4.AxisY.MinorTickMark.Enabled = true;
+            chartArea4.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+            chartArea4.AxisY.MinorTickMark.Size = 0.5F;
+            chartArea4.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea4.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
+            chartArea4.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
+            chartArea4.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea4.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea4.AxisY2.LineColor = System.Drawing.Color.Orange;
+            chartArea4.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea4.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea4.AxisY2.Maximum = 20D;
+            chartArea4.AxisY2.Minimum = -20D;
+            chartArea4.AxisY2.MinorTickMark.Enabled = true;
+            chartArea4.AxisY2.MinorTickMark.Size = 0.5F;
+            chartArea4.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea4.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(N)";
+            chartArea4.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
+            chartArea4.Name = "ChartArea1";
+            this.chart_machine.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart_machine.Legends.Add(legend4);
             this.chart_machine.Location = new System.Drawing.Point(0, 0);
             this.chart_machine.Name = "chart_machine";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series5.Legend = "Legend1";
-            series5.Name = "位移";
-            series5.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series6.Legend = "Legend1";
-            series6.Name = "试验力";
-            series6.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series7.Legend = "Legend1";
-            series7.Name = "变形";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series8.Color = System.Drawing.Color.BlueViolet;
-            series8.Legend = "Legend1";
-            series8.Name = "命令";
-            series8.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            this.chart_machine.Series.Add(series5);
-            this.chart_machine.Series.Add(series6);
-            this.chart_machine.Series.Add(series7);
-            this.chart_machine.Series.Add(series8);
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series13.Legend = "Legend1";
+            series13.Name = "位移";
+            series13.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series14.Legend = "Legend1";
+            series14.Name = "试验力";
+            series14.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series15.Legend = "Legend1";
+            series15.Name = "变形";
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series16.Color = System.Drawing.Color.BlueViolet;
+            series16.Legend = "Legend1";
+            series16.Name = "命令";
+            series16.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.chart_machine.Series.Add(series13);
+            this.chart_machine.Series.Add(series14);
+            this.chart_machine.Series.Add(series15);
+            this.chart_machine.Series.Add(series16);
             this.chart_machine.Size = new System.Drawing.Size(1212, 554);
             this.chart_machine.TabIndex = 63;
             // 
@@ -798,7 +815,6 @@
             this.bntX_MoveUp.TabIndex = 57;
             this.bntX_MoveUp.Text = "向     上";
             this.bntX_MoveUp.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
-            //this.bntX_MoveUp.Click += new System.EventHandler(this.bntX_MoveUp_Click);
             this.bntX_MoveUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseDown);
             this.bntX_MoveUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseUp);
             // 
@@ -816,7 +832,6 @@
             this.btnX_MoveQuickUp.TabIndex = 57;
             this.btnX_MoveQuickUp.Text = " 快速向上";
             this.btnX_MoveQuickUp.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Right;
-            //this.btnX_MoveQuickUp.Click += new System.EventHandler(this.btnX_MoveQuickUp_Click);
             this.btnX_MoveQuickUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnX_MoveQuickUp_MouseDown);
             this.btnX_MoveQuickUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnX_MoveQuickUp_MouseUp);
             // 
@@ -3216,6 +3231,7 @@
             this.ToolStripMenuItem_Oper,
             this.ToolStripMenuItem_Setting,
             this.ToolStripMenuItem_Data,
+            this.SelectProjectToolStripMenuItem,
             this.ToolStripMenuItem_Result,
             this.ToolStripMenuItem_Language,
             this.ToolStripMenuItem_Help});
@@ -3317,6 +3333,126 @@
             this.保存当前曲线ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.保存当前曲线ToolStripMenuItem.Text = "保存当前曲线";
             this.保存当前曲线ToolStripMenuItem.Visible = false;
+            // 
+            // SelectProjectToolStripMenuItem
+            // 
+            this.SelectProjectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aSTMD3039D3039M2017聚合物基复合材料拉伸性能测试方法ToolStripMenuItem,
+            this.hB52871996金属材料轴向加载疲劳试验方法ToolStripMenuItem,
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第1部分通则ToolStripMenuItem,
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第2部分线性或线性化应力寿命SN和应变ToolStripMenuItem,
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第3部分拉拉疲劳ToolStripMenuItem,
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第4部分拉压和压压疲劳ToolStripMenuItem,
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第5部分弯曲疲劳ToolStripMenuItem,
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第6部分胶粘剂拉伸剪切疲劳ToolStripMenuItem,
+            this.aSTME8E8M金厘材料拉伸试验方法ToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.金厘材料拉伸试验第1部分室温试验方法GBT22812010ToolStripMenuItem,
+            this.预应力混凝土用钢纹线拉伸试验GBT52242003ISO69344ToolStripMenuItem,
+            this.金属材料室温压缩试验方法GBT73142005ToolStripMenuItem,
+            this.焊接接头弯曲试验方法GBT26532008ISO51732000ToolStripMenuItem,
+            this.金属弯曲力学性能试验方法三点弯曲YBT53492006ToolStripMenuItem,
+            this.金属弯曲力学性能试验方法四点弯曲YBT53492006ToolStripMenuItem});
+            this.SelectProjectToolStripMenuItem.Name = "SelectProjectToolStripMenuItem";
+            this.SelectProjectToolStripMenuItem.Size = new System.Drawing.Size(140, 20);
+            this.SelectProjectToolStripMenuItem.Text = "选择试验方案(&P)";
+            this.SelectProjectToolStripMenuItem.Visible = false;
+            // 
+            // aSTMD3039D3039M2017聚合物基复合材料拉伸性能测试方法ToolStripMenuItem
+            // 
+            this.aSTMD3039D3039M2017聚合物基复合材料拉伸性能测试方法ToolStripMenuItem.Name = "aSTMD3039D3039M2017聚合物基复合材料拉伸性能测试方法ToolStripMenuItem";
+            this.aSTMD3039D3039M2017聚合物基复合材料拉伸性能测试方法ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.aSTMD3039D3039M2017聚合物基复合材料拉伸性能测试方法ToolStripMenuItem.Text = "1.ASTM D3039/D3039M-2017《聚合物基复合材料拉伸性能测试方法》";
+            // 
+            // hB52871996金属材料轴向加载疲劳试验方法ToolStripMenuItem
+            // 
+            this.hB52871996金属材料轴向加载疲劳试验方法ToolStripMenuItem.Name = "hB52871996金属材料轴向加载疲劳试验方法ToolStripMenuItem";
+            this.hB52871996金属材料轴向加载疲劳试验方法ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.hB52871996金属材料轴向加载疲劳试验方法ToolStripMenuItem.Text = "2.HB 5287-1996 《金属材料轴向加载疲劳试验方法》";
+            // 
+            // gBT35465聚合物基复合材料疲劳性能测试方法第1部分通则ToolStripMenuItem
+            // 
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第1部分通则ToolStripMenuItem.Name = "gBT35465聚合物基复合材料疲劳性能测试方法第1部分通则ToolStripMenuItem";
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第1部分通则ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第1部分通则ToolStripMenuItem.Text = "3.GB/T35465《聚合物基复合材料疲劳性能测试方法第1 部分:通则》";
+            // 
+            // gBT35465聚合物基复合材料疲劳性能测试方法第2部分线性或线性化应力寿命SN和应变ToolStripMenuItem
+            // 
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第2部分线性或线性化应力寿命SN和应变ToolStripMenuItem.Name = "gBT35465聚合物基复合材料疲劳性能测试方法第2部分线性或线性化应力寿命SN和应变ToolStripMenuItem";
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第2部分线性或线性化应力寿命SN和应变ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第2部分线性或线性化应力寿命SN和应变ToolStripMenuItem.Text = "4.GB/T 35465《聚合物基复合材料疲劳性能测试方法第2 部分:线性或线性化应力寿命(S-N)和应变寿命(e-N)疲劳数据的统计分析》";
+            // 
+            // gBT35465聚合物基复合材料疲劳性能测试方法第3部分拉拉疲劳ToolStripMenuItem
+            // 
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第3部分拉拉疲劳ToolStripMenuItem.Name = "gBT35465聚合物基复合材料疲劳性能测试方法第3部分拉拉疲劳ToolStripMenuItem";
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第3部分拉拉疲劳ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第3部分拉拉疲劳ToolStripMenuItem.Text = "5.GB/T 35465《聚合物基复合材料疲劳性能测试方法第3 部分:拉-拉疲劳》";
+            // 
+            // gBT35465聚合物基复合材料疲劳性能测试方法第4部分拉压和压压疲劳ToolStripMenuItem
+            // 
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第4部分拉压和压压疲劳ToolStripMenuItem.Name = "gBT35465聚合物基复合材料疲劳性能测试方法第4部分拉压和压压疲劳ToolStripMenuItem";
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第4部分拉压和压压疲劳ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第4部分拉压和压压疲劳ToolStripMenuItem.Text = "6.GB/T 35465《聚合物基复合材料疲劳性能测试方法第4 部分:拉-压和压-压疲劳》";
+            // 
+            // gBT35465聚合物基复合材料疲劳性能测试方法第5部分弯曲疲劳ToolStripMenuItem
+            // 
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第5部分弯曲疲劳ToolStripMenuItem.Name = "gBT35465聚合物基复合材料疲劳性能测试方法第5部分弯曲疲劳ToolStripMenuItem";
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第5部分弯曲疲劳ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第5部分弯曲疲劳ToolStripMenuItem.Text = "7.GB/T 35465《聚合物基复合材料疲劳性能测试方法第5 部分:弯曲疲劳》";
+            // 
+            // gBT35465聚合物基复合材料疲劳性能测试方法第6部分胶粘剂拉伸剪切疲劳ToolStripMenuItem
+            // 
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第6部分胶粘剂拉伸剪切疲劳ToolStripMenuItem.Name = "gBT35465聚合物基复合材料疲劳性能测试方法第6部分胶粘剂拉伸剪切疲劳ToolStripMenuItem";
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第6部分胶粘剂拉伸剪切疲劳ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.gBT35465聚合物基复合材料疲劳性能测试方法第6部分胶粘剂拉伸剪切疲劳ToolStripMenuItem.Text = "8.GB/T 35465《聚合物基复合材料疲劳性能测试方法第6 部分:胶粘剂拉伸剪切疲劳》";
+            // 
+            // aSTME8E8M金厘材料拉伸试验方法ToolStripMenuItem
+            // 
+            this.aSTME8E8M金厘材料拉伸试验方法ToolStripMenuItem.Name = "aSTME8E8M金厘材料拉伸试验方法ToolStripMenuItem";
+            this.aSTME8E8M金厘材料拉伸试验方法ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.aSTME8E8M金厘材料拉伸试验方法ToolStripMenuItem.Text = "9.ASTM E8/E8M 金属材料拉伸试验方法";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(996, 22);
+            this.toolStripMenuItem2.Text = "10.GB/T 2653-2008/ISO 5173:2000 焊接接头弯曲试验方法";
+            // 
+            // 金厘材料拉伸试验第1部分室温试验方法GBT22812010ToolStripMenuItem
+            // 
+            this.金厘材料拉伸试验第1部分室温试验方法GBT22812010ToolStripMenuItem.Name = "金厘材料拉伸试验第1部分室温试验方法GBT22812010ToolStripMenuItem";
+            this.金厘材料拉伸试验第1部分室温试验方法GBT22812010ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.金厘材料拉伸试验第1部分室温试验方法GBT22812010ToolStripMenuItem.Text = "11.GBT228.1-2010 金属材料 拉伸试验 第1部分:室温试验方法";
+            // 
+            // 预应力混凝土用钢纹线拉伸试验GBT52242003ISO69344ToolStripMenuItem
+            // 
+            this.预应力混凝土用钢纹线拉伸试验GBT52242003ISO69344ToolStripMenuItem.Name = "预应力混凝土用钢纹线拉伸试验GBT52242003ISO69344ToolStripMenuItem";
+            this.预应力混凝土用钢纹线拉伸试验GBT52242003ISO69344ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.预应力混凝土用钢纹线拉伸试验GBT52242003ISO69344ToolStripMenuItem.Text = "12.GB/T 5224-2003,ISO 6934-4 预应力混凝土用钢纹线拉伸试验";
+            // 
+            // 金属材料室温压缩试验方法GBT73142005ToolStripMenuItem
+            // 
+            this.金属材料室温压缩试验方法GBT73142005ToolStripMenuItem.Name = "金属材料室温压缩试验方法GBT73142005ToolStripMenuItem";
+            this.金属材料室温压缩试验方法GBT73142005ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.金属材料室温压缩试验方法GBT73142005ToolStripMenuItem.Text = "13.GB/T 7314-2005 金属材料 室温压缩试验方法";
+            // 
+            // 焊接接头弯曲试验方法GBT26532008ISO51732000ToolStripMenuItem
+            // 
+            this.焊接接头弯曲试验方法GBT26532008ISO51732000ToolStripMenuItem.Name = "焊接接头弯曲试验方法GBT26532008ISO51732000ToolStripMenuItem";
+            this.焊接接头弯曲试验方法GBT26532008ISO51732000ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.焊接接头弯曲试验方法GBT26532008ISO51732000ToolStripMenuItem.Text = "14.GB/T 2653-2008/ISO 5173:2000 焊接接头弯曲试验方法";
+            // 
+            // 金属弯曲力学性能试验方法三点弯曲YBT53492006ToolStripMenuItem
+            // 
+            this.金属弯曲力学性能试验方法三点弯曲YBT53492006ToolStripMenuItem.Name = "金属弯曲力学性能试验方法三点弯曲YBT53492006ToolStripMenuItem";
+            this.金属弯曲力学性能试验方法三点弯曲YBT53492006ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.金属弯曲力学性能试验方法三点弯曲YBT53492006ToolStripMenuItem.Text = "15.YB/T 5349-2006 金属弯曲力学性能试验方法(三点弯曲)";
+            // 
+            // 金属弯曲力学性能试验方法四点弯曲YBT53492006ToolStripMenuItem
+            // 
+            this.金属弯曲力学性能试验方法四点弯曲YBT53492006ToolStripMenuItem.Name = "金属弯曲力学性能试验方法四点弯曲YBT53492006ToolStripMenuItem";
+            this.金属弯曲力学性能试验方法四点弯曲YBT53492006ToolStripMenuItem.Size = new System.Drawing.Size(996, 22);
+            this.金属弯曲力学性能试验方法四点弯曲YBT53492006ToolStripMenuItem.Text = "16.YBT 5349-2006 金属弯曲力学性能试验方法(四点弯曲)";
             // 
             // ToolStripMenuItem_Result
             // 
@@ -3696,6 +3832,23 @@
         private System.Windows.Forms.ToolStripMenuItem SaveStaticDataToolStripMenuItem;
         private System.Windows.Forms.Timer timer_ShowWave;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem SelectProjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aSTMD3039D3039M2017聚合物基复合材料拉伸性能测试方法ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hB52871996金属材料轴向加载疲劳试验方法ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gBT35465聚合物基复合材料疲劳性能测试方法第1部分通则ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gBT35465聚合物基复合材料疲劳性能测试方法第2部分线性或线性化应力寿命SN和应变ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gBT35465聚合物基复合材料疲劳性能测试方法第3部分拉拉疲劳ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gBT35465聚合物基复合材料疲劳性能测试方法第4部分拉压和压压疲劳ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gBT35465聚合物基复合材料疲劳性能测试方法第5部分弯曲疲劳ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gBT35465聚合物基复合材料疲劳性能测试方法第6部分胶粘剂拉伸剪切疲劳ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aSTME8E8M金厘材料拉伸试验方法ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 金厘材料拉伸试验第1部分室温试验方法GBT22812010ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 预应力混凝土用钢纹线拉伸试验GBT52242003ISO69344ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 金属材料室温压缩试验方法GBT73142005ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 焊接接头弯曲试验方法GBT26532008ISO51732000ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 金属弯曲力学性能试验方法三点弯曲YBT53492006ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 金属弯曲力学性能试验方法四点弯曲YBT53492006ToolStripMenuItem;
     }
 }
 
