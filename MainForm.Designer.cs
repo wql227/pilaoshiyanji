@@ -341,6 +341,7 @@
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timerDataClean = new System.Windows.Forms.Timer(this.components);
+            this.timerAppStart = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -720,8 +721,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel10);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Location = new System.Drawing.Point(1301, 3);
             this.superTabControl4.MaximumSize = new System.Drawing.Size(0, 419);
             this.superTabControl4.MinimumSize = new System.Drawing.Size(285, 419);
@@ -4078,6 +4079,11 @@
             this.timerDataClean.Interval = 10;
             this.timerDataClean.Tick += new System.EventHandler(this.timerDataClean_Tick);
             // 
+            // timerAppStart
+            // 
+            this.timerAppStart.Interval = 500;
+            this.timerAppStart.Tick += new System.EventHandler(this.timerAppStart_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4444,6 +4450,7 @@
         private DevComponents.DotNetBar.ButtonX buttonX21;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Timer timerDataClean;
+        private System.Windows.Forms.Timer timerAppStart;
     }
 }
 

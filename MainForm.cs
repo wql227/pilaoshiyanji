@@ -483,8 +483,9 @@ namespace DoPENetConnect
             //设置lightningchart参数
             CreateChart();
 
-            
-            floatMenus.Activate();
+
+            //floatMenus.Activate();
+            timerAppStart.Start();
         }
 
 
@@ -5084,8 +5085,23 @@ namespace DoPENetConnect
                     {
                         destinationVal = double.Parse(textBoxX15.Text) * 1000;
                     }
+                    double ctrlSpeed = 0;
+                    switch (cmbX_Dyn_StartSpeed_Unit.Text)
+                    {
+                        case "mm/min":
+                            ctrlSpeed = double.Parse(tbX_Dyn_StartSpeed.Text) / 60;
+                            break;
+                        case "kN/s":
+                            ctrlSpeed = double.Parse(tbX_Dyn_StartSpeed.Text) * 1000;
+                            break;
+                    }
+                    double limitValue = double.Parse(textBoxX14.Text);
+                    if (comboBoxEx8.Text == "kN")
+                    {
+                        limitValue = double.Parse(textBoxX14.Text) * 1000;
+                    }
 
-                    frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
+                    frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, ctrlSpeed, comboBoxEx7.SelectedIndex, limitValue,
                                                      (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
 
                 }
@@ -5470,5 +5486,11 @@ namespace DoPENetConnect
             }
         }
 
+        private void timerAppStart_Tick(object sender, EventArgs e)
+        {
+            //floatMenus.Show();
+            floatMenus.Activate();
+            timerAppStart.Stop();
+        }
     }
 }
