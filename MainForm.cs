@@ -406,7 +406,7 @@ namespace DoPENetConnect
             floatMenus = new FormFloat();
             floatMenus.Owner = this;
             floatMenus.Location = new Point(this.Location.X+2, 273);
-            floatMenus.Show();
+            //floatMenus.Show();
 
             //初始化试验信息
             doTest = new FormTest();
@@ -485,7 +485,7 @@ namespace DoPENetConnect
 
 
             //floatMenus.Activate();
-            timerAppStart.Start();
+            //timerAppStart.Start();
         }
 
 
@@ -5492,6 +5492,23 @@ namespace DoPENetConnect
             //floatMenus.Show();
             floatMenus.Activate();
             timerAppStart.Stop();
+        }
+
+        bool floatRunOnce = true;
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            if (floatRunOnce)
+            {
+                this.Invoke(new MethodInvoker(ShowFloatMenus));
+                floatRunOnce = false;
+            }
+        }
+
+        public void ShowFloatMenus()
+        {
+            floatMenus.Show();
+            floatMenus.Activate();
+            
         }
     }
 }
