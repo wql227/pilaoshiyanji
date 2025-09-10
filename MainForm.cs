@@ -433,7 +433,7 @@ namespace DoPENetConnect
         }
 
         private void chart_machine_MouseWheel(object sender, MouseEventArgs e)
-        {
+        {            
             // 实验发现鼠标滚轮滚动一圈时e.Delta = 120，正反转对应正负120
             if (chart_machine.ChartAreas[0].AxisX.ScaleView.Size > 0) // 防止越过左边界
             {
@@ -443,7 +443,7 @@ namespace DoPENetConnect
             {
                 //chart_machine.ChartAreas[0].AxisY.ScaleView.Size += (e.Delta*10 / 120); // 每次缩放1
                 chart_machine.ChartAreas[0].AxisX.ScaleView.Size += (e.Delta * 10 / 120); // 每次缩放1
-            }
+            }           
         }
 
         public void SetRealtimeParamComParams(string comNo, string interval)
@@ -5437,6 +5437,33 @@ namespace DoPENetConnect
 
             }
 
+        }
+
+        double posMouseDown = 0;
+        private void chart_machine_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+                posMouseDown = e.Location.X;
+        }
+
+        private void chart_machine_MouseUp(object sender, MouseEventArgs e)
+        {
+            double posMouseUp = e.Location.X;
+            if (posMouseUp - posMouseDown < 0&& e.Button == MouseButtons.Left) {
+                while (chart_machine.ChartAreas[0].AxisX.ScaleView.IsZoomed)
+                {
+                    chart_machine.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+                }
+            }
+        }
+
+        private void chart_machine_MouseMove(object sender, MouseEventArgs e)
+        {
+            double posMouseUp = e.Location.X;
+            if ((posMouseUp - posMouseDown < 0)&&(e.Button==MouseButtons.Left))
+            {
+                chart_machine.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+            }
         }
 
     }
