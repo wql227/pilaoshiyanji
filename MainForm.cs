@@ -485,7 +485,6 @@ namespace DoPENetConnect
 
 
             //floatMenus.Activate();
-            //timerAppStart.Start();
         }
 
 
@@ -5485,13 +5484,6 @@ namespace DoPENetConnect
             {
                 chart_machine.ChartAreas[0].AxisX.ScaleView.ZoomReset();
             }
-        }
-
-        private void timerAppStart_Tick(object sender, EventArgs e)
-        {
-            //floatMenus.Show();
-            floatMenus.Activate();
-            timerAppStart.Stop();
         }
 
         bool floatRunOnce = true;
