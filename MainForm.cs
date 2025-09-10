@@ -5136,6 +5136,10 @@ namespace DoPENetConnect
 
         private void ToolStripMenuItemSampleInfo_Click(object sender, EventArgs e)
         {
+            if (isRunning) {
+                MessageBox.Show("试验运行中不能填写试验信息，请等待试验结束后再试！");
+                return;
+            }
             if (doTest != null)
             {
                 doTest.RemoveDataGridView();
