@@ -1628,7 +1628,8 @@ namespace DoPENetConnect
                 }
                 else
                 {
-                    MessageBox.Show($"Error: {ex.Message}", $"打开{realtimeParams.comNo}", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //MessageBox.Show($"Error: {ex.Message}", $"打开{realtimeParams.comNo}", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    LogHelper.Info($"Error: {ex.Message}");
                 }
                 return false;
             }
