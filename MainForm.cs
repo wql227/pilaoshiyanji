@@ -405,7 +405,7 @@ namespace DoPENetConnect
             //悬浮工具框
             floatMenus = new FormFloat();
             floatMenus.Owner = this;
-            floatMenus.Location = new Point(this.Location.X + floatMenus.Width,this.Location.Y);
+            floatMenus.Location = new Point(this.Location.X+2, 273);
             floatMenus.Show();
 
             //初始化试验信息
