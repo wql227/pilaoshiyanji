@@ -2038,7 +2038,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnUpConstantVal;
+                        speed = btnUpConstantVal/60;
 
                         DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
                         DisplayError(error, "FDPoti");
@@ -2076,7 +2076,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnUpConstantVal;
+                        speed = btnUpConstantVal/60;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
@@ -2129,7 +2129,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnHurryUpConstantVal;
+                        speed = btnHurryUpConstantVal/60;
 
                         DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
                         DisplayError(error, "FDPoti");
@@ -2164,7 +2164,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnHurryUpConstantVal;
+                        speed = btnHurryUpConstantVal/60;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
@@ -2257,7 +2257,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnDownConstantVal;
+                        speed = btnDownConstantVal/60;
 
                         DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
                         DisplayError(error, "FDPoti");
@@ -2289,7 +2289,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnDownConstantVal;
+                        speed = btnDownConstantVal/60;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
@@ -2333,7 +2333,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnHurryDownConstantVal;
+                        speed = btnHurryDownConstantVal/60;
 
                         DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
                         DisplayError(error, "FDPoti");
@@ -2371,7 +2371,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnHurryDownConstantVal;
+                        speed = btnHurryDownConstantVal/60;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
