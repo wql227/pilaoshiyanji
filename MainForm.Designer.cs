@@ -29,23 +29,23 @@
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series28 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series29 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint29 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint30 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint31 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series30 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint32 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint33 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint34 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint35 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -120,9 +120,6 @@
             this.labelX39 = new DevComponents.DotNetBar.LabelX();
             this.labelX37 = new DevComponents.DotNetBar.LabelX();
             this.labelX35 = new DevComponents.DotNetBar.LabelX();
-            this.cmbX_Dyn_EDC = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
-            this.labelX34 = new DevComponents.DotNetBar.LabelX();
             this.tabItem1 = new DevComponents.DotNetBar.TabItem(this.components);
             this.superTabItem10 = new DevComponents.DotNetBar.SuperTabItem();
             this.line2 = new DevComponents.DotNetBar.Controls.Line();
@@ -341,6 +338,9 @@
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timerDataClean = new System.Windows.Forms.Timer(this.components);
+            this.cmbX_Dyn_EDC = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.labelX34 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -559,14 +559,14 @@
             this.sampleChecker,
             this.sampleDependation,
             this.sampleNotes});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewX2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX2.Location = new System.Drawing.Point(0, 517);
@@ -720,8 +720,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel10);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Location = new System.Drawing.Point(1301, 3);
             this.superTabControl4.MaximumSize = new System.Drawing.Size(0, 419);
             this.superTabControl4.MinimumSize = new System.Drawing.Size(285, 419);
@@ -1003,7 +1003,7 @@
             this.buttonX19.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX19.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX19.Image = ((System.Drawing.Image)(resources.GetObject("buttonX19.Image")));
-            this.buttonX19.Location = new System.Drawing.Point(102, 303);
+            this.buttonX19.Location = new System.Drawing.Point(102, 312);
             this.buttonX19.Name = "buttonX19";
             this.buttonX19.Size = new System.Drawing.Size(90, 35);
             this.buttonX19.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1019,7 +1019,7 @@
             this.comboBoxEx11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBoxEx11.FormattingEnabled = true;
             this.comboBoxEx11.ItemHeight = 21;
-            this.comboBoxEx11.Location = new System.Drawing.Point(79, 242);
+            this.comboBoxEx11.Location = new System.Drawing.Point(79, 255);
             this.comboBoxEx11.Name = "comboBoxEx11";
             this.comboBoxEx11.Size = new System.Drawing.Size(196, 27);
             this.comboBoxEx11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1034,7 +1034,7 @@
             // 
             this.labelX41.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX41.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX41.Location = new System.Drawing.Point(4, 247);
+            this.labelX41.Location = new System.Drawing.Point(4, 259);
             this.labelX41.Name = "labelX41";
             this.labelX41.Size = new System.Drawing.Size(74, 23);
             this.labelX41.TabIndex = 11;
@@ -1054,7 +1054,7 @@
             this.comboItem14,
             this.comboItem15,
             this.comboItem16});
-            this.comboBoxEx10.Location = new System.Drawing.Point(198, 208);
+            this.comboBoxEx10.Location = new System.Drawing.Point(198, 215);
             this.comboBoxEx10.Name = "comboBoxEx10";
             this.comboBoxEx10.Size = new System.Drawing.Size(77, 27);
             this.comboBoxEx10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1089,7 +1089,7 @@
             this.textBoxX15.Border.Class = "TextBoxBorder";
             this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX15.Location = new System.Drawing.Point(80, 208);
+            this.textBoxX15.Location = new System.Drawing.Point(80, 215);
             this.textBoxX15.MinimumSize = new System.Drawing.Size(0, 27);
             this.textBoxX15.Name = "textBoxX15";
             this.textBoxX15.PreventEnterBeep = true;
@@ -1106,7 +1106,7 @@
             // 
             this.labelX40.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX40.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX40.Location = new System.Drawing.Point(3, 212);
+            this.labelX40.Location = new System.Drawing.Point(3, 219);
             this.labelX40.Name = "labelX40";
             this.labelX40.Size = new System.Drawing.Size(57, 23);
             this.labelX40.TabIndex = 8;
@@ -1126,7 +1126,7 @@
             this.comboItem9,
             this.comboItem10,
             this.comboItem11});
-            this.comboBoxEx8.Location = new System.Drawing.Point(198, 142);
+            this.comboBoxEx8.Location = new System.Drawing.Point(198, 135);
             this.comboBoxEx8.Name = "comboBoxEx8";
             this.comboBoxEx8.Size = new System.Drawing.Size(77, 27);
             this.comboBoxEx8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1166,7 +1166,7 @@
             this.comboItem4,
             this.comboItem5,
             this.comboItem6});
-            this.cmbX_Dyn_StartSpeed_Unit.Location = new System.Drawing.Point(198, 75);
+            this.cmbX_Dyn_StartSpeed_Unit.Location = new System.Drawing.Point(198, 55);
             this.cmbX_Dyn_StartSpeed_Unit.Name = "cmbX_Dyn_StartSpeed_Unit";
             this.cmbX_Dyn_StartSpeed_Unit.Size = new System.Drawing.Size(79, 27);
             this.cmbX_Dyn_StartSpeed_Unit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1200,7 +1200,7 @@
             this.textBoxX14.Border.Class = "TextBoxBorder";
             this.textBoxX14.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX14.Location = new System.Drawing.Point(79, 142);
+            this.textBoxX14.Location = new System.Drawing.Point(79, 135);
             this.textBoxX14.MinimumSize = new System.Drawing.Size(0, 27);
             this.textBoxX14.Name = "textBoxX14";
             this.textBoxX14.PreventEnterBeep = true;
@@ -1217,7 +1217,7 @@
             // 
             this.labelX38.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX38.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX38.Location = new System.Drawing.Point(3, 146);
+            this.labelX38.Location = new System.Drawing.Point(3, 139);
             this.labelX38.Name = "labelX38";
             this.labelX38.Size = new System.Drawing.Size(41, 23);
             this.labelX38.TabIndex = 5;
@@ -1231,7 +1231,7 @@
             this.tbX_Dyn_StartSpeed.Border.Class = "TextBoxBorder";
             this.tbX_Dyn_StartSpeed.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbX_Dyn_StartSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_Dyn_StartSpeed.Location = new System.Drawing.Point(79, 75);
+            this.tbX_Dyn_StartSpeed.Location = new System.Drawing.Point(79, 55);
             this.tbX_Dyn_StartSpeed.MinimumSize = new System.Drawing.Size(0, 27);
             this.tbX_Dyn_StartSpeed.Name = "tbX_Dyn_StartSpeed";
             this.tbX_Dyn_StartSpeed.PreventEnterBeep = true;
@@ -1248,7 +1248,7 @@
             // 
             this.labelX36.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX36.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX36.Location = new System.Drawing.Point(4, 77);
+            this.labelX36.Location = new System.Drawing.Point(4, 59);
             this.labelX36.Name = "labelX36";
             this.labelX36.Size = new System.Drawing.Size(74, 23);
             this.labelX36.TabIndex = 5;
@@ -1277,7 +1277,7 @@
             this.comboBoxEx7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBoxEx7.FormattingEnabled = true;
             this.comboBoxEx7.ItemHeight = 21;
-            this.comboBoxEx7.Location = new System.Drawing.Point(79, 109);
+            this.comboBoxEx7.Location = new System.Drawing.Point(79, 95);
             this.comboBoxEx7.Name = "comboBoxEx7";
             this.comboBoxEx7.Size = new System.Drawing.Size(117, 27);
             this.comboBoxEx7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1291,7 +1291,7 @@
             this.cmbX_Dyn_StartCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbX_Dyn_StartCtrl.FormattingEnabled = true;
             this.cmbX_Dyn_StartCtrl.ItemHeight = 21;
-            this.cmbX_Dyn_StartCtrl.Location = new System.Drawing.Point(79, 41);
+            this.cmbX_Dyn_StartCtrl.Location = new System.Drawing.Point(79, 15);
             this.cmbX_Dyn_StartCtrl.Name = "cmbX_Dyn_StartCtrl";
             this.cmbX_Dyn_StartCtrl.Size = new System.Drawing.Size(117, 27);
             this.cmbX_Dyn_StartCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1322,7 +1322,7 @@
             // 
             this.labelX37.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX37.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX37.Location = new System.Drawing.Point(3, 113);
+            this.labelX37.Location = new System.Drawing.Point(3, 99);
             this.labelX37.Name = "labelX37";
             this.labelX37.Size = new System.Drawing.Size(74, 23);
             this.labelX37.TabIndex = 3;
@@ -1337,46 +1337,11 @@
             // 
             this.labelX35.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX35.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX35.Location = new System.Drawing.Point(3, 45);
+            this.labelX35.Location = new System.Drawing.Point(3, 19);
             this.labelX35.Name = "labelX35";
             this.labelX35.Size = new System.Drawing.Size(74, 23);
             this.labelX35.TabIndex = 3;
             this.labelX35.Text = "控制模式";
-            // 
-            // cmbX_Dyn_EDC
-            // 
-            this.cmbX_Dyn_EDC.DisplayMember = "Text";
-            this.cmbX_Dyn_EDC.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbX_Dyn_EDC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbX_Dyn_EDC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbX_Dyn_EDC.FormattingEnabled = true;
-            this.cmbX_Dyn_EDC.ItemHeight = 21;
-            this.cmbX_Dyn_EDC.Items.AddRange(new object[] {
-            this.comboItem1});
-            this.cmbX_Dyn_EDC.Location = new System.Drawing.Point(79, 6);
-            this.cmbX_Dyn_EDC.Name = "cmbX_Dyn_EDC";
-            this.cmbX_Dyn_EDC.Size = new System.Drawing.Size(118, 27);
-            this.cmbX_Dyn_EDC.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbX_Dyn_EDC.TabIndex = 2;
-            // 
-            // comboItem1
-            // 
-            this.comboItem1.Text = "EDC0";
-            // 
-            // labelX34
-            // 
-            this.labelX34.AutoSize = true;
-            this.labelX34.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX34.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX34.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX34.Location = new System.Drawing.Point(3, 8);
-            this.labelX34.Name = "labelX34";
-            this.labelX34.Size = new System.Drawing.Size(57, 23);
-            this.labelX34.TabIndex = 1;
-            this.labelX34.Text = "控制器";
             // 
             // tabItem1
             // 
@@ -1579,100 +1544,100 @@
             this.chart_machine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.AxisX.Interval = 1D;
-            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea1.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisX.Maximum = 10D;
-            chartArea1.AxisX.MaximumAutoSize = 100F;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.MinorTickMark.Enabled = true;
-            chartArea1.AxisX.MinorTickMark.Size = 0.5F;
-            chartArea1.AxisX.ScaleView.Size = 10D;
-            chartArea1.AxisX.ScrollBar.Enabled = false;
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea1.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.Maximum = 20D;
-            chartArea1.AxisY.Minimum = -1D;
-            chartArea1.AxisY.MinorTickMark.Enabled = true;
-            chartArea1.AxisY.MinorTickMark.Interval = double.NaN;
-            chartArea1.AxisY.MinorTickMark.IntervalOffset = double.NaN;
-            chartArea1.AxisY.MinorTickMark.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.NotSet;
-            chartArea1.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.NotSet;
-            chartArea1.AxisY.MinorTickMark.Size = 0.5F;
-            chartArea1.AxisY.ScrollBar.Enabled = false;
-            chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
-            chartArea1.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea1.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisY2.LineColor = System.Drawing.Color.Orange;
-            chartArea1.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea1.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY2.Maximum = 20D;
-            chartArea1.AxisY2.Minimum = -20D;
-            chartArea1.AxisY2.MinorTickMark.Enabled = true;
-            chartArea1.AxisY2.MinorTickMark.Size = 0.5F;
-            chartArea1.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea1.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
-            chartArea1.BackColor = System.Drawing.Color.White;
-            chartArea1.CursorX.IsUserSelectionEnabled = true;
-            chartArea1.Name = "ChartArea1";
-            this.chart_machine.ChartAreas.Add(chartArea1);
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chart_machine.Legends.Add(legend1);
+            chartArea5.AxisX.Interval = 1D;
+            chartArea5.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea5.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea5.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea5.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea5.AxisX.Maximum = 10D;
+            chartArea5.AxisX.MaximumAutoSize = 100F;
+            chartArea5.AxisX.Minimum = 0D;
+            chartArea5.AxisX.MinorTickMark.Enabled = true;
+            chartArea5.AxisX.MinorTickMark.Size = 0.5F;
+            chartArea5.AxisX.ScaleView.Size = 10D;
+            chartArea5.AxisX.ScrollBar.Enabled = false;
+            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea5.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea5.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea5.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea5.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea5.AxisY.Maximum = 20D;
+            chartArea5.AxisY.Minimum = -1D;
+            chartArea5.AxisY.MinorTickMark.Enabled = true;
+            chartArea5.AxisY.MinorTickMark.Interval = double.NaN;
+            chartArea5.AxisY.MinorTickMark.IntervalOffset = double.NaN;
+            chartArea5.AxisY.MinorTickMark.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.NotSet;
+            chartArea5.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.NotSet;
+            chartArea5.AxisY.MinorTickMark.Size = 0.5F;
+            chartArea5.AxisY.ScrollBar.Enabled = false;
+            chartArea5.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
+            chartArea5.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea5.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea5.AxisY2.LineColor = System.Drawing.Color.Orange;
+            chartArea5.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea5.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea5.AxisY2.Maximum = 20D;
+            chartArea5.AxisY2.Minimum = -20D;
+            chartArea5.AxisY2.MinorTickMark.Enabled = true;
+            chartArea5.AxisY2.MinorTickMark.Size = 0.5F;
+            chartArea5.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea5.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
+            chartArea5.BackColor = System.Drawing.Color.White;
+            chartArea5.CursorX.IsUserSelectionEnabled = true;
+            chartArea5.Name = "ChartArea1";
+            this.chart_machine.ChartAreas.Add(chartArea5);
+            legend5.Enabled = false;
+            legend5.Name = "Legend1";
+            this.chart_machine.Legends.Add(legend5);
             this.chart_machine.Location = new System.Drawing.Point(0, 0);
             this.chart_machine.Name = "chart_machine";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series1.Color = System.Drawing.Color.DodgerBlue;
-            series1.Legend = "Legend1";
-            series1.Name = "位移";
-            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            series2.Legend = "Legend1";
-            series2.Name = "试验力";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series3.Color = System.Drawing.Color.Red;
-            series3.Legend = "Legend1";
-            series3.Name = "变形";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series4.Color = System.Drawing.Color.BlueViolet;
-            series4.Legend = "Legend1";
-            series4.Name = "命令";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series5.Color = System.Drawing.Color.DarkTurquoise;
-            series5.Legend = "Legend1";
-            series5.Name = "试验力位移";
-            series5.Points.Add(dataPoint1);
-            series5.Points.Add(dataPoint2);
-            series5.Points.Add(dataPoint3);
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series6.Color = System.Drawing.Color.Violet;
-            series6.Legend = "Legend1";
-            series6.Name = "试验力变形";
-            series6.Points.Add(dataPoint4);
-            series6.Points.Add(dataPoint5);
-            series6.Points.Add(dataPoint6);
-            series6.Points.Add(dataPoint7);
-            this.chart_machine.Series.Add(series1);
-            this.chart_machine.Series.Add(series2);
-            this.chart_machine.Series.Add(series3);
-            this.chart_machine.Series.Add(series4);
-            this.chart_machine.Series.Add(series5);
-            this.chart_machine.Series.Add(series6);
+            series25.ChartArea = "ChartArea1";
+            series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series25.Color = System.Drawing.Color.DodgerBlue;
+            series25.Legend = "Legend1";
+            series25.Name = "位移";
+            series25.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series26.ChartArea = "ChartArea1";
+            series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series26.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            series26.Legend = "Legend1";
+            series26.Name = "试验力";
+            series27.ChartArea = "ChartArea1";
+            series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series27.Color = System.Drawing.Color.Red;
+            series27.Legend = "Legend1";
+            series27.Name = "变形";
+            series28.ChartArea = "ChartArea1";
+            series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series28.Color = System.Drawing.Color.BlueViolet;
+            series28.Legend = "Legend1";
+            series28.Name = "命令";
+            series29.ChartArea = "ChartArea1";
+            series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series29.Color = System.Drawing.Color.DarkTurquoise;
+            series29.Legend = "Legend1";
+            series29.Name = "试验力位移";
+            series29.Points.Add(dataPoint29);
+            series29.Points.Add(dataPoint30);
+            series29.Points.Add(dataPoint31);
+            series30.ChartArea = "ChartArea1";
+            series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series30.Color = System.Drawing.Color.Violet;
+            series30.Legend = "Legend1";
+            series30.Name = "试验力变形";
+            series30.Points.Add(dataPoint32);
+            series30.Points.Add(dataPoint33);
+            series30.Points.Add(dataPoint34);
+            series30.Points.Add(dataPoint35);
+            this.chart_machine.Series.Add(series25);
+            this.chart_machine.Series.Add(series26);
+            this.chart_machine.Series.Add(series27);
+            this.chart_machine.Series.Add(series28);
+            this.chart_machine.Series.Add(series29);
+            this.chart_machine.Series.Add(series30);
             this.chart_machine.Size = new System.Drawing.Size(1299, 516);
             this.chart_machine.TabIndex = 63;
             this.chart_machine.Paint += new System.Windows.Forms.PaintEventHandler(this.chart_machine_Paint);
@@ -4078,6 +4043,41 @@
             this.timerDataClean.Interval = 10;
             this.timerDataClean.Tick += new System.EventHandler(this.timerDataClean_Tick);
             // 
+            // cmbX_Dyn_EDC
+            // 
+            this.cmbX_Dyn_EDC.DisplayMember = "Text";
+            this.cmbX_Dyn_EDC.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Dyn_EDC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbX_Dyn_EDC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_Dyn_EDC.FormattingEnabled = true;
+            this.cmbX_Dyn_EDC.ItemHeight = 21;
+            this.cmbX_Dyn_EDC.Location = new System.Drawing.Point(79, 14);
+            this.cmbX_Dyn_EDC.Name = "cmbX_Dyn_EDC";
+            this.cmbX_Dyn_EDC.Size = new System.Drawing.Size(118, 27);
+            this.cmbX_Dyn_EDC.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_Dyn_EDC.TabIndex = 2;
+            this.cmbX_Dyn_EDC.Visible = false;
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "EDC0";
+            // 
+            // labelX34
+            // 
+            this.labelX34.AutoSize = true;
+            this.labelX34.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX34.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX34.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX34.Location = new System.Drawing.Point(3, 16);
+            this.labelX34.Name = "labelX34";
+            this.labelX34.Size = new System.Drawing.Size(57, 23);
+            this.labelX34.TabIndex = 1;
+            this.labelX34.Text = "控制器";
+            this.labelX34.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4341,7 +4341,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripMenuItem ChartSetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AutoSetYAxisToolStripMenuItem;
-        private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.Editors.ComboItem comboItem4;
@@ -4410,8 +4409,6 @@
         private DevComponents.DotNetBar.LabelX labelX39;
         private DevComponents.DotNetBar.LabelX labelX37;
         private DevComponents.DotNetBar.LabelX labelX35;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Dyn_EDC;
-        private DevComponents.DotNetBar.LabelX labelX34;
         private DevComponents.DotNetBar.TabItem tabItem1;
         private DevComponents.DotNetBar.SuperTabItem superTabItem10;
         private DevComponents.DotNetBar.Controls.Line line2;
@@ -4445,6 +4442,9 @@
         private DevComponents.DotNetBar.ButtonX buttonX21;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Timer timerDataClean;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbX_Dyn_EDC;
+        private DevComponents.DotNetBar.LabelX labelX34;
+        private DevComponents.Editors.ComboItem comboItem1;
     }
 }
 
