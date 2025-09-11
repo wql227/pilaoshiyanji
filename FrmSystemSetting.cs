@@ -40,7 +40,7 @@ namespace DoPENetConnect
             int btnsBottomLength =btnX_FrmProtectOption_OK.Width + 150;
             int btnBottomStart = (this.Width-btnsBottomLength)/ 2;
             btnX_FrmProtectOption_OK.Location = new Point(btnBottomStart, btnX_FrmProtectOption_OK.Bounds.Y);
-            btnX_FrmProtectOption_Cencel.Location = new Point(btnBottomStart + 180, btnX_FrmProtectOption_Cencel.Bounds.Y);
+            //btnX_FrmProtectOption_Cencel.Location = new Point(btnBottomStart + 180, btnX_FrmProtectOption_Cencel.Bounds.Y);
 
             ///系统设置
             ///groupPannel3
