@@ -478,12 +478,12 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-           // ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
 
-
+            timer_UpdateData.Start();
             //floatMenus.Activate();
         }
 
