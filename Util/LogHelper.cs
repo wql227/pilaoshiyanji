@@ -236,7 +236,7 @@ namespace DoPENetConnect
                 #region save_staticdata 
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string logPath = Path.Combine(baseDirectory, "StaticData");
-                string dataTimeStr = dotest.sampleTime.ToString("yyyy-MM-dd-hhmmss");
+                string dataTimeStr = dotest.sampleTime.ToString("yyyy-MM-dd-HHmmss");
                 string dateStr = dataTimeStr.Substring(0, 10);
 
                 StringBuilder tmpStr = new StringBuilder(255);
@@ -329,7 +329,7 @@ namespace DoPENetConnect
             #region save_staticdata 
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string logPath = Path.Combine(baseDirectory, "StaticData");
-            string dataTimeStr = dotest.sampleTime.ToString("yyyy-MM-dd-hhmmss");
+            string dataTimeStr = dotest.sampleTime.ToString("yyyy-MM-dd-HHmmss");
             string dateStr = dataTimeStr.Substring(0, 10);
 
             StringBuilder tmpStr = new StringBuilder(255);
