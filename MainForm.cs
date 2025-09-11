@@ -4820,7 +4820,7 @@ namespace DoPENetConnect
 
                 comboBoxEx9.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
-                comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
+                //comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
             }
         }
 
@@ -5502,7 +5502,7 @@ namespace DoPENetConnect
         {
             floatMenus.Show();
             floatMenus.Activate();
-            
+            floatMenus.TopMost = true;
         }
     }
 }
