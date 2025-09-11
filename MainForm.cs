@@ -3772,7 +3772,7 @@ namespace DoPENetConnect
             }
             else
                 sampleRateVal = strTmp.ToString();
-            sampleRate = int.Parse(strTmp.ToString());
+            sampleRate = int.Parse(sampleRateVal);
 
         }
 
