@@ -4767,7 +4767,7 @@ namespace DoPENetConnect
             }
 
             frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, ctrlSpeed, comboBoxEx7.SelectedIndex, limitValue,
-                                             (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
+                                             (CTRL)comboBoxEx9.SelectedIndex, destinationVal, DESTMODE.DEST_MAINTAIN);
         }
 
         public void SetMaxMinControlsZero()
@@ -4797,7 +4797,9 @@ namespace DoPENetConnect
 
                 comboBoxEx9.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
-                comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
+                 //comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
+                comboBoxEx11.Items.Add("DEST_MAINTAIN");
+                comboBoxEx11.SelectedIndex = 0;
             }
         }
 
@@ -5102,7 +5104,7 @@ namespace DoPENetConnect
                     }
 
                     frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, ctrlSpeed, comboBoxEx7.SelectedIndex, limitValue,
-                                                     (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
+                                                     (CTRL)comboBoxEx9.SelectedIndex, destinationVal, DESTMODE.DEST_MAINTAIN);
 
                 }
             }
