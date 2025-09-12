@@ -16,6 +16,7 @@ namespace DoPENetConnect
     {
         public FrmSystemSetting()
         {
+
             InitializeComponent();
         }
 
