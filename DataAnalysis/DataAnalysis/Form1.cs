@@ -1,4 +1,5 @@
-﻿using NPOI.Util;
+﻿using AxTeeChart;
+using NPOI.Util;
 using NPOI.XWPF.UserModel;
 using System;
 using System.Collections.Generic;
@@ -74,7 +75,9 @@ namespace DataAnalysis
                                 var filteredRows = WaveData.AsEnumerable()
                                 .SkipWhile(row =>
                                 {
-                                    return int.TryParse(row["循环"].ToString(), out int cycle) && cycle != 0;
+                                    int cycle;
+                                    bool success = int.TryParse(row["循环"].ToString(), out cycle);
+                                    return success && cycle != 0;
                                 })
                                 .ToList();
                                 //.CopyToDataTable();
@@ -105,14 +108,34 @@ namespace DataAnalysis
 
                         LoadCycleDate();
 
+                        //加载波形曲线
                         LoadCycleChartWaveData();
+
+                        //加载波形曲线
+                        LoadCycleTeeChartWaveData();
 
                         LoadCycleChartDataAll();
 
+                        //加载第一条曲线
                         LoadCycleChartData1();
+
+                        //加载第二条曲线
                         LoadCycleChartData2();
+
+                        //加载第二条曲线
                         LoadCycleChartData3();
 
+                        //加载第一条曲线
+                        LoadCycleTeeChartData1();
+
+                        //加载第二条曲线
+                        LoadCycleTeeChartData2();
+
+                        //加载第二条曲线
+                        LoadCycleTeeChartData3();
+
+                        //加载回滞叠加曲线
+                        LoadCycleChartDataSuperPosition();
                     }
 
                 }
@@ -242,6 +265,90 @@ namespace DataAnalysis
 
         }
 
+
+        /// <summary>
+        /// 加载数据到TeeChart图表
+        /// </summary>
+        public void LoadCycleTeeChartData1()
+        {
+            if (string.IsNullOrEmpty("1"))
+            {
+                return;
+            }
+
+            string strCycle1 = "";
+            if (dgv_Cycle.Rows.Count >= 5)
+            //for (int i = 0; i < dgv_Cycle.Rows.Count; i++)
+            {
+                strCycle1 = dgv_Cycle.Rows[3].Cells[0].Value.ToString();
+                //break;
+            }
+
+            if (string.IsNullOrEmpty(strCycle1))
+            {
+                return;
+            }
+
+            DataTable dtSeldt = SelCountWave(int.Parse(strCycle1));
+
+            DataPoint dpPosLoad = null;
+            DataPoint dpLoad = null;
+            DataPoint dpExt = null;
+            DataPoint dpCommand = null;
+
+            axTChart1.Header.Text.Text = string.Format(@"阻尼力-位移曲线（第 1 次）");
+
+            //清除原有数据
+            //for (int i = 0; i < chart3.Series[0].Points.Count; i++)
+            //{
+            //    axTChart3.Series[0].Points.RemoveAt(i);
+            //}
+            axTChart1.Series(0).Clear();
+            //series.Clear();
+            //series.Color = System.Drawing.Color.Red;
+
+
+            //加载新数据
+            if (dtSeldt != null && dtSeldt.Rows.Count >= 1)
+            {
+                List<double> arrYPos = new List<double>();
+                List<double> arrYLoad = new List<double>();
+                for (int i = 0; i < dtSeldt.Rows.Count; i++)
+                {
+                    double strX = double.Parse(dtSeldt.Rows[i][0].ToString());
+                    double strYPos = double.Parse(dtSeldt.Rows[i][1].ToString());
+                    double strYLoad = double.Parse(dtSeldt.Rows[i][2].ToString());
+                    double strYExt = double.Parse(dtSeldt.Rows[i][3].ToString());
+                    double strYCommand = double.Parse(dtSeldt.Rows[i][4].ToString());
+                    double strYOutput = double.Parse(dtSeldt.Rows[i][6].ToString());
+                    double strYfeedback = double.Parse(dtSeldt.Rows[i][7].ToString());
+
+                    //dpPosLoad = new DataPoint(strX, strYLoad);
+                    //dpPosLoad = new DataPoint(strYPos, strYLoad);
+                    //dpLoad = new DataPoint(strX, strYLoad);
+                    //dpExt = new DataPoint(strX, strYExt);
+                    //dpCommand = new DataPoint(strX, strYCommand);
+
+                    //chart3.Series[0].Points.Add(dpPosLoad);
+                    //chart1.Series[1].Points.Add(dpLoad);
+                    //chart1.Series[2].Points.Add(dpExt);
+                    //chart1.Series[3].Points.Add(dpCommand);
+                    //series.AddXY(strYPos, strYLoad, "", 0);
+                    arrYPos.Add(strYPos);
+                    arrYLoad.Add(strYLoad);
+                }
+
+                axTChart1.Series(0).AddArray(arrYPos.Count(), arrYPos.ToArray(), arrYLoad.ToArray());
+
+            }
+            else
+            {
+                MessageBox.Show("所选的文件内无数据！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+        }
+
         /// <summary>
         /// 加载数据到图表
         /// </summary>
@@ -306,6 +413,91 @@ namespace DataAnalysis
                     //chart1.Series[2].Points.Add(dpExt);
                     //chart1.Series[3].Points.Add(dpCommand);
                 }
+            }
+            else
+            {
+                MessageBox.Show("所选的文件内无数据！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+        }
+
+
+        /// <summary>
+        /// 加载数据到TeeChart图表
+        /// </summary>
+        public void LoadCycleTeeChartData2()
+        {
+            if (string.IsNullOrEmpty("2"))
+            {
+                return;
+            }
+
+            string strCycle2 = "";
+            if (dgv_Cycle.Rows.Count >= 5)
+            //for (int i = 0; i < dgv_Cycle.Rows.Count; i++)
+            {
+                strCycle2 = dgv_Cycle.Rows[3].Cells[0].Value.ToString();
+                //break;
+            }
+
+            if (string.IsNullOrEmpty(strCycle2))
+            {
+                return;
+            }
+
+            DataTable dtSeldt = SelCountWave(int.Parse(strCycle2));
+
+            DataPoint dpPosLoad = null;
+            DataPoint dpLoad = null;
+            DataPoint dpExt = null;
+            DataPoint dpCommand = null;
+
+            axTChart2.Header.Text.Text = string.Format(@"阻尼力-位移曲线（第 2 次）");
+
+            //清除原有数据
+            //for (int i = 0; i < chart3.Series[0].Points.Count; i++)
+            //{
+            //    axTChart3.Series[0].Points.RemoveAt(i);
+            //}
+            var series = axTChart2.Series(0);
+            series.Clear();
+            //series.Color = System.Drawing.Color.Red;
+
+
+
+            //加载新数据
+            if (dtSeldt != null && dtSeldt.Rows.Count >= 1)
+            {
+                List<double> arrYPos = new List<double>();
+                List<double> arrYLoad = new List<double>();
+                for (int i = 0; i < dtSeldt.Rows.Count; i++)
+                {
+                    double strX = double.Parse(dtSeldt.Rows[i][0].ToString());
+                    double strYPos = double.Parse(dtSeldt.Rows[i][1].ToString());
+                    double strYLoad = double.Parse(dtSeldt.Rows[i][2].ToString());
+                    double strYExt = double.Parse(dtSeldt.Rows[i][3].ToString());
+                    double strYCommand = double.Parse(dtSeldt.Rows[i][4].ToString());
+                    double strYOutput = double.Parse(dtSeldt.Rows[i][6].ToString());
+                    double strYfeedback = double.Parse(dtSeldt.Rows[i][7].ToString());
+
+                    //dpPosLoad = new DataPoint(strX, strYLoad);
+                    //dpPosLoad = new DataPoint(strYPos, strYLoad);
+                    //dpLoad = new DataPoint(strX, strYLoad);
+                    //dpExt = new DataPoint(strX, strYExt);
+                    //dpCommand = new DataPoint(strX, strYCommand);
+
+                    //chart3.Series[0].Points.Add(dpPosLoad);
+                    //chart1.Series[1].Points.Add(dpLoad);
+                    //chart1.Series[2].Points.Add(dpExt);
+                    //chart1.Series[3].Points.Add(dpCommand);
+                    //series.AddXY(strYPos, strYLoad, "", 0);
+                    arrYPos.Add(strYPos);
+                    arrYLoad.Add(strYLoad);
+                }
+
+                axTChart2.Series(0).AddArray(arrYPos.Count(), arrYPos.ToArray(), arrYLoad.ToArray() );
+
             }
             else
             {
@@ -391,6 +583,91 @@ namespace DataAnalysis
 
 
         /// <summary>
+        /// 加载数据到TeeChart图表
+        /// </summary>
+        public void LoadCycleTeeChartData3()
+        {
+            if (string.IsNullOrEmpty("3"))
+            {
+                return;
+            }
+
+            string strCycle3 = "";
+            if (dgv_Cycle.Rows.Count >= 5)
+            //for (int i = 0; i < dgv_Cycle.Rows.Count; i++)
+            {
+                strCycle3 = dgv_Cycle.Rows[3].Cells[0].Value.ToString();
+                //break;
+            }
+
+            if (string.IsNullOrEmpty(strCycle3))
+            {
+                return;
+            }
+
+            DataTable dtSeldt = SelCountWave(int.Parse(strCycle3));
+
+            DataPoint dpPosLoad = null;
+            DataPoint dpLoad = null;
+            DataPoint dpExt = null;
+            DataPoint dpCommand = null;
+
+            axTChart3.Header.Text.Text = string.Format(@"阻尼力-位移曲线（第 3 次）");
+
+            //清除原有数据
+            //for (int i = 0; i < chart3.Series[0].Points.Count; i++)
+            //{
+            //    axTChart3.Series[0].Points.RemoveAt(i);
+            //}
+            var series = axTChart3.Series(0);
+            series.Clear();
+            //series.Color = System.Drawing.Color.Red;
+
+
+
+            //加载新数据
+            if (dtSeldt != null && dtSeldt.Rows.Count >= 1)
+            {
+                List<double> arrYPos = new List<double>();
+                List<double> arrYLoad = new List<double>();
+                for (int i = 0; i < dtSeldt.Rows.Count; i++)
+                {
+                    double strX = double.Parse(dtSeldt.Rows[i][0].ToString());
+                    double strYPos = double.Parse(dtSeldt.Rows[i][1].ToString());
+                    double strYLoad = double.Parse(dtSeldt.Rows[i][2].ToString());
+                    double strYExt = double.Parse(dtSeldt.Rows[i][3].ToString());
+                    double strYCommand = double.Parse(dtSeldt.Rows[i][4].ToString());
+                    double strYOutput = double.Parse(dtSeldt.Rows[i][6].ToString());
+                    double strYfeedback = double.Parse(dtSeldt.Rows[i][7].ToString());
+
+                    //dpPosLoad = new DataPoint(strX, strYLoad);
+                    //dpPosLoad = new DataPoint(strYPos, strYLoad);
+                    //dpLoad = new DataPoint(strX, strYLoad);
+                    //dpExt = new DataPoint(strX, strYExt);
+                    //dpCommand = new DataPoint(strX, strYCommand);
+
+                    //chart3.Series[0].Points.Add(dpPosLoad);
+                    //chart1.Series[1].Points.Add(dpLoad);
+                    //chart1.Series[2].Points.Add(dpExt);
+                    //chart1.Series[3].Points.Add(dpCommand);
+                    //series.AddXY(strYPos, strYLoad, "", 0);
+                    arrYPos.Add(strYPos);
+                    arrYLoad.Add(strYLoad);
+                }
+
+                axTChart3.Series(0).AddArray(arrYPos.Count(), arrYPos.ToArray(), arrYLoad.ToArray());
+
+            }
+            else
+            {
+                MessageBox.Show("所选的文件内无数据！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+        }
+
+
+        /// <summary>
         /// 加载数据到图表
         /// </summary>
         public void LoadCycleChartDataAll()
@@ -400,8 +677,9 @@ namespace DataAnalysis
             string strCycle1 = "";
             for (int i = 0; i < rowCount; i++)
             {
-                strCycle1 = dgv_Cycle.Rows[i].Cells[0].Value.ToString();
-                targetValues.Add(strCycle1?.ToString() ?? "");
+                object value = dgv_Cycle.Rows[i].Cells[0].Value;
+                string strCycle = value != null ? value.ToString() : "";
+                targetValues.Add(strCycle);
             }
 
             if (string.IsNullOrEmpty(strCycle1))
@@ -430,7 +708,7 @@ namespace DataAnalysis
                 DataPoint dpExt = null;
                 DataPoint dpCommand = null;
 
-                //chart1.Titles[0].Text = string.Format(@"阻尼力-位移曲线（第 1 次）");
+                chart4.Titles[0].Text = string.Format(@"阻尼力-位移曲线（叠加）");
 
                 //清除原有数据
                 for (int i = 0; i < chart4.Series[0].Points.Count; i++)
@@ -483,6 +761,101 @@ namespace DataAnalysis
         /// <summary>
         /// 加载数据到图表
         /// </summary>
+        public void LoadCycleChartDataSuperPosition()
+        {
+            var targetValues = new List<string>();
+            int rowCount = Math.Min(4, dgv_Cycle.Rows.Count);
+            string strCycle1 = "";
+            for (int i = 0; i < rowCount; i++)
+            {
+                object value = dgv_Cycle.Rows[i].Cells[0].Value;
+                strCycle1 = value != null ? value.ToString() : "";
+                targetValues.Add(strCycle1);
+            }
+
+            if (string.IsNullOrEmpty(strCycle1))
+            {
+                return;
+            }
+
+            //var targetValues = new List<string> { "0", "1", "2", "3" };
+
+            try
+            {
+                // 查询“循环”列等于 A 或 C 的所有行
+                DataTable resultTable = WaveData.AsEnumerable()
+                    .Where(row => targetValues.Contains(row.Field<string>("循环")))
+                    .CopyToDataTable();
+
+                if (string.IsNullOrEmpty("0"))
+                {
+                    return;
+                }
+
+                DataTable dtSeldt = resultTable;
+
+                DataPoint dpPosLoad = null;
+                DataPoint dpLoad = null;
+                DataPoint dpExt = null;
+                DataPoint dpCommand = null;
+
+                axTChart4.Header.Text.Text = string.Format(@"阻尼力-位移曲线（叠加）");
+
+                //清除原有数据
+                var series = axTChart4.Series(0);
+                series.Clear();
+
+                //加载新数据
+                if (dtSeldt != null && dtSeldt.Rows.Count >= 1)
+                {
+                    List<double> arrYPos = new List<double>();
+                    List<double> arrYLoad = new List<double>();
+                    for (int i = 0; i < dtSeldt.Rows.Count; i++)
+                    {
+                        double strX = double.Parse(dtSeldt.Rows[i][0].ToString());
+                        double strYPos = double.Parse(dtSeldt.Rows[i][1].ToString());
+                        double strYLoad = double.Parse(dtSeldt.Rows[i][2].ToString());
+                        double strYExt = double.Parse(dtSeldt.Rows[i][3].ToString());
+                        double strYCommand = double.Parse(dtSeldt.Rows[i][4].ToString());
+                        double strYOutput = double.Parse(dtSeldt.Rows[i][6].ToString());
+                        double strYfeedback = double.Parse(dtSeldt.Rows[i][7].ToString());
+
+                        //dpPosLoad = new DataPoint(strX, strYLoad);
+                        dpPosLoad = new DataPoint(strYPos, strYLoad);
+                        dpLoad = new DataPoint(strX, strYLoad);
+                        dpExt = new DataPoint(strX, strYExt);
+                        dpCommand = new DataPoint(strX, strYCommand);
+
+                        //axTChart1.Series(0).Points.Add(dpPosLoad);
+                        //chart1.Series[1].Points.Add(dpLoad);
+                        //chart1.Series[2].Points.Add(dpExt);
+                        //chart1.Series[3].Points.Add(dpCommand);
+                        arrYPos.Add(strYPos);
+                        arrYLoad.Add(strYLoad);
+                    }
+
+                    axTChart4.Series(0).AddArray(arrYPos.Count(), arrYPos.ToArray(), arrYLoad.ToArray());
+
+                }
+                else
+                {
+                    MessageBox.Show("所选的文件内无数据！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("所选的文件数据不足！" + ex.ToString(), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+        }
+
+
+
+        /// <summary>
+        /// 加载数据到图表
+        /// </summary>
         public void LoadCycleChartWaveData()
         {
             var targetValues = new List<string>();
@@ -490,8 +863,9 @@ namespace DataAnalysis
             string strCycle1 = "";
             for (int i = 0; i < rowCount; i++)
             {
-                strCycle1 = dgv_Cycle.Rows[i].Cells[0].Value.ToString();
-                targetValues.Add(strCycle1?.ToString() ?? "");
+                object value = dgv_Cycle.Rows[i].Cells[0].Value;
+                strCycle1 = value != null ? value.ToString() : "";
+                targetValues.Add(strCycle1);
             }
 
             if (string.IsNullOrEmpty(strCycle1))
@@ -569,6 +943,104 @@ namespace DataAnalysis
         }
 
 
+        /// <summary>
+        /// 加载数据到图表
+        /// </summary>
+        public void LoadCycleTeeChartWaveData()
+        {
+            var targetValues = new List<string>();
+            int rowCount = Math.Min(4, dgv_Cycle.Rows.Count);
+            string strCycle1 = "";
+            for (int i = 0; i < rowCount; i++)
+            {
+                object value = dgv_Cycle.Rows[i].Cells[0].Value;
+                strCycle1 = value != null ? value.ToString() : "";
+                targetValues.Add(strCycle1);
+            }
+
+            if (string.IsNullOrEmpty(strCycle1))
+            {
+                return;
+            }
+            try
+            {
+                // 查询“循环”列等于 A 或 C 的所有行
+                DataTable resultTable = WaveData.AsEnumerable()
+                    .Where(row => targetValues.Contains(row.Field<string>("循环")))
+                    .CopyToDataTable();
+
+                if (string.IsNullOrEmpty("0"))
+                {
+                    return;
+                }
+
+                DataTable dtSeldt = resultTable;
+
+                DataPoint dpPosLoad = null;
+                DataPoint dpPos = null;
+                DataPoint dpLoad = null;
+                DataPoint dpExt = null;
+                DataPoint dpCommand = null;
+
+                //清除原有数据
+                //for (int i = 0; i < chart5.Series[0].Points.Count; i++)
+                //{
+                //    chart5.Series[0].Points.RemoveAt(i);
+                //    chart5.Series[1].Points.RemoveAt(i);
+                //}
+
+                axTChart5.Series(0).Clear();
+                axTChart5.Series(1).Clear();
+
+                //加载新数据
+                if (dtSeldt != null && dtSeldt.Rows.Count >= 1)
+                {
+                    List<double> arrX = new List<double>();
+                    List<double> arrYPos= new List<double>();
+                    List<double> arrYLoad = new List<double>();
+                    for (int i = 0; i < dtSeldt.Rows.Count; i++)
+                    {
+                        double strX = double.Parse(dtSeldt.Rows[i][0].ToString());
+                        double strYPos = double.Parse(dtSeldt.Rows[i][1].ToString());
+                        double strYLoad = double.Parse(dtSeldt.Rows[i][2].ToString());
+                        double strYExt = double.Parse(dtSeldt.Rows[i][3].ToString());
+                        double strYCommand = double.Parse(dtSeldt.Rows[i][4].ToString());
+                        double strYOutput = double.Parse(dtSeldt.Rows[i][6].ToString());
+                        double strYfeedback = double.Parse(dtSeldt.Rows[i][7].ToString());
+
+                        dpLoad = new DataPoint(strX, strYLoad);
+                        dpPos = new DataPoint(strX, strYPos);
+                        //dpPosLoad = new DataPoint(strYPos, strYLoad);
+                        dpExt = new DataPoint(strX, strYExt);
+                        dpCommand = new DataPoint(strX, strYCommand);
+
+                        //chart5.Series[0].Points.Add(dpLoad);
+                        //chart5.Series[1].Points.Add(dpPos);
+                        //chart1.Series[1].Points.Add(dpLoad);
+                        //chart1.Series[2].Points.Add(dpExt);
+                        //chart1.Series[3].Points.Add(dpCommand);
+                        arrX.Add(strX);
+                        arrYPos.Add(strYPos);
+                        arrYLoad.Add(strYLoad);
+                    }
+
+                    axTChart5.Series(0).AddArray(arrX.Count(), arrYLoad.ToArray(), arrX.ToArray());
+                    axTChart5.Series(1).AddArray(arrX.Count(), arrYPos.ToArray(), arrX.ToArray());
+                }
+                else
+                {
+                    MessageBox.Show("所选的文件内无数据！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("所选的文件数据不足！" + ex.ToString(), "异常", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+        }
+
 
         public DataTable SelCountWave(int nCount)
         {
@@ -577,7 +1049,8 @@ namespace DataAnalysis
             string targetValue = nCount.ToString();
 
             // 使用 Select 方法筛选行
-            DataRow[] filteredRows = WaveData.Select($"{columnName} = '{targetValue}'");
+            string filter = string.Format("{0} = '{1}'", columnName, targetValue.Replace("'", "''"));
+            DataRow[] filteredRows = WaveData.Select(filter);
 
             // 创建新 DataTable，结构与原表相同
             DataTable resultTable = WaveData.Clone(); // Clone 只复制结构，不复制数据
@@ -596,6 +1069,16 @@ namespace DataAnalysis
         {
 
             LoadIni();
+            //AxTChart dasdas = new AxTChart();
+
+            //this.Controls.Add(dasdas);
+
+
+
+            //axTChart1.Header.Text.Text = "11111111";
+            //axTChart1.Axis.Left.Title.Caption = "Y轴"; //设置X轴Y轴标题
+            //axTChart1.Axis.Bottom.Title.Caption = "X轴";
+
         }
 
 
@@ -814,7 +1297,7 @@ namespace DataAnalysis
                 AddParagraph(doc, "试验输入参数：" + strTmp, false, 12, "left");
 
                 // 添加日期
-                AddParagraph(doc, $"报告生成时间：{DateTime.Now:yyyy-MM-dd HH:mm:ss}", false, 12, "left");
+                AddParagraph(doc, string.Format("报告生成时间：{0:yyyy-MM-dd HH:mm:ss}", DateTime.Now), false, 12, "left");
 
                 // 添加空行
                 AddParagraph(doc, "", false, 12, "left");
