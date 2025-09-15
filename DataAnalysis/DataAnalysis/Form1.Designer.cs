@@ -29,50 +29,21 @@ namespace DataAnalysis
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
-            this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.panelEx5 = new DevComponents.DotNetBar.PanelEx();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnX_LoadYAxisMinDown = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_PosYAxisMinDown = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_LoadYAxisMinUp = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_PosYAxisMinUp = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_LoadYAxisMaxDown = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_PosYAxisMaxDown = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_LoadYAxisMaxUp = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_PosYAxisMaxUp = new DevComponents.DotNetBar.ButtonX();
-            this.chart5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.axTChart1 = new AxTeeChart.AxTChart();
+            this.axTChart4 = new AxTeeChart.AxTChart();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.axTChart5 = new AxTeeChart.AxTChart();
+            this.axTChart3 = new AxTeeChart.AxTChart();
+            this.axTChart2 = new AxTeeChart.AxTChart();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
             this.dvg_CycleData = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,36 +67,22 @@ namespace DataAnalysis
             this.btn_ExportReport = new DevComponents.DotNetBar.ButtonItem();
             this.btnX_Setting = new DevComponents.DotNetBar.ButtonItem();
             this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
-            this.axTChart1 = new AxTeeChart.AxTChart();
-            this.axTChart4 = new AxTeeChart.AxTChart();
-            this.axTChart5 = new AxTeeChart.AxTChart();
-            this.axTChart3 = new AxTeeChart.AxTChart();
-            this.axTChart2 = new AxTeeChart.AxTChart();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
-            this.superTabControlPanel2.SuspendLayout();
-            this.panelEx5.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.panelEx3.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart4)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart2)).BeginInit();
             this.panelEx4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvg_CycleData)).BeginInit();
             this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Cycle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart2)).BeginInit();
             this.SuspendLayout();
             // 
             // superTabControl1
@@ -145,7 +102,6 @@ namespace DataAnalysis
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.Location = new System.Drawing.Point(0, 0);
@@ -157,76 +113,8 @@ namespace DataAnalysis
             this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl1.TabIndex = 0;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabItem1,
-            this.superTabItem2});
+            this.superTabItem1});
             this.superTabControl1.Text = "superTabControl1";
-            // 
-            // superTabControlPanel2
-            // 
-            this.superTabControlPanel2.Controls.Add(this.panelEx5);
-            this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 33);
-            this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(1031, 645);
-            this.superTabControlPanel2.TabIndex = 0;
-            this.superTabControlPanel2.TabItem = this.superTabItem2;
-            // 
-            // panelEx5
-            // 
-            this.panelEx5.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx5.Controls.Add(this.tableLayoutPanel2);
-            this.panelEx5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx5.Location = new System.Drawing.Point(0, 0);
-            this.panelEx5.Name = "panelEx5";
-            this.panelEx5.Size = new System.Drawing.Size(1031, 645);
-            this.panelEx5.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx5.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx5.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx5.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx5.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx5.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx5.Style.GradientAngle = 90;
-            this.panelEx5.TabIndex = 7;
-            this.panelEx5.Text = "panelEx2";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.axTChart1, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.axTChart4, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.axTChart3, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.axTChart2, 1, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1031, 645);
-            this.tableLayoutPanel2.TabIndex = 11;
-            // 
-            // panel1
-            // 
-            this.tableLayoutPanel2.SetColumnSpan(this.panel1, 2);
-            this.panel1.Controls.Add(this.axTChart5);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(680, 316);
-            this.panel1.TabIndex = 0;
-            // 
-            // superTabItem2
-            // 
-            this.superTabItem2.AttachedControl = this.superTabControlPanel2;
-            this.superTabItem2.GlobalItem = false;
-            this.superTabItem2.Name = "superTabItem2";
-            this.superTabItem2.Text = "superTabItem2";
             // 
             // superTabControlPanel1
             // 
@@ -263,7 +151,7 @@ namespace DataAnalysis
             // 
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.tableLayoutPanel1);
+            this.panelEx3.Controls.Add(this.tableLayoutPanel2);
             this.panelEx3.Controls.Add(this.panelEx4);
             this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -280,273 +168,85 @@ namespace DataAnalysis
             this.panelEx3.TabIndex = 3;
             this.panelEx3.Text = "panelEx2";
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanel2
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.chart3, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.chart2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.chart1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.chart4, 2, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(881, 397);
-            this.tableLayoutPanel1.TabIndex = 11;
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.Controls.Add(this.axTChart1, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.axTChart4, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.axTChart3, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.axTChart2, 1, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(881, 397);
+            this.tableLayoutPanel2.TabIndex = 15;
             // 
-            // panel2
+            // axTChart1
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panel2, 2);
-            this.panel2.Controls.Add(this.btnX_LoadYAxisMinDown);
-            this.panel2.Controls.Add(this.btnX_PosYAxisMinDown);
-            this.panel2.Controls.Add(this.btnX_LoadYAxisMinUp);
-            this.panel2.Controls.Add(this.btnX_PosYAxisMinUp);
-            this.panel2.Controls.Add(this.btnX_LoadYAxisMaxDown);
-            this.panel2.Controls.Add(this.btnX_PosYAxisMaxDown);
-            this.panel2.Controls.Add(this.btnX_LoadYAxisMaxUp);
-            this.panel2.Controls.Add(this.btnX_PosYAxisMaxUp);
-            this.panel2.Controls.Add(this.chart5);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(580, 192);
-            this.panel2.TabIndex = 0;
+            this.axTChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axTChart1.Enabled = true;
+            this.axTChart1.Location = new System.Drawing.Point(3, 201);
+            this.axTChart1.Name = "axTChart1";
+            this.axTChart1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart1.OcxState")));
+            this.axTChart1.Size = new System.Drawing.Size(287, 193);
+            this.axTChart1.TabIndex = 12;
             // 
-            // btnX_LoadYAxisMinDown
+            // axTChart4
             // 
-            this.btnX_LoadYAxisMinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_LoadYAxisMinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnX_LoadYAxisMinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_LoadYAxisMinDown.Location = new System.Drawing.Point(3, 166);
-            this.btnX_LoadYAxisMinDown.Name = "btnX_LoadYAxisMinDown";
-            this.btnX_LoadYAxisMinDown.Size = new System.Drawing.Size(18, 23);
-            this.btnX_LoadYAxisMinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_LoadYAxisMinDown.TabIndex = 10;
-            this.btnX_LoadYAxisMinDown.Text = "↓";
+            this.axTChart4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axTChart4.Enabled = true;
+            this.axTChart4.Location = new System.Drawing.Point(589, 3);
+            this.axTChart4.Name = "axTChart4";
+            this.axTChart4.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart4.OcxState")));
+            this.axTChart4.Size = new System.Drawing.Size(289, 192);
+            this.axTChart4.TabIndex = 11;
             // 
-            // btnX_PosYAxisMinDown
+            // panel1
             // 
-            this.btnX_PosYAxisMinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_PosYAxisMinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnX_PosYAxisMinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_PosYAxisMinDown.Location = new System.Drawing.Point(559, 166);
-            this.btnX_PosYAxisMinDown.Name = "btnX_PosYAxisMinDown";
-            this.btnX_PosYAxisMinDown.Size = new System.Drawing.Size(18, 23);
-            this.btnX_PosYAxisMinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_PosYAxisMinDown.TabIndex = 10;
-            this.btnX_PosYAxisMinDown.Text = "↓";
+            this.tableLayoutPanel2.SetColumnSpan(this.panel1, 2);
+            this.panel1.Controls.Add(this.axTChart5);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(580, 192);
+            this.panel1.TabIndex = 0;
             // 
-            // btnX_LoadYAxisMinUp
+            // axTChart5
             // 
-            this.btnX_LoadYAxisMinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_LoadYAxisMinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnX_LoadYAxisMinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_LoadYAxisMinUp.Location = new System.Drawing.Point(3, 137);
-            this.btnX_LoadYAxisMinUp.Name = "btnX_LoadYAxisMinUp";
-            this.btnX_LoadYAxisMinUp.Size = new System.Drawing.Size(18, 23);
-            this.btnX_LoadYAxisMinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_LoadYAxisMinUp.TabIndex = 9;
-            this.btnX_LoadYAxisMinUp.Text = "↑";
+            this.axTChart5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axTChart5.Enabled = true;
+            this.axTChart5.Location = new System.Drawing.Point(0, 0);
+            this.axTChart5.Name = "axTChart5";
+            this.axTChart5.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart5.OcxState")));
+            this.axTChart5.Size = new System.Drawing.Size(580, 192);
+            this.axTChart5.TabIndex = 10;
             // 
-            // btnX_PosYAxisMinUp
+            // axTChart3
             // 
-            this.btnX_PosYAxisMinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_PosYAxisMinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnX_PosYAxisMinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_PosYAxisMinUp.Location = new System.Drawing.Point(559, 137);
-            this.btnX_PosYAxisMinUp.Name = "btnX_PosYAxisMinUp";
-            this.btnX_PosYAxisMinUp.Size = new System.Drawing.Size(18, 23);
-            this.btnX_PosYAxisMinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_PosYAxisMinUp.TabIndex = 9;
-            this.btnX_PosYAxisMinUp.Text = "↑";
+            this.axTChart3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axTChart3.Enabled = true;
+            this.axTChart3.Location = new System.Drawing.Point(589, 201);
+            this.axTChart3.Name = "axTChart3";
+            this.axTChart3.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart3.OcxState")));
+            this.axTChart3.Size = new System.Drawing.Size(289, 193);
+            this.axTChart3.TabIndex = 11;
             // 
-            // btnX_LoadYAxisMaxDown
+            // axTChart2
             // 
-            this.btnX_LoadYAxisMaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_LoadYAxisMaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_LoadYAxisMaxDown.Location = new System.Drawing.Point(3, 32);
-            this.btnX_LoadYAxisMaxDown.Name = "btnX_LoadYAxisMaxDown";
-            this.btnX_LoadYAxisMaxDown.Size = new System.Drawing.Size(18, 23);
-            this.btnX_LoadYAxisMaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_LoadYAxisMaxDown.TabIndex = 10;
-            this.btnX_LoadYAxisMaxDown.Text = "↓";
-            // 
-            // btnX_PosYAxisMaxDown
-            // 
-            this.btnX_PosYAxisMaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_PosYAxisMaxDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnX_PosYAxisMaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_PosYAxisMaxDown.Location = new System.Drawing.Point(559, 32);
-            this.btnX_PosYAxisMaxDown.Name = "btnX_PosYAxisMaxDown";
-            this.btnX_PosYAxisMaxDown.Size = new System.Drawing.Size(18, 23);
-            this.btnX_PosYAxisMaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_PosYAxisMaxDown.TabIndex = 10;
-            this.btnX_PosYAxisMaxDown.Text = "↓";
-            this.btnX_PosYAxisMaxDown.Click += new System.EventHandler(this.btnX_PosYAxisMaxDown_Click);
-            // 
-            // btnX_LoadYAxisMaxUp
-            // 
-            this.btnX_LoadYAxisMaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_LoadYAxisMaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_LoadYAxisMaxUp.Location = new System.Drawing.Point(3, 3);
-            this.btnX_LoadYAxisMaxUp.Name = "btnX_LoadYAxisMaxUp";
-            this.btnX_LoadYAxisMaxUp.Size = new System.Drawing.Size(18, 23);
-            this.btnX_LoadYAxisMaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_LoadYAxisMaxUp.TabIndex = 9;
-            this.btnX_LoadYAxisMaxUp.Text = "↑";
-            // 
-            // btnX_PosYAxisMaxUp
-            // 
-            this.btnX_PosYAxisMaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_PosYAxisMaxUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnX_PosYAxisMaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_PosYAxisMaxUp.Location = new System.Drawing.Point(559, 3);
-            this.btnX_PosYAxisMaxUp.Name = "btnX_PosYAxisMaxUp";
-            this.btnX_PosYAxisMaxUp.Size = new System.Drawing.Size(18, 23);
-            this.btnX_PosYAxisMaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_PosYAxisMaxUp.TabIndex = 9;
-            this.btnX_PosYAxisMaxUp.Text = "↑";
-            // 
-            // chart5
-            // 
-            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.AxisX.MajorTickMark.Enabled = false;
-            chartArea1.AxisX.Title = "时间(s)";
-            chartArea1.AxisX2.MajorGrid.Enabled = false;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.AxisY.Title = "阻尼力(kN)";
-            chartArea1.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea1.AxisY2.MajorGrid.Enabled = false;
-            chartArea1.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.AxisY2.MajorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
-            chartArea1.AxisY2.MinorGrid.Enabled = true;
-            chartArea1.AxisY2.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            chartArea1.AxisY2.MinorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.AxisY2.Title = "位移(mm)";
-            chartArea1.Name = "ChartArea1";
-            this.chart5.ChartAreas.Add(chartArea1);
-            this.chart5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart5.Location = new System.Drawing.Point(0, 0);
-            this.chart5.Name = "chart5";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Name = "Series1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Color = System.Drawing.Color.Red;
-            series2.Name = "Series2";
-            this.chart5.Series.Add(series1);
-            this.chart5.Series.Add(series2);
-            this.chart5.Size = new System.Drawing.Size(580, 192);
-            this.chart5.TabIndex = 8;
-            this.chart5.Text = "chart1";
-            title1.Name = "Title1";
-            title1.Text = "阻尼力-位移-时间曲线";
-            this.chart5.Titles.Add(title1);
-            // 
-            // chart3
-            // 
-            chartArea2.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Red;
-            chartArea2.AxisX.MajorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.AxisX.MinorTickMark.Enabled = true;
-            chartArea2.AxisX.MinorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisX.Title = "位移(mm)";
-            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.AxisY.MajorTickMark.Interval = 0D;
-            chartArea2.AxisY.MajorTickMark.IntervalOffset = 0D;
-            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.Blue;
-            chartArea2.AxisY.MajorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.AxisY.MinorTickMark.Enabled = true;
-            chartArea2.AxisY.Title = "阻尼力(kN)";
-            chartArea2.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea2);
-            this.chart3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart3.Location = new System.Drawing.Point(589, 201);
-            this.chart3.Name = "chart3";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Name = "Series1";
-            this.chart3.Series.Add(series3);
-            this.chart3.Size = new System.Drawing.Size(289, 193);
-            this.chart3.TabIndex = 8;
-            this.chart3.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "阻尼力-位移曲线";
-            this.chart3.Titles.Add(title2);
-            // 
-            // chart2
-            // 
-            chartArea3.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea3.AxisX.Title = "位移(mm)";
-            chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea3.AxisY.Title = "阻尼力(kN)";
-            chartArea3.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea3);
-            this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart2.Location = new System.Drawing.Point(296, 201);
-            this.chart2.Name = "chart2";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Name = "Series1";
-            this.chart2.Series.Add(series4);
-            this.chart2.Size = new System.Drawing.Size(287, 193);
-            this.chart2.TabIndex = 8;
-            this.chart2.Text = "chart1";
-            title3.Name = "Title1";
-            title3.Text = "阻尼力-位移曲线";
-            this.chart2.Titles.Add(title3);
-            // 
-            // chart1
-            // 
-            chartArea4.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea4.AxisX.Title = "位移(mm)";
-            chartArea4.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea4.AxisY.Title = "阻尼力(kN)";
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart1.Location = new System.Drawing.Point(3, 201);
-            this.chart1.Name = "chart1";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series5.Name = "Series1";
-            this.chart1.Series.Add(series5);
-            this.chart1.Size = new System.Drawing.Size(287, 193);
-            this.chart1.TabIndex = 8;
-            this.chart1.Text = "chart1";
-            title4.Name = "Title1";
-            title4.Text = "阻尼力-位移曲线";
-            this.chart1.Titles.Add(title4);
-            // 
-            // chart4
-            // 
-            chartArea5.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea5.AxisX.Title = "位移(mm)";
-            chartArea5.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea5.AxisY.Title = "阻尼力(kN)";
-            chartArea5.Name = "ChartArea1";
-            this.chart4.ChartAreas.Add(chartArea5);
-            this.chart4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart4.Location = new System.Drawing.Point(589, 3);
-            this.chart4.Name = "chart4";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series6.Name = "Series1";
-            this.chart4.Series.Add(series6);
-            this.chart4.Size = new System.Drawing.Size(289, 192);
-            this.chart4.TabIndex = 8;
-            this.chart4.Text = "chart1";
-            title5.Name = "Title1";
-            title5.Text = "阻尼力-位移曲线";
-            this.chart4.Titles.Add(title5);
+            this.axTChart2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axTChart2.Enabled = true;
+            this.axTChart2.Location = new System.Drawing.Point(296, 201);
+            this.axTChart2.Name = "axTChart2";
+            this.axTChart2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart2.OcxState")));
+            this.axTChart2.Size = new System.Drawing.Size(287, 193);
+            this.axTChart2.TabIndex = 10;
             // 
             // panelEx4
             // 
@@ -807,56 +507,6 @@ namespace DataAnalysis
             this.superTabItem1.TabFont = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabItem1.Text = "报告曲线";
             // 
-            // axTChart1
-            // 
-            this.axTChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axTChart1.Enabled = true;
-            this.axTChart1.Location = new System.Drawing.Point(3, 325);
-            this.axTChart1.Name = "axTChart1";
-            this.axTChart1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart1.OcxState")));
-            this.axTChart1.Size = new System.Drawing.Size(337, 317);
-            this.axTChart1.TabIndex = 12;
-            // 
-            // axTChart4
-            // 
-            this.axTChart4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axTChart4.Enabled = true;
-            this.axTChart4.Location = new System.Drawing.Point(689, 3);
-            this.axTChart4.Name = "axTChart4";
-            this.axTChart4.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart4.OcxState")));
-            this.axTChart4.Size = new System.Drawing.Size(339, 316);
-            this.axTChart4.TabIndex = 11;
-            // 
-            // axTChart5
-            // 
-            this.axTChart5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axTChart5.Enabled = true;
-            this.axTChart5.Location = new System.Drawing.Point(0, 0);
-            this.axTChart5.Name = "axTChart5";
-            this.axTChart5.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart5.OcxState")));
-            this.axTChart5.Size = new System.Drawing.Size(680, 316);
-            this.axTChart5.TabIndex = 10;
-            // 
-            // axTChart3
-            // 
-            this.axTChart3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axTChart3.Enabled = true;
-            this.axTChart3.Location = new System.Drawing.Point(689, 325);
-            this.axTChart3.Name = "axTChart3";
-            this.axTChart3.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart3.OcxState")));
-            this.axTChart3.Size = new System.Drawing.Size(339, 317);
-            this.axTChart3.TabIndex = 11;
-            // 
-            // axTChart2
-            // 
-            this.axTChart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axTChart2.Enabled = true;
-            this.axTChart2.Location = new System.Drawing.Point(346, 325);
-            this.axTChart2.Name = "axTChart2";
-            this.axTChart2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart2.OcxState")));
-            this.axTChart2.Size = new System.Drawing.Size(337, 317);
-            this.axTChart2.TabIndex = 10;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -869,29 +519,20 @@ namespace DataAnalysis
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
-            this.superTabControlPanel2.ResumeLayout(false);
-            this.panelEx5.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.superTabControlPanel1.ResumeLayout(false);
             this.panelEx1.ResumeLayout(false);
             this.panelEx3.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart4)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart2)).EndInit();
             this.panelEx4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvg_CycleData)).EndInit();
             this.panelEx2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Cycle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -910,10 +551,6 @@ namespace DataAnalysis
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.PanelEx panelEx4;
         private DevComponents.DotNetBar.Controls.DataGridViewX dvg_CycleData;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel2;
-        private DevComponents.DotNetBar.SuperTabItem superTabItem2;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -928,28 +565,14 @@ namespace DataAnalysis
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart5;
         private DevComponents.DotNetBar.ButtonItem btnX_Setting;
-        private DevComponents.DotNetBar.ButtonX btnX_PosYAxisMaxUp;
-        private DevComponents.DotNetBar.ButtonX btnX_PosYAxisMaxDown;
-        private DevComponents.DotNetBar.ButtonX btnX_PosYAxisMinDown;
-        private DevComponents.DotNetBar.ButtonX btnX_PosYAxisMinUp;
-        private DevComponents.DotNetBar.ButtonX btnX_LoadYAxisMinDown;
-        private DevComponents.DotNetBar.ButtonX btnX_LoadYAxisMinUp;
-        private DevComponents.DotNetBar.ButtonX btnX_LoadYAxisMaxDown;
-        private DevComponents.DotNetBar.ButtonX btnX_LoadYAxisMaxUp;
-        private DevComponents.DotNetBar.PanelEx panelEx5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Panel panel1;
-        private AxTeeChart.AxTChart axTChart2;
-        private AxTeeChart.AxTChart axTChart3;
-        private AxTeeChart.AxTChart axTChart5;
-        private AxTeeChart.AxTChart axTChart4;
         private AxTeeChart.AxTChart axTChart1;
+        private AxTeeChart.AxTChart axTChart4;
+        private System.Windows.Forms.Panel panel1;
+        private AxTeeChart.AxTChart axTChart5;
+        private AxTeeChart.AxTChart axTChart3;
+        private AxTeeChart.AxTChart axTChart2;
     }
 }
 
