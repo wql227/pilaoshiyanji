@@ -367,7 +367,7 @@ namespace DoPENetConnect
         FormTest doTest;
 
         //开始点
-        int startPoint = 10;
+        int startPoint = 5;
 
         /// <summary>
         /// 采样频率
@@ -441,7 +441,7 @@ namespace DoPENetConnect
             }
             else if (e.Delta > 0)
             {
-                //chart_machine.ChartAreas[0].AxisY.ScaleView.Size += (e.Delta*10 / 120); // 每次缩放1
+                //chart_machine.ChartAreas[0].gzAxisY.ScaleView.Size += (e.Delta*10 / 120); // 每次缩放1
                 chart_machine.ChartAreas[0].AxisX.ScaleView.Size += (e.Delta * 10 / 120); // 每次缩放1
             }           
         }
@@ -547,6 +547,7 @@ namespace DoPENetConnect
                 //MyEdcList = new EdcList(32);
                 //MyEdc = MyEdcList[0];
                 //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);02137E43 
+                //devId = new StringBuilder("02133118");
                 if (devId != null) MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse(devId.ToString(), System.Globalization.NumberStyles.HexNumber));
                 else
                 {
@@ -876,11 +877,11 @@ namespace DoPENetConnect
         }
 
         private int OnDataBlock(ref DoPE.OnDataBlock Block, object Parameter)
-        {
-            //Console.WriteLine("glm-data is comming");
+        {            
             toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            //LogHelper.Info($"glm-data is comming{toolStripStatusLabel_SystemTime.Text}-{ Block.Data.Length}");
             statusStrip1.Refresh();
-
+            //return 0;
             string strCSVLog = "";
             if (Block.Data.Length > 0)
             {
@@ -3611,10 +3612,11 @@ namespace DoPENetConnect
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
             string idEncry = devIdEncrypted.ToString();
-            if (idEncry != "0" && idEncry != "")
-            {
-                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-            }
+            //if (idEncry != "0" && idEncry != "")
+            //{
+            //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+            //}
+            devId = new StringBuilder("02133118");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);

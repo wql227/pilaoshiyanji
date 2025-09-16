@@ -68,7 +68,7 @@
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Location = new System.Drawing.Point(-1, -1);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(142, 500);
+            this.panelEx1.Size = new System.Drawing.Size(142, 467);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -81,7 +81,7 @@
             // line1
             // 
             this.line1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.line1.Location = new System.Drawing.Point(10, 393);
+            this.line1.Location = new System.Drawing.Point(10, 352);
             this.line1.Name = "line1";
             this.line1.Size = new System.Drawing.Size(120, 10);
             this.line1.TabIndex = 101;
@@ -95,7 +95,7 @@
             this.btnX_Connect.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Connect.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Connect.Image = ((System.Drawing.Image)(resources.GetObject("btnX_Connect.Image")));
-            this.btnX_Connect.Location = new System.Drawing.Point(10, 405);
+            this.btnX_Connect.Location = new System.Drawing.Point(10, 364);
             this.btnX_Connect.Name = "btnX_Connect";
             this.btnX_Connect.Size = new System.Drawing.Size(120, 40);
             this.btnX_Connect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -111,7 +111,7 @@
             this.btnX_Disconnect.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Disconnect.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Disconnect.Image = ((System.Drawing.Image)(resources.GetObject("btnX_Disconnect.Image")));
-            this.btnX_Disconnect.Location = new System.Drawing.Point(10, 451);
+            this.btnX_Disconnect.Location = new System.Drawing.Point(10, 410);
             this.btnX_Disconnect.Name = "btnX_Disconnect";
             this.btnX_Disconnect.Size = new System.Drawing.Size(120, 40);
             this.btnX_Disconnect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -146,7 +146,7 @@
             this.bntX_MoveHalt.Size = new System.Drawing.Size(120, 40);
             this.bntX_MoveHalt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveHalt.TabIndex = 91;
-            this.bntX_MoveHalt.Text = "保     持";
+            this.bntX_MoveHalt.Text = " 保    持";
             this.bntX_MoveHalt.Click += new System.EventHandler(this.bntX_MoveHalt_Click);
             // 
             // btnX_SetLow
@@ -162,6 +162,7 @@
             this.btnX_SetLow.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_SetLow.TabIndex = 95;
             this.btnX_SetLow.Text = "LOW";
+            this.btnX_SetLow.Visible = false;
             this.btnX_SetLow.Click += new System.EventHandler(this.btnX_SetLow_Click);
             // 
             // bntX_MoveDown
@@ -177,7 +178,7 @@
             this.bntX_MoveDown.Size = new System.Drawing.Size(120, 40);
             this.bntX_MoveDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveDown.TabIndex = 92;
-            this.bntX_MoveDown.Text = "向     下";
+            this.bntX_MoveDown.Text = " 加    载";
             this.bntX_MoveDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveDown_MouseDown);
             this.bntX_MoveDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveDown_MouseUp);
             // 
@@ -209,7 +210,7 @@
             this.btnX_MoveQuickUp.Size = new System.Drawing.Size(120, 40);
             this.btnX_MoveQuickUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_MoveQuickUp.TabIndex = 90;
-            this.btnX_MoveQuickUp.Text = " 快速向上";
+            this.btnX_MoveQuickUp.Text = " 快速加载";
             this.btnX_MoveQuickUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnX_MoveQuickUp_MouseDown);
             this.btnX_MoveQuickUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnX_MoveQuickUp_MouseUp);
             // 
@@ -226,6 +227,7 @@
             this.btnX_SetHigh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_SetHigh.TabIndex = 97;
             this.btnX_SetHigh.Text = "HIGH";
+            this.btnX_SetHigh.Visible = false;
             this.btnX_SetHigh.Click += new System.EventHandler(this.btnX_SetHigh_Click);
             // 
             // btnX_QuickMoveDown
@@ -241,7 +243,7 @@
             this.btnX_QuickMoveDown.Size = new System.Drawing.Size(120, 40);
             this.btnX_QuickMoveDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_QuickMoveDown.TabIndex = 93;
-            this.btnX_QuickMoveDown.Text = " 快速向下";
+            this.btnX_QuickMoveDown.Text = " 快速加载";
             this.btnX_QuickMoveDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnX_QuickMoveDown_MouseDown);
             this.btnX_QuickMoveDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnX_QuickMoveDown_MouseUp);
             // 
@@ -273,7 +275,7 @@
             this.bntX_MoveUp.Size = new System.Drawing.Size(120, 40);
             this.bntX_MoveUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveUp.TabIndex = 89;
-            this.bntX_MoveUp.Text = "向     上";
+            this.bntX_MoveUp.Text = " 加    载";
             this.bntX_MoveUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseDown);
             this.bntX_MoveUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseUp);
             // 
@@ -282,7 +284,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(140, 497);
+            this.ClientSize = new System.Drawing.Size(140, 464);
             this.Controls.Add(this.panelEx1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximumSize = new System.Drawing.Size(156, 536);
