@@ -610,7 +610,7 @@ namespace DoPENetConnect
                 {
                     Display("连接成功，Name:" + MyEdc.ModuleInfo.Name + "; DeviceId = " + MyEdc.ModuleInfo.DeviceID + "; FunctionId = " + MyEdc.ModuleInfo.DeviceID + "; SerNr = " + MyEdc.ModuleInfo.SerNr + "\n");
 
-                    LogHelper.WriteLogFile("AAAA");
+                    LogHelper.WriteLogFile("连接成功");
 
                     lbX_EDCName.Text = MyEdc.ModuleInfo.Name;
 
@@ -1882,6 +1882,18 @@ namespace DoPENetConnect
 
             }
 
+            //设置时间轴
+            axTChart1.Axis.Bottom.SetMinMax(0, 100);
+
+            //设置左侧试验力轴
+            axTChart1.Axis.Left.SetMinMax(0, 20);
+
+            for (int i = 0; i < 100; i++)
+            {
+                axTChart1.Series(0).AddXY(i, 0.15 * i, "", 0);
+            }
+
+
         }
 
 
@@ -2964,7 +2976,7 @@ namespace DoPENetConnect
             {
                 Modify = false;
             }
-            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0, 
+            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, 1, Offset, Amplitude, 0.0, 
                 0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode, 
                 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
 
