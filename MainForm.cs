@@ -5064,20 +5064,9 @@ namespace DoPENetConnect
                 //FrmPosExt frmPosExt = new FrmPosExt();
                 //frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), (LIMITMODE)comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
                 //                                 (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text), (DESTMODE)comboBoxEx11.SelectedIndex);
-                double ctrlSpeed = 0;
-                switch (cmbX_Dyn_StartSpeed_Unit.Text)
-                {
-                    case "mm/min":
-                        ctrlSpeed = double.Parse(tbX_Dyn_StartSpeed.Text) / 60;
-                        break;
-                    case "kN/s":
-                        ctrlSpeed = double.Parse(tbX_Dyn_StartSpeed.Text) * 1000;
-                        break;
-                }
-
                 if (!isRunning)
                 {
-                    MovePos(DoPE.CTRL.POS, ctrlSpeed, originParams.DisplacementVal);
+                    MovePos(DoPE.CTRL.POS, double.Parse(tbX_Dyn_StartSpeed.Text)/60, originParams.DisplacementVal);
                 }
 
             }
