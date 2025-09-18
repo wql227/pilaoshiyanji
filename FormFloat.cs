@@ -107,6 +107,14 @@ namespace DoPENetConnect
             btnX_SetHigh.Checked = false;
         }
 
+        public void bntX_GUIOn_Click()
+        {
+            MainForm.mainform.FormFloat_bntX_GUIOn_Click();
+            bntX_GUIOn.Checked = true;
+            btnX_SetLow.Checked = true;
+            btnX_SetHigh.Checked = false;
+        }
+
         private void bntX_GUIOff_Click(object sender, EventArgs e)
         {
             MainForm.mainform.FormFloat_bntX_GUIOff_Click();

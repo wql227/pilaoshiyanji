@@ -16,6 +16,7 @@ namespace DoPENetConnect
         {
             InitializeComponent();
             Loadini();
+            this.StartPosition = FormStartPosition.Manual;
         }
 
         private void buttonX1_Click(object sender, EventArgs e)

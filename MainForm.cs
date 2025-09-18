@@ -441,7 +441,7 @@ namespace DoPENetConnect
             }
             else if (e.Delta > 0)
             {
-                //chart_machine.ChartAreas[0].gzAxisY.ScaleView.Size += (e.Delta*10 / 120); // 每次缩放1
+                //chart_machine.ChartAreas[0].AxisY.ScaleView.Size += (e.Delta*10 / 120); // 每次缩放1
                 chart_machine.ChartAreas[0].AxisX.ScaleView.Size += (e.Delta * 10 / 120); // 每次缩放1
             }           
         }
@@ -478,7 +478,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -547,7 +547,6 @@ namespace DoPENetConnect
                 //MyEdcList = new EdcList(32);
                 //MyEdc = MyEdcList[0];
                 //MyEdc = new Edc(DoPE.OpenBy.DeviceId, 0);02137E43 
-                //devId = new StringBuilder("02133118");
                 if (devId != null) MyEdc = new Edc(DoPE.OpenBy.DeviceId, int.Parse(devId.ToString(), System.Globalization.NumberStyles.HexNumber));
                 else
                 {
@@ -1372,15 +1371,36 @@ namespace DoPENetConnect
                 onExpermentStoped();
             }
 
-           
-               
+            MyEdc.Check.ClrCheck(CheckMsg.CheckId);
+            if (myCheckMsg.CheckId == CHK_ID.ID0)
+            {
+                if (protectOption.ProtectOption_OverLoadPercent_action == 1)
+                {
+                    floatMenus.EnableButton(true);
+                }
+                else
+                {
+                    floatMenus.bntX_GUIOn_Click();
+                }
+
+            }
+            else
+            {
+                if (protectOption.ProtectOption_OverLoadForce_action == 1)
+                {
+                    floatMenus.EnableButton(true);
+                }
+                else
+                {
+                    floatMenus.bntX_GUIOn_Click();
+                }
+            }
+
             myCheckMsg = CheckMsg;
             this.Invoke(new MethodInvoker(ShowMessageBox));
                     //MessageBox.Show($"试验力超出系统限制:{protectOption.ProtectOption_OverLoadPercent}%", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-              
-           
-            MyEdc.Check.ClrCheck(CheckMsg.CheckId);
-            floatMenus.EnableButton(true);
+                                     
+            //floatMenus.EnableButton(true);
             return 0;
         }
 
@@ -3612,11 +3632,10 @@ namespace DoPENetConnect
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
             string idEncry = devIdEncrypted.ToString();
-            //if (idEncry != "0" && idEncry != "")
-            //{
-            //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-            //}
-            devId = new StringBuilder("0214C57D");
+            if (idEncry != "0" && idEncry != "")
+            {
+                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+            }
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -3725,6 +3744,12 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_Force", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp.ToString());
 
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadPercent_Action", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadPercent_action = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Action", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadForce_action = int.Parse(strTmp.ToString());
+
             #endregion 系统保护
 
             #region 按键功能常数
@@ -3775,6 +3800,22 @@ namespace DoPENetConnect
             else
                 sampleRateVal = strTmp.ToString();
             sampleRate = int.Parse(sampleRateVal);
+
+            //底部信息栏
+            IniFileHelper.GetIniString("BottomStatusBar", "Title", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() == "0")
+            {
+            }
+            else
+                UnitName.Text = strTmp.ToString();
+
+
+            IniFileHelper.GetIniString("BottomStatusBar", "Content", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() == "0")
+            {
+            }
+            else
+                UnitContent.Text = strTmp.ToString();
 
         }
 

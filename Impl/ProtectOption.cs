@@ -152,6 +152,16 @@ namespace DoPENetConnect
         public double ProtectOption_OverLoadPercent = 0.0;
 
         /// <summary>
+        /// 试验力百分比超过限制后的动作 0：停止试验 ；1：自动停机
+        /// </summary>
+        public int ProtectOption_OverLoadPercent_action = 0;
+
+        /// <summary>
+        /// 试验力超过限制后的动作 0：停止试验 ；1：自动停机
+        /// </summary>
+        public int ProtectOption_OverLoadForce_action = 0;
+
+        /// <summary>
         /// 试验力以数值设定保护范围生效
         /// </summary>
         public bool ProtectOption_OverLoadForce_Flag = false;

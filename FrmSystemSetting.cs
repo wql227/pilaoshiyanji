@@ -386,6 +386,15 @@ namespace DoPENetConnect
 
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Flag", "0", strTmp, strTmp.Capacity);
             checkBoxX4.Checked = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadPercent_Action", "0", strTmp, strTmp.Capacity);
+            comboBoxEx2.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Action", "0", strTmp, strTmp.Capacity);
+            comboBoxEx3.SelectedIndex = int.Parse(strTmp.ToString());
+
+
+
             //系统设置-设备id
             //IniFileHelper.GetIniString("Device", "DeviceID", "0", strTmp, strTmp.Capacity);
             //tbX_DeviceID.Text = strTmp.ToString();
@@ -434,6 +443,23 @@ namespace DoPENetConnect
             else
                 sampleRateVal = strTmp.ToString();
             numericUpDown3.Value = decimal.Parse(sampleRateVal);
+
+            //其他
+            IniFileHelper.GetIniString("BottomStatusBar", "Title", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() == "0")
+            {
+            }
+            else
+                textBoxX1.Text = strTmp.ToString();
+
+
+            IniFileHelper.GetIniString("BottomStatusBar", "Content", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() == "0")
+            {
+            }
+            else
+                textBoxX2.Text = strTmp.ToString();
+
         }
 
 
@@ -562,6 +588,19 @@ namespace DoPENetConnect
             MainForm.mainform.protectOption.ProtectOption_OverLoadPercent = double.Parse(strTmp);
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Percent", strTmp);
 
+            //Console.WriteLine("glm-test{0}", comboBoxEx2.SelectedIndex);
+            if (comboBoxEx2.Text == "")
+            {
+                
+            }
+            else
+            {
+                //Console.WriteLine("glm-test{0}", comboBoxEx2.SelectedIndex);
+                strTmp = comboBoxEx2.SelectedIndex.ToString();
+                MainForm.mainform.protectOption.ProtectOption_OverLoadPercent_action = comboBoxEx2.SelectedIndex;
+                IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadPercent_Action", strTmp);
+            }
+
 
             strTmp = checkBoxX4.Checked == false ? "0" : "1";
             MainForm.mainform.protectOption.ProtectOption_OverLoadForce_Flag = checkBoxX4.Checked;
@@ -570,6 +609,18 @@ namespace DoPENetConnect
             strTmp = numericUpDown2.Value.ToString();
             MainForm.mainform.protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp);
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Force", strTmp);
+
+            if (comboBoxEx3.Text == "")
+            {
+
+            }
+            else
+            {
+                //Console.WriteLine("glm-test{0}", comboBoxEx2.SelectedIndex);
+                strTmp = comboBoxEx3.SelectedIndex.ToString();
+                MainForm.mainform.protectOption.ProtectOption_OverLoadForce_action = comboBoxEx3.SelectedIndex;
+                IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadForce_Action", strTmp);
+            }
 
             if (tbX_DeviceID.Text != "")
             {
@@ -626,7 +677,15 @@ namespace DoPENetConnect
             strTmp = numericUpDown3.Value.ToString();
             IniFileHelper.WriteIniString("Sample", "Rate", strTmp);
             MainForm.mainform.sampleRate = int.Parse(strTmp);
+
+            //其他
+            strTmp = textBoxX1.Text;
+            IniFileHelper.WriteIniString("BottomStatusBar", "Title", strTmp);
+
+            strTmp = textBoxX2.Text;
+            IniFileHelper.WriteIniString("BottomStatusBar", "Content", strTmp);
             
+
         }
 
 
@@ -1022,6 +1081,7 @@ namespace DoPENetConnect
         private void superTabItem5_DoubleClick(object sender, EventArgs e)
         {
             FormInputBox tmpInput = new FormInputBox();
+            tmpInput.Location = new Point(this.Location.X + 100, this.Location.Y + 100);
             tmpInput.Show();
             //IniFileHelper.WriteIniString("")
         }
