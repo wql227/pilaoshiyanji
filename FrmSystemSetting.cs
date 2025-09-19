@@ -18,13 +18,14 @@ namespace DoPENetConnect
         {
 
             InitializeComponent();
+            LoadIni();
         }
 
 
 
         private void FrmSystemSetting_Load(object sender, EventArgs e)
         {
-            LoadIni();
+            //LoadIni();
             ReplaceLanguage();
             UiAutoSize();
 
