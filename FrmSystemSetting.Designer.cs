@@ -269,12 +269,12 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel5);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel8);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel5);
             this.superTabControl1.Controls.Add(this.superTabControlPanel7);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Location = new System.Drawing.Point(1, 0);
@@ -2025,7 +2025,7 @@
             this.panelEx2.Size = new System.Drawing.Size(784, 369);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(255)))));
+            this.panelEx2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(217)))), ((int)(((byte)(255)))));
             this.panelEx2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx2.Style.GradientAngle = 90;
@@ -2040,9 +2040,9 @@
             this.groupPanel8.Controls.Add(this.label43);
             this.groupPanel8.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel8.Location = new System.Drawing.Point(16, 329);
+            this.groupPanel8.Location = new System.Drawing.Point(16, 284);
             this.groupPanel8.Name = "groupPanel8";
-            this.groupPanel8.Size = new System.Drawing.Size(753, 105);
+            this.groupPanel8.Size = new System.Drawing.Size(455, 82);
             // 
             // 
             // 
@@ -2073,6 +2073,7 @@
             this.groupPanel8.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel8.TabIndex = 4;
             this.groupPanel8.Text = "单位选择";
+            this.groupPanel8.Visible = false;
             // 
             // comboBoxEx_ForceUnit
             // 
@@ -2083,7 +2084,7 @@
             this.comboBoxEx_ForceUnit.ItemHeight = 21;
             this.comboBoxEx_ForceUnit.Items.AddRange(new object[] {
             this.comboItem38});
-            this.comboBoxEx_ForceUnit.Location = new System.Drawing.Point(161, 20);
+            this.comboBoxEx_ForceUnit.Location = new System.Drawing.Point(161, 10);
             this.comboBoxEx_ForceUnit.Name = "comboBoxEx_ForceUnit";
             this.comboBoxEx_ForceUnit.Size = new System.Drawing.Size(121, 27);
             this.comboBoxEx_ForceUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -2097,7 +2098,7 @@
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label43.Location = new System.Drawing.Point(17, 25);
+            this.label43.Location = new System.Drawing.Point(17, 15);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(120, 16);
             this.label43.TabIndex = 0;
@@ -2125,9 +2126,9 @@
             this.groupPanel7.Controls.Add(this.lbX_MaxForce);
             this.groupPanel7.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel7.Location = new System.Drawing.Point(16, 34);
+            this.groupPanel7.Location = new System.Drawing.Point(16, 14);
             this.groupPanel7.Name = "groupPanel7";
-            this.groupPanel7.Size = new System.Drawing.Size(753, 264);
+            this.groupPanel7.Size = new System.Drawing.Size(455, 264);
             // 
             // 
             // 
@@ -2172,6 +2173,7 @@
             this.tbDeviceNo.Size = new System.Drawing.Size(123, 26);
             this.tbDeviceNo.TabIndex = 12;
             this.tbDeviceNo.Text = "10";
+            this.tbDeviceNo.Visible = false;
             // 
             // label32
             // 
@@ -2182,6 +2184,7 @@
             this.label32.Size = new System.Drawing.Size(88, 16);
             this.label32.TabIndex = 11;
             this.label32.Text = "试验机编号";
+            this.label32.Visible = false;
             // 
             // comboBoxEx_TripSensor
             // 
@@ -2454,7 +2457,6 @@
             this.superTabItem2.GlobalItem = false;
             this.superTabItem2.Name = "superTabItem2";
             this.superTabItem2.Text = "试验机参数";
-            this.superTabItem2.Visible = false;
             // 
             // superTabControlPanel1
             // 

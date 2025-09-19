@@ -1097,5 +1097,30 @@ namespace DoPENetConnect
             numericUpDown3.Value = decimal.Parse(Math.Ceiling(tmpCurrentVal).ToString());
        
         }
+
+        public double GetSystemMaxForce()
+        {
+            double maxForce = double.Parse(comboBoxEx_MaxForce.Text);
+
+            return maxForce;
+
+        }
+
+        public double GetSystemMaxTrip()
+        {
+            double maxTrip = double.Parse(comboBoxEx_MaxTrip.Text);
+
+            return maxTrip;
+
+        }
+
+        public double GetSystemMaxTripSpeed()
+        {
+            double maxTripSpeed = double.Parse(tbX_MaxTripSpeed.Text);
+
+            return maxTripSpeed;
+
+        }
+       
     }
 }
