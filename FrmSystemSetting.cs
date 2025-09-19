@@ -39,8 +39,8 @@ namespace DoPENetConnect
         {
 
             ///底部按钮
-            int btnsBottomLength =btnX_FrmProtectOption_OK.Width + 150;
-            int btnBottomStart = (this.Width-btnsBottomLength)/ 2;
+            int btnsBottomLength = btnX_FrmProtectOption_OK.Width + 150;
+            int btnBottomStart = (this.Width - btnsBottomLength) / 2;
             btnX_FrmProtectOption_OK.Location = new Point(btnBottomStart, btnX_FrmProtectOption_OK.Bounds.Y);
             //btnX_FrmProtectOption_Cencel.Location = new Point(btnBottomStart + 180, btnX_FrmProtectOption_Cencel.Bounds.Y);
 
@@ -48,12 +48,12 @@ namespace DoPENetConnect
             ///groupPannel3
             int lineStart = 15;
             checkBoxX3.Location = new Point(lineStart, checkBoxX3.Location.Y);
-            numericUpDown1.Location = new Point(checkBoxX3.Location.X+checkBoxX3.Width+5, numericUpDown1.Location.Y);
+            numericUpDown1.Location = new Point(checkBoxX3.Location.X + checkBoxX3.Width + 5, numericUpDown1.Location.Y);
             label12.Location = new Point(numericUpDown1.Location.X + numericUpDown1.Width + 5, label12.Location.Y);
 
             checkBoxX4.Location = new Point(lineStart, checkBoxX4.Location.Y);
-            numericUpDown2.Location = new Point(numericUpDown1.Location.X , numericUpDown2.Location.Y);
-            label11.Location = new Point(label12.Location.X , label11.Location.Y);
+            numericUpDown2.Location = new Point(numericUpDown1.Location.X, numericUpDown2.Location.Y);
+            label11.Location = new Point(label12.Location.X, label11.Location.Y);
 
             ///groupPanne5
             NUD_CountLog.Location = new Point(lineStart, NUD_CountLog.Location.Y);
@@ -85,7 +85,7 @@ namespace DoPENetConnect
             label38.Location = new Point(label18.Location.X, label38.Location.Y);
 
             //groupPanels
-            tbX_FrmProtectOption_PosMaxOut.Location = new Point(lineStart+2, tbX_FrmProtectOption_PosMaxOut.Location.Y);
+            tbX_FrmProtectOption_PosMaxOut.Location = new Point(lineStart + 2, tbX_FrmProtectOption_PosMaxOut.Location.Y);
             label6.Location = new Point(tbX_FrmProtectOption_PosMaxOut.Location.X + tbX_FrmProtectOption_PosMaxOut.Width + 5, label6.Location.Y);
             cbX_FrmProtectOption_PosMaxOut_Effect.Location = new Point(label6.Location.X + label6.Width + 5, cbX_FrmProtectOption_PosMaxOut_Effect.Location.Y);
 
@@ -110,7 +110,7 @@ namespace DoPENetConnect
             cbX_FrmProtectOption_ExtMinOut_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxOut_Effect.Bounds.X, cbX_FrmProtectOption_ExtMinOut_Effect.Location.Y);
 
 
-            tbX_FrmProtectOption_PosMaxIn.Location = new Point(label18.Bounds.X+2, tbX_FrmProtectOption_PosMaxIn.Location.Y);
+            tbX_FrmProtectOption_PosMaxIn.Location = new Point(label18.Bounds.X + 2, tbX_FrmProtectOption_PosMaxIn.Location.Y);
             label19.Location = new Point(tbX_FrmProtectOption_PosMaxIn.Location.X + tbX_FrmProtectOption_PosMaxIn.Width + 5, label19.Location.Y);
             cbX_FrmProtectOption_PosMaxIn_Effect.Location = new Point(label19.Location.X + label19.Width + 5, cbX_FrmProtectOption_PosMaxIn_Effect.Location.Y);
 
@@ -136,7 +136,7 @@ namespace DoPENetConnect
 
             ///试验机参数
             //主参数
-            lbX_MaxForce.Location = new Point(lineStart , lbX_MaxForce.Location.Y);
+            lbX_MaxForce.Location = new Point(lineStart, lbX_MaxForce.Location.Y);
             comboBoxEx_MaxForce.Location = new Point(lbX_MaxForce.Location.X + lbX_MaxForce.Width + 60, comboBoxEx_MaxForce.Location.Y);
             label17.Location = new Point(comboBoxEx_MaxForce.Location.X + comboBoxEx_MaxForce.Width + 5, label17.Location.Y);
             cbX_MaxForce.Location = new Point(label17.Location.X + label17.Width + 5, cbX_MaxForce.Location.Y);
@@ -166,7 +166,7 @@ namespace DoPENetConnect
 
 
             label21.Location = new Point(lineStart, label21.Location.Y);
-            tbX_hurryupval.Location = new Point(tbX_upval.Location.X , tbX_hurryupval.Location.Y);
+            tbX_hurryupval.Location = new Point(tbX_upval.Location.X, tbX_hurryupval.Location.Y);
             label4.Location = new Point(label40.Location.X, label4.Location.Y);
 
 
@@ -192,7 +192,7 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("Setting", "Language", "0", strTmp, strTmp.Capacity);
             string strLanguage = strTmp.ToString();
             var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
-                       
+
             //循环界面控件替换成指定的语言
             if (langData.TryGetValue(this.Name, out var frmSystemSetting))
             {
@@ -252,17 +252,18 @@ namespace DoPENetConnect
                         }
                         if (controlName.Contains("comboBoxEx_TripSensor"))
                         {
-                             comboBoxEx_TripSensor.Items.Add(textValue);
+                            comboBoxEx_TripSensor.Items.Add(textValue);
                         }
                     }
-                    else {
+                    else
+                    {
                         ctrl.Text = textValue;
                     }
 
                 }
 
                 #region RestoreUi
-                if(cbX_ProtectOption.Items.Count>protectOptionCurrentIndex)
+                if (cbX_ProtectOption.Items.Count > protectOptionCurrentIndex)
                     cbX_ProtectOption.SelectedIndex = protectOptionCurrentIndex;
 
                 if (comboBoxEx_TripSensor.Items.Count > tripSensorCurrentIndex)
@@ -376,7 +377,7 @@ namespace DoPENetConnect
             cbX_FrmProtectOption_ExtMinIn_Effect.Checked = strTmp.ToString() == "0" ? false : true;
 
             //系统保护设置  section=SysProtectSetting numericUpDown1: key=OverLoad_Percent=10; numericUpDown2:OverLoad_Force = 10;
-            IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_Percent","0",strTmp,strTmp.Capacity);
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_Percent", "0", strTmp, strTmp.Capacity);
             numericUpDown1.Value = Convert.ToDecimal(strTmp.ToString());
 
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadPercent_Flag", "0", strTmp, strTmp.Capacity);
@@ -584,7 +585,7 @@ namespace DoPENetConnect
             strTmp = checkBoxX3.Checked == false ? "0" : "1";
             MainForm.mainform.protectOption.ProtectOption_OverLoadPercent_Flag = checkBoxX3.Checked;
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadPercent_Flag", strTmp);
-          
+
             strTmp = numericUpDown1.Value.ToString();
             MainForm.mainform.protectOption.ProtectOption_OverLoadPercent = double.Parse(strTmp);
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Percent", strTmp);
@@ -592,7 +593,7 @@ namespace DoPENetConnect
             //Console.WriteLine("glm-test{0}", comboBoxEx2.SelectedIndex);
             if (comboBoxEx2.Text == "")
             {
-                
+
             }
             else
             {
@@ -651,7 +652,7 @@ namespace DoPENetConnect
 
             ///ui 选中状态
             //strTmp = cbX_ProtectOption.SelectedIndex.ToString();
-           // IniFileHelper.WriteIniString("UIDefault ", "cbX_ProtectOption", strTmp);
+            // IniFileHelper.WriteIniString("UIDefault ", "cbX_ProtectOption", strTmp);
 
             strTmp = comboBoxEx_MaxForce.SelectedIndex.ToString();
             IniFileHelper.WriteIniString("UIDefault ", "comboBoxEx_MaxForce", strTmp);
@@ -672,7 +673,7 @@ namespace DoPENetConnect
             strTmp = comboBoxSendInterval.Text;      //发送周期
             IniFileHelper.WriteIniString("communication ", "Interval", strTmp);
 
-            MainForm.mainform.SetRealtimeParamComParams(comboBoxComSelect.Text,comboBoxSendInterval.Text);
+            MainForm.mainform.SetRealtimeParamComParams(comboBoxComSelect.Text, comboBoxSendInterval.Text);
 
             //采样频率添加
             strTmp = numericUpDown3.Value.ToString();
@@ -685,7 +686,7 @@ namespace DoPENetConnect
 
             strTmp = textBoxX2.Text;
             IniFileHelper.WriteIniString("BottomStatusBar", "Content", strTmp);
-            
+
 
         }
 
@@ -1044,7 +1045,7 @@ namespace DoPENetConnect
         {
             Console.WriteLine(cbX_ProtectOption.SelectedIndex);
             Console.WriteLine(cbX_ProtectOption.Text);
-            
+
         }
         public string ComputeMD5(string input)
 
@@ -1089,14 +1090,15 @@ namespace DoPENetConnect
 
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
-            double tmpValue =double.Parse(numericUpDown3.Value.ToString());
+            double tmpValue = double.Parse(numericUpDown3.Value.ToString());
             double tmpLast = tmpValue % 10;
             double tmpCurrentVal = tmpValue;
-            if (tmpLast != 0) {
+            if (tmpLast != 0)
+            {
                 tmpCurrentVal = tmpValue - tmpLast + 10;
             }
             numericUpDown3.Value = decimal.Parse(Math.Ceiling(tmpCurrentVal).ToString());
-       
+
         }
 
         public double GetSystemMaxForce()
@@ -1122,4 +1124,5 @@ namespace DoPENetConnect
             return maxTripSpeed;
 
         }
+    }
 }
