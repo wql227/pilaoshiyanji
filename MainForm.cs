@@ -374,6 +374,21 @@ namespace DoPENetConnect
         /// </summary>
         public int sampleRate = 0;
 
+        /// <summary>
+        /// 小数位数位置
+        /// </summary>
+        public string decimalPos = "0.00";
+
+        /// <summary>
+        /// 小数位数力
+        /// </summary>
+        public string decimalForce = "0.00";
+
+        /// <summary>
+        /// 小数位数变形
+        /// </summary>
+        public string decimalExtenssion = "0.00";
+
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>

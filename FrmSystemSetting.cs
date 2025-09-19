@@ -462,6 +462,49 @@ namespace DoPENetConnect
             else
                 textBoxX2.Text = strTmp.ToString();
 
+            //小数位数
+            //位移
+            IniFileHelper.GetIniString("SoftSetting", "Pos", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0") { 
+                numericUpDown7.Value = int.Parse(strTmp.ToString());
+
+                string decimalPos = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString()); i++)
+                {
+                    decimalPos = $"{decimalPos}0";
+                }
+                MainForm.mainform.decimalPos = decimalPos;
+            }
+
+
+            //力
+            IniFileHelper.GetIniString("SoftSetting", "Load", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0")
+            {
+                numericUpDown4.Value = int.Parse(strTmp.ToString());
+
+                string decimalForce = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString()); i++)
+                {
+                    decimalForce = $"{decimalForce}0";
+                }
+                MainForm.mainform.decimalForce = decimalForce;
+            }
+
+            //Extenssion
+            IniFileHelper.GetIniString("SoftSetting", "Extenssion", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0")
+            {
+                numericUpDown6.Value = int.Parse(strTmp.ToString());
+
+                string decimalExtenssion = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString()); i++)
+                {
+                    decimalExtenssion = $"{decimalExtenssion}0";
+                }
+                MainForm.mainform.decimalForce = decimalExtenssion;
+            }
+
         }
 
 
@@ -686,6 +729,36 @@ namespace DoPENetConnect
 
             strTmp = textBoxX2.Text;
             IniFileHelper.WriteIniString("BottomStatusBar", "Content", strTmp);
+
+            //小数位数
+           //位移
+            strTmp = numericUpDown7.Value.ToString();
+            IniFileHelper.WriteIniString("SoftSetting", "Pos", strTmp);
+            string decimalPos = "0.";
+            for (int i = 0; i < int.Parse(strTmp); i++) {
+                decimalPos = $"{decimalPos}0";
+            }
+            MainForm.mainform.decimalPos = decimalPos;
+
+            //力
+            strTmp = numericUpDown4.Value.ToString();
+            IniFileHelper.WriteIniString("SoftSetting", "Load", strTmp);
+            string decimalForce = "0.";
+            for (int i = 0; i < int.Parse(strTmp); i++)
+            {
+                decimalForce = $"{decimalForce}0";
+            }
+            MainForm.mainform.decimalForce = decimalForce;
+
+            //Extenssion
+            strTmp = numericUpDown6.Value.ToString();
+            IniFileHelper.WriteIniString("SoftSetting", "Extenssion", strTmp);
+            string decimalExtenssion = "0.";
+            for (int i = 0; i < int.Parse(strTmp); i++)
+            {
+                decimalExtenssion = $"{decimalExtenssion}0";
+            }
+            MainForm.mainform.decimalExtenssion = decimalExtenssion;
 
 
         }
@@ -1124,5 +1197,6 @@ namespace DoPENetConnect
             return maxTripSpeed;
 
         }
+
     }
 }
