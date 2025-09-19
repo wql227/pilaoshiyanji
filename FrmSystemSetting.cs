@@ -1122,6 +1122,4 @@ namespace DoPENetConnect
             return maxTripSpeed;
 
         }
-       
-    }
 }
