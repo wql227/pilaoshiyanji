@@ -5564,5 +5564,10 @@ namespace DoPENetConnect
             floatMenus.Activate();
             floatMenus.TopMost = true;
         }
+
+        private void 试验操作选项ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

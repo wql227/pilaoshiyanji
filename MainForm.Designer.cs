@@ -722,8 +722,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel10);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Location = new System.Drawing.Point(1301, 3);
             this.superTabControl4.MaximumSize = new System.Drawing.Size(0, 419);
             this.superTabControl4.MinimumSize = new System.Drawing.Size(285, 419);
@@ -3902,7 +3902,7 @@
             this.试验操作选项ToolStripMenuItem.Name = "试验操作选项ToolStripMenuItem";
             this.试验操作选项ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.试验操作选项ToolStripMenuItem.Text = "试验操作选项...";
-            this.试验操作选项ToolStripMenuItem.Visible = false;
+            this.试验操作选项ToolStripMenuItem.Click += new System.EventHandler(this.试验操作选项ToolStripMenuItem_Click);
             // 
             // 绘图选项ToolStripMenuItem
             // 
