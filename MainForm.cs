@@ -5025,7 +5025,7 @@ namespace DoPENetConnect
                 //                                 (CTRL)comboBoxEx9.SelectedIndex, double.Parse(textBoxX15.Text), (DESTMODE)comboBoxEx11.SelectedIndex);
                 if (!isRunning)
                 {
-                    MovePos(DoPE.CTRL.POS, /*double.Parse(tbX_Dyn_StartSpeed.Text)*/10, originParams.DisplacementVal);
+                    MovePos(DoPE.CTRL.POS, /*double.Parse(tbX_Dyn_StartSpeed.Text)*/btnHurryUpConstantVal/60, originParams.DisplacementVal);
                 }
 
             }
