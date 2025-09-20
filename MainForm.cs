@@ -907,7 +907,7 @@ namespace DoPENetConnect
                 text = String.Format("{0}", Sample.Time.ToString("0.000"));
 
                 strCSVLog += text + ",";
-                text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
+                text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString(decimalPos));
 
                 if (bConnected)
                 {
@@ -921,7 +921,7 @@ namespace DoPENetConnect
                     {
                         if (double.Parse(tb_MaxPos.Text) < PVPositionQueue.Max())
                         {
-                            tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
+                            tb_MaxPos.Text = PVPositionQueue.Max().ToString(decimalPos);
                             tb_MaxPos.Refresh();
                         }
                         //tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
@@ -1013,7 +1013,7 @@ namespace DoPENetConnect
                     }
                     strCSVLog += text + ",";
                     //data_display1 = decimal.Parse(guiPosition.Text == "" ? "" : "0");
-                    text = String.Format("{0}", (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F] / 1000).ToString("0.000"));
+                    text = String.Format("{0}", (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F] / 1000).ToString(decimalForce));
 
                     //试验力队列
                     //填写试验力实时值
@@ -1023,7 +1023,7 @@ namespace DoPENetConnect
                     {
                         if (double.Parse(tb_MaxLoad.Text) < (PVLoadQueue.Max() / 1000))
                         {
-                            tb_MaxLoad.Text = (PVLoadQueue.Max()/1000).ToString("0.000");
+                            tb_MaxLoad.Text = (PVLoadQueue.Max()/1000).ToString(decimalForce);
                             tb_MaxLoad.Refresh();
                         }
                         //tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
@@ -1120,7 +1120,7 @@ namespace DoPENetConnect
 
                     strCSVLog += text + ",";
                     //data_display2 = decimal.Parse(guiLoad.Text);
-                    text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
+                    text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString(decimalExtenssion));
 
                     //变形队列//填写试验力实时值
                     realtimeParams.ExtenssionVal = Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E];
@@ -1129,7 +1129,8 @@ namespace DoPENetConnect
                     {
                         if (double.Parse(tb_MaxExt.Text) < PVExtensionQueue.Max())
                         {
-                            tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
+                            tb_MaxExt.Text = PVExtensionQueue.Max().ToString(decimalExtenssion);
+                            tb_MaxExt.Refresh();
                             //tb_MinExt.Text = PVExtensionQueue.Min().ToString("0.000");
                         }
 
