@@ -3945,7 +3945,7 @@
             // excel版ToolStripMenuItem
             // 
             this.excel版ToolStripMenuItem.Name = "excel版ToolStripMenuItem";
-            this.excel版ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.excel版ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.excel版ToolStripMenuItem.Text = "Excel版";
             this.excel版ToolStripMenuItem.Click += new System.EventHandler(this.excel版ToolStripMenuItem_Click);
             // 
