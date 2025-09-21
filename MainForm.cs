@@ -90,6 +90,8 @@ using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using NPOI.HSSF.UserModel;
+using NPOI.HSSF.Util;
 
 namespace DoPENetConnect
 {
@@ -5656,75 +5658,7 @@ namespace DoPENetConnect
 
             FileStream fs2 = File.Open(reportFileName, FileMode.Create);
             workbook.Write(fs2);
-            fs2.Close();
-
-
-
-
-
-            //            /*  禁止滚动文件
-            //            //int maxFileSize = 1 * 1024 * 1024; // 10 MB
-            //            //FileInfo fi = new FileInfo(filename);
-
-            //            //// 如果文件存在且超过最大大小，则进行滚动
-            //            //if (fi.Exists && fi.Length > maxFileSize)
-            //            //{
-            //            //    // 滚动旧文件，保留最多5个备份
-            //            //    for (int i = 4; i >= 1; i--)
-            //            //    {
-            //            //        string oldFile = Path.Combine(logPath, $"{dateStr}.{i}.CSV");
-            //            //        string prevFile = Path.Combine(logPath, $"{dateStr}.{i - 1}.CSV");
-
-            //            //        if (File.Exists(oldFile))
-            //            //        {
-            //            //            File.Delete(oldFile);
-            //            //        }
-
-            //            //        if (File.Exists(prevFile))
-            //            //        {
-            //            //            File.Move(prevFile, oldFile);
-            //            //        }
-            //            //    }
-            //            //    string firstIndex = "0";
-            //            //    string firstBackup = Path.Combine(logPath, $"{dateStr}.{firstIndex}.CSV");
-            //            //    if (File.Exists(firstBackup))
-            //            //    {
-            //            //        File.Delete(firstBackup);
-            //            //    }
-            //            //    File.Move(filename, firstBackup);
-            //            //}
-            //            */
-
-            //            // 如果文件不存在，先写入表头
-            //            bool writeHeader = !File.Exists(filename);
-            //            using (StreamWriter sw = new StreamWriter(filename, true, Encoding.Default))
-            //            {
-            //                if (writeHeader)
-            //                {
-            //                    string headStr;
-            //                    headStr = string.Format("试样编号,{0}", dotest.sampleCode);
-            //                    sw.WriteLine(headStr);
-            //                    headStr = string.Format("试样批次,{0}", dotest.sampleNo);
-            //                    sw.WriteLine(headStr);
-            //                    headStr = string.Format("试样形状,{0}", dotest.sampleShape);
-            //                    sw.WriteLine(headStr);
-            //                    headStr = string.Format("试验人员,{0}", dotest.sampleOperator);
-            //                    sw.WriteLine(headStr);
-            //                    headStr = string.Format("校核人员,{0}", dotest.sampleChecker);
-            //                    sw.WriteLine(headStr);
-            //                    headStr = string.Format("试验依据,{0}", dotest.sampleDependation);
-            //                    sw.WriteLine(headStr);
-            //                    headStr = string.Format("备注,{0}", dotest.sampleNotes);
-            //                    sw.WriteLine(headStr);
-            //                    string header = "Time [s],Position [mm],Load [kN],Extension [Rev],Command [ ],Cycles [ ]";
-            //                    sw.WriteLine(header);
-            //                }
-
-            //                sw.WriteLine(strs);
-            //            }
-
-            //            bLogDirBuildedFlag = true;
-            //#endregion save_staticdata
+            fs2.Close();            
         }
 
     }
