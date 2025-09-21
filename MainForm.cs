@@ -478,7 +478,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -5306,6 +5306,63 @@ namespace DoPENetConnect
             AddTextToImage(picName, label1.Text, "宋体",12, picName1,label2.Text);
         }
 
+
+        /// <summary>
+        /// 保存试验图片
+        /// </summary>
+        public void SaveTestPngs()
+        {
+            int currentCurveType = realtimeParams.CurrentCurveType;
+            string currentYAxisUnit = label1.Text;
+            string currentXAxisTitle = chart_machine.ChartAreas[0].AxisX.Title;
+            string curveName = label2.Text;
+
+            string path = doTest.sampleLogPath;
+            if (path == null)
+            {
+                MessageBox.Show("路径为空，请在载入试验或者完成试验后进行该操作", "图像保存", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            DialogResult = MessageBox.Show($"确定将图片保存至：{path}?", "图像保存", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (DialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
+
+
+            //保存位移时间曲线
+            位移ToolStripMenuItem_Click(this, new EventArgs());     //切换至位移时间曲线
+            //string tampName=Path.Combine(path, "StaticData");
+            string picName = Path.Combine(path, "tmp.png");
+            string chartName = GetCurrentCurveName();
+            string picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
+            chart_machine.SaveImage(picName, ChartImageFormat.Png);
+            AddTextToImage(picName, label1.Text, "宋体", 12, picName1, label2.Text);
+
+            //保存试验力时间曲线
+            toolStripMenuItem1_Click(this, new EventArgs());     //切换至试验力时间曲线
+            //string tampName=Path.Combine(path, "StaticData");
+            chartName = GetCurrentCurveName();
+            picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
+            chart_machine.SaveImage(picName, ChartImageFormat.Png);
+            AddTextToImage(picName, label1.Text, "宋体", 12, picName1, label2.Text);
+
+            //保存变形时间曲线
+            变形时间曲线ToolStripMenuItem_Click(this, new EventArgs());     //切换至变形时间曲线
+            //string tampName=Path.Combine(path, "StaticData");
+            chartName = GetCurrentCurveName();
+            picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
+            chart_machine.SaveImage(picName, ChartImageFormat.Png);
+            AddTextToImage(picName, label1.Text, "宋体", 12, picName1, label2.Text);
+
+            //设回曲线参数
+            realtimeParams.CurrentCurveType = currentCurveType;
+            CurveSet(currentXAxisTitle, currentYAxisUnit, curveName);
+            chart_series_show(currentCurveType);
+            AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
+
+        }
+
         private string GetCurrentCurveName()
         {
             string name;
@@ -5506,6 +5563,11 @@ namespace DoPENetConnect
             floatMenus.Show();
             floatMenus.Activate();
             floatMenus.TopMost = true;
+        }
+
+        private void buttonX22_Click_1(object sender, EventArgs e)
+        {
+            SaveTestPngs();
         }
     }
 }
