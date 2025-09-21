@@ -1269,6 +1269,13 @@ namespace DoPENetConnect
         {
             doTest.sampleLogPath = path;
             doTest.sampleImageName = imageName;
+            string[] strsSampleTime = imageName.Split('-');
+            var result = Enumerable.Range(0, strsSampleTime.ElementAt(3).Length/ 2) // 生成索引序列，长度为原始长度的一半向上取整
+                                 .Select(i => strsSampleTime.ElementAt(3).Substring(i * 2, 2)) // 从每个索引开始截取两个字符
+                                 .ToList(); // 转换为列表以便使用String.Join方法连接它们，并添加分隔符" "；如果不需要分隔符，可以省略最后的" "。
+            
+            string strSampleTime = $"{strsSampleTime.ElementAt(0)}-{strsSampleTime.ElementAt(1)}-{strsSampleTime.ElementAt(2)} {result.ElementAt(0)}:{result.ElementAt(1)}:{result.ElementAt(2)}";
+            doTest.sampleTime = DateTime.Parse(strSampleTime);
         }
         public void ParamsSetFirstCycle()
         {
