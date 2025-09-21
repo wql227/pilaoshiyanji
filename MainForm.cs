@@ -5614,7 +5614,17 @@ namespace DoPENetConnect
                 DialogResult res =  MessageBox.Show("报表已经存在，确定要重新生成？","生成报表",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
                 if (res == DialogResult.OK) {
                     if (File.Exists(reportFileName))
-                        File.Delete(reportFileName);
+                    {
+                        try
+                        {
+                            File.Delete(reportFileName);
+                        }
+                        catch(Exception e)
+                        {
+                            MessageBox.Show(e.Message);
+                            return;
+                        }
+                    }
                        
                 }
                 else if(res ==DialogResult.Cancel)
@@ -5690,5 +5700,9 @@ namespace DoPENetConnect
              pic.Resize(1, 0.9);
         }
 
+        private void excel版ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MakeReport();
+        }
     }
 }

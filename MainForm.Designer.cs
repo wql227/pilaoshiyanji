@@ -317,6 +317,8 @@
             this.ToolStripMenuItem_Data = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_OpenLogsDir = new System.Windows.Forms.ToolStripMenuItem();
             this.保存数据问题及ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.生成报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.excel版ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.保存当前曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSampleInfo = new System.Windows.Forms.ToolStripMenuItem();
@@ -2136,7 +2138,7 @@
             this.buttonX22.Size = new System.Drawing.Size(75, 23);
             this.buttonX22.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX22.TabIndex = 43;
-            this.buttonX22.Text = "buttonX22";
+            this.buttonX22.Text = "buttonXrrr";
             this.buttonX22.Click += new System.EventHandler(this.buttonX22_Click_1);
             // 
             // cb_TareExt
@@ -3909,6 +3911,7 @@
             this.ToolStripMenuItem_Data.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_OpenLogsDir,
             this.保存数据问题及ToolStripMenuItem,
+            this.生成报表ToolStripMenuItem,
             this.toolStripSeparator1,
             this.保存当前曲线ToolStripMenuItem});
             this.ToolStripMenuItem_Data.Name = "ToolStripMenuItem_Data";
@@ -3930,6 +3933,21 @@
             this.保存数据问题及ToolStripMenuItem.Text = "保存数据文件";
             this.保存数据问题及ToolStripMenuItem.Visible = false;
             this.保存数据问题及ToolStripMenuItem.Click += new System.EventHandler(this.保存数据问题及ToolStripMenuItem_Click);
+            // 
+            // 生成报表ToolStripMenuItem
+            // 
+            this.生成报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.excel版ToolStripMenuItem});
+            this.生成报表ToolStripMenuItem.Name = "生成报表ToolStripMenuItem";
+            this.生成报表ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.生成报表ToolStripMenuItem.Text = "生成报表";
+            // 
+            // excel版ToolStripMenuItem
+            // 
+            this.excel版ToolStripMenuItem.Name = "excel版ToolStripMenuItem";
+            this.excel版ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.excel版ToolStripMenuItem.Text = "Excel版";
+            this.excel版ToolStripMenuItem.Click += new System.EventHandler(this.excel版ToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -4461,6 +4479,8 @@
         private DevComponents.DotNetBar.LabelX labelX34;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.DotNetBar.ButtonX buttonX22;
+        private System.Windows.Forms.ToolStripMenuItem 生成报表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem excel版ToolStripMenuItem;
     }
 }
 
