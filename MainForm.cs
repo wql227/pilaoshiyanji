@@ -88,6 +88,8 @@ using System.IO;
 using log4net;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 
 namespace DoPENetConnect
 {
@@ -374,7 +376,7 @@ namespace DoPENetConnect
         /// </summary>
         public int sampleRate = 0;
 
-
+        public string excelReportTemplateFileName = "D:\\projects\\DoPENet_Connect\\bin\\x64\\Debug\\template\\Static_ExcelReport.xlsx";
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -1264,7 +1266,7 @@ namespace DoPENetConnect
             return 0;
         }
 
-
+        
         public void SaveTestPath(string path,string imageName)
         {
             doTest.sampleLogPath = path;
@@ -4114,7 +4116,7 @@ namespace DoPENetConnect
         private void ToolStripMenuItem_OpenLogsDir_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = System.Environment.CurrentDirectory;
+            openFileDialog.InitialDirectory =Path.Combine(System.Environment.CurrentDirectory,"StaticData");
             openFileDialog.Filter = "CSV文件 (*.csv)|*.csv"; // 如果需要筛选特定类型的文件，如CSV
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -4139,6 +4141,7 @@ namespace DoPENetConnect
                     doTest.sampleChecker = testInfo[4];
                     doTest.sampleDependation = testInfo[5];
                     doTest.sampleNotes = testInfo[6];
+                    doTest.sampleMaxLoad = testInfo[7];
 
                     string[] tmpStrs = selectedFilePath.Split('\\');
                     string[] tmpStr2 = new string[tmpStrs.Length-1];
@@ -5574,7 +5577,155 @@ namespace DoPENetConnect
 
         private void buttonX22_Click_1(object sender, EventArgs e)
         {
-            SaveTestPngs();
+            //SaveTestPngs();
+            MakeReport();
         }
+
+        public void MakeReport()
+        {
+            if (dataGridViewX2.RowCount == 0|| DtaGridViewIsSelectedEmpty())
+            {
+
+                MessageBox.Show("试验列表为空请先打开数据文件");
+                return;
+
+            }
+
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string logPath = Path.Combine(baseDirectory, "StaticData");
+            string dataTimeStr = doTest.sampleTime.ToString("yyyy-MM-dd-HHmmss");
+            string dateStr = dataTimeStr.Substring(0, 10);
+
+            logPath = Path.Combine(logPath, dateStr);        //添加日期文件夹
+            logPath = Path.Combine(logPath, doTest.sampleCode);   //以试样编号作为写入目录
+            MainForm.mainform.SaveTestPath(logPath, dataTimeStr);
+            string filename = Path.Combine(logPath, $"{dataTimeStr}.CSV");
+            string reportFileName = Path.Combine(logPath, $"{dataTimeStr}Report.xlsx");
+
+            // 创建目录（如果不存在）
+            if (!Directory.Exists(logPath))
+            {
+                Directory.CreateDirectory(logPath);
+            }
+
+            if (File.Exists(reportFileName)) {
+                DialogResult res =  MessageBox.Show("报表已经存在，确定要重新生成？","生成报表",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                if (res == DialogResult.OK) {
+                    if (File.Exists(reportFileName))
+                        File.Delete(reportFileName);
+                       
+                }
+                else if(res ==DialogResult.Cancel)
+                    return;
+            }
+            File.Copy(excelReportTemplateFileName, reportFileName);
+
+           // FileInfo reportFileInf = new FileInfo(reportFileName);
+            FileStream tmpFs = File.Open(reportFileName,FileMode.Open,FileAccess.Read,FileShare.ReadWrite);
+            IWorkbook workbook = new XSSFWorkbook(tmpFs);
+            tmpFs.Close();
+            ISheet tmpSheet= workbook.GetSheetAt(0);
+
+            ICell tmpCell = tmpSheet.GetRow(4).GetCell(1);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleCode);
+            
+            tmpCell = tmpSheet.GetRow(4).GetCell(3);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleTime.ToString("yyyy-MM-dd hh:mm:ss"));
+
+            tmpCell = tmpSheet.GetRow(4).GetCell(5);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleNo);
+
+            tmpCell = tmpSheet.GetRow(4).GetCell(7);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleShape);
+
+            tmpCell = tmpSheet.GetRow(7).GetCell(1);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleMaxLoad);
+
+            tmpCell = tmpSheet.GetRow(38).GetCell(2);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleOperator);
+
+            tmpCell = tmpSheet.GetRow(38).GetCell(4);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleChecker);
+
+            FileStream fs2 = File.Open(reportFileName, FileMode.Create);
+            workbook.Write(fs2);
+            fs2.Close();
+
+
+
+
+
+            //            /*  禁止滚动文件
+            //            //int maxFileSize = 1 * 1024 * 1024; // 10 MB
+            //            //FileInfo fi = new FileInfo(filename);
+
+            //            //// 如果文件存在且超过最大大小，则进行滚动
+            //            //if (fi.Exists && fi.Length > maxFileSize)
+            //            //{
+            //            //    // 滚动旧文件，保留最多5个备份
+            //            //    for (int i = 4; i >= 1; i--)
+            //            //    {
+            //            //        string oldFile = Path.Combine(logPath, $"{dateStr}.{i}.CSV");
+            //            //        string prevFile = Path.Combine(logPath, $"{dateStr}.{i - 1}.CSV");
+
+            //            //        if (File.Exists(oldFile))
+            //            //        {
+            //            //            File.Delete(oldFile);
+            //            //        }
+
+            //            //        if (File.Exists(prevFile))
+            //            //        {
+            //            //            File.Move(prevFile, oldFile);
+            //            //        }
+            //            //    }
+            //            //    string firstIndex = "0";
+            //            //    string firstBackup = Path.Combine(logPath, $"{dateStr}.{firstIndex}.CSV");
+            //            //    if (File.Exists(firstBackup))
+            //            //    {
+            //            //        File.Delete(firstBackup);
+            //            //    }
+            //            //    File.Move(filename, firstBackup);
+            //            //}
+            //            */
+
+            //            // 如果文件不存在，先写入表头
+            //            bool writeHeader = !File.Exists(filename);
+            //            using (StreamWriter sw = new StreamWriter(filename, true, Encoding.Default))
+            //            {
+            //                if (writeHeader)
+            //                {
+            //                    string headStr;
+            //                    headStr = string.Format("试样编号,{0}", dotest.sampleCode);
+            //                    sw.WriteLine(headStr);
+            //                    headStr = string.Format("试样批次,{0}", dotest.sampleNo);
+            //                    sw.WriteLine(headStr);
+            //                    headStr = string.Format("试样形状,{0}", dotest.sampleShape);
+            //                    sw.WriteLine(headStr);
+            //                    headStr = string.Format("试验人员,{0}", dotest.sampleOperator);
+            //                    sw.WriteLine(headStr);
+            //                    headStr = string.Format("校核人员,{0}", dotest.sampleChecker);
+            //                    sw.WriteLine(headStr);
+            //                    headStr = string.Format("试验依据,{0}", dotest.sampleDependation);
+            //                    sw.WriteLine(headStr);
+            //                    headStr = string.Format("备注,{0}", dotest.sampleNotes);
+            //                    sw.WriteLine(headStr);
+            //                    string header = "Time [s],Position [mm],Load [kN],Extension [Rev],Command [ ],Cycles [ ]";
+            //                    sw.WriteLine(header);
+            //                }
+
+            //                sw.WriteLine(strs);
+            //            }
+
+            //            bLogDirBuildedFlag = true;
+            //#endregion save_staticdata
+        }
+
     }
 }
