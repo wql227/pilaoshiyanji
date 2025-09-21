@@ -5656,9 +5656,38 @@ namespace DoPENetConnect
             tmpCell.SetCellType(CellType.String);
             tmpCell.SetCellValue(doTest.sampleChecker);
 
+            string loadTimePic = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
+            byte[] picBytes = File.ReadAllBytes(loadTimePic);
+            tmpCell = tmpSheet.GetRow(9).GetCell(0);
+            tmpCell.SetCellType(CellType.Blank);
+            SetCellPhoto(workbook, tmpCell, picBytes);
+
             FileStream fs2 = File.Open(reportFileName, FileMode.Create);
             workbook.Write(fs2);
             fs2.Close();            
+        }
+
+        public void SetCellPhoto(IWorkbook workbook, NPOI.SS.UserModel.ICell cell, byte[] bytes)
+        { 
+            int pictureIdx = workbook.AddPicture(bytes, NPOI.SS.UserModel.PictureType.PNG);
+
+            // 创建绘图对象
+             var drawing = workbook.GetSheetAt(0).CreateDrawingPatriarch();
+ 
+            XSSFClientAnchor anchor = new XSSFClientAnchor(
+                0, 50000, 0, 0,  // 从单元格左上角开始
+                cell.ColumnIndex,
+                cell.RowIndex,
+                cell.ColumnIndex + 8,
+                cell.RowIndex + 26
+                   );
+             anchor.AnchorType = (AnchorType)2; // 绝对定位
+ 
+             // 创建图片对象
+             XSSFPicture pic = (XSSFPicture)drawing.CreatePicture(anchor, pictureIdx);
+ 
+             // 设置图片的缩放大小
+             pic.Resize(1, 0.9);
         }
 
     }
