@@ -5644,15 +5644,15 @@ namespace DoPENetConnect
             
             tmpCell = tmpSheet.GetRow(4).GetCell(3);
             tmpCell.SetCellType(CellType.String);
-            tmpCell.SetCellValue(doTest.sampleTime.ToString("yyyy-MM-dd hh:mm:ss"));
+            tmpCell.SetCellValue(doTest.sampleNo);
 
             tmpCell = tmpSheet.GetRow(4).GetCell(5);
             tmpCell.SetCellType(CellType.String);
-            tmpCell.SetCellValue(doTest.sampleNo);
+            tmpCell.SetCellValue(doTest.sampleShape);
 
             tmpCell = tmpSheet.GetRow(4).GetCell(7);
             tmpCell.SetCellType(CellType.String);
-            tmpCell.SetCellValue(doTest.sampleShape);
+            tmpCell.SetCellValue(doTest.sampleTime.ToString("yyyy-MM-dd hh:mm:ss"));
 
             tmpCell = tmpSheet.GetRow(7).GetCell(1);
             tmpCell.SetCellType(CellType.String);
@@ -5698,6 +5698,103 @@ namespace DoPENetConnect
  
              // 设置图片的缩放大小
              pic.Resize(1, 0.9);
+        }
+
+
+        public void MakeReportWorld()
+        {
+            if (dataGridViewX2.RowCount == 0 || DtaGridViewIsSelectedEmpty())
+            {
+
+                MessageBox.Show("试验列表为空请先打开数据文件");
+                return;
+
+            }
+
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string logPath = Path.Combine(baseDirectory, "StaticData");
+            string dataTimeStr = doTest.sampleTime.ToString("yyyy-MM-dd-HHmmss");
+            string dateStr = dataTimeStr.Substring(0, 10);
+
+            logPath = Path.Combine(logPath, dateStr);        //添加日期文件夹
+            logPath = Path.Combine(logPath, doTest.sampleCode);   //以试样编号作为写入目录
+            MainForm.mainform.SaveTestPath(logPath, dataTimeStr);
+            string filename = Path.Combine(logPath, $"{dataTimeStr}.CSV");
+            string reportFileName = Path.Combine(logPath, $"{dataTimeStr}Report.docx");
+
+            // 创建目录（如果不存在）
+            if (!Directory.Exists(logPath))
+            {
+                Directory.CreateDirectory(logPath);
+            }
+
+            if (File.Exists(reportFileName))
+            {
+                DialogResult res = MessageBox.Show("报表已经存在，确定要重新生成？", "生成报表", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (res == DialogResult.OK)
+                {
+                    if (File.Exists(reportFileName))
+                    {
+                        try
+                        {
+                            File.Delete(reportFileName);
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show(e.Message);
+                            return;
+                        }
+                    }
+
+                }
+                else if (res == DialogResult.Cancel)
+                    return;
+            }
+            File.Copy(excelReportTemplateFileName, reportFileName);
+
+            // FileInfo reportFileInf = new FileInfo(reportFileName);
+            FileStream tmpFs = File.Open(reportFileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            IWorkbook workbook = new XSSFWorkbook(tmpFs);
+            tmpFs.Close();
+            ISheet tmpSheet = workbook.GetSheetAt(0);
+
+            ICell tmpCell = tmpSheet.GetRow(4).GetCell(1);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleCode);
+
+            tmpCell = tmpSheet.GetRow(4).GetCell(3);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleTime.ToString("yyyy-MM-dd hh:mm:ss"));
+
+            tmpCell = tmpSheet.GetRow(4).GetCell(5);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleNo);
+
+            tmpCell = tmpSheet.GetRow(4).GetCell(7);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleShape);
+
+            tmpCell = tmpSheet.GetRow(7).GetCell(1);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleMaxLoad);
+
+            tmpCell = tmpSheet.GetRow(38).GetCell(2);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleOperator);
+
+            tmpCell = tmpSheet.GetRow(38).GetCell(4);
+            tmpCell.SetCellType(CellType.String);
+            tmpCell.SetCellValue(doTest.sampleChecker);
+
+            string loadTimePic = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
+            byte[] picBytes = File.ReadAllBytes(loadTimePic);
+            tmpCell = tmpSheet.GetRow(9).GetCell(0);
+            tmpCell.SetCellType(CellType.Blank);
+            SetCellPhoto(workbook, tmpCell, picBytes);
+
+            FileStream fs2 = File.Open(reportFileName, FileMode.Create);
+            workbook.Write(fs2);
+            fs2.Close();
         }
 
         private void excel版ToolStripMenuItem_Click(object sender, EventArgs e)
