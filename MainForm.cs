@@ -380,8 +380,9 @@ namespace DoPENetConnect
         /// </summary>
         public int sampleRate = 0;
 
-        public string excelReportTemplateFileName = "D:\\projects\\DoPENet_Connect\\bin\\x64\\Debug\\template\\Static_ExcelReport.xlsx";
-        public string wordReportTemplateFileName = "D:\\projects\\DoPENet_Connect\\bin\\x64\\Debug\\template\\Static_WordReport.docx";
+        public string excelReportTemplateFileName = $"{AppDomain.CurrentDomain.BaseDirectory}\\template\\Static_ExcelReport.xlsx";
+        public string wordReportTemplateFileName = $"{AppDomain.CurrentDomain.BaseDirectory}\\template\\Static_WordReport.docx";
+        public string syaReportPath = $"{AppDomain.CurrentDomain.BaseDirectory}StaticReport";
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -3630,7 +3631,7 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             //}
-            devId = new StringBuilder("0214C57D");
+            devId = new StringBuilder("02133118");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -5613,7 +5614,7 @@ namespace DoPENetConnect
             }
             else
             {
-                Console.WriteLine("指定的文件夹不存在。");
+                MessageBox.Show("指定的文件夹不存在。");
             }
         }
 
@@ -5632,16 +5633,22 @@ namespace DoPENetConnect
             string dataTimeStr = doTest.sampleTime.ToString("yyyy-MM-dd-HHmmss");
             string dateStr = dataTimeStr.Substring(0, 10);
 
+            string reportPath = Path.Combine(baseDirectory, "StaticReport");
+
             logPath = Path.Combine(logPath, dateStr);        //添加日期文件夹
             logPath = Path.Combine(logPath, doTest.sampleCode);   //以试样编号作为写入目录
+
+            reportPath = Path.Combine(reportPath, dateStr);        //添加日期文件夹
+            reportPath = Path.Combine(reportPath, doTest.sampleCode);   //以试样编号作为写入目录
+            doTest.sampleReportPath = reportPath;  //保存报告路径
             MainForm.mainform.SaveTestPath(logPath, dataTimeStr);
             string filename = Path.Combine(logPath, $"{dataTimeStr}.CSV");
-            string reportFileName = Path.Combine(logPath, $"{dataTimeStr}Report.xlsx");
+            string reportFileName = Path.Combine(reportPath, $"{dataTimeStr}Report.xlsx");
 
             // 创建目录（如果不存在）
-            if (!Directory.Exists(logPath))
+            if (!Directory.Exists(reportPath))
             {
-                Directory.CreateDirectory(logPath);
+                Directory.CreateDirectory(reportPath);
             }
 
             if (File.Exists(reportFileName)) {
@@ -5769,16 +5776,22 @@ namespace DoPENetConnect
             string dataTimeStr = doTest.sampleTime.ToString("yyyy-MM-dd-HHmmss");
             string dateStr = dataTimeStr.Substring(0, 10);
 
+            string reportPath = Path.Combine(baseDirectory, "StaticReport");
+
             logPath = Path.Combine(logPath, dateStr);        //添加日期文件夹
             logPath = Path.Combine(logPath, doTest.sampleCode);   //以试样编号作为写入目录
+
+            reportPath = Path.Combine(reportPath, dateStr);        //添加日期文件夹
+            reportPath = Path.Combine(reportPath, doTest.sampleCode);   //以试样编号作为写入目录
+            doTest.sampleReportPath = reportPath;
             MainForm.mainform.SaveTestPath(logPath, dataTimeStr);
             string filename = Path.Combine(logPath, $"{dataTimeStr}.CSV");
-            string reportFileName = Path.Combine(logPath, $"{dataTimeStr}Report.docx");
+            string reportFileName = Path.Combine(reportPath, $"{dataTimeStr}Report.docx");
 
             // 创建目录（如果不存在）
-            if (!Directory.Exists(logPath))
+            if (!Directory.Exists(reportPath))
             {
-                Directory.CreateDirectory(logPath);
+                Directory.CreateDirectory(reportPath);
             }
 
             if (File.Exists(reportFileName))
@@ -5957,8 +5970,10 @@ namespace DoPENetConnect
                 return;
             }
 
+            string reportPath =  $"{syaReportPath}\\{doTest.sampleTime.ToString("yyyy-MM-dd")}\\{doTest.sampleCode}";
+
             //保存位移时间曲线
-            OpenFolder(path);
+            OpenFolder(reportPath);
         }
     }
 }

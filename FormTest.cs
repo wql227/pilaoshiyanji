@@ -68,6 +68,14 @@ namespace DoPENetConnect
             set;
             get;
         }
+
+
+        public string sampleReportPath
+        {
+            set;
+            get;
+        }
+
         public string sampleImageName
         {
             set;
