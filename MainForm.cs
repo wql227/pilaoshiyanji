@@ -5580,10 +5580,10 @@ namespace DoPENetConnect
         private void buttonX22_Click_1(object sender, EventArgs e)
         {
             //SaveTestPngs();
-            MakeReport();
+            MakeReportExcel();
         }
 
-        public void MakeReport()
+        public void MakeReportExcel()
         {
             if (dataGridViewX2.RowCount == 0|| DtaGridViewIsSelectedEmpty())
             {
@@ -5702,7 +5702,7 @@ namespace DoPENetConnect
 
         private void excel版ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MakeReport();
+            MakeReportExcel();
         }
     }
 }
