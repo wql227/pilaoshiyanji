@@ -92,6 +92,8 @@ using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using NPOI.HSSF.UserModel;
 using NPOI.HSSF.Util;
+using NPOI.XWPF.UserModel;
+using NPOI.OpenXmlFormats.Wordprocessing;
 
 namespace DoPENetConnect
 {
@@ -379,6 +381,7 @@ namespace DoPENetConnect
         public int sampleRate = 0;
 
         public string excelReportTemplateFileName = "D:\\projects\\DoPENet_Connect\\bin\\x64\\Debug\\template\\Static_ExcelReport.xlsx";
+        public string wordReportTemplateFileName = "D:\\projects\\DoPENet_Connect\\bin\\x64\\Debug\\template\\Static_WordReport.docx";
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -5638,7 +5641,7 @@ namespace DoPENetConnect
             tmpFs.Close();
             ISheet tmpSheet= workbook.GetSheetAt(0);
 
-            ICell tmpCell = tmpSheet.GetRow(4).GetCell(1);
+            NPOI.SS.UserModel.ICell tmpCell = tmpSheet.GetRow(4).GetCell(1);
             tmpCell.SetCellType(CellType.String);
             tmpCell.SetCellValue(doTest.sampleCode);
             
@@ -5750,56 +5753,153 @@ namespace DoPENetConnect
                 else if (res == DialogResult.Cancel)
                     return;
             }
-            File.Copy(excelReportTemplateFileName, reportFileName);
+            File.Copy(wordReportTemplateFileName, reportFileName);
 
             // FileInfo reportFileInf = new FileInfo(reportFileName);
-            FileStream tmpFs = File.Open(reportFileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            IWorkbook workbook = new XSSFWorkbook(tmpFs);
-            tmpFs.Close();
-            ISheet tmpSheet = workbook.GetSheetAt(0);
+            //FileStream tmpFs = File.Open(reportFileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            // docReport = new XWPFDocument(tmpFs);
+            using (FileStream tmpFs = new FileStream(reportFileName, FileMode.Open, FileAccess.Read))
+            {
+                // 创建一个XWPFDocument实例，用于读取Word文档
+                XWPFDocument docReport = new XWPFDocument(tmpFs);
+                tmpFs.Close();
 
-            ICell tmpCell = tmpSheet.GetRow(4).GetCell(1);
-            tmpCell.SetCellType(CellType.String);
-            tmpCell.SetCellValue(doTest.sampleCode);
+                // 读取文档中的段落内容
+                int index = 0;
 
-            tmpCell = tmpSheet.GetRow(4).GetCell(3);
-            tmpCell.SetCellType(CellType.String);
-            tmpCell.SetCellValue(doTest.sampleTime.ToString("yyyy-MM-dd hh:mm:ss"));
+                foreach (IBodyElement element in docReport.BodyElements)
+                {
+                    if (element is XWPFTable table)
+                    {
+                        XWPFTableRow row = table.GetRow(0); // 获取第一行
+                        XWPFTableCell cell = row.GetCell(1);  //获取第1行第一列
+                        if (cell != null)
+                        {
+                            
+                            cell.Paragraphs.ElementAt(0).ReplaceText(cell.Paragraphs.ElementAt(0).Text, doTest.sampleCode);
+                        
+                        }
 
-            tmpCell = tmpSheet.GetRow(4).GetCell(5);
-            tmpCell.SetCellType(CellType.String);
-            tmpCell.SetCellValue(doTest.sampleNo);
+                         cell = row.GetCell(3);  //获取第1行第一列
+                        if (cell != null)
+                        {
+                            //cell.RemoveParagraph(0); // 移除原有的段落（如果有的话）
+                            //XWPFParagraph p = cell.AddParagraph(); // 添加一个新的段落
+                            //XWPFRun run = p.CreateRun(); // 在段落中创建文本运行
+                            //run.SetText(doTest.sampleNo); // 设置新的内容
+                            cell.Paragraphs.ElementAt(0).ReplaceText(cell.Paragraphs.ElementAt(0).Text, doTest.sampleNo);
+                        }
 
-            tmpCell = tmpSheet.GetRow(4).GetCell(7);
-            tmpCell.SetCellType(CellType.String);
-            tmpCell.SetCellValue(doTest.sampleShape);
+                        
+                        cell = row.GetCell(5);  //获取第1行第一列
+                        if (cell != null)
+                        {
+                            cell.Paragraphs.ElementAt(0).ReplaceText(cell.Paragraphs.ElementAt(0).Text, doTest.sampleShape);
+                        }
 
-            tmpCell = tmpSheet.GetRow(7).GetCell(1);
-            tmpCell.SetCellType(CellType.String);
-            tmpCell.SetCellValue(doTest.sampleMaxLoad);
+                         row = table.GetRow(1); // 获取第一行
+                         cell = row.GetCell(1);  //获取第1行第一列
+                        if (cell != null)
+                        {
 
-            tmpCell = tmpSheet.GetRow(38).GetCell(2);
-            tmpCell.SetCellType(CellType.String);
-            tmpCell.SetCellValue(doTest.sampleOperator);
+                            cell.Paragraphs.ElementAt(0).ReplaceText(cell.Paragraphs.ElementAt(0).Text, $"{doTest.sampleMaxLoad}kN");
 
-            tmpCell = tmpSheet.GetRow(38).GetCell(4);
-            tmpCell.SetCellType(CellType.String);
-            tmpCell.SetCellValue(doTest.sampleChecker);
+                        }
 
-            string loadTimePic = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
-            byte[] picBytes = File.ReadAllBytes(loadTimePic);
-            tmpCell = tmpSheet.GetRow(9).GetCell(0);
-            tmpCell.SetCellType(CellType.Blank);
-            SetCellPhoto(workbook, tmpCell, picBytes);
+                        cell = row.GetCell(3);  //获取第1行第一列
+                        if (cell != null)
+                        {
 
-            FileStream fs2 = File.Open(reportFileName, FileMode.Create);
-            workbook.Write(fs2);
-            fs2.Close();
+                            cell.Paragraphs.ElementAt(0).ReplaceText(cell.Paragraphs.ElementAt(0).Text, doTest.sampleTime.ToString("yyyy-MM-dd hh:mm:ss"));
+
+                        }
+                    }
+                }
+                //foreach (var paragraph in docReport.Paragraphs)
+                //{
+                //    //MessageBox.Show(paragraph.Text,index.ToString()); // 这里只是为了演示，实际使用中可能需要更复杂的处理
+                //    //index++;                    
+                //    string paragraphContent = "";             
+                //    if (index == 1)
+                //    {
+                //        paragraphContent = $"试样编号:{doTest.sampleCode}          试样批号:{doTest.sampleNo}           试样形状:{doTest.sampleShape}";
+                //        paragraph.ReplaceText(paragraph.Text, paragraphContent);
+
+                //    }
+                //    else if (index == 2)
+                //    {
+                //        paragraphContent = $"试验日期:{doTest.sampleTime.ToLongDateString()}          最大载荷:{doTest.sampleNo}           试样形状:{doTest.sampleShape}";
+                //        paragraph.ReplaceText(paragraph.Text, paragraphContent);
+                //    }
+                //    index++;
+                //}
+
+                FileStream out1 = new FileStream(reportFileName, FileMode.Create);
+                docReport.Write(out1);
+                out1.Close();
+
+                // 如果文档中包含表格，你也可以这样读取表格内容
+                // XWPFTable table = doc.Tables[0];
+                // foreach (var row in table.Rows)
+                // {
+                //     foreach (var cell in row.GetTableCells())
+                //     {
+                //         MessageBox.Show(cell.GetText()); // 同样，这里只是为了演示
+                //     }
+                // }
+            }
+
+            //IWorkbook workbook = new XSSFWorkbook(tmpFs);
+            //tmpFs.Close();
+            //ISheet tmpSheet = workbook.GetSheetAt(0);
+
+            //ICell tmpCell = tmpSheet.GetRow(4).GetCell(1);
+            //tmpCell.SetCellType(CellType.String);
+            //tmpCell.SetCellValue(doTest.sampleCode);
+
+            //tmpCell = tmpSheet.GetRow(4).GetCell(3);
+            //tmpCell.SetCellType(CellType.String);
+            //tmpCell.SetCellValue(doTest.sampleTime.ToString("yyyy-MM-dd hh:mm:ss"));
+
+            //tmpCell = tmpSheet.GetRow(4).GetCell(5);
+            //tmpCell.SetCellType(CellType.String);
+            //tmpCell.SetCellValue(doTest.sampleNo);
+
+            //tmpCell = tmpSheet.GetRow(4).GetCell(7);
+            //tmpCell.SetCellType(CellType.String);
+            //tmpCell.SetCellValue(doTest.sampleShape);
+
+            //tmpCell = tmpSheet.GetRow(7).GetCell(1);
+            //tmpCell.SetCellType(CellType.String);
+            //tmpCell.SetCellValue(doTest.sampleMaxLoad);
+
+            //tmpCell = tmpSheet.GetRow(38).GetCell(2);
+            //tmpCell.SetCellType(CellType.String);
+            //tmpCell.SetCellValue(doTest.sampleOperator);
+
+            //tmpCell = tmpSheet.GetRow(38).GetCell(4);
+            //tmpCell.SetCellType(CellType.String);
+            //tmpCell.SetCellValue(doTest.sampleChecker);
+
+            //string loadTimePic = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
+            //byte[] picBytes = File.ReadAllBytes(loadTimePic);
+            //tmpCell = tmpSheet.GetRow(9).GetCell(0);
+            //tmpCell.SetCellType(CellType.Blank);
+            //SetCellPhoto(workbook, tmpCell, picBytes);
+
+            //FileStream fs2 = File.Open(reportFileName, FileMode.Create);
+            //workbook.Write(fs2);
+            //fs2.Close();
         }
 
         private void excel版ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MakeReportExcel();
+        }
+
+        private void word报表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MakeReportWorld();
         }
     }
 }
