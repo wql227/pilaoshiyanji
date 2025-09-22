@@ -5015,6 +5015,7 @@ namespace DoPENetConnect
                 }
                 // CleanChart();
             }
+            SaveTestPngs();
         }
 
         private void buttonX18_Click(object sender, EventArgs e)
@@ -5370,6 +5371,14 @@ namespace DoPENetConnect
             chart_machine.SaveImage(picName, ChartImageFormat.Png);
             AddTextToImage(picName, label1.Text, "宋体", 12, picName1, label2.Text);
 
+            //保存试验力位移曲线
+            ToolStripMenuItemLoardDisplace_Click(this, new EventArgs());     //切换至变形时间曲线
+            //string tampName=Path.Combine(path, "StaticData");
+            chartName = GetCurrentCurveName();
+            picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
+            chart_machine.SaveImage(picName, ChartImageFormat.Png);
+            AddTextToImage(picName, label1.Text, "宋体", 12, picName1, label2.Text);
+
             //设回曲线参数
             realtimeParams.CurrentCurveType = currentCurveType;
             CurveSet(currentXAxisTitle, currentYAxisUnit, curveName);
@@ -5582,8 +5591,8 @@ namespace DoPENetConnect
 
         private void buttonX22_Click_1(object sender, EventArgs e)
         {
-            //SaveTestPngs();
-            MakeReportExcel();
+            SaveTestPngs();
+            //MakeReportExcel();
         }
 
         public void MakeReportExcel()
