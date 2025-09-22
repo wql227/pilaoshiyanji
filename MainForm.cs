@@ -5813,83 +5813,74 @@ namespace DoPENetConnect
                             cell.Paragraphs.ElementAt(0).ReplaceText(cell.Paragraphs.ElementAt(0).Text, doTest.sampleTime.ToString("yyyy-MM-dd hh:mm:ss"));
 
                         }
+
+                        row = table.GetRow(2);
+                        cell = row.GetCell(0);
+                        string picPosTime = Path.Combine(logPath, $"位移时间{dataTimeStr}.png");
+                        FileStream imgstreamPic;
+                        XWPFRun tmpRun;
+                        if (File.Exists(picPosTime))
+                        {
+                            imgstreamPic = new FileStream(picPosTime, FileMode.Open, FileAccess.Read);
+                             tmpRun = cell.Paragraphs.ElementAt(0).CreateRun();
+                            tmpRun.AddPicture(imgstreamPic, (int)NPOI.XWPF.UserModel.PictureType.PNG, "PosTimeImg.PNG", 610 * 10000, 250 * 10000);
+                        }
+                        row = table.GetRow(3);
+                        cell = row.GetCell(0);
+                        picPosTime = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
+                        if (File.Exists(picPosTime))
+                        {
+                            imgstreamPic = new FileStream(picPosTime, FileMode.Open, FileAccess.Read);
+                            tmpRun = cell.Paragraphs.ElementAt(0).CreateRun();
+                            tmpRun.AddPicture(imgstreamPic, (int)NPOI.XWPF.UserModel.PictureType.PNG, "LoadTimeImg.PNG", 610 * 10000, 250 * 10000);
+                        }
+                        row = table.GetRow(4);
+                        cell = row.GetCell(0);
+                        picPosTime = Path.Combine(logPath, $"变形时间{dataTimeStr}.png");
+                        if (File.Exists(picPosTime))
+                        {
+                            imgstreamPic = new FileStream(picPosTime, FileMode.Open, FileAccess.Read);
+                            tmpRun = cell.Paragraphs.ElementAt(0).CreateRun();
+                            tmpRun.AddPicture(imgstreamPic, (int)NPOI.XWPF.UserModel.PictureType.PNG, "ExtenssionPosImg.PNG", 610 * 10000, 250 * 10000);
+                        }
+
+                        row = table.GetRow(5);
+                        cell = row.GetCell(0);
+                        picPosTime = Path.Combine(logPath, $"试验力位移{dataTimeStr}.png");
+                        if (File.Exists(picPosTime))
+                        {
+                            imgstreamPic = new FileStream(picPosTime, FileMode.Open, FileAccess.Read);
+                            tmpRun = cell.Paragraphs.ElementAt(0).CreateRun();
+                            tmpRun.AddPicture(imgstreamPic, (int)NPOI.XWPF.UserModel.PictureType.PNG, "LoadPosImg.PNG", 610 * 10000, 250 * 10000);
+                        }
+                        row = table.GetRow(6);
+                        cell = row.GetCell(1);  //获取第1行第一列
+                        if (cell != null)
+                        {
+
+                            cell.Paragraphs.ElementAt(0).ReplaceText(cell.Paragraphs.ElementAt(0).Text, doTest.sampleOperator);
+
+                        }
+
+                        cell = row.GetCell(3);  //获取第1行第一列
+                        if (cell != null)
+                        {
+
+                            cell.Paragraphs.ElementAt(0).ReplaceText(cell.Paragraphs.ElementAt(0).Text, doTest.sampleChecker);
+
+                        }
                     }
                 }
-                //foreach (var paragraph in docReport.Paragraphs)
-                //{
-                //    //MessageBox.Show(paragraph.Text,index.ToString()); // 这里只是为了演示，实际使用中可能需要更复杂的处理
-                //    //index++;                    
-                //    string paragraphContent = "";             
-                //    if (index == 1)
-                //    {
-                //        paragraphContent = $"试样编号:{doTest.sampleCode}          试样批号:{doTest.sampleNo}           试样形状:{doTest.sampleShape}";
-                //        paragraph.ReplaceText(paragraph.Text, paragraphContent);
-
-                //    }
-                //    else if (index == 2)
-                //    {
-                //        paragraphContent = $"试验日期:{doTest.sampleTime.ToLongDateString()}          最大载荷:{doTest.sampleNo}           试样形状:{doTest.sampleShape}";
-                //        paragraph.ReplaceText(paragraph.Text, paragraphContent);
-                //    }
-                //    index++;
-                //}
+                
 
                 FileStream out1 = new FileStream(reportFileName, FileMode.Create);
                 docReport.Write(out1);
                 out1.Close();
 
-                // 如果文档中包含表格，你也可以这样读取表格内容
-                // XWPFTable table = doc.Tables[0];
-                // foreach (var row in table.Rows)
-                // {
-                //     foreach (var cell in row.GetTableCells())
-                //     {
-                //         MessageBox.Show(cell.GetText()); // 同样，这里只是为了演示
-                //     }
-                // }
+                
             }
-
-            //IWorkbook workbook = new XSSFWorkbook(tmpFs);
-            //tmpFs.Close();
-            //ISheet tmpSheet = workbook.GetSheetAt(0);
-
-            //ICell tmpCell = tmpSheet.GetRow(4).GetCell(1);
-            //tmpCell.SetCellType(CellType.String);
-            //tmpCell.SetCellValue(doTest.sampleCode);
-
-            //tmpCell = tmpSheet.GetRow(4).GetCell(3);
-            //tmpCell.SetCellType(CellType.String);
-            //tmpCell.SetCellValue(doTest.sampleTime.ToString("yyyy-MM-dd hh:mm:ss"));
-
-            //tmpCell = tmpSheet.GetRow(4).GetCell(5);
-            //tmpCell.SetCellType(CellType.String);
-            //tmpCell.SetCellValue(doTest.sampleNo);
-
-            //tmpCell = tmpSheet.GetRow(4).GetCell(7);
-            //tmpCell.SetCellType(CellType.String);
-            //tmpCell.SetCellValue(doTest.sampleShape);
-
-            //tmpCell = tmpSheet.GetRow(7).GetCell(1);
-            //tmpCell.SetCellType(CellType.String);
-            //tmpCell.SetCellValue(doTest.sampleMaxLoad);
-
-            //tmpCell = tmpSheet.GetRow(38).GetCell(2);
-            //tmpCell.SetCellType(CellType.String);
-            //tmpCell.SetCellValue(doTest.sampleOperator);
-
-            //tmpCell = tmpSheet.GetRow(38).GetCell(4);
-            //tmpCell.SetCellType(CellType.String);
-            //tmpCell.SetCellValue(doTest.sampleChecker);
-
-            //string loadTimePic = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
-            //byte[] picBytes = File.ReadAllBytes(loadTimePic);
-            //tmpCell = tmpSheet.GetRow(9).GetCell(0);
-            //tmpCell.SetCellType(CellType.Blank);
-            //SetCellPhoto(workbook, tmpCell, picBytes);
-
-            //FileStream fs2 = File.Open(reportFileName, FileMode.Create);
-            //workbook.Write(fs2);
-            //fs2.Close();
+            
+            
         }
 
         private void excel版ToolStripMenuItem_Click(object sender, EventArgs e)
