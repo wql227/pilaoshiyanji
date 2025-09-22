@@ -5591,8 +5591,30 @@ namespace DoPENetConnect
 
         private void buttonX22_Click_1(object sender, EventArgs e)
         {
-            SaveTestPngs();
-            //MakeReportExcel();
+            string path = doTest.sampleLogPath;
+            if (path == null)
+            {
+                MessageBox.Show("路径为空，请在载入试验或者完成试验后进行该操作", "图像保存", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //保存位移时间曲线
+            OpenFolder(path);
+        }
+        /// <summary>
+        /// 打开文件夹
+        /// </summary>
+        /// <param name="folderPath"></param>
+        public static void OpenFolder(string folderPath)
+        {
+            if (Directory.Exists(folderPath)) // 确保文件夹存在
+            {
+                Process.Start("explorer.exe", folderPath);
+            }
+            else
+            {
+                Console.WriteLine("指定的文件夹不存在。");
+            }
         }
 
         public void MakeReportExcel()
@@ -5919,6 +5941,24 @@ namespace DoPENetConnect
         private void word报表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MakeReportWorld();
+        }
+
+        private void 打开试验报告ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (isRunning)
+            {
+                MessageBox.Show("试验正在运行,请等待试验结束后进行该操作！");
+                return;
+            }
+            string path = doTest.sampleLogPath;
+            if (path == null)
+            {
+                MessageBox.Show("路径为空，请在载入试验或者完成试验后进行该操作", "打开试验报告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //保存位移时间曲线
+            OpenFolder(path);
         }
     }
 }
