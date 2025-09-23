@@ -486,7 +486,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -3627,11 +3627,11 @@ namespace DoPENetConnect
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
             string idEncry = devIdEncrypted.ToString();
-            //if (idEncry != "0" && idEncry != "")
-            //{
-            //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-            //}
-            devId = new StringBuilder("02133118");
+            if (idEncry != "0" && idEncry != "")
+            {
+                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+            }
+            //devId = new StringBuilder("02133118");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -5600,7 +5600,7 @@ namespace DoPENetConnect
             }
 
             //保存位移时间曲线
-            OpenFolder(path);
+            SaveTestPngs();
         }
         /// <summary>
         /// 打开文件夹
