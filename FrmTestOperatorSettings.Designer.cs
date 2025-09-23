@@ -422,6 +422,8 @@
             this.ClientSize = new System.Drawing.Size(498, 465);
             this.Controls.Add(this.superTabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(514, 504);
+            this.MinimumSize = new System.Drawing.Size(514, 504);
             this.Name = "FrmTestOperatorSettings";
             this.Text = "试验选项";
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
