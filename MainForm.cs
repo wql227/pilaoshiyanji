@@ -1549,7 +1549,7 @@ namespace DoPENetConnect
         private void ToolStripMenuItem_Login_Click(object sender, EventArgs e)
         {
             FrmLogin frmLogin = new FrmLogin();
-            frmLogin.ShowDialog();
+            frmLogin.Show();
         }
 
 

@@ -18,5 +18,17 @@ namespace DoPENetConnect
         {
             InitializeComponent();
         }
+        private void FrmLogin_Shown(object sender, EventArgs e)
+        {
+            //Console.WriteLine("login shown");
+        }
+        
+        private void textBoxX1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                Console.WriteLine("login shown");
+            }
+        }
     }
 }
