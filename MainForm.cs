@@ -489,6 +489,63 @@ namespace DoPENetConnect
         }
 
 
+        public delegate void UpdateDataToTextBox(string str);
+
+        public event UpdateDataToTextBox updateTextBox;
+
+        public int systemCounter = 0;
+
+        //System.Timers.Timer timer;
+
+        //public delegate void SetControlValue(string value);
+
+
+        ///// <summary>
+        ///// 初始化Timer控件
+        ///// </summary>
+        //private void InitTimer()
+        //{
+        //    //设置定时间隔(毫秒为单位)
+        //    int interval = 1000;
+        //    timer = new System.Timers.Timer(interval);
+        //    //设置执行一次（false）还是一直执行(true)
+        //    timer.AutoReset = true;
+        //    //设置是否执行System.Timers.Timer.Elapsed事件
+        //    timer.Enabled = true;
+        //    //绑定Elapsed事件
+        //    timer.Elapsed += new System.Timers.ElapsedEventHandler(TimerUp);
+
+        //    timer.Start();
+        //}
+
+
+        ///// <summary>
+        ///// Timer类执行定时到点事件
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void TimerUp(object sender, System.Timers.ElapsedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        systemCounter += 1;
+        //        this.Invoke(new SetControlValue(SetTextBoxText), systemCounter.ToString());
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("定时事件失败:" + ex.Message);
+        //    }
+        //}
+
+        ///// <summary>
+        ///// 更新文本框的值
+        ///// </summary>
+        ///// <param name="strValue"></param>
+        //private void SetTextBoxText(string strValue)
+        //{
+        //    this.toolStripStatusLabel_SystemTime.Text = strValue;
+        //}
+
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
@@ -513,11 +570,23 @@ namespace DoPENetConnect
             //传递当前实例
             mainform = this;
 
-            LoadIni();
+            //updateTextBox += new UpdateDataToTextBox(UpdateData);
 
-            dStep = SampleFrequency / 1000;
+            //InitTimer();
 
-            nTotal = AxisXMax / dStep;
+        }
+
+        public void UpdateData(string str)
+        {
+            if (!this.guiPosition.InvokeRequired)
+            {
+                guiPosition.Text = str;
+            }
+            else
+            {
+                this.guiPosition.Invoke(new UpdateDataToTextBox(UpdateData), str);
+            }
+
         }
 
         ///----------------------------------------------------------------------
@@ -640,8 +709,8 @@ namespace DoPENetConnect
                 // for a 300 ms display refresh
                 DoPE.Machine Machine = new DoPE.Machine(0);
                 MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
-                //SampleFrequency = 0.1;
-                MyEdc.Eh.SetOnDataBlockSize((Int32)((SampleFrequency / 1000)/ Machine.MDef.SystemTime /*+ Machine.MDef.SystemTime / 2*/));
+                //SampleFrequency = 0.2;
+                MyEdc.Eh.SetOnDataBlockSize((Int32)((SampleFrequency / 1000)/ Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2));
                 MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
                 MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
                 MyEdc.Eh.OnPosMsgHdlr += new DoPE.OnPosMsgHdlr(OnPosMsg);
@@ -944,7 +1013,7 @@ namespace DoPENetConnect
         {
             //CSV日志
             string strCSVLog = "";
-            DoPE.OnDataBlock bbbbbbb = Block;
+            //DoPE.OnDataBlock bbbbbbb = Block;
 
             //峰谷值日志
             string strPVLog = "";
@@ -1096,21 +1165,12 @@ namespace DoPENetConnect
                             //PVPositionQueue.Dequeue();
                             PVPositionQueue.Clear();
                         }
-
-                        //if (PVPositionMaxAverageList.Count > 100)
-                        //{
-                        //    PVPositionMaxAverageList.RemoveRange(0, PVPositionMaxAverageList.Count / 2);
-                        //}
-
-                        //if (PVPositionMinAverageList.Count > 100)
-                        //{
-                        //    PVPositionMinAverageList.RemoveRange(0, PVPositionMinAverageList.Count / 2);
-                        //}
                     }
 
                     // TODO:判断峰谷值是否超过外保护
                     double dPosition = 0;
 
+                    //刷新位移
                     if (nCount >= nCountREfresh)
                     {
                         //if (this.IsHandleCreated)
@@ -1118,9 +1178,18 @@ namespace DoPENetConnect
                             //this.BeginInvoke(new Action(() =>
                             {
                             //guiPosition.Text = text;
+                            //guiPosition.BeginInvoke(g_Position.ToString($"F{PosDigit}"), null, null);
+                            //Invalidate(guiPosition.Bounds);
+                            //Invalidate();
+
+                            //UpdateData(g_Position.ToString($"F{PosDigit}"));
                             guiPosition.Text = g_Position.ToString($"F{PosDigit}");
                             tb_MaxPos.Text = g_MaxPosition.ToString($"F{PosDigit}");
                             tb_MinPos.Text = g_MinPosition.ToString($"F{PosDigit}");
+                            Invalidate(guiPosition.Bounds);
+                            Invalidate(tb_MaxPos.Bounds);
+                            Invalidate(tb_MinPos.Bounds);
+
                         }
                             //));
                         //}
@@ -1217,17 +1286,6 @@ namespace DoPENetConnect
                             }
                         }
 
-                        //if (LoadUnit.ToUpper() == "KN")
-                        //{
-                        //    g_MaxLoad = PVLoadQueue.Max() / 1000;
-                        //    g_MinLoad = PVLoadQueue.Min() / 1000;
-                        //}
-                        //else
-                        //{
-                        //    g_MaxLoad = PVLoadQueue.Max();
-                        //    g_MinLoad = PVLoadQueue.Min();
-                        //}
-
                         if (bActivated && isRunning)
                         {
                             #region 判断试验力峰谷值
@@ -1314,19 +1372,9 @@ namespace DoPENetConnect
                             //PVLoadQueue.Dequeue();
                             PVLoadQueue.Clear();
                         }
-
-                        //if (PVLoadMaxAverageList.Count > 100)
-                        //{
-                        //    //PVLoadMaxAverageList.Clear();
-                        //    PVLoadMaxAverageList.RemoveRange(0, PVLoadMaxAverageList.Count / 2);
-                        //}
-
-                        //if (PVLoadMinAverageList.Count > 100)
-                        //{
-                        //    PVLoadMinAverageList.RemoveRange(0, PVLoadMinAverageList.Count / 2);
-                        //}
                     }
 
+                    //刷新试验力
                     if (nCount >= nCountREfresh)
                     {
                         //if (this.IsHandleCreated)
@@ -1345,6 +1393,10 @@ namespace DoPENetConnect
 
                             tb_MaxLoad.Text = g_MaxLoad.ToString($"F{LoadDigit}");
                             tb_MinLoad.Text = g_MinLoad.ToString($"F{LoadDigit}");
+
+                            Invalidate(guiLoad.Bounds);
+                            Invalidate(tb_MaxLoad.Bounds);
+                            Invalidate(tb_MinLoad.Bounds);
                             //}
                             //));
                         }
@@ -1507,12 +1559,19 @@ namespace DoPENetConnect
                         }
                     }
 
+                    //刷新变形
                     if (nCount >= nCountREfresh)
                     {
                         guiExtension.Text = g_Extension.ToString($"F{ExtDigit}");
 
                         tb_MaxExt.Text = g_MaxExtension.ToString($"F{ExtDigit}");
                         tb_MinExt.Text = g_MinExtension.ToString($"F{ExtDigit}");
+
+                        Invalidate(guiExtension.Bounds);
+                        Invalidate(tb_MaxExt.Bounds);
+                        Invalidate(tb_MinExt.Bounds);
+
+                        Update();
                     }
 
                     //记录命令
@@ -1560,7 +1619,6 @@ namespace DoPENetConnect
                                 LastRecordedHalfCycle = currentHalfCycle;
                             }
                         }
-
                     }
 
                     if (!isRunning)
@@ -1609,12 +1667,12 @@ namespace DoPENetConnect
                 //波形图
                 if (bConnected && bActivated)
                 {
-                     Task.Run(() =>
-                    {
-                        // 数据处理逻辑放在这里...
-                        //ShowWave(bbbbbbb);
+                    //Task.Run(() =>
+                    //{
+                    // 数据处理逻辑放在这里...
+                    ShowWave(Block);
 
-                    });
+                    //});
                 }
 
                 if (nCount >= nCountREfresh)
@@ -1832,9 +1890,20 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
+            LoadIni();
+
             LoadLanguage();
 
             ReplaceLanguage();
+
+            //计算每秒步长
+            dStep = SampleFrequency / 1000;
+
+            //采样频率
+            //SampleFrequency = SampleFrequency / 1000;
+
+            //总步长
+            nTotal = AxisXMax / dStep;
 
             this.DoubleBuffered = true;//设置本窗体
             SetStyle(ControlStyles.UserPaint, true);
@@ -1842,14 +1911,8 @@ namespace DoPENetConnect
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
 
             timer_UpdateData.Interval = (int)DataRefreshFrequency;
-            //timer_ShowWave.Interval = 200;
 
             btn_ConState.BackColor = Color.Red;
-
-            //取消平滑
-            //chart_DrawGraph.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-
-            //lightningChart1.ColorTheme = ColorTheme.SkyBlue;
 
             //初始化chart控件
             chart_machine.Series[0].Points.Clear();
@@ -1863,32 +1926,7 @@ namespace DoPENetConnect
             //x_Load = 0.0;
             chart_machine.Series[1].Points.AddXY(0.0, 0.0);
 
-
-
-            //// 获取或创建 ChartArea
-            //ChartArea chartArea = chart_machine.ChartAreas[0];
-
-            //// 设置主 Y 轴（左边）
-            //chartArea.AxisY.Title = "Position";
-
-            //// 添加副 Y 轴（右边）
-            //chartArea.AxisY2.Enabled = AxisEnabled.True;
-            //chartArea.AxisY2.Title = "Load";
-            //chartArea.AxisY2.LabelStyle.Enabled = true;
-
-            //// 为 Series[0] 设置使用主 Y 轴（AxisY）
-            //chart_machine.Series[0].YAxisType = AxisType.Primary;
-
-            //// 为 Series[1] 设置使用副 Y 轴（AxisY2）
-            //chart_machine.Series[1].YAxisType = AxisType.Secondary;
-
-            //// 可选：设置样式以区分两个系列
-            //chart_machine.Series[0].Color = Color.Blue;
-            //chart_machine.Series[1].Color = Color.Red;
-
             axTChart1.Axis.Bottom.Minimum = 0;
-            //chart_machine.ChartAreas[0].AxisX.Minimum = 0;
-            //chart_machine.ChartAreas[0].AxisX.Maximum = 5;
 
             this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
 
@@ -1904,13 +1942,16 @@ namespace DoPENetConnect
             }
 
             //设置时间轴
-            axTChart1.Axis.Bottom.SetMinMax(0, 5);
+            axTChart1.Axis.Bottom.SetMinMax(0, AxisXMax);
 
             //设置左侧试验力轴
             axTChart1.Axis.Left.SetMinMax(-20, 20);
 
             //设置右侧位移轴
             axTChart1.Axis.Right.SetMinMax(-20, 20);
+
+            axTChart1.Series(0).Color = (uint)Color.Blue.ToArgb();
+            axTChart1.Series(1).Color = (uint)Color.Red.ToArgb();
 
             //测试数据
             //for (int i = 0; i < 100; i++)
@@ -2677,9 +2718,15 @@ namespace DoPENetConnect
                                 //chartCommandY.Add(y_Command);
                                 try
                                 {
-                                    axTChart1.Series(0).AddXY(x_Data, y_Position, "", 0);   // Position
-                                    axTChart1.Series(1).AddXY(x_Data, y_Load, "", 0);   // Load
+                                    //axTChart1.AutoRepaint = false;
+                                    //if (chartX.Count % (500/*DataRefreshFrequency / SampleFrequency*/) == 0)
+                                    {
+                                        axTChart1.Series(0).AddXY(x_Data, y_Position, "", 0);  // Position
+                                        axTChart1.Series(1).AddXY(x_Data, y_Load, "", 0);   // Load
+                                        //axTChart1.AutoRepaint = true; 
+                                    }
 
+                                    #region Chart 原始控件
                                     ////每多少个点绘制一次
                                     ////double aaa = DataRefreshFrequency / SampleFrequency;
                                     //if (chartX.Count % (DataRefreshFrequency / SampleFrequency) == 0)
@@ -2734,8 +2781,10 @@ namespace DoPENetConnect
                                     //    chartX.Clear();
                                     //    chartCommandY.Clear();
                                     //}
+                                    #endregion Chart原始控件
 
-                                    if (axTChart1.Series(0).Count >= nTotal)
+
+                                    if (chartX.Count >= nTotal)
                                     {
                                         axTChart1.Series(0).Clear();
                                         axTChart1.Series(1).Clear();
@@ -2743,12 +2792,13 @@ namespace DoPENetConnect
                                         //axTChart1.Series(3).Delete(0);
                                         x_Data = 0.0;
 
+                                        chartX.Clear();
                                     }
                                 }
                                 finally
                                 {
                                     // 恢复重绘
-                                    chart_machine.ResumeLayout();
+                                    //chart_machine.ResumeLayout();
                                 }
                             }
                             //));
@@ -2894,7 +2944,8 @@ namespace DoPENetConnect
         {
             this.toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            Invalidate();
+            Invalidate(toolStripStatusLabel_SystemTime.Bounds);
+            Invalidate(guiTime.Bounds);
 
             if (!bConnected)
             {
@@ -2905,6 +2956,8 @@ namespace DoPENetConnect
             guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
 
             //EnableButton();
+            Update();
+
         }
 
         public void SetMemberParam()
@@ -3154,16 +3207,15 @@ namespace DoPENetConnect
             {
                 startStopDrawToolStripMenuItem.Text = GetValueFromLanguageFile("startStopDrawToolStripMenuItemPause");
 
-                //axTChart1.BeginUpdate();
+                axTChart1.AutoRepaint = false;
+                axTChart1.Refresh(); // 如果有需要，强制一次重绘
             }
             else
             {
                 startStopDrawToolStripMenuItem.Text = GetValueFromLanguageFile("startStopDrawToolStripMenuItem");
+                axTChart1.AutoRepaint = true;
             }
-
-            //chart_machine.Enabled = false;
-
-            axTChart1.Series(0).Clear();
+  
         }
 
 
@@ -3519,6 +3571,8 @@ namespace DoPENetConnect
             {
                 devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             }
+
+            string aaa = DESEncrypt.Encrypt("02132F05");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -4395,8 +4449,8 @@ namespace DoPENetConnect
               !double.TryParse(tb_MinPos.Text, out double minPos))
             {
                 // 解析失败，使用默认范围或不处理
-                axTChart1.Axis.Left.Minimum = -0.1;
                 axTChart1.Axis.Left.Maximum = 0.1;
+                axTChart1.Axis.Left.Minimum = -0.1;
                 axTChart1.Axis.Left.Labels.ValueFormat = "##0.###";
                 return;
             }
@@ -4404,8 +4458,8 @@ namespace DoPENetConnect
             // 处理绝对值过小的情况（接近0）
             if (Math.Abs(maxPos) <= 0.01 && Math.Abs(minPos) <= 0.01)
             {
-                axTChart1.Axis.Left.Minimum = 0.1;
-                axTChart1.Axis.Left.Maximum = -0.1;
+                axTChart1.Axis.Left.Maximum = 0.1;
+                axTChart1.Axis.Left.Minimum = -0.1;
                 //chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
                 //chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
             }
