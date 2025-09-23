@@ -353,9 +353,9 @@
             this.groupPanel1.Controls.Add(this.checkBoxX6);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel1.Location = new System.Drawing.Point(23, 257);
+            this.groupPanel1.Location = new System.Drawing.Point(15, 422);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(455, 148);
+            this.groupPanel1.Size = new System.Drawing.Size(455, 86);
             // 
             // 
             // 
@@ -386,6 +386,7 @@
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 5;
             this.groupPanel1.Text = "试样断裂后";
+            this.groupPanel1.Visible = false;
             // 
             // checkBoxX5
             // 
@@ -394,7 +395,7 @@
             // 
             // 
             this.checkBoxX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX5.Location = new System.Drawing.Point(14, 61);
+            this.checkBoxX5.Location = new System.Drawing.Point(213, 25);
             this.checkBoxX5.Name = "checkBoxX5";
             this.checkBoxX5.Size = new System.Drawing.Size(94, 23);
             this.checkBoxX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
