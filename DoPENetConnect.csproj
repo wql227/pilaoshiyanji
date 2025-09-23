@@ -189,6 +189,12 @@
     <Compile Include="FrmSystemSetting.Designer.cs">
       <DependentUpon>FrmSystemSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTestOperatorSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTestOperatorSettings.Designer.cs">
+      <DependentUpon>FrmTestOperatorSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Impl\ProtectOption.cs" />
     <Compile Include="Util\DESEncrypt.cs" />
     <Compile Include="Util\ExcelHelper.cs" />
@@ -275,6 +281,9 @@
     <EmbeddedResource Include="FrmSystemSetting.resx">
       <DependentUpon>FrmSystemSetting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmTestOperatorSettings.resx">
+      <DependentUpon>FrmTestOperatorSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -325,7 +334,7 @@
   <ItemGroup />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Deploy="1" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Configuration="" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="1" />
+      <UserProperties Reactor_Enabled="1" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Deploy="1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

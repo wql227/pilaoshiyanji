@@ -5567,7 +5567,8 @@ namespace DoPENetConnect
 
         private void 试验操作选项ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FrmTestOperatorSettings testParamsSetting = new FrmTestOperatorSettings();
+            testParamsSetting.Show();
         }
     }
 }
