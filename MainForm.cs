@@ -5699,38 +5699,38 @@ namespace DoPENetConnect
             tmpCell.SetCellType(CellType.String);
             tmpCell.SetCellValue(doTest.sampleMaxLoad);
 
-            tmpCell = tmpSheet.GetRow(113).GetCell(3);
+            tmpCell = tmpSheet.GetRow(36).GetCell(3);
             tmpCell.SetCellType(CellType.String);
             tmpCell.SetCellValue(doTest.sampleOperator);
 
-            tmpCell = tmpSheet.GetRow(113).GetCell(5);
+            tmpCell = tmpSheet.GetRow(36).GetCell(5);
             tmpCell.SetCellType(CellType.String);
             tmpCell.SetCellValue(doTest.sampleChecker);
 
 
-            string posTimePic = Path.Combine(logPath, $"位移时间{dataTimeStr}.png");
+            string posTimePic = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
             byte[] picBytes = File.ReadAllBytes(posTimePic);
             tmpCell = tmpSheet.GetRow(9).GetCell(0);
             tmpCell.SetCellType(CellType.Blank);
             SetCellPhoto(workbook, tmpCell, picBytes);
 
-            string loadTimePic = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
-            byte[]  picBytes1 = File.ReadAllBytes(loadTimePic);
-            tmpCell = tmpSheet.GetRow(35).GetCell(0);
-            tmpCell.SetCellType(CellType.Blank);
-            SetCellPhoto(workbook, tmpCell, picBytes1);
+            //string loadTimePic = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
+            //byte[]  picBytes1 = File.ReadAllBytes(loadTimePic);
+            //tmpCell = tmpSheet.GetRow(35).GetCell(0);
+            //tmpCell.SetCellType(CellType.Blank);
+            //SetCellPhoto(workbook, tmpCell, picBytes1);
 
-            string ExtTimePic = Path.Combine(logPath, $"变形时间{dataTimeStr}.png");
-            byte[] picBytes2 = File.ReadAllBytes(ExtTimePic);
-            tmpCell = tmpSheet.GetRow(60).GetCell(0);
-            tmpCell.SetCellType(CellType.Blank);
-            SetCellPhoto(workbook, tmpCell, picBytes2);
+            //string ExtTimePic = Path.Combine(logPath, $"变形时间{dataTimeStr}.png");
+            //byte[] picBytes2 = File.ReadAllBytes(ExtTimePic);
+            //tmpCell = tmpSheet.GetRow(60).GetCell(0);
+            //tmpCell.SetCellType(CellType.Blank);
+            //SetCellPhoto(workbook, tmpCell, picBytes2);
 
-            string loadPosPic = Path.Combine(logPath, $"试验力位移{dataTimeStr}.png");
-            byte[] picBytes3 = File.ReadAllBytes(loadPosPic);
-            tmpCell = tmpSheet.GetRow(86).GetCell(0);
-            tmpCell.SetCellType(CellType.Blank);
-            SetCellPhoto(workbook, tmpCell, picBytes3);
+            //string loadPosPic = Path.Combine(logPath, $"试验力位移{dataTimeStr}.png");
+            //byte[] picBytes3 = File.ReadAllBytes(loadPosPic);
+            //tmpCell = tmpSheet.GetRow(86).GetCell(0);
+            //tmpCell.SetCellType(CellType.Blank);
+            //SetCellPhoto(workbook, tmpCell, picBytes3);
 
             FileStream fs2 = File.Open(reportFileName, FileMode.Create);
             workbook.Write(fs2);
