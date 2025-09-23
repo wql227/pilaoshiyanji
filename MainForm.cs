@@ -5623,7 +5623,7 @@ namespace DoPENetConnect
             if (dataGridViewX2.RowCount == 0|| DtaGridViewIsSelectedEmpty())
             {
 
-                MessageBox.Show("试验列表为空请先打开数据文件");
+                MessageBox.Show("试验列表为空,请先打开一组试验数据文件");
                 return;
 
             }
@@ -5766,7 +5766,7 @@ namespace DoPENetConnect
             if (dataGridViewX2.RowCount == 0 || DtaGridViewIsSelectedEmpty())
             {
 
-                MessageBox.Show("试验列表为空请先打开数据文件");
+                MessageBox.Show("试验列表为空,请先打开一组试验数据文件");
                 return;
 
             }
@@ -5879,7 +5879,7 @@ namespace DoPENetConnect
 
                         row = table.GetRow(2);
                         cell = row.GetCell(0);
-                        string picPosTime = Path.Combine(logPath, $"位移时间{dataTimeStr}.png");
+                        string picPosTime = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
                         FileStream imgstreamPic;
                         XWPFRun tmpRun;
                         if (File.Exists(picPosTime))
@@ -5888,35 +5888,36 @@ namespace DoPENetConnect
                              tmpRun = cell.Paragraphs.ElementAt(0).CreateRun();
                             tmpRun.AddPicture(imgstreamPic, (int)NPOI.XWPF.UserModel.PictureType.PNG, "PosTimeImg.PNG", 610 * 10000, 250 * 10000);
                         }
-                        row = table.GetRow(3);
-                        cell = row.GetCell(0);
-                        picPosTime = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
-                        if (File.Exists(picPosTime))
-                        {
-                            imgstreamPic = new FileStream(picPosTime, FileMode.Open, FileAccess.Read);
-                            tmpRun = cell.Paragraphs.ElementAt(0).CreateRun();
-                            tmpRun.AddPicture(imgstreamPic, (int)NPOI.XWPF.UserModel.PictureType.PNG, "LoadTimeImg.PNG", 610 * 10000, 250 * 10000);
-                        }
-                        row = table.GetRow(4);
-                        cell = row.GetCell(0);
-                        picPosTime = Path.Combine(logPath, $"变形时间{dataTimeStr}.png");
-                        if (File.Exists(picPosTime))
-                        {
-                            imgstreamPic = new FileStream(picPosTime, FileMode.Open, FileAccess.Read);
-                            tmpRun = cell.Paragraphs.ElementAt(0).CreateRun();
-                            tmpRun.AddPicture(imgstreamPic, (int)NPOI.XWPF.UserModel.PictureType.PNG, "ExtenssionPosImg.PNG", 610 * 10000, 250 * 10000);
-                        }
+                        //row = table.GetRow(3);
+                        //cell = row.GetCell(0);
+                        //picPosTime = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
+                        //if (File.Exists(picPosTime))
+                        //{
+                        //    imgstreamPic = new FileStream(picPosTime, FileMode.Open, FileAccess.Read);
+                        //    tmpRun = cell.Paragraphs.ElementAt(0).CreateRun();
+                        //    tmpRun.AddPicture(imgstreamPic, (int)NPOI.XWPF.UserModel.PictureType.PNG, "LoadTimeImg.PNG", 610 * 10000, 250 * 10000);
+                        //}
+                        //row = table.GetRow(4);
+                        //cell = row.GetCell(0);
+                        //picPosTime = Path.Combine(logPath, $"变形时间{dataTimeStr}.png");
+                        //if (File.Exists(picPosTime))
+                        //{
+                        //    imgstreamPic = new FileStream(picPosTime, FileMode.Open, FileAccess.Read);
+                        //    tmpRun = cell.Paragraphs.ElementAt(0).CreateRun();
+                        //    tmpRun.AddPicture(imgstreamPic, (int)NPOI.XWPF.UserModel.PictureType.PNG, "ExtenssionPosImg.PNG", 610 * 10000, 250 * 10000);
+                        //}
 
-                        row = table.GetRow(5);
-                        cell = row.GetCell(0);
-                        picPosTime = Path.Combine(logPath, $"试验力位移{dataTimeStr}.png");
-                        if (File.Exists(picPosTime))
-                        {
-                            imgstreamPic = new FileStream(picPosTime, FileMode.Open, FileAccess.Read);
-                            tmpRun = cell.Paragraphs.ElementAt(0).CreateRun();
-                            tmpRun.AddPicture(imgstreamPic, (int)NPOI.XWPF.UserModel.PictureType.PNG, "LoadPosImg.PNG", 610 * 10000, 250 * 10000);
-                        }
-                        row = table.GetRow(6);
+                        //row = table.GetRow(5);
+                        //cell = row.GetCell(0);
+                        //picPosTime = Path.Combine(logPath, $"试验力位移{dataTimeStr}.png");
+                        //if (File.Exists(picPosTime))
+                        //{
+                        //    imgstreamPic = new FileStream(picPosTime, FileMode.Open, FileAccess.Read);
+                        //    tmpRun = cell.Paragraphs.ElementAt(0).CreateRun();
+                        //    tmpRun.AddPicture(imgstreamPic, (int)NPOI.XWPF.UserModel.PictureType.PNG, "LoadPosImg.PNG", 610 * 10000, 250 * 10000);
+                        //}
+
+                        row = table.GetRow(3);
                         cell = row.GetCell(1);  //获取第1行第一列
                         if (cell != null)
                         {
