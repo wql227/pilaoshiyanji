@@ -375,7 +375,7 @@
             this.groupPanel11.Controls.Add(this.label47);
             this.groupPanel11.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel11.Location = new System.Drawing.Point(15, 218);
+            this.groupPanel11.Location = new System.Drawing.Point(15, 361);
             this.groupPanel11.Name = "groupPanel11";
             this.groupPanel11.Size = new System.Drawing.Size(455, 87);
             // 
@@ -3091,7 +3091,7 @@
             this.comboBoxEx1.Items.AddRange(new object[] {
             this.comboItem32,
             this.comboItem33});
-            this.comboBoxEx1.Location = new System.Drawing.Point(219, 85);
+            this.comboBoxEx1.Location = new System.Drawing.Point(220, 85);
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(105, 27);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -3108,7 +3108,7 @@
             // numericUpDown8
             // 
             this.numericUpDown8.AutoSize = true;
-            this.numericUpDown8.Location = new System.Drawing.Point(127, 85);
+            this.numericUpDown8.Location = new System.Drawing.Point(128, 85);
             this.numericUpDown8.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -3130,7 +3130,7 @@
             // 
             // 
             this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(14, 87);
+            this.checkBoxX1.Location = new System.Drawing.Point(15, 87);
             this.checkBoxX1.Name = "checkBoxX1";
             this.checkBoxX1.Size = new System.Drawing.Size(110, 23);
             this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -3142,7 +3142,7 @@
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
-            this.label58.Location = new System.Drawing.Point(194, 90);
+            this.label58.Location = new System.Drawing.Point(195, 90);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(24, 16);
             this.label58.TabIndex = 8;
