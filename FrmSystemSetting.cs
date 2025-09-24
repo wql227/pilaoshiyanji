@@ -389,11 +389,20 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Flag", "0", strTmp, strTmp.Capacity);
             checkBoxX4.Checked = strTmp.ToString() == "0" ? false : true;
 
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_ForceLower", "0", strTmp, strTmp.Capacity);
+            numericUpDown8.Value = decimal.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForceLower_Flag", "0", strTmp, strTmp.Capacity);
+            checkBoxX1.Checked = strTmp.ToString() == "0" ? false : true;
+
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadPercent_Action", "0", strTmp, strTmp.Capacity);
             comboBoxEx2.SelectedIndex = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Action", "0", strTmp, strTmp.Capacity);
             comboBoxEx3.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForceLower_Action", "0", strTmp, strTmp.Capacity);
+            comboBoxEx1.SelectedIndex = int.Parse(strTmp.ToString());
 
 
 
@@ -653,7 +662,7 @@ namespace DoPENetConnect
 
             strTmp = numericUpDown2.Value.ToString();
             MainForm.mainform.protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp);
-            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Force", strTmp);
+            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Force", strTmp);    
 
             if (comboBoxEx3.Text == "")
             {
@@ -667,6 +676,25 @@ namespace DoPENetConnect
                 IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadForce_Action", strTmp);
             }
 
+            strTmp = checkBoxX1.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_OverLoadForceLower_Flag = checkBoxX1.Checked;
+            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadForceLower_Flag", strTmp);
+
+            strTmp = numericUpDown8.Value.ToString();
+            MainForm.mainform.protectOption.ProtectOption_OverLoadForceLower = double.Parse(strTmp);
+            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadLower_Force", strTmp);
+
+            if (comboBoxEx1.Text == "")
+            {
+
+            }
+            else
+            {
+                //Console.WriteLine("glm-test{0}", comboBoxEx2.SelectedIndex);
+                strTmp = comboBoxEx1.SelectedIndex.ToString();
+                MainForm.mainform.protectOption.ProtectOption_OverLoadForceLower_action = comboBoxEx1.SelectedIndex;
+                IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadForceLower_Action", strTmp);
+            }
             if (tbX_DeviceID.Text != "")
             {
                 strTmp = DESEncrypt.Encrypt(tbX_DeviceID.Text);

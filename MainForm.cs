@@ -3760,11 +3760,20 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_Force", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp.ToString());
 
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForceLower_Flag", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadForceLower_Flag = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_ForceLower", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadForceLower = double.Parse(strTmp.ToString());
+
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadPercent_Action", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_OverLoadPercent_action = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Action", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_OverLoadForce_action = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForceLower_Action", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadForceLower_action = int.Parse(strTmp.ToString());
 
             #endregion 系统保护
 
@@ -5434,6 +5443,8 @@ namespace DoPENetConnect
                 MyEdc.Check.SetCheck(CHK_ID.ID0, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadPercent, CHK_MODE.PERCENT_MIN, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
             if(protectOption.ProtectOption_OverLoadForce_Flag)
                 MyEdc.Check.SetCheck(CHK_ID.ID1, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadForce*1000, CHK_MODE.ABOVE, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
+            if (protectOption.ProtectOption_OverLoadForceLower_Flag)
+                MyEdc.Check.SetCheck(CHK_ID.ID1, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadForceLower * 1000, CHK_MODE.BELOW, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
         }
 
         private void timerDataClean_Tick(object sender, EventArgs e)

@@ -171,6 +171,20 @@ namespace DoPENetConnect
         /// </summary>
         public double ProtectOption_OverLoadForce = 0.0;
 
+        /// <summary>
+        /// 试验力以数值设定保护范围生效 - 低于该值的动作
+        /// </summary>
+        public bool ProtectOption_OverLoadForceLower_Flag = false;
+
+        /// <summary>
+        /// 实验力以数值设定保护范围   低于该值的动作
+        /// </summary>
+        public double ProtectOption_OverLoadForceLower = 0.0;
+
+        /// <summary>
+        /// 试验力超过限制后的动作 0：停止试验 ；1：自动停机
+        /// </summary>
+        public int ProtectOption_OverLoadForceLower_action = 0;
 
         #endregion 系统保护
 
