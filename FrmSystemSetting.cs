@@ -18,14 +18,13 @@ namespace DoPENetConnect
         {
 
             InitializeComponent();
-            LoadIni();
         }
 
 
 
         private void FrmSystemSetting_Load(object sender, EventArgs e)
         {
-            //LoadIni();
+            LoadIni();
             ReplaceLanguage();
             UiAutoSize();
 
@@ -478,7 +477,7 @@ namespace DoPENetConnect
                 numericUpDown7.Value = int.Parse(strTmp.ToString());
 
                 string decimalPos = "0.0";
-                for (int i = 0; i < int.Parse(strTmp.ToString()); i++)
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
                 {
                     decimalPos = $"{decimalPos}0";
                 }
@@ -493,7 +492,7 @@ namespace DoPENetConnect
                 numericUpDown4.Value = int.Parse(strTmp.ToString());
 
                 string decimalForce = "0.0";
-                for (int i = 0; i < int.Parse(strTmp.ToString()); i++)
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
                 {
                     decimalForce = $"{decimalForce}0";
                 }
@@ -507,7 +506,7 @@ namespace DoPENetConnect
                 numericUpDown6.Value = int.Parse(strTmp.ToString());
 
                 string decimalExtenssion = "0.0";
-                for (int i = 0; i < int.Parse(strTmp.ToString()); i++)
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
                 {
                     decimalExtenssion = $"{decimalExtenssion}0";
                 }

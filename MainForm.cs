@@ -3848,6 +3848,44 @@ namespace DoPENetConnect
             else
                 UnitContent.Text = strTmp.ToString();
 
+            //小数位数
+            //位移
+            IniFileHelper.GetIniString("SoftSetting", "Pos", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0")
+            {
+                string decimalPos = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
+                {
+                    decimalPos = $"{decimalPos}0";
+                }
+                this.decimalPos = decimalPos;
+            }
+
+
+            //力
+            IniFileHelper.GetIniString("SoftSetting", "Load", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0")
+            {
+                string decimalForce = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
+                {
+                    decimalForce = $"{decimalForce}0";
+                }
+                this.decimalForce = decimalForce;
+            }
+
+            //Extenssion
+            IniFileHelper.GetIniString("SoftSetting", "Extenssion", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0")
+            {
+                string decimalExtenssion = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
+                {
+                    decimalExtenssion = $"{decimalExtenssion}0";
+                }
+                this.decimalExtenssion = decimalExtenssion;
+            }
+
         }
 
         private void ToolStripMenuItem_SystemSetting_Click(object sender, EventArgs e)
