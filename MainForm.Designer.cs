@@ -4082,50 +4082,50 @@
             this.toolStripSeparator10,
             this.变形时间曲线ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 148);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 126);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem1.Text = "试验力—时间曲线";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // ToolStripMenuItemLoardDisplace
             // 
             this.ToolStripMenuItemLoardDisplace.Name = "ToolStripMenuItemLoardDisplace";
-            this.ToolStripMenuItemLoardDisplace.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemLoardDisplace.Size = new System.Drawing.Size(173, 22);
             this.ToolStripMenuItemLoardDisplace.Text = "试验力—位移曲线";
             this.ToolStripMenuItemLoardDisplace.Click += new System.EventHandler(this.ToolStripMenuItemLoardDisplace_Click);
             // 
             // toolStripMenuItemLoardExtenssion
             // 
             this.toolStripMenuItemLoardExtenssion.Name = "toolStripMenuItemLoardExtenssion";
-            this.toolStripMenuItemLoardExtenssion.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemLoardExtenssion.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItemLoardExtenssion.Text = "试验力—变形曲线";
             this.toolStripMenuItemLoardExtenssion.Click += new System.EventHandler(this.toolStripMenuItemLoardExtenssion_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(170, 6);
             // 
             // 位移ToolStripMenuItem
             // 
             this.位移ToolStripMenuItem.Name = "位移ToolStripMenuItem";
-            this.位移ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.位移ToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.位移ToolStripMenuItem.Text = "位移—时间曲线";
             this.位移ToolStripMenuItem.Click += new System.EventHandler(this.位移ToolStripMenuItem_Click);
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(170, 6);
             // 
             // 变形时间曲线ToolStripMenuItem
             // 
             this.变形时间曲线ToolStripMenuItem.Name = "变形时间曲线ToolStripMenuItem";
-            this.变形时间曲线ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.变形时间曲线ToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.变形时间曲线ToolStripMenuItem.Text = "变形—时间曲线";
             this.变形时间曲线ToolStripMenuItem.Click += new System.EventHandler(this.变形时间曲线ToolStripMenuItem_Click);
             // 

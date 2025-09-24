@@ -5948,7 +5948,7 @@ namespace DoPENetConnect
 
                         row = table.GetRow(2);
                         cell = row.GetCell(0);
-                        string picPosTime = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
+                        string picPosTime = Path.Combine(logPath, GetPicName2Report(dataTimeStr));
                         FileStream imgstreamPic;
                         XWPFRun tmpRun;
                         if (File.Exists(picPosTime))
