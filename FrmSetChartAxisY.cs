@@ -287,19 +287,11 @@ namespace DoPENetConnect
             MainForm.mainform.m_AxTeechart.Axis.Left.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
             MainForm.mainform.m_AxTeechart.Axis.Left.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
 
-            //MainForm.mainform.chart_machine.ChartAreas[0].AxisY.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
-            //MainForm.mainform.chart_machine.ChartAreas[0].AxisY.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
-
             MainForm.mainform.m_AxTeechart.Axis.Right.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
             MainForm.mainform.m_AxTeechart.Axis.Right.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
 
-            //MainForm.mainform.chart_machine.ChartAreas[0].AxisY2.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
-            //MainForm.mainform.chart_machine.ChartAreas[0].AxisY2.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
-
             MainForm.mainform.m_AxTeechart.Axis.Bottom.Maximum = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
 
-
-            //MainForm.mainform.chart_machine.ChartAreas[0].AxisX.Maximum = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
             MainForm.mainform.AxisXMax = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
             MainForm.mainform.nTotal = MainForm.mainform.AxisXMax / MainForm.mainform.dStep;
 

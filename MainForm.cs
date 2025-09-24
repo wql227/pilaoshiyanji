@@ -2682,7 +2682,7 @@ namespace DoPENetConnect
                     double y_Command = 0.0d;
                     //for (int i = 20; Block.Data.Length > i; i += 200)
                     //for (int i = 5; Block.Data.Length >= i; i += 50)
-                    for (int i = 0; Block.Data.Length > i; i += (int)SampleFrequency * 5)
+                    for (int i = 0; Block.Data.Length > i; i += (int)SampleFrequency * 10/*5 / 2*/)
                     {
                         //绘制Position
                          y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
@@ -2702,27 +2702,25 @@ namespace DoPENetConnect
 
                         chartX.Add(x_Data);
 
-                        //chart_machine.SuspendLayout();
-                        //axTChart1.Draw(); // 自动触发一次重绘
-
-
                         //批量添加点
                         //if (chart_machine.Series[0] != null)
                         {
                             //this.BeginInvoke(new Action(() =>
                             {
                                 //暂停重绘提高性能
-                                //chartPosY.Add(y_Position);
-                                //chartLoadY.Add(y_Load);
+                                chartPosY.Add(y_Position);
+                                chartLoadY.Add(y_Load);
                                 //chartExtY.Add(y_Extension);
                                 //chartCommandY.Add(y_Command);
                                 try
                                 {
                                     //axTChart1.AutoRepaint = false;
-                                    //if (chartX.Count % (500/*DataRefreshFrequency / SampleFrequency*/) == 0)
+                                    if (chartX.Count % (500/*DataRefreshFrequency / SampleFrequency*/) == 0)
                                     {
-                                        axTChart1.Series(0).AddXY(x_Data, y_Position, "", 0);  // Position
-                                        axTChart1.Series(1).AddXY(x_Data, y_Load, "", 0);   // Load
+                                        //axTChart1.Series(0).AddXY(x_Data, y_Position, null, 0);  // Position
+                                        //axTChart1.Series(1).AddXY(x_Data, y_Load, "", 0);   // Load
+
+                                        axTChart1.Series(0).AddArray(chartX.Count, chartPosY.ToArray(), chartX.ToArray());
                                         //axTChart1.AutoRepaint = true; 
                                     }
 
@@ -2783,9 +2781,9 @@ namespace DoPENetConnect
                                     //}
                                     #endregion Chart原始控件
 
-
                                     if (chartX.Count >= nTotal)
                                     {
+                                        //axTChart1.AutoRepaint = false;
                                         axTChart1.Series(0).Clear();
                                         axTChart1.Series(1).Clear();
                                         //axTChart1.Series(2).Delete(0);
@@ -2793,7 +2791,13 @@ namespace DoPENetConnect
                                         x_Data = 0.0;
 
                                         chartX.Clear();
+                                        chartPosY.Clear();
+                                        chartLoadY.Clear();
+                                        //axTChart1.AutoRepaint = true;
+                                        //axTChart1.Refresh();
                                     }
+
+
                                 }
                                 finally
                                 {
@@ -2805,13 +2809,10 @@ namespace DoPENetConnect
                         }
 
                         x_Data += dStep;
-
                     }
                 }
-            
             }
             //return 1;
-
         }
 
 
@@ -2960,6 +2961,10 @@ namespace DoPENetConnect
 
         }
 
+
+        /// <summary>
+        /// 设置参数
+        /// </summary>
         public void SetMemberParam()
         {
             nCountREfresh = DataRefreshFrequency / (double)SampleFrequency;
@@ -2975,35 +2980,6 @@ namespace DoPENetConnect
                 chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(N)";
             }
         }
-
-
-        /// <summary>
-        /// Calculate Y value for random data
-        /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        //private double CalculateYValue(int i)
-        //{
-        //    // Use the latest value and generate some difference to it.
-        //    double nextY = (_previousTemperature[i] + (_rand[i].NextDouble() - 0.5)) / 1000 /** 8*/;
-
-        //    // Limit the value between 100...
-        //    if (nextY > 50)
-        //    {
-        //        nextY = 50;
-        //    }
-
-        //    // ... and 0.
-        //    if (nextY < -50)
-        //    {
-        //        nextY = -50;
-        //    }
-
-        //    // Update the latest values.
-        //    _previousTemperature[i] = nextY;
-
-        //    return nextY;
-        //}
 
 
         /// <summary>
@@ -3039,8 +3015,9 @@ namespace DoPENetConnect
             {
                 //stopwatch.Start();
             }
-
         }
+
+
         /// <summary>
         /// 设置命令曲线坐标轴
         /// </summary>
@@ -3065,6 +3042,25 @@ namespace DoPENetConnect
             }
         }
 
+
+        /// <summary>
+        /// DynCycles
+        /// </summary>
+        /// <param name="WaveForm"></param>
+        /// <param name="Modify"></param>
+        /// <param name="PeakCtrl"></param>
+        /// <param name="MoveCtrl"></param>
+        /// <param name="RelativeDestination"></param>
+        /// <param name="SpeedToStart"></param>
+        /// <param name="Offset"></param>
+        /// <param name="Amplitude"></param>
+        /// <param name="HaltAtPlusAmplitude"></param>
+        /// <param name="HaltAtMinusAmplitude"></param>
+        /// <param name="Frequency"></param>
+        /// <param name="HalfCycles"></param>
+        /// <param name="SpeedToDestination"></param>
+        /// <param name="Destination"></param>
+        /// <param name="SweepFrequencyMode"></param>
         public void MoveDynCycles(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl, 
             bool RelativeDestination, double SpeedToStart, double Offset, double Amplitude, double HaltAtPlusAmplitude, double HaltAtMinusAmplitude, 
             double Frequency, int HalfCycles, double SpeedToDestination, double Destination, DoPE.DYN_SWEEP SweepFrequencyMode)
@@ -3299,11 +3295,8 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void cb_TareLoad_CheckedChanged(object sender, EventArgs e)
         {
-            if (isRunning)
-            {
-                return;
-            }
-            else
+            //运行时禁止修改
+            if (!isRunning)
             {
                 if (cb_TareLoad.Checked)
                 {
@@ -3314,6 +3307,7 @@ namespace DoPENetConnect
                     MyEdc.Tare.Tare(DoPE.SENSOR.SENSOR_F, false);
                 }
             }
+
         }
 
 
@@ -3324,11 +3318,8 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void cb_TareExt_CheckedChanged(object sender, EventArgs e)
         {
-            if (isRunning)
-            {
-                return;
-            }
-            else
+            //运行时禁止修改
+            if (!isRunning)
             {
                 if (cb_TareExt.Checked)
                 {
@@ -3342,6 +3333,9 @@ namespace DoPENetConnect
         }
 
 
+        /// <summary>
+        /// 获取X轴缩放
+        /// </summary>
         public void GetXaxisScale()
         {
             if (chart_machine != null)
@@ -3535,20 +3529,20 @@ namespace DoPENetConnect
         }
 
 
-        public void SeriesCheckChanged()
-        {
+        //public void SeriesCheckChanged()
+        //{
 
 
-        }
+        //}
 
 
 
         //运行时才能决定是否执行内联
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public ushort setUInt16(float src, ushort k = 1)
-        {
-            return (ushort)(src * k);
-        }
+        //[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        //public ushort setUInt16(float src, ushort k = 1)
+        //{
+        //    return (ushort)(src * k);
+        //}
 
 
         /// <summary>
@@ -3742,6 +3736,12 @@ namespace DoPENetConnect
 
         }
 
+
+        /// <summary>
+        /// 打开系统设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolStripMenuItem_SystemSetting_Click(object sender, EventArgs e)
         {
             FrmSystemSetting frmSystemSetting = new FrmSystemSetting();
@@ -3749,6 +3749,14 @@ namespace DoPENetConnect
         }
 
 
+        /// <summary>
+        /// 创建多个Y轴
+        /// </summary>
+        /// <param name="chart"></param>
+        /// <param name="area"></param>
+        /// <param name="series"></param>
+        /// <param name="axisOffset"></param>
+        /// <param name="labelsSize"></param>
         public void CreateYAxis_New(Chart chart, ChartArea area, Series series, float axisOffset, float labelsSize)
         {
             // Create new chart area for original series
@@ -4295,12 +4303,23 @@ namespace DoPENetConnect
         }
 
 
+        /// <summary>
+        /// 刷新设备编号
+        /// </summary>
+        /// <param name="strID"></param>
         public void RefreshDeviceID(string strID)
         {
             devId = new StringBuilder(strID);
             //Console.WriteLine("refresh_controls:{0}",strControl);
         }
 
+
+        /// <summary>
+        /// 检查Y轴大小区间是否合理
+        /// </summary>
+        /// <param name="maxAxis"></param>
+        /// <param name="minAxis"></param>
+        /// <returns></returns>
         private double CheckYAxis(double maxAxis, double minAxis)
         {
             if ((maxAxis - minAxis) <= 0)
@@ -4330,7 +4349,6 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void AdjustToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "文本文件 (*.corr)|*.corr";
 
@@ -4344,8 +4362,6 @@ namespace DoPENetConnect
                 var correctionTable = ParseStiffnessCorrection(config.GetSection("SensorCorrection"));
 
                 DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetSensorCorrection(DoPE.SENSOR.SENSOR_E, ref correctionTable);
-
-                //DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetStiffnessCorrection(ref correctionTable);
             }
             else
             {
@@ -4737,6 +4753,7 @@ namespace DoPENetConnect
             else
             {
                 MessageBox.Show("请输入一个有效的数字。");
+                return;
             }
         }
     }
