@@ -3859,6 +3859,8 @@ namespace DoPENetConnect
                     decimalPos = $"{decimalPos}0";
                 }
                 this.decimalPos = decimalPos;
+                guiPosition.Text = decimalPos;   //刚开机按照设置的小数位数来显示数值
+                tb_MaxPos.Text = decimalPos;
             }
 
 
@@ -3872,6 +3874,10 @@ namespace DoPENetConnect
                     decimalForce = $"{decimalForce}0";
                 }
                 this.decimalForce = decimalForce;
+
+                guiLoad.Text = decimalForce;   //刚开机按照设置的小数位数来显示数值
+                tb_MaxLoad.Text = decimalForce;   //刚开机按照设置的小数位数来显示数值
+
             }
 
             //Extenssion
@@ -3884,6 +3890,8 @@ namespace DoPENetConnect
                     decimalExtenssion = $"{decimalExtenssion}0";
                 }
                 this.decimalExtenssion = decimalExtenssion;
+                guiExtension.Text = decimalExtenssion; //刚开机按照设置的小数位数来显示数值
+                tb_MaxExt.Text = decimalExtenssion;  //刚开机按照设置的小数位数来显示数值
             }
 
         }
