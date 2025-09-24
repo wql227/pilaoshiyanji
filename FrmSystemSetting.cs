@@ -389,7 +389,7 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Flag", "0", strTmp, strTmp.Capacity);
             checkBoxX4.Checked = strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_ForceLower", "0", strTmp, strTmp.Capacity);
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadLower_Force", "0", strTmp, strTmp.Capacity);
             numericUpDown8.Value = decimal.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForceLower_Flag", "0", strTmp, strTmp.Capacity);

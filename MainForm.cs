@@ -1428,10 +1428,16 @@ namespace DoPENetConnect
                 MessageBox.Show($"试验力超出系统限制:{protectOption.ProtectOption_OverLoadPercent}%", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
               
             }
+            else if (myCheckMsg.CheckId == CHK_ID.ID1)
+            {
+                    MessageBox.Show($"试验力超出系统上限：{protectOption.ProtectOption_OverLoadForce}kN", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             else
             {
-                    MessageBox.Show($"试验力超出系统限制：{protectOption.ProtectOption_OverLoadForce}kN", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }  
+                    MessageBox.Show($"试验力超出系统下限：{protectOption.ProtectOption_OverLoadForceLower}kN", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+
         }
 
         private int OnRefSignalMsg(ref DoPE.OnRefSignalMsg RefSignalMsg, object Parameter)
@@ -5442,9 +5448,9 @@ namespace DoPENetConnect
             if(protectOption.ProtectOption_OverLoadPercent_Flag)
                 MyEdc.Check.SetCheck(CHK_ID.ID0, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadPercent, CHK_MODE.PERCENT_MIN, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
             if(protectOption.ProtectOption_OverLoadForce_Flag)
-                MyEdc.Check.SetCheck(CHK_ID.ID1, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadForce*1000, CHK_MODE.ABOVE, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
+                MyEdc.Check.SetCheck(CHK_ID.ID1, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadForce, CHK_MODE.ABOVE, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
             if (protectOption.ProtectOption_OverLoadForceLower_Flag)
-                MyEdc.Check.SetCheck(CHK_ID.ID1, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadForceLower * 1000, CHK_MODE.BELOW, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
+                MyEdc.Check.SetCheck(CHK_ID.ID2, DoPE.SENSOR.SENSOR_F, protectOption.ProtectOption_OverLoadForceLower, CHK_MODE.BELOW, ACTION.DRIVE_OFF, CTRL.POS, 0, 0, 0, 0, ref MyTan);
         }
 
         private void timerDataClean_Tick(object sender, EventArgs e)
