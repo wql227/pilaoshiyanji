@@ -5644,6 +5644,7 @@ namespace DoPENetConnect
             MainForm.mainform.SaveTestPath(logPath, dataTimeStr);
             string filename = Path.Combine(logPath, $"{dataTimeStr}.CSV");
             string reportFileName = Path.Combine(reportPath, $"{dataTimeStr}Report.xlsx");
+            //string reportFileName = Path.Combine(reportPath, GetReportName2Report(dataTimeStr,".xlsx"));
 
             // 创建目录（如果不存在）
             if (!Directory.Exists(reportPath))
@@ -5708,7 +5709,7 @@ namespace DoPENetConnect
             tmpCell.SetCellValue(doTest.sampleChecker);
 
 
-            string posTimePic = Path.Combine(logPath, $"试验力时间{dataTimeStr}.png");
+            string posTimePic = Path.Combine(logPath, GetPicName2Report(dataTimeStr));
             byte[] picBytes = File.ReadAllBytes(posTimePic);
             tmpCell = tmpSheet.GetRow(9).GetCell(0);
             tmpCell.SetCellType(CellType.Blank);
@@ -5735,6 +5736,74 @@ namespace DoPENetConnect
             FileStream fs2 = File.Open(reportFileName, FileMode.Create);
             workbook.Write(fs2);
             fs2.Close();            
+        }
+        /// <summary>
+        /// 生成试验报告用到的图片所对应的名称
+        /// </summary>
+        /// <param name="dataTimeStr">图片名称中的时间日期字符串</param>
+        /// <returns></returns>
+        public string GetPicName2Report(string dataTimeStr)
+        {
+            string picName=null;
+            switch (realtimeParams.CurrentCurveType)
+            {
+                case 0:     //位移时间
+                    picName = $"位移时间{dataTimeStr}.png";
+                    break;
+                case 1:     //力时间
+                    picName = $"试验力时间{dataTimeStr}.png";
+                    break;
+                case 2:     //变形时间
+                    picName = $"变形时间{dataTimeStr}.png";
+                    break;
+                case 3:     //命令
+                    break;
+                case 4:     //试验力位移
+                    picName = $"试验力位移{dataTimeStr}.png";
+                    break;
+                case 5:    //试验力变形
+                    picName = $"试验力变形{dataTimeStr}.png";
+                    break;
+                default:
+                    picName = $"试验力时间{dataTimeStr}.png";
+                    break;
+            }
+
+            return picName;
+        }
+        /// <summary>
+        /// 生成试验报告的名称
+        /// </summary>
+        /// <param name="dataTimeStr">报告名称中的时间日期字符串</param>
+        /// <returns></returns>
+        public string GetReportName2Report(string dataTimeStr,string fileType)
+        {
+            string reportName = null;
+            switch (realtimeParams.CurrentCurveType)
+            {
+                case 0:     //位移时间
+                    reportName = $"{dataTimeStr}试验力时间报告{fileType}";
+                    break;
+                case 1:     //力时间
+                    reportName = $"{dataTimeStr}试验力时间报告{fileType}";
+                    break;
+                case 2:     //变形时间
+                    reportName = $"{dataTimeStr}变形时间报告{fileType}";
+                    break;
+                case 3:     //命令
+                    break;
+                case 4:     //试验力位移
+                    reportName = $"{dataTimeStr}试验力位移报告{fileType}";
+                    break;
+                case 5:    //试验力变形
+                    reportName = $"{dataTimeStr}试验力变形报告{fileType}";
+                    break;
+                default:
+                    reportName = $"{dataTimeStr}试验力时间报告{fileType}";
+                    break;
+            }
+
+            return reportName;
         }
 
         public void SetCellPhoto(IWorkbook workbook, NPOI.SS.UserModel.ICell cell, byte[] bytes)
