@@ -502,7 +502,7 @@ namespace DoPENetConnect
                 {
                     decimalExtenssion = $"{decimalExtenssion}0";
                 }
-                MainForm.mainform.decimalForce = decimalExtenssion;
+                MainForm.mainform.decimalExtenssion = decimalExtenssion;
             }
 
         }
