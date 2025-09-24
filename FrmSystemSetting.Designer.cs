@@ -293,12 +293,12 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
             this.superTabControl1.Controls.Add(this.superTabControlPanel9);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel8);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Controls.Add(this.superTabControlPanel7);
@@ -1932,7 +1932,7 @@
             this.lbX_MaxTrip.Name = "lbX_MaxTrip";
             this.lbX_MaxTrip.Size = new System.Drawing.Size(136, 16);
             this.lbX_MaxTrip.TabIndex = 5;
-            this.lbX_MaxTrip.Text = "系统最大实验行程";
+            this.lbX_MaxTrip.Text = "系统最大试验行程";
             // 
             // comboBoxEx_MaxForce
             // 
@@ -2063,7 +2063,7 @@
             this.lbX_MaxForce.Name = "lbX_MaxForce";
             this.lbX_MaxForce.Size = new System.Drawing.Size(120, 16);
             this.lbX_MaxForce.TabIndex = 0;
-            this.lbX_MaxForce.Text = "系统最大实验力";
+            this.lbX_MaxForce.Text = "系统最大试验力";
             // 
             // superTabItem2
             // 
