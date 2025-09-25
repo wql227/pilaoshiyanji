@@ -108,6 +108,14 @@ namespace DoPENetConnect
         public long dataRecvTimes;   //试验开始后（isrunning = true) 数据接收次数
     }
     #endregion start struct
+
+    public struct UserInfo
+    {
+        public string userName;
+        public string passWd;
+        public bool isLogged;
+    }
+
     /// <summary>
     /// Demo-application for the DoPE .NET library.
     /// </summary>
@@ -389,6 +397,10 @@ namespace DoPENetConnect
         /// </summary>
         public string decimalExtenssion = "0.00";
 
+        /// <summary>
+        /// current user information
+        /// </summary>
+        public UserInfo userInfo;
 
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>

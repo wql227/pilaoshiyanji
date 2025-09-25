@@ -99,9 +99,11 @@
             this.textBoxX1.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxX1.Location = new System.Drawing.Point(170, 53);
             this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.PasswordChar = '*';
             this.textBoxX1.PreventEnterBeep = true;
             this.textBoxX1.Size = new System.Drawing.Size(121, 26);
             this.textBoxX1.TabIndex = 3;
+            this.textBoxX1.UseSystemPasswordChar = true;
             this.textBoxX1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxX1_KeyPress);
             // 
             // comboBoxEx1
@@ -217,6 +219,7 @@
             this.textBoxX3.PreventEnterBeep = true;
             this.textBoxX3.Size = new System.Drawing.Size(121, 26);
             this.textBoxX3.TabIndex = 4;
+            this.textBoxX3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxX3_KeyPress);
             // 
             // textBoxX2
             // 
