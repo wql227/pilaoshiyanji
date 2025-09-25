@@ -766,6 +766,7 @@ namespace DoPENetConnect
                 decimalPos = $"{decimalPos}0";
             }
             MainForm.mainform.decimalPos = decimalPos;
+            MainForm.mainform.ChangeDecimalSettingPos(decimalPos);
 
             //力
             strTmp = numericUpDown4.Value.ToString();
@@ -776,6 +777,7 @@ namespace DoPENetConnect
                 decimalForce = $"{decimalForce}0";
             }
             MainForm.mainform.decimalForce = decimalForce;
+            MainForm.mainform.ChangeDecimalSettingLoad(decimalForce);
 
             //Extenssion
             strTmp = numericUpDown6.Value.ToString();
@@ -786,6 +788,7 @@ namespace DoPENetConnect
                 decimalExtenssion = $"{decimalExtenssion}0";
             }
             MainForm.mainform.decimalExtenssion = decimalExtenssion;
+            MainForm.mainform.ChangeDecimalSettingExt(decimalExtenssion);
 
 
         }

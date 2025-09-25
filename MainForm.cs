@@ -502,6 +502,26 @@ namespace DoPENetConnect
             //floatMenus.Activate();
         }
 
+        public void ChangeDecimalSettingPos(string format)
+        {
+            guiPosition.Text = (double.Parse(guiPosition.Text)).ToString(format);
+            tb_MaxPos.Text = (double.Parse(tb_MaxPos.Text)).ToString(format);
+        }
+
+
+        public void ChangeDecimalSettingLoad(string format)
+        {
+            guiLoad.Text = (double.Parse(guiLoad.Text)).ToString(format);
+            tb_MaxLoad.Text = (double.Parse(tb_MaxLoad.Text)).ToString(format);
+        }
+
+
+        public void ChangeDecimalSettingExt(string format)
+        {
+            guiExtension.Text = (double.Parse(guiExtension.Text)).ToString(format);
+            tb_MaxExt.Text =   (double.Parse(tb_MaxExt.Text)).ToString(format);
+        }
+
 
         private void CreateChart()
         {
