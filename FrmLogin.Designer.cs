@@ -42,6 +42,7 @@
             this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.balloonTip1 = new DevComponents.DotNetBar.BalloonTip();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -297,5 +298,6 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.BalloonTip balloonTip1;
     }
 }

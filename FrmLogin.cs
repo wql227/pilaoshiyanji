@@ -22,6 +22,7 @@ namespace DoPENetConnect
         }
         private void FrmLogin_Shown(object sender, EventArgs e)
         {
+            balloonTip1.SetBalloonText(textBoxX1, "输入密码后按回车键登录");
             LoadIni();
             //Console.WriteLine("login shown");
         }
@@ -124,5 +125,11 @@ namespace DoPENetConnect
                 }
             }
         }
+
+        //private void textBoxX1_MouseHover(object sender, EventArgs e)
+        //{
+        //    balloonTip1.SetBalloonText(textBoxX1, "输入密码后按回车键登录");
+        //    balloonTip1.ShowBalloon(textBoxX1);
+        //}
     }
 }
