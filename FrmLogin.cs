@@ -24,7 +24,7 @@ namespace DoPENetConnect
         {
 
             comboBoxEx1.Text = MainForm.mainform.userInfo.userName;   //打开时将用户名设置为已经登录的用户名
-
+            SetUiAccordUserRole();
             balloonTip1.SetBalloonText(textBoxX1, "输入密码后按回车键登录");
             LoadIni();
             //Console.WriteLine("login shown");
@@ -170,6 +170,27 @@ namespace DoPENetConnect
                     WritePasswdInfo(textBoxX2.Text);
                     this.Close();
                 }
+            }
+        }
+        /// <summary>
+        /// 根据登录账户的类型来修改界面
+        /// </summary>
+        private void SetUiAccordUserRole()
+        {
+            switch (MainForm.mainform.userInfo.userName)
+            {
+                case "普通操作者":
+                    textBoxX2.Enabled = false;
+                    textBoxX3.Enabled = false;
+                    break;
+                case "高级操作者":
+                    textBoxX2.Enabled = false;
+                    textBoxX3.Enabled = false;
+                    break;
+                case "管理人员":
+                    textBoxX2.Enabled = false;
+                    textBoxX3.Enabled = true;
+                    break;
             }
         }
     }
