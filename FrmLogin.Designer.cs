@@ -235,6 +235,7 @@
             this.textBoxX2.PreventEnterBeep = true;
             this.textBoxX2.Size = new System.Drawing.Size(121, 26);
             this.textBoxX2.TabIndex = 3;
+            this.textBoxX2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxX2_KeyPress);
             // 
             // labelX3
             // 

@@ -22,6 +22,9 @@ namespace DoPENetConnect
         }
         private void FrmLogin_Shown(object sender, EventArgs e)
         {
+
+            comboBoxEx1.Text = MainForm.mainform.userInfo.userName;   //打开时将用户名设置为已经登录的用户名
+
             balloonTip1.SetBalloonText(textBoxX1, "输入密码后按回车键登录");
             LoadIni();
             //Console.WriteLine("login shown");
@@ -108,28 +111,66 @@ namespace DoPENetConnect
         {
             if (e.KeyChar == 13)     //enter 键按下
             {
-                if (comboBoxEx1.Text == "")
+                if (MainForm.mainform.userInfo.userName != "管理人员")
                 {
-                    //MessageBox.Show("账户输入为空，请重新输入后再试");
+                    MessageBox.Show("只有管理人员才可以修改密码，请先登录管理人员账户！");
                     return;
                 }
-                else if (textBoxX1.Text == "")
+
+                if (comboBoxEx1.Text == "")
                 {
-                    MessageBox.Show("密码输入为空，请重新输入后再试");
+                    MessageBox.Show("请选择需要修改密码的账户类型！");
+                    return;
                 }
-                else if (textBoxX1.Text == sysSuperPasswd)
+                else if (comboBoxEx1.Text == "管理人员")
                 {
-                    MainForm.mainform.userInfo.userName = comboBoxEx1.Text;
-                    MainForm.mainform.userInfo.isLogged = true;
+                    MessageBox.Show("该类人员的密码无法被修改，请选择其他类型账户！");
+                    return;
+                }
+                else if (textBoxX2.Text != textBoxX3.Text)
+                {
+                    MessageBox.Show("两次输入的密不相等请重新输入！");
+                    return;
+                }
+                else
+                {
+                    WritePasswdInfo(textBoxX2.Text);
                     this.Close();
                 }
             }
         }
 
-        //private void textBoxX1_MouseHover(object sender, EventArgs e)
-        //{
-        //    balloonTip1.SetBalloonText(textBoxX1, "输入密码后按回车键登录");
-        //    balloonTip1.ShowBalloon(textBoxX1);
-        //}
+        private void textBoxX2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)     //enter 键按下
+            {
+                if (MainForm.mainform.userInfo.userName != "管理人员")
+                {
+                    MessageBox.Show("只有管理人员才可以修改密码，请先登录管理人员账户！");
+                    return;
+                }
+
+                if (comboBoxEx1.Text == "")
+                {
+                    MessageBox.Show("请选择需要修改密码的账户类型！");
+                    return;
+                }
+                else if (comboBoxEx1.Text == "管理人员")
+                {
+                    MessageBox.Show("该类人员的密码无法被修改，请选择其他类型账户！");
+                    return;
+                }
+                else if (textBoxX2.Text != textBoxX3.Text)
+                {
+                    MessageBox.Show("两次输入的密不相等请重新输入！");
+                    return;
+                }
+                else
+                {
+                    WritePasswdInfo(textBoxX2.Text);
+                    this.Close();
+                }
+            }
+        }
     }
 }

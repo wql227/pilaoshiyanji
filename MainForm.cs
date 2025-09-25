@@ -1687,6 +1687,10 @@ namespace DoPENetConnect
 
             //开串口
             OpenCom();
+
+            //开机登录普通账户
+            userInfo.userName = "普通操作者";
+            userInfo.isLogged = true;
         }
 
         public bool OpenCom()
