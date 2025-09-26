@@ -114,6 +114,14 @@ namespace DoPENetConnect
         public long dataRecvTimes;   //试验开始后（isrunning = true) 数据接收次数
     }
     #endregion start struct
+
+    public struct UserInfo
+    {
+        public string userName;
+        public string passWd;
+        public bool isLogged;
+    }
+
     /// <summary>
     /// Demo-application for the DoPE .NET library.
     /// </summary>
@@ -379,10 +387,34 @@ namespace DoPENetConnect
         /// 采样频率
         /// </summary>
         public int sampleRate = 0;
-
+		
+		/// <summary>
+        /// 报表文件存储位置
+        /// </summary>
         public string excelReportTemplateFileName = $"{AppDomain.CurrentDomain.BaseDirectory}\\template\\Static_ExcelReport.xlsx";
         public string wordReportTemplateFileName = $"{AppDomain.CurrentDomain.BaseDirectory}\\template\\Static_WordReport.docx";
         public string syaReportPath = $"{AppDomain.CurrentDomain.BaseDirectory}StaticReport";
+
+        /// <summary>
+        /// 小数位数位置
+        /// </summary>
+        public string decimalPos = "0.00";
+
+        /// <summary>
+        /// 小数位数力
+        /// </summary>
+        public string decimalForce = "0.00";
+
+        /// <summary>
+        /// 小数位数变形
+        /// </summary>
+        public string decimalExtenssion = "0.00";
+
+        /// <summary>
+        /// current user information
+        /// </summary>
+        public UserInfo userInfo;
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
@@ -449,7 +481,7 @@ namespace DoPENetConnect
             }
             else if (e.Delta > 0)
             {
-                //chart_machine.ChartAreas[0].gzAxisY.ScaleView.Size += (e.Delta*10 / 120); // 每次缩放1
+                //chart_machine.ChartAreas[0].AxisY.ScaleView.Size += (e.Delta*10 / 120); // 每次缩放1
                 chart_machine.ChartAreas[0].AxisX.ScaleView.Size += (e.Delta * 10 / 120); // 每次缩放1
             }           
         }
@@ -472,7 +504,7 @@ namespace DoPENetConnect
         private void MainForm_Shown(object sender, EventArgs e)
         {
             // show platform type
-            Text += Environment.Is64BitProcess ? " x64" : " x32";
+            //Text += Environment.Is64BitProcess ? " x64" : " x32";
 
             // show GUI
             Application.DoEvents();
@@ -493,6 +525,26 @@ namespace DoPENetConnect
 
             timer_UpdateData.Start();
             //floatMenus.Activate();
+        }
+
+        public void ChangeDecimalSettingPos(string format)
+        {
+            guiPosition.Text = (double.Parse(guiPosition.Text)).ToString(format);
+            tb_MaxPos.Text = (double.Parse(tb_MaxPos.Text)).ToString(format);
+        }
+
+
+        public void ChangeDecimalSettingLoad(string format)
+        {
+            guiLoad.Text = (double.Parse(guiLoad.Text)).ToString(format);
+            tb_MaxLoad.Text = (double.Parse(tb_MaxLoad.Text)).ToString(format);
+        }
+
+
+        public void ChangeDecimalSettingExt(string format)
+        {
+            guiExtension.Text = (double.Parse(guiExtension.Text)).ToString(format);
+            tb_MaxExt.Text =   (double.Parse(tb_MaxExt.Text)).ToString(format);
         }
 
 
@@ -901,7 +953,7 @@ namespace DoPENetConnect
                 text = String.Format("{0}", Sample.Time.ToString("0.000"));
 
                 strCSVLog += text + ",";
-                text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
+                text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString(decimalPos));
 
                 if (bConnected)
                 {
@@ -915,7 +967,7 @@ namespace DoPENetConnect
                     {
                         if (double.Parse(tb_MaxPos.Text) < PVPositionQueue.Max())
                         {
-                            tb_MaxPos.Text = PVPositionQueue.Max().ToString("0.000");
+                            tb_MaxPos.Text = PVPositionQueue.Max().ToString(decimalPos);
                             tb_MaxPos.Refresh();
                         }
                         //tb_MinPos.Text = PVPositionQueue.Min().ToString("0.000");
@@ -1007,7 +1059,7 @@ namespace DoPENetConnect
                     }
                     strCSVLog += text + ",";
                     //data_display1 = decimal.Parse(guiPosition.Text == "" ? "" : "0");
-                    text = String.Format("{0}", (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F] / 1000).ToString("0.000"));
+                    text = String.Format("{0}", (Sample.Sensor[(int)DoPE.SENSOR.SENSOR_F] / 1000).ToString(decimalForce));
 
                     //试验力队列
                     //填写试验力实时值
@@ -1017,7 +1069,7 @@ namespace DoPENetConnect
                     {
                         if (double.Parse(tb_MaxLoad.Text) < (PVLoadQueue.Max() / 1000))
                         {
-                            tb_MaxLoad.Text = (PVLoadQueue.Max()/1000).ToString("0.000");
+                            tb_MaxLoad.Text = (PVLoadQueue.Max()/1000).ToString(decimalForce);
                             tb_MaxLoad.Refresh();
                         }
                         //tb_MinLoad.Text = PVLoadQueue.Min().ToString("0.000");
@@ -1114,7 +1166,7 @@ namespace DoPENetConnect
 
                     strCSVLog += text + ",";
                     //data_display2 = decimal.Parse(guiLoad.Text);
-                    text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
+                    text = String.Format("{0}", Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString(decimalExtenssion));
 
                     //变形队列//填写试验力实时值
                     realtimeParams.ExtenssionVal = Sample.Sensor[(int)DoPE.SENSOR.SENSOR_E];
@@ -1123,7 +1175,8 @@ namespace DoPENetConnect
                     {
                         if (double.Parse(tb_MaxExt.Text) < PVExtensionQueue.Max())
                         {
-                            tb_MaxExt.Text = PVExtensionQueue.Max().ToString("0.000");
+                            tb_MaxExt.Text = PVExtensionQueue.Max().ToString(decimalExtenssion);
+                            tb_MaxExt.Refresh();
                             //tb_MinExt.Text = PVExtensionQueue.Min().ToString("0.000");
                         }
 
@@ -1272,7 +1325,7 @@ namespace DoPENetConnect
             return 0;
         }
 
-        
+
         public void SaveTestPath(string path,string imageName)
         {
             doTest.sampleLogPath = path;
@@ -1387,15 +1440,36 @@ namespace DoPENetConnect
                 onExpermentStoped();
             }
 
-           
-               
+            MyEdc.Check.ClrCheck(CheckMsg.CheckId);
+            if (myCheckMsg.CheckId == CHK_ID.ID0)
+            {
+                if (protectOption.ProtectOption_OverLoadPercent_action == 1)
+                {
+                    floatMenus.EnableButton(true);
+                }
+                else
+                {
+                    floatMenus.bntX_GUIOn_Click();
+                }
+
+            }
+            else
+            {
+                if (protectOption.ProtectOption_OverLoadForce_action == 1)
+                {
+                    floatMenus.EnableButton(true);
+                }
+                else
+                {
+                    floatMenus.bntX_GUIOn_Click();
+                }
+            }
+
             myCheckMsg = CheckMsg;
             this.Invoke(new MethodInvoker(ShowMessageBox));
                     //MessageBox.Show($"试验力超出系统限制:{protectOption.ProtectOption_OverLoadPercent}%", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-              
-           
-            MyEdc.Check.ClrCheck(CheckMsg.CheckId);
-            floatMenus.EnableButton(true);
+                                     
+            //floatMenus.EnableButton(true);
             return 0;
         }
 
@@ -1407,10 +1481,16 @@ namespace DoPENetConnect
                 MessageBox.Show($"试验力超出系统限制:{protectOption.ProtectOption_OverLoadPercent}%", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
               
             }
+            else if (myCheckMsg.CheckId == CHK_ID.ID1)
+            {
+                    MessageBox.Show($"试验力超出系统上限：{protectOption.ProtectOption_OverLoadForce}kN", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             else
             {
-                    MessageBox.Show($"试验力超出系统限制：{protectOption.ProtectOption_OverLoadForce}kN", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }  
+                    MessageBox.Show($"试验力超出系统下限：{protectOption.ProtectOption_OverLoadForceLower}kN", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+
         }
 
         private int OnRefSignalMsg(ref DoPE.OnRefSignalMsg RefSignalMsg, object Parameter)
@@ -1528,7 +1608,7 @@ namespace DoPENetConnect
         private void ToolStripMenuItem_Login_Click(object sender, EventArgs e)
         {
             FrmLogin frmLogin = new FrmLogin();
-            frmLogin.ShowDialog();
+            frmLogin.Show();
         }
 
 
@@ -1628,6 +1708,10 @@ namespace DoPENetConnect
 
             //开串口
             OpenCom();
+
+            //开机登录普通账户
+            userInfo.userName = "普通操作者";
+            userInfo.isLogged = true;
         }
 
         public bool OpenCom()
@@ -3740,6 +3824,21 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_Force", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp.ToString());
 
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForceLower_Flag", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadForceLower_Flag = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_ForceLower", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadForceLower = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadPercent_Action", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadPercent_action = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Action", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadForce_action = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForceLower_Action", "0", strTmp, strTmp.Capacity);
+            protectOption.ProtectOption_OverLoadForceLower_action = int.Parse(strTmp.ToString());
+
             #endregion 系统保护
 
             #region 按键功能常数
@@ -3790,6 +3889,68 @@ namespace DoPENetConnect
             else
                 sampleRateVal = strTmp.ToString();
             sampleRate = int.Parse(sampleRateVal);
+
+            //底部信息栏
+            IniFileHelper.GetIniString("BottomStatusBar", "Title", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() == "0")
+            {
+            }
+            else
+                UnitName.Text = strTmp.ToString();
+
+
+            IniFileHelper.GetIniString("BottomStatusBar", "Content", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() == "0")
+            {
+            }
+            else
+                UnitContent.Text = strTmp.ToString();
+
+            //小数位数
+            //位移
+            IniFileHelper.GetIniString("SoftSetting", "Pos", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0")
+            {
+                string decimalPos = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
+                {
+                    decimalPos = $"{decimalPos}0";
+                }
+                this.decimalPos = decimalPos;
+                guiPosition.Text = decimalPos;   //刚开机按照设置的小数位数来显示数值
+                tb_MaxPos.Text = decimalPos;
+            }
+
+
+            //力
+            IniFileHelper.GetIniString("SoftSetting", "Load", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0")
+            {
+                string decimalForce = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
+                {
+                    decimalForce = $"{decimalForce}0";
+                }
+                this.decimalForce = decimalForce;
+
+                guiLoad.Text = decimalForce;   //刚开机按照设置的小数位数来显示数值
+                tb_MaxLoad.Text = decimalForce;   //刚开机按照设置的小数位数来显示数值
+
+            }
+
+            //Extenssion
+            IniFileHelper.GetIniString("SoftSetting", "Extenssion", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0")
+            {
+                string decimalExtenssion = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
+                {
+                    decimalExtenssion = $"{decimalExtenssion}0";
+                }
+                this.decimalExtenssion = decimalExtenssion;
+                guiExtension.Text = decimalExtenssion; //刚开机按照设置的小数位数来显示数值
+                tb_MaxExt.Text = decimalExtenssion;  //刚开机按照设置的小数位数来显示数值
+            }
 
         }
 
@@ -5590,7 +5751,13 @@ namespace DoPENetConnect
             floatMenus.TopMost = true;
         }
 
-        private void buttonX22_Click_1(object sender, EventArgs e)
+        private void 试验操作选项ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmTestOperatorSettings testParamsSetting = new FrmTestOperatorSettings();
+            testParamsSetting.Show();
+        }
+		
+		private void buttonX22_Click_1(object sender, EventArgs e)
         {
             string path = doTest.sampleLogPath;
             if (path == null)
@@ -6045,5 +6212,6 @@ namespace DoPENetConnect
             //保存位移时间曲线
             OpenFolder(reportPath);
         }
+		
     }
 }

@@ -253,6 +253,12 @@
     <Compile Include="FrmSystemSetting.Designer.cs">
       <DependentUpon>FrmSystemSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTestOperatorSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTestOperatorSettings.Designer.cs">
+      <DependentUpon>FrmTestOperatorSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Impl\ProtectOption.cs" />
     <Compile Include="Util\DESEncrypt.cs" />
     <Compile Include="Util\ExcelHelper.cs" />
@@ -338,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSystemSetting.resx">
       <DependentUpon>FrmSystemSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTestOperatorSettings.resx">
+      <DependentUpon>FrmTestOperatorSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

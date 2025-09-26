@@ -27,6 +27,41 @@ namespace DoPENetConnect
             LoadIni();
             ReplaceLanguage();
             UiAutoSize();
+        }
+
+        private void FrmSystemSetting_Shown(object sender, EventArgs e)
+        {
+            SetUiAccordUserRole();
+        }
+
+        private void SetUiAccordUserRole()
+        {
+            switch (MainForm.mainform.userInfo.userName)
+            {
+                case "普通操作者":
+                    Console.WriteLine("普通操作者");
+                    RegularOperatorUi();
+                    break;
+                case "高级操作者":
+                    Console.WriteLine("高级操作者");
+                    HighOperatorUi();
+                    break;
+                case "管理人员":
+                    Console.WriteLine("管理人员");
+                    break;
+            }
+        }
+
+        public void RegularOperatorUi()
+        {
+
+        }
+        public void HighOperatorUi()
+        {
+
+        }
+        public void ManagerOperatorUi()
+        {
 
         }
 
@@ -38,8 +73,8 @@ namespace DoPENetConnect
         {
 
             ///底部按钮
-            int btnsBottomLength =btnX_FrmProtectOption_OK.Width + 150;
-            int btnBottomStart = (this.Width-btnsBottomLength)/ 2;
+            int btnsBottomLength = btnX_FrmProtectOption_OK.Width + 150;
+            int btnBottomStart = (this.Width - btnsBottomLength) / 2;
             btnX_FrmProtectOption_OK.Location = new Point(btnBottomStart, btnX_FrmProtectOption_OK.Bounds.Y);
             //btnX_FrmProtectOption_Cencel.Location = new Point(btnBottomStart + 180, btnX_FrmProtectOption_Cencel.Bounds.Y);
 
@@ -47,12 +82,12 @@ namespace DoPENetConnect
             ///groupPannel3
             int lineStart = 15;
             checkBoxX3.Location = new Point(lineStart, checkBoxX3.Location.Y);
-            numericUpDown1.Location = new Point(checkBoxX3.Location.X+checkBoxX3.Width+5, numericUpDown1.Location.Y);
+            numericUpDown1.Location = new Point(checkBoxX3.Location.X + checkBoxX3.Width + 5, numericUpDown1.Location.Y);
             label12.Location = new Point(numericUpDown1.Location.X + numericUpDown1.Width + 5, label12.Location.Y);
 
             checkBoxX4.Location = new Point(lineStart, checkBoxX4.Location.Y);
-            numericUpDown2.Location = new Point(numericUpDown1.Location.X , numericUpDown2.Location.Y);
-            label11.Location = new Point(label12.Location.X , label11.Location.Y);
+            numericUpDown2.Location = new Point(numericUpDown1.Location.X, numericUpDown2.Location.Y);
+            label11.Location = new Point(label12.Location.X, label11.Location.Y);
 
             ///groupPanne5
             NUD_CountLog.Location = new Point(lineStart, NUD_CountLog.Location.Y);
@@ -84,7 +119,7 @@ namespace DoPENetConnect
             label38.Location = new Point(label18.Location.X, label38.Location.Y);
 
             //groupPanels
-            tbX_FrmProtectOption_PosMaxOut.Location = new Point(lineStart+2, tbX_FrmProtectOption_PosMaxOut.Location.Y);
+            tbX_FrmProtectOption_PosMaxOut.Location = new Point(lineStart + 2, tbX_FrmProtectOption_PosMaxOut.Location.Y);
             label6.Location = new Point(tbX_FrmProtectOption_PosMaxOut.Location.X + tbX_FrmProtectOption_PosMaxOut.Width + 5, label6.Location.Y);
             cbX_FrmProtectOption_PosMaxOut_Effect.Location = new Point(label6.Location.X + label6.Width + 5, cbX_FrmProtectOption_PosMaxOut_Effect.Location.Y);
 
@@ -109,7 +144,7 @@ namespace DoPENetConnect
             cbX_FrmProtectOption_ExtMinOut_Effect.Location = new Point(cbX_FrmProtectOption_PosMaxOut_Effect.Bounds.X, cbX_FrmProtectOption_ExtMinOut_Effect.Location.Y);
 
 
-            tbX_FrmProtectOption_PosMaxIn.Location = new Point(label18.Bounds.X+2, tbX_FrmProtectOption_PosMaxIn.Location.Y);
+            tbX_FrmProtectOption_PosMaxIn.Location = new Point(label18.Bounds.X + 2, tbX_FrmProtectOption_PosMaxIn.Location.Y);
             label19.Location = new Point(tbX_FrmProtectOption_PosMaxIn.Location.X + tbX_FrmProtectOption_PosMaxIn.Width + 5, label19.Location.Y);
             cbX_FrmProtectOption_PosMaxIn_Effect.Location = new Point(label19.Location.X + label19.Width + 5, cbX_FrmProtectOption_PosMaxIn_Effect.Location.Y);
 
@@ -135,7 +170,7 @@ namespace DoPENetConnect
 
             ///试验机参数
             //主参数
-            lbX_MaxForce.Location = new Point(lineStart , lbX_MaxForce.Location.Y);
+            lbX_MaxForce.Location = new Point(lineStart, lbX_MaxForce.Location.Y);
             comboBoxEx_MaxForce.Location = new Point(lbX_MaxForce.Location.X + lbX_MaxForce.Width + 60, comboBoxEx_MaxForce.Location.Y);
             label17.Location = new Point(comboBoxEx_MaxForce.Location.X + comboBoxEx_MaxForce.Width + 5, label17.Location.Y);
             cbX_MaxForce.Location = new Point(label17.Location.X + label17.Width + 5, cbX_MaxForce.Location.Y);
@@ -165,7 +200,7 @@ namespace DoPENetConnect
 
 
             label21.Location = new Point(lineStart, label21.Location.Y);
-            tbX_hurryupval.Location = new Point(tbX_upval.Location.X , tbX_hurryupval.Location.Y);
+            tbX_hurryupval.Location = new Point(tbX_upval.Location.X, tbX_hurryupval.Location.Y);
             label4.Location = new Point(label40.Location.X, label4.Location.Y);
 
 
@@ -191,7 +226,7 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("Setting", "Language", "0", strTmp, strTmp.Capacity);
             string strLanguage = strTmp.ToString();
             var langData = LanguageLoad.LoadLang(System.IO.Directory.GetCurrentDirectory() + "\\Lang\\" + strLanguage + ".json");
-                       
+
             //循环界面控件替换成指定的语言
             if (langData.TryGetValue(this.Name, out var frmSystemSetting))
             {
@@ -251,17 +286,18 @@ namespace DoPENetConnect
                         }
                         if (controlName.Contains("comboBoxEx_TripSensor"))
                         {
-                             comboBoxEx_TripSensor.Items.Add(textValue);
+                            comboBoxEx_TripSensor.Items.Add(textValue);
                         }
                     }
-                    else {
+                    else
+                    {
                         ctrl.Text = textValue;
                     }
 
                 }
 
                 #region RestoreUi
-                if(cbX_ProtectOption.Items.Count>protectOptionCurrentIndex)
+                if (cbX_ProtectOption.Items.Count > protectOptionCurrentIndex)
                     cbX_ProtectOption.SelectedIndex = protectOptionCurrentIndex;
 
                 if (comboBoxEx_TripSensor.Items.Count > tripSensorCurrentIndex)
@@ -375,7 +411,7 @@ namespace DoPENetConnect
             cbX_FrmProtectOption_ExtMinIn_Effect.Checked = strTmp.ToString() == "0" ? false : true;
 
             //系统保护设置  section=SysProtectSetting numericUpDown1: key=OverLoad_Percent=10; numericUpDown2:OverLoad_Force = 10;
-            IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_Percent","0",strTmp,strTmp.Capacity);
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoad_Percent", "0", strTmp, strTmp.Capacity);
             numericUpDown1.Value = Convert.ToDecimal(strTmp.ToString());
 
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadPercent_Flag", "0", strTmp, strTmp.Capacity);
@@ -386,6 +422,24 @@ namespace DoPENetConnect
 
             IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Flag", "0", strTmp, strTmp.Capacity);
             checkBoxX4.Checked = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadLower_Force", "0", strTmp, strTmp.Capacity);
+            numericUpDown8.Value = decimal.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForceLower_Flag", "0", strTmp, strTmp.Capacity);
+            checkBoxX1.Checked = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadPercent_Action", "0", strTmp, strTmp.Capacity);
+            comboBoxEx2.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForce_Action", "0", strTmp, strTmp.Capacity);
+            comboBoxEx3.SelectedIndex = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("SysProtectSetting", "OverLoadForceLower_Action", "0", strTmp, strTmp.Capacity);
+            comboBoxEx1.SelectedIndex = int.Parse(strTmp.ToString());
+
+
+
             //系统设置-设备id
             //IniFileHelper.GetIniString("Device", "DeviceID", "0", strTmp, strTmp.Capacity);
             //tbX_DeviceID.Text = strTmp.ToString();
@@ -434,6 +488,66 @@ namespace DoPENetConnect
             else
                 sampleRateVal = strTmp.ToString();
             numericUpDown3.Value = decimal.Parse(sampleRateVal);
+
+            //其他
+            IniFileHelper.GetIniString("BottomStatusBar", "Title", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() == "0")
+            {
+            }
+            else
+                textBoxX1.Text = strTmp.ToString();
+
+
+            IniFileHelper.GetIniString("BottomStatusBar", "Content", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() == "0")
+            {
+            }
+            else
+                textBoxX2.Text = strTmp.ToString();
+
+            //小数位数
+            //位移
+            IniFileHelper.GetIniString("SoftSetting", "Pos", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0") { 
+                numericUpDown7.Value = int.Parse(strTmp.ToString());
+
+                string decimalPos = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
+                {
+                    decimalPos = $"{decimalPos}0";
+                }
+                MainForm.mainform.decimalPos = decimalPos;
+            }
+
+
+            //力
+            IniFileHelper.GetIniString("SoftSetting", "Load", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0")
+            {
+                numericUpDown4.Value = int.Parse(strTmp.ToString());
+
+                string decimalForce = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
+                {
+                    decimalForce = $"{decimalForce}0";
+                }
+                MainForm.mainform.decimalForce = decimalForce;
+            }
+
+            //Extenssion
+            IniFileHelper.GetIniString("SoftSetting", "Extenssion", "0", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "0")
+            {
+                numericUpDown6.Value = int.Parse(strTmp.ToString());
+
+                string decimalExtenssion = "0.0";
+                for (int i = 0; i < int.Parse(strTmp.ToString())-1; i++)
+                {
+                    decimalExtenssion = $"{decimalExtenssion}0";
+                }
+                MainForm.mainform.decimalExtenssion = decimalExtenssion;
+            }
+
         }
 
 
@@ -557,10 +671,23 @@ namespace DoPENetConnect
             strTmp = checkBoxX3.Checked == false ? "0" : "1";
             MainForm.mainform.protectOption.ProtectOption_OverLoadPercent_Flag = checkBoxX3.Checked;
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadPercent_Flag", strTmp);
-          
+
             strTmp = numericUpDown1.Value.ToString();
             MainForm.mainform.protectOption.ProtectOption_OverLoadPercent = double.Parse(strTmp);
             IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Percent", strTmp);
+
+            //Console.WriteLine("glm-test{0}", comboBoxEx2.SelectedIndex);
+            if (comboBoxEx2.Text == "")
+            {
+
+            }
+            else
+            {
+                //Console.WriteLine("glm-test{0}", comboBoxEx2.SelectedIndex);
+                strTmp = comboBoxEx2.SelectedIndex.ToString();
+                MainForm.mainform.protectOption.ProtectOption_OverLoadPercent_action = comboBoxEx2.SelectedIndex;
+                IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadPercent_Action", strTmp);
+            }
 
 
             strTmp = checkBoxX4.Checked == false ? "0" : "1";
@@ -569,8 +696,39 @@ namespace DoPENetConnect
 
             strTmp = numericUpDown2.Value.ToString();
             MainForm.mainform.protectOption.ProtectOption_OverLoadForce = double.Parse(strTmp);
-            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Force", strTmp);
+            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoad_Force", strTmp);    
 
+            if (comboBoxEx3.Text == "")
+            {
+
+            }
+            else
+            {
+                //Console.WriteLine("glm-test{0}", comboBoxEx2.SelectedIndex);
+                strTmp = comboBoxEx3.SelectedIndex.ToString();
+                MainForm.mainform.protectOption.ProtectOption_OverLoadForce_action = comboBoxEx3.SelectedIndex;
+                IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadForce_Action", strTmp);
+            }
+
+            strTmp = checkBoxX1.Checked == false ? "0" : "1";
+            MainForm.mainform.protectOption.ProtectOption_OverLoadForceLower_Flag = checkBoxX1.Checked;
+            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadForceLower_Flag", strTmp);
+
+            strTmp = numericUpDown8.Value.ToString();
+            MainForm.mainform.protectOption.ProtectOption_OverLoadForceLower = double.Parse(strTmp);
+            IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadLower_Force", strTmp);
+
+            if (comboBoxEx1.Text == "")
+            {
+
+            }
+            else
+            {
+                //Console.WriteLine("glm-test{0}", comboBoxEx2.SelectedIndex);
+                strTmp = comboBoxEx1.SelectedIndex.ToString();
+                MainForm.mainform.protectOption.ProtectOption_OverLoadForceLower_action = comboBoxEx1.SelectedIndex;
+                IniFileHelper.WriteIniString("SysProtectSetting", "OverLoadForceLower_Action", strTmp);
+            }
             if (tbX_DeviceID.Text != "")
             {
                 strTmp = DESEncrypt.Encrypt(tbX_DeviceID.Text);
@@ -599,7 +757,7 @@ namespace DoPENetConnect
 
             ///ui 选中状态
             //strTmp = cbX_ProtectOption.SelectedIndex.ToString();
-           // IniFileHelper.WriteIniString("UIDefault ", "cbX_ProtectOption", strTmp);
+            // IniFileHelper.WriteIniString("UIDefault ", "cbX_ProtectOption", strTmp);
 
             strTmp = comboBoxEx_MaxForce.SelectedIndex.ToString();
             IniFileHelper.WriteIniString("UIDefault ", "comboBoxEx_MaxForce", strTmp);
@@ -620,13 +778,54 @@ namespace DoPENetConnect
             strTmp = comboBoxSendInterval.Text;      //发送周期
             IniFileHelper.WriteIniString("communication ", "Interval", strTmp);
 
-            MainForm.mainform.SetRealtimeParamComParams(comboBoxComSelect.Text,comboBoxSendInterval.Text);
+            MainForm.mainform.SetRealtimeParamComParams(comboBoxComSelect.Text, comboBoxSendInterval.Text);
 
             //采样频率添加
             strTmp = numericUpDown3.Value.ToString();
             IniFileHelper.WriteIniString("Sample", "Rate", strTmp);
             MainForm.mainform.sampleRate = int.Parse(strTmp);
-            
+
+            //其他
+            strTmp = textBoxX1.Text;
+            IniFileHelper.WriteIniString("BottomStatusBar", "Title", strTmp);
+
+            strTmp = textBoxX2.Text;
+            IniFileHelper.WriteIniString("BottomStatusBar", "Content", strTmp);
+
+            //小数位数
+           //位移
+            strTmp = numericUpDown7.Value.ToString();
+            IniFileHelper.WriteIniString("SoftSetting", "Pos", strTmp);
+            string decimalPos = "0.";
+            for (int i = 0; i < int.Parse(strTmp); i++) {
+                decimalPos = $"{decimalPos}0";
+            }
+            MainForm.mainform.decimalPos = decimalPos;
+            MainForm.mainform.ChangeDecimalSettingPos(decimalPos);
+
+            //力
+            strTmp = numericUpDown4.Value.ToString();
+            IniFileHelper.WriteIniString("SoftSetting", "Load", strTmp);
+            string decimalForce = "0.";
+            for (int i = 0; i < int.Parse(strTmp); i++)
+            {
+                decimalForce = $"{decimalForce}0";
+            }
+            MainForm.mainform.decimalForce = decimalForce;
+            MainForm.mainform.ChangeDecimalSettingLoad(decimalForce);
+
+            //Extenssion
+            strTmp = numericUpDown6.Value.ToString();
+            IniFileHelper.WriteIniString("SoftSetting", "Extenssion", strTmp);
+            string decimalExtenssion = "0.";
+            for (int i = 0; i < int.Parse(strTmp); i++)
+            {
+                decimalExtenssion = $"{decimalExtenssion}0";
+            }
+            MainForm.mainform.decimalExtenssion = decimalExtenssion;
+            MainForm.mainform.ChangeDecimalSettingExt(decimalExtenssion);
+
+
         }
 
 
@@ -984,7 +1183,7 @@ namespace DoPENetConnect
         {
             Console.WriteLine(cbX_ProtectOption.SelectedIndex);
             Console.WriteLine(cbX_ProtectOption.Text);
-            
+
         }
         public string ComputeMD5(string input)
 
@@ -1022,20 +1221,47 @@ namespace DoPENetConnect
         private void superTabItem5_DoubleClick(object sender, EventArgs e)
         {
             FormInputBox tmpInput = new FormInputBox();
+            tmpInput.Location = new Point(this.Location.X + 100, this.Location.Y + 100);
             tmpInput.Show();
             //IniFileHelper.WriteIniString("")
         }
 
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
-            double tmpValue =double.Parse(numericUpDown3.Value.ToString());
+            double tmpValue = double.Parse(numericUpDown3.Value.ToString());
             double tmpLast = tmpValue % 10;
             double tmpCurrentVal = tmpValue;
-            if (tmpLast != 0) {
+            if (tmpLast != 0)
+            {
                 tmpCurrentVal = tmpValue - tmpLast + 10;
             }
             numericUpDown3.Value = decimal.Parse(Math.Ceiling(tmpCurrentVal).ToString());
-       
+
         }
+
+        public double GetSystemMaxForce()
+        {
+            double maxForce = double.Parse(comboBoxEx_MaxForce.Text);
+
+            return maxForce;
+
+        }
+
+        public double GetSystemMaxTrip()
+        {
+            double maxTrip = double.Parse(comboBoxEx_MaxTrip.Text);
+
+            return maxTrip;
+
+        }
+
+        public double GetSystemMaxTripSpeed()
+        {
+            double maxTripSpeed = double.Parse(tbX_MaxTripSpeed.Text);
+
+            return maxTripSpeed;
+
+        }
+
     }
 }
