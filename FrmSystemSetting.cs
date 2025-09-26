@@ -27,6 +27,41 @@ namespace DoPENetConnect
             LoadIni();
             ReplaceLanguage();
             UiAutoSize();
+        }
+
+        private void FrmSystemSetting_Shown(object sender, EventArgs e)
+        {
+            SetUiAccordUserRole();
+        }
+
+        private void SetUiAccordUserRole()
+        {
+            switch (MainForm.mainform.userInfo.userName)
+            {
+                case "普通操作者":
+                    Console.WriteLine("普通操作者");
+                    RegularOperatorUi();
+                    break;
+                case "高级操作者":
+                    Console.WriteLine("高级操作者");
+                    HighOperatorUi();
+                    break;
+                case "管理人员":
+                    Console.WriteLine("管理人员");
+                    break;
+            }
+        }
+
+        public void RegularOperatorUi()
+        {
+
+        }
+        public void HighOperatorUi()
+        {
+
+        }
+        public void ManagerOperatorUi()
+        {
 
         }
 

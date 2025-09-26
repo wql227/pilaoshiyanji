@@ -491,7 +491,7 @@ namespace DoPENetConnect
         private void MainForm_Shown(object sender, EventArgs e)
         {
             // show platform type
-            Text += Environment.Is64BitProcess ? " x64" : " x32";
+            //Text += Environment.Is64BitProcess ? " x64" : " x32";
 
             // show GUI
             Application.DoEvents();
