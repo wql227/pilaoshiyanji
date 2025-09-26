@@ -481,6 +481,26 @@ namespace DoPENetConnect
         /// </summary>
         public string EnableLow = "0";
 
+        /// <summary>
+        /// 显示位移曲线
+        /// </summary>
+        public static bool bShowPosition = true;
+
+        /// <summary>
+        /// 显示力曲线
+        /// </summary>
+        public static bool bShowLoad = true;
+
+        /// <summary>
+        /// 显示变形曲线
+        /// </summary>
+        public static bool bShowExtension = true;
+
+        /// <summary>
+        /// 显示命令曲线
+        /// </summary>
+        public static bool bShowCommand = true;
+
 
         public AxTeeChart.AxTChart m_AxTeechart
         {
@@ -1965,6 +1985,9 @@ namespace DoPENetConnect
 
             //    axTChart1.Series(1).AddXY(i, 0.3 * i, "", 0);
             //}
+
+            cb_ShowPosition.CheckState = CheckState.Checked;
+
         }
 
 
@@ -2721,15 +2744,29 @@ namespace DoPENetConnect
                                 try
                                 {
                                     //axTChart1.AutoRepaint = false;
-                                    if (chartX.Count % (500/*DataRefreshFrequency / SampleFrequency*/) == 0)
+                                    if (chartX.Count % (200/*DataRefreshFrequency / SampleFrequency*/) == 0)
                                     {
                                         //axTChart1.Series(0).AddXY(x_Data, y_Position, null, 0);  // Position
                                         //axTChart1.Series(1).AddXY(x_Data, y_Load, "", 0);   // Load
+                                        if (bShowPosition)
+                                        {
+                                            axTChart1.Series(0).AddArray(chartX.Count, chartPosY.ToArray(), chartX.ToArray());
+                                        }
 
-                                        axTChart1.Series(0).AddArray(chartX.Count, chartPosY.ToArray(), chartX.ToArray());
-                                        axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
-                                        axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
-                                        axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
+                                        if (bShowLoad)
+                                        {
+                                            axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
+                                        }
+
+                                        if (bShowExtension)
+                                        {
+                                            axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
+                                        }
+
+                                        if (bShowCommand)
+                                        {
+                                            axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
+                                        }
                                         //axTChart1.AutoRepaint = true; 
 
                                         //axTChart1.Series(0).EndUpdate();
@@ -2805,6 +2842,8 @@ namespace DoPENetConnect
                                         chartX.Clear();
                                         chartPosY.Clear();
                                         chartLoadY.Clear();
+                                        chartExtY.Clear();
+                                        chartCommandY.Clear();
                                         //axTChart1.AutoRepaint = true;
                                         //axTChart1.Refresh();
                                     }
@@ -3396,165 +3435,6 @@ namespace DoPENetConnect
             return peaks;
         }
 
-        private void cb_DrawPosition_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_DrawPosition.Checked)
-            {
-                chart_machine.Series[0].Enabled = true;
-            }
-            else
-            {
-                chart_machine.Series[0].Enabled = false;
-            }
-
-            //int selectConut = 0;
-            //while (chart_machine.Series.Count > 7)
-            //{
-            //    chart_machine.Series.RemoveAt((chart_machine.Series.Count - 1));
-            //}
-
-            //while (chart_machine.ChartAreas.Count > 1)
-            //{
-            //    chart_machine.ChartAreas.RemoveAt((chart_machine.ChartAreas.Count - 1));
-            //}
-
-            //foreach (Control c in this.Controls)
-            //{
-            //    if (c is CheckBox && ((CheckBox)c).Checked == true)
-            //    {
-            //        selectConut++;
-            //    }
-            //}
-
-            //chart_machine.Series[cb_DrawPosition.Text].Enabled = cb_DrawPosition.Checked;
-
-            //float axisOffset = 12;
-            //CreateYAxis(chart_machine, chart_machine.ChartAreas["ChartArea1"], chart_machine.Series["变形"], axisOffset, 3);
-            //axisOffset += 6;
-
-        }
-
-        private void cb_DrawLoad_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_DrawLoad.Checked)
-            {
-                chart_machine.Series[1].Enabled = true;
-            }
-            else
-            {
-                chart_machine.Series[1].Enabled = false;
-            }
-        }
-
-        private void cb_DrawExtension_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_DrawExtension.Checked)
-            {
-                chart_machine.Series[2].Enabled = true;
-            }
-            else
-            {
-                chart_machine.Series[2].Enabled = false;
-            }
-
-            //int selectConut = 0;
-            //while (chart_machine.Series.Count > 4)
-            //{
-            //    chart_machine.Series.RemoveAt((chart_machine.Series.Count - 1));
-            //}
-
-            //while (chart_machine.ChartAreas.Count > 1)
-            //{
-            //    chart_machine.ChartAreas.RemoveAt((chart_machine.ChartAreas.Count - 1));
-            //}
-
-            //foreach (Control c in this.Controls)
-            //{
-            //    if (c is CheckBox && ((CheckBox)c).Checked == true)
-            //    {
-            //        selectConut++;
-            //    }
-            //}
-
-            //chart_machine.Series[cb_DrawPosition.Text].Enabled = cb_DrawExtension.Checked;
-
-            //if (cb_DrawExtension.Checked)
-            //{
-            //    //x坐标点
-            //    int positionx = 0;
-            //    //char宽度计数
-            //    int charWith = 0;
-            //    positionx = positionx == 1 ? positionx += 10 : positionx += 10;
-            //    charWith += 5;
-
-            //    //chart_machine.ChartAreas["ChartArea1"].Position = new ElementPosition(positionx, 10, 100 - charWith, 85);
-            //    chart_machine.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 100 - charWith - 1, 90);
-
-            //    float axisOffset = 12;
-            //    CreateYAxis(chart_machine, chart_machine.ChartAreas["ChartArea1"], chart_machine.Series["变形"], axisOffset, 3);
-            //    axisOffset += 6;
-            //}
-        }
-
-        private void cb_DrawCommand_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_DrawCommand.Checked)
-            {
-                chart_machine.Series[3].Enabled = cb_DrawCommand.Checked;
-            }
-            else
-            {
-                chart_machine.Series[3].Enabled = false;
-            }
-
-            //int selectConut = 0;
-            //while (chart_machine.Series.Count > 4)
-            //{
-            //    chart_machine.Series.RemoveAt((chart_machine.Series.Count - 1));
-            //}
-
-            //while (chart_machine.ChartAreas.Count > 1)
-            //{
-            //    chart_machine.ChartAreas.RemoveAt((chart_machine.ChartAreas.Count - 1));
-            //}
-
-            //foreach (Control c in this.Controls)
-            //{
-            //    if (c is CheckBox && ((CheckBox)c).Checked == true)
-            //    {
-            //        selectConut++;
-            //    }
-            //}
-
-            //chart_machine.Series[cb_DrawCommand.Text].Enabled = cb_DrawCommand.Checked;
-
-            //if (cb_DrawCommand.Checked)
-            //{
-            //    //x坐标点
-            //    int positionx = 0;
-            //    //char宽度计数
-            //    int charWith = 0;
-            //    positionx = positionx == 1 ? positionx += 11 : positionx += 8;
-            //    charWith += 6;
-
-            //    chart_machine.ChartAreas["ChartArea1"].Position = new ElementPosition(positionx, 10, 100 - charWith, 85);
-            //    chart_machine.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 50 - charWith, 90);
-
-            //    float axisOffset = 2;
-            //    CreateYAxis_New(chart_machine, chart_machine.ChartAreas["ChartArea1"], chart_machine.Series["命令"], axisOffset, 1);
-            //    axisOffset += 3;
-            //}
-
-        }
-
-
-        //public void SeriesCheckChanged()
-        //{
-
-
-        //}
-
-
 
         //运行时才能决定是否执行内联
         //[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -3742,16 +3622,16 @@ namespace DoPENetConnect
             axTChart1.Axis.Bottom.Maximum = AxisXMax;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawPosition.Checked = true;// strTmp.ToString() == "0" ? false : true;
+            cb_ShowPosition.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "LoadEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawLoad.Checked = true;// strTmp.ToString() == "0" ? false : true;
+            cb_ShowLoad.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "ExtEnable", "1", strTmp, strTmp.Capacity);
-            cb_DrawExtension.Checked = true;// strTmp.ToString() == "0" ? false : true;
+            cb_ShowExtension.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "1", strTmp, strTmp.Capacity);
-            cb_DrawCommand.Checked = true;// strTmp.ToString() == "0" ? false : true;
+            cb_ShowCommand.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
         }
 
@@ -4778,6 +4658,29 @@ namespace DoPENetConnect
 
         private void labelX33_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void cb_ShowPosition_CheckedChanged(object sender, EventArgs e)
+        {
+            bShowPosition = cb_ShowPosition.Checked;
+        }
+
+        private void cb_ShowLoad_CheckedChanged(object sender, EventArgs e)
+        {
+            bShowLoad = cb_ShowLoad.Checked;
+
+        }
+
+        private void cb_ShowExtension_CheckedChanged(object sender, EventArgs e)
+        {
+            bShowExtension = cb_ShowExtension.Checked;
+
+        }
+
+        private void cb_ShowCommand_CheckedChanged(object sender, EventArgs e)
+        {
+            bShowCommand = cb_ShowCommand.Checked;
 
         }
     }
