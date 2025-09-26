@@ -1892,9 +1892,9 @@ namespace DoPENetConnect
         {
             LoadIni();
 
-            LoadLanguage();
+            //LoadLanguage();
 
-            ReplaceLanguage();
+            //ReplaceLanguage();
 
             //计算每秒步长
             dStep = SampleFrequency / 1000;
@@ -1950,8 +1950,13 @@ namespace DoPENetConnect
             //设置右侧位移轴
             axTChart1.Axis.Right.SetMinMax(-20, 20);
 
-            axTChart1.Series(0).Color = (uint)Color.Blue.ToArgb();
-            axTChart1.Series(1).Color = (uint)Color.Red.ToArgb();
+            axTChart1.Series(0).Color = (uint)(Color.Blue.B << 16) | (ushort)((Color.Blue.G << 8) | Color.Blue.R);
+            axTChart1.Series(1).Color = (uint)(Color.Red.B << 16) | (ushort)((Color.Red.G << 8) | Color.Red.R);
+            axTChart1.Series(2).Color = (uint)(Color.DarkOrange.B << 16) | (ushort)((Color.DarkOrange.G << 8) | Color.DarkOrange.R);
+            axTChart1.Series(3).Color = (uint)(Color.SeaGreen.B << 16) | (ushort)((Color.SeaGreen.G << 8) | Color.SeaGreen.R);
+
+
+            axTChart1.Repaint();
 
             //测试数据
             //for (int i = 0; i < 100; i++)
@@ -2707,11 +2712,12 @@ namespace DoPENetConnect
                         {
                             //this.BeginInvoke(new Action(() =>
                             {
+                                //axTChart1.Series(0).BeginUpdate();
                                 //暂停重绘提高性能
                                 chartPosY.Add(y_Position);
                                 chartLoadY.Add(y_Load);
-                                //chartExtY.Add(y_Extension);
-                                //chartCommandY.Add(y_Command);
+                                chartExtY.Add(y_Extension);
+                                chartCommandY.Add(y_Command);
                                 try
                                 {
                                     //axTChart1.AutoRepaint = false;
@@ -2721,7 +2727,13 @@ namespace DoPENetConnect
                                         //axTChart1.Series(1).AddXY(x_Data, y_Load, "", 0);   // Load
 
                                         axTChart1.Series(0).AddArray(chartX.Count, chartPosY.ToArray(), chartX.ToArray());
+                                        axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
+                                        axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
+                                        axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
                                         //axTChart1.AutoRepaint = true; 
+
+                                        //axTChart1.Series(0).EndUpdate();
+
                                     }
 
                                     #region Chart 原始控件
@@ -2786,8 +2798,8 @@ namespace DoPENetConnect
                                         //axTChart1.AutoRepaint = false;
                                         axTChart1.Series(0).Clear();
                                         axTChart1.Series(1).Clear();
-                                        //axTChart1.Series(2).Delete(0);
-                                        //axTChart1.Series(3).Delete(0);
+                                        axTChart1.Series(2).Clear();
+                                        axTChart1.Series(3).Clear();
                                         x_Data = 0.0;
 
                                         chartX.Clear();
@@ -2971,14 +2983,21 @@ namespace DoPENetConnect
 
             if (LoadUnit.ToUpper() == "KN")
             {
-                label3.Text = "kN";
+                //label3.Text = "kN";
                 chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(kN)";
             }
             else
             {
-                label3.Text = "N";
+                //label3.Text = "N";
                 chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(N)";
             }
+
+            //axTChart1.Chart.AnimatedUpdate = true;
+            //axTChart1.Chart.AnimatedDuration = 300; // 动画持续时间（毫秒）
+            //axTChart1.Series(0).Clear();
+
+            //axTChart1.DoubleBuffer.Double = true;
+
         }
 
 
@@ -4755,6 +4774,11 @@ namespace DoPENetConnect
                 MessageBox.Show("请输入一个有效的数字。");
                 return;
             }
+        }
+
+        private void labelX33_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -581,7 +581,7 @@ namespace DoPENetConnect
             {
                 case "POS":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/min" };
                         break;
                     }
                 case "LOAD":
@@ -598,7 +598,7 @@ namespace DoPENetConnect
                     }
                 case "EXTENSION":
                     {
-                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/s" };
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/min" };
                         break;
                     }
                 default:
