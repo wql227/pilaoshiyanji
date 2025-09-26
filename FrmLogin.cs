@@ -188,7 +188,7 @@ namespace DoPENetConnect
                     textBoxX3.Enabled = false;
                     break;
                 case "管理人员":
-                    textBoxX2.Enabled = false;
+                    textBoxX2.Enabled = true;
                     textBoxX3.Enabled = true;
                     break;
             }
