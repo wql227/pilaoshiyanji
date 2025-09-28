@@ -5501,11 +5501,11 @@ namespace DoPENetConnect
                 MessageBox.Show("路径为空，请在载入试验或者完成试验后进行该操作", "图像保存", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            DialogResult = MessageBox.Show($"确定将图片保存至：{path}?", "图像保存", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (DialogResult == DialogResult.Cancel)
-            {
-                return;
-            }
+            //DialogResult = MessageBox.Show($"确定将图片保存至：{path}?", "图像保存", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            //if (DialogResult == DialogResult.Cancel)
+            //{
+            //    return;
+            //}
 
 
             //保存位移时间曲线
