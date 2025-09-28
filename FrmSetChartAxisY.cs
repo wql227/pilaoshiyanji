@@ -386,7 +386,7 @@ namespace DoPENetConnect
                 return false;
             }
 
-            if (double.Parse((tbX_FrmSetChartAxisY_CommandY_Min.Text)) > double.Parse((tbX_FrmSetChartAxisY_CommandY_Max.Text)))
+            if (double.Parse((tbX_FrmSetChartAxisY_CommandY_Min.Text)) >= double.Parse((tbX_FrmSetChartAxisY_CommandY_Max.Text)))
             {
                 MessageBox.Show("命令坐标最小值不能大于最大值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbX_FrmSetChartAxisY_CommandY_Min.Focus();

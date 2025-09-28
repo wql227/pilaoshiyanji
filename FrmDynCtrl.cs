@@ -184,7 +184,7 @@ namespace DoPENetConnect
 
             MoveCtrl = (DoPE.CTRL)cmbX_Dyn_MoveCtrl.SelectedIndex;
 
-            if (cmbX_Dyn_StartSpeed_Unit.Text == "kN/s")
+            if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "KN/S")
             {
                 SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) * 1000;
             }
@@ -217,7 +217,7 @@ namespace DoPENetConnect
             HaltAtPlusAmplitude = 0.0;
             HaltAtMinusAmplitude = 0.0;
             SpeedToDestination = 0.0;
-            Destination = double.Parse(tbX_Dyn_Offset.Text);
+            Destination = double.Parse(tbX_Dyn_Offset.Text) + double.Parse(tbX_Dyn_Amplitude.Text);
             SweepFrequencyMode = 0;
 
             //MainForm.mainform.PVPositionQueue.Clear();
