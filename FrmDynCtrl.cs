@@ -657,7 +657,7 @@ namespace DoPENetConnect
         private void FrmDynCtrl_Load(object sender, EventArgs e)
         {
             ReplaceLanguage();
-            UiAutoSize();
+            //UiAutoSize();
         }
     }
 }

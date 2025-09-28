@@ -18,6 +18,8 @@ namespace DoPENetConnect
         {
             InitializeComponent();
 
+            this.TopMost = true;
+
             //默认选中第一个选项
             if (cmbX_Pos_EDC.Items.Count >= 1)
             {

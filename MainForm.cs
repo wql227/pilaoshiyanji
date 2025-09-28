@@ -882,7 +882,9 @@ namespace DoPENetConnect
         {
             try
             {
+                //关闭使能
                 DoPE.ERR error = MyEdc.Move.Off();
+
                 bActivated = false;
                 //StartCommunicationWithEdcTimer.Stop();
                 DisplayError(error, "Off");
@@ -1671,7 +1673,7 @@ namespace DoPENetConnect
                         if (nCycleCount > 20 && gSample.Cycles /*>> 1*/ >= nTestCount)
                         {
                             isRunning = false;
-                            SetControlEnable(!isRunning);
+                            SetControlEnable(true);
                             timer_UpdateData.Stop();
 
                             tbX_TestCount.Text = tbX_TestCycles.Text;
@@ -1685,7 +1687,7 @@ namespace DoPENetConnect
                 }
 
                 //波形图
-                if (bConnected && bActivated)
+                if (isRunning && bActivated)
                 {
                     //Task.Run(() =>
                     //{
@@ -3022,13 +3024,13 @@ namespace DoPENetConnect
 
             if (LoadUnit.ToUpper() == "KN")
             {
-                //label3.Text = "kN";
-                chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(kN)";
+                //chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(kN)";
+                axTChart1.Axis.Right.Title.Caption = "试验力(kN)";
             }
             else
             {
-                //label3.Text = "N";
-                chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(N)";
+                //chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(N)";
+                axTChart1.Axis.Right.Title.Caption = "试验力(N)";
             }
 
             //axTChart1.Chart.AnimatedUpdate = true;
