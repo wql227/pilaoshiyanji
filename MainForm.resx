@@ -123,11 +123,11 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonX22.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAADFSURBVDhPY6Ap4Cha3gDCUC7pgLN41X4QhnJJB0PUAFCgcRatCAWxkQ0AiXGWrOwGsXECvsJV
-        QhzFKy9xFq/8D9YANQDCBooVr1wFVYobcBQsVwDadASkgat41RUQxquZo2S5A8gWEA0VYuAtXibCUbRy
-        O1QjhmYUPRDOyv/IBoBB4SpOoHeuchavOAEVgQMUPTgNwAOoawBD2VxeIOc+BziwoKFOAIPVFq18JVCw
-        XgBiYvGKaFjGIRZzFa8MAGumDDAwAACC5KKK37UjfgAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAMVJREFUOE9j
+        oCngKFreAMJQLumAs3jVfhCGckkHQ9QAUKBxFq0IBbGRDQCJcZas7AaxcQK+wlVCHMUrL3EWr/wP1gA1
+        AMIGihWvXAVVihtwFCxXANp0BKSBq3jVFRDGq5mjZLkDyBYQDRVi4C1eJsJRtHI7VCOGZhQ9EM7K/8gG
+        gEHhKk6gd65yFq84ARWBAxQ9OA3AA6hrAEPZXF4g5z4HOLCgoU4Ag9UWrXwlULBeAGJi8YpoWMYhFnMV
+        rwwAa6YMMDAAAILkoorftSN+AAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="sampleCode.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
