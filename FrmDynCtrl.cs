@@ -193,7 +193,7 @@ namespace DoPENetConnect
                 SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text);
             }
 
-            if (cmbX_Dyn_MoveCtrl_Unit.Text == "kN")
+            if (cmbX_Dyn_MoveCtrl_Unit.Text.ToUpper() == "KN")
             {
                 Offset = double.Parse(tbX_Dyn_Offset.Text) * 1000;
                 Amplitude = double.Parse(tbX_Dyn_Amplitude.Text) * 1000;

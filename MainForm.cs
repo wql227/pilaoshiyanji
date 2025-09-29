@@ -3140,6 +3140,8 @@ namespace DoPENetConnect
             //正常返回，开始计时
             if (error == DoPE.ERR.NOERROR)
             {
+                tb_TestParam.Text = string.Format("");
+
                 //开始计时
                 timer_UpdateData.Start();
 
