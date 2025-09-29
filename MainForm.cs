@@ -3133,7 +3133,7 @@ namespace DoPENetConnect
             {
                 Modify = false;
             }
-            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, 1, Offset, Amplitude, 0.0, 
+            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0, 
                 0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode, 
                 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
 
