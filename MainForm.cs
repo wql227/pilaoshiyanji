@@ -201,6 +201,11 @@ namespace DoPENetConnect
 
         double nAxisStep = 0;
 
+        /// <summary>
+        /// 联机后显示传感器数据，达到试验次数或停机后 为 false
+        /// </summary>
+        bool bShowSensorData = true;
+
 
         /// <summary>
         /// 记录位移峰谷值的队列
@@ -848,6 +853,7 @@ namespace DoPENetConnect
                 {
                     //GetXaxisScale();
                     timer_UpdateData.Start();
+                    bShowSensorData = true;
 
                     bntX_GUIOn.Checked = true;
                     btnX_SetLow.Checked = true;
@@ -886,6 +892,8 @@ namespace DoPENetConnect
                 DoPE.ERR error = MyEdc.Move.Off();
 
                 bActivated = false;
+                bShowSensorData = false;
+
                 //StartCommunicationWithEdcTimer.Stop();
                 DisplayError(error, "Off");
                 isRunning = false;
@@ -1193,7 +1201,7 @@ namespace DoPENetConnect
                     double dPosition = 0;
 
                     //刷新位移
-                    if (nCount >= nCountREfresh)
+                    if (nCount >= nCountREfresh && bActivated && bShowSensorData)
                     {
                         //if (this.IsHandleCreated)
                         //{
@@ -1225,7 +1233,7 @@ namespace DoPENetConnect
 
                     //试验力队列
                     PVLoadQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                    if (PVLoadQueue.Count >= 200)
+                    if (PVLoadQueue.Count >= 200 )
                     {
                         PVLoadList = PVLoadQueue.Distinct().ToList();
 
@@ -1397,7 +1405,7 @@ namespace DoPENetConnect
                     }
 
                     //刷新试验力
-                    if (nCount >= nCountREfresh)
+                    if (nCount >= nCountREfresh && bActivated && bShowSensorData)
                     {
                         //if (this.IsHandleCreated)
                         {
@@ -1582,7 +1590,7 @@ namespace DoPENetConnect
                     }
 
                     //刷新变形
-                    if (nCount >= nCountREfresh)
+                    if (nCount >= nCountREfresh && bActivated && bShowSensorData )
                     {
                         guiExtension.Text = g_Extension.ToString($"F{ExtDigit}");
 
@@ -1673,6 +1681,7 @@ namespace DoPENetConnect
                         if (nCycleCount > 20 && gSample.Cycles /*>> 1*/ >= nTestCount)
                         {
                             isRunning = false;
+                            bShowSensorData = false;
                             SetControlEnable(true);
                             timer_UpdateData.Stop();
 
@@ -2492,6 +2501,7 @@ namespace DoPENetConnect
 
                     isRunning = false;
 
+                    bShowSensorData = false;
                     nCycleCount = 0;
 
                     //timer_UpdateData.Stop();
@@ -3026,11 +3036,13 @@ namespace DoPENetConnect
             {
                 //chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(kN)";
                 axTChart1.Axis.Right.Title.Caption = "试验力(kN)";
+                gp_Load.Text = "试验力(kN)";
             }
             else
             {
                 //chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(N)";
                 axTChart1.Axis.Right.Title.Caption = "试验力(N)";
+                gp_Load.Text = "试验力(N)";
             }
 
             //axTChart1.Chart.AnimatedUpdate = true;
@@ -3140,7 +3152,9 @@ namespace DoPENetConnect
             //正常返回，开始计时
             if (error == DoPE.ERR.NOERROR)
             {
-                tb_TestParam.Text = string.Format("");
+                //设置试验参数
+                tb_TestParam.Text = string.Format("控制方式：{0}，波形方式：{1}，循环次数：{2}，偏移:{3}, 振幅:{4}, 频率:{5}",
+                   MoveCtrl, WaveForm, HalfCycles / 2, Offset, Amplitude, Frequency);
 
                 //开始计时
                 timer_UpdateData.Start();
@@ -4363,152 +4377,157 @@ namespace DoPENetConnect
         {
             //#region postion axis auto fitting
             //位移曲线自适应
-
-            if (!double.TryParse(tb_MaxPos.Text, out double maxPos) ||
-              !double.TryParse(tb_MinPos.Text, out double minPos))
+            try
             {
-                // 解析失败，使用默认范围或不处理
-                axTChart1.Axis.Left.Maximum = 0.1;
-                axTChart1.Axis.Left.Minimum = -0.1;
-                axTChart1.Axis.Left.Labels.ValueFormat = "##0.###";
+                if (!double.TryParse(tb_MaxPos.Text, out double maxPos) ||
+                  !double.TryParse(tb_MinPos.Text, out double minPos))
+                {
+                    // 解析失败，使用默认范围或不处理
+                    axTChart1.Axis.Left.Maximum = 0.1;
+                    axTChart1.Axis.Left.Minimum = -0.1;
+                    axTChart1.Axis.Left.Labels.ValueFormat = "##0.###";
+                    return;
+                }
+
+                // 处理绝对值过小的情况（接近0）
+                if (Math.Abs(maxPos) <= 0.01 && Math.Abs(minPos) <= 0.01)
+                {
+                    axTChart1.Axis.Left.Maximum = 0.1;
+                    axTChart1.Axis.Left.Minimum = -0.1;
+                    //chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
+                    //chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
+                }
+                else
+                {
+                    // 使用一个小的 epsilon 避免除以0或范围过小
+                    const double epsilon = 1e-10;
+                    double range = Math.Max(Math.Abs(maxPos - minPos), epsilon);
+
+                    // 如果 max 和 min 非常接近，强制设置一个对称范围
+                    if (range < epsilon * 100) // 可调阈值
+                    {
+                        double center = (maxPos + minPos) / 2.0;
+                        axTChart1.Axis.Left.Maximum = center + 0.1;
+                        axTChart1.Axis.Left.Minimum = center - 0.1;
+                    }
+                    else
+                    {
+                        // 正常情况：保留 85% 的数据范围，上下各留 7.5%
+                        double totalHeight = range / 0.85;
+                        double padding = (totalHeight - range) / 2.0;
+
+                        axTChart1.Axis.Left.Maximum = maxPos + padding;
+                        axTChart1.Axis.Left.Minimum = minPos - padding;
+                    }
+
+                    // 统一设置标签格式
+                    axTChart1.Axis.Left.Labels.ValueFormat = "##0.###";
+                }
+
+
+                //double maxSeriesMaxYValCmd = -1;
+                //double maxSeriesMinYValCmd = -1;
+                //if (chart_machine.Series[3].Points.Count > 0 )
+                //{
+                //    maxSeriesMaxYValCmd = chart_machine.Series[3].Points.Max(point => point.YValues[0]);
+                //    maxSeriesMinYValCmd = chart_machine.Series[3].Points.Min(point => point.YValues[0]);
+                //}
+
+                //if (chart_machine.Series[0].Points.Count > 0)
+                //{
+                //    double maxSeriesMaxYVal = chart_machine.Series[0].Points.Max(point => point.YValues[0]);
+                //    double maxSeriesMinYVal = chart_machine.Series[0].Points.Min(point => point.YValues[0]);
+                //    if (chart_machine.Series[3].YAxisType == chart_machine.Series[0].YAxisType)
+                //    {
+                //        if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
+                //        {
+
+                //            if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
+                //            if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
+                //        }
+                //    }
+
+                //    double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+                //    double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+                //    double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+
+                //    double yAxisMax1 = maxSeriesMaxYVal + padding1;
+                //    double yAxisMin1 = maxSeriesMinYVal - padding1;
+                //    if (Math.Abs(yAxisMax1 - yAxisMin1)>=0.1)
+                //    {
+                //        chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
+                //        chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
+                //    }
+                //}
+                //#endregion postion axis auto fitting
+
+
+                //试验力曲线自适应
+                //#region load auto fitting
+
+                if (Math.Abs(double.Parse(tb_MaxLoad.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinLoad.Text)) <= 0.01)
+                {
+                    axTChart1.Axis.Right.Maximum = 0.1;
+                    axTChart1.Axis.Right.Minimum = -0.1;
+                }
+                else
+                {
+                    if (double.Parse(tb_MaxLoad.Text) == double.Parse(tb_MinLoad.Text))
+                    {
+                        axTChart1.Axis.Right.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2 + 1;
+                        axTChart1.Axis.Right.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2 - 1;
+                    }
+                    else
+                    {
+                        double range = double.Parse(tb_MaxLoad.Text) - double.Parse(tb_MinLoad.Text);
+                        double totalHeight = range / 0.85;        // Y 轴总高度的85%
+                        double padding = (totalHeight - range) / 2.0;  // 上下留白
+
+                        double yAxisMax = double.Parse(tb_MaxLoad.Text) + padding;
+                        double yAxisMin = double.Parse(tb_MinLoad.Text) - padding;
+
+                        axTChart1.Axis.Right.Maximum = yAxisMax;
+                        axTChart1.Axis.Right.Minimum = yAxisMin;
+                    }
+                    //chart_machine.ChartAreas[0].AxisY2.LabelStyle.Format = "F2";
+                    axTChart1.Axis.Right.Labels.ValueFormat = "##0.###";
+
+                }
+
+                //if (chart_machine.Series[1].Points.Count > 0)
+                //{
+                //    double maxSeriesMaxYVal = chart_machine.Series[1].Points.Max(point => point.YValues[0]);
+                //    double maxSeriesMinYVal = chart_machine.Series[1].Points.Min(point => point.YValues[0]);
+
+                //    if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
+                //    {
+                //        if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
+                //        {
+
+                //            if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
+                //            if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
+                //        }
+                //    }
+
+                //    double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+                //    double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+                //    double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+
+                //    double yAxisMax1 = maxSeriesMaxYVal + padding1;
+                //    double yAxisMin1 = maxSeriesMinYVal - padding1;
+                //    if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
+                //    {
+                //        chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
+                //        chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
+                //    }
+
+                //}
+                //#endregion load auto fitting
+            }
+            catch (Exception ex)
+            {
                 return;
             }
-
-            // 处理绝对值过小的情况（接近0）
-            if (Math.Abs(maxPos) <= 0.01 && Math.Abs(minPos) <= 0.01)
-            {
-                axTChart1.Axis.Left.Maximum = 0.1;
-                axTChart1.Axis.Left.Minimum = -0.1;
-                //chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
-                //chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
-            }
-            else
-            {
-                // 使用一个小的 epsilon 避免除以0或范围过小
-                const double epsilon = 1e-10;
-                double range = Math.Max(Math.Abs(maxPos - minPos), epsilon);
-
-                // 如果 max 和 min 非常接近，强制设置一个对称范围
-                if (range < epsilon * 100) // 可调阈值
-                {
-                    double center = (maxPos + minPos) / 2.0;
-                    axTChart1.Axis.Left.Maximum = center + 0.1;
-                    axTChart1.Axis.Left.Minimum = center - 0.1;
-                }
-                else
-                {
-                    // 正常情况：保留 85% 的数据范围，上下各留 7.5%
-                    double totalHeight = range / 0.85;
-                    double padding = (totalHeight - range) / 2.0;
-
-                    axTChart1.Axis.Left.Maximum = maxPos + padding;
-                    axTChart1.Axis.Left.Minimum = minPos - padding;
-                }
-
-                // 统一设置标签格式
-                axTChart1.Axis.Left.Labels.ValueFormat = "##0.###";
-            }
-
-
-            //double maxSeriesMaxYValCmd = -1;
-            //double maxSeriesMinYValCmd = -1;
-            //if (chart_machine.Series[3].Points.Count > 0 )
-            //{
-            //    maxSeriesMaxYValCmd = chart_machine.Series[3].Points.Max(point => point.YValues[0]);
-            //    maxSeriesMinYValCmd = chart_machine.Series[3].Points.Min(point => point.YValues[0]);
-            //}
-
-            //if (chart_machine.Series[0].Points.Count > 0)
-            //{
-            //    double maxSeriesMaxYVal = chart_machine.Series[0].Points.Max(point => point.YValues[0]);
-            //    double maxSeriesMinYVal = chart_machine.Series[0].Points.Min(point => point.YValues[0]);
-            //    if (chart_machine.Series[3].YAxisType == chart_machine.Series[0].YAxisType)
-            //    {
-            //        if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
-            //        {
-
-            //            if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
-            //            if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
-            //        }
-            //    }
-
-            //    double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-            //    double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-            //    double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
-
-            //    double yAxisMax1 = maxSeriesMaxYVal + padding1;
-            //    double yAxisMin1 = maxSeriesMinYVal - padding1;
-            //    if (Math.Abs(yAxisMax1 - yAxisMin1)>=0.1)
-            //    {
-            //        chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
-            //        chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
-            //    }
-            //}
-            //#endregion postion axis auto fitting
-
-
-            //试验力曲线自适应
-            //#region load auto fitting
-
-            if (Math.Abs(double.Parse(tb_MaxLoad.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinLoad.Text)) <= 0.01)
-            {
-                axTChart1.Axis.Right.Maximum = 0.1;
-                axTChart1.Axis.Right.Minimum = -0.1;
-            }
-            else
-            {
-                if (double.Parse(tb_MaxLoad.Text) == double.Parse(tb_MinLoad.Text))
-                {
-                    axTChart1.Axis.Right.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2 + 1;
-                    axTChart1.Axis.Right.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2 - 1;
-                }
-                else
-                {
-                    double range = double.Parse(tb_MaxLoad.Text) - double.Parse(tb_MinLoad.Text);
-                    double totalHeight = range / 0.85;        // Y 轴总高度的85%
-                    double padding = (totalHeight - range) / 2.0;  // 上下留白
-
-                    double yAxisMax = double.Parse(tb_MaxLoad.Text) + padding;
-                    double yAxisMin = double.Parse(tb_MinLoad.Text) - padding;
-
-                    axTChart1.Axis.Right.Maximum = yAxisMax;
-                    axTChart1.Axis.Right.Minimum = yAxisMin;
-                }
-                //chart_machine.ChartAreas[0].AxisY2.LabelStyle.Format = "F2";
-                axTChart1.Axis.Right.Labels.ValueFormat = "##0.###";
-
-            }
-
-            //if (chart_machine.Series[1].Points.Count > 0)
-            //{
-            //    double maxSeriesMaxYVal = chart_machine.Series[1].Points.Max(point => point.YValues[0]);
-            //    double maxSeriesMinYVal = chart_machine.Series[1].Points.Min(point => point.YValues[0]);
-
-            //    if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
-            //    {
-            //        if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
-            //        {
-
-            //            if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
-            //            if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
-            //        }
-            //    }
-
-            //    double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-            //    double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-            //    double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
-
-            //    double yAxisMax1 = maxSeriesMaxYVal + padding1;
-            //    double yAxisMin1 = maxSeriesMinYVal - padding1;
-            //    if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
-            //    {
-            //        chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
-            //        chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
-            //    }
-
-            //}
-            //#endregion load auto fitting
-
         }
 
         private void cb_TareTime_CheckedChanged(object sender, EventArgs e)
@@ -4600,9 +4619,9 @@ namespace DoPENetConnect
                 {
                     for (int i = 0; i < listXPoint.Count - 1; i++)
                     {
-                        strBlockLog = listXPoint[i].ToString("#0.0000") + "," + listYPosPoint[i].ToString("#0.0000") + ",";
-                            //+ listY1Point[i].ToString("#0.0000") + "," + listY2Point[i].ToString("#0.0000")
-                            //+ "," + listY3Point[i].ToString("#0.0000") + ",0";
+                        strBlockLog = listXPoint[i].ToString("#0.0000") + "," + listYPosPoint[i].ToString("#0.0000") + ","
+                            + listYLoadPoint[i].ToString("#0.0000") + "," + listYExtPoint[i].ToString("#0.0000")
+                            + "," + listYCommandPoint[i].ToString("#0.0000") + ",0";
                         strSaveStaticLog = strBlockLog;
                         LogHelper.SaveStaticCsvData(strSaveStaticLog);
                     }
@@ -4668,6 +4687,7 @@ namespace DoPENetConnect
         private void cb_ShowPosition_CheckedChanged(object sender, EventArgs e)
         {
             bShowPosition = cb_ShowPosition.Checked;
+            //axTChart1.Series(0) 
         }
 
         private void cb_ShowLoad_CheckedChanged(object sender, EventArgs e)

@@ -719,7 +719,7 @@
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(850, 39);
             this.Name = "FrmSetChartAxisY";
-            this.Text = "FrmSetChartAxisY";
+            this.Text = "曲线坐标设置";
             this.Load += new System.EventHandler(this.FrmSetChartAxisY_Load);
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
