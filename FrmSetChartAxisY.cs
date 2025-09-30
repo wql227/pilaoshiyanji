@@ -150,7 +150,7 @@ namespace DoPENetConnect
             strTmp = tbX_FrmSetChartAxisY_ExtY_Min.Text.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "ExtY_MIN", strTmp);
 
-            strTmp = tbX_FrmSetChartAxisY_CommandY_Min.Text.ToString();
+            strTmp = tbX_FrmSetChartAxisY_CommandY_Max.Text.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "CommandY_MAX", strTmp);
 
             strTmp = tbX_FrmSetChartAxisY_CommandY_Min.Text.ToString();
