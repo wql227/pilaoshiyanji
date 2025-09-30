@@ -1201,7 +1201,7 @@ namespace DoPENetConnect
                     double dPosition = 0;
 
                     //刷新位移
-                    if (nCount >= nCountREfresh && bActivated && bShowSensorData)
+                    if (nCount >= nCountREfresh && bActivated )
                     {
                         //if (this.IsHandleCreated)
                         //{
@@ -1214,14 +1214,18 @@ namespace DoPENetConnect
 
                             //UpdateData(g_Position.ToString($"F{PosDigit}"));
                             guiPosition.Text = g_Position.ToString($"F{PosDigit}");
-                            tb_MaxPos.Text = g_MaxPosition.ToString($"F{PosDigit}");
-                            tb_MinPos.Text = g_MinPosition.ToString($"F{PosDigit}");
+
+                            if (bShowSensorData)
+                            {
+                                tb_MaxPos.Text = g_MaxPosition.ToString($"F{PosDigit}");
+                                tb_MinPos.Text = g_MinPosition.ToString($"F{PosDigit}");
+                                Invalidate(tb_MaxPos.Bounds);
+                                Invalidate(tb_MinPos.Bounds);
+                            }
                             Invalidate(guiPosition.Bounds);
-                            Invalidate(tb_MaxPos.Bounds);
-                            Invalidate(tb_MinPos.Bounds);
 
                         }
-                            //));
+                        //));
                         //}
                         //Invalidate();
                     }
@@ -1405,7 +1409,7 @@ namespace DoPENetConnect
                     }
 
                     //刷新试验力
-                    if (nCount >= nCountREfresh && bActivated && bShowSensorData)
+                    if (nCount >= nCountREfresh && bActivated )
                     {
                         //if (this.IsHandleCreated)
                         {
@@ -1421,12 +1425,16 @@ namespace DoPENetConnect
                                 guiLoad.Text = g_Load.ToString($"F{LoadDigit}");
                             }
 
-                            tb_MaxLoad.Text = g_MaxLoad.ToString($"F{LoadDigit}");
-                            tb_MinLoad.Text = g_MinLoad.ToString($"F{LoadDigit}");
+                            if (bShowSensorData)
+                            {
+                                tb_MaxLoad.Text = g_MaxLoad.ToString($"F{LoadDigit}");
+                                tb_MinLoad.Text = g_MinLoad.ToString($"F{LoadDigit}");
 
+                                Invalidate(tb_MaxLoad.Bounds);
+                                Invalidate(tb_MinLoad.Bounds);
+                            }
                             Invalidate(guiLoad.Bounds);
-                            Invalidate(tb_MaxLoad.Bounds);
-                            Invalidate(tb_MinLoad.Bounds);
+
                             //}
                             //));
                         }
@@ -1590,16 +1598,19 @@ namespace DoPENetConnect
                     }
 
                     //刷新变形
-                    if (nCount >= nCountREfresh && bActivated && bShowSensorData )
+                    if (nCount >= nCountREfresh && bActivated )
                     {
                         guiExtension.Text = g_Extension.ToString($"F{ExtDigit}");
-
-                        tb_MaxExt.Text = g_MaxExtension.ToString($"F{ExtDigit}");
-                        tb_MinExt.Text = g_MinExtension.ToString($"F{ExtDigit}");
-
                         Invalidate(guiExtension.Bounds);
-                        Invalidate(tb_MaxExt.Bounds);
-                        Invalidate(tb_MinExt.Bounds);
+
+                        if (bShowSensorData)
+                        {
+                            tb_MaxExt.Text = g_MaxExtension.ToString($"F{ExtDigit}");
+                            tb_MinExt.Text = g_MinExtension.ToString($"F{ExtDigit}");
+
+                            Invalidate(tb_MaxExt.Bounds);
+                            Invalidate(tb_MinExt.Bounds);
+                        }
 
                         Update();
                     }
@@ -1696,7 +1707,7 @@ namespace DoPENetConnect
                 }
 
                 //波形图
-                if (isRunning && bActivated)
+                if (bShowSensorData && bActivated)
                 {
                     //Task.Run(() =>
                     //{
@@ -3159,6 +3170,7 @@ namespace DoPENetConnect
                 //开始计时
                 timer_UpdateData.Start();
 
+                bShowSensorData = true;
                 isRunning = true;
                 SetControlEnable(false);
                 nTestCount = HalfCycles;
@@ -4394,8 +4406,6 @@ namespace DoPENetConnect
                 {
                     axTChart1.Axis.Left.Maximum = 0.1;
                     axTChart1.Axis.Left.Minimum = -0.1;
-                    //chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
-                    //chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
                 }
                 else
                 {
@@ -4489,9 +4499,7 @@ namespace DoPENetConnect
                         axTChart1.Axis.Right.Maximum = yAxisMax;
                         axTChart1.Axis.Right.Minimum = yAxisMin;
                     }
-                    //chart_machine.ChartAreas[0].AxisY2.LabelStyle.Format = "F2";
                     axTChart1.Axis.Right.Labels.ValueFormat = "##0.###";
-
                 }
 
                 //if (chart_machine.Series[1].Points.Count > 0)
