@@ -2856,10 +2856,10 @@ namespace DoPENetConnect
                                     if (chartX.Count >= nTotal)
                                     {
                                         //axTChart1.AutoRepaint = false;
-                                        axTChart1.Series(0).Clear();
-                                        axTChart1.Series(1).Clear();
-                                        axTChart1.Series(2).Clear();
-                                        axTChart1.Series(3).Clear();
+                                        //axTChart1.Series(0).Clear();
+                                        //axTChart1.Series(1).Clear();
+                                        //axTChart1.Series(2).Clear();
+                                        //axTChart1.Series(3).Clear();
                                         x_Data = 0.0;
 
                                         chartX.Clear();
@@ -4695,25 +4695,31 @@ namespace DoPENetConnect
         private void cb_ShowPosition_CheckedChanged(object sender, EventArgs e)
         {
             bShowPosition = cb_ShowPosition.Checked;
-            //axTChart1.Series(0) 
+            //axTChart1.Series(0).Active = bShowPosition;
+            axTChart1.Series(0).Pen.Visible = bShowPosition;
         }
 
         private void cb_ShowLoad_CheckedChanged(object sender, EventArgs e)
         {
             bShowLoad = cb_ShowLoad.Checked;
+            //axTChart1.Series(1).Active = bShowLoad;
+            axTChart1.Series(1).Pen.Visible = bShowLoad;
 
         }
 
         private void cb_ShowExtension_CheckedChanged(object sender, EventArgs e)
         {
             bShowExtension = cb_ShowExtension.Checked;
+            //axTChart1.Series(2).Active = bShowExtension;
+            axTChart1.Series(2).Pen.Visible = bShowExtension;
 
         }
 
         private void cb_ShowCommand_CheckedChanged(object sender, EventArgs e)
         {
             bShowCommand = cb_ShowCommand.Checked;
-
+            //axTChart1.Series(3).Active = bShowLoad;
+            axTChart1.Series(3).Pen.Visible = bShowLoad;
         }
     }
 }
