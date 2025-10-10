@@ -57,8 +57,8 @@
 		"ToolStripMenuItem_Oper":"操作(&O)",
 		"ToolStripMenuItem_Login":"登录...(&L)",
 		"ToolStripMenuItem_Setting":"参数设置(&S)",
-		"ToolStripMenuItem_Data":"实验数据(&D)",
-		"ToolStripMenuItem_Result":"实验结果(&R)",
+		"ToolStripMenuItem_Data":"试验数据(&D)",
+		"ToolStripMenuItem_Result":"试验结果(&R)",
 		"ToolStripMenuItem_Language":"界面语言",
 		"ToolStripMenuItem_Help":"帮助"
 
