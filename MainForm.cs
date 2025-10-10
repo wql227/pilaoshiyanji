@@ -1237,13 +1237,13 @@ namespace DoPENetConnect
 
                     //试验力队列
                     PVLoadQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                    if (PVLoadQueue.Count >= 200 )
+                    if (PVLoadQueue.Count >= 400 )
                     {
                         PVLoadList = PVLoadQueue.Distinct().ToList();
 
                         for (int i = 0; i < PVLoadList.Count; i++)
                         {
-                            if (i < 4 || i > PVLoadList.Count - 2)
+                            if (i < 3 || i > PVLoadList.Count - 2)
                             {
                                 continue;
                             }
@@ -1255,7 +1255,6 @@ namespace DoPENetConnect
                                 {
                                     PVLoadMaxAverageList.Add(PVLoadList[i]);
 
-                                    //double dLoadMaxAverage = 0;
                                     if (PVLoadMaxAverageList.Count > 0)
                                     {
                                         if (PVLoadList[i] >= PVLoadMaxAverageList.Average())
@@ -1263,14 +1262,11 @@ namespace DoPENetConnect
                                             g_MaxLoad = PVLoadList[i] / 1000;
                                         }
                                     }
-
-                                    //g_MaxLoad = PVLoadList[i] / 1000;
                                 }
                                 else
                                 {
                                     PVLoadMaxAverageList.Add(PVLoadList[i]);
 
-                                    //double dLoadMaxAverage = 0;
                                     if (PVLoadMaxAverageList.Count > 0)
                                     {
                                         if (PVLoadList[i] >= PVLoadMaxAverageList.Average())
@@ -1278,20 +1274,16 @@ namespace DoPENetConnect
                                             g_MaxLoad = PVLoadList[i];
                                         }
                                     }
-                        
-                                    //g_MaxLoad = PVLoadList[i];
                                 }
                             }
 
                             // 判断是否为谷值：小于左右相邻的数据
-                            if (PVLoadList[i - 1] > PVLoadList[i] && PVLoadList[i] < PVLoadList[i + 1] &&
-                                (PVLoadList[i - 1] + PVLoadList[i + 1]) / 2 > PVLoadList[i])
+                            if (PVLoadList[i - 1] > PVLoadList[i] && PVLoadList[i] < PVLoadList[i + 1])
                             {
                                 if (LoadUnit.ToUpper() == "KN")
                                 {
                                     PVLoadMinAverageList.Add(PVLoadList[i]);
 
-                                    //double dLoadMinAverage = 0;
                                     if (PVLoadMinAverageList.Count > 0)
                                     {
                                         if (PVLoadList[i] <= PVLoadMinAverageList.Average())
@@ -1299,14 +1291,11 @@ namespace DoPENetConnect
                                             g_MinLoad = PVLoadList[i] / 1000;
                                         }
                                     }
-                    
-                                    //g_MinLoad = PVLoadList[i] / 1000;
                                 }
                                 else
                                 {
                                     PVLoadMinAverageList.Add(PVLoadList[i]);
 
-                                    double dLoadMinAverage = 0;
                                     if (PVLoadMinAverageList.Count > 0)
                                     {
                                         if (PVLoadList[i] <= PVLoadMinAverageList.Average())
@@ -1314,8 +1303,6 @@ namespace DoPENetConnect
                                             g_MinLoad = PVLoadList[i];
                                         }
                                     }
-                        
-                                    //g_MinLoad = PVLoadList[i];
                                 }
                             }
                         }
@@ -1401,10 +1388,10 @@ namespace DoPENetConnect
                             #endregion 判断试验力峰谷值
                         }
 
-                        while (PVLoadQueue.Count > 100)
+                        while (PVLoadQueue.Count > 200)
                         {
-                            //PVLoadQueue.Dequeue();
-                            PVLoadQueue.Clear();
+                            PVLoadQueue.Dequeue();
+                            //PVLoadQueue.Clear();
                         }
                     }
 
@@ -3161,7 +3148,7 @@ namespace DoPENetConnect
                 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
 
             //正常返回，开始计时
-            if (error == DoPE.ERR.NOERROR)
+            if (error == DoPE.ERR.NOERROR || error == DoPE.ERR.CMD_PARCORR || error == DoPE.ERR.CMD_PAR)
             {
                 //设置试验参数
                 tb_TestParam.Text = string.Format("控制方式：{0}，波形方式：{1}，循环次数：{2}，偏移:{3}, 振幅:{4}, 频率:{5}",
@@ -3186,6 +3173,13 @@ namespace DoPENetConnect
                 //实验开始禁用次数修改
                 tbX_TestCount.Enabled = false;
 
+                //清理位移队列
+                if (PVPositionQueue.Count > 0)
+                {
+                    PVPositionQueue.Clear();
+                }
+
+                //清理位移平均值队列
                 if (PVPositionMaxAverageList.Count > 0)
                 {
                     PVPositionMaxAverageList.Clear();
@@ -3195,6 +3189,27 @@ namespace DoPENetConnect
                 {
                     PVPositionMinAverageList.Clear();
                 }
+
+                //清理试验力队列
+                if (PVLoadQueue.Count > 0)
+                {
+                    PVLoadQueue.Clear();
+                }
+
+                //清理试验力平均值队列
+                PVLoadMaxAverageList.Clear();
+                PVLoadMinAverageList.Clear();
+
+                //清理变形队列
+                if (PVExtensionQueue.Count > 0)
+                {
+                    PVExtensionQueue.Clear();
+                }
+
+                //清理位移平均值队列
+                PVExtensionMaxAverageList.Clear();
+                PVExtensionMinAverageList.Clear();
+       
             }
 
         }
@@ -4278,25 +4293,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void AdjustToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "文本文件 (*.corr)|*.corr";
 
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                var builder = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddIniFile(ofd.FileName);
-
-                IConfiguration config = builder.Build();
-                var correctionTable = ParseStiffnessCorrection(config.GetSection("SensorCorrection"));
-
-                DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetSensorCorrection(DoPE.SENSOR.SENSOR_E, ref correctionTable);
-            }
-            else
-            {
-                Console.WriteLine("未选择文件");
-                return;
-            }
         }
 
 
@@ -4561,15 +4558,7 @@ namespace DoPENetConnect
 
         private void MultiSensorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frmMultiSensor == null || frmMultiSensor.IsDisposed)
-            {
-                frmMultiSensor = new FrmMultiSensor(this); // 传入父窗口引用
-                frmMultiSensor.Show();
-            }
-            else
-            {
-                frmMultiSensor.BringToFront();
-            }
+ 
         }
 
 
@@ -4704,7 +4693,6 @@ namespace DoPENetConnect
             bShowLoad = cb_ShowLoad.Checked;
             //axTChart1.Series(1).Active = bShowLoad;
             axTChart1.Series(1).Pen.Visible = bShowLoad;
-
         }
 
         private void cb_ShowExtension_CheckedChanged(object sender, EventArgs e)
@@ -4712,7 +4700,6 @@ namespace DoPENetConnect
             bShowExtension = cb_ShowExtension.Checked;
             //axTChart1.Series(2).Active = bShowExtension;
             axTChart1.Series(2).Pen.Visible = bShowExtension;
-
         }
 
         private void cb_ShowCommand_CheckedChanged(object sender, EventArgs e)
@@ -4720,6 +4707,54 @@ namespace DoPENetConnect
             bShowCommand = cb_ShowCommand.Checked;
             //axTChart1.Series(3).Active = bShowLoad;
             axTChart1.Series(3).Pen.Visible = bShowLoad;
+        }
+
+
+        /// <summary>
+        /// 校正
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 校正ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "文本文件 (*.corr)|*.corr";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                var builder = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddIniFile(ofd.FileName);
+
+                IConfiguration config = builder.Build();
+                var correctionTable = ParseStiffnessCorrection(config.GetSection("SensorCorrection"));
+
+                DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetSensorCorrection(DoPE.SENSOR.SENSOR_E, ref correctionTable);
+            }
+            else
+            {
+                Console.WriteLine("未选择文件");
+                return;
+            }
+        }
+
+
+        /// <summary>
+        /// 多传感器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 多传感器ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmMultiSensor == null || frmMultiSensor.IsDisposed)
+            {
+                frmMultiSensor = new FrmMultiSensor(this); // 传入父窗口引用
+                frmMultiSensor.Show();
+            }
+            else
+            {
+                frmMultiSensor.BringToFront();
+            }
         }
     }
 }

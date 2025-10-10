@@ -715,7 +715,7 @@ namespace DoPENetConnect
             //位移峰值外保护校验
             if (double.Parse(tbX_FrmProtectOption_PosMaxOut.Text) <= double.Parse(tbX_FrmProtectOption_PosMaxIn.Text))
             {
-                MessageBox.Show("位移峰值外保护值不能小于等于位移峰值内保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("位移峰值外保护值不能小于等于位移峰值内保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 tbX_FrmProtectOption_PosMaxOut.Focus();
                 return false;
             }
@@ -723,7 +723,7 @@ namespace DoPENetConnect
             //位移谷值内保护校验
             if (double.Parse(tbX_FrmProtectOption_PosMinOut.Text) >= double.Parse(tbX_FrmProtectOption_PosMinIn.Text))
             {
-                MessageBox.Show("位移谷值内保护值不能小于等于位移谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("位移谷值内保护值不能小于等于位移谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 tbX_FrmProtectOption_PosMinOut.Focus();
                 return false;
             }
@@ -731,7 +731,7 @@ namespace DoPENetConnect
             //试验力峰值外保护校验
             if (double.Parse(tbX_FrmProtectOption_LoadMaxOut.Text) <= double.Parse(tbX_FrmProtectOption_LoadMaxIn.Text))
             {
-                MessageBox.Show("试验力峰值外保护值不能小于试验力峰值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("试验力峰值外保护值不能小于试验力峰值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 tbX_FrmProtectOption_LoadMaxOut.Focus();
                 return false;
             }
@@ -739,7 +739,7 @@ namespace DoPENetConnect
             //试验力谷值外保护校验
             if (double.Parse(tbX_FrmProtectOption_LoadMinOut.Text) >= double.Parse(tbX_FrmProtectOption_LoadMinIn.Text))
             {
-                MessageBox.Show("试验力峰值内保护值不能小于等于试验力谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("试验力峰值内保护值不能小于等于试验力谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 tbX_FrmProtectOption_LoadMinOut.Focus();
                 return false;
             }
@@ -747,7 +747,7 @@ namespace DoPENetConnect
             //变形峰值谷值内保护校验
             if (double.Parse(tbX_FrmProtectOption_ExtMaxOut.Text) <= double.Parse(tbX_FrmProtectOption_ExtMaxIn.Text))
             {
-                MessageBox.Show("变形峰值外保护值不能小于变形谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("变形峰值外保护值不能小于变形谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 tbX_FrmProtectOption_ExtMaxOut.Focus();
                 return false;
             }
@@ -755,7 +755,7 @@ namespace DoPENetConnect
             //变形峰值谷值内保护校验
             if (double.Parse(tbX_FrmProtectOption_ExtMinOut.Text) >= double.Parse(tbX_FrmProtectOption_ExtMinIn.Text))
             {
-                MessageBox.Show("变形峰值内保护值不能小于变形谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("变形峰值内保护值不能小于变形谷值外保护值", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 tbX_FrmProtectOption_ExtMaxOut.Focus();
                 return false;
             }
@@ -1036,7 +1036,7 @@ namespace DoPENetConnect
         {
             if (!ValidityCheck())
             {
-                MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 return;
             }
 
