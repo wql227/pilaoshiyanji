@@ -1348,6 +1348,7 @@ namespace DoPENetConnect
         public void onExpermentStoped()
         {
             doTest.sampleFinished = true;
+            doTest.sampleMaxLoad = tb_MaxLoad.Text;
             buttonX15.Checked = false;
             if (stopwatch.IsRunning) stopwatch.Stop();
             LogHelper.SaveResult(tb_MaxLoad.Text, doTest);    //存取最大力
