@@ -3216,7 +3216,7 @@ namespace DoPENetConnect
              minSeries2 = -1;
              minSeries3 = -1;
 
-            chart_machine.ChartAreas[0].CursorX.IsUserSelectionEnabled = false;
+            chart_machine.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
             while (chart_machine.ChartAreas[0].AxisX.ScaleView.IsZoomed)
             {
                 chart_machine.ChartAreas[0].AxisX.ScaleView.ZoomReset();
