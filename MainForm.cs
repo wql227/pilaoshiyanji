@@ -4946,8 +4946,18 @@ namespace DoPENetConnect
                 limitValue = double.Parse(textBoxX14.Text) * 1000;
             }
 
+            DESTMODE destModeSet = DESTMODE.DEST_MAINTAIN;
+            switch (comboBoxEx11.SelectedIndex) {
+                case 0:
+                    destModeSet = DESTMODE.DEST_POSITION;
+                    break;
+                case 1:
+                    destModeSet = DESTMODE.DEST_MAINTAIN;
+                    break;
+            }
+
             frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, ctrlSpeed, comboBoxEx7.SelectedIndex, limitValue,
-                                             (CTRL)comboBoxEx9.SelectedIndex, destinationVal, DESTMODE.DEST_MAINTAIN);
+                                             (CTRL)comboBoxEx9.SelectedIndex, destinationVal, destModeSet);
         }
 
         public void SetMaxMinControlsZero()
@@ -4977,7 +4987,8 @@ namespace DoPENetConnect
 
                 comboBoxEx9.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
-                 //comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
+                //comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
+                comboBoxEx11.Items.Add("DEST_POSITION");
                 comboBoxEx11.Items.Add("DEST_MAINTAIN");
                 comboBoxEx11.SelectedIndex = 0;
             }
