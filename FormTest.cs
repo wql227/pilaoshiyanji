@@ -82,6 +82,29 @@ namespace DoPENetConnect
             get;
         }
 
+        public string currentExtDestCtrl
+        {
+            set;
+            get;
+        }
+
+        public string currentExtLimitMode
+        {
+            set;
+            get;
+        }
+
+        public double currentExtLimit
+        {
+            set;
+            get;
+        }
+        public double currentExtDestination
+        {
+            set;
+            get;
+        }
+
         public FormTest()
         {
             InitializeComponent();

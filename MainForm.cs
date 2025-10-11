@@ -3180,6 +3180,10 @@ namespace DoPENetConnect
         public void MovePosExt(DoPE.CTRL MoveCtrl, double Speed, LIMITMODE LimitMode, double Limit, CTRL DestinationCtrl, double Destination,
             DESTMODE DestMode)
         {
+            doTest.currentExtDestCtrl = Enum.GetName(typeof(DoPE.CTRL), DestinationCtrl);
+            doTest.currentExtLimitMode = Enum.GetName(typeof(DoPE.LIMITMODE), LimitMode);
+            doTest.currentExtLimit = Limit;
+            doTest.currentExtDestination = Destination;
             LoadSystemLimitSet();
             DoPE.ERR error = MyEdc.Move.PosExt(MoveCtrl, Speed, LimitMode, Limit, DestinationCtrl, Destination, DestMode, ref MyTan);
             
