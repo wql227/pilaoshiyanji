@@ -4990,7 +4990,7 @@ namespace DoPENetConnect
 
                 //comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
                 comboBoxEx11.Items.Add("DEST_POSITION");
-                comboBoxEx11.Items.Add("DEST_MAINTAIN");
+                //comboBoxEx11.Items.Add("DEST_MAINTAIN");
                 comboBoxEx11.SelectedIndex = 0;
             }
         }
