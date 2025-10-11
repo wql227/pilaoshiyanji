@@ -1310,21 +1310,49 @@ namespace DoPENetConnect
                 guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
                 guiTime.Refresh();
 
-                //发送
+                //
                 if (bConnected && bActivated && isRunning)
                 {
-                    
+                    //发送数据
                     if (realtimeParams.dataRecvTimes % (realtimeParams.sendInterval / 10) == 0 && serialPort1.IsOpen)
                     {
                         string sendStr = $"B{realtimeParams.DisplacementVal},{realtimeParams.LoadVal}";
                         serialPort1.Write(sendStr);
                     }
+
+                    //limit
+                    ExceedLimitAlert();
                 }
             }
             ParamsSetFirstCycle();
             return 0;
         }
+        /// <summary>
+        /// 当位移超过Limit设定后的操作：1.停止试验
+        /// </summary>
+        public void ExceedLimitAlert()
+        {
+            if (doTest.currentExtLimitMode != "NOT_ACTIVE")
+            {
+                if (doTest.currentExtDestCtrl == "POS")
+                {
+                    double deviationVal = double.Parse(guiPosition.Text) - originParams.DisplacementVal;
+                    if (Math.Abs(deviationVal) >= doTest.currentExtLimit)
+                    {
+                        //alert out of limit
+                        MoveHalt();
+                        //停止数据更新
+                        //if (isRunning)
+                        {
+                            isRunning = false;
+                            onExpermentStoped();
+                        }
+                        this.Invoke(new MethodInvoker(ShowOnPosMsgInfos));
 
+                    }
+                }
+            }
+        }
 
         public void SaveTestPath(string path,string imageName)
         {
