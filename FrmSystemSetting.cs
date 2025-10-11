@@ -457,6 +457,19 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDown", "0", strTmp, strTmp.Capacity);
             tbX_hurrydownval.Text = strTmp.ToString();
 
+            //按钮文字
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "UpText", "0", strTmp, strTmp.Capacity);
+            textBoxX6.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryUpText", "0", strTmp, strTmp.Capacity);
+            textBoxX5.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "DownText", "0", strTmp, strTmp.Capacity);
+            textBoxX4.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDownText", "0", strTmp, strTmp.Capacity);
+            textBoxX3.Text = strTmp.ToString();
+
             ///ui 选中状态
             //IniFileHelper.GetIniString("UIDefault", "cbX_ProtectOption", "0", strTmp, strTmp.Capacity);
             //cbX_ProtectOption.SelectedIndex = int.Parse(strTmp.ToString());
@@ -754,6 +767,18 @@ namespace DoPENetConnect
             MainForm.mainform.btnHurryDownConstantVal = double.Parse(strTmp);
             IniFileHelper.WriteIniString("PushButtonFunctionConstant", "HurryDown", strTmp);
 
+            //按钮默认文字设置
+            strTmp = textBoxX6.Text;
+            IniFileHelper.WriteIniString("PushButtonFunctionConstant", "UpText", strTmp);
+            
+            strTmp = textBoxX5.Text;
+            IniFileHelper.WriteIniString("PushButtonFunctionConstant", "HurryUpText", strTmp);
+
+            strTmp = textBoxX4.Text;
+            IniFileHelper.WriteIniString("PushButtonFunctionConstant", "DownText", strTmp);
+
+            strTmp = textBoxX3.Text;
+            IniFileHelper.WriteIniString("PushButtonFunctionConstant", "HurryDownText", strTmp);
 
             ///ui 选中状态
             //strTmp = cbX_ProtectOption.SelectedIndex.ToString();

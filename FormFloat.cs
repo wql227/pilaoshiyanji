@@ -219,6 +219,29 @@ namespace DoPENetConnect
             }
         }
 
+        private void FormFloat_Shown(object sender, EventArgs e)
+        {
+            LoadIni();
+        }
+
+        public void LoadIni()
+        {
+            IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
+            StringBuilder strTmp = new StringBuilder(255);
+
+            //按钮文字
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "UpText", "0", strTmp, strTmp.Capacity);
+            bntX_MoveUp.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryUpText", "0", strTmp, strTmp.Capacity);
+            btnX_MoveQuickUp.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "DownText", "0", strTmp, strTmp.Capacity);
+            bntX_MoveDown.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDownText", "0", strTmp, strTmp.Capacity);
+            btnX_QuickMoveDown.Text = strTmp.ToString();
+        }
     }
     
 }
