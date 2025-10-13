@@ -71,8 +71,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ReferenceAssembly\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
-    <Reference Include="DoPE10Net">
-      <HintPath>ReferenceAssembly\DoPE10Net.dll</HintPath>
+    <Reference Include="DoPE10Net, Version=10.23.0.0, Culture=neutral, PublicKeyToken=c82e33ffce8aa572, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceAssembly\DoPE10x86\DoPE10Net.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.9.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>packages\log4net.2.0.10\lib\net45\log4net.dll</HintPath>
