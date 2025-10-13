@@ -1660,29 +1660,27 @@ namespace DoPENetConnect
                     {
                         if ((gSample.Cycles >> 1) > 0 && (gSample.Cycles >> 1) % nCountLog == 0 && !isProcessing)
                         {
-                            
-                            int nPointCount = axTChart1.Series(0).Count;
+                            //int nPointCount = axTChart1.Series(0).Count;
                             //Console.WriteLine(nPointCount.ToString());
 
                             int currentHalfCyclez = gSample.Cycles >> 1;
 
                             if (currentHalfCyclez != LastRecordedCountHalfCycle)
                             {
-                                //var task1 = Task.Run(() => GetSeriesPoint());
+                                var task1 = Task.Run(() => GetSeriesPoint());
                                 LastRecordedCountHalfCycle = currentHalfCyclez;
                             }
-
                         }
 
 
                         strBlockLog.Append(strCSVLog + "\r\n");
-                        //strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");
+                        //strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");　//TODO 导致卡顿
 
                         //按配置的次数存储日志
                         //TODO 修改成 达到nCountLog 次数时只存储当前屏幕数据
                         if ((gSample.Cycles /*>> 1*/) % nCountLog == 0)
                         {
-                            //LogHelper.SaveCsvData(strBlockLog.ToString());
+                            LogHelper.SaveCsvData(strBlockLog.ToString());
                             strBlockLog.Clear();
                         }
 
@@ -1787,58 +1785,12 @@ namespace DoPENetConnect
                 //命令
                 ISeries CommandSeries = axTChart1.Series(3);
 
-                int count = Math.Min(Math.Min(PosSeries.Count, LoadSeries.Count),
-                         Math.Min(ExtensionSeries.Count, CommandSeries.Count));
+                //int count = Math.Min(Math.Min(PosSeries.Count, LoadSeries.Count),
+                //         Math.Min(ExtensionSeries.Count, CommandSeries.Count));
 
-                List<string[]> rows = new List<string[]>();
-
-                string strNow = DateTime.Now.ToString();
-
-                var sb = new StringBuilder(count * 128); // 预估每行128字符
-                for (int i = 0; i < count; i++)
-                {
-                    double time = PosSeries.XValues.Value[i];           // Time (s)
-                    double dis = PosSeries.YValues.Value[i];            // Dis (mm)
-                    double load = LoadSeries.YValues.Value[i];          // Load (kN)
-                    double defor = ExtensionSeries.YValues.Value[i];    // Defor (mm)
-                    double command = CommandSeries.YValues.Value[i];    // Command (mm)
-                    // 直接拼接数据，避免中间字符串数组
-                    sb.AppendLine($"{i + 1}\t{load:F6}\t{dis:F6}\t{defor:F6}\t{time:F4}\t{command:F6}\t000\t0.00\t0.00\t0.00");
-                }
-                LogHelper.SaveCountCsvData(sb.ToString(), DateTime.Now.ToString("yyyyMMddHHmmssfff"));
-
-                //for (int i = 0; i < count; i++)
-                //{
-                //    double time = PosSeries.XValues.Value[i];           // Time (s)
-                //    double dis = PosSeries.YValues.Value[i];            // Dis (mm)
-                //    double load = LoadSeries.YValues.Value[i];          // Load (kN)
-                //    double defor = ExtensionSeries.YValues.Value[i];    // Defor (mm)
-                //    double command = CommandSeries.YValues.Value[i];    // Command (mm)
-
-                //    string[] row = new string[]
-                //    {
-                //    (i + 1).ToString(),           // 序号
-                //    load.ToString("F6"),          // Load (kN)
-                //    dis.ToString("F6"),           // Dis (mm)
-                //    defor.ToString("F6"),         // Defor (mm)
-                //    time.ToString("F4") + "  ",   // Time (s)，注意原数据有空格对齐，可选保留
-                //    command.ToString("F6"),       // Command (mm)
-                //    "000",                        // HalfCycle（固定）
-                //    "0.00",                       // EnTemp
-                //    "0.00",                       // SurfaceTemp
-                //    "0.00"                        // InnerTemp
-                //    };
-                //    //LogHelper.SaveCountCsvData(string.Join("\t", row));
-
-                //    rows.Add(row);
-                //}
-
-                //foreach (var row in rows)
-                //{
-                //    LogHelper.SaveCountCsvData(string.Join("\t", row), DateTime.Now.ToString("yyyyMMddHHmmssfff"));
-                //}
+                LogHelper.SaveCountCsvData(PosSeries, LoadSeries, ExtensionSeries, CommandSeries, DateTime.Now.ToString("yyyyMMddHHmmssfff"));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }

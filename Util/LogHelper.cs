@@ -2,8 +2,10 @@
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
+using TeeChart;
 
 namespace DoPENetConnect
 {
@@ -241,7 +243,8 @@ namespace DoPENetConnect
         /// 按次数保存数值
         /// </summary>
         /// <param name="strs">strs为对应的参数字符,值之间用","隔开</param>
-        public static void SaveCountCsvData(string strs, string strFileName)
+        public static async Task SaveCountCsvData(ISeries PosSeries, ISeries LoadSeries, 
+            ISeries ExtensionSeries, ISeries CommandSeries, string strFileName)
         {
             try
             {
@@ -262,58 +265,36 @@ namespace DoPENetConnect
                     Directory.CreateDirectory(logPath);
                 }
 
-                int maxFileSize = 1 * 1024 * 1024; // 10 MB
+                int maxFileSize = 10 * 1024 * 1024; // 10 MB
                 FileInfo fi = new FileInfo(filename);
 
-                // 如果文件存在且超过最大大小，则进行滚动
-                if (fi.Exists && fi.Length > maxFileSize)
+                bool shuldWriteHeader = true;
+               
+                int count = Math.Min(Math.Min(PosSeries.Count, LoadSeries.Count),
+               Math.Min(ExtensionSeries.Count, CommandSeries.Count));
+
+                using (var sw = new StreamWriter(filename, true, Encoding.UTF8)) // 使用 UTF-8
                 {
-                    int maxBackupFiles = 100; // 最多保留 5 个备份文件
-
-                    // 滚动旧文件
-                    for (int i = maxBackupFiles - 1; i >= 1; i--)
+                    if (shuldWriteHeader)
                     {
-                        string oldFile = Path.Combine(logPath, $"{dateStr}.{i}.CSV");
-                        string prevFile = Path.Combine(logPath, $"{dateStr}.{i - 1}.CSV");
-
-                        if (File.Exists(oldFile))
-                        {
-                            File.Delete(oldFile);
-                        }
-
-                        if (File.Exists(prevFile))
-                        {
-                            File.Move(prevFile, oldFile);
-                        }
-                    }
-                    string firstIndex = "0";
-                    string firstBackup = Path.Combine(logPath, $"{dateStr}.{firstIndex}.CSV");
-                    if (File.Exists(firstBackup))
-                    {
-                        File.Delete(firstBackup);
-                    }
-                    File.Move(filename, firstBackup);
-                }
-
-                // 如果文件不存在，先写入表头
-                bool writeHeader = !File.Exists(filename);
-                using (StreamWriter sw = new StreamWriter(filename, true, Encoding.Default))
-                {
-                    if (writeHeader)
-                    {
-                        if (MainForm.mainform.LoadUnit.ToUpper() == "KN")
-                        {
-                            string header = "时间[s],位移[mm],试验力[kN],变形[mm],命令,半循环,输出[%],反馈,循环";
-                            sw.WriteLine(header);
-                        }
-                        else
-                        {
-                            string header = "时间[s],位移[mm],试验力[N],变形[mm],命令,半循环,输出[%],反馈,循环";
-                            sw.WriteLine(header);
-                        }
+                        string header = MainForm.mainform.LoadUnit.ToUpper() == "KN"
+                            ? "时间[s],位移[mm],试验力[kN],变形[mm],命令,半循环,输出[%],反馈,循环"
+                            : "时间[s],位移[mm],试验力[N],变形[mm],命令,半循环,输出[%],反馈,循环";
+                        await sw.WriteLineAsync(header);
                     }
 
-                    sw.WriteLine(strs);
+                    // 流式写入每一行数据
+                    for (int i = 0; i < count; i++)
+                    {
+                        double time = PosSeries.XValues.Value[i];
+                        double positon = PosSeries.YValues.Value[i];
+                        double load = LoadSeries.YValues.Value[i];
+                        double extension = ExtensionSeries.YValues.Value[i];
+                        double command = CommandSeries.YValues.Value[i];
+
+                        string line = $"{time:F4},{positon:F6},{load:F6},{extension:F6},{command:F6},000,0.00,0.00,0";
+                        await sw.WriteLineAsync(line);
+                    }
                 }
 
                 bLogDirBuildedFlag = true;
