@@ -25,7 +25,7 @@ namespace DoPENetConnect
         {
             LoadIni();
             ReplaceLanguage();
-            UiAutoSize();
+            //UiAutoSize();
 
         }
 
@@ -295,6 +295,14 @@ namespace DoPENetConnect
                 cbX_CountLog.Text = "100";
             }
 
+            IniFileHelper.GetIniString("Setting", "PVCountLog", "100", strTmp, strTmp.Capacity);
+            cbX_CountLog.Text = strTmp.ToString();
+            if (string.IsNullOrEmpty(cbX_PVCountLog.Text))
+            {
+                cbX_PVCountLog.Text = "100";
+            }
+
+
             IniFileHelper.GetIniString(strConfigSetion, "限位保护选项", "0", strTmp, strTmp.Capacity);
             int indexToBeSetted = int.Parse(strTmp.ToString());
             if (cbX_ProtectOption.Items.Count > indexToBeSetted)
@@ -487,6 +495,11 @@ namespace DoPENetConnect
             strTmp = cbX_CountLog.Text;
             MainForm.mainform.nCountLog = int.Parse(strTmp);
             IniFileHelper.WriteIniString("Setting", "CountLog", strTmp);
+
+            //记录峰谷值日志
+            strTmp = cbX_PVCountLog.Text;
+            MainForm.mainform.nPVCountLog = int.Parse(strTmp);
+            IniFileHelper.WriteIniString("Setting", "PVCountLog", strTmp);
 
             strTmp = tbX_SampleFrequency.Text;
             IniFileHelper.WriteIniString("Setting", "SampleFrequency", strTmp);

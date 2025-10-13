@@ -88,6 +88,7 @@ using System.IO;
 using log4net;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
+using TeeChart;
 
 namespace DoPENetConnect
 {
@@ -273,6 +274,11 @@ namespace DoPENetConnect
         public int nCountLog = 500;
 
         /// <summary>
+        /// 记录峰谷值日志试验间隔次数
+        /// </summary>
+        public int nPVCountLog = 500;
+
+        /// <summary>
         /// 日志试验记录次数
         /// </summary>
         public string strLanguage = "简体中文";
@@ -291,6 +297,11 @@ namespace DoPENetConnect
         /// 记录上一次记录峰谷值的半循环序号
         /// </summary>
         public int LastRecordedHalfCycle = -1;
+
+        /// <summary>
+        /// 记录上一次日志的半循环序号
+        /// </summary>
+        public int LastRecordedCountHalfCycle = -1;
 
         /// <summary>
         /// 设备id
@@ -520,6 +531,8 @@ namespace DoPENetConnect
 
         public int systemCounter = 0;
 
+        public bool isProcessing = false;
+
         //System.Timers.Timer timer;
 
         //public delegate void SetControlValue(string value);
@@ -718,6 +731,7 @@ namespace DoPENetConnect
 
                     toolStripStatusLabel4.Text = this.devId.ToString();
 
+                    bShowSensorData = true;
                 }
 
                 bConnected = MyEdc.IsConnected();
@@ -845,14 +859,14 @@ namespace DoPENetConnect
             try
             {
                 DoPE.ERR error = MyEdc.Move.On();
-                bActivated = true;
                 //StartCommunicationWithEdcTimer.Start();
                 DisplayError(error, "On");
 
-                if (MyEdc.IsConnected() && bActivated)
+                if (MyEdc.IsConnected() /*&& bActivated*/)
                 {
                     //GetXaxisScale();
                     timer_UpdateData.Start();
+                    bActivated = true;
                     bShowSensorData = true;
 
                     bntX_GUIOn.Checked = true;
@@ -860,8 +874,6 @@ namespace DoPENetConnect
                     btnX_SetHigh.Checked = false;
 
                     this.MaximizeBox = false;
-
-
                     //timer_ShowWave.Start();
                 }
 
@@ -1201,18 +1213,13 @@ namespace DoPENetConnect
                     double dPosition = 0;
 
                     //刷新位移
-                    if (nCount >= nCountREfresh && bActivated )
+                    if (nCount >= nCountREfresh /*&& bActivated*/ )
                     {
                         //if (this.IsHandleCreated)
                         //{
                             //this.BeginInvoke(new Action(() =>
                             {
-                            //guiPosition.Text = text;
-                            //guiPosition.BeginInvoke(g_Position.ToString($"F{PosDigit}"), null, null);
-                            //Invalidate(guiPosition.Bounds);
-                            //Invalidate();
-
-                            //UpdateData(g_Position.ToString($"F{PosDigit}"));
+         
                             guiPosition.Text = g_Position.ToString($"F{PosDigit}");
 
                             if (bShowSensorData)
@@ -1257,9 +1264,11 @@ namespace DoPENetConnect
 
                                     if (PVLoadMaxAverageList.Count > 0)
                                     {
-                                        if (PVLoadList[i] >= PVLoadMaxAverageList.Average())
+                                        g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
+                                        //if (PVLoadList[i] >= PVLoadMaxAverageList.Average())
                                         {
-                                            g_MaxLoad = PVLoadList[i] / 1000;
+                                            //g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
+                                            //g_MaxLoad = PVLoadList[i] / 1000;
                                         }
                                     }
                                 }
@@ -1269,9 +1278,11 @@ namespace DoPENetConnect
 
                                     if (PVLoadMaxAverageList.Count > 0)
                                     {
-                                        if (PVLoadList[i] >= PVLoadMaxAverageList.Average())
+                                        g_MaxLoad = PVLoadMaxAverageList.Max();
+                                        //if (PVLoadList[i] >= PVLoadMaxAverageList.Average())
                                         {
-                                            g_MaxLoad = PVLoadList[i];
+                                            //g_MaxLoad = PVLoadMaxAverageList.Max();
+                                            //g_MaxLoad = PVLoadList[i];
                                         }
                                     }
                                 }
@@ -1286,9 +1297,11 @@ namespace DoPENetConnect
 
                                     if (PVLoadMinAverageList.Count > 0)
                                     {
-                                        if (PVLoadList[i] <= PVLoadMinAverageList.Average())
+                                        g_MinLoad = PVLoadMinAverageList.Min() / 1000;
+                                        //if (PVLoadList[i] <= PVLoadMinAverageList.Average())
                                         {
-                                            g_MinLoad = PVLoadList[i] / 1000;
+                                            //g_MinLoad = PVLoadMinAverageList.Min() / 1000;
+                                            //g_MinLoad = PVLoadList[i] / 1000;
                                         }
                                     }
                                 }
@@ -1298,9 +1311,11 @@ namespace DoPENetConnect
 
                                     if (PVLoadMinAverageList.Count > 0)
                                     {
-                                        if (PVLoadList[i] <= PVLoadMinAverageList.Average())
+                                        g_MinLoad = PVLoadMinAverageList.Min();
+                                        //if (PVLoadList[i] <= PVLoadMinAverageList.Average())
                                         {
-                                            g_MinLoad = PVLoadList[i];
+                                            //g_MinLoad = PVLoadMinAverageList.Min();
+                                            //g_MinLoad = PVLoadList[i];
                                         }
                                     }
                                 }
@@ -1393,10 +1408,23 @@ namespace DoPENetConnect
                             PVLoadQueue.Dequeue();
                             //PVLoadQueue.Clear();
                         }
+
+                        while (PVLoadMaxAverageList.Count > 200)
+                        {
+                            PVLoadMaxAverageList.RemoveRange(0, PVLoadMaxAverageList.Count / 2);
+                            //PVLoadMinAverageList.Clear();
+                        }
+
+                        while (PVLoadMinAverageList.Count > 200)
+                        {
+                            PVLoadMinAverageList.RemoveRange(0, PVLoadMinAverageList.Count / 2);
+                            //PVLoadMinAverageList.Clear();
+                        }
+
                     }
 
                     //刷新试验力
-                    if (nCount >= nCountREfresh && bActivated )
+                    if (nCount >= nCountREfresh /*&& bActivated*/ )
                     {
                         //if (this.IsHandleCreated)
                         {
@@ -1585,7 +1613,7 @@ namespace DoPENetConnect
                     }
 
                     //刷新变形
-                    if (nCount >= nCountREfresh && bActivated )
+                    if (nCount >= nCountREfresh /*&& bActivated*/ )
                     {
                         guiExtension.Text = g_Extension.ToString($"F{ExtDigit}");
                         Invalidate(guiExtension.Bounds);
@@ -1622,21 +1650,46 @@ namespace DoPENetConnect
                     strCSVLog += text + ",";
                     strCSVLog += (gSample.Cycles >> 1).ToString();
 
+                    //var xval = axTChart1.Series(0).XValues;
+                    //var yval = axTChart1.Series(0).YValues;
+                    //double fdsfsdf = yval.Maximum;
+
+         
+
                     if (isRunning)
                     {
+                        if ((gSample.Cycles >> 1) > 0 && (gSample.Cycles >> 1) % nCountLog == 0 && !isProcessing)
+                        {
+                            
+                            int nPointCount = axTChart1.Series(0).Count;
+                            //Console.WriteLine(nPointCount.ToString());
+
+                            int currentHalfCyclez = gSample.Cycles >> 1;
+
+                            if (currentHalfCyclez != LastRecordedCountHalfCycle)
+                            {
+                                //var task1 = Task.Run(() => GetSeriesPoint());
+                                LastRecordedCountHalfCycle = currentHalfCyclez;
+                            }
+
+                        }
+
+
                         strBlockLog.Append(strCSVLog + "\r\n");
                         //strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");
 
                         //按配置的次数存储日志
+                        //TODO 修改成 达到nCountLog 次数时只存储当前屏幕数据
                         if ((gSample.Cycles /*>> 1*/) % nCountLog == 0)
                         {
-                            LogHelper.SaveCsvData(strBlockLog.ToString());
+                            //LogHelper.SaveCsvData(strBlockLog.ToString());
                             strBlockLog.Clear();
                         }
 
                         int currentHalfCycle = gSample.Cycles >> 1;
 
                         //按配置的次数存储峰谷值日志
+                        //TODO 修改成达到指定次数存储当前屏幕数据
                         if ((gSample.Cycles >> 1) % 100 == 0)
                         {
                             //防止同一秒记录多次
@@ -1694,7 +1747,7 @@ namespace DoPENetConnect
                 }
 
                 //波形图
-                if (bShowSensorData && bActivated)
+                if (bShowSensorData/* && bActivated*/)
                 {
                     //Task.Run(() =>
                     //{
@@ -1713,6 +1766,84 @@ namespace DoPENetConnect
 
             return 0;
         }
+
+
+        /// <summary>
+        /// 获取序列上所有的点
+        /// </summary>
+        public void GetSeriesPoint()
+        {
+            try
+            {
+                //位移
+                ISeries PosSeries = axTChart1.Series(0);
+
+                //试验力
+                ISeries LoadSeries = axTChart1.Series(1);
+
+                //变形
+                ISeries ExtensionSeries = axTChart1.Series(2);
+
+                //命令
+                ISeries CommandSeries = axTChart1.Series(3);
+
+                int count = Math.Min(Math.Min(PosSeries.Count, LoadSeries.Count),
+                         Math.Min(ExtensionSeries.Count, CommandSeries.Count));
+
+                List<string[]> rows = new List<string[]>();
+
+                string strNow = DateTime.Now.ToString();
+
+                var sb = new StringBuilder(count * 128); // 预估每行128字符
+                for (int i = 0; i < count; i++)
+                {
+                    double time = PosSeries.XValues.Value[i];           // Time (s)
+                    double dis = PosSeries.YValues.Value[i];            // Dis (mm)
+                    double load = LoadSeries.YValues.Value[i];          // Load (kN)
+                    double defor = ExtensionSeries.YValues.Value[i];    // Defor (mm)
+                    double command = CommandSeries.YValues.Value[i];    // Command (mm)
+                    // 直接拼接数据，避免中间字符串数组
+                    sb.AppendLine($"{i + 1}\t{load:F6}\t{dis:F6}\t{defor:F6}\t{time:F4}\t{command:F6}\t000\t0.00\t0.00\t0.00");
+                }
+                LogHelper.SaveCountCsvData(sb.ToString(), DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+
+                //for (int i = 0; i < count; i++)
+                //{
+                //    double time = PosSeries.XValues.Value[i];           // Time (s)
+                //    double dis = PosSeries.YValues.Value[i];            // Dis (mm)
+                //    double load = LoadSeries.YValues.Value[i];          // Load (kN)
+                //    double defor = ExtensionSeries.YValues.Value[i];    // Defor (mm)
+                //    double command = CommandSeries.YValues.Value[i];    // Command (mm)
+
+                //    string[] row = new string[]
+                //    {
+                //    (i + 1).ToString(),           // 序号
+                //    load.ToString("F6"),          // Load (kN)
+                //    dis.ToString("F6"),           // Dis (mm)
+                //    defor.ToString("F6"),         // Defor (mm)
+                //    time.ToString("F4") + "  ",   // Time (s)，注意原数据有空格对齐，可选保留
+                //    command.ToString("F6"),       // Command (mm)
+                //    "000",                        // HalfCycle（固定）
+                //    "0.00",                       // EnTemp
+                //    "0.00",                       // SurfaceTemp
+                //    "0.00"                        // InnerTemp
+                //    };
+                //    //LogHelper.SaveCountCsvData(string.Join("\t", row));
+
+                //    rows.Add(row);
+                //}
+
+                //foreach (var row in rows)
+                //{
+                //    LogHelper.SaveCountCsvData(string.Join("\t", row), DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+                //}
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
 
         private int OnCommandError(ref DoPE.OnCommandError CommandError, object Parameter)
         {
