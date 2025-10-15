@@ -59,6 +59,8 @@
             this.comboItem30 = new DevComponents.Editors.ComboItem();
             this.label55 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.cbk_SavePVCountLog = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbk_SaveCountLog = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -525,6 +527,8 @@
             this.groupPanel5.Controls.Add(this.cbX_CountLog);
             this.groupPanel5.Controls.Add(this.label55);
             this.groupPanel5.Controls.Add(this.label2);
+            this.groupPanel5.Controls.Add(this.cbk_SavePVCountLog);
+            this.groupPanel5.Controls.Add(this.cbk_SaveCountLog);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupPanel5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -566,6 +570,7 @@
             // 
             this.cbX_PVCountLog.DisplayMember = "Text";
             this.cbX_PVCountLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_PVCountLog.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbX_PVCountLog.FormattingEnabled = true;
             this.cbX_PVCountLog.ItemHeight = 21;
             this.cbX_PVCountLog.Items.AddRange(new object[] {
@@ -604,6 +609,7 @@
             // 
             this.cbX_CountLog.DisplayMember = "Text";
             this.cbX_CountLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbX_CountLog.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbX_CountLog.FormattingEnabled = true;
             this.cbX_CountLog.ItemHeight = 21;
             this.cbX_CountLog.Items.AddRange(new object[] {
@@ -642,7 +648,7 @@
             // 
             this.label55.AutoSize = true;
             this.label55.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label55.Location = new System.Drawing.Point(10, 43);
+            this.label55.Location = new System.Drawing.Point(79, 41);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(168, 16);
             this.label55.TabIndex = 0;
@@ -652,11 +658,39 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(10, 15);
+            this.label2.Location = new System.Drawing.Point(80, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(160, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "存储曲线   计数间隔";
+            // 
+            // cbk_SavePVCountLog
+            // 
+            this.cbk_SavePVCountLog.AutoSize = true;
+            // 
+            // 
+            // 
+            this.cbk_SavePVCountLog.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbk_SavePVCountLog.Location = new System.Drawing.Point(12, 41);
+            this.cbk_SavePVCountLog.Name = "cbk_SavePVCountLog";
+            this.cbk_SavePVCountLog.Size = new System.Drawing.Size(61, 23);
+            this.cbk_SavePVCountLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbk_SavePVCountLog.TabIndex = 1;
+            this.cbk_SavePVCountLog.Text = "启用";
+            // 
+            // cbk_SaveCountLog
+            // 
+            this.cbk_SaveCountLog.AutoSize = true;
+            // 
+            // 
+            // 
+            this.cbk_SaveCountLog.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbk_SaveCountLog.Location = new System.Drawing.Point(13, 8);
+            this.cbk_SaveCountLog.Name = "cbk_SaveCountLog";
+            this.cbk_SaveCountLog.Size = new System.Drawing.Size(61, 23);
+            this.cbk_SaveCountLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbk_SaveCountLog.TabIndex = 1;
+            this.cbk_SaveCountLog.Text = "启用";
             // 
             // groupPanel3
             // 
@@ -2816,5 +2850,7 @@
         private DevComponents.Editors.ComboItem comboItem33;
         private DevComponents.Editors.ComboItem comboItem34;
         private DevComponents.Editors.ComboItem comboItem35;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbk_SavePVCountLog;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbk_SaveCountLog;
     }
 }

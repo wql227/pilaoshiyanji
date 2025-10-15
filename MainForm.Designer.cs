@@ -3510,7 +3510,7 @@
             // 
             this.ToolStripMenuItem_Login.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem_Login.Image")));
             this.ToolStripMenuItem_Login.Name = "ToolStripMenuItem_Login";
-            this.ToolStripMenuItem_Login.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Login.Size = new System.Drawing.Size(172, 22);
             this.ToolStripMenuItem_Login.Text = "登录...(&L)";
             this.ToolStripMenuItem_Login.Visible = false;
             this.ToolStripMenuItem_Login.Click += new System.EventHandler(this.ToolStripMenuItem_Login_Click);
@@ -3518,14 +3518,14 @@
             // 校正ToolStripMenuItem
             // 
             this.校正ToolStripMenuItem.Name = "校正ToolStripMenuItem";
-            this.校正ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.校正ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.校正ToolStripMenuItem.Text = "刚度补偿";
             this.校正ToolStripMenuItem.Click += new System.EventHandler(this.校正ToolStripMenuItem_Click);
             // 
             // 多传感器ToolStripMenuItem
             // 
             this.多传感器ToolStripMenuItem.Name = "多传感器ToolStripMenuItem";
-            this.多传感器ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.多传感器ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.多传感器ToolStripMenuItem.Text = "多传感器";
             this.多传感器ToolStripMenuItem.Click += new System.EventHandler(this.多传感器ToolStripMenuItem_Click);
             // 
@@ -3533,7 +3533,7 @@
             // 
             this.试验数据回访ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("试验数据回访ToolStripMenuItem.Image")));
             this.试验数据回访ToolStripMenuItem.Name = "试验数据回访ToolStripMenuItem";
-            this.试验数据回访ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.试验数据回访ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.试验数据回访ToolStripMenuItem.Text = "试验数据回放";
             this.试验数据回访ToolStripMenuItem.Visible = false;
             // 
@@ -3541,7 +3541,7 @@
             // 
             this.退出ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("退出ToolStripMenuItem.Image")));
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.退出ToolStripMenuItem.Text = "退出(&Q)";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 

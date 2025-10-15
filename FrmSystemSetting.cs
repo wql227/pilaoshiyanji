@@ -288,12 +288,28 @@ namespace DoPENetConnect
             StringBuilder strTmp = new StringBuilder(255);
             string strConfigSetion = this.Name;
 
+            #region 系统设置页面
+
+            //系统设置-设备id
+            //IniFileHelper.GetIniString("Device", "DeviceID", "0", strTmp, strTmp.Capacity);
+            //tbX_DeviceID.Text = strTmp.ToString();
+
+            //是否按次数存储日志
+            IniFileHelper.GetIniString("Setting", "SaveCountLog", "0", strTmp, strTmp.Capacity);
+            cbk_SaveCountLog.Checked = strTmp.ToString() == "0" ? false : true;
+            MainForm.mainform.bSaveCountLog = cbk_SaveCountLog.Checked;
+
             IniFileHelper.GetIniString("Setting", "CountLog", "100", strTmp, strTmp.Capacity);
             cbX_CountLog.Text = strTmp.ToString();
             if (string.IsNullOrEmpty(cbX_CountLog.Text))
             {
                 cbX_CountLog.Text = "100";
             }
+
+            //是否按次数存储峰谷值日志
+            IniFileHelper.GetIniString("Setting", "SavePVCountLog", "0", strTmp, strTmp.Capacity);
+            cbk_SavePVCountLog.Checked = strTmp.ToString() == "0" ? false : true;
+            MainForm.mainform.bSavePVCountLog = cbk_SavePVCountLog.Checked;
 
             IniFileHelper.GetIniString("Setting", "PVCountLog", "100", strTmp, strTmp.Capacity);
             cbX_CountLog.Text = strTmp.ToString();
@@ -302,19 +318,12 @@ namespace DoPENetConnect
                 cbX_PVCountLog.Text = "100";
             }
 
-
             IniFileHelper.GetIniString(strConfigSetion, "限位保护选项", "0", strTmp, strTmp.Capacity);
             int indexToBeSetted = int.Parse(strTmp.ToString());
             if (cbX_ProtectOption.Items.Count > indexToBeSetted)
             {
                 cbX_ProtectOption.SelectedIndex = indexToBeSetted;
             }
-
-            #region 系统设置页面
-
-            //系统设置-设备id
-            //IniFileHelper.GetIniString("Device", "DeviceID", "0", strTmp, strTmp.Capacity);
-            //tbX_DeviceID.Text = strTmp.ToString();
 
             //采样频率
             IniFileHelper.GetIniString("Setting", "SampleFrequency", "0", strTmp, strTmp.Capacity);
@@ -492,11 +501,19 @@ namespace DoPENetConnect
             string strConfigSetion = this.Name;
 
             //按试验次数记录日志
+            strTmp = cbk_SaveCountLog.Checked == false ? "0" : "1";
+            MainForm.mainform.bSaveCountLog = cbk_SaveCountLog.Checked;
+            IniFileHelper.WriteIniString("Setting", "SaveCountLog", strTmp);
+
             strTmp = cbX_CountLog.Text;
             MainForm.mainform.nCountLog = int.Parse(strTmp);
             IniFileHelper.WriteIniString("Setting", "CountLog", strTmp);
 
             //记录峰谷值日志
+            strTmp = cbk_SavePVCountLog.Checked == false ? "0" : "1";
+            MainForm.mainform.bSavePVCountLog = cbk_SavePVCountLog.Checked;
+            IniFileHelper.WriteIniString("Setting", "SavePVCountLog", strTmp);
+
             strTmp = cbX_PVCountLog.Text;
             MainForm.mainform.nPVCountLog = int.Parse(strTmp);
             IniFileHelper.WriteIniString("Setting", "PVCountLog", strTmp);

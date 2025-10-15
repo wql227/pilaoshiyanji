@@ -269,9 +269,19 @@ namespace DoPENetConnect
         public List<double> PVExtensionMinAverageList = new List<double>();
 
         /// <summary>
+        /// 是否按试验次数记录日志
+        /// </summary>
+        public bool bSaveCountLog = false;
+
+        /// <summary>
         /// 日志试验记录次数
         /// </summary>
         public int nCountLog = 500;
+
+        /// <summary>
+        /// 是否按试验次数记录峰谷值日志
+        /// </summary>
+        public bool bSavePVCountLog = false;
 
         /// <summary>
         /// 记录峰谷值日志试验间隔次数
@@ -1658,20 +1668,22 @@ namespace DoPENetConnect
 
                     if (isRunning)
                     {
-                        if ((gSample.Cycles >> 1) > 0 && (gSample.Cycles >> 1) % nCountLog == 0 && !isProcessing)
+                        if (bSavePVCountLog)
                         {
-                            //int nPointCount = axTChart1.Series(0).Count;
-                            //Console.WriteLine(nPointCount.ToString());
-
-                            int currentHalfCyclez = gSample.Cycles >> 1;
-
-                            if (currentHalfCyclez != LastRecordedCountHalfCycle)
+                            if ((gSample.Cycles >> 1) > 0 && (gSample.Cycles >> 1) % nCountLog == 0 && !isProcessing)
                             {
-                                var task1 = Task.Run(() => GetSeriesPoint());
-                                LastRecordedCountHalfCycle = currentHalfCyclez;
+                                //int nPointCount = axTChart1.Series(0).Count;
+                                //Console.WriteLine(nPointCount.ToString());
+
+                                int currentHalfCyclez = gSample.Cycles >> 1;
+
+                                if (currentHalfCyclez != LastRecordedCountHalfCycle)
+                                {
+                                    var task1 = Task.Run(() => GetSeriesPoint());
+                                    LastRecordedCountHalfCycle = currentHalfCyclez;
+                                }
                             }
                         }
-
 
                         strBlockLog.Append(strCSVLog + "\r\n");
                         //strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");　//TODO 导致卡顿
@@ -1688,14 +1700,17 @@ namespace DoPENetConnect
 
                         //按配置的次数存储峰谷值日志
                         //TODO 修改成达到指定次数存储当前屏幕数据
-                        if ((gSample.Cycles >> 1) % 100 == 0)
+                        if (bSavePVCountLog)
                         {
-                            //防止同一秒记录多次
-                            if (currentHalfCycle != LastRecordedHalfCycle)
+                            if ((gSample.Cycles >> 1) % 100 == 0)
                             {
-                                strPVLog = g_MaxPosition.ToString("F6") + "," + g_MinPosition.ToString("F6") + "," + g_MaxLoad.ToString("F6") + "," + g_MinLoad.ToString("F6") + "," + g_MaxExtension.ToString("F6") + "," + g_MinExtension.ToString("F6") + "," + (gSample.Cycles >> 1);
-                                LogHelper.SavePeakValleyData(strPVLog);
-                                LastRecordedHalfCycle = currentHalfCycle;
+                                //防止同一秒记录多次
+                                if (currentHalfCycle != LastRecordedHalfCycle)
+                                {
+                                    strPVLog = g_MaxPosition.ToString("F6") + "," + g_MinPosition.ToString("F6") + "," + g_MaxLoad.ToString("F6") + "," + g_MinLoad.ToString("F6") + "," + g_MaxExtension.ToString("F6") + "," + g_MinExtension.ToString("F6") + "," + (gSample.Cycles >> 1);
+                                    LogHelper.SavePeakValleyData(strPVLog);
+                                    LastRecordedHalfCycle = currentHalfCycle;
+                                }
                             }
                         }
                     }
