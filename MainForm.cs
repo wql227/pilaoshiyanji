@@ -3608,7 +3608,7 @@ namespace DoPENetConnect
                 devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             }
 
-            string aaa = DESEncrypt.Encrypt("02132F05");
+            //string aaa = DESEncrypt.Encrypt("02132F05");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -3617,8 +3617,17 @@ namespace DoPENetConnect
             tbX_TestCycles.Text = tbX_TestCount.Text;
 
             //按试验次数记录日志
+            IniFileHelper.GetIniString("Setting", "SaveCountLog", "0", strTmp, strTmp.Capacity);
+            bSaveCountLog = strTmp.ToString() == "0" ? false : true;
+
             IniFileHelper.GetIniString("Setting", "CountLog", "100", strTmp, strTmp.Capacity);
             nCountLog = int.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("Setting", "SavePVCountLog", "0", strTmp, strTmp.Capacity);
+            bSavePVCountLog = strTmp.ToString() == "0" ? false : true;
+
+            IniFileHelper.GetIniString("Setting", "PVCountLog", "100", strTmp, strTmp.Capacity);
+            nPVCountLog = int.Parse(strTmp.ToString());
 
             //语言
             IniFileHelper.GetIniString("Setting", "Language", "简体中文", strTmp, strTmp.Capacity);
