@@ -1751,6 +1751,9 @@ namespace DoPENetConnect
 
                             tbX_TestCount.Text = tbX_TestCycles.Text;
 
+                            //存储实验停止后的日志
+                            var task1 = Task.Run(() => GetSeriesPoint());
+
                             //最后一次的试验次数写入配置文件
                             IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
 
