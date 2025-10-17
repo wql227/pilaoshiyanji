@@ -289,6 +289,16 @@ namespace DoPENetConnect
         public int nPVCountLog = 500;
 
         /// <summary>
+        /// 存过试验停止时屏幕数据
+        /// </summary>
+        public bool bSaveStopScreenLog = false;
+
+        /// <summary>
+        /// 存储试验过程的数据
+        /// </summary>
+        public bool bSaveRunningLog = false;
+
+        /// <summary>
         /// 日志试验记录次数
         /// </summary>
         public string strLanguage = "简体中文";
@@ -1664,8 +1674,6 @@ namespace DoPENetConnect
                     //var yval = axTChart1.Series(0).YValues;
                     //double fdsfsdf = yval.Maximum;
 
-         
-
                     if (isRunning)
                     {
                         if (bSavePVCountLog)
@@ -1692,7 +1700,11 @@ namespace DoPENetConnect
                         //TODO 修改成 达到nCountLog 次数时只存储当前屏幕数据
                         if ((gSample.Cycles /*>> 1*/) % nCountLog == 0)
                         {
-                            LogHelper.SaveCsvData(strBlockLog.ToString());
+                            if (bSaveRunningLog)
+                            {
+                                LogHelper.SaveCsvData(strBlockLog.ToString());
+                            }
+
                             strBlockLog.Clear();
                         }
 
@@ -1750,9 +1762,11 @@ namespace DoPENetConnect
                             timer_UpdateData.Stop();
 
                             tbX_TestCount.Text = tbX_TestCycles.Text;
-
-                            //存储实验停止后的日志
-                            var task1 = Task.Run(() => GetSeriesPoint());
+                            if (bSaveStopScreenLog)
+                            {
+                                //存储实验停止后的日志
+                                var task1 = Task.Run(() => GetSeriesPoint());
+                            }
 
                             //最后一次的试验次数写入配置文件
                             IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
@@ -3631,6 +3645,14 @@ namespace DoPENetConnect
 
             IniFileHelper.GetIniString("Setting", "PVCountLog", "100", strTmp, strTmp.Capacity);
             nPVCountLog = int.Parse(strTmp.ToString());
+
+            //试验结束时自动存储当前屏幕数据
+            IniFileHelper.GetIniString("Setting", "SaveStopScreen", "0", strTmp, strTmp.Capacity);
+            bSaveStopScreenLog = strTmp.ToString() == "0" ? false : true;
+
+            //自动存储试验过程数据
+            IniFileHelper.GetIniString("Setting", "SaveRunningLog", "0", strTmp, strTmp.Capacity);
+            bSaveRunningLog = strTmp.ToString() == "0" ? false : true;
 
             //语言
             IniFileHelper.GetIniString("Setting", "Language", "简体中文", strTmp, strTmp.Capacity);

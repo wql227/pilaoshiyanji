@@ -210,6 +210,10 @@
             this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
             this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.label56 = new System.Windows.Forms.Label();
+            this.cbk_SaveStopScreen = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbk_SaveRunningLog = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.label57 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel5.SuspendLayout();
@@ -260,10 +264,10 @@
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Location = new System.Drawing.Point(1, 0);
             this.superTabControl1.MaximumSize = new System.Drawing.Size(800, 597);
             this.superTabControl1.MinimumSize = new System.Drawing.Size(550, 597);
@@ -331,7 +335,7 @@
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupPanel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel6.Location = new System.Drawing.Point(0, 230);
+            this.groupPanel6.Location = new System.Drawing.Point(0, 265);
             this.groupPanel6.Name = "groupPanel6";
             this.groupPanel6.Size = new System.Drawing.Size(554, 221);
             // 
@@ -525,8 +529,12 @@
             this.groupPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel5.Controls.Add(this.cbX_PVCountLog);
             this.groupPanel5.Controls.Add(this.cbX_CountLog);
+            this.groupPanel5.Controls.Add(this.label57);
+            this.groupPanel5.Controls.Add(this.label56);
             this.groupPanel5.Controls.Add(this.label55);
             this.groupPanel5.Controls.Add(this.label2);
+            this.groupPanel5.Controls.Add(this.cbk_SaveRunningLog);
+            this.groupPanel5.Controls.Add(this.cbk_SaveStopScreen);
             this.groupPanel5.Controls.Add(this.cbk_SavePVCountLog);
             this.groupPanel5.Controls.Add(this.cbk_SaveCountLog);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
@@ -534,7 +542,7 @@
             this.groupPanel5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupPanel5.Location = new System.Drawing.Point(0, 107);
             this.groupPanel5.Name = "groupPanel5";
-            this.groupPanel5.Size = new System.Drawing.Size(554, 123);
+            this.groupPanel5.Size = new System.Drawing.Size(554, 158);
             // 
             // 
             // 
@@ -648,7 +656,7 @@
             // 
             this.label55.AutoSize = true;
             this.label55.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label55.Location = new System.Drawing.Point(79, 41);
+            this.label55.Location = new System.Drawing.Point(80, 37);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(168, 16);
             this.label55.TabIndex = 0;
@@ -658,7 +666,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(80, 8);
+            this.label2.Location = new System.Drawing.Point(79, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(160, 16);
             this.label2.TabIndex = 0;
@@ -671,7 +679,7 @@
             // 
             // 
             this.cbk_SavePVCountLog.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbk_SavePVCountLog.Location = new System.Drawing.Point(12, 41);
+            this.cbk_SavePVCountLog.Location = new System.Drawing.Point(13, 37);
             this.cbk_SavePVCountLog.Name = "cbk_SavePVCountLog";
             this.cbk_SavePVCountLog.Size = new System.Drawing.Size(61, 23);
             this.cbk_SavePVCountLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -865,9 +873,9 @@
             this.groupPanel2.Controls.Add(this.label16);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel2.Location = new System.Drawing.Point(18, 51);
+            this.groupPanel2.Location = new System.Drawing.Point(11, 47);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(753, 146);
+            this.groupPanel2.Size = new System.Drawing.Size(530, 146);
             // 
             // 
             // 
@@ -1113,9 +1121,9 @@
             this.groupPanel4.Controls.Add(this.label5);
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel4.Location = new System.Drawing.Point(18, 405);
+            this.groupPanel4.Location = new System.Drawing.Point(11, 351);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(753, 146);
+            this.groupPanel4.Size = new System.Drawing.Size(530, 146);
             // 
             // 
             // 
@@ -1361,9 +1369,9 @@
             this.groupPanel1.Controls.Add(this.label25);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel1.Location = new System.Drawing.Point(18, 228);
+            this.groupPanel1.Location = new System.Drawing.Point(11, 199);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(753, 146);
+            this.groupPanel1.Size = new System.Drawing.Size(530, 146);
             // 
             // 
             // 
@@ -2613,6 +2621,54 @@
             this.panelEx1.TabIndex = 4;
             this.panelEx1.Text = "panelEx1";
             // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label56.Location = new System.Drawing.Point(79, 66);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(304, 16);
+            this.label56.TabIndex = 0;
+            this.label56.Text = "试验结束时，自动存储当前屏幕曲线数据 ";
+            // 
+            // cbk_SaveStopScreen
+            // 
+            this.cbk_SaveStopScreen.AutoSize = true;
+            // 
+            // 
+            // 
+            this.cbk_SaveStopScreen.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbk_SaveStopScreen.Location = new System.Drawing.Point(12, 66);
+            this.cbk_SaveStopScreen.Name = "cbk_SaveStopScreen";
+            this.cbk_SaveStopScreen.Size = new System.Drawing.Size(61, 23);
+            this.cbk_SaveStopScreen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbk_SaveStopScreen.TabIndex = 1;
+            this.cbk_SaveStopScreen.Text = "启用";
+            // 
+            // cbk_SaveRunningLog
+            // 
+            this.cbk_SaveRunningLog.AutoSize = true;
+            // 
+            // 
+            // 
+            this.cbk_SaveRunningLog.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbk_SaveRunningLog.Location = new System.Drawing.Point(11, 95);
+            this.cbk_SaveRunningLog.Name = "cbk_SaveRunningLog";
+            this.cbk_SaveRunningLog.Size = new System.Drawing.Size(61, 23);
+            this.cbk_SaveRunningLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbk_SaveRunningLog.TabIndex = 1;
+            this.cbk_SaveRunningLog.Text = "启用";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label57.Location = new System.Drawing.Point(80, 95);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(168, 16);
+            this.label57.TabIndex = 0;
+            this.label57.Text = "自动存储实验过程数据";
+            // 
             // FrmSystemSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2852,5 +2908,9 @@
         private DevComponents.Editors.ComboItem comboItem35;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbk_SavePVCountLog;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbk_SaveCountLog;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label56;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbk_SaveRunningLog;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbk_SaveStopScreen;
     }
 }

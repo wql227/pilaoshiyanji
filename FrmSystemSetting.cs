@@ -318,6 +318,16 @@ namespace DoPENetConnect
                 cbX_PVCountLog.Text = "100";
             }
 
+            //试验结束时自动存储当前屏幕数据
+            IniFileHelper.GetIniString("Setting", "SaveStopScreen", "0", strTmp, strTmp.Capacity);
+            cbk_SaveStopScreen.Checked = strTmp.ToString() == "0" ? false : true;
+            MainForm.mainform.bSaveStopScreenLog = cbk_SaveStopScreen.Checked;
+
+            //自动存储试验过程数据
+            IniFileHelper.GetIniString("Setting", "SaveRunningLog", "0", strTmp, strTmp.Capacity);
+            cbk_SaveRunningLog.Checked = strTmp.ToString() == "0" ? false : true;
+            MainForm.mainform.bSaveRunningLog = cbk_SaveRunningLog.Checked;
+
             IniFileHelper.GetIniString(strConfigSetion, "限位保护选项", "0", strTmp, strTmp.Capacity);
             int indexToBeSetted = int.Parse(strTmp.ToString());
             if (cbX_ProtectOption.Items.Count > indexToBeSetted)
@@ -508,6 +518,16 @@ namespace DoPENetConnect
             strTmp = cbX_CountLog.Text;
             MainForm.mainform.nCountLog = int.Parse(strTmp);
             IniFileHelper.WriteIniString("Setting", "CountLog", strTmp);
+
+            //存储试验停止的屏幕数据
+            strTmp = cbk_SaveStopScreen.Checked == false ? "0" : "1";
+            MainForm.mainform.bSaveStopScreenLog = cbk_SaveStopScreen.Checked;
+            IniFileHelper.WriteIniString("Setting", "SaveStopScreen", strTmp);
+
+            //存储试验过程的数据
+            strTmp = cbk_SaveRunningLog.Checked == false ? "0" : "1";
+            MainForm.mainform.bSaveRunningLog = cbk_SaveRunningLog.Checked;
+            IniFileHelper.WriteIniString("Setting", "SaveRunningLog", strTmp);
 
             //记录峰谷值日志
             strTmp = cbk_SavePVCountLog.Checked == false ? "0" : "1";
