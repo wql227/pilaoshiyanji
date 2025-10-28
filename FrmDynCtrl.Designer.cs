@@ -94,6 +94,10 @@
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
+            this.labelX15 = new DevComponents.DotNetBar.LabelX();
+            this.labelX16 = new DevComponents.DotNetBar.LabelX();
+            this.labelX17 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -429,6 +433,7 @@
             this.btnX_Dyn_Offset_S1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Offset_S1.TabIndex = 4;
             this.btnX_Dyn_Offset_S1.Text = "-";
+            this.btnX_Dyn_Offset_S1.Tooltip = "-0.1";
             this.btnX_Dyn_Offset_S1.Click += new System.EventHandler(this.btnX_Dyn_Offset_S1_Click);
             // 
             // tbX_Dyn_Offset
@@ -457,6 +462,7 @@
             this.btnX_Dyn_Offset_S2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Offset_S2.TabIndex = 4;
             this.btnX_Dyn_Offset_S2.Text = "--";
+            this.btnX_Dyn_Offset_S2.Tooltip = "-1";
             this.btnX_Dyn_Offset_S2.Click += new System.EventHandler(this.btnX_Dyn_Offset_S2_Click);
             // 
             // btnX_Dyn_Offset_S3
@@ -530,6 +536,7 @@
             this.btnX_Dyn_Offset_P1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Offset_P1.TabIndex = 4;
             this.btnX_Dyn_Offset_P1.Text = "+";
+            this.btnX_Dyn_Offset_P1.Tooltip = "+0.1";
             this.btnX_Dyn_Offset_P1.Click += new System.EventHandler(this.btnX_Dyn_Offset_P1_Click);
             // 
             // btnX_Dyn_Offset_P2
@@ -543,6 +550,7 @@
             this.btnX_Dyn_Offset_P2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Offset_P2.TabIndex = 4;
             this.btnX_Dyn_Offset_P2.Text = "++";
+            this.btnX_Dyn_Offset_P2.Tooltip = "+1";
             this.btnX_Dyn_Offset_P2.Click += new System.EventHandler(this.btnX_Dyn_Offset_P2_Click);
             // 
             // btnX_Dyn_Offset_P3
@@ -571,6 +579,7 @@
             this.btnX_Dyn_Amplitude_S1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Amplitude_S1.TabIndex = 4;
             this.btnX_Dyn_Amplitude_S1.Text = "-";
+            this.btnX_Dyn_Amplitude_S1.Tooltip = "-0.1";
             this.btnX_Dyn_Amplitude_S1.Click += new System.EventHandler(this.btnX_Dyn_Amplitude_S1_Click);
             // 
             // btnX_Dyn_Amplitude_S2
@@ -584,6 +593,7 @@
             this.btnX_Dyn_Amplitude_S2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Amplitude_S2.TabIndex = 4;
             this.btnX_Dyn_Amplitude_S2.Text = "--";
+            this.btnX_Dyn_Amplitude_S2.Tooltip = "-1";
             this.btnX_Dyn_Amplitude_S2.Click += new System.EventHandler(this.btnX_Dyn_Amplitude_S2_Click);
             // 
             // btnX_Dyn_Amplitude_S3
@@ -612,6 +622,7 @@
             this.btnX_Dyn_Amplitude_P1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Amplitude_P1.TabIndex = 4;
             this.btnX_Dyn_Amplitude_P1.Text = "+";
+            this.btnX_Dyn_Amplitude_P1.Tooltip = "+0.1";
             this.btnX_Dyn_Amplitude_P1.Click += new System.EventHandler(this.btnX_Dyn_Amplitude_P1_Click);
             // 
             // btnX_Dyn_Amplitude_P2
@@ -625,6 +636,7 @@
             this.btnX_Dyn_Amplitude_P2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Amplitude_P2.TabIndex = 4;
             this.btnX_Dyn_Amplitude_P2.Text = "++";
+            this.btnX_Dyn_Amplitude_P2.Tooltip = "+1";
             this.btnX_Dyn_Amplitude_P2.Click += new System.EventHandler(this.btnX_Dyn_Amplitude_P2_Click);
             // 
             // btnX_Dyn_Amplitude_P3
@@ -667,6 +679,7 @@
             this.btnX_Dyn_Freq_P1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Freq_P1.TabIndex = 4;
             this.btnX_Dyn_Freq_P1.Text = "+";
+            this.btnX_Dyn_Freq_P1.Tooltip = "+0.1";
             this.btnX_Dyn_Freq_P1.Click += new System.EventHandler(this.btnX_Dyn_Freq_P1_Click);
             // 
             // btnX_Dyn_Freq_P2
@@ -680,6 +693,7 @@
             this.btnX_Dyn_Freq_P2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Freq_P2.TabIndex = 4;
             this.btnX_Dyn_Freq_P2.Text = "++";
+            this.btnX_Dyn_Freq_P2.Tooltip = "+1";
             this.btnX_Dyn_Freq_P2.Click += new System.EventHandler(this.btnX_Dyn_Freq_P2_Click);
             // 
             // btnX_Dyn_Freq_P3
@@ -708,6 +722,7 @@
             this.btnX_Dyn_Freq_S1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Freq_S1.TabIndex = 4;
             this.btnX_Dyn_Freq_S1.Text = "-";
+            this.btnX_Dyn_Freq_S1.Tooltip = "-0.1";
             this.btnX_Dyn_Freq_S1.Click += new System.EventHandler(this.btnX_Dyn_Freq_S1_Click);
             // 
             // btnX_Dyn_Freq_S2
@@ -721,6 +736,7 @@
             this.btnX_Dyn_Freq_S2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnX_Dyn_Freq_S2.TabIndex = 4;
             this.btnX_Dyn_Freq_S2.Text = "--";
+            this.btnX_Dyn_Freq_S2.Tooltip = "-1";
             this.btnX_Dyn_Freq_S2.Click += new System.EventHandler(this.btnX_Dyn_Freq_S2_Click);
             // 
             // btnX_Dyn_Freq_S3
@@ -890,11 +906,73 @@
             this.labelX13.TabIndex = 15;
             this.labelX13.Text = "Hz";
             // 
+            // labelX14
+            // 
+            // 
+            // 
+            // 
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX14.Location = new System.Drawing.Point(298, 245);
+            this.labelX14.Margin = new System.Windows.Forms.Padding(0);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.Size = new System.Drawing.Size(25, 23);
+            this.labelX14.TabIndex = 0;
+            this.labelX14.Text = "+1";
+            this.labelX14.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // labelX15
+            // 
+            // 
+            // 
+            // 
+            this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX15.Location = new System.Drawing.Point(113, 245);
+            this.labelX15.Margin = new System.Windows.Forms.Padding(0);
+            this.labelX15.Name = "labelX15";
+            this.labelX15.Size = new System.Drawing.Size(43, 23);
+            this.labelX15.TabIndex = 19;
+            this.labelX15.Text = "-0.1";
+            this.labelX15.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // labelX16
+            // 
+            // 
+            // 
+            // 
+            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX16.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX16.Location = new System.Drawing.Point(257, 245);
+            this.labelX16.Margin = new System.Windows.Forms.Padding(0);
+            this.labelX16.Name = "labelX16";
+            this.labelX16.Size = new System.Drawing.Size(43, 23);
+            this.labelX16.TabIndex = 19;
+            this.labelX16.Text = "+0.1";
+            this.labelX16.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // labelX17
+            // 
+            // 
+            // 
+            // 
+            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX17.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX17.Location = new System.Drawing.Point(87, 245);
+            this.labelX17.Margin = new System.Windows.Forms.Padding(0);
+            this.labelX17.Name = "labelX17";
+            this.labelX17.Size = new System.Drawing.Size(33, 23);
+            this.labelX17.TabIndex = 0;
+            this.labelX17.Text = "-1";
+            this.labelX17.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
             // FrmDynCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(378, 471);
+            this.Controls.Add(this.labelX16);
+            this.Controls.Add(this.labelX15);
             this.Controls.Add(this.labelX13);
             this.Controls.Add(this.labelX11);
             this.Controls.Add(this.labelX9);
@@ -936,6 +1014,8 @@
             this.Controls.Add(this.cmbX_Dyn_EDC);
             this.Controls.Add(this.labelX12);
             this.Controls.Add(this.labelX10);
+            this.Controls.Add(this.labelX17);
+            this.Controls.Add(this.labelX14);
             this.Controls.Add(this.labelX8);
             this.Controls.Add(this.labelX7);
             this.Controls.Add(this.labelX6);
@@ -1025,5 +1105,9 @@
         private DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.DotNetBar.LabelX labelX11;
         private DevComponents.DotNetBar.LabelX labelX13;
+        private DevComponents.DotNetBar.LabelX labelX14;
+        private DevComponents.DotNetBar.LabelX labelX15;
+        private DevComponents.DotNetBar.LabelX labelX16;
+        private DevComponents.DotNetBar.LabelX labelX17;
     }
 }

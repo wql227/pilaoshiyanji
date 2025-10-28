@@ -530,12 +530,12 @@ namespace DoPENetConnect
         /// <summary>
         /// 显示变形曲线
         /// </summary>
-        public static bool bShowExtension = true;
+        public static bool bShowExtension = false;
 
         /// <summary>
         /// 显示命令曲线
         /// </summary>
-        public static bool bShowCommand = true;
+        public static bool bShowCommand = false;
 
 
         public AxTeeChart.AxTChart m_AxTeechart
@@ -1117,7 +1117,8 @@ namespace DoPENetConnect
                                 {
                                     //if (PVPositionList[i] > PVPositionMaxAverageList.Average())
                                     {
-                                        g_MaxPosition = PVPositionList[i];
+                                        //g_MaxPosition = PVPositionList[i];
+                                        g_MaxPosition = PVPositionMaxAverageList.Max();
                                     }
                                 }
 
@@ -1133,6 +1134,7 @@ namespace DoPENetConnect
                                     //if (PVPositionList[i] < PVPositionMinAverageList.Average())
                                     {
                                         g_MinPosition = PVPositionList[i];
+                                        g_MinPosition = PVPositionMinAverageList.Min();
                                     }
                                 }
 
@@ -1222,10 +1224,20 @@ namespace DoPENetConnect
                             #endregion 判断位移峰谷值
                         }
 
-                        if (PVPositionQueue.Count >= 200)
+                        while (PVPositionQueue.Count > 200)
                         {
                             //PVPositionQueue.Dequeue();
                             PVPositionQueue.Clear();
+                        }
+
+                        while (PVPositionMinAverageList.Count > 200)
+                        {
+                            PVPositionMinAverageList.RemoveRange(0, PVPositionMinAverageList.Count / 2);
+                        }
+
+                        while (PVPositionMaxAverageList.Count > 200)
+                        {
+                            PVPositionMaxAverageList.RemoveRange(0, PVPositionMaxAverageList.Count / 2);
                         }
                     }
 
@@ -2074,15 +2086,22 @@ namespace DoPENetConnect
 
             this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
 
-            if (EnableHigh == "0")
+            //if (EnableHigh == "0")
+            //{
+            //    btnX_SetHigh.Visible = false;
+            //}
+            //else
             {
-                btnX_SetHigh.Visible = false;
+                btnX_SetHigh.Visible = true;
             }
 
-            if (EnableLow == "0")
+            //if (EnableLow == "0")
+            //{
+            //    btnX_SetLow.Visible = false;
+            //}
+            //else
             {
-                btnX_SetLow.Visible = false;
-
+                btnX_SetLow.Visible = true;
             }
 
             //设置时间轴
@@ -2856,139 +2875,130 @@ namespace DoPENetConnect
                         chartX.Add(x_Data);
 
                         //批量添加点
-                        //if (chart_machine.Series[0] != null)
+
+                        //axTChart1.Series(0).BeginUpdate();
+                        //暂停重绘提高性能
+                        chartPosY.Add(y_Position);
+                        chartLoadY.Add(y_Load);
+                        chartExtY.Add(y_Extension);
+                        chartCommandY.Add(y_Command);
+                        try
                         {
-                            //this.BeginInvoke(new Action(() =>
+                            //axTChart1.AutoRepaint = false;
+                            if (chartX.Count % (200/*DataRefreshFrequency / SampleFrequency*/) == 0)
                             {
-                                //axTChart1.Series(0).BeginUpdate();
-                                //暂停重绘提高性能
-                                chartPosY.Add(y_Position);
-                                chartLoadY.Add(y_Load);
-                                chartExtY.Add(y_Extension);
-                                chartCommandY.Add(y_Command);
-                                try
+                                //axTChart1.Series(0).AddXY(x_Data, y_Position, null, 0);  // Position
+                                //axTChart1.Series(1).AddXY(x_Data, y_Load, "", 0);   // Load
+                                if (bShowPosition)
                                 {
-                                    //axTChart1.AutoRepaint = false;
-                                    if (chartX.Count % (200/*DataRefreshFrequency / SampleFrequency*/) == 0)
-                                    {
-                                        //axTChart1.Series(0).AddXY(x_Data, y_Position, null, 0);  // Position
-                                        //axTChart1.Series(1).AddXY(x_Data, y_Load, "", 0);   // Load
-                                        if (bShowPosition)
-                                        {
-                                            axTChart1.Series(0).AddArray(chartX.Count, chartPosY.ToArray(), chartX.ToArray());
-                                        }
-
-                                        if (bShowLoad)
-                                        {
-                                            axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
-                                        }
-
-                                        if (bShowExtension)
-                                        {
-                                            axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
-                                        }
-
-                                        if (bShowCommand)
-                                        {
-                                            axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
-                                        }
-                                        //axTChart1.AutoRepaint = true; 
-
-                                        //axTChart1.Series(0).EndUpdate();
-
-                                    }
-
-                                    #region Chart 原始控件
-                                    ////每多少个点绘制一次
-                                    ////double aaa = DataRefreshFrequency / SampleFrequency;
-                                    //if (chartX.Count % (DataRefreshFrequency / SampleFrequency) == 0)
-                                    //{
-                                    //    chart_machine.Series[0].Points.DataBindXY(chartX, chartPosY);
-                                    //    chart_machine.Series[1].Points.DataBindXY(chartX, chartLoadY);
-                                    //    chart_machine.Series[2].Points.DataBindXY(chartX, chartExtY);
-                                    //    chart_machine.Series[3].Points.DataBindXY(chartX, chartCommandY);
-                                    //    //chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
-                                    //}
-
-                                    //if (chart_machine.Series[0].Points.Count >= nTotal)
-                                    //{
-                                    //    for (int n = 0; n < chart_machine.Series[0].Points.Count; n++)
-                                    //    {
-                                    //        chart_machine.Series[0].Points.RemoveAt(n);
-                                    //    }
-                                    //    x_Data = 0.0;
-                                    //    chartX.Clear();
-                                    //    chartPosY.Clear();
-                                    //}
-
-                                    //if (chart_machine.Series[1].Points.Count >= nTotal)
-                                    //{
-                                    //    for (int n = 0; n < chart_machine.Series[1].Points.Count; n++)
-                                    //    {
-                                    //        chart_machine.Series[1].Points.RemoveAt(n);
-                                    //    }
-                                    //    x_Data = 0.0;
-                                    //    chartX.Clear();
-                                    //    chartLoadY.Clear();
-                                    //}
-
-                                    //if (chart_machine.Series[2].Points.Count >= nTotal)
-                                    //{
-                                    //    for (int n = 0; n < chart_machine.Series[2].Points.Count; n++)
-                                    //    {
-                                    //        chart_machine.Series[2].Points.RemoveAt(n);
-                                    //    }
-                                    //    x_Data ;
-                                    //    chartX.Clear();
-                                    //    chartExtY.Clear();
-                                    //}
-
-                                    //if (chart_machine.Series[3].Points.Count >= nTotal)
-                                    //{
-                                    //    for (int n = 0; n < chart_machine.Series[3].Points.Count; n++)
-                                    //    {
-                                    //        chart_machine.Series[3].Points.RemoveAt(n);
-                                    //    }
-                                    //    x_Data = 0.0;
-                                    //    chartX.Clear();
-                                    //    chartCommandY.Clear();
-                                    //}
-                                    #endregion Chart原始控件
-
-                                    if (chartX.Count >= nTotal)
-                                    {
-                                        //axTChart1.AutoRepaint = false;
-                                        //axTChart1.Series(0).Clear();
-                                        //axTChart1.Series(1).Clear();
-                                        //axTChart1.Series(2).Clear();
-                                        //axTChart1.Series(3).Clear();
-                                        x_Data = 0.0;
-
-                                        chartX.Clear();
-                                        chartPosY.Clear();
-                                        chartLoadY.Clear();
-                                        chartExtY.Clear();
-                                        chartCommandY.Clear();
-                                        //axTChart1.AutoRepaint = true;
-                                        //axTChart1.Refresh();
-                                    }
-
-
+                                    axTChart1.Series(0).AddArray(chartX.Count, chartPosY.ToArray(), chartX.ToArray());
                                 }
-                                finally
+
+                                if (bShowLoad)
                                 {
-                                    // 恢复重绘
-                                    //chart_machine.ResumeLayout();
+                                    axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
                                 }
+
+                                //if (bShowExtension)
+                                //{
+                                //    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
+                                //}
+
+                                //if (bShowCommand)
+                                //{
+                                //    axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
+                                //}
+                                //axTChart1.AutoRepaint = true; 
+
+                                //axTChart1.Series(0).EndUpdate();
+
                             }
-                            //));
+
+                            #region Chart 原始控件
+                            ////每多少个点绘制一次
+                            ////double aaa = DataRefreshFrequency / SampleFrequency;
+                            //if (chartX.Count % (DataRefreshFrequency / SampleFrequency) == 0)
+                            //{
+                            //    chart_machine.Series[0].Points.DataBindXY(chartX, chartPosY);
+                            //    chart_machine.Series[1].Points.DataBindXY(chartX, chartLoadY);
+                            //    chart_machine.Series[2].Points.DataBindXY(chartX, chartExtY);
+                            //    chart_machine.Series[3].Points.DataBindXY(chartX, chartCommandY);
+                            //    //chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
+                            //}
+
+                            //if (chart_machine.Series[0].Points.Count >= nTotal)
+                            //{
+                            //    for (int n = 0; n < chart_machine.Series[0].Points.Count; n++)
+                            //    {
+                            //        chart_machine.Series[0].Points.RemoveAt(n);
+                            //    }
+                            //    x_Data = 0.0;
+                            //    chartX.Clear();
+                            //    chartPosY.Clear();
+                            //}
+
+                            //if (chart_machine.Series[1].Points.Count >= nTotal)
+                            //{
+                            //    for (int n = 0; n < chart_machine.Series[1].Points.Count; n++)
+                            //    {
+                            //        chart_machine.Series[1].Points.RemoveAt(n);
+                            //    }
+                            //    x_Data = 0.0;
+                            //    chartX.Clear();
+                            //    chartLoadY.Clear();
+                            //}
+
+                            //if (chart_machine.Series[2].Points.Count >= nTotal)
+                            //{
+                            //    for (int n = 0; n < chart_machine.Series[2].Points.Count; n++)
+                            //    {
+                            //        chart_machine.Series[2].Points.RemoveAt(n);
+                            //    }
+                            //    x_Data ;
+                            //    chartX.Clear();
+                            //    chartExtY.Clear();
+                            //}
+
+                            //if (chart_machine.Series[3].Points.Count >= nTotal)
+                            //{
+                            //    for (int n = 0; n < chart_machine.Series[3].Points.Count; n++)
+                            //    {
+                            //        chart_machine.Series[3].Points.RemoveAt(n);
+                            //    }
+                            //    x_Data = 0.0;
+                            //    chartX.Clear();
+                            //    chartCommandY.Clear();
+                            //}
+                            #endregion Chart原始控件
+
+                            if (chartX.Count >= nTotal)
+                            {
+                                //axTChart1.AutoRepaint = false;
+                                //axTChart1.Series(0).Clear();
+                                //axTChart1.Series(1).Clear();
+                                //axTChart1.Series(2).Clear();
+                                //axTChart1.Series(3).Clear();
+                                x_Data = 0.0;
+
+                                chartX.Clear();
+                                chartPosY.Clear();
+                                chartLoadY.Clear();
+                                chartExtY.Clear();
+                                chartCommandY.Clear();
+                                //axTChart1.AutoRepaint = true;
+                                //axTChart1.Refresh();
+                            }
+                        }
+                        finally
+                        {
+                            // 恢复重绘
+                            //chart_machine.ResumeLayout();
                         }
 
                         x_Data += dStep;
                     }
                 }
             }
-            //return 1;
         }
 
 
@@ -3265,9 +3275,27 @@ namespace DoPENetConnect
             //正常返回，开始计时
             if (error == DoPE.ERR.NOERROR || error == DoPE.ERR.CMD_PARCORR || error == DoPE.ERR.CMD_PAR)
             {
+                string strtmp = "";
+                //MessageBox.Show(((DoPE.CTRL)MoveCtrl).ToString());
+                if ((DoPE.CTRL)MoveCtrl == DoPE.CTRL.POS)
+                {
+                    strtmp = "mm";
+                }
+                else if ((DoPE.CTRL)MoveCtrl == DoPE.CTRL.LOAD)
+                {
+                    strtmp = "kN";
+                }
+
+                string strAmplitude = "", strOffset = "";
+                if (LoadUnit.ToUpper() == "KN")
+                {
+                    strAmplitude = (Amplitude / 1000).ToString();
+                    strOffset = (Offset / 1000).ToString();
+                }
+
                 //设置试验参数
-                tb_TestParam.Text = string.Format("控制方式：{0}，波形方式：{1}，循环次数：{2}，偏移:{3}, 振幅:{4}, 频率:{5}",
-                   MoveCtrl, WaveForm, HalfCycles / 2, Offset, Amplitude, Frequency);
+                tb_TestParam.Text = string.Format("控制方式：{0}，波形方式：{1}，循环次数：{2} 次，偏移:{3} {6}, 振幅:{4} {6}, 频率:{5} Hz",
+               MoveCtrl, WaveForm, HalfCycles / 2, strOffset, strAmplitude, Frequency, strtmp);
 
                 //开始计时
                 timer_UpdateData.Start();
@@ -3625,7 +3653,7 @@ namespace DoPENetConnect
                 devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             }
 
-            //string aaa = DESEncrypt.Encrypt("02132F05");
+            string aaa = DESEncrypt.Encrypt("0214C55E");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);

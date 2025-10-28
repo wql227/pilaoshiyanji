@@ -794,7 +794,7 @@
             // 
             // 
             this.labelX34.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX34.Location = new System.Drawing.Point(575, 10);
+            this.labelX34.Location = new System.Drawing.Point(449, 10);
             this.labelX34.Name = "labelX34";
             this.labelX34.Size = new System.Drawing.Size(70, 23);
             this.labelX34.TabIndex = 71;
@@ -806,9 +806,9 @@
             // 
             // 
             this.tb_TestParam.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tb_TestParam.Location = new System.Drawing.Point(651, 10);
+            this.tb_TestParam.Location = new System.Drawing.Point(525, 10);
             this.tb_TestParam.Name = "tb_TestParam";
-            this.tb_TestParam.Size = new System.Drawing.Size(539, 23);
+            this.tb_TestParam.Size = new System.Drawing.Size(663, 23);
             this.tb_TestParam.TabIndex = 71;
             // 
             // cb_ShowCommand
@@ -823,6 +823,7 @@
             this.cb_ShowCommand.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cb_ShowCommand.TabIndex = 70;
             this.cb_ShowCommand.Text = "命令";
+            this.cb_ShowCommand.Visible = false;
             this.cb_ShowCommand.CheckedChanged += new System.EventHandler(this.cb_ShowCommand_CheckedChanged);
             // 
             // cb_ShowExtension
@@ -837,6 +838,7 @@
             this.cb_ShowExtension.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cb_ShowExtension.TabIndex = 70;
             this.cb_ShowExtension.Text = "变形";
+            this.cb_ShowExtension.Visible = false;
             this.cb_ShowExtension.CheckedChanged += new System.EventHandler(this.cb_ShowExtension_CheckedChanged);
             // 
             // cb_ShowLoad
@@ -1369,6 +1371,7 @@
             this.SaveStaticDataToolStripMenuItem.Name = "SaveStaticDataToolStripMenuItem";
             this.SaveStaticDataToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
             this.SaveStaticDataToolStripMenuItem.Text = "保存静态数据";
+            this.SaveStaticDataToolStripMenuItem.Visible = false;
             this.SaveStaticDataToolStripMenuItem.Click += new System.EventHandler(this.SaveStaticDataToolStripMenuItem_Click);
             // 
             // pl_DataShow
