@@ -4899,6 +4899,12 @@ namespace DoPENetConnect
             }
         }
 
+        public void 校正ToolStripMenuItem_Click()
+        {
+            EventArgs tmpArg = new EventArgs();
+            校正ToolStripMenuItem_Click(this, tmpArg);
+        }
+
 
         /// <summary>
         /// 多传感器
@@ -4918,7 +4924,13 @@ namespace DoPENetConnect
             }
         }
 
-        private void pOSToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void 多传感器ToolStripMenuItem_Click()
+        {
+            EventArgs tmpArgs = new EventArgs();
+            多传感器ToolStripMenuItem_Click(this, tmpArgs);
+        }
+
+            private void pOSToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             posToolStripMenuItem_Click(sender, e);
         }

@@ -1142,5 +1142,15 @@ namespace DoPENetConnect
             }
 
         }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            MainForm.mainform.校正ToolStripMenuItem_Click();
+        }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+            MainForm.mainform.多传感器ToolStripMenuItem_Click();
+        }
     }
 }
