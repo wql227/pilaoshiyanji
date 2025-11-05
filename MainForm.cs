@@ -3648,10 +3648,11 @@ namespace DoPENetConnect
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
             string idEncry=devIdEncrypted.ToString();
-            if (idEncry != "0" && idEncry != "")
-            {
-                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-            }
+            //if (idEncry != "0" && idEncry != "")
+            //{
+            //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+            //}
+            devId = new StringBuilder("02132F05");
 
             string aaa = DESEncrypt.Encrypt("0214C55E");
 
@@ -4915,6 +4916,16 @@ namespace DoPENetConnect
             {
                 frmMultiSensor.BringToFront();
             }
+        }
+
+        private void pOSToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            posToolStripMenuItem_Click(sender, e);
+        }
+
+        private void dynCtrlToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            dynCtrlToolStripMenuItem_Click(sender, e);
         }
     }
 }
