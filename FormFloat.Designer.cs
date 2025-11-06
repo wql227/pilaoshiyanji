@@ -178,7 +178,7 @@
             this.bntX_MoveDown.Size = new System.Drawing.Size(120, 40);
             this.bntX_MoveDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveDown.TabIndex = 92;
-            this.bntX_MoveDown.Text = " 加    载";
+            this.bntX_MoveDown.Text = " 向    下";
             this.bntX_MoveDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveDown_MouseDown);
             this.bntX_MoveDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveDown_MouseUp);
             // 
@@ -210,7 +210,7 @@
             this.btnX_MoveQuickUp.Size = new System.Drawing.Size(120, 40);
             this.btnX_MoveQuickUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_MoveQuickUp.TabIndex = 90;
-            this.btnX_MoveQuickUp.Text = " 快速加载";
+            this.btnX_MoveQuickUp.Text = " 快速向上";
             this.btnX_MoveQuickUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnX_MoveQuickUp_MouseDown);
             this.btnX_MoveQuickUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnX_MoveQuickUp_MouseUp);
             // 
@@ -243,7 +243,7 @@
             this.btnX_QuickMoveDown.Size = new System.Drawing.Size(120, 40);
             this.btnX_QuickMoveDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_QuickMoveDown.TabIndex = 93;
-            this.btnX_QuickMoveDown.Text = " 快速加载";
+            this.btnX_QuickMoveDown.Text = " 快速向下";
             this.btnX_QuickMoveDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnX_QuickMoveDown_MouseDown);
             this.btnX_QuickMoveDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnX_QuickMoveDown_MouseUp);
             // 
@@ -275,7 +275,7 @@
             this.bntX_MoveUp.Size = new System.Drawing.Size(120, 40);
             this.bntX_MoveUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveUp.TabIndex = 89;
-            this.bntX_MoveUp.Text = " 加    载";
+            this.bntX_MoveUp.Text = " 向    上";
             this.bntX_MoveUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseDown);
             this.bntX_MoveUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseUp);
             // 
@@ -289,7 +289,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(156, 536);
-            this.MinimumSize = new System.Drawing.Size(0, 20);
+            this.MinimumSize = new System.Drawing.Size(16, 39);
             this.Name = "FormFloat";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
