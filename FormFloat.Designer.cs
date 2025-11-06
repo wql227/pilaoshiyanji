@@ -43,7 +43,10 @@
             this.btnX_QuickMoveDown = new DevComponents.DotNetBar.ButtonX();
             this.bntX_GUIOff = new DevComponents.DotNetBar.ButtonX();
             this.bntX_MoveUp = new DevComponents.DotNetBar.ButtonX();
+            this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
+            this.panelEx2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -66,9 +69,9 @@
             this.panelEx1.Controls.Add(this.bntX_GUIOff);
             this.panelEx1.Controls.Add(this.bntX_MoveUp);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx1.Location = new System.Drawing.Point(-1, -1);
+            this.panelEx1.Location = new System.Drawing.Point(-1, 29);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(142, 514);
+            this.panelEx1.Size = new System.Drawing.Size(142, 518);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -277,16 +280,49 @@
             this.bntX_MoveUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseDown);
             this.bntX_MoveUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bntX_MoveUp_MouseUp);
             // 
+            // panelEx2
+            // 
+            this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.labelX1);
+            this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx2.Location = new System.Drawing.Point(-3, -7);
+            this.panelEx2.Name = "panelEx2";
+            this.panelEx2.Size = new System.Drawing.Size(155, 37);
+            this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
+            this.panelEx2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx2.Style.BorderColor.Color = System.Drawing.Color.Red;
+            this.panelEx2.Style.BorderWidth = 2;
+            this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx2.Style.GradientAngle = 90;
+            this.panelEx2.TabIndex = 113;
+            // 
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Image = ((System.Drawing.Image)(resources.GetObject("labelX1.Image")));
+            this.labelX1.Location = new System.Drawing.Point(6, 10);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(45, 24);
+            this.labelX1.TabIndex = 2;
+            this.labelX1.Text = "Min";
+            // 
             // FormFloat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(140, 507);
+            this.ClientSize = new System.Drawing.Size(140, 544);
+            this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(156, 546);
+            this.MaximumSize = new System.Drawing.Size(156, 583);
             this.MinimumSize = new System.Drawing.Size(16, 39);
             this.Name = "FormFloat";
             this.ShowInTaskbar = false;
@@ -295,6 +331,7 @@
             this.Load += new System.EventHandler(this.FormFloat_Load);
             this.Shown += new System.EventHandler(this.FormFloat_Shown);
             this.panelEx1.ResumeLayout(false);
+            this.panelEx2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -315,5 +352,7 @@
         private DevComponents.DotNetBar.Controls.Line line1;
         private DevComponents.DotNetBar.ButtonX btnX_Connect;
         private DevComponents.DotNetBar.ButtonX btnX_Disconnect;
+        private DevComponents.DotNetBar.PanelEx panelEx2;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }
