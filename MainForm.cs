@@ -2600,7 +2600,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnUpConstantVal/60;
+                        speed = btnUpConstantVal;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
@@ -2686,7 +2686,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnHurryUpConstantVal/60;
+                        speed = btnHurryUpConstantVal;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
@@ -2820,7 +2820,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnDownConstantVal/60;
+                        speed = btnDownConstantVal;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
@@ -2903,7 +2903,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnHurryDownConstantVal/60;
+                        speed = btnHurryDownConstantVal;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
