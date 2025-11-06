@@ -45,6 +45,7 @@
             this.bntX_MoveUp = new DevComponents.DotNetBar.ButtonX();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +56,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.buttonX1);
             this.panelEx1.Controls.Add(this.line1);
             this.panelEx1.Controls.Add(this.btnX_Connect);
             this.panelEx1.Controls.Add(this.btnX_Disconnect);
@@ -311,6 +313,24 @@
             this.labelX1.Size = new System.Drawing.Size(45, 24);
             this.labelX1.TabIndex = 2;
             this.labelX1.Text = "Min";
+            this.labelX1.Click += new System.EventHandler(this.labelX1_Click);
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX1.Image = ((System.Drawing.Image)(resources.GetObject("buttonX1.Image")));
+            this.buttonX1.Location = new System.Drawing.Point(10, 58);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(120, 40);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.TabIndex = 102;
+            this.buttonX1.Text = "保    持";
+            this.buttonX1.Visible = false;
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // FormFloat
             // 
@@ -354,5 +374,6 @@
         private DevComponents.DotNetBar.ButtonX btnX_Disconnect;
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
     }
 }
