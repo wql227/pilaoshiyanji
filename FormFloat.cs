@@ -118,6 +118,8 @@ namespace DoPENetConnect
         private void bntX_GUIOff_Click(object sender, EventArgs e)
         {
             MainForm.mainform.FormFloat_bntX_GUIOff_Click();
+            btnX_SetLow.Checked = false;
+            btnX_SetHigh.Checked = false;
         }
 
         private void btnX_MoveQuickUp_MouseDown(object sender, MouseEventArgs e)
