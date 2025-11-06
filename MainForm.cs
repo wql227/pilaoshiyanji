@@ -414,7 +414,12 @@ namespace DoPENetConnect
 
 
         public bool valInScaleSetted2 = false;
-
+		
+        /// <summary>
+        /// 手动窗口
+        /// </summary>
+        FormFloat floatMenus;
+		
         /// <summary>
         /// 多传感器窗口
         /// </summary>
@@ -630,6 +635,10 @@ namespace DoPENetConnect
 
             //updateTextBox += new UpdateDataToTextBox(UpdateData);
 
+            //悬浮工具框
+            floatMenus = new FormFloat();
+            floatMenus.Owner = this;
+            floatMenus.Location = new Point(this.Location.X+2, 273);
             //InitTimer();
 
         }
@@ -935,6 +944,8 @@ namespace DoPENetConnect
                 SetControlEnable(true);
 
                 bntX_GUIOn.Checked = false;
+                floatMenus.btnX_GUIOn_Checked(false);   //请与上边一行同步修改
+
                 this.MaximizeBox = true;
 
                 nCycleCount = 0;
@@ -1056,16 +1067,24 @@ namespace DoPENetConnect
             {
                 btn_ConState.BackColor = Color.Red;
                 btn_ConState.Text = "OFFLINE";
+
+                floatMenus.btn_ConState_color(Color.Red);
+                floatMenus.btn_ConState_Text("OFFLINE");
+
             }
             else if (LineState == DoPE.LineState.ONLINE)
             {
                 btn_ConState.BackColor = Color.Lime;
                 btn_ConState.Text = "ONLINE";
+                floatMenus.btn_ConState_color(Color.Lime);
+                floatMenus.btn_ConState_Text("ONLINE");
             }
             else if (LineState == DoPE.LineState.RESTART)
             {
                 btn_ConState.BackColor = Color.Yellow;
                 btn_ConState.Text = "RESTART";
+                floatMenus.btn_ConState_color(Color.Yellow);
+                floatMenus.btn_ConState_Text("RESTART");
             }
 
             return 0;
@@ -2453,6 +2472,9 @@ namespace DoPENetConnect
                 btnX_QuickMoveDown.Enabled = true;
                 bntX_GUIOn.Enabled = true;
                 bntX_GUIOff.Enabled = true;
+
+                //floatMenus
+                floatMenus.EnableButton(true);
             }
             else
             {
@@ -2465,6 +2487,9 @@ namespace DoPENetConnect
                 btnX_QuickMoveDown.Enabled = false;
                 bntX_GUIOn.Enabled = false;
                 bntX_GUIOff.Enabled = false;
+
+                //floatMenus
+                floatMenus.EnableButton(false);
             }
         }
 
@@ -2486,6 +2511,10 @@ namespace DoPENetConnect
             ConnectToEdc();
         }
 
+        public void FormFloat_btnX_Connect_Click()
+        {
+            ConnectToEdc();
+        }
 
         /// <summary>
         /// 断开EDC
@@ -2497,6 +2526,10 @@ namespace DoPENetConnect
             Disconnect();
         }
 
+        public void FormFloat_btnX_Disconnect_Click()
+        {
+            Disconnect();
+        }
 
         /// <summary>
         /// 向上
@@ -2556,6 +2589,42 @@ namespace DoPENetConnect
         }
 
 
+        public void FormFloat_bntX_MoveUp_MouseDown()
+        {
+            EndUp = true;
+            if (EndUp)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = btnUpConstantVal/60;
+
+                        DoPE.ERR error = MyEdc.Move.FMove(MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
+                        DisplayError(error, "FMove");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+       /// 向上移动按钮抬起
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void FormFloat_bntX_MoveUp_MouseUp()
+        {
+            EndUp = false;
+
+            MoveHalt();
+        }
+
+
         /// <summary>
         /// 快速向上
         /// </summary>
@@ -2605,6 +2674,41 @@ namespace DoPENetConnect
         }
 
 
+        public void FormFloat_btnX_MoveQuickUp_MouseDown()
+        {
+            EndQuickUp = true;
+
+            if (EndQuickUp)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = btnHurryUpConstantVal/60;
+
+                        DoPE.ERR error = MyEdc.Move.FMove(MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
+                        DisplayError(error, "FMove");
+                        //DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.UP, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                        //DisplayError(error, "FMove_A");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+        public void FormFloat_btnX_MoveQuickUp_MouseUp()
+        {
+            EndQuickUp = false;
+
+            MoveHalt();
+        }
+
+
         /// <summary>
         /// 保持
         /// </summary>
@@ -2618,7 +2722,10 @@ namespace DoPENetConnect
             MoveHalt();
         }
 
-
+        public void FormFloat_bntX_MoveHalt_Click()
+        {
+            MoveHalt();
+        }
         /// <summary>
         /// MoveHalt 移动停止
         /// </summary>
@@ -2702,6 +2809,36 @@ namespace DoPENetConnect
         }
 
 
+        public void FormFloat_bntX_MoveDown_MouseDown()
+        {
+            EndDown = true;
+            if (EndDown)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = btnDownConstantVal/60;
+
+                        DoPE.ERR error = MyEdc.Move.FMove(MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
+                        DisplayError(error, "FMove");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+        public void FormFloat_bntX_MoveDown_MouseUp()
+        {
+            EndDown = false;
+
+            MoveHalt();
+        }
         /// <summary>
         /// 快速向下
         /// </summary>
@@ -2752,6 +2889,44 @@ namespace DoPENetConnect
             MoveHalt();
          }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void FormFloat_btnX_QuickMoveDown_MouseDown()
+        {
+            EndQuickDown = true;
+            if (EndQuickDown)
+            {
+                if (bConnected)
+                {
+                    double speed;
+
+                    try
+                    {
+                        speed = btnHurryDownConstantVal/60;
+
+                        DoPE.ERR error = MyEdc.Move.FMove(MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
+                        DisplayError(error, "FMove");
+
+                        //DoPE.ERR error = MyEdc.Move.FMove_A(DoPE.MOVE.DOWN, DoPE.CTRL.POS, 300, speed, ref MyTan);
+                        //DisplayError(error, "FMove_A");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Display(CommandFailedString);
+                    }
+                }
+            }
+        }
+
+
+        public void FormFloat_btnX_QuickMoveDown_MouseUp()
+        {
+            EndQuickDown = false;
+
+            MoveHalt();
+        }
+
 
         /// <summary>
         /// 激活
@@ -2766,7 +2941,16 @@ namespace DoPENetConnect
             OnEDC();
         }
 
+        public void FormFloat_bntX_GUIOn_Click()
+        {
+            OnEDC();
 
+            if (MyEdc.IsConnected() && bActivated)
+            {
+
+                this.MaximizeBox = false;
+            }
+        }
         /// <summary>
         /// 停用
         /// </summary>
@@ -2780,7 +2964,10 @@ namespace DoPENetConnect
             OffEDC();
         }
 
-
+        public void FormFloat_bntX_GUIOff_Click()
+        {
+            OffEDC();
+        }
         /// <summary>
         /// IO高压
         /// </summary>
@@ -2805,6 +2992,27 @@ namespace DoPENetConnect
             }
         }
 
+        public void FormFloat_btnX_SetHigh_Click()
+        {
+            if (bConnected)
+            {
+                DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(true);
+                //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(true);
+
+                if (Err == DoPE.ERR.NOERROR)
+                {
+                    //btnX_SetLow.Checked = false;
+                    //btnX_SetHigh.Checked = true;
+
+                    floatMenus.btnX_SetLow_Checked(false);
+                    floatMenus.btnX_SetHigh_Checked(true);
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先连接控制器！");
+            }
+        }
 
         /// <summary>
         /// IO低压
@@ -2812,6 +3020,27 @@ namespace DoPENetConnect
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnX_SetLow_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
+                //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(false);
+
+                if (Err == DoPE.ERR.NOERROR)
+                {
+                    //btnX_SetHigh.Checked = false;
+                    //btnX_SetLow.Checked = true;
+
+                    floatMenus.btnX_SetHigh_Checked(false);
+                    floatMenus.btnX_SetLow_Checked(true);
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先连接控制器！");
+            }
+        }
+        public void FormFloat_btnX_SetLow_Click()
         {
             if (bConnected)
             {
@@ -3499,6 +3728,8 @@ namespace DoPENetConnect
             bntX_MoveUp.Enabled = bState;
             bntX_MoveDown.Enabled = bState;
             btnX_QuickMoveDown.Enabled = bState;
+            //Formfloat上下禁用 
+            floatMenus.SetControlEnable(bState);
         }
 
 
@@ -4808,7 +5039,15 @@ namespace DoPENetConnect
 
         }
 
-
+        private void pl_DataShow_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {                
+                floatMenus.Location = new Point(System.Windows.Forms.Cursor.Position.X, System.Windows.Forms.Cursor.Position.Y);
+                floatMenus.Visible = true;
+            }
+        }
+		
         /// <summary>
         /// 初始化试验次数判断
         /// </summary>
@@ -4938,6 +5177,22 @@ namespace DoPENetConnect
         private void dynCtrlToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             dynCtrlToolStripMenuItem_Click(sender, e);
+        }
+        bool floatRunOnce = true;
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            if (floatRunOnce)
+            {
+                this.Invoke(new MethodInvoker(ShowFloatMenus));
+                floatRunOnce = false;
+            }
+        }
+
+        public void ShowFloatMenus()
+        {
+            floatMenus.Show();
+            floatMenus.Activate();
+            floatMenus.TopMost = true;
         }
     }
 }

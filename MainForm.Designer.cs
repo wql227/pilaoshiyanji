@@ -77,7 +77,6 @@
             this.btnX_AxisPOSY_MaxDown = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisLoadY_MinDown = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisLoadY_MinUp = new DevComponents.DotNetBar.ButtonX();
-            this.axTChart1 = new AxTeeChart.AxTChart();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbX_EDCName = new System.Windows.Forms.ToolStripStatusLabel();
@@ -301,6 +300,7 @@
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
             this.timer_ShowWave = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.axTChart1 = new AxTeeChart.AxTChart();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -310,7 +310,6 @@
             this.panelEx10.SuspendLayout();
             this.panelEx11.SuspendLayout();
             this.panelEx12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.pl_DataShow.SuspendLayout();
@@ -348,6 +347,7 @@
             this.superTabControlPanel5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
             this.SuspendLayout();
             // 
             // StartCommunicationWithEdcTimer
@@ -973,16 +973,6 @@
             this.btnX_AxisLoadY_MinUp.Text = "▲";
             this.btnX_AxisLoadY_MinUp.Click += new System.EventHandler(this.btnX_AxisLoadY_MinUp_Click);
             // 
-            // axTChart1
-            // 
-            this.axTChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axTChart1.Enabled = true;
-            this.axTChart1.Location = new System.Drawing.Point(0, 0);
-            this.axTChart1.Name = "axTChart1";
-            this.axTChart1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart1.OcxState")));
-            this.axTChart1.Size = new System.Drawing.Size(1270, 544);
-            this.axTChart1.TabIndex = 69;
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1392,6 +1382,7 @@
             this.pl_DataShow.Name = "pl_DataShow";
             this.pl_DataShow.Size = new System.Drawing.Size(1418, 92);
             this.pl_DataShow.TabIndex = 56;
+            this.pl_DataShow.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pl_DataShow_MouseClick);
             // 
             // gp_RunTime
             // 
@@ -2818,9 +2809,9 @@
             // 
             this.superTabControlPanel3.Controls.Add(this.panelEx3);
             this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 25);
+            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(303, 682);
+            this.superTabControlPanel3.Size = new System.Drawing.Size(303, 679);
             this.superTabControlPanel3.TabIndex = 1;
             this.superTabControlPanel3.TabItem = this.superTabItem3;
             // 
@@ -2844,7 +2835,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 0);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(303, 682);
+            this.panelEx3.Size = new System.Drawing.Size(303, 679);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -2886,7 +2877,7 @@
             this.superTabControl3.ControlBox.CloseBox});
             this.superTabControl3.Controls.Add(this.superTabControlPanel6);
             this.superTabControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.superTabControl3.Location = new System.Drawing.Point(0, 572);
+            this.superTabControl3.Location = new System.Drawing.Point(0, 569);
             this.superTabControl3.Name = "superTabControl3";
             this.superTabControl3.ReorderTabsEnabled = false;
             this.superTabControl3.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
@@ -2905,7 +2896,7 @@
             this.superTabControlPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel6.Location = new System.Drawing.Point(0, 0);
             this.superTabControlPanel6.Name = "superTabControlPanel6";
-            this.superTabControlPanel6.Size = new System.Drawing.Size(303, 85);
+            this.superTabControlPanel6.Size = new System.Drawing.Size(303, 82);
             this.superTabControlPanel6.TabIndex = 1;
             this.superTabControlPanel6.TabItem = this.superTabItem6;
             // 
@@ -2923,7 +2914,7 @@
             this.panelEx8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx8.Location = new System.Drawing.Point(0, 0);
             this.panelEx8.Name = "panelEx8";
-            this.panelEx8.Size = new System.Drawing.Size(303, 85);
+            this.panelEx8.Size = new System.Drawing.Size(303, 82);
             this.panelEx8.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx8.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx8.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -3830,6 +3821,16 @@
             // 
             this.timer_ShowWave.Tick += new System.EventHandler(this.timer_ShowWave_Tick);
             // 
+            // axTChart1
+            // 
+            this.axTChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axTChart1.Enabled = true;
+            this.axTChart1.Location = new System.Drawing.Point(0, 0);
+            this.axTChart1.Name = "axTChart1";
+            this.axTChart1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart1.OcxState")));
+            this.axTChart1.Size = new System.Drawing.Size(1270, 544);
+            this.axTChart1.TabIndex = 69;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3842,6 +3843,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DoPE10NetConnect";
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
@@ -3857,7 +3859,6 @@
             this.panelEx11.ResumeLayout(false);
             this.panelEx11.PerformLayout();
             this.panelEx12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
@@ -3903,6 +3904,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).EndInit();
             this.ResumeLayout(false);
 
         }
