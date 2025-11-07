@@ -2150,6 +2150,14 @@ namespace DoPENetConnect
 
             cb_ShowPosition.CheckState = CheckState.Checked;
 
+            //添加皮肤种类
+            var skinNames = Enum.GetNames(typeof(eStyle));
+            foreach (string skin in skinNames)
+            {
+                this.cbk_Skin.Items.Add(skin);
+                this.cbk_Skin.SelectedIndex = 0;
+            }
+
         }
 
 
@@ -5397,6 +5405,14 @@ namespace DoPENetConnect
             }
 
             return true;
+        }
+
+        private void cbk_Skin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Enum.TryParse<eStyle>(this.cbk_Skin.Text, out var result))
+            {
+                this.styleManager1.ManagerStyle = result;
+            }
         }
     }
 }
