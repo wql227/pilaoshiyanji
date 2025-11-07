@@ -898,9 +898,9 @@ namespace DoPENetConnect
                     bActivated = true;
                     bShowSensorData = true;
 
-                    bntX_GUIOn.Checked = true;
-                    btnX_SetLow.Checked = true;
-                    btnX_SetHigh.Checked = false;
+                    //bntX_GUIOn.Checked = true;
+                   // btnX_SetLow.Checked = true;
+                    //btnX_SetHigh.Checked = false;
 
                     this.MaximizeBox = false;
                     //timer_ShowWave.Start();
@@ -938,12 +938,12 @@ namespace DoPENetConnect
                 //StartCommunicationWithEdcTimer.Stop();
                 DisplayError(error, "Off");
                 isRunning = false;
-                btnX_SetLow.Checked = false;
-                btnX_SetHigh.Checked = false;
+                //btnX_SetLow.Checked = false;
+                //btnX_SetHigh.Checked = false;
 
                 SetControlEnable(true);
 
-                bntX_GUIOn.Checked = false;
+                //bntX_GUIOn.Checked = false;
                 floatMenus.btnX_GUIOn_Checked(false);   //请与上边一行同步修改
 
                 this.MaximizeBox = true;
@@ -1065,8 +1065,8 @@ namespace DoPENetConnect
 
             if (LineState == DoPE.LineState.OFFLINE)
             {
-                btn_ConState.BackColor = Color.Red;
-                btn_ConState.Text = "OFFLINE";
+                //btn_ConState.BackColor = Color.Red;
+                //btn_ConState.Text = "OFFLINE";
 
                 floatMenus.btn_ConState_color(Color.Red);
                 floatMenus.btn_ConState_Text("OFFLINE");
@@ -1074,15 +1074,15 @@ namespace DoPENetConnect
             }
             else if (LineState == DoPE.LineState.ONLINE)
             {
-                btn_ConState.BackColor = Color.Lime;
-                btn_ConState.Text = "ONLINE";
+                //btn_ConState.BackColor = Color.Lime;
+                //btn_ConState.Text = "ONLINE";
                 floatMenus.btn_ConState_color(Color.Lime);
                 floatMenus.btn_ConState_Text("ONLINE");
             }
             else if (LineState == DoPE.LineState.RESTART)
             {
-                btn_ConState.BackColor = Color.Yellow;
-                btn_ConState.Text = "RESTART";
+                //btn_ConState.BackColor = Color.Yellow;
+                //btn_ConState.Text = "RESTART";
                 floatMenus.btn_ConState_color(Color.Yellow);
                 floatMenus.btn_ConState_Text("RESTART");
             }
@@ -2087,7 +2087,7 @@ namespace DoPENetConnect
 
             timer_UpdateData.Interval = (int)DataRefreshFrequency;
 
-            btn_ConState.BackColor = Color.Red;
+            //btn_ConState.BackColor = Color.Red;
 
             //初始化chart控件
             chart_machine.Series[0].Points.Clear();
@@ -2110,18 +2110,18 @@ namespace DoPENetConnect
             //    btnX_SetHigh.Visible = false;
             //}
             //else
-            {
-                btnX_SetHigh.Visible = true;
-            }
+            //{
+                //btnX_SetHigh.Visible = true;
+           // }
 
             //if (EnableLow == "0")
             //{
             //    btnX_SetLow.Visible = false;
             //}
             //else
-            {
-                btnX_SetLow.Visible = true;
-            }
+            //{
+                //btnX_SetLow.Visible = true;
+            //}
 
             //设置时间轴
             axTChart1.Axis.Bottom.SetMinMax(0, AxisXMax);
@@ -2464,14 +2464,14 @@ namespace DoPENetConnect
             if (bConnected)
             {
                 //btnX_Connect.Enabled = true;
-                btnX_Disconnect.Enabled = true;
-                btnX_MoveQuickUp.Enabled = true;
-                bntX_MoveUp.Enabled = true;
-                bntX_MoveHalt.Enabled = true;
-                bntX_MoveDown.Enabled = true;
-                btnX_QuickMoveDown.Enabled = true;
-                bntX_GUIOn.Enabled = true;
-                bntX_GUIOff.Enabled = true;
+                //btnX_Disconnect.Enabled = true;
+                //btnX_MoveQuickUp.Enabled = true;
+                //bntX_MoveUp.Enabled = true;
+                //bntX_MoveHalt.Enabled = true;
+                //bntX_MoveDown.Enabled = true;
+                //btnX_QuickMoveDown.Enabled = true;
+                //bntX_GUIOn.Enabled = true;
+                //bntX_GUIOff.Enabled = true;
 
                 //floatMenus
                 floatMenus.EnableButton(true);
@@ -2479,14 +2479,14 @@ namespace DoPENetConnect
             else
             {
                 //btnX_Connect.Enabled = true;
-                btnX_Disconnect.Enabled = false;
-                btnX_MoveQuickUp.Enabled = false;
-                bntX_MoveUp.Enabled = false;
-                bntX_MoveHalt.Enabled = false;
-                bntX_MoveDown.Enabled = false;
-                btnX_QuickMoveDown.Enabled = false;
-                bntX_GUIOn.Enabled = false;
-                bntX_GUIOff.Enabled = false;
+                //btnX_Disconnect.Enabled = false;
+                //btnX_MoveQuickUp.Enabled = false;
+                //bntX_MoveUp.Enabled = false;
+                //bntX_MoveHalt.Enabled = false;
+                //bntX_MoveDown.Enabled = false;
+                //btnX_QuickMoveDown.Enabled = false;
+                //bntX_GUIOn.Enabled = false;
+                //bntX_GUIOff.Enabled = false;
 
                 //floatMenus
                 floatMenus.EnableButton(false);
@@ -2982,8 +2982,8 @@ namespace DoPENetConnect
 
                 if (Err == DoPE.ERR.NOERROR)
                 {
-                    btnX_SetLow.Checked = false;
-                    btnX_SetHigh.Checked = true;
+                    //btnX_SetLow.Checked = false;
+                    //btnX_SetHigh.Checked = true;
                 }
             }
             else
@@ -2999,7 +2999,7 @@ namespace DoPENetConnect
                 DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(true);
                 //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(true);
 
-                if (Err == DoPE.ERR.NOERROR)
+                //if (Err == DoPE.ERR.NOERROR)
                 {
                     //btnX_SetLow.Checked = false;
                     //btnX_SetHigh.Checked = true;
@@ -3031,8 +3031,7 @@ namespace DoPENetConnect
                     //btnX_SetHigh.Checked = false;
                     //btnX_SetLow.Checked = true;
 
-                    floatMenus.btnX_SetHigh_Checked(false);
-                    floatMenus.btnX_SetLow_Checked(true);
+
                 }
             }
             else
@@ -3047,10 +3046,12 @@ namespace DoPENetConnect
                 DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureSet(false);
                 //DoPE.ERR Err = MyEdc.IoSignal.IOHighPressureEnable(false);
 
-                if (Err == DoPE.ERR.NOERROR)
+                //if (Err == DoPE.ERR.NOERROR)
                 {
-                    btnX_SetHigh.Checked = false;
-                    btnX_SetLow.Checked = true;
+                    //btnX_SetHigh.Checked = false;
+                    //btnX_SetLow.Checked = true;
+                    floatMenus.btnX_SetHigh_Checked(false);
+                    floatMenus.btnX_SetLow_Checked(true);
                 }
             }
             else
@@ -3725,10 +3726,10 @@ namespace DoPENetConnect
             cb_TareTime.Enabled = bState;
 
             //上下控制禁用
-            btnX_MoveQuickUp.Enabled = bState;
-            bntX_MoveUp.Enabled = bState;
-            bntX_MoveDown.Enabled = bState;
-            btnX_QuickMoveDown.Enabled = bState;
+            //btnX_MoveQuickUp.Enabled = bState;
+            //bntX_MoveUp.Enabled = bState;
+            //bntX_MoveDown.Enabled = bState;
+            //btnX_QuickMoveDown.Enabled = bState;
             //Formfloat上下禁用 
             floatMenus.SetControlEnable(bState);
         }
