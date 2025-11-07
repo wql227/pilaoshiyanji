@@ -558,6 +558,8 @@ namespace DoPENetConnect
 
         public bool isProcessing = false;
 
+        public int themeComboIndex = 0;
+
         //System.Timers.Timer timer;
 
         //public delegate void SetControlValue(string value);
@@ -2155,8 +2157,8 @@ namespace DoPENetConnect
             foreach (string skin in skinNames)
             {
                 this.cbk_Skin.Items.Add(skin);
-                this.cbk_Skin.SelectedIndex = 0;
             }
+            this.cbk_Skin.SelectedIndex = themeComboIndex;
 
         }
 
@@ -3952,6 +3954,11 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("Setting", "EnableLow", "0", strTmp, strTmp.Capacity);
             EnableLow = strTmp.ToString();
 
+            //主题
+            IniFileHelper.GetIniString("Setting", "Theme", "-1", strTmp, strTmp.Capacity);            
+            themeComboIndex =int.Parse(strTmp.ToString());
+            if (themeComboIndex == -1) themeComboIndex = 0;
+
             //停机保护选项
             IniFileHelper.GetIniString("FrmSystemSetting", "限位保护选项", "0", strTmp, strTmp.Capacity);
             protectOption.ProtectOptionType = strTmp.ToString();
@@ -5413,6 +5420,13 @@ namespace DoPENetConnect
             {
                 this.styleManager1.ManagerStyle = result;
             }
+            IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
+            string strTmp = "";
+            string strConfigSetion = this.Name;
+
+            //按试验次数记录日志
+            strTmp = cbk_Skin.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("Setting", "Theme", strTmp);
         }
     }
 }
