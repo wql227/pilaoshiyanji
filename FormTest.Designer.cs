@@ -501,6 +501,7 @@
             this.Text = "新建试样信息";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormTest_FormClosing);
             this.Load += new System.EventHandler(this.FormTest_Load);
+            this.Shown += new System.EventHandler(this.FormTest_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
             this.superTabControlPanel1.ResumeLayout(false);

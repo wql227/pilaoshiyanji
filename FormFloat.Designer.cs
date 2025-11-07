@@ -146,7 +146,7 @@
             this.bntX_MoveHalt.Size = new System.Drawing.Size(120, 40);
             this.bntX_MoveHalt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveHalt.TabIndex = 91;
-            this.bntX_MoveHalt.Text = " 保    持";
+            this.bntX_MoveHalt.Text = "保    持";
             this.bntX_MoveHalt.Click += new System.EventHandler(this.bntX_MoveHalt_Click);
             // 
             // btnX_SetLow
@@ -286,13 +286,16 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(140, 464);
             this.Controls.Add(this.panelEx1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(156, 536);
+            this.MinimumSize = new System.Drawing.Size(0, 20);
             this.Name = "FormFloat";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormFloat_FormClosing);
             this.Load += new System.EventHandler(this.FormFloat_Load);
+            this.Shown += new System.EventHandler(this.FormFloat_Shown);
             this.panelEx1.ResumeLayout(false);
             this.ResumeLayout(false);
 

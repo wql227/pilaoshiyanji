@@ -1310,21 +1310,49 @@ namespace DoPENetConnect
                 guiTime.Text = string.Format(@"{0:D2}:{1:D2}:{2:D2}", (int)elapsed.TotalHours, elapsed.Minutes, elapsed.Seconds);
                 guiTime.Refresh();
 
-                //发送
+                //
                 if (bConnected && bActivated && isRunning)
                 {
-                    
+                    //发送数据
                     if (realtimeParams.dataRecvTimes % (realtimeParams.sendInterval / 10) == 0 && serialPort1.IsOpen)
                     {
                         string sendStr = $"B{realtimeParams.DisplacementVal},{realtimeParams.LoadVal}";
                         serialPort1.Write(sendStr);
                     }
+
+                    //limit
+                    ExceedLimitAlert();
                 }
             }
             ParamsSetFirstCycle();
             return 0;
         }
+        /// <summary>
+        /// 当位移超过Limit设定后的操作：1.停止试验
+        /// </summary>
+        public void ExceedLimitAlert()
+        {
+            if (doTest.currentExtLimitMode != "NOT_ACTIVE")
+            {
+                if (doTest.currentExtDestCtrl == "POS")
+                {
+                    double deviationVal = double.Parse(guiPosition.Text) - originParams.DisplacementVal;
+                    if (Math.Abs(deviationVal) >= doTest.currentExtLimit)
+                    {
+                        //alert out of limit
+                        MoveHalt();
+                        //停止数据更新
+                        //if (isRunning)
+                        {
+                            isRunning = false;
+                            onExpermentStoped();
+                        }
+                        this.Invoke(new MethodInvoker(ShowOnPosMsgInfos));
 
+                    }
+                }
+            }
+        }
 
         public void SaveTestPath(string path,string imageName)
         {
@@ -1348,6 +1376,7 @@ namespace DoPENetConnect
         public void onExpermentStoped()
         {
             doTest.sampleFinished = true;
+            doTest.sampleMaxLoad = tb_MaxLoad.Text;
             buttonX15.Checked = false;
             if (stopwatch.IsRunning) stopwatch.Stop();
             LogHelper.SaveResult(tb_MaxLoad.Text, doTest);    //存取最大力
@@ -3179,6 +3208,10 @@ namespace DoPENetConnect
         public void MovePosExt(DoPE.CTRL MoveCtrl, double Speed, LIMITMODE LimitMode, double Limit, CTRL DestinationCtrl, double Destination,
             DESTMODE DestMode)
         {
+            doTest.currentExtDestCtrl = Enum.GetName(typeof(DoPE.CTRL), DestinationCtrl);
+            doTest.currentExtLimitMode = Enum.GetName(typeof(DoPE.LIMITMODE), LimitMode);
+            doTest.currentExtLimit = Limit;
+            doTest.currentExtDestination = Destination;
             LoadSystemLimitSet();
             DoPE.ERR error = MyEdc.Move.PosExt(MoveCtrl, Speed, LimitMode, Limit, DestinationCtrl, Destination, DestMode, ref MyTan);
             
@@ -3216,7 +3249,7 @@ namespace DoPENetConnect
              minSeries2 = -1;
              minSeries3 = -1;
 
-            chart_machine.ChartAreas[0].CursorX.IsUserSelectionEnabled = false;
+            chart_machine.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
             while (chart_machine.ChartAreas[0].AxisX.ScaleView.IsZoomed)
             {
                 chart_machine.ChartAreas[0].AxisX.ScaleView.ZoomReset();
@@ -4946,8 +4979,18 @@ namespace DoPENetConnect
                 limitValue = double.Parse(textBoxX14.Text) * 1000;
             }
 
+            DESTMODE destModeSet = DESTMODE.DEST_MAINTAIN;
+            switch (comboBoxEx11.SelectedIndex) {
+                case 0:
+                    destModeSet = DESTMODE.DEST_POSITION;
+                    break;
+                case 1:
+                    destModeSet = DESTMODE.DEST_MAINTAIN;
+                    break;
+            }
+
             frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, ctrlSpeed, comboBoxEx7.SelectedIndex, limitValue,
-                                             (CTRL)comboBoxEx9.SelectedIndex, destinationVal, DESTMODE.DEST_MAINTAIN);
+                                             (CTRL)comboBoxEx9.SelectedIndex, destinationVal, destModeSet);
         }
 
         public void SetMaxMinControlsZero()
@@ -4977,8 +5020,9 @@ namespace DoPENetConnect
 
                 comboBoxEx9.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
 
-                 //comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
-                comboBoxEx11.Items.Add("DEST_MAINTAIN");
+                //comboBoxEx11.DataSource = System.Enum.GetNames(typeof(DoPE.DESTMODE));
+                comboBoxEx11.Items.Add("DEST_POSITION");
+                //comboBoxEx11.Items.Add("DEST_MAINTAIN");
                 comboBoxEx11.SelectedIndex = 0;
             }
         }

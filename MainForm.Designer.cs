@@ -193,6 +193,7 @@
             this.ChartSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutoSetYAxisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pl_DataShow = new System.Windows.Forms.Panel();
+            this.labelX33 = new DevComponents.DotNetBar.LabelX();
             this.cb_TareExt = new System.Windows.Forms.CheckBox();
             this.cb_TareLoad = new System.Windows.Forms.CheckBox();
             this.cb_TarePos = new System.Windows.Forms.CheckBox();
@@ -744,8 +745,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel10);
             this.superTabControl4.Controls.Add(this.superTabControlPanel9);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel10);
             this.superTabControl4.Location = new System.Drawing.Point(1301, 3);
             this.superTabControl4.MaximumSize = new System.Drawing.Size(0, 419);
             this.superTabControl4.MinimumSize = new System.Drawing.Size(285, 419);
@@ -2145,6 +2146,7 @@
             // 
             // pl_DataShow
             // 
+            this.pl_DataShow.Controls.Add(this.labelX33);
             this.pl_DataShow.Controls.Add(this.cb_TareExt);
             this.pl_DataShow.Controls.Add(this.cb_TareLoad);
             this.pl_DataShow.Controls.Add(this.cb_TarePos);
@@ -2168,6 +2170,27 @@
             this.pl_DataShow.Size = new System.Drawing.Size(1584, 82);
             this.pl_DataShow.TabIndex = 56;
             this.pl_DataShow.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pl_DataShow_MouseClick);
+            // 
+            // labelX33
+            // 
+            this.labelX33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX33.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            // 
+            // 
+            // 
+            this.labelX33.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("labelX33.BackgroundStyle.BackgroundImage")));
+            this.labelX33.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labelX33.BackgroundStyle.BorderBottomWidth = 1;
+            this.labelX33.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labelX33.BackgroundStyle.BorderLeftWidth = 2;
+            this.labelX33.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labelX33.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labelX33.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX33.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelX33.Location = new System.Drawing.Point(1302, 3);
+            this.labelX33.Name = "labelX33";
+            this.labelX33.Size = new System.Drawing.Size(281, 76);
+            this.labelX33.TabIndex = 43;
             // 
             // cb_TareExt
             // 
@@ -3923,6 +3946,7 @@
             this.试验操作选项ToolStripMenuItem.Name = "试验操作选项ToolStripMenuItem";
             this.试验操作选项ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.试验操作选项ToolStripMenuItem.Text = "试验操作选项...";
+            this.试验操作选项ToolStripMenuItem.Visible = false;
             this.试验操作选项ToolStripMenuItem.Click += new System.EventHandler(this.试验操作选项ToolStripMenuItem_Click);
             // 
             // 绘图选项ToolStripMenuItem
@@ -4536,6 +4560,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripStatusLabel UnitName;
         private System.Windows.Forms.ToolStripStatusLabel UnitContent;
+        private DevComponents.DotNetBar.LabelX labelX33;
     }
 }
 

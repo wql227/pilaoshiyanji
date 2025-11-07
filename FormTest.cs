@@ -82,6 +82,29 @@ namespace DoPENetConnect
             get;
         }
 
+        public string currentExtDestCtrl
+        {
+            set;
+            get;
+        }
+
+        public string currentExtLimitMode
+        {
+            set;
+            get;
+        }
+
+        public double currentExtLimit
+        {
+            set;
+            get;
+        }
+        public double currentExtDestination
+        {
+            set;
+            get;
+        }
+
         public FormTest()
         {
             InitializeComponent();
@@ -141,9 +164,9 @@ namespace DoPENetConnect
             //}
 
 
-            if(textBoxX1.Text == ""|| textBoxX2.Text == ""|| textBoxX3.Text == ""|| textBoxX4.Text == ""|| textBoxX5.Text == ""|| textBoxX6.Text == ""|| textBoxX7.Text == "")
+            if(textBoxX1.Text == "")//|| textBoxX2.Text == ""|| textBoxX3.Text == ""|| textBoxX4.Text == ""|| textBoxX5.Text == ""|| textBoxX6.Text == ""|| textBoxX7.Text == "")
             {
-                MessageBox.Show("输入为不能为空，请重新输入！");
+                MessageBox.Show("试验编号不能为空，请重新输入！");
                 return;
             }
 
@@ -229,8 +252,92 @@ namespace DoPENetConnect
         private void btnX_FrmProtectOption_OK_Click(object sender, EventArgs e)
         {
             MainForm.mainform.SetTestInfo(dataGridViewX1);
+            WriteExpParams();
             this.sampleFinished = false;    //标志此次试验没有完成
             this.Close();
+        }
+
+        /// <summary>
+        /// 试验参数保存至文件
+        /// </summary>
+        public void WriteExpParams()
+        {
+            IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
+            string strTmp = "";
+            string strConfigSetion = this.Name;
+
+            //按试验次数记录日志
+            strTmp = textBoxX1.Text;
+            IniFileHelper.WriteIniString(strConfigSetion, "SampleCode", strTmp);
+            strTmp = textBoxX2.Text;
+            IniFileHelper.WriteIniString(strConfigSetion, "SampleNo", strTmp);
+            strTmp = textBoxX3.Text;
+            IniFileHelper.WriteIniString(strConfigSetion, "SampleShape", strTmp);
+            strTmp = textBoxX4.Text;
+            IniFileHelper.WriteIniString(strConfigSetion, "SampleOperator", strTmp);
+            strTmp = textBoxX5.Text;
+            IniFileHelper.WriteIniString(strConfigSetion, "SampleChecker", strTmp);
+            strTmp = textBoxX6.Text;
+            IniFileHelper.WriteIniString(strConfigSetion, "SampleDependation", strTmp);
+            strTmp = textBoxX7.Text;
+            IniFileHelper.WriteIniString(strConfigSetion, "SampleNote", strTmp);
+
+        }
+
+        public void LoadIni()
+        {
+            IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
+            StringBuilder strTmp = new StringBuilder(255);
+            string strConfigSetion = this.Name;
+
+
+            IniFileHelper.GetIniString(strConfigSetion, "SampleCode", "-EOF", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "-EOF")
+            {
+                textBoxX1.Text = strTmp.ToString();
+            }
+
+            IniFileHelper.GetIniString(strConfigSetion, "SampleNo", "-EOF", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "-EOF")
+            {
+                textBoxX2.Text = strTmp.ToString();
+            }
+
+            IniFileHelper.GetIniString(strConfigSetion, "SampleShape", "-EOF", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "-EOF")
+            {
+                textBoxX3.Text = strTmp.ToString();
+            }
+
+            IniFileHelper.GetIniString(strConfigSetion, "SampleOperator", "-EOF", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "-EOF")
+            {
+                textBoxX4.Text = strTmp.ToString();
+            }
+
+            IniFileHelper.GetIniString(strConfigSetion, "SampleChecker", "-EOF", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "-EOF")
+            {
+                textBoxX5.Text = strTmp.ToString();
+            }
+
+            IniFileHelper.GetIniString(strConfigSetion, "SampleDependation", "-EOF", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "-EOF")
+            {
+                textBoxX6.Text = strTmp.ToString();
+            }
+
+            IniFileHelper.GetIniString(strConfigSetion, "SampleNote", "-EOF", strTmp, strTmp.Capacity);
+            if (strTmp.ToString() != "-EOF")
+            {
+                textBoxX7.Text = strTmp.ToString();
+            }
+
+        }
+
+        private void FormTest_Shown(object sender, EventArgs e)
+        {
+            LoadIni();
         }
     }
 }

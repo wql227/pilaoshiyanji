@@ -57,8 +57,8 @@
 		"ToolStripMenuItem_Oper":"操作(&O)",
 		"ToolStripMenuItem_Login":"登录...(&L)",
 		"ToolStripMenuItem_Setting":"参数设置(&S)",
-		"ToolStripMenuItem_Data":"实验数据(&D)",
-		"ToolStripMenuItem_Result":"实验结果(&R)",
+		"ToolStripMenuItem_Data":"试验数据(&D)",
+		"ToolStripMenuItem_Result":"试验结果(&R)",
 		"ToolStripMenuItem_Language":"界面语言",
 		"ToolStripMenuItem_Help":"帮助"
 
@@ -128,7 +128,7 @@
 	"FrmSystemSetting":{
 		"superTabItem5":"系统设置",
 		"superTabItem6":"动态实验过程保护选项",
-		"superTabItem1":"移动速度",
+		"superTabItem1":"移动设置",
 		"superTabItem2":"试验机参数",		
 		"groupPanel3":"系统保护设置",
 		"checkBoxX3":"试验力超过",
