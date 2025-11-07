@@ -3619,6 +3619,7 @@ namespace DoPENetConnect
             if (bConnected)
             {
                 FrmDynCtrl frmDynCtrl = new FrmDynCtrl();
+                frmDynCtrl.SetCountText(tbX_TestCount.Text);
                 frmDynCtrl.Show();
             }
             else

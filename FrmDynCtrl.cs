@@ -231,6 +231,10 @@ namespace DoPENetConnect
             MainForm.mainform.PVPositionQueue.Clear();
         }
 
+        public void SetCountText(string countNum)
+        {
+            tbX_TestCount.Text = countNum;
+        }
 
         /// <summary>
         /// 增加和减小偏移量
@@ -659,5 +663,6 @@ namespace DoPENetConnect
             ReplaceLanguage();
             //UiAutoSize();
         }
+
     }
 }

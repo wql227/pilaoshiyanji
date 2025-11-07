@@ -98,6 +98,9 @@
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbX_TestCount = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -966,11 +969,48 @@
             this.labelX17.Text = "-1";
             this.labelX17.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(303, 443);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 20);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "次";
+            // 
+            // tbX_TestCount
+            // 
+            // 
+            // 
+            // 
+            this.tbX_TestCount.Border.Class = "TextBoxBorder";
+            this.tbX_TestCount.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_TestCount.Font = new System.Drawing.Font("宋体", 12F);
+            this.tbX_TestCount.Location = new System.Drawing.Point(188, 440);
+            this.tbX_TestCount.Name = "tbX_TestCount";
+            this.tbX_TestCount.PreventEnterBeep = true;
+            this.tbX_TestCount.Size = new System.Drawing.Size(103, 26);
+            this.tbX_TestCount.TabIndex = 71;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(90, 443);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 20);
+            this.label1.TabIndex = 70;
+            this.label1.Text = "初始总计数";
+            // 
             // FrmDynCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 471);
+            this.ClientSize = new System.Drawing.Size(378, 500);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbX_TestCount);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelX16);
             this.Controls.Add(this.labelX15);
             this.Controls.Add(this.labelX13);
@@ -1109,5 +1149,8 @@
         private DevComponents.DotNetBar.LabelX labelX15;
         private DevComponents.DotNetBar.LabelX labelX16;
         private DevComponents.DotNetBar.LabelX labelX17;
+        private System.Windows.Forms.Label label2;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbX_TestCount;
+        private System.Windows.Forms.Label label1;
     }
 }
