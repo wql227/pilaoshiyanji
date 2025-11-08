@@ -550,104 +550,104 @@ namespace DoPENetConnect
             strTmp = cbX_ProtectOption.SelectedIndex.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "限位保护选项", strTmp);
 
-            //位移保护选项
-            strTmp = tbX_FrmProtectOption_PosMaxOut.Text;
-            MainForm.mainform.protectOption.ProtectOption_PosMaxOut = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "位移峰值外保护", strTmp);
+            ////位移保护选项   ---注销设置页面保护选项
+            //strTmp = tbX_FrmProtectOption_PosMaxOut.Text;
+            //MainForm.mainform.protectOption.ProtectOption_PosMaxOut = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "位移峰值外保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_PosMaxOut_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_PosMaxOut_Effect = cbX_FrmProtectOption_PosMaxOut_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "位移峰值外保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_PosMaxOut_Effect.Checked == false ? "0" : "1";
+            //MainForm.mainform.protectOption.ProtectOption_PosMaxOut_Effect = cbX_FrmProtectOption_PosMaxOut_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "位移峰值外保护生效", strTmp);
 
-            strTmp = tbX_FrmProtectOption_PosMinOut.Text;
-            MainForm.mainform.protectOption.ProtectOption_PosMinOut = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "位移谷值外保护", strTmp);
+            //strTmp = tbX_FrmProtectOption_PosMinOut.Text;
+            //MainForm.mainform.protectOption.ProtectOption_PosMinOut = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "位移谷值外保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_PosMinOut_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_PosMinOut_Effect = cbX_FrmProtectOption_PosMinOut_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "位移谷值外保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_PosMinOut_Effect.Checked == false ? "0" : "1";
+            //MainForm.mainform.protectOption.ProtectOption_PosMinOut_Effect = cbX_FrmProtectOption_PosMinOut_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "位移谷值外保护生效", strTmp);
 
-            strTmp = tbX_FrmProtectOption_PosMaxIn.Text;
-            MainForm.mainform.protectOption.ProtectOption_PosMaxIn = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "位移峰值内保护", strTmp);
+            //strTmp = tbX_FrmProtectOption_PosMaxIn.Text;
+            //MainForm.mainform.protectOption.ProtectOption_PosMaxIn = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "位移峰值内保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_PosMaxIn_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_PosMaxIn_Effect = cbX_FrmProtectOption_PosMaxIn_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "位移峰值内保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_PosMaxIn_Effect.Checked == false ? "0" : "1";
+            //MainForm.mainform.protectOption.ProtectOption_PosMaxIn_Effect = cbX_FrmProtectOption_PosMaxIn_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "位移峰值内保护生效", strTmp);
 
-            strTmp = tbX_FrmProtectOption_PosMinIn.Text;
-            MainForm.mainform.protectOption.ProtectOption_PosMinIn = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "位移谷值内保护", strTmp);
+            //strTmp = tbX_FrmProtectOption_PosMinIn.Text;
+            //MainForm.mainform.protectOption.ProtectOption_PosMinIn = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "位移谷值内保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_PosMinIn_Effect.Checked == true ? "1" : "0";
-            MainForm.mainform.protectOption.ProtectOption_PosMinIn_Effect = cbX_FrmProtectOption_PosMinIn_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "位移谷值内保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_PosMinIn_Effect.Checked == true ? "1" : "0";
+            //MainForm.mainform.protectOption.ProtectOption_PosMinIn_Effect = cbX_FrmProtectOption_PosMinIn_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "位移谷值内保护生效", strTmp);
 
-            //试验力保护选项
-            strTmp = tbX_FrmProtectOption_LoadMaxOut.Text;
-            MainForm.mainform.protectOption.ProtectOption_LoadMaxOut = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值外保护", strTmp);
+            ////试验力保护选项
+            //strTmp = tbX_FrmProtectOption_LoadMaxOut.Text;
+            //MainForm.mainform.protectOption.ProtectOption_LoadMaxOut = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值外保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_LoadMaxOut_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_LoadMaxOut_Effect = cbX_FrmProtectOption_LoadMaxOut_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值外保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_LoadMaxOut_Effect.Checked == false ? "0" : "1";
+            //MainForm.mainform.protectOption.ProtectOption_LoadMaxOut_Effect = cbX_FrmProtectOption_LoadMaxOut_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值外保护生效", strTmp);
 
-            strTmp = tbX_FrmProtectOption_LoadMinOut.Text;
-            MainForm.mainform.protectOption.ProtectOption_LoadMinOut = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值外保护", strTmp);
+            //strTmp = tbX_FrmProtectOption_LoadMinOut.Text;
+            //MainForm.mainform.protectOption.ProtectOption_LoadMinOut = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值外保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_LoadMinOut_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_LoadMinOut_Effect = cbX_FrmProtectOption_LoadMinOut_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值外保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_LoadMinOut_Effect.Checked == false ? "0" : "1";
+            //MainForm.mainform.protectOption.ProtectOption_LoadMinOut_Effect = cbX_FrmProtectOption_LoadMinOut_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值外保护生效", strTmp);
 
-            strTmp = tbX_FrmProtectOption_LoadMaxIn.Text;
-            MainForm.mainform.protectOption.ProtectOption_LoadMaxIn = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值内保护", strTmp);
+            //strTmp = tbX_FrmProtectOption_LoadMaxIn.Text;
+            //MainForm.mainform.protectOption.ProtectOption_LoadMaxIn = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值内保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_LoadMaxIn_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_LoadMaxIn_Effect = false;// cbX_FrmProtectOption_LoadMaxIn_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值内保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_LoadMaxIn_Effect.Checked == false ? "0" : "1";
+            //MainForm.mainform.protectOption.ProtectOption_LoadMaxIn_Effect = false;// cbX_FrmProtectOption_LoadMaxIn_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值内保护生效", strTmp);
 
-            strTmp = tbX_FrmProtectOption_LoadMinIn.Text;
-            MainForm.mainform.protectOption.ProtectOption_LoadMinIn = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值内保护", strTmp);
+            //strTmp = tbX_FrmProtectOption_LoadMinIn.Text;
+            //MainForm.mainform.protectOption.ProtectOption_LoadMinIn = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值内保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_LoadMinIn_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_LoadMinIn_Effect = false; // cbX_FrmProtectOption_LoadMinIn_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值内保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_LoadMinIn_Effect.Checked == false ? "0" : "1";
+            //MainForm.mainform.protectOption.ProtectOption_LoadMinIn_Effect = false; // cbX_FrmProtectOption_LoadMinIn_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值内保护生效", strTmp);
 
-            //变形保护选项
-            strTmp = tbX_FrmProtectOption_ExtMaxOut.Text;
-            MainForm.mainform.protectOption.ProtectOption_ExtMaxOut = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "变形峰值外保护", strTmp);
+            ////变形保护选项
+            //strTmp = tbX_FrmProtectOption_ExtMaxOut.Text;
+            //MainForm.mainform.protectOption.ProtectOption_ExtMaxOut = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "变形峰值外保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_ExtMaxOut_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_ExtMaxOut_Effect = cbX_FrmProtectOption_ExtMaxOut_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "变形峰值外保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_ExtMaxOut_Effect.Checked == false ? "0" : "1";
+            //MainForm.mainform.protectOption.ProtectOption_ExtMaxOut_Effect = cbX_FrmProtectOption_ExtMaxOut_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "变形峰值外保护生效", strTmp);
 
-            strTmp = tbX_FrmProtectOption_ExtMinOut.Text;
-            MainForm.mainform.protectOption.ProtectOption_ExtMinOut = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "变形谷值外保护", strTmp);
+            //strTmp = tbX_FrmProtectOption_ExtMinOut.Text;
+            //MainForm.mainform.protectOption.ProtectOption_ExtMinOut = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "变形谷值外保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_ExtMinOut_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_ExtMinOut_Effect = cbX_FrmProtectOption_ExtMinOut_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "变形谷值外保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_ExtMinOut_Effect.Checked == false ? "0" : "1";
+            //MainForm.mainform.protectOption.ProtectOption_ExtMinOut_Effect = cbX_FrmProtectOption_ExtMinOut_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "变形谷值外保护生效", strTmp);
 
-            strTmp = tbX_FrmProtectOption_ExtMaxIn.Text;
-            MainForm.mainform.protectOption.ProtectOption_ExtMaxIn = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "变形峰值内保护", strTmp);
+            //strTmp = tbX_FrmProtectOption_ExtMaxIn.Text;
+            //MainForm.mainform.protectOption.ProtectOption_ExtMaxIn = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "变形峰值内保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_ExtMaxIn_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_ExtMaxIn_Effect = false;// cbX_FrmProtectOption_ExtMaxIn_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "变形峰值内保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_ExtMaxIn_Effect.Checked == false ? "0" : "1";
+            //MainForm.mainform.protectOption.ProtectOption_ExtMaxIn_Effect = false;// cbX_FrmProtectOption_ExtMaxIn_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "变形峰值内保护生效", strTmp);
 
-            strTmp = tbX_FrmProtectOption_ExtMinIn.Text;
-            MainForm.mainform.protectOption.ProtectOption_ExtMinIn = double.Parse(strTmp);
-            IniFileHelper.WriteIniString(strConfigSetion, "变形谷值内保护", strTmp);
+            //strTmp = tbX_FrmProtectOption_ExtMinIn.Text;
+            //MainForm.mainform.protectOption.ProtectOption_ExtMinIn = double.Parse(strTmp);
+            //IniFileHelper.WriteIniString(strConfigSetion, "变形谷值内保护", strTmp);
 
-            strTmp = cbX_FrmProtectOption_ExtMinIn_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_ExtMinIn_Effect = false; // cbX_FrmProtectOption_ExtMinIn_Effect.Checked;
-            IniFileHelper.WriteIniString(strConfigSetion, "变形谷值内保护生效", strTmp);
+            //strTmp = cbX_FrmProtectOption_ExtMinIn_Effect.Checked == false ? "0" : "1";
+            //MainForm.mainform.protectOption.ProtectOption_ExtMinIn_Effect = false; // cbX_FrmProtectOption_ExtMinIn_Effect.Checked;
+            //IniFileHelper.WriteIniString(strConfigSetion, "变形谷值内保护生效", strTmp);
 
             //系统保护设置  section=SysProtectSetting numericUpDown1: key=OverLoad_Percent=10; numericUpDown2:OverLoad_Force = 10;
             strTmp = checkBoxX3.Checked == false ? "0" : "1";
@@ -1085,11 +1085,11 @@ namespace DoPENetConnect
 
         private void btnX_FrmProtectOption_OK_Click(object sender, EventArgs e)
         {
-            if (!ValidityCheck())
-            {
-                MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                return;
-            }
+            //if (!ValidityCheck())
+            //{
+            //    MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+            //    return;
+            //}
 
             WriteIni();
 

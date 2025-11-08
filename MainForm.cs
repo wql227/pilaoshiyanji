@@ -5247,11 +5247,11 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_ApplyProtection_Click(object sender, EventArgs e)
         {
-            if (!ValidityCheck())
-            {
-                MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                return;
-            }
+            //if (!ValidityCheck())
+            //{
+            //    MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+            //    return;
+            //}
             SaveProtect2Ini();
 
         }
