@@ -3985,7 +3985,7 @@ namespace DoPENetConnect
             textBoxX16.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "位移峰值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_PosMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_PosMaxIn_Effect = false;// strTmp.ToString() == "0" ? false : true;
             checkBoxX5.Checked = protectOption.ProtectOption_PosMaxIn_Effect;
 
             IniFileHelper.GetIniString("FrmSystemSetting", "位移谷值内保护", "0", strTmp, strTmp.Capacity);
@@ -3993,7 +3993,7 @@ namespace DoPENetConnect
             textBoxX14.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "位移谷值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_PosMinIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_PosMinIn_Effect = false; // strTmp.ToString() == "0" ? false : true;
             checkBoxX1.Checked = protectOption.ProtectOption_PosMinIn_Effect;
             #endregion 位移保护
 
@@ -4018,7 +4018,7 @@ namespace DoPENetConnect
             textBoxX19.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "试验力峰值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_LoadMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_LoadMaxIn_Effect = false;// strTmp.ToString() == "0" ? false : true;
             checkBoxX7.Checked = protectOption.ProtectOption_LoadMaxIn_Effect;
 
             IniFileHelper.GetIniString("FrmSystemSetting", "试验力谷值内保护", "0", strTmp, strTmp.Capacity);
@@ -4026,7 +4026,7 @@ namespace DoPENetConnect
             textBoxX18.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "试验力谷值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_LoadMinIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_LoadMinIn_Effect = false; // strTmp.ToString() == "0" ? false : true;
             checkBoxX3.Checked = protectOption.ProtectOption_LoadMinIn_Effect;
             #endregion 试验力保护
 
@@ -4052,7 +4052,7 @@ namespace DoPENetConnect
             textBoxX24.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "变形峰值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_ExtMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_ExtMaxIn_Effect = false; // strTmp.ToString() == "0" ? false : true;
             checkBoxX11.Checked = protectOption.ProtectOption_ExtMaxIn_Effect;
 
             IniFileHelper.GetIniString("FrmSystemSetting", "变形谷值内保护", "0", strTmp, strTmp.Capacity);
@@ -4060,7 +4060,7 @@ namespace DoPENetConnect
             textBoxX22.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "变形谷值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_ExtMinIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_ExtMinIn_Effect = false;// strTmp.ToString() == "0" ? false : true;
             checkBoxX9.Checked = protectOption.ProtectOption_ExtMinIn_Effect;
             #endregion 变形保护
 
