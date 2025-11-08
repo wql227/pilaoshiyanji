@@ -4110,6 +4110,9 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "1", strTmp, strTmp.Capacity);
             cb_ShowCommand.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
+            //单位切换
+            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_ForceUnit", "0", strTmp, strTmp.Capacity);
+            ProtectionUnitModify(int.Parse(strTmp.ToString()));
         }
 
 
@@ -5249,6 +5252,30 @@ namespace DoPENetConnect
             }
             SaveProtect2Ini();
 
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UnitIndex"></param>
+        public void ProtectionUnitModify(int UnitIndex)
+        {
+            if (UnitIndex == 0)
+            { //kN
+                label6.Text = "kN";
+                label5.Text = "kN";
+                label4.Text = "kN";
+                label3.Text = "kN";
+
+            }
+            else
+            { //N
+                label6.Text = "N";
+                label5.Text = "N";
+                label4.Text = "N";
+                label3.Text = "N";
+
+            }
         }
 
         private void SaveProtect2Ini()
