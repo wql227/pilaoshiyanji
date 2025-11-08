@@ -1381,7 +1381,8 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力峰值区间 峰值外保护
                             if (protectOption.ProtectOption_LoadMaxOut_Effect)
                             {
-                                if (g_MaxLoad > protectOption.ProtectOption_LoadMaxOut)
+                                double ProtectOption_LoadMaxOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMaxOut * 1000 : protectOption.ProtectOption_LoadMaxOut;
+                                if (g_MaxLoad > ProtectOption_LoadMaxOutReal)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1419,7 +1420,8 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力谷值区间 谷值外保护
                             if (protectOption.ProtectOption_LoadMinOut_Effect)
                             {
-                                if (g_MinLoad < protectOption.ProtectOption_LoadMinOut)
+                                double ProtectOption_LoadMinOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMinOut * 1000 : protectOption.ProtectOption_LoadMinOut;
+                                if (g_MinLoad < ProtectOption_LoadMinOutReal)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
