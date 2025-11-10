@@ -3699,8 +3699,18 @@ namespace DoPENetConnect
             {
                 startStopDrawToolStripMenuItem.Text = GetValueFromLanguageFile("startStopDrawToolStripMenuItem");
                 axTChart1.AutoRepaint = true;
+
+                if (MainForm.mainform.AxisXMax <= axTChart1.Axis.Bottom.Minimum)
+                {
+                    axTChart1.Axis.Bottom.Minimum = 0;
+                    axTChart1.Axis.Bottom.Maximum = MainForm.mainform.AxisXMax;
+                }
+                else {
+                    axTChart1.Axis.Bottom.Maximum = MainForm.mainform.AxisXMax;
+                    axTChart1.Axis.Bottom.Minimum = 0;
+                }
             }
-  
+
         }
 
 
@@ -4458,6 +4468,12 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void ToolStripMenuItem_OpenLogsDir_Click(object sender, EventArgs e)
         {
+            if (!bPause)
+            {
+                bPause = true;
+                startStopDrawToolStripMenuItem.Text = GetValueFromLanguageFile("startStopDrawToolStripMenuItemPause");
+            }
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = System.Environment.CurrentDirectory;
             openFileDialog.Filter = "CSV文件 (*.csv)|*.csv"; // 如果需要筛选特定类型的文件，如CSV
@@ -4472,29 +4488,35 @@ namespace DoPENetConnect
 
                     DataTable trCsvData = excelHelper.CSVToDataTable(false);
 
-                    DataPoint dpPos = null;
-                    DataPoint dpLoad = null;
-                    DataPoint dpExt = null;
-                    DataPoint dpCommand = null;
+                    //DataPoint dpPos = null;
+                    //DataPoint dpLoad = null;
+                    //DataPoint dpExt = null;
+                    //DataPoint dpCommand = null;
+                    chartX.Clear();
+                    chartPosY.Clear();
+                    chartLoadY.Clear();
+                    chartExtY.Clear();
+                    chartCommandY.Clear();
+
 
                     //List<DataPoint> points = new List<DataPoint>();
 
-                    for (int i = 0; i < chart_machine.Series[0].Points.Count; i++)
-                    {
-                        chart_machine.Series[0].Points.RemoveAt(i);
-                    }
-                    for (int i = 0; i < chart_machine.Series[1].Points.Count; i++)
-                    {
-                        chart_machine.Series[1].Points.RemoveAt(i);
-                    }
-                    for (int i = 0; i < chart_machine.Series[2].Points.Count; i++)
-                    {
-                        chart_machine.Series[2].Points.RemoveAt(i);
-                    }
-                    for (int i = 0; i < chart_machine.Series[3].Points.Count; i++)
-                    {
-                        chart_machine.Series[3].Points.RemoveAt(i);
-                    }
+                    //for (int i = 0; i < chart_machine.Series[0].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[0].Points.RemoveAt(i);
+                    //}
+                    //for (int i = 0; i < chart_machine.Series[1].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[1].Points.RemoveAt(i);
+                    //}
+                    //for (int i = 0; i < chart_machine.Series[2].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[2].Points.RemoveAt(i);
+                    //}
+                    //for (int i = 0; i < chart_machine.Series[3].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[3].Points.RemoveAt(i);
+                    //}
 
                     //chart_machine.Series[0].Points.Clear();
                     //chart_machine.Series[1].Points.Clear();
@@ -4505,22 +4527,85 @@ namespace DoPENetConnect
                     {
                         for (int i = 0; i < trCsvData.Rows.Count; i++)
                         {
-                            double strX = double.Parse(trCsvData.Rows[i][0].ToString());
-                            double strYPos = double.Parse(trCsvData.Rows[i][1].ToString());
-                            double strYLoad = double.Parse(trCsvData.Rows[i][2].ToString());
-                            double strYExt = double.Parse(trCsvData.Rows[i][3].ToString());
-                            double strYCommand = double.Parse(trCsvData.Rows[i][4].ToString());
+                            //double strX = double.Parse(trCsvData.Rows[i][0].ToString());
+                            //double strYPos = double.Parse(trCsvData.Rows[i][1].ToString());
+                            //double strYLoad = double.Parse(trCsvData.Rows[i][2].ToString());
+                            //double strYExt = double.Parse(trCsvData.Rows[i][3].ToString());
+                            //double strYCommand = double.Parse(trCsvData.Rows[i][4].ToString());
 
-                            dpPos = new DataPoint(strX, strYPos);
-                            dpLoad = new DataPoint(strX, strYLoad);
-                            dpExt = new DataPoint(strX, strYExt);
-                            dpCommand = new DataPoint(strX, strYCommand);
+                            //dpPos = new DataPoint(strX, strYPos);
+                            //dpLoad = new DataPoint(strX, strYLoad);
+                            //dpExt = new DataPoint(strX, strYExt);
+                            //dpCommand = new DataPoint(strX, strYCommand);
 
-                            chart_machine.Series[0].Points.Add(dpPos);
-                            chart_machine.Series[1].Points.Add(dpLoad);
-                            chart_machine.Series[2].Points.Add(dpExt);
-                            chart_machine.Series[3].Points.Add(dpCommand);
+                            //chart_machine.Series[0].Points.Add(dpPos);
+                            //chart_machine.Series[1].Points.Add(dpLoad);
+                            //chart_machine.Series[2].Points.Add(dpExt);
+                            //chart_machine.Series[3].Points.Add(dpCommand);
+
+
+                            chartX.Add(double.Parse(trCsvData.Rows[i][0].ToString()));
+                            chartPosY.Add(double.Parse(trCsvData.Rows[i][1].ToString()));
+                            chartLoadY.Add(double.Parse(trCsvData.Rows[i][2].ToString()));
+                            chartExtY.Add(double.Parse(trCsvData.Rows[i][3].ToString()));
+                            chartCommandY.Add(double.Parse(trCsvData.Rows[i][4].ToString()));
                         }
+
+                        //if (bShowPosition)
+                        {
+                            axTChart1.Series(0).AddArray(chartX.Count, chartPosY.ToArray(), chartX.ToArray());
+                        }
+
+                        //if (bShowLoad)
+                        {
+                            axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
+                        }
+
+                        if (chartPosY.Max() <= axTChart1.Axis.Left.Minimum)
+                        {
+                            axTChart1.Axis.Left.Minimum = chartPosY.Min();
+                            axTChart1.Axis.Left.Maximum = chartPosY.Max();
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Left.Maximum = chartPosY.Max();
+                            axTChart1.Axis.Left.Minimum = chartPosY.Min();
+                        }
+
+                        if (chartLoadY.Max() <= axTChart1.Axis.Right.Minimum)
+                        {
+                            axTChart1.Axis.Right.Minimum = chartLoadY.Min();
+                            axTChart1.Axis.Right.Maximum = chartLoadY.Max();
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Right.Maximum = chartLoadY.Max();
+                            axTChart1.Axis.Right.Minimum = chartLoadY.Min();
+                        }
+
+                        if (chartX.Max() <= axTChart1.Axis.Bottom.Minimum)
+                        {
+                            axTChart1.Axis.Bottom.Minimum = chartX.Min();
+                            axTChart1.Axis.Bottom.Maximum = chartX.Max();
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Bottom.Maximum = chartX.Max();
+                            axTChart1.Axis.Bottom.Minimum = chartX.Min();
+                        }
+
+                        //if (bShowExtension)
+                        //{
+                        //    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
+                        //}
+
+                        //if (bShowCommand)
+                        //{
+                        //    axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
+                        //}
+                        //axTChart1.AutoRepaint = true; 
+
+                        //axTChart1.Series(0).EndUpdate();
                     }
                     else
                     {
