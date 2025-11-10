@@ -47,7 +47,7 @@ Changes :
  - OnIoSHaltMsg and OnGuardMsg handler added
 -------------------------------------------------------------------------------*/
 
-
+//glm-dynorigin
 // To use DoPE .NET in your own project, the following files must be in your .exe directory:
 // - DoPE10.dll         (x86  platform)
 // - DoPE10Net.dll      (x86  platform)
