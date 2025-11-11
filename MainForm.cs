@@ -358,6 +358,7 @@ namespace DoPENetConnect
         public double Chart_Load_Step = 5.0;
         public double Chart_Ext_Step = 5.0;
         public double Chart_Command_Step = 5.0;
+        public double Chart_X_Step = 5.0;
 
         /// <summary>
         /// X轴最大长度（秒）
@@ -5548,6 +5549,45 @@ namespace DoPENetConnect
             //按试验次数记录日志
             strTmp = cbk_Skin.SelectedIndex.ToString();
             IniFileHelper.WriteIniString("Setting", "Theme", strTmp);
+        }
+
+        private void buttonX15_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Bottom.Minimum -= Chart_X_Step;
+        }
+
+        private void buttonX16_Click(object sender, EventArgs e)
+        {
+
+            double value = 0;
+            value= axTChart1.Axis.Bottom.Minimum+Chart_X_Step;
+            if (value <= axTChart1.Axis.Bottom.Maximum)
+            {
+                axTChart1.Axis.Bottom.Minimum = value;
+            }
+            else
+            {
+                MessageBox.Show("设定值超出x轴最大值范围!");
+            }
+        }
+
+        private void buttonX18_Click(object sender, EventArgs e)
+        {
+            double value = 0;
+            value = axTChart1.Axis.Bottom.Maximum - Chart_X_Step;
+            if (value >= axTChart1.Axis.Bottom.Minimum)
+            {
+                axTChart1.Axis.Bottom.Maximum = value;
+            }
+            else
+            {
+                MessageBox.Show("设定值超出x轴最小值范围!");
+            }
+        }
+
+        private void buttonX19_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Bottom.Maximum += Chart_X_Step;
         }
     }
 }
