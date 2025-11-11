@@ -567,6 +567,11 @@ namespace DoPENetConnect
 
         public int themeComboIndex = 0;
 
+        /// <summary>
+        /// 退出程序
+        /// </summary>
+        public bool bQuit = false;
+
         //System.Timers.Timer timer;
 
         //public delegate void SetControlValue(string value);
@@ -1819,7 +1824,7 @@ namespace DoPENetConnect
                 }
 
                 //波形图
-                if (bShowSensorData/* && bActivated*/)
+                if (bShowSensorData/* && bActivated*/ && !bQuit)
                 {
                     //Task.Run(() =>
                     //{
@@ -2169,6 +2174,10 @@ namespace DoPENetConnect
             }
             this.cbk_Skin.SelectedIndex = themeComboIndex;
 
+            if (Enum.TryParse<eStyle>(this.cbk_Skin.Text, out var result))
+            {
+                this.styleManager1.ManagerStyle = result;
+            }
         }
 
 
@@ -4132,6 +4141,18 @@ namespace DoPENetConnect
             //单位切换
             IniFileHelper.GetIniString("UIDefault", "comboBoxEx_ForceUnit", "0", strTmp, strTmp.Capacity);
             ProtectionUnitModify(int.Parse(strTmp.ToString()));
+
+            #region 其他标签
+            IniFileHelper.GetIniString("SoftWareInfo ", "Name", "电液伺服疲劳试验机", strTmp, strTmp.Capacity);
+            this.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("CompanyInfo ", "CompanyName", "有限公司", strTmp, strTmp.Capacity);
+            lbX_CompanyName.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("CompanyInfo ", "CompanyTel", "联系电话", strTmp, strTmp.Capacity);
+            lbX_CompanyTel.Text = strTmp.ToString();
+
+            #endregion
         }
 
 
@@ -4894,12 +4915,14 @@ namespace DoPENetConnect
 
             if (result == DialogResult.Yes)
             {
+                bQuit = true;
+
                 if (bConnected)
                 {
                     OffEDC();
                 }
             }
-            else if (result == DialogResult.Cancel)
+            else if (result == DialogResult.No)
             {
                 e.Cancel = true; // 取消关闭
             }
@@ -5545,9 +5568,10 @@ namespace DoPENetConnect
             string strTmp = "";
             string strConfigSetion = this.Name;
 
-            //按试验次数记录日志
+            //保存选择的皮肤
             strTmp = cbk_Skin.SelectedIndex.ToString();
             IniFileHelper.WriteIniString("Setting", "Theme", strTmp);
         }
+
     }
 }

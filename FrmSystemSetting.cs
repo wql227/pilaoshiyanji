@@ -508,12 +508,15 @@ namespace DoPENetConnect
             #region 其他标签
             IniFileHelper.GetIniString("SoftWareInfo ", "Name", "电液伺服疲劳试验机", strTmp, strTmp.Capacity);
             tbX_SoftwareName.Text = strTmp.ToString();
+            MainForm.mainform.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("CompanyInfo ", "CompanyName", "有限公司", strTmp, strTmp.Capacity);
             tbX_CompanyName.Text = strTmp.ToString();
+            //MainForm.mainform.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("CompanyInfo ", "CompanyTel", "联系电话", strTmp, strTmp.Capacity);
             tbX_CompanyTel.Text = strTmp.ToString();
+            //MainForm.mainform.Text = strTmp.ToString();
 
             #endregion
 
