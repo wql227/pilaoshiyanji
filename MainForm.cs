@@ -1970,6 +1970,8 @@ namespace DoPENetConnect
             Display(string.Format("OnRuntimeError: DoPError={0} ErrorNumber={1} Time={2} Device={3} Bits={4} usTAN={5} \n",
               RuntimeError.DoPError, RuntimeError.ErrorNumber, RuntimeError.Time, RuntimeError.Device, RuntimeError.Bits, RuntimeError.usTAN));
 
+            floatMenus.SetStateText(RuntimeError.ErrorNumber.ToString());
+
             return 0;
         }
 

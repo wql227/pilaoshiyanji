@@ -265,6 +265,18 @@ namespace DoPENetConnect
                 this.Height = 583;
             }
         }
+
+
+        /// <summary>
+        /// 设置状态按钮文本
+        /// </summary>
+        /// <param name="strStateText"></param>
+        public void SetStateText(string strStateText)
+        {
+            btn_ConState.BackColor = Color.Red;
+            btn_ConState.Text = strStateText;
+        }
+
     }
     
 }
