@@ -33,6 +33,8 @@ namespace DoPENetConnect
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             LoadIni();
+
+            cbX_SelectUser.SelectedIndex = 1;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -71,6 +73,8 @@ namespace DoPENetConnect
             {
                 MainForm.mainform.strLoginName = cbX_SelectUser.Text;
                 MainForm.mainform.strUserPwd = DESEncrypt.Encrypt(tbX_UserPwd.Text);
+                MessageBox.Show("登陆成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             WriteIni();
         }
@@ -143,9 +147,9 @@ namespace DoPENetConnect
                 return;
             }
 
-            if (tbX_Pwd.Text.Length < 6)
+            if (tbX_Pwd.Text.Length < 5)
             {
-                MessageBox.Show("密码不能小于6位！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("密码不能小于5位！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -159,12 +163,10 @@ namespace DoPENetConnect
             string strTmp = "";
             if (!string.IsNullOrEmpty(tbX_Pwd.Text))
             {
-                strTmp = DESEncrypt.Encrypt(tbX_Pwd.Text);
-                IniFileHelper.WriteIniString("Setting", "UserPWD", strTmp);
-                MainForm.mainform.strUserPwd = strTmp;
+                IniFileHelper.WriteIniString("Setting", "UserPWD", DESEncrypt.Encrypt(tbX_Pwd.Text));
+                MainForm.mainform.strUserPwd = DESEncrypt.Encrypt(tbX_Pwd.Text);
 
-                strTmp = cbX_SelectUser.Text;
-                IniFileHelper.WriteIniString("Setting", "LoginName", strTmp);
+                IniFileHelper.WriteIniString("Setting", "LoginName", cbX_SelectUser.Text);
 
                 MessageBox.Show("修改密码成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
