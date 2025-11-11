@@ -594,6 +594,7 @@
             this.groupPanel12.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel12.TabIndex = 6;
             this.groupPanel12.Text = "多传感器";
+            this.groupPanel12.Visible = false;
             // 
             // buttonX2
             // 
@@ -659,6 +660,7 @@
             this.groupPanel11.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel11.TabIndex = 5;
             this.groupPanel11.Text = "刚度补偿";
+            this.groupPanel11.Visible = false;
             // 
             // buttonX1
             // 
@@ -733,6 +735,7 @@
             this.groupPanel6.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel6.TabIndex = 4;
             this.groupPanel6.Text = "控制器连接设置";
+            this.groupPanel6.Visible = false;
             // 
             // tbX_WaveRefreshFrequency
             // 
