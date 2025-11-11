@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -43,9 +43,62 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbk_Skin = new System.Windows.Forms.ComboBox();
             this.panelEx10 = new DevComponents.DotNetBar.PanelEx();
             this.line2 = new DevComponents.DotNetBar.Controls.Line();
             this.panelEx11 = new DevComponents.DotNetBar.PanelEx();
+            this.btnX_ApplyProtection = new DevComponents.DotNetBar.ButtonX();
+            this.groupPanel7 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.checkBoxX9 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.textBoxX22 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.checkBoxX10 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.textBoxX23 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.checkBoxX11 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX12 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.textBoxX24 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX25 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.groupPanel6 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.checkBoxX3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX7 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX8 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.textBoxX18 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX19 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX20 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX21 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.groupPanel13 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.textBoxX14 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX16 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX17 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX5 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX6 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
             this.panelEx12 = new DevComponents.DotNetBar.PanelEx();
             this.labelX34 = new DevComponents.DotNetBar.LabelX();
             this.tb_TestParam = new DevComponents.DotNetBar.LabelX();
@@ -61,6 +114,7 @@
             this.btnX_AxisPOSY_MaxDown = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisLoadY_MinDown = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisLoadY_MinUp = new DevComponents.DotNetBar.ButtonX();
+            this.axTChart1 = new AxTeeChart.AxTChart();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbX_EDCName = new System.Windows.Forms.ToolStripStatusLabel();
@@ -287,60 +341,6 @@
             this.timer_UpdateData = new System.Windows.Forms.Timer(this.components);
             this.timer_ShowWave = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.axTChart1 = new AxTeeChart.AxTChart();
-            this.groupPanel13 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.textBoxX14 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX16 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX17 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX5 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX6 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
-            this.groupPanel6 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.checkBoxX3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX7 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX8 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.textBoxX18 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX19 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX20 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX21 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.groupPanel7 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.checkBoxX9 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.textBoxX22 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.checkBoxX10 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.textBoxX23 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.checkBoxX11 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX12 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.textBoxX24 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX25 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.btnX_ApplyProtection = new DevComponents.DotNetBar.ButtonX();
-            this.cbk_Skin = new System.Windows.Forms.ComboBox();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -350,7 +350,11 @@
             this.groupBox1.SuspendLayout();
             this.panelEx10.SuspendLayout();
             this.panelEx11.SuspendLayout();
+            this.groupPanel7.SuspendLayout();
+            this.groupPanel6.SuspendLayout();
+            this.groupPanel13.SuspendLayout();
             this.panelEx12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.pl_DataShow.SuspendLayout();
@@ -388,10 +392,6 @@
             this.superTabControlPanel5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
-            this.groupPanel13.SuspendLayout();
-            this.groupPanel6.SuspendLayout();
-            this.groupPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // StartCommunicationWithEdcTimer
@@ -499,6 +499,17 @@
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             // 
+            // cbk_Skin
+            // 
+            this.cbk_Skin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbk_Skin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbk_Skin.FormattingEnabled = true;
+            this.cbk_Skin.Location = new System.Drawing.Point(1594, 590);
+            this.cbk_Skin.Name = "cbk_Skin";
+            this.cbk_Skin.Size = new System.Drawing.Size(118, 20);
+            this.cbk_Skin.TabIndex = 73;
+            this.cbk_Skin.SelectedIndexChanged += new System.EventHandler(this.cbk_Skin_SelectedIndexChanged);
+            // 
             // panelEx10
             // 
             this.panelEx10.CanvasColor = System.Drawing.SystemColors.Control;
@@ -554,6 +565,762 @@
             this.panelEx11.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx11.Style.GradientAngle = 90;
             this.panelEx11.TabIndex = 70;
+            // 
+            // btnX_ApplyProtection
+            // 
+            this.btnX_ApplyProtection.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_ApplyProtection.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_ApplyProtection.Location = new System.Drawing.Point(299, 491);
+            this.btnX_ApplyProtection.Name = "btnX_ApplyProtection";
+            this.btnX_ApplyProtection.Size = new System.Drawing.Size(90, 36);
+            this.btnX_ApplyProtection.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_ApplyProtection.TabIndex = 23;
+            this.btnX_ApplyProtection.Text = "应用保护";
+            this.btnX_ApplyProtection.Click += new System.EventHandler(this.btnX_ApplyProtection_Click);
+            // 
+            // groupPanel7
+            // 
+            this.groupPanel7.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel7.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel7.Controls.Add(this.checkBoxX9);
+            this.groupPanel7.Controls.Add(this.textBoxX22);
+            this.groupPanel7.Controls.Add(this.checkBoxX10);
+            this.groupPanel7.Controls.Add(this.textBoxX23);
+            this.groupPanel7.Controls.Add(this.checkBoxX11);
+            this.groupPanel7.Controls.Add(this.checkBoxX12);
+            this.groupPanel7.Controls.Add(this.textBoxX24);
+            this.groupPanel7.Controls.Add(this.textBoxX25);
+            this.groupPanel7.Controls.Add(this.label11);
+            this.groupPanel7.Controls.Add(this.label12);
+            this.groupPanel7.Controls.Add(this.label13);
+            this.groupPanel7.Controls.Add(this.label14);
+            this.groupPanel7.Controls.Add(this.label15);
+            this.groupPanel7.Controls.Add(this.label16);
+            this.groupPanel7.Controls.Add(this.label17);
+            this.groupPanel7.Controls.Add(this.label18);
+            this.groupPanel7.DisabledBackColor = System.Drawing.Color.Empty;
+            this.groupPanel7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupPanel7.Location = new System.Drawing.Point(14, 325);
+            this.groupPanel7.Name = "groupPanel7";
+            this.groupPanel7.Size = new System.Drawing.Size(376, 146);
+            // 
+            // 
+            // 
+            this.groupPanel7.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel7.Style.BackColorGradientAngle = 90;
+            this.groupPanel7.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel7.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel7.Style.BorderBottomWidth = 1;
+            this.groupPanel7.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel7.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel7.Style.BorderLeftWidth = 1;
+            this.groupPanel7.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel7.Style.BorderRightWidth = 1;
+            this.groupPanel7.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel7.Style.BorderTopWidth = 1;
+            this.groupPanel7.Style.CornerDiameter = 4;
+            this.groupPanel7.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel7.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel7.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel7.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.groupPanel7.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanel7.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel7.TabIndex = 6;
+            this.groupPanel7.Text = "变形保护设置";
+            // 
+            // checkBoxX9
+            // 
+            this.checkBoxX9.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX9.Location = new System.Drawing.Point(307, 88);
+            this.checkBoxX9.Name = "checkBoxX9";
+            this.checkBoxX9.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX9.TabIndex = 1;
+            this.checkBoxX9.Text = "生效";
+            // 
+            // textBoxX22
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX22.Border.Class = "TextBoxBorder";
+            this.textBoxX22.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX22.Location = new System.Drawing.Point(205, 86);
+            this.textBoxX22.Name = "textBoxX22";
+            this.textBoxX22.PreventEnterBeep = true;
+            this.textBoxX22.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX22.TabIndex = 2;
+            this.textBoxX22.Text = "10";
+            // 
+            // checkBoxX10
+            // 
+            this.checkBoxX10.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX10.Location = new System.Drawing.Point(120, 88);
+            this.checkBoxX10.Name = "checkBoxX10";
+            this.checkBoxX10.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX10.TabIndex = 1;
+            this.checkBoxX10.Text = "生效";
+            // 
+            // textBoxX23
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX23.Border.Class = "TextBoxBorder";
+            this.textBoxX23.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX23.Location = new System.Drawing.Point(13, 86);
+            this.textBoxX23.Name = "textBoxX23";
+            this.textBoxX23.PreventEnterBeep = true;
+            this.textBoxX23.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX23.TabIndex = 2;
+            this.textBoxX23.Text = "10";
+            // 
+            // checkBoxX11
+            // 
+            this.checkBoxX11.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX11.Location = new System.Drawing.Point(307, 34);
+            this.checkBoxX11.Name = "checkBoxX11";
+            this.checkBoxX11.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX11.TabIndex = 1;
+            this.checkBoxX11.Text = "生效";
+            // 
+            // checkBoxX12
+            // 
+            this.checkBoxX12.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX12.Location = new System.Drawing.Point(119, 34);
+            this.checkBoxX12.Name = "checkBoxX12";
+            this.checkBoxX12.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX12.TabIndex = 1;
+            this.checkBoxX12.Text = "生效";
+            // 
+            // textBoxX24
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX24.Border.Class = "TextBoxBorder";
+            this.textBoxX24.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX24.Location = new System.Drawing.Point(205, 31);
+            this.textBoxX24.Name = "textBoxX24";
+            this.textBoxX24.PreventEnterBeep = true;
+            this.textBoxX24.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX24.TabIndex = 2;
+            this.textBoxX24.Text = "10";
+            // 
+            // textBoxX25
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX25.Border.Class = "TextBoxBorder";
+            this.textBoxX25.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX25.Location = new System.Drawing.Point(13, 31);
+            this.textBoxX25.Name = "textBoxX25";
+            this.textBoxX25.PreventEnterBeep = true;
+            this.textBoxX25.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX25.TabIndex = 2;
+            this.textBoxX25.Text = "10";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.Location = new System.Drawing.Point(280, 90);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(24, 16);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "mm";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.Location = new System.Drawing.Point(280, 35);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(24, 16);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "mm";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label13.Location = new System.Drawing.Point(89, 90);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(24, 16);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "mm";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label14.Location = new System.Drawing.Point(89, 35);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(24, 16);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "mm";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label15.Location = new System.Drawing.Point(12, 63);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(104, 16);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "谷值的外保护";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label16.Location = new System.Drawing.Point(202, 63);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(104, 16);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "谷值的内保护";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label17.Location = new System.Drawing.Point(11, 9);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(104, 16);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "峰值的外保护";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label18.Location = new System.Drawing.Point(202, 9);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(104, 16);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "峰值的内保护";
+            // 
+            // groupPanel6
+            // 
+            this.groupPanel6.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel6.Controls.Add(this.checkBoxX3);
+            this.groupPanel6.Controls.Add(this.checkBoxX4);
+            this.groupPanel6.Controls.Add(this.checkBoxX7);
+            this.groupPanel6.Controls.Add(this.checkBoxX8);
+            this.groupPanel6.Controls.Add(this.textBoxX18);
+            this.groupPanel6.Controls.Add(this.textBoxX19);
+            this.groupPanel6.Controls.Add(this.textBoxX20);
+            this.groupPanel6.Controls.Add(this.textBoxX21);
+            this.groupPanel6.Controls.Add(this.label3);
+            this.groupPanel6.Controls.Add(this.label4);
+            this.groupPanel6.Controls.Add(this.label5);
+            this.groupPanel6.Controls.Add(this.label6);
+            this.groupPanel6.Controls.Add(this.label7);
+            this.groupPanel6.Controls.Add(this.label8);
+            this.groupPanel6.Controls.Add(this.label9);
+            this.groupPanel6.Controls.Add(this.label10);
+            this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
+            this.groupPanel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupPanel6.Location = new System.Drawing.Point(14, 167);
+            this.groupPanel6.Name = "groupPanel6";
+            this.groupPanel6.Size = new System.Drawing.Size(376, 146);
+            // 
+            // 
+            // 
+            this.groupPanel6.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel6.Style.BackColorGradientAngle = 90;
+            this.groupPanel6.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel6.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel6.Style.BorderBottomWidth = 1;
+            this.groupPanel6.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel6.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel6.Style.BorderLeftWidth = 1;
+            this.groupPanel6.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel6.Style.BorderRightWidth = 1;
+            this.groupPanel6.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel6.Style.BorderTopWidth = 1;
+            this.groupPanel6.Style.CornerDiameter = 4;
+            this.groupPanel6.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel6.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel6.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel6.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.groupPanel6.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanel6.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel6.TabIndex = 5;
+            this.groupPanel6.Text = "试验力保护设置";
+            // 
+            // checkBoxX3
+            // 
+            this.checkBoxX3.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX3.Location = new System.Drawing.Point(307, 85);
+            this.checkBoxX3.Name = "checkBoxX3";
+            this.checkBoxX3.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX3.TabIndex = 1;
+            this.checkBoxX3.Text = "生效";
+            // 
+            // checkBoxX4
+            // 
+            this.checkBoxX4.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX4.Location = new System.Drawing.Point(117, 88);
+            this.checkBoxX4.Name = "checkBoxX4";
+            this.checkBoxX4.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX4.TabIndex = 1;
+            this.checkBoxX4.Text = "生效";
+            // 
+            // checkBoxX7
+            // 
+            this.checkBoxX7.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX7.Location = new System.Drawing.Point(307, 34);
+            this.checkBoxX7.Name = "checkBoxX7";
+            this.checkBoxX7.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX7.TabIndex = 1;
+            this.checkBoxX7.Text = "生效";
+            // 
+            // checkBoxX8
+            // 
+            this.checkBoxX8.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX8.Location = new System.Drawing.Point(117, 34);
+            this.checkBoxX8.Name = "checkBoxX8";
+            this.checkBoxX8.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX8.TabIndex = 1;
+            this.checkBoxX8.Text = "生效";
+            // 
+            // textBoxX18
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX18.Border.Class = "TextBoxBorder";
+            this.textBoxX18.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX18.Location = new System.Drawing.Point(205, 85);
+            this.textBoxX18.Name = "textBoxX18";
+            this.textBoxX18.PreventEnterBeep = true;
+            this.textBoxX18.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX18.TabIndex = 2;
+            this.textBoxX18.Text = "10";
+            // 
+            // textBoxX19
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX19.Border.Class = "TextBoxBorder";
+            this.textBoxX19.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX19.Location = new System.Drawing.Point(205, 31);
+            this.textBoxX19.Name = "textBoxX19";
+            this.textBoxX19.PreventEnterBeep = true;
+            this.textBoxX19.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX19.TabIndex = 2;
+            this.textBoxX19.Text = "10";
+            // 
+            // textBoxX20
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX20.Border.Class = "TextBoxBorder";
+            this.textBoxX20.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX20.Location = new System.Drawing.Point(13, 86);
+            this.textBoxX20.Name = "textBoxX20";
+            this.textBoxX20.PreventEnterBeep = true;
+            this.textBoxX20.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX20.TabIndex = 2;
+            this.textBoxX20.Text = "10";
+            // 
+            // textBoxX21
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX21.Border.Class = "TextBoxBorder";
+            this.textBoxX21.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX21.Location = new System.Drawing.Point(13, 31);
+            this.textBoxX21.Name = "textBoxX21";
+            this.textBoxX21.PreventEnterBeep = true;
+            this.textBoxX21.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX21.TabIndex = 2;
+            this.textBoxX21.Text = "10";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(278, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(16, 16);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "N";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(278, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 16);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "N";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(87, 90);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(16, 16);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "N";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(87, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(16, 16);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "N";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(13, 63);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(104, 16);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "谷值的外保护";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label8.Location = new System.Drawing.Point(202, 63);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(104, 16);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "谷值的内保护";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.Location = new System.Drawing.Point(10, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(104, 16);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "峰值的外保护";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(202, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(104, 16);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "峰值的内保护";
+            // 
+            // groupPanel13
+            // 
+            this.groupPanel13.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel13.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel13.Controls.Add(this.textBoxX14);
+            this.groupPanel13.Controls.Add(this.textBoxX15);
+            this.groupPanel13.Controls.Add(this.textBoxX16);
+            this.groupPanel13.Controls.Add(this.textBoxX17);
+            this.groupPanel13.Controls.Add(this.checkBoxX1);
+            this.groupPanel13.Controls.Add(this.checkBoxX2);
+            this.groupPanel13.Controls.Add(this.checkBoxX5);
+            this.groupPanel13.Controls.Add(this.checkBoxX6);
+            this.groupPanel13.Controls.Add(this.label60);
+            this.groupPanel13.Controls.Add(this.label61);
+            this.groupPanel13.Controls.Add(this.label62);
+            this.groupPanel13.Controls.Add(this.label63);
+            this.groupPanel13.Controls.Add(this.label64);
+            this.groupPanel13.Controls.Add(this.label65);
+            this.groupPanel13.Controls.Add(this.label66);
+            this.groupPanel13.Controls.Add(this.label67);
+            this.groupPanel13.DisabledBackColor = System.Drawing.Color.Empty;
+            this.groupPanel13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupPanel13.Location = new System.Drawing.Point(14, 11);
+            this.groupPanel13.Name = "groupPanel13";
+            this.groupPanel13.Size = new System.Drawing.Size(376, 146);
+            // 
+            // 
+            // 
+            this.groupPanel13.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel13.Style.BackColorGradientAngle = 90;
+            this.groupPanel13.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel13.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel13.Style.BorderBottomWidth = 1;
+            this.groupPanel13.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel13.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel13.Style.BorderLeftWidth = 1;
+            this.groupPanel13.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel13.Style.BorderRightWidth = 1;
+            this.groupPanel13.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel13.Style.BorderTopWidth = 1;
+            this.groupPanel13.Style.CornerDiameter = 4;
+            this.groupPanel13.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel13.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel13.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel13.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.groupPanel13.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanel13.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel13.TabIndex = 4;
+            this.groupPanel13.Text = "位移保护设置";
+            // 
+            // textBoxX14
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX14.Border.Class = "TextBoxBorder";
+            this.textBoxX14.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX14.Location = new System.Drawing.Point(205, 86);
+            this.textBoxX14.Name = "textBoxX14";
+            this.textBoxX14.PreventEnterBeep = true;
+            this.textBoxX14.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX14.TabIndex = 2;
+            this.textBoxX14.Text = "10";
+            // 
+            // textBoxX15
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX15.Border.Class = "TextBoxBorder";
+            this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX15.Location = new System.Drawing.Point(10, 86);
+            this.textBoxX15.Name = "textBoxX15";
+            this.textBoxX15.PreventEnterBeep = true;
+            this.textBoxX15.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX15.TabIndex = 2;
+            this.textBoxX15.Text = "10";
+            // 
+            // textBoxX16
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX16.Border.Class = "TextBoxBorder";
+            this.textBoxX16.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX16.Location = new System.Drawing.Point(205, 31);
+            this.textBoxX16.Name = "textBoxX16";
+            this.textBoxX16.PreventEnterBeep = true;
+            this.textBoxX16.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX16.TabIndex = 2;
+            this.textBoxX16.Text = "10";
+            // 
+            // textBoxX17
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX17.Border.Class = "TextBoxBorder";
+            this.textBoxX17.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX17.Location = new System.Drawing.Point(10, 31);
+            this.textBoxX17.Name = "textBoxX17";
+            this.textBoxX17.PreventEnterBeep = true;
+            this.textBoxX17.Size = new System.Drawing.Size(68, 26);
+            this.textBoxX17.TabIndex = 2;
+            this.textBoxX17.Text = "10";
+            // 
+            // checkBoxX1
+            // 
+            this.checkBoxX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX1.Location = new System.Drawing.Point(307, 86);
+            this.checkBoxX1.Name = "checkBoxX1";
+            this.checkBoxX1.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX1.TabIndex = 1;
+            this.checkBoxX1.Text = "生效";
+            // 
+            // checkBoxX2
+            // 
+            this.checkBoxX2.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX2.Location = new System.Drawing.Point(114, 86);
+            this.checkBoxX2.Name = "checkBoxX2";
+            this.checkBoxX2.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX2.TabIndex = 1;
+            this.checkBoxX2.Text = "生效";
+            // 
+            // checkBoxX5
+            // 
+            this.checkBoxX5.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX5.Location = new System.Drawing.Point(307, 33);
+            this.checkBoxX5.Name = "checkBoxX5";
+            this.checkBoxX5.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX5.TabIndex = 1;
+            this.checkBoxX5.Text = "生效";
+            // 
+            // checkBoxX6
+            // 
+            this.checkBoxX6.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX6.Location = new System.Drawing.Point(114, 34);
+            this.checkBoxX6.Name = "checkBoxX6";
+            this.checkBoxX6.Size = new System.Drawing.Size(61, 23);
+            this.checkBoxX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX6.TabIndex = 1;
+            this.checkBoxX6.Text = "生效";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label60.Location = new System.Drawing.Point(279, 88);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(24, 16);
+            this.label60.TabIndex = 0;
+            this.label60.Text = "mm";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label61.Location = new System.Drawing.Point(84, 88);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(24, 16);
+            this.label61.TabIndex = 0;
+            this.label61.Text = "mm";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label62.Location = new System.Drawing.Point(277, 33);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(24, 16);
+            this.label62.TabIndex = 0;
+            this.label62.Text = "mm";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label63.Location = new System.Drawing.Point(84, 33);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(24, 16);
+            this.label63.TabIndex = 0;
+            this.label63.Text = "mm";
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label64.Location = new System.Drawing.Point(202, 63);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(104, 16);
+            this.label64.TabIndex = 0;
+            this.label64.Text = "谷值的内保护";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label65.Location = new System.Drawing.Point(202, 9);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(104, 16);
+            this.label65.TabIndex = 0;
+            this.label65.Text = "峰值的内保护";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label66.Location = new System.Drawing.Point(10, 63);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(104, 16);
+            this.label66.TabIndex = 0;
+            this.label66.Text = "谷值的外保护";
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label67.Location = new System.Drawing.Point(7, 9);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(104, 16);
+            this.label67.TabIndex = 0;
+            this.label67.Text = "峰值的外保护";
             // 
             // panelEx12
             // 
@@ -773,6 +1540,16 @@
             this.btnX_AxisLoadY_MinUp.TabIndex = 64;
             this.btnX_AxisLoadY_MinUp.Text = "▲";
             this.btnX_AxisLoadY_MinUp.Click += new System.EventHandler(this.btnX_AxisLoadY_MinUp_Click);
+            // 
+            // axTChart1
+            // 
+            this.axTChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axTChart1.Enabled = true;
+            this.axTChart1.Location = new System.Drawing.Point(0, 0);
+            this.axTChart1.Name = "axTChart1";
+            this.axTChart1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart1.OcxState")));
+            this.axTChart1.Size = new System.Drawing.Size(1302, 544);
+            this.axTChart1.TabIndex = 69;
             // 
             // statusStrip1
             // 
@@ -1761,75 +2538,75 @@
             // 
             // chart_machine
             // 
-            chartArea2.AxisX.Interval = 1D;
-            chartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea2.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea2.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisX.Maximum = 10D;
-            chartArea2.AxisX.MaximumAutoSize = 100F;
-            chartArea2.AxisX.Minimum = 0D;
-            chartArea2.AxisX.MinorTickMark.Enabled = true;
-            chartArea2.AxisX.MinorTickMark.Size = 0.5F;
-            chartArea2.AxisX.Title = "时间(s)";
-            chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea2.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea2.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
-            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisY.Maximum = 20D;
-            chartArea2.AxisY.Minimum = -20D;
-            chartArea2.AxisY.MinorTickMark.Enabled = true;
-            chartArea2.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-            chartArea2.AxisY.MinorTickMark.Size = 0.5F;
-            chartArea2.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea2.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
-            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
-            chartArea2.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea2.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea2.AxisY2.LineColor = System.Drawing.Color.Orange;
-            chartArea2.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea2.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisY2.Maximum = 20D;
-            chartArea2.AxisY2.Minimum = -20D;
-            chartArea2.AxisY2.MinorTickMark.Enabled = true;
-            chartArea2.AxisY2.MinorTickMark.Size = 0.5F;
-            chartArea2.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea2.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(N)";
-            chartArea2.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
-            chartArea2.Name = "ChartArea1";
-            this.chart_machine.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX.Maximum = 10D;
+            chartArea1.AxisX.MaximumAutoSize = 100F;
+            chartArea1.AxisX.Minimum = 0D;
+            chartArea1.AxisX.MinorTickMark.Enabled = true;
+            chartArea1.AxisX.MinorTickMark.Size = 0.5F;
+            chartArea1.AxisX.Title = "时间(s)";
+            chartArea1.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY.Maximum = 20D;
+            chartArea1.AxisY.Minimum = -20D;
+            chartArea1.AxisY.MinorTickMark.Enabled = true;
+            chartArea1.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+            chartArea1.AxisY.MinorTickMark.Size = 0.5F;
+            chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea1.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
+            chartArea1.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea1.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisY2.LineColor = System.Drawing.Color.Orange;
+            chartArea1.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
+            chartArea1.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY2.Maximum = 20D;
+            chartArea1.AxisY2.Minimum = -20D;
+            chartArea1.AxisY2.MinorTickMark.Enabled = true;
+            chartArea1.AxisY2.MinorTickMark.Size = 0.5F;
+            chartArea1.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea1.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(N)";
+            chartArea1.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
+            chartArea1.Name = "ChartArea1";
+            this.chart_machine.ChartAreas.Add(chartArea1);
             this.chart_machine.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chart_machine.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chart_machine.Legends.Add(legend1);
             this.chart_machine.Location = new System.Drawing.Point(0, 0);
             this.chart_machine.Name = "chart_machine";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series5.Legend = "Legend1";
-            series5.Name = "位移";
-            series5.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series6.Legend = "Legend1";
-            series6.Name = "试验力";
-            series6.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series7.Legend = "Legend1";
-            series7.Name = "变形";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series8.Color = System.Drawing.Color.BlueViolet;
-            series8.Legend = "Legend1";
-            series8.Name = "命令";
-            series8.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            this.chart_machine.Series.Add(series5);
-            this.chart_machine.Series.Add(series6);
-            this.chart_machine.Series.Add(series7);
-            this.chart_machine.Series.Add(series8);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series1.Legend = "Legend1";
+            series1.Name = "位移";
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series2.Legend = "Legend1";
+            series2.Name = "试验力";
+            series2.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series3.Legend = "Legend1";
+            series3.Name = "变形";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series4.Color = System.Drawing.Color.BlueViolet;
+            series4.Legend = "Legend1";
+            series4.Name = "命令";
+            series4.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.chart_machine.Series.Add(series1);
+            this.chart_machine.Series.Add(series2);
+            this.chart_machine.Series.Add(series3);
+            this.chart_machine.Series.Add(series4);
             this.chart_machine.Size = new System.Drawing.Size(1418, 707);
             this.chart_machine.TabIndex = 64;
             // 
@@ -2652,9 +3429,9 @@
             // 
             this.superTabControlPanel3.Controls.Add(this.panelEx3);
             this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 25);
             this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(303, 679);
+            this.superTabControlPanel3.Size = new System.Drawing.Size(303, 682);
             this.superTabControlPanel3.TabIndex = 1;
             this.superTabControlPanel3.TabItem = this.superTabItem3;
             // 
@@ -2678,7 +3455,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 0);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(303, 679);
+            this.panelEx3.Size = new System.Drawing.Size(303, 682);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -2720,7 +3497,7 @@
             this.superTabControl3.ControlBox.CloseBox});
             this.superTabControl3.Controls.Add(this.superTabControlPanel6);
             this.superTabControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.superTabControl3.Location = new System.Drawing.Point(0, 569);
+            this.superTabControl3.Location = new System.Drawing.Point(0, 572);
             this.superTabControl3.Name = "superTabControl3";
             this.superTabControl3.ReorderTabsEnabled = false;
             this.superTabControl3.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
@@ -2739,7 +3516,7 @@
             this.superTabControlPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel6.Location = new System.Drawing.Point(0, 0);
             this.superTabControlPanel6.Name = "superTabControlPanel6";
-            this.superTabControlPanel6.Size = new System.Drawing.Size(303, 82);
+            this.superTabControlPanel6.Size = new System.Drawing.Size(303, 85);
             this.superTabControlPanel6.TabIndex = 1;
             this.superTabControlPanel6.TabItem = this.superTabItem6;
             // 
@@ -2757,7 +3534,7 @@
             this.panelEx8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx8.Location = new System.Drawing.Point(0, 0);
             this.panelEx8.Name = "panelEx8";
-            this.panelEx8.Size = new System.Drawing.Size(303, 82);
+            this.panelEx8.Size = new System.Drawing.Size(303, 85);
             this.panelEx8.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx8.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx8.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -3354,15 +4131,14 @@
             // 
             this.ToolStripMenuItem_Login.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem_Login.Image")));
             this.ToolStripMenuItem_Login.Name = "ToolStripMenuItem_Login";
-            this.ToolStripMenuItem_Login.Size = new System.Drawing.Size(172, 22);
+            this.ToolStripMenuItem_Login.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Login.Text = "登录...(&L)";
-            this.ToolStripMenuItem_Login.Visible = false;
             this.ToolStripMenuItem_Login.Click += new System.EventHandler(this.ToolStripMenuItem_Login_Click);
             // 
             // 校正ToolStripMenuItem
             // 
             this.校正ToolStripMenuItem.Name = "校正ToolStripMenuItem";
-            this.校正ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.校正ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.校正ToolStripMenuItem.Text = "刚度补偿";
             this.校正ToolStripMenuItem.Visible = false;
             this.校正ToolStripMenuItem.Click += new System.EventHandler(this.校正ToolStripMenuItem_Click);
@@ -3370,7 +4146,7 @@
             // 多传感器ToolStripMenuItem
             // 
             this.多传感器ToolStripMenuItem.Name = "多传感器ToolStripMenuItem";
-            this.多传感器ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.多传感器ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.多传感器ToolStripMenuItem.Text = "多传感器";
             this.多传感器ToolStripMenuItem.Visible = false;
             this.多传感器ToolStripMenuItem.Click += new System.EventHandler(this.多传感器ToolStripMenuItem_Click);
@@ -3379,7 +4155,7 @@
             // 
             this.试验数据回访ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("试验数据回访ToolStripMenuItem.Image")));
             this.试验数据回访ToolStripMenuItem.Name = "试验数据回访ToolStripMenuItem";
-            this.试验数据回访ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.试验数据回访ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.试验数据回访ToolStripMenuItem.Text = "试验数据回放";
             this.试验数据回访ToolStripMenuItem.Visible = false;
             // 
@@ -3387,7 +4163,7 @@
             // 
             this.退出ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("退出ToolStripMenuItem.Image")));
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.退出ToolStripMenuItem.Text = "退出(&Q)";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
@@ -3664,783 +4440,6 @@
             // 
             this.timer_ShowWave.Tick += new System.EventHandler(this.timer_ShowWave_Tick);
             // 
-            // axTChart1
-            // 
-            this.axTChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axTChart1.Enabled = true;
-            this.axTChart1.Location = new System.Drawing.Point(0, 0);
-            this.axTChart1.Name = "axTChart1";
-            this.axTChart1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart1.OcxState")));
-            this.axTChart1.Size = new System.Drawing.Size(1302, 544);
-            this.axTChart1.TabIndex = 69;
-            // 
-            // groupPanel13
-            // 
-            this.groupPanel13.CanvasColor = System.Drawing.SystemColors.Control;
-            this.groupPanel13.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel13.Controls.Add(this.textBoxX14);
-            this.groupPanel13.Controls.Add(this.textBoxX15);
-            this.groupPanel13.Controls.Add(this.textBoxX16);
-            this.groupPanel13.Controls.Add(this.textBoxX17);
-            this.groupPanel13.Controls.Add(this.checkBoxX1);
-            this.groupPanel13.Controls.Add(this.checkBoxX2);
-            this.groupPanel13.Controls.Add(this.checkBoxX5);
-            this.groupPanel13.Controls.Add(this.checkBoxX6);
-            this.groupPanel13.Controls.Add(this.label60);
-            this.groupPanel13.Controls.Add(this.label61);
-            this.groupPanel13.Controls.Add(this.label62);
-            this.groupPanel13.Controls.Add(this.label63);
-            this.groupPanel13.Controls.Add(this.label64);
-            this.groupPanel13.Controls.Add(this.label65);
-            this.groupPanel13.Controls.Add(this.label66);
-            this.groupPanel13.Controls.Add(this.label67);
-            this.groupPanel13.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel13.Location = new System.Drawing.Point(14, 11);
-            this.groupPanel13.Name = "groupPanel13";
-            this.groupPanel13.Size = new System.Drawing.Size(376, 146);
-            // 
-            // 
-            // 
-            this.groupPanel13.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.groupPanel13.Style.BackColorGradientAngle = 90;
-            this.groupPanel13.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.groupPanel13.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel13.Style.BorderBottomWidth = 1;
-            this.groupPanel13.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.groupPanel13.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel13.Style.BorderLeftWidth = 1;
-            this.groupPanel13.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel13.Style.BorderRightWidth = 1;
-            this.groupPanel13.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel13.Style.BorderTopWidth = 1;
-            this.groupPanel13.Style.CornerDiameter = 4;
-            this.groupPanel13.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.groupPanel13.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.groupPanel13.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.groupPanel13.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
-            // 
-            // 
-            // 
-            this.groupPanel13.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.groupPanel13.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel13.TabIndex = 4;
-            this.groupPanel13.Text = "位移保护设置";
-            // 
-            // textBoxX14
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX14.Border.Class = "TextBoxBorder";
-            this.textBoxX14.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX14.Location = new System.Drawing.Point(205, 86);
-            this.textBoxX14.Name = "textBoxX14";
-            this.textBoxX14.PreventEnterBeep = true;
-            this.textBoxX14.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX14.TabIndex = 2;
-            this.textBoxX14.Text = "10";
-            // 
-            // textBoxX15
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX15.Border.Class = "TextBoxBorder";
-            this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX15.Location = new System.Drawing.Point(10, 86);
-            this.textBoxX15.Name = "textBoxX15";
-            this.textBoxX15.PreventEnterBeep = true;
-            this.textBoxX15.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX15.TabIndex = 2;
-            this.textBoxX15.Text = "10";
-            // 
-            // textBoxX16
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX16.Border.Class = "TextBoxBorder";
-            this.textBoxX16.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX16.Location = new System.Drawing.Point(205, 31);
-            this.textBoxX16.Name = "textBoxX16";
-            this.textBoxX16.PreventEnterBeep = true;
-            this.textBoxX16.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX16.TabIndex = 2;
-            this.textBoxX16.Text = "10";
-            // 
-            // textBoxX17
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX17.Border.Class = "TextBoxBorder";
-            this.textBoxX17.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX17.Location = new System.Drawing.Point(10, 31);
-            this.textBoxX17.Name = "textBoxX17";
-            this.textBoxX17.PreventEnterBeep = true;
-            this.textBoxX17.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX17.TabIndex = 2;
-            this.textBoxX17.Text = "10";
-            // 
-            // checkBoxX1
-            // 
-            this.checkBoxX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(307, 86);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 1;
-            this.checkBoxX1.Text = "生效";
-            // 
-            // checkBoxX2
-            // 
-            this.checkBoxX2.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.Location = new System.Drawing.Point(114, 86);
-            this.checkBoxX2.Name = "checkBoxX2";
-            this.checkBoxX2.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX2.TabIndex = 1;
-            this.checkBoxX2.Text = "生效";
-            // 
-            // checkBoxX5
-            // 
-            this.checkBoxX5.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX5.Location = new System.Drawing.Point(307, 33);
-            this.checkBoxX5.Name = "checkBoxX5";
-            this.checkBoxX5.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX5.TabIndex = 1;
-            this.checkBoxX5.Text = "生效";
-            // 
-            // checkBoxX6
-            // 
-            this.checkBoxX6.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX6.Location = new System.Drawing.Point(114, 34);
-            this.checkBoxX6.Name = "checkBoxX6";
-            this.checkBoxX6.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX6.TabIndex = 1;
-            this.checkBoxX6.Text = "生效";
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label60.Location = new System.Drawing.Point(279, 88);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(24, 16);
-            this.label60.TabIndex = 0;
-            this.label60.Text = "mm";
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label61.Location = new System.Drawing.Point(84, 88);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(24, 16);
-            this.label61.TabIndex = 0;
-            this.label61.Text = "mm";
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label62.Location = new System.Drawing.Point(277, 33);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(24, 16);
-            this.label62.TabIndex = 0;
-            this.label62.Text = "mm";
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label63.Location = new System.Drawing.Point(84, 33);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(24, 16);
-            this.label63.TabIndex = 0;
-            this.label63.Text = "mm";
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label64.Location = new System.Drawing.Point(202, 63);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(104, 16);
-            this.label64.TabIndex = 0;
-            this.label64.Text = "谷值的内保护";
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label65.Location = new System.Drawing.Point(202, 9);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(104, 16);
-            this.label65.TabIndex = 0;
-            this.label65.Text = "峰值的内保护";
-            // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label66.Location = new System.Drawing.Point(10, 63);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(104, 16);
-            this.label66.TabIndex = 0;
-            this.label66.Text = "谷值的外保护";
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label67.Location = new System.Drawing.Point(7, 9);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(104, 16);
-            this.label67.TabIndex = 0;
-            this.label67.Text = "峰值的外保护";
-            // 
-            // groupPanel6
-            // 
-            this.groupPanel6.CanvasColor = System.Drawing.SystemColors.Control;
-            this.groupPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel6.Controls.Add(this.checkBoxX3);
-            this.groupPanel6.Controls.Add(this.checkBoxX4);
-            this.groupPanel6.Controls.Add(this.checkBoxX7);
-            this.groupPanel6.Controls.Add(this.checkBoxX8);
-            this.groupPanel6.Controls.Add(this.textBoxX18);
-            this.groupPanel6.Controls.Add(this.textBoxX19);
-            this.groupPanel6.Controls.Add(this.textBoxX20);
-            this.groupPanel6.Controls.Add(this.textBoxX21);
-            this.groupPanel6.Controls.Add(this.label3);
-            this.groupPanel6.Controls.Add(this.label4);
-            this.groupPanel6.Controls.Add(this.label5);
-            this.groupPanel6.Controls.Add(this.label6);
-            this.groupPanel6.Controls.Add(this.label7);
-            this.groupPanel6.Controls.Add(this.label8);
-            this.groupPanel6.Controls.Add(this.label9);
-            this.groupPanel6.Controls.Add(this.label10);
-            this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel6.Location = new System.Drawing.Point(14, 167);
-            this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(376, 146);
-            // 
-            // 
-            // 
-            this.groupPanel6.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.groupPanel6.Style.BackColorGradientAngle = 90;
-            this.groupPanel6.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.groupPanel6.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel6.Style.BorderBottomWidth = 1;
-            this.groupPanel6.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.groupPanel6.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel6.Style.BorderLeftWidth = 1;
-            this.groupPanel6.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel6.Style.BorderRightWidth = 1;
-            this.groupPanel6.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel6.Style.BorderTopWidth = 1;
-            this.groupPanel6.Style.CornerDiameter = 4;
-            this.groupPanel6.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.groupPanel6.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.groupPanel6.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.groupPanel6.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
-            // 
-            // 
-            // 
-            this.groupPanel6.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.groupPanel6.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel6.TabIndex = 5;
-            this.groupPanel6.Text = "试验力保护设置";
-            // 
-            // checkBoxX3
-            // 
-            this.checkBoxX3.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX3.Location = new System.Drawing.Point(307, 85);
-            this.checkBoxX3.Name = "checkBoxX3";
-            this.checkBoxX3.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX3.TabIndex = 1;
-            this.checkBoxX3.Text = "生效";
-            // 
-            // checkBoxX4
-            // 
-            this.checkBoxX4.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX4.Location = new System.Drawing.Point(117, 88);
-            this.checkBoxX4.Name = "checkBoxX4";
-            this.checkBoxX4.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX4.TabIndex = 1;
-            this.checkBoxX4.Text = "生效";
-            // 
-            // checkBoxX7
-            // 
-            this.checkBoxX7.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX7.Location = new System.Drawing.Point(307, 34);
-            this.checkBoxX7.Name = "checkBoxX7";
-            this.checkBoxX7.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX7.TabIndex = 1;
-            this.checkBoxX7.Text = "生效";
-            // 
-            // checkBoxX8
-            // 
-            this.checkBoxX8.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX8.Location = new System.Drawing.Point(117, 34);
-            this.checkBoxX8.Name = "checkBoxX8";
-            this.checkBoxX8.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX8.TabIndex = 1;
-            this.checkBoxX8.Text = "生效";
-            // 
-            // textBoxX18
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX18.Border.Class = "TextBoxBorder";
-            this.textBoxX18.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX18.Location = new System.Drawing.Point(205, 85);
-            this.textBoxX18.Name = "textBoxX18";
-            this.textBoxX18.PreventEnterBeep = true;
-            this.textBoxX18.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX18.TabIndex = 2;
-            this.textBoxX18.Text = "10";
-            // 
-            // textBoxX19
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX19.Border.Class = "TextBoxBorder";
-            this.textBoxX19.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX19.Location = new System.Drawing.Point(205, 31);
-            this.textBoxX19.Name = "textBoxX19";
-            this.textBoxX19.PreventEnterBeep = true;
-            this.textBoxX19.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX19.TabIndex = 2;
-            this.textBoxX19.Text = "10";
-            // 
-            // textBoxX20
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX20.Border.Class = "TextBoxBorder";
-            this.textBoxX20.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX20.Location = new System.Drawing.Point(13, 86);
-            this.textBoxX20.Name = "textBoxX20";
-            this.textBoxX20.PreventEnterBeep = true;
-            this.textBoxX20.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX20.TabIndex = 2;
-            this.textBoxX20.Text = "10";
-            // 
-            // textBoxX21
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX21.Border.Class = "TextBoxBorder";
-            this.textBoxX21.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX21.Location = new System.Drawing.Point(13, 31);
-            this.textBoxX21.Name = "textBoxX21";
-            this.textBoxX21.PreventEnterBeep = true;
-            this.textBoxX21.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX21.TabIndex = 2;
-            this.textBoxX21.Text = "10";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(278, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(16, 16);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "N";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(278, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 16);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "N";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(87, 90);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 16);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "N";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(87, 36);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(16, 16);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "N";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(13, 63);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(104, 16);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "谷值的外保护";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(202, 63);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(104, 16);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "谷值的内保护";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(10, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 16);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "峰值的外保护";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(202, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 16);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "峰值的内保护";
-            // 
-            // groupPanel7
-            // 
-            this.groupPanel7.CanvasColor = System.Drawing.SystemColors.Control;
-            this.groupPanel7.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel7.Controls.Add(this.checkBoxX9);
-            this.groupPanel7.Controls.Add(this.textBoxX22);
-            this.groupPanel7.Controls.Add(this.checkBoxX10);
-            this.groupPanel7.Controls.Add(this.textBoxX23);
-            this.groupPanel7.Controls.Add(this.checkBoxX11);
-            this.groupPanel7.Controls.Add(this.checkBoxX12);
-            this.groupPanel7.Controls.Add(this.textBoxX24);
-            this.groupPanel7.Controls.Add(this.textBoxX25);
-            this.groupPanel7.Controls.Add(this.label11);
-            this.groupPanel7.Controls.Add(this.label12);
-            this.groupPanel7.Controls.Add(this.label13);
-            this.groupPanel7.Controls.Add(this.label14);
-            this.groupPanel7.Controls.Add(this.label15);
-            this.groupPanel7.Controls.Add(this.label16);
-            this.groupPanel7.Controls.Add(this.label17);
-            this.groupPanel7.Controls.Add(this.label18);
-            this.groupPanel7.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel7.Location = new System.Drawing.Point(14, 325);
-            this.groupPanel7.Name = "groupPanel7";
-            this.groupPanel7.Size = new System.Drawing.Size(376, 146);
-            // 
-            // 
-            // 
-            this.groupPanel7.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.groupPanel7.Style.BackColorGradientAngle = 90;
-            this.groupPanel7.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.groupPanel7.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel7.Style.BorderBottomWidth = 1;
-            this.groupPanel7.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.groupPanel7.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel7.Style.BorderLeftWidth = 1;
-            this.groupPanel7.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel7.Style.BorderRightWidth = 1;
-            this.groupPanel7.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel7.Style.BorderTopWidth = 1;
-            this.groupPanel7.Style.CornerDiameter = 4;
-            this.groupPanel7.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.groupPanel7.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.groupPanel7.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.groupPanel7.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
-            // 
-            // 
-            // 
-            this.groupPanel7.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.groupPanel7.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel7.TabIndex = 6;
-            this.groupPanel7.Text = "变形保护设置";
-            // 
-            // checkBoxX9
-            // 
-            this.checkBoxX9.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX9.Location = new System.Drawing.Point(307, 88);
-            this.checkBoxX9.Name = "checkBoxX9";
-            this.checkBoxX9.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX9.TabIndex = 1;
-            this.checkBoxX9.Text = "生效";
-            // 
-            // textBoxX22
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX22.Border.Class = "TextBoxBorder";
-            this.textBoxX22.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX22.Location = new System.Drawing.Point(205, 86);
-            this.textBoxX22.Name = "textBoxX22";
-            this.textBoxX22.PreventEnterBeep = true;
-            this.textBoxX22.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX22.TabIndex = 2;
-            this.textBoxX22.Text = "10";
-            // 
-            // checkBoxX10
-            // 
-            this.checkBoxX10.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX10.Location = new System.Drawing.Point(120, 88);
-            this.checkBoxX10.Name = "checkBoxX10";
-            this.checkBoxX10.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX10.TabIndex = 1;
-            this.checkBoxX10.Text = "生效";
-            // 
-            // textBoxX23
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX23.Border.Class = "TextBoxBorder";
-            this.textBoxX23.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX23.Location = new System.Drawing.Point(13, 86);
-            this.textBoxX23.Name = "textBoxX23";
-            this.textBoxX23.PreventEnterBeep = true;
-            this.textBoxX23.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX23.TabIndex = 2;
-            this.textBoxX23.Text = "10";
-            // 
-            // checkBoxX11
-            // 
-            this.checkBoxX11.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX11.Location = new System.Drawing.Point(307, 34);
-            this.checkBoxX11.Name = "checkBoxX11";
-            this.checkBoxX11.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX11.TabIndex = 1;
-            this.checkBoxX11.Text = "生效";
-            // 
-            // checkBoxX12
-            // 
-            this.checkBoxX12.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX12.Location = new System.Drawing.Point(119, 34);
-            this.checkBoxX12.Name = "checkBoxX12";
-            this.checkBoxX12.Size = new System.Drawing.Size(61, 23);
-            this.checkBoxX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX12.TabIndex = 1;
-            this.checkBoxX12.Text = "生效";
-            // 
-            // textBoxX24
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX24.Border.Class = "TextBoxBorder";
-            this.textBoxX24.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX24.Location = new System.Drawing.Point(205, 31);
-            this.textBoxX24.Name = "textBoxX24";
-            this.textBoxX24.PreventEnterBeep = true;
-            this.textBoxX24.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX24.TabIndex = 2;
-            this.textBoxX24.Text = "10";
-            // 
-            // textBoxX25
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX25.Border.Class = "TextBoxBorder";
-            this.textBoxX25.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX25.Location = new System.Drawing.Point(13, 31);
-            this.textBoxX25.Name = "textBoxX25";
-            this.textBoxX25.PreventEnterBeep = true;
-            this.textBoxX25.Size = new System.Drawing.Size(68, 26);
-            this.textBoxX25.TabIndex = 2;
-            this.textBoxX25.Text = "10";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(280, 90);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(24, 16);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "mm";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(280, 35);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(24, 16);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "mm";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(89, 90);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(24, 16);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "mm";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.Location = new System.Drawing.Point(89, 35);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(24, 16);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "mm";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label15.Location = new System.Drawing.Point(12, 63);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(104, 16);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "谷值的外保护";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label16.Location = new System.Drawing.Point(202, 63);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(104, 16);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "谷值的内保护";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label17.Location = new System.Drawing.Point(11, 9);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(104, 16);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "峰值的外保护";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label18.Location = new System.Drawing.Point(202, 9);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(104, 16);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "峰值的内保护";
-            // 
-            // btnX_ApplyProtection
-            // 
-            this.btnX_ApplyProtection.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnX_ApplyProtection.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_ApplyProtection.Location = new System.Drawing.Point(299, 491);
-            this.btnX_ApplyProtection.Name = "btnX_ApplyProtection";
-            this.btnX_ApplyProtection.Size = new System.Drawing.Size(90, 36);
-            this.btnX_ApplyProtection.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnX_ApplyProtection.TabIndex = 23;
-            this.btnX_ApplyProtection.Text = "应用保护";
-            this.btnX_ApplyProtection.Click += new System.EventHandler(this.btnX_ApplyProtection_Click);
-            // 
-            // cbk_Skin
-            // 
-            this.cbk_Skin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbk_Skin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbk_Skin.FormattingEnabled = true;
-            this.cbk_Skin.Location = new System.Drawing.Point(1594, 590);
-            this.cbk_Skin.Name = "cbk_Skin";
-            this.cbk_Skin.Size = new System.Drawing.Size(118, 20);
-            this.cbk_Skin.TabIndex = 73;
-            this.cbk_Skin.SelectedIndexChanged += new System.EventHandler(this.cbk_Skin_SelectedIndexChanged);
-            // 
             // styleManager1
             // 
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
@@ -4472,7 +4471,14 @@
             this.groupBox1.PerformLayout();
             this.panelEx10.ResumeLayout(false);
             this.panelEx11.ResumeLayout(false);
+            this.groupPanel7.ResumeLayout(false);
+            this.groupPanel7.PerformLayout();
+            this.groupPanel6.ResumeLayout(false);
+            this.groupPanel6.PerformLayout();
+            this.groupPanel13.ResumeLayout(false);
+            this.groupPanel13.PerformLayout();
             this.panelEx12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
@@ -4518,13 +4524,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).EndInit();
-            this.groupPanel13.ResumeLayout(false);
-            this.groupPanel13.PerformLayout();
-            this.groupPanel6.ResumeLayout(false);
-            this.groupPanel6.PerformLayout();
-            this.groupPanel7.ResumeLayout(false);
-            this.groupPanel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
