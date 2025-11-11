@@ -358,6 +358,7 @@ namespace DoPENetConnect
         public double Chart_Load_Step = 5.0;
         public double Chart_Ext_Step = 5.0;
         public double Chart_Command_Step = 5.0;
+        public double Chart_X_Step = 5.0;
 
         /// <summary>
         /// X轴最大长度（秒）
@@ -3157,15 +3158,15 @@ namespace DoPENetConnect
                                     axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
                                 }
 
-                                //if (bShowExtension)
-                                //{
-                                //    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
-                                //}
+                                if (bShowExtension)
+                                {
+                                    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
+                                }
 
-                                //if (bShowCommand)
-                                //{
-                                //    axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
-                                //}
+                                if (bShowCommand)
+                                {
+                                    axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
+                                }
                                 //axTChart1.AutoRepaint = true; 
 
                                 //axTChart1.Series(0).EndUpdate();
@@ -5568,10 +5569,49 @@ namespace DoPENetConnect
             string strTmp = "";
             string strConfigSetion = this.Name;
 
+
             //保存选择的皮肤
             strTmp = cbk_Skin.SelectedIndex.ToString();
             IniFileHelper.WriteIniString("Setting", "Theme", strTmp);
         }
 
+        private void buttonX15_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Bottom.Minimum -= Chart_X_Step;
+        }
+
+        private void buttonX16_Click(object sender, EventArgs e)
+        {
+
+            double value = 0;
+            value= axTChart1.Axis.Bottom.Minimum+Chart_X_Step;
+            if (value <= axTChart1.Axis.Bottom.Maximum)
+            {
+                axTChart1.Axis.Bottom.Minimum = value;
+            }
+            else
+            {
+                MessageBox.Show("设定值超出x轴最大值范围!");
+            }
+        }
+
+        private void buttonX18_Click(object sender, EventArgs e)
+        {
+            double value = 0;
+            value = axTChart1.Axis.Bottom.Maximum - Chart_X_Step;
+            if (value >= axTChart1.Axis.Bottom.Minimum)
+            {
+                axTChart1.Axis.Bottom.Maximum = value;
+            }
+            else
+            {
+                MessageBox.Show("设定值超出x轴最小值范围!");
+            }
+        }
+
+        private void buttonX19_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Bottom.Maximum += Chart_X_Step;
+        }
     }
 }
