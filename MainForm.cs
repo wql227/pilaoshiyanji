@@ -1111,7 +1111,6 @@ namespace DoPENetConnect
         {
             //CSV日志
             string strCSVLog = "";
-            //DoPE.OnDataBlock bbbbbbb = Block;
 
             //峰谷值日志
             string strPVLog = "";
@@ -1536,8 +1535,6 @@ namespace DoPENetConnect
                                 {
                                     g_MaxExtension = PVExtensionList[i];
                                 }
-
-                                //g_MaxExtension = PVExtensionList[i];
                             }
 
                             // 判断是否为谷值：小于左右相邻的数据
@@ -1555,12 +1552,8 @@ namespace DoPENetConnect
                                 {
                                     g_MinExtension = PVExtensionList[i];
                                 }
-                                //g_MinExtension = PVExtensionList[i];
                             }
                         }
-
-                        //g_MaxExtension = PVExtensionQueue.Max();
-                        //g_MinExtension = PVExtensionQueue.Min();
 
                         if (bActivated && isRunning)
                         {
@@ -1737,7 +1730,28 @@ namespace DoPENetConnect
                         //按配置的次数存储峰谷值日志
                         if (bSavePVCountLog)
                         {
-                            if ((gSample.Cycles >> 1) % nPVCountLog == 0)
+                            int halfCyclesCompleted = gSample.Cycles >> 1; // 计算已完成的半周期数
+                            int currentLogInterval = 1; // 默认存储间隔
+
+                            // --- 根据已完成的半周期数确定存储间隔 ---
+                            if (halfCyclesCompleted < 10)
+                            {
+                                currentLogInterval = 1; // 小于10次，每次都存
+                            }
+                            else if (halfCyclesCompleted < 100)
+                            {
+                                currentLogInterval = 10; // 10到99次，每10次存一次
+                            }
+                            else if (halfCyclesCompleted < 1000)
+                            {
+                                currentLogInterval = 100; // 100到999次，每100次存一次
+                            }
+                            else
+                            {
+                                currentLogInterval = 1000; // 1000次及以上，每1000次存一次
+                            }
+
+                            if (halfCyclesCompleted % currentLogInterval == 0)
                             {
                                 //防止同一秒记录多次
                                 if (currentHalfCycle != LastRecordedHalfCycle)
@@ -1795,6 +1809,9 @@ namespace DoPENetConnect
                             IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
 
                             nCycleCount = 0;
+
+                            //清除上次计数
+                            DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
                         }
                     }
                 }
