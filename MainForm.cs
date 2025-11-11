@@ -1333,11 +1333,6 @@ namespace DoPENetConnect
                                     if (PVLoadMaxAverageList.Count > 0)
                                     {
                                         g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
-                                        //if (PVLoadList[i] >= PVLoadMaxAverageList.Average())
-                                        {
-                                            //g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
-                                            //g_MaxLoad = PVLoadList[i] / 1000;
-                                        }
                                     }
                                 }
                                 else
@@ -1347,11 +1342,6 @@ namespace DoPENetConnect
                                     if (PVLoadMaxAverageList.Count > 0)
                                     {
                                         g_MaxLoad = PVLoadMaxAverageList.Max();
-                                        //if (PVLoadList[i] >= PVLoadMaxAverageList.Average())
-                                        {
-                                            //g_MaxLoad = PVLoadMaxAverageList.Max();
-                                            //g_MaxLoad = PVLoadList[i];
-                                        }
                                     }
                                 }
                             }
@@ -1366,11 +1356,6 @@ namespace DoPENetConnect
                                     if (PVLoadMinAverageList.Count > 0)
                                     {
                                         g_MinLoad = PVLoadMinAverageList.Min() / 1000;
-                                        //if (PVLoadList[i] <= PVLoadMinAverageList.Average())
-                                        {
-                                            //g_MinLoad = PVLoadMinAverageList.Min() / 1000;
-                                            //g_MinLoad = PVLoadList[i] / 1000;
-                                        }
                                     }
                                 }
                                 else
@@ -1380,11 +1365,6 @@ namespace DoPENetConnect
                                     if (PVLoadMinAverageList.Count > 0)
                                     {
                                         g_MinLoad = PVLoadMinAverageList.Min();
-                                        //if (PVLoadList[i] <= PVLoadMinAverageList.Average())
-                                        {
-                                            //g_MinLoad = PVLoadMinAverageList.Min();
-                                            //g_MinLoad = PVLoadList[i];
-                                        }
                                     }
                                 }
                             }
@@ -1482,13 +1462,11 @@ namespace DoPENetConnect
                         while (PVLoadMaxAverageList.Count > 200)
                         {
                             PVLoadMaxAverageList.RemoveRange(0, PVLoadMaxAverageList.Count / 2);
-                            //PVLoadMinAverageList.Clear();
                         }
 
                         while (PVLoadMinAverageList.Count > 200)
                         {
                             PVLoadMinAverageList.RemoveRange(0, PVLoadMinAverageList.Count / 2);
-                            //PVLoadMinAverageList.Clear();
                         }
 
                     }
@@ -1672,7 +1650,6 @@ namespace DoPENetConnect
 
                         if (PVExtensionMaxAverageList.Count > 100)
                         {
-                            //PVLoadMaxAverageList.Clear();
                             PVExtensionMaxAverageList.RemoveRange(0, PVExtensionMaxAverageList.Count / 2);
                         }
 
@@ -1726,13 +1703,11 @@ namespace DoPENetConnect
 
                     if (isRunning)
                     {
+                        //保存当前屏幕日志
                         if (bSavePVCountLog)
                         {
                             if ((gSample.Cycles >> 1) > 0 && (gSample.Cycles >> 1) % nCountLog == 0 && !isProcessing)
                             {
-                                //int nPointCount = axTChart1.Series(0).Count;
-                                //Console.WriteLine(nPointCount.ToString());
-
                                 int currentHalfCyclez = gSample.Cycles >> 1;
 
                                 if (currentHalfCyclez != LastRecordedCountHalfCycle)
@@ -1744,7 +1719,6 @@ namespace DoPENetConnect
                         }
 
                         strBlockLog.Append(strCSVLog + "\r\n");
-                        //strBlockLog = strBlockLog.Replace("\r\n\r\n", "\r\n");　//TODO 导致卡顿
 
                         //按配置的次数存储日志
                         //TODO 修改成 达到nCountLog 次数时只存储当前屏幕数据
@@ -1761,10 +1735,9 @@ namespace DoPENetConnect
                         int currentHalfCycle = gSample.Cycles >> 1;
 
                         //按配置的次数存储峰谷值日志
-                        //TODO 修改成达到指定次数存储当前屏幕数据
                         if (bSavePVCountLog)
                         {
-                            if ((gSample.Cycles >> 1) % 100 == 0)
+                            if ((gSample.Cycles >> 1) % nPVCountLog == 0)
                             {
                                 //防止同一秒记录多次
                                 if (currentHalfCycle != LastRecordedHalfCycle)
@@ -2109,16 +2082,13 @@ namespace DoPENetConnect
             //btn_ConState.BackColor = Color.Red;
 
             //初始化chart控件
-            chart_machine.Series[0].Points.Clear();
             //x_Position = 0.0;
-            chart_machine.Series[0].Points.AddXY(0.0, 0.0);
 
             SetMemberParam();
 
             //试验力
-            chart_machine.Series[1].Points.Clear();
             //x_Load = 0.0;
-            chart_machine.Series[1].Points.AddXY(0.0, 0.0);
+
 
             axTChart1.Axis.Bottom.Minimum = 0;
 
@@ -2298,26 +2268,26 @@ namespace DoPENetConnect
                             }
                         }
 
-                        for (int i = 0; i < chart_machine.ChartAreas[0].Axes.Count(); i++)
-                        {
-                            if (chart_machine.ChartAreas[0].Axes[i].Name == controlName)
-                            {
-                                chart_machine.ChartAreas[0].Axes[i].Title = textValue;
-                                break;
-                            }
-                        }
+                        //for (int i = 0; i < chart_machine.ChartAreas[0].Axes.Count(); i++)
+                        //{
+                        //    if (chart_machine.ChartAreas[0].Axes[i].Name == controlName)
+                        //    {
+                        //        chart_machine.ChartAreas[0].Axes[i].Title = textValue;
+                        //        break;
+                        //    }
+                        //}
 
-                        if (controlName.Contains("chartSeries"))
-                        {
-                            for (int i = 0; i < chart_machine.Series.Count(); i++)
-                            {
-                                if (controlName.Contains(i.ToString()))
-                                {
-                                    chart_machine.Series[i].Name = textValue;
-                                    break;
-                                }
-                            }
-                        }
+                        //if (controlName.Contains("chartSeries"))
+                        //{
+                        //    for (int i = 0; i < chart_machine.Series.Count(); i++)
+                        //    {
+                        //        if (controlName.Contains(i.ToString()))
+                        //        {
+                        //            chart_machine.Series[i].Name = textValue;
+                        //            break;
+                        //        }
+                        //    }
+                        //}
 
                         if (controlName.Contains("toolStripStatusLabel"))
                         {
@@ -3105,7 +3075,7 @@ namespace DoPENetConnect
             //dStep = 0.001;
             //nTotal = 2000;
 
-            if (chart_machine != null)
+            //if (chart_machine != null)
             {
                 if (!bPause)
                 {
@@ -3175,70 +3145,8 @@ namespace DoPENetConnect
 
                             }
 
-                            #region Chart 原始控件
-                            ////每多少个点绘制一次
-                            ////double aaa = DataRefreshFrequency / SampleFrequency;
-                            //if (chartX.Count % (DataRefreshFrequency / SampleFrequency) == 0)
-                            //{
-                            //    chart_machine.Series[0].Points.DataBindXY(chartX, chartPosY);
-                            //    chart_machine.Series[1].Points.DataBindXY(chartX, chartLoadY);
-                            //    chart_machine.Series[2].Points.DataBindXY(chartX, chartExtY);
-                            //    chart_machine.Series[3].Points.DataBindXY(chartX, chartCommandY);
-                            //    //chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
-                            //}
-
-                            //if (chart_machine.Series[0].Points.Count >= nTotal)
-                            //{
-                            //    for (int n = 0; n < chart_machine.Series[0].Points.Count; n++)
-                            //    {
-                            //        chart_machine.Series[0].Points.RemoveAt(n);
-                            //    }
-                            //    x_Data = 0.0;
-                            //    chartX.Clear();
-                            //    chartPosY.Clear();
-                            //}
-
-                            //if (chart_machine.Series[1].Points.Count >= nTotal)
-                            //{
-                            //    for (int n = 0; n < chart_machine.Series[1].Points.Count; n++)
-                            //    {
-                            //        chart_machine.Series[1].Points.RemoveAt(n);
-                            //    }
-                            //    x_Data = 0.0;
-                            //    chartX.Clear();
-                            //    chartLoadY.Clear();
-                            //}
-
-                            //if (chart_machine.Series[2].Points.Count >= nTotal)
-                            //{
-                            //    for (int n = 0; n < chart_machine.Series[2].Points.Count; n++)
-                            //    {
-                            //        chart_machine.Series[2].Points.RemoveAt(n);
-                            //    }
-                            //    x_Data ;
-                            //    chartX.Clear();
-                            //    chartExtY.Clear();
-                            //}
-
-                            //if (chart_machine.Series[3].Points.Count >= nTotal)
-                            //{
-                            //    for (int n = 0; n < chart_machine.Series[3].Points.Count; n++)
-                            //    {
-                            //        chart_machine.Series[3].Points.RemoveAt(n);
-                            //    }
-                            //    x_Data = 0.0;
-                            //    chartX.Clear();
-                            //    chartCommandY.Clear();
-                            //}
-                            #endregion Chart原始控件
-
                             if (chartX.Count >= nTotal)
                             {
-                                //axTChart1.AutoRepaint = false;
-                                //axTChart1.Series(0).Clear();
-                                //axTChart1.Series(1).Clear();
-                                //axTChart1.Series(2).Clear();
-                                //axTChart1.Series(3).Clear();
                                 x_Data = 0.0;
 
                                 chartX.Clear();
@@ -3283,14 +3191,6 @@ namespace DoPENetConnect
 
             double maxSeriesMaxYVal = series02MaxY;
             double maxSeriesMinYVal = series02minY;
-            if (chart_machine.Series[3].YAxisType == chart_machine.Series[0].YAxisType)
-            {
-                if (cb_DrawCommand.Checked)
-                {
-                    //if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
-                    //if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
-                }
-            }
 
             double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
             double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
@@ -3298,24 +3198,11 @@ namespace DoPENetConnect
 
             double yAxisMax1 = maxSeriesMaxYVal + padding1;
             double yAxisMin1 = maxSeriesMinYVal - padding1;
-            if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
-            {
-                chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
-                chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
-            }
+
             //Console.WriteLine("glmyyy-{0}-{1}", yAxisMax1, yAxisMin1);
             //力y轴自适应
              maxSeriesMaxYVal = series1maxY;
              maxSeriesMinYVal = series1minY;
-
-            if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
-            {
-                if ( cb_DrawCommand.Checked)
-                {
-                    if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
-                    if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
-                }
-            }
 
              range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
              totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
@@ -3323,11 +3210,7 @@ namespace DoPENetConnect
 
              yAxisMax1 = maxSeriesMaxYVal + padding1;
              yAxisMin1 = maxSeriesMinYVal - padding1;
-            if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
-            {
-                chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
-                chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
-            }
+
             //Console.WriteLine("glmzzz-{0}-{1}", yAxisMax1, yAxisMin1);
         }
 
@@ -3481,21 +3364,21 @@ namespace DoPENetConnect
         /// <param name="axisType">坐标轴编号primary or secondary</param>
         public void SetCmdSeriesAxisY(int cmdType)
         {
-            switch (cmdType)
-            {
-                case 0:            //position
-                    chart_machine.Series[3].YAxisType = AxisType.Primary;
-                    break;
-                case 1:            //Load
-                    chart_machine.Series[3].YAxisType = AxisType.Secondary;
-                    break;
-                case 2:           //Extension
-                    chart_machine.Series[3].YAxisType = AxisType.Primary;
-                    break;
-                default:      //position
-                    chart_machine.Series[3].YAxisType = AxisType.Primary;
-                    break;
-            }
+            //switch (cmdType)
+            //{
+            //    case 0:            //position
+            //        chart_machine.Series[3].YAxisType = AxisType.Primary;
+            //        break;
+            //    case 1:            //Load
+            //        chart_machine.Series[3].YAxisType = AxisType.Secondary;
+            //        break;
+            //    case 2:           //Extension
+            //        chart_machine.Series[3].YAxisType = AxisType.Primary;
+            //        break;
+            //    default:      //position
+            //        chart_machine.Series[3].YAxisType = AxisType.Primary;
+            //        break;
+            //}
         }
 
 
@@ -3858,19 +3741,19 @@ namespace DoPENetConnect
         /// </summary>
         public void GetXaxisScale()
         {
-            if (chart_machine != null)
-            {
-                double dMax = chart_machine.ChartAreas[0].AxisX.Maximum;
-                double dMin = chart_machine.ChartAreas[0].AxisX.Minimum;
-                if ((dMax - dMin) > 0)
-                {
-                    nAxisStep = 1 / ((dMax - dMin) /** 2*/);
-                }
-                else
-                {
-                    nAxisStep = 0.1;
-                }
-            }
+            //if (chart_machine != null)
+            //{
+            //    double dMax = chart_machine.ChartAreas[0].AxisX.Maximum;
+            //    double dMin = chart_machine.ChartAreas[0].AxisX.Minimum;
+            //    if ((dMax - dMin) > 0)
+            //    {
+            //        nAxisStep = 1 / ((dMax - dMin) /** 2*/);
+            //    }
+            //    else
+            //    {
+            //        nAxisStep = 0.1;
+            //    }
+            //}
         }
 
 

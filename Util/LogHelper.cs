@@ -249,7 +249,7 @@ namespace DoPENetConnect
             try
             {
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string logPath = Path.Combine(baseDirectory, "DynmaticData");
+                string logPath = Path.Combine(baseDirectory, "DynmaticStopData");
                 string dateStr = DateTime.Now.ToString("yyyy-MM-dd");
 
                 StringBuilder tmpStr = new StringBuilder(255);
@@ -278,8 +278,8 @@ namespace DoPENetConnect
                     if (shuldWriteHeader)
                     {
                         string header = MainForm.mainform.LoadUnit.ToUpper() == "KN"
-                            ? "时间[s],位移[mm],试验力[kN],变形[mm],命令,半循环,输出[%],反馈,循环"
-                            : "时间[s],位移[mm],试验力[N],变形[mm],命令,半循环,输出[%],反馈,循环";
+                            ? "时间[s],位移[mm],试验力[kN],变形[mm],命令"
+                            : "时间[s],位移[mm],试验力[N],变形[mm],命令";
                         await sw.WriteLineAsync(header);
                     }
 
@@ -292,7 +292,7 @@ namespace DoPENetConnect
                         double extension = ExtensionSeries.YValues.Value[i];
                         double command = CommandSeries.YValues.Value[i];
 
-                        string line = $"{time:F4},{positon:F6},{load:F6},{extension:F6},{command:F6},000,0.00,0.00,0";
+                        string line = $"{time:F4},{positon:F6},{load:F6},{extension:F6},{command:F6}";
                         await sw.WriteLineAsync(line);
                     }
                 }
@@ -443,7 +443,7 @@ namespace DoPENetConnect
             try
             {
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string logPath = Path.Combine(baseDirectory, "DynmaticData");
+                string logPath = Path.Combine(baseDirectory, "DynmaticPVData");
                 string dateStr = DateTime.Now.ToString("yyyy-MM-dd");
 
                 StringBuilder tmpStr = new StringBuilder(255);

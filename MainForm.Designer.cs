@@ -30,12 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series37 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series38 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series39 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series40 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -100,6 +94,10 @@
             this.label66 = new System.Windows.Forms.Label();
             this.label67 = new System.Windows.Forms.Label();
             this.panelEx12 = new DevComponents.DotNetBar.PanelEx();
+            this.buttonX18 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX19 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX15 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX16 = new DevComponents.DotNetBar.ButtonX();
             this.labelX34 = new DevComponents.DotNetBar.LabelX();
             this.tb_TestParam = new DevComponents.DotNetBar.LabelX();
             this.cb_ShowCommand = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -116,6 +114,10 @@
             this.btnX_AxisLoadY_MinUp = new DevComponents.DotNetBar.ButtonX();
             this.axTChart1 = new AxTeeChart.AxTChart();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbX_CompanyName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbX_CompanyTel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbX_EDCName = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -197,9 +199,6 @@
             this.pb_ExtensionMaxValue = new System.Windows.Forms.PictureBox();
             this.cb_TareExt = new System.Windows.Forms.CheckBox();
             this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel8 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.chart_machine = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.superTabItem8 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel7 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx9 = new DevComponents.DotNetBar.PanelEx();
             this.guiDebug = new System.Windows.Forms.RichTextBox();
@@ -341,14 +340,6 @@
             this.timer_ShowWave = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbX_CompanyTel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbX_CompanyName = new System.Windows.Forms.ToolStripStatusLabel();
-            this.buttonX15 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX16 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX18 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX19 = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -376,8 +367,6 @@
             this.groupPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_ExtensionMinValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_ExtensionMaxValue)).BeginInit();
-            this.superTabControlPanel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart_machine)).BeginInit();
             this.superTabControlPanel7.SuspendLayout();
             this.panelEx9.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
@@ -429,9 +418,8 @@
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel8);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel7);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel7);
             this.superTabControl1.Controls.Add(this.menuStrip1);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.Location = new System.Drawing.Point(0, 0);
@@ -445,8 +433,7 @@
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabItem2,
             this.superTabItem1,
-            this.superTabItem7,
-            this.superTabItem8});
+            this.superTabItem7});
             this.superTabControl1.Text = "superTabControl1";
             // 
             // superTabControlPanel2
@@ -1369,6 +1356,58 @@
             this.panelEx12.TabIndex = 74;
             this.panelEx12.Text = "panelEx12";
             // 
+            // buttonX18
+            // 
+            this.buttonX18.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonX18.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX18.Location = new System.Drawing.Point(1195, 518);
+            this.buttonX18.Name = "buttonX18";
+            this.buttonX18.Size = new System.Drawing.Size(25, 14);
+            this.buttonX18.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX18.TabIndex = 74;
+            this.buttonX18.Text = "◀";
+            this.buttonX18.Click += new System.EventHandler(this.buttonX18_Click);
+            // 
+            // buttonX19
+            // 
+            this.buttonX19.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonX19.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX19.Location = new System.Drawing.Point(1226, 518);
+            this.buttonX19.Name = "buttonX19";
+            this.buttonX19.Size = new System.Drawing.Size(25, 14);
+            this.buttonX19.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX19.TabIndex = 75;
+            this.buttonX19.Text = "▶";
+            this.buttonX19.Click += new System.EventHandler(this.buttonX19_Click);
+            // 
+            // buttonX15
+            // 
+            this.buttonX15.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonX15.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX15.Location = new System.Drawing.Point(46, 518);
+            this.buttonX15.Name = "buttonX15";
+            this.buttonX15.Size = new System.Drawing.Size(25, 14);
+            this.buttonX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX15.TabIndex = 72;
+            this.buttonX15.Text = "◀";
+            this.buttonX15.Click += new System.EventHandler(this.buttonX15_Click);
+            // 
+            // buttonX16
+            // 
+            this.buttonX16.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonX16.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX16.Location = new System.Drawing.Point(77, 518);
+            this.buttonX16.Name = "buttonX16";
+            this.buttonX16.Size = new System.Drawing.Size(25, 14);
+            this.buttonX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX16.TabIndex = 73;
+            this.buttonX16.Text = "▶";
+            this.buttonX16.Click += new System.EventHandler(this.buttonX16_Click);
+            // 
             // labelX34
             // 
             // 
@@ -1578,6 +1617,42 @@
             this.statusStrip1.Size = new System.Drawing.Size(1712, 26);
             this.statusStrip1.TabIndex = 66;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(72, 21);
+            this.toolStripStatusLabel5.Text = "公司名称：";
+            // 
+            // lbX_CompanyName
+            // 
+            this.lbX_CompanyName.AutoSize = false;
+            this.lbX_CompanyName.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lbX_CompanyName.Name = "lbX_CompanyName";
+            this.lbX_CompanyName.Size = new System.Drawing.Size(160, 21);
+            // 
+            // toolStripStatusLabel6
+            // 
+            this.toolStripStatusLabel6.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(72, 21);
+            this.toolStripStatusLabel6.Text = "联系电话：";
+            // 
+            // lbX_CompanyTel
+            // 
+            this.lbX_CompanyTel.AutoSize = false;
+            this.lbX_CompanyTel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lbX_CompanyTel.Name = "lbX_CompanyTel";
+            this.lbX_CompanyTel.Size = new System.Drawing.Size(160, 21);
             // 
             // toolStripStatusLabel1
             // 
@@ -2524,105 +2599,13 @@
             this.superTabItem2.Name = "superTabItem2";
             this.superTabItem2.Text = "控制器实时曲线";
             // 
-            // superTabControlPanel8
-            // 
-            this.superTabControlPanel8.Controls.Add(this.chart_machine);
-            this.superTabControlPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel8.Location = new System.Drawing.Point(0, 52);
-            this.superTabControlPanel8.Name = "superTabControlPanel8";
-            this.superTabControlPanel8.Size = new System.Drawing.Size(1418, 707);
-            this.superTabControlPanel8.TabIndex = 0;
-            this.superTabControlPanel8.TabItem = this.superTabItem8;
-            // 
-            // chart_machine
-            // 
-            chartArea10.AxisX.Interval = 1D;
-            chartArea10.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea10.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea10.AxisX.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea10.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea10.AxisX.Maximum = 10D;
-            chartArea10.AxisX.MaximumAutoSize = 100F;
-            chartArea10.AxisX.Minimum = 0D;
-            chartArea10.AxisX.MinorTickMark.Enabled = true;
-            chartArea10.AxisX.MinorTickMark.Size = 0.5F;
-            chartArea10.AxisX.Title = "时间(s)";
-            chartArea10.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea10.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea10.AxisY.LineColor = System.Drawing.Color.DodgerBlue;
-            chartArea10.AxisY.MajorGrid.LineColor = System.Drawing.Color.Red;
-            chartArea10.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea10.AxisY.Maximum = 20D;
-            chartArea10.AxisY.Minimum = -20D;
-            chartArea10.AxisY.MinorTickMark.Enabled = true;
-            chartArea10.AxisY.MinorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-            chartArea10.AxisY.MinorTickMark.Size = 0.5F;
-            chartArea10.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea10.AxisY.Title = "位 \\n\\n移 \\n\\n(mm)";
-            chartArea10.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.AxisY.TitleForeColor = System.Drawing.Color.DodgerBlue;
-            chartArea10.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea10.AxisY2.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea10.AxisY2.LineColor = System.Drawing.Color.Orange;
-            chartArea10.AxisY2.MajorGrid.LineColor = System.Drawing.Color.OliveDrab;
-            chartArea10.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea10.AxisY2.Maximum = 20D;
-            chartArea10.AxisY2.Minimum = -20D;
-            chartArea10.AxisY2.MinorTickMark.Enabled = true;
-            chartArea10.AxisY2.MinorTickMark.Size = 0.5F;
-            chartArea10.AxisY2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea10.AxisY2.Title = "试 \\n\\n验\\n\\n力\\n\\n(N)";
-            chartArea10.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.AxisY2.TitleForeColor = System.Drawing.Color.Orange;
-            chartArea10.Name = "ChartArea1";
-            this.chart_machine.ChartAreas.Add(chartArea10);
-            this.chart_machine.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend10.Name = "Legend1";
-            this.chart_machine.Legends.Add(legend10);
-            this.chart_machine.Location = new System.Drawing.Point(0, 0);
-            this.chart_machine.Name = "chart_machine";
-            series37.ChartArea = "ChartArea1";
-            series37.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series37.Legend = "Legend1";
-            series37.Name = "位移";
-            series37.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series38.ChartArea = "ChartArea1";
-            series38.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series38.Legend = "Legend1";
-            series38.Name = "试验力";
-            series38.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            series39.ChartArea = "ChartArea1";
-            series39.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series39.Legend = "Legend1";
-            series39.Name = "变形";
-            series40.ChartArea = "ChartArea1";
-            series40.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series40.Color = System.Drawing.Color.BlueViolet;
-            series40.Legend = "Legend1";
-            series40.Name = "命令";
-            series40.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            this.chart_machine.Series.Add(series37);
-            this.chart_machine.Series.Add(series38);
-            this.chart_machine.Series.Add(series39);
-            this.chart_machine.Series.Add(series40);
-            this.chart_machine.Size = new System.Drawing.Size(1418, 707);
-            this.chart_machine.TabIndex = 64;
-            // 
-            // superTabItem8
-            // 
-            this.superTabItem8.AttachedControl = this.superTabControlPanel8;
-            this.superTabItem8.GlobalItem = false;
-            this.superTabItem8.Name = "superTabItem8";
-            this.superTabItem8.Text = "原始曲线控件";
-            this.superTabItem8.Visible = false;
-            // 
             // superTabControlPanel7
             // 
             this.superTabControlPanel7.Controls.Add(this.panelEx9);
             this.superTabControlPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel7.Location = new System.Drawing.Point(0, 52);
             this.superTabControlPanel7.Name = "superTabControlPanel7";
-            this.superTabControlPanel7.Size = new System.Drawing.Size(1418, 707);
+            this.superTabControlPanel7.Size = new System.Drawing.Size(1718, 707);
             this.superTabControlPanel7.TabIndex = 0;
             this.superTabControlPanel7.TabItem = this.superTabItem7;
             // 
@@ -2635,7 +2618,7 @@
             this.panelEx9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx9.Location = new System.Drawing.Point(0, 0);
             this.panelEx9.Name = "panelEx9";
-            this.panelEx9.Size = new System.Drawing.Size(1418, 707);
+            this.panelEx9.Size = new System.Drawing.Size(1718, 707);
             this.panelEx9.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx9.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx9.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -2652,7 +2635,7 @@
             this.guiDebug.Location = new System.Drawing.Point(0, 0);
             this.guiDebug.Name = "guiDebug";
             this.guiDebug.ReadOnly = true;
-            this.guiDebug.Size = new System.Drawing.Size(1418, 707);
+            this.guiDebug.Size = new System.Drawing.Size(1718, 707);
             this.guiDebug.TabIndex = 1;
             this.guiDebug.Text = "Starting Communication\n";
             // 
@@ -2670,7 +2653,7 @@
             this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel1.Location = new System.Drawing.Point(0, 52);
             this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(1418, 707);
+            this.superTabControlPanel1.Size = new System.Drawing.Size(1718, 707);
             this.superTabControlPanel1.TabIndex = 0;
             this.superTabControlPanel1.TabItem = this.superTabItem1;
             // 
@@ -2685,7 +2668,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(1418, 707);
+            this.panelEx2.Size = new System.Drawing.Size(1718, 707);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -2703,7 +2686,7 @@
             this.panelEx7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx7.Location = new System.Drawing.Point(0, 0);
             this.panelEx7.Name = "panelEx7";
-            this.panelEx7.Size = new System.Drawing.Size(1115, 547);
+            this.panelEx7.Size = new System.Drawing.Size(1415, 547);
             this.panelEx7.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx7.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx7.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -2754,7 +2737,7 @@
             this.panelEx6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelEx6.Location = new System.Drawing.Point(0, 547);
             this.panelEx6.Name = "panelEx6";
-            this.panelEx6.Size = new System.Drawing.Size(1115, 160);
+            this.panelEx6.Size = new System.Drawing.Size(1415, 160);
             this.panelEx6.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx6.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx6.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -3408,7 +3391,7 @@
             this.superTabControl2.Controls.Add(this.superTabControlPanel4);
             this.superTabControl2.Controls.Add(this.superTabControlPanel5);
             this.superTabControl2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.superTabControl2.Location = new System.Drawing.Point(1115, 0);
+            this.superTabControl2.Location = new System.Drawing.Point(1415, 0);
             this.superTabControl2.Name = "superTabControl2";
             this.superTabControl2.ReorderTabsEnabled = true;
             this.superTabControl2.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
@@ -3427,9 +3410,9 @@
             // 
             this.superTabControlPanel3.Controls.Add(this.panelEx3);
             this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 25);
+            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(303, 682);
+            this.superTabControlPanel3.Size = new System.Drawing.Size(303, 679);
             this.superTabControlPanel3.TabIndex = 1;
             this.superTabControlPanel3.TabItem = this.superTabItem3;
             // 
@@ -3453,7 +3436,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 0);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(303, 682);
+            this.panelEx3.Size = new System.Drawing.Size(303, 679);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -3495,7 +3478,7 @@
             this.superTabControl3.ControlBox.CloseBox});
             this.superTabControl3.Controls.Add(this.superTabControlPanel6);
             this.superTabControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.superTabControl3.Location = new System.Drawing.Point(0, 572);
+            this.superTabControl3.Location = new System.Drawing.Point(0, 569);
             this.superTabControl3.Name = "superTabControl3";
             this.superTabControl3.ReorderTabsEnabled = false;
             this.superTabControl3.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
@@ -3514,7 +3497,7 @@
             this.superTabControlPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel6.Location = new System.Drawing.Point(0, 0);
             this.superTabControlPanel6.Name = "superTabControlPanel6";
-            this.superTabControlPanel6.Size = new System.Drawing.Size(303, 85);
+            this.superTabControlPanel6.Size = new System.Drawing.Size(303, 82);
             this.superTabControlPanel6.TabIndex = 1;
             this.superTabControlPanel6.TabItem = this.superTabItem6;
             // 
@@ -3532,7 +3515,7 @@
             this.panelEx8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx8.Location = new System.Drawing.Point(0, 0);
             this.panelEx8.Name = "panelEx8";
-            this.panelEx8.Size = new System.Drawing.Size(303, 85);
+            this.panelEx8.Size = new System.Drawing.Size(303, 82);
             this.panelEx8.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx8.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx8.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -4443,94 +4426,6 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
             // 
-            // toolStripStatusLabel5
-            // 
-            this.toolStripStatusLabel5.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(72, 21);
-            this.toolStripStatusLabel5.Text = "公司名称：";
-            // 
-            // lbX_CompanyTel
-            // 
-            this.lbX_CompanyTel.AutoSize = false;
-            this.lbX_CompanyTel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.lbX_CompanyTel.Name = "lbX_CompanyTel";
-            this.lbX_CompanyTel.Size = new System.Drawing.Size(160, 21);
-            // 
-            // toolStripStatusLabel6
-            // 
-            this.toolStripStatusLabel6.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(72, 21);
-            this.toolStripStatusLabel6.Text = "联系电话：";
-            // 
-            // lbX_CompanyName
-            // 
-            this.lbX_CompanyName.AutoSize = false;
-            this.lbX_CompanyName.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.lbX_CompanyName.Name = "lbX_CompanyName";
-            this.lbX_CompanyName.Size = new System.Drawing.Size(160, 21);
-            // 
-            // buttonX15
-            // 
-            this.buttonX15.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonX15.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX15.Location = new System.Drawing.Point(46, 518);
-            this.buttonX15.Name = "buttonX15";
-            this.buttonX15.Size = new System.Drawing.Size(25, 14);
-            this.buttonX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX15.TabIndex = 72;
-            this.buttonX15.Text = "◀";
-            this.buttonX15.Click += new System.EventHandler(this.buttonX15_Click);
-            // 
-            // buttonX16
-            // 
-            this.buttonX16.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonX16.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX16.Location = new System.Drawing.Point(77, 518);
-            this.buttonX16.Name = "buttonX16";
-            this.buttonX16.Size = new System.Drawing.Size(25, 14);
-            this.buttonX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX16.TabIndex = 73;
-            this.buttonX16.Text = "▶";
-            this.buttonX16.Click += new System.EventHandler(this.buttonX16_Click);
-            // 
-            // buttonX18
-            // 
-            this.buttonX18.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonX18.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX18.Location = new System.Drawing.Point(1195, 518);
-            this.buttonX18.Name = "buttonX18";
-            this.buttonX18.Size = new System.Drawing.Size(25, 14);
-            this.buttonX18.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX18.TabIndex = 74;
-            this.buttonX18.Text = "◀";
-            this.buttonX18.Click += new System.EventHandler(this.buttonX18_Click);
-            // 
-            // buttonX19
-            // 
-            this.buttonX19.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonX19.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX19.Location = new System.Drawing.Point(1226, 518);
-            this.buttonX19.Name = "buttonX19";
-            this.buttonX19.Size = new System.Drawing.Size(25, 14);
-            this.buttonX19.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX19.TabIndex = 75;
-            this.buttonX19.Text = "▶";
-            this.buttonX19.Click += new System.EventHandler(this.buttonX19_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4587,8 +4482,6 @@
             this.groupPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_ExtensionMinValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_ExtensionMaxValue)).EndInit();
-            this.superTabControlPanel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart_machine)).EndInit();
             this.superTabControlPanel7.ResumeLayout(false);
             this.panelEx9.ResumeLayout(false);
             this.superTabControlPanel1.ResumeLayout(false);
@@ -4836,13 +4729,10 @@
         private System.Windows.Forms.ToolStripMenuItem 金属弯曲力学性能试验方法三点弯曲YBT53492006ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 金属弯曲力学性能试验方法四点弯曲YBT53492006ToolStripMenuItem;
         private AxTeeChart.AxTChart axTChart1;
-        private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel8;
         private System.Windows.Forms.CheckBox cb_DrawPosition;
         private System.Windows.Forms.CheckBox cb_DrawCommand;
         private System.Windows.Forms.CheckBox cb_DrawExtension;
         private System.Windows.Forms.CheckBox cb_DrawLoad;
-        public System.Windows.Forms.DataVisualization.Charting.Chart chart_machine;
-        private DevComponents.DotNetBar.SuperTabItem superTabItem8;
         private DevComponents.DotNetBar.PanelEx panelEx11;
         private DevComponents.DotNetBar.PanelEx panelEx12;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
