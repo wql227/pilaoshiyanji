@@ -96,7 +96,8 @@ namespace DoPENetConnect
             }
             else
             {
-                Pos_SpeedCtrl = double.Parse(tbX_Pos_SpeedCtrl.Text);
+                //mm/min
+                Pos_SpeedCtrl = double.Parse(tbX_Pos_SpeedCtrl.Text) / 60;
             }
 
             if (cmbX_Pos_DestnationUnit.Text == "kN")
@@ -168,7 +169,7 @@ namespace DoPENetConnect
             {
                 case "POS":
                     {
-                        cmbX_Pos_SpeedUnit.DataSource = new string[] { "mm/s" };
+                        cmbX_Pos_SpeedUnit.DataSource = new string[] { "mm/min" };
                         cmbX_Pos_DestnationUnit.DataSource = new string[] { "mm" };
                         break;
                     }
@@ -188,7 +189,7 @@ namespace DoPENetConnect
                     }
                 case "EXTENSION":
                     {
-                        cmbX_Pos_SpeedUnit.DataSource = new string[] { "mm/s" };
+                        cmbX_Pos_SpeedUnit.DataSource = new string[] { "mm/min" };
                         cmbX_Pos_DestnationUnit.DataSource = new string[] { "mm" };
                         break;
                     }

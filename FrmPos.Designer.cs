@@ -184,7 +184,7 @@
             // 
             // comboItem3
             // 
-            this.comboItem3.Text = "mm/s";
+            this.comboItem3.Text = "mm/min";
             // 
             // cmbX_Pos_DestnationUnit
             // 
