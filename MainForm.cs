@@ -3148,15 +3148,15 @@ namespace DoPENetConnect
                                     axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
                                 }
 
-                                //if (bShowExtension)
-                                //{
-                                //    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
-                                //}
+                                if (bShowExtension)
+                                {
+                                    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
+                                }
 
-                                //if (bShowCommand)
-                                //{
-                                //    axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
-                                //}
+                                if (bShowCommand)
+                                {
+                                    axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
+                                }
                                 //axTChart1.AutoRepaint = true; 
 
                                 //axTChart1.Series(0).EndUpdate();
