@@ -124,8 +124,8 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACFTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5BeEhvc3QrU3RhdGUBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAkAkAAAIB
-        AAAAAQAAAAAAAAAAAAAAAHsJAABUUEYwC1RDaGFydENoYXJ0AARMZWZ0AgADVG9wAgAFV2lkdGgDFgUG
+        ZW0uV2luZG93cy5Gb3Jtcy5BeEhvc3QrU3RhdGUBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAgAkAAAIB
+        AAAAAQAAAAAAAAAAAAAAAGsJAABUUEYwC1RDaGFydENoYXJ0AARMZWZ0AgADVG9wAgAFV2lkdGgDFgUG
         SGVpZ2h0AyACElRpdGxlLlRleHQuU3RyaW5ncwEGAAAYQm90dG9tQXhpcy5UaXRsZS5DYXB0aW9uFAkA
         AADml7bpl7QocykKQ3VzdG9tQXhlcw4BCkhvcml6b250YWwICU90aGVyU2lkZQgAABNMZWZ0QXhpcy5B
         eGlzLkNvbG9yBwZjbEJsdWUZTGVmdEF4aXMuTGFiZWxzRm9udC5Db2xvcgcGY2xCbHVlFkxlZnRBeGlz
@@ -153,19 +153,19 @@
         UghWZXJ0QXhpcwcKYVJpZ2h0QXhpcw1MaW5lUGVuLkNvbG9yBwVjbFJlZA1MaW5lUGVuLldpZHRoAgIW
         UG9pbnRlci5JbmZsYXRlTWFyZ2lucwkNUG9pbnRlci5TdHlsZQcLcHNSZWN0YW5nbGUPUG9pbnRlci5W
         aXNpYmxlCAxYVmFsdWVzLk5hbWUGAVgNWFZhbHVlcy5PcmRlcgcLbG9Bc2NlbmRpbmcMWVZhbHVlcy5O
-        YW1lBgFZDVlWYWx1ZXMuT3JkZXIHBmxvTm9uZQAAD1RGYXN0TGluZVNlcmllcwdTZXJpZXMyBkFjdGl2
-        ZQgTTWFya3MuQXJyb3cuVmlzaWJsZQkZTWFya3MuQ2FsbG91dC5CcnVzaC5Db2xvcgcHY2xCbGFjaxtN
-        YXJrcy5DYWxsb3V0LkFycm93LlZpc2libGUJEk1hcmtzLlNoYWRvdy5Db2xvcgSBgYEADU1hcmtzLlZp
-        c2libGUIC1Nlcmllc0NvbG9yBP+AAAAFVGl0bGUSAgAAANhTYl8NTGluZVBlbi5Db2xvcgT/gAAADUxp
-        bmVQZW4uV2lkdGgCAgxYVmFsdWVzLk5hbWUGAVgNWFZhbHVlcy5PcmRlcgcLbG9Bc2NlbmRpbmcMWVZh
-        bHVlcy5OYW1lBgFZDVlWYWx1ZXMuT3JkZXIHBmxvTm9uZQAAD1RGYXN0TGluZVNlcmllcwdTZXJpZXMz
-        BkFjdGl2ZQgTTWFya3MuQXJyb3cuVmlzaWJsZQkZTWFya3MuQ2FsbG91dC5CcnVzaC5Db2xvcgcHY2xC
-        bGFjaxtNYXJrcy5DYWxsb3V0LkFycm93LlZpc2libGUJDU1hcmtzLlZpc2libGUIC1Nlcmllc0NvbG9y
-        BwdjbEdyZWVuBVRpdGxlEgIAAAB9VORODUxpbmVQZW4uQ29sb3IHB2NsR3JlZW4NTGluZVBlbi5XaWR0
-        aAICDFhWYWx1ZXMuTmFtZQYBWA1YVmFsdWVzLk9yZGVyBwtsb0FzY2VuZGluZwxZVmFsdWVzLk5hbWUG
-        AVkNWVZhbHVlcy5PcmRlcgcGbG9Ob25lAAANVE1hcmtzVGlwVG9vbApDaGFydFRvb2wwCk1vdXNlRGVs
-        YXkCMgVTdHlsZQcFc21zWFkAAA5UQXhpc0Fycm93VG9vbApDaGFydFRvb2wxBkF4aXNJRAICAAAOVEF4
-        aXNBcnJvd1Rvb2wKQ2hhcnRUb29sMgZBeGlzSUQCAwAAAAAAAAACAAAAAP////8L
+        YW1lBgFZDVlWYWx1ZXMuT3JkZXIHBmxvTm9uZQAAD1RGYXN0TGluZVNlcmllcwdTZXJpZXMyE01hcmtz
+        LkFycm93LlZpc2libGUJGU1hcmtzLkNhbGxvdXQuQnJ1c2guQ29sb3IHB2NsQmxhY2sbTWFya3MuQ2Fs
+        bG91dC5BcnJvdy5WaXNpYmxlCRJNYXJrcy5TaGFkb3cuQ29sb3IEgYGBAA1NYXJrcy5WaXNpYmxlCAtT
+        ZXJpZXNDb2xvcgT/gAAABVRpdGxlEgIAAADYU2JfDUxpbmVQZW4uQ29sb3IE/4AAAA1MaW5lUGVuLldp
+        ZHRoAgIMWFZhbHVlcy5OYW1lBgFYDVhWYWx1ZXMuT3JkZXIHC2xvQXNjZW5kaW5nDFlWYWx1ZXMuTmFt
+        ZQYBWQ1ZVmFsdWVzLk9yZGVyBwZsb05vbmUAAA9URmFzdExpbmVTZXJpZXMHU2VyaWVzMxNNYXJrcy5B
+        cnJvdy5WaXNpYmxlCRlNYXJrcy5DYWxsb3V0LkJydXNoLkNvbG9yBwdjbEJsYWNrG01hcmtzLkNhbGxv
+        dXQuQXJyb3cuVmlzaWJsZQkNTWFya3MuVmlzaWJsZQgLU2VyaWVzQ29sb3IHB2NsR3JlZW4FVGl0bGUS
+        AgAAAH1U5E4NTGluZVBlbi5Db2xvcgcHY2xHcmVlbg1MaW5lUGVuLldpZHRoAgIMWFZhbHVlcy5OYW1l
+        BgFYDVhWYWx1ZXMuT3JkZXIHC2xvQXNjZW5kaW5nDFlWYWx1ZXMuTmFtZQYBWQ1ZVmFsdWVzLk9yZGVy
+        BwZsb05vbmUAAA1UTWFya3NUaXBUb29sCkNoYXJ0VG9vbDAKTW91c2VEZWxheQIyBVN0eWxlBwVzbXNY
+        WQAADlRBeGlzQXJyb3dUb29sCkNoYXJ0VG9vbDEGQXhpc0lEAgIAAA5UQXhpc0Fycm93VG9vbApDaGFy
+        dFRvb2wyBkF4aXNJRAIDAAAAAAAAAAIAAAAA/////ws=
 </value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -173,6 +173,9 @@
   </metadata>
   <metadata name="menuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>554, 17</value>
+  </metadata>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>273, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="commandsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -384,9 +387,6 @@
         GMY5gzrKSHUKfp4AAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>273, 17</value>
-  </metadata>
   <data name="ToolStripMenuItem_Login.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAuhJREFUeF7t
