@@ -47,7 +47,7 @@ Changes :
  - OnIoSHaltMsg and OnGuardMsg handler added
 -------------------------------------------------------------------------------*/
 
-
+//glm-dynorigin
 // To use DoPE .NET in your own project, the following files must be in your .exe directory:
 // - DoPE10.dll         (x86  platform)
 // - DoPE10Net.dll      (x86  platform)
@@ -1388,7 +1388,8 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力峰值区间 峰值外保护
                             if (protectOption.ProtectOption_LoadMaxOut_Effect)
                             {
-                                if (g_MaxLoad > protectOption.ProtectOption_LoadMaxOut)
+                                double ProtectOption_LoadMaxOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMaxOut * 1000 : protectOption.ProtectOption_LoadMaxOut;
+                                if (g_MaxLoad > ProtectOption_LoadMaxOutReal)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -1426,7 +1427,8 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力谷值区间 谷值外保护
                             if (protectOption.ProtectOption_LoadMinOut_Effect)
                             {
-                                if (g_MinLoad < protectOption.ProtectOption_LoadMinOut)
+                                double ProtectOption_LoadMinOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMinOut * 1000 : protectOption.ProtectOption_LoadMinOut;
+                                if (g_MinLoad < ProtectOption_LoadMinOutReal)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
                                     {
@@ -3704,8 +3706,18 @@ namespace DoPENetConnect
             {
                 startStopDrawToolStripMenuItem.Text = GetValueFromLanguageFile("startStopDrawToolStripMenuItem");
                 axTChart1.AutoRepaint = true;
+
+                if (MainForm.mainform.AxisXMax <= axTChart1.Axis.Bottom.Minimum)
+                {
+                    axTChart1.Axis.Bottom.Minimum = 0;
+                    axTChart1.Axis.Bottom.Maximum = MainForm.mainform.AxisXMax;
+                }
+                else {
+                    axTChart1.Axis.Bottom.Maximum = MainForm.mainform.AxisXMax;
+                    axTChart1.Axis.Bottom.Minimum = 0;
+                }
             }
-  
+
         }
 
 
@@ -3992,7 +4004,7 @@ namespace DoPENetConnect
             textBoxX16.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "位移峰值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_PosMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_PosMaxIn_Effect = false;// strTmp.ToString() == "0" ? false : true;
             checkBoxX5.Checked = protectOption.ProtectOption_PosMaxIn_Effect;
 
             IniFileHelper.GetIniString("FrmSystemSetting", "位移谷值内保护", "0", strTmp, strTmp.Capacity);
@@ -4000,7 +4012,7 @@ namespace DoPENetConnect
             textBoxX14.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "位移谷值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_PosMinIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_PosMinIn_Effect = false; // strTmp.ToString() == "0" ? false : true;
             checkBoxX1.Checked = protectOption.ProtectOption_PosMinIn_Effect;
             #endregion 位移保护
 
@@ -4025,7 +4037,7 @@ namespace DoPENetConnect
             textBoxX19.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "试验力峰值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_LoadMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_LoadMaxIn_Effect = false;// strTmp.ToString() == "0" ? false : true;
             checkBoxX7.Checked = protectOption.ProtectOption_LoadMaxIn_Effect;
 
             IniFileHelper.GetIniString("FrmSystemSetting", "试验力谷值内保护", "0", strTmp, strTmp.Capacity);
@@ -4033,7 +4045,7 @@ namespace DoPENetConnect
             textBoxX18.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "试验力谷值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_LoadMinIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_LoadMinIn_Effect = false; // strTmp.ToString() == "0" ? false : true;
             checkBoxX3.Checked = protectOption.ProtectOption_LoadMinIn_Effect;
             #endregion 试验力保护
 
@@ -4059,7 +4071,7 @@ namespace DoPENetConnect
             textBoxX24.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "变形峰值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_ExtMaxIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_ExtMaxIn_Effect = false; // strTmp.ToString() == "0" ? false : true;
             checkBoxX11.Checked = protectOption.ProtectOption_ExtMaxIn_Effect;
 
             IniFileHelper.GetIniString("FrmSystemSetting", "变形谷值内保护", "0", strTmp, strTmp.Capacity);
@@ -4067,7 +4079,7 @@ namespace DoPENetConnect
             textBoxX22.Text = strTmp.ToString();
 
             IniFileHelper.GetIniString("FrmSystemSetting", "变形谷值内保护生效", "0", strTmp, strTmp.Capacity);
-            protectOption.ProtectOption_ExtMinIn_Effect = strTmp.ToString() == "0" ? false : true;
+            protectOption.ProtectOption_ExtMinIn_Effect = false;// strTmp.ToString() == "0" ? false : true;
             checkBoxX9.Checked = protectOption.ProtectOption_ExtMinIn_Effect;
             #endregion 变形保护
 
@@ -4117,6 +4129,9 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "1", strTmp, strTmp.Capacity);
             cb_ShowCommand.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
+            //单位切换
+            IniFileHelper.GetIniString("UIDefault", "comboBoxEx_ForceUnit", "0", strTmp, strTmp.Capacity);
+            ProtectionUnitModify(int.Parse(strTmp.ToString()));
         }
 
 
@@ -4460,6 +4475,12 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void ToolStripMenuItem_OpenLogsDir_Click(object sender, EventArgs e)
         {
+            if (!bPause)
+            {
+                bPause = true;
+                startStopDrawToolStripMenuItem.Text = GetValueFromLanguageFile("startStopDrawToolStripMenuItemPause");
+            }
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = System.Environment.CurrentDirectory;
             openFileDialog.Filter = "CSV文件 (*.csv)|*.csv"; // 如果需要筛选特定类型的文件，如CSV
@@ -4474,29 +4495,35 @@ namespace DoPENetConnect
 
                     DataTable trCsvData = excelHelper.CSVToDataTable(false);
 
-                    DataPoint dpPos = null;
-                    DataPoint dpLoad = null;
-                    DataPoint dpExt = null;
-                    DataPoint dpCommand = null;
+                    //DataPoint dpPos = null;
+                    //DataPoint dpLoad = null;
+                    //DataPoint dpExt = null;
+                    //DataPoint dpCommand = null;
+                    chartX.Clear();
+                    chartPosY.Clear();
+                    chartLoadY.Clear();
+                    chartExtY.Clear();
+                    chartCommandY.Clear();
+
 
                     //List<DataPoint> points = new List<DataPoint>();
 
-                    for (int i = 0; i < chart_machine.Series[0].Points.Count; i++)
-                    {
-                        chart_machine.Series[0].Points.RemoveAt(i);
-                    }
-                    for (int i = 0; i < chart_machine.Series[1].Points.Count; i++)
-                    {
-                        chart_machine.Series[1].Points.RemoveAt(i);
-                    }
-                    for (int i = 0; i < chart_machine.Series[2].Points.Count; i++)
-                    {
-                        chart_machine.Series[2].Points.RemoveAt(i);
-                    }
-                    for (int i = 0; i < chart_machine.Series[3].Points.Count; i++)
-                    {
-                        chart_machine.Series[3].Points.RemoveAt(i);
-                    }
+                    //for (int i = 0; i < chart_machine.Series[0].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[0].Points.RemoveAt(i);
+                    //}
+                    //for (int i = 0; i < chart_machine.Series[1].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[1].Points.RemoveAt(i);
+                    //}
+                    //for (int i = 0; i < chart_machine.Series[2].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[2].Points.RemoveAt(i);
+                    //}
+                    //for (int i = 0; i < chart_machine.Series[3].Points.Count; i++)
+                    //{
+                    //    chart_machine.Series[3].Points.RemoveAt(i);
+                    //}
 
                     //chart_machine.Series[0].Points.Clear();
                     //chart_machine.Series[1].Points.Clear();
@@ -4507,22 +4534,85 @@ namespace DoPENetConnect
                     {
                         for (int i = 0; i < trCsvData.Rows.Count; i++)
                         {
-                            double strX = double.Parse(trCsvData.Rows[i][0].ToString());
-                            double strYPos = double.Parse(trCsvData.Rows[i][1].ToString());
-                            double strYLoad = double.Parse(trCsvData.Rows[i][2].ToString());
-                            double strYExt = double.Parse(trCsvData.Rows[i][3].ToString());
-                            double strYCommand = double.Parse(trCsvData.Rows[i][4].ToString());
+                            //double strX = double.Parse(trCsvData.Rows[i][0].ToString());
+                            //double strYPos = double.Parse(trCsvData.Rows[i][1].ToString());
+                            //double strYLoad = double.Parse(trCsvData.Rows[i][2].ToString());
+                            //double strYExt = double.Parse(trCsvData.Rows[i][3].ToString());
+                            //double strYCommand = double.Parse(trCsvData.Rows[i][4].ToString());
 
-                            dpPos = new DataPoint(strX, strYPos);
-                            dpLoad = new DataPoint(strX, strYLoad);
-                            dpExt = new DataPoint(strX, strYExt);
-                            dpCommand = new DataPoint(strX, strYCommand);
+                            //dpPos = new DataPoint(strX, strYPos);
+                            //dpLoad = new DataPoint(strX, strYLoad);
+                            //dpExt = new DataPoint(strX, strYExt);
+                            //dpCommand = new DataPoint(strX, strYCommand);
 
-                            chart_machine.Series[0].Points.Add(dpPos);
-                            chart_machine.Series[1].Points.Add(dpLoad);
-                            chart_machine.Series[2].Points.Add(dpExt);
-                            chart_machine.Series[3].Points.Add(dpCommand);
+                            //chart_machine.Series[0].Points.Add(dpPos);
+                            //chart_machine.Series[1].Points.Add(dpLoad);
+                            //chart_machine.Series[2].Points.Add(dpExt);
+                            //chart_machine.Series[3].Points.Add(dpCommand);
+
+
+                            chartX.Add(double.Parse(trCsvData.Rows[i][0].ToString()));
+                            chartPosY.Add(double.Parse(trCsvData.Rows[i][1].ToString()));
+                            chartLoadY.Add(double.Parse(trCsvData.Rows[i][2].ToString()));
+                            chartExtY.Add(double.Parse(trCsvData.Rows[i][3].ToString()));
+                            chartCommandY.Add(double.Parse(trCsvData.Rows[i][4].ToString()));
                         }
+
+                        //if (bShowPosition)
+                        {
+                            axTChart1.Series(0).AddArray(chartX.Count, chartPosY.ToArray(), chartX.ToArray());
+                        }
+
+                        //if (bShowLoad)
+                        {
+                            axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
+                        }
+
+                        if (chartPosY.Max() <= axTChart1.Axis.Left.Minimum)
+                        {
+                            axTChart1.Axis.Left.Minimum = chartPosY.Min();
+                            axTChart1.Axis.Left.Maximum = chartPosY.Max();
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Left.Maximum = chartPosY.Max();
+                            axTChart1.Axis.Left.Minimum = chartPosY.Min();
+                        }
+
+                        if (chartLoadY.Max() <= axTChart1.Axis.Right.Minimum)
+                        {
+                            axTChart1.Axis.Right.Minimum = chartLoadY.Min();
+                            axTChart1.Axis.Right.Maximum = chartLoadY.Max();
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Right.Maximum = chartLoadY.Max();
+                            axTChart1.Axis.Right.Minimum = chartLoadY.Min();
+                        }
+
+                        if (chartX.Max() <= axTChart1.Axis.Bottom.Minimum)
+                        {
+                            axTChart1.Axis.Bottom.Minimum = chartX.Min();
+                            axTChart1.Axis.Bottom.Maximum = chartX.Max();
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Bottom.Maximum = chartX.Max();
+                            axTChart1.Axis.Bottom.Minimum = chartX.Min();
+                        }
+
+                        //if (bShowExtension)
+                        //{
+                        //    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
+                        //}
+
+                        //if (bShowCommand)
+                        //{
+                        //    axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
+                        //}
+                        //axTChart1.AutoRepaint = true; 
+
+                        //axTChart1.Series(0).EndUpdate();
                     }
                     else
                     {
@@ -5249,13 +5339,37 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_ApplyProtection_Click(object sender, EventArgs e)
         {
-            if (!ValidityCheck())
-            {
-                MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                return;
-            }
+            //if (!ValidityCheck())
+            //{
+            //    MessageBox.Show("数据校验不通过", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+            //    return;
+            //}
             SaveProtect2Ini();
 
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UnitIndex"></param>
+        public void ProtectionUnitModify(int UnitIndex)
+        {
+            if (UnitIndex == 0)
+            { //kN
+                label6.Text = "kN";
+                label5.Text = "kN";
+                label4.Text = "kN";
+                label3.Text = "kN";
+
+            }
+            else
+            { //N
+                label6.Text = "N";
+                label5.Text = "N";
+                label4.Text = "N";
+                label3.Text = "N";
+
+            }
         }
 
         private void SaveProtect2Ini()

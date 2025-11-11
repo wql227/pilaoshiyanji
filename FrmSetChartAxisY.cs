@@ -283,22 +283,27 @@ namespace DoPENetConnect
             }
 
             WriteIni();
+            try
+            {
+                MainForm.mainform.m_AxTeechart.Axis.Left.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
+                MainForm.mainform.m_AxTeechart.Axis.Left.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
 
-            MainForm.mainform.m_AxTeechart.Axis.Left.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
-            MainForm.mainform.m_AxTeechart.Axis.Left.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
+                MainForm.mainform.m_AxTeechart.Axis.Right.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
+                MainForm.mainform.m_AxTeechart.Axis.Right.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
 
-            MainForm.mainform.m_AxTeechart.Axis.Right.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
-            MainForm.mainform.m_AxTeechart.Axis.Right.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
+                MainForm.mainform.m_AxTeechart.Axis.Bottom.Maximum = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
 
-            MainForm.mainform.m_AxTeechart.Axis.Bottom.Maximum = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
+                MainForm.mainform.AxisXMax = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
+                MainForm.mainform.nTotal = MainForm.mainform.AxisXMax / MainForm.mainform.dStep;
 
-            MainForm.mainform.AxisXMax = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
-            MainForm.mainform.nTotal = MainForm.mainform.AxisXMax / MainForm.mainform.dStep;
-
-            MainForm.mainform.Chart_Pos_Step = double.Parse(cbX_Pos_Range.Text);
-            MainForm.mainform.Chart_Load_Step = double.Parse(cbX_Load_Range.Text);
-            MainForm.mainform.Chart_Ext_Step = double.Parse(cbX_Ext_Range.Text);
-            MainForm.mainform.Chart_Command_Step = double.Parse(cbX_Command_Range.Text);
+                MainForm.mainform.Chart_Pos_Step = double.Parse(cbX_Pos_Range.Text);
+                MainForm.mainform.Chart_Load_Step = double.Parse(cbX_Load_Range.Text);
+                MainForm.mainform.Chart_Ext_Step = double.Parse(cbX_Ext_Range.Text);
+                MainForm.mainform.Chart_Command_Step = double.Parse(cbX_Command_Range.Text);
+            }
+            catch (Exception ex) {
+                MessageBox.Show("设置坐标轴问题:{0}",ex.ToString());
+            }
 
             this.Close();
         }

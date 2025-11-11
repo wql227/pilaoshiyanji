@@ -189,7 +189,6 @@
             this.gp_TestCycles = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.tbX_TestCycles = new System.Windows.Forms.TextBox();
             this.cb_TareTime = new System.Windows.Forms.CheckBox();
-            this.labelX33 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.guiExtension = new System.Windows.Forms.TextBox();
             this.tb_MaxExt = new System.Windows.Forms.TextBox();
@@ -570,7 +569,7 @@
             // 
             this.btnX_ApplyProtection.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_ApplyProtection.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_ApplyProtection.Location = new System.Drawing.Point(299, 491);
+            this.btnX_ApplyProtection.Location = new System.Drawing.Point(299, 452);
             this.btnX_ApplyProtection.Name = "btnX_ApplyProtection";
             this.btnX_ApplyProtection.Size = new System.Drawing.Size(90, 36);
             this.btnX_ApplyProtection.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -600,9 +599,9 @@
             this.groupPanel7.Controls.Add(this.label18);
             this.groupPanel7.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel7.Location = new System.Drawing.Point(14, 325);
+            this.groupPanel7.Location = new System.Drawing.Point(14, 309);
             this.groupPanel7.Name = "groupPanel7";
-            this.groupPanel7.Size = new System.Drawing.Size(376, 146);
+            this.groupPanel7.Size = new System.Drawing.Size(377, 102);
             // 
             // 
             // 
@@ -641,7 +640,7 @@
             // 
             // 
             this.checkBoxX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX9.Location = new System.Drawing.Point(307, 88);
+            this.checkBoxX9.Location = new System.Drawing.Point(540, 88);
             this.checkBoxX9.Name = "checkBoxX9";
             this.checkBoxX9.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -655,7 +654,7 @@
             // 
             this.textBoxX22.Border.Class = "TextBoxBorder";
             this.textBoxX22.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX22.Location = new System.Drawing.Point(205, 86);
+            this.textBoxX22.Location = new System.Drawing.Point(438, 86);
             this.textBoxX22.Name = "textBoxX22";
             this.textBoxX22.PreventEnterBeep = true;
             this.textBoxX22.Size = new System.Drawing.Size(68, 26);
@@ -669,7 +668,7 @@
             // 
             // 
             this.checkBoxX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX10.Location = new System.Drawing.Point(120, 88);
+            this.checkBoxX10.Location = new System.Drawing.Point(309, 33);
             this.checkBoxX10.Name = "checkBoxX10";
             this.checkBoxX10.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -683,7 +682,7 @@
             // 
             this.textBoxX23.Border.Class = "TextBoxBorder";
             this.textBoxX23.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX23.Location = new System.Drawing.Point(13, 86);
+            this.textBoxX23.Location = new System.Drawing.Point(205, 31);
             this.textBoxX23.Name = "textBoxX23";
             this.textBoxX23.PreventEnterBeep = true;
             this.textBoxX23.Size = new System.Drawing.Size(68, 26);
@@ -697,7 +696,7 @@
             // 
             // 
             this.checkBoxX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX11.Location = new System.Drawing.Point(307, 34);
+            this.checkBoxX11.Location = new System.Drawing.Point(540, 34);
             this.checkBoxX11.Name = "checkBoxX11";
             this.checkBoxX11.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -711,7 +710,7 @@
             // 
             // 
             this.checkBoxX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX12.Location = new System.Drawing.Point(119, 34);
+            this.checkBoxX12.Location = new System.Drawing.Point(114, 33);
             this.checkBoxX12.Name = "checkBoxX12";
             this.checkBoxX12.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -725,7 +724,7 @@
             // 
             this.textBoxX24.Border.Class = "TextBoxBorder";
             this.textBoxX24.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX24.Location = new System.Drawing.Point(205, 31);
+            this.textBoxX24.Location = new System.Drawing.Point(438, 31);
             this.textBoxX24.Name = "textBoxX24";
             this.textBoxX24.PreventEnterBeep = true;
             this.textBoxX24.Size = new System.Drawing.Size(68, 26);
@@ -750,7 +749,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(280, 90);
+            this.label11.Location = new System.Drawing.Point(513, 90);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(24, 16);
             this.label11.TabIndex = 0;
@@ -760,7 +759,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(280, 35);
+            this.label12.Location = new System.Drawing.Point(513, 35);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(24, 16);
             this.label12.TabIndex = 0;
@@ -770,7 +769,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(89, 90);
+            this.label13.Location = new System.Drawing.Point(281, 36);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(24, 16);
             this.label13.TabIndex = 0;
@@ -780,7 +779,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.Location = new System.Drawing.Point(89, 35);
+            this.label14.Location = new System.Drawing.Point(84, 36);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(24, 16);
             this.label14.TabIndex = 0;
@@ -790,17 +789,17 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label15.Location = new System.Drawing.Point(12, 63);
+            this.label15.Location = new System.Drawing.Point(202, 9);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(104, 16);
+            this.label15.Size = new System.Drawing.Size(72, 16);
             this.label15.TabIndex = 0;
-            this.label15.Text = "谷值的外保护";
+            this.label15.Text = "谷值保护";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label16.Location = new System.Drawing.Point(202, 63);
+            this.label16.Location = new System.Drawing.Point(435, 63);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(104, 16);
             this.label16.TabIndex = 0;
@@ -812,15 +811,15 @@
             this.label17.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label17.Location = new System.Drawing.Point(11, 9);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(104, 16);
+            this.label17.Size = new System.Drawing.Size(72, 16);
             this.label17.TabIndex = 0;
-            this.label17.Text = "峰值的外保护";
+            this.label17.Text = "峰值保护";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label18.Location = new System.Drawing.Point(202, 9);
+            this.label18.Location = new System.Drawing.Point(435, 9);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(104, 16);
             this.label18.TabIndex = 0;
@@ -848,9 +847,9 @@
             this.groupPanel6.Controls.Add(this.label10);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel6.Location = new System.Drawing.Point(14, 167);
+            this.groupPanel6.Location = new System.Drawing.Point(14, 166);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(376, 146);
+            this.groupPanel6.Size = new System.Drawing.Size(377, 102);
             // 
             // 
             // 
@@ -889,7 +888,7 @@
             // 
             // 
             this.checkBoxX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX3.Location = new System.Drawing.Point(307, 85);
+            this.checkBoxX3.Location = new System.Drawing.Point(533, 85);
             this.checkBoxX3.Name = "checkBoxX3";
             this.checkBoxX3.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -903,7 +902,7 @@
             // 
             // 
             this.checkBoxX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX4.Location = new System.Drawing.Point(117, 88);
+            this.checkBoxX4.Location = new System.Drawing.Point(309, 33);
             this.checkBoxX4.Name = "checkBoxX4";
             this.checkBoxX4.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -917,7 +916,7 @@
             // 
             // 
             this.checkBoxX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX7.Location = new System.Drawing.Point(307, 34);
+            this.checkBoxX7.Location = new System.Drawing.Point(533, 34);
             this.checkBoxX7.Name = "checkBoxX7";
             this.checkBoxX7.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -931,7 +930,7 @@
             // 
             // 
             this.checkBoxX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX8.Location = new System.Drawing.Point(117, 34);
+            this.checkBoxX8.Location = new System.Drawing.Point(114, 33);
             this.checkBoxX8.Name = "checkBoxX8";
             this.checkBoxX8.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -945,7 +944,7 @@
             // 
             this.textBoxX18.Border.Class = "TextBoxBorder";
             this.textBoxX18.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX18.Location = new System.Drawing.Point(205, 85);
+            this.textBoxX18.Location = new System.Drawing.Point(431, 85);
             this.textBoxX18.Name = "textBoxX18";
             this.textBoxX18.PreventEnterBeep = true;
             this.textBoxX18.Size = new System.Drawing.Size(68, 26);
@@ -959,7 +958,7 @@
             // 
             this.textBoxX19.Border.Class = "TextBoxBorder";
             this.textBoxX19.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX19.Location = new System.Drawing.Point(205, 31);
+            this.textBoxX19.Location = new System.Drawing.Point(431, 31);
             this.textBoxX19.Name = "textBoxX19";
             this.textBoxX19.PreventEnterBeep = true;
             this.textBoxX19.Size = new System.Drawing.Size(68, 26);
@@ -973,7 +972,7 @@
             // 
             this.textBoxX20.Border.Class = "TextBoxBorder";
             this.textBoxX20.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX20.Location = new System.Drawing.Point(13, 86);
+            this.textBoxX20.Location = new System.Drawing.Point(204, 31);
             this.textBoxX20.Name = "textBoxX20";
             this.textBoxX20.PreventEnterBeep = true;
             this.textBoxX20.Size = new System.Drawing.Size(68, 26);
@@ -998,7 +997,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(278, 89);
+            this.label3.Location = new System.Drawing.Point(504, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(16, 16);
             this.label3.TabIndex = 0;
@@ -1008,7 +1007,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(278, 36);
+            this.label4.Location = new System.Drawing.Point(504, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(16, 16);
             this.label4.TabIndex = 0;
@@ -1018,7 +1017,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(87, 90);
+            this.label5.Location = new System.Drawing.Point(278, 36);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(16, 16);
             this.label5.TabIndex = 0;
@@ -1028,7 +1027,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(87, 36);
+            this.label6.Location = new System.Drawing.Point(88, 36);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(16, 16);
             this.label6.TabIndex = 0;
@@ -1038,17 +1037,17 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(13, 63);
+            this.label7.Location = new System.Drawing.Point(202, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(104, 16);
+            this.label7.Size = new System.Drawing.Size(72, 16);
             this.label7.TabIndex = 0;
-            this.label7.Text = "谷值的外保护";
+            this.label7.Text = "谷值保护";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(202, 63);
+            this.label8.Location = new System.Drawing.Point(428, 63);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(104, 16);
             this.label8.TabIndex = 0;
@@ -1060,15 +1059,15 @@
             this.label9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label9.Location = new System.Drawing.Point(10, 9);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 16);
+            this.label9.Size = new System.Drawing.Size(72, 16);
             this.label9.TabIndex = 0;
-            this.label9.Text = "峰值的外保护";
+            this.label9.Text = "峰值保护";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(202, 9);
+            this.label10.Location = new System.Drawing.Point(428, 9);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(104, 16);
             this.label10.TabIndex = 0;
@@ -1096,9 +1095,9 @@
             this.groupPanel13.Controls.Add(this.label67);
             this.groupPanel13.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel13.Location = new System.Drawing.Point(14, 11);
+            this.groupPanel13.Location = new System.Drawing.Point(14, 23);
             this.groupPanel13.Name = "groupPanel13";
-            this.groupPanel13.Size = new System.Drawing.Size(376, 146);
+            this.groupPanel13.Size = new System.Drawing.Size(377, 102);
             // 
             // 
             // 
@@ -1137,7 +1136,7 @@
             // 
             this.textBoxX14.Border.Class = "TextBoxBorder";
             this.textBoxX14.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX14.Location = new System.Drawing.Point(205, 86);
+            this.textBoxX14.Location = new System.Drawing.Point(448, 86);
             this.textBoxX14.Name = "textBoxX14";
             this.textBoxX14.PreventEnterBeep = true;
             this.textBoxX14.Size = new System.Drawing.Size(68, 26);
@@ -1151,7 +1150,7 @@
             // 
             this.textBoxX15.Border.Class = "TextBoxBorder";
             this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX15.Location = new System.Drawing.Point(10, 86);
+            this.textBoxX15.Location = new System.Drawing.Point(205, 31);
             this.textBoxX15.Name = "textBoxX15";
             this.textBoxX15.PreventEnterBeep = true;
             this.textBoxX15.Size = new System.Drawing.Size(68, 26);
@@ -1165,7 +1164,7 @@
             // 
             this.textBoxX16.Border.Class = "TextBoxBorder";
             this.textBoxX16.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX16.Location = new System.Drawing.Point(205, 31);
+            this.textBoxX16.Location = new System.Drawing.Point(448, 31);
             this.textBoxX16.Name = "textBoxX16";
             this.textBoxX16.PreventEnterBeep = true;
             this.textBoxX16.Size = new System.Drawing.Size(68, 26);
@@ -1179,7 +1178,7 @@
             // 
             this.textBoxX17.Border.Class = "TextBoxBorder";
             this.textBoxX17.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX17.Location = new System.Drawing.Point(10, 31);
+            this.textBoxX17.Location = new System.Drawing.Point(11, 31);
             this.textBoxX17.Name = "textBoxX17";
             this.textBoxX17.PreventEnterBeep = true;
             this.textBoxX17.Size = new System.Drawing.Size(68, 26);
@@ -1193,7 +1192,7 @@
             // 
             // 
             this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(307, 86);
+            this.checkBoxX1.Location = new System.Drawing.Point(550, 86);
             this.checkBoxX1.Name = "checkBoxX1";
             this.checkBoxX1.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1207,7 +1206,7 @@
             // 
             // 
             this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.Location = new System.Drawing.Point(114, 86);
+            this.checkBoxX2.Location = new System.Drawing.Point(309, 33);
             this.checkBoxX2.Name = "checkBoxX2";
             this.checkBoxX2.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1221,7 +1220,7 @@
             // 
             // 
             this.checkBoxX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX5.Location = new System.Drawing.Point(307, 33);
+            this.checkBoxX5.Location = new System.Drawing.Point(550, 33);
             this.checkBoxX5.Name = "checkBoxX5";
             this.checkBoxX5.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1235,7 +1234,7 @@
             // 
             // 
             this.checkBoxX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX6.Location = new System.Drawing.Point(114, 34);
+            this.checkBoxX6.Location = new System.Drawing.Point(114, 33);
             this.checkBoxX6.Name = "checkBoxX6";
             this.checkBoxX6.Size = new System.Drawing.Size(61, 23);
             this.checkBoxX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1246,7 +1245,7 @@
             // 
             this.label60.AutoSize = true;
             this.label60.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label60.Location = new System.Drawing.Point(279, 88);
+            this.label60.Location = new System.Drawing.Point(522, 88);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(24, 16);
             this.label60.TabIndex = 0;
@@ -1256,7 +1255,7 @@
             // 
             this.label61.AutoSize = true;
             this.label61.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label61.Location = new System.Drawing.Point(84, 88);
+            this.label61.Location = new System.Drawing.Point(279, 36);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(24, 16);
             this.label61.TabIndex = 0;
@@ -1266,7 +1265,7 @@
             // 
             this.label62.AutoSize = true;
             this.label62.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label62.Location = new System.Drawing.Point(277, 33);
+            this.label62.Location = new System.Drawing.Point(520, 33);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(24, 16);
             this.label62.TabIndex = 0;
@@ -1276,7 +1275,7 @@
             // 
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label63.Location = new System.Drawing.Point(84, 33);
+            this.label63.Location = new System.Drawing.Point(84, 36);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(24, 16);
             this.label63.TabIndex = 0;
@@ -1286,7 +1285,7 @@
             // 
             this.label64.AutoSize = true;
             this.label64.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label64.Location = new System.Drawing.Point(202, 63);
+            this.label64.Location = new System.Drawing.Point(445, 63);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(104, 16);
             this.label64.TabIndex = 0;
@@ -1296,7 +1295,7 @@
             // 
             this.label65.AutoSize = true;
             this.label65.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label65.Location = new System.Drawing.Point(202, 9);
+            this.label65.Location = new System.Drawing.Point(445, 9);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(104, 16);
             this.label65.TabIndex = 0;
@@ -1306,21 +1305,21 @@
             // 
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label66.Location = new System.Drawing.Point(10, 63);
+            this.label66.Location = new System.Drawing.Point(202, 11);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(104, 16);
+            this.label66.Size = new System.Drawing.Size(72, 16);
             this.label66.TabIndex = 0;
-            this.label66.Text = "谷值的外保护";
+            this.label66.Text = "谷值保护";
             // 
             // label67
             // 
             this.label67.AutoSize = true;
             this.label67.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label67.Location = new System.Drawing.Point(7, 9);
+            this.label67.Location = new System.Drawing.Point(8, 11);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(104, 16);
+            this.label67.Size = new System.Drawing.Size(72, 16);
             this.label67.TabIndex = 0;
-            this.label67.Text = "峰值的外保护";
+            this.label67.Text = "峰值保护";
             // 
             // panelEx12
             // 
@@ -1364,7 +1363,7 @@
             // 
             // 
             this.labelX34.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX34.Location = new System.Drawing.Point(449, 10);
+            this.labelX34.Location = new System.Drawing.Point(368, 10);
             this.labelX34.Name = "labelX34";
             this.labelX34.Size = new System.Drawing.Size(70, 23);
             this.labelX34.TabIndex = 71;
@@ -1376,9 +1375,9 @@
             // 
             // 
             this.tb_TestParam.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tb_TestParam.Location = new System.Drawing.Point(511, 10);
+            this.tb_TestParam.Location = new System.Drawing.Point(436, 10);
             this.tb_TestParam.Name = "tb_TestParam";
-            this.tb_TestParam.Size = new System.Drawing.Size(709, 23);
+            this.tb_TestParam.Size = new System.Drawing.Size(784, 23);
             this.tb_TestParam.TabIndex = 71;
             // 
             // cb_ShowCommand
@@ -1417,7 +1416,7 @@
             // 
             // 
             this.cb_ShowLoad.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cb_ShowLoad.Location = new System.Drawing.Point(383, 10);
+            this.cb_ShowLoad.Location = new System.Drawing.Point(297, 10);
             this.cb_ShowLoad.Name = "cb_ShowLoad";
             this.cb_ShowLoad.Size = new System.Drawing.Size(58, 23);
             this.cb_ShowLoad.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1431,7 +1430,7 @@
             // 
             // 
             this.cb_ShowPosition.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cb_ShowPosition.Location = new System.Drawing.Point(319, 10);
+            this.cb_ShowPosition.Location = new System.Drawing.Point(233, 10);
             this.cb_ShowPosition.Name = "cb_ShowPosition";
             this.cb_ShowPosition.Size = new System.Drawing.Size(58, 23);
             this.cb_ShowPosition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -2011,9 +2010,9 @@
             this.gp_RunTime.Controls.Add(this.guiTime);
             this.gp_RunTime.DisabledBackColor = System.Drawing.Color.Empty;
             this.gp_RunTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.gp_RunTime.Location = new System.Drawing.Point(1126, 4);
+            this.gp_RunTime.Location = new System.Drawing.Point(1236, 4);
             this.gp_RunTime.Name = "gp_RunTime";
-            this.gp_RunTime.Size = new System.Drawing.Size(170, 83);
+            this.gp_RunTime.Size = new System.Drawing.Size(261, 83);
             // 
             // 
             // 
@@ -2052,7 +2051,7 @@
             this.guiTime.ForeColor = System.Drawing.Color.Lime;
             this.guiTime.Location = new System.Drawing.Point(3, 3);
             this.guiTime.Name = "guiTime";
-            this.guiTime.Size = new System.Drawing.Size(157, 47);
+            this.guiTime.Size = new System.Drawing.Size(249, 47);
             this.guiTime.TabIndex = 25;
             this.guiTime.Text = "00:00:00";
             this.guiTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2330,12 +2329,11 @@
             this.gp_TestCycles.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.gp_TestCycles.Controls.Add(this.tbX_TestCycles);
             this.gp_TestCycles.Controls.Add(this.cb_TareTime);
-            this.gp_TestCycles.Controls.Add(this.labelX33);
             this.gp_TestCycles.DisabledBackColor = System.Drawing.Color.Empty;
             this.gp_TestCycles.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.gp_TestCycles.Location = new System.Drawing.Point(974, 4);
             this.gp_TestCycles.Name = "gp_TestCycles";
-            this.gp_TestCycles.Size = new System.Drawing.Size(152, 83);
+            this.gp_TestCycles.Size = new System.Drawing.Size(262, 83);
             // 
             // 
             // 
@@ -2372,9 +2370,9 @@
             this.tbX_TestCycles.BackColor = System.Drawing.Color.Black;
             this.tbX_TestCycles.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbX_TestCycles.ForeColor = System.Drawing.Color.Lime;
-            this.tbX_TestCycles.Location = new System.Drawing.Point(-58, 3);
+            this.tbX_TestCycles.Location = new System.Drawing.Point(36, 3);
             this.tbX_TestCycles.Name = "tbX_TestCycles";
-            this.tbX_TestCycles.Size = new System.Drawing.Size(205, 47);
+            this.tbX_TestCycles.Size = new System.Drawing.Size(217, 47);
             this.tbX_TestCycles.TabIndex = 41;
             this.tbX_TestCycles.Text = "0";
             this.tbX_TestCycles.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2390,20 +2388,6 @@
             this.cb_TareTime.Text = "T";
             this.cb_TareTime.UseVisualStyleBackColor = true;
             this.cb_TareTime.CheckedChanged += new System.EventHandler(this.cb_TareTime_CheckedChanged);
-            // 
-            // labelX33
-            // 
-            // 
-            // 
-            // 
-            this.labelX33.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX33.Location = new System.Drawing.Point(3, 20);
-            this.labelX33.Name = "labelX33";
-            this.labelX33.Size = new System.Drawing.Size(75, 23);
-            this.labelX33.TabIndex = 43;
-            this.labelX33.Text = "labelX33";
-            this.labelX33.Visible = false;
-            this.labelX33.Click += new System.EventHandler(this.labelX33_Click);
             // 
             // groupPanel4
             // 
@@ -4725,7 +4709,6 @@
         private System.Windows.Forms.ToolStripMenuItem AutoSetYAxisToolStripMenuItem;
         private DevComponents.DotNetBar.Controls.Line line2;
         private System.Windows.Forms.CheckBox cb_TareTime;
-        private DevComponents.DotNetBar.LabelX labelX33;
         private System.Windows.Forms.Label label1;
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_TestCount;
         private System.Windows.Forms.Label label2;
