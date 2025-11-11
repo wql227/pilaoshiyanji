@@ -884,8 +884,10 @@ namespace DoPENetConnect
                 {
                     guiDebug.AppendText(Text + "\r\n");
                     guiDebug.ScrollToCaret(); // 自动滚动到底部
-                                              //Refresh();
+                    //Refresh();
                 }
+
+                LogHelper.Debug(Text);
 
             }
             catch (Exception ex)
