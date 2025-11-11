@@ -27,6 +27,13 @@ namespace DoPENetConnect
             ReplaceLanguage();
             //UiAutoSize();
 
+            if (MainForm.mainform.strLoginName == "管理人员")
+            {
+                groupPanel6.Visible = true;
+                groupPanel11.Visible = true;
+                groupPanel12.Visible = true;
+            }
+
         }
 
         /// <summary>

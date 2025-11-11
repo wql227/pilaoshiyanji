@@ -30,6 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSystemSetting));
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
+            this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.panelEx7 = new DevComponents.DotNetBar.PanelEx();
+            this.groupPanel9 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.tbX_hurrydownval = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label42 = new System.Windows.Forms.Label();
+            this.tbX_downval = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.tbX_hurryupval = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.tbX_upval = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel5 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx5 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel12 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -193,22 +209,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.lbX_MaxForce = new System.Windows.Forms.Label();
             this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.panelEx7 = new DevComponents.DotNetBar.PanelEx();
-            this.groupPanel9 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.tbX_hurrydownval = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label42 = new System.Windows.Forms.Label();
-            this.tbX_downval = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.tbX_hurryupval = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.tbX_upval = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel4 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -222,6 +222,9 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
+            this.superTabControlPanel1.SuspendLayout();
+            this.panelEx7.SuspendLayout();
+            this.groupPanel9.SuspendLayout();
             this.superTabControlPanel5.SuspendLayout();
             this.panelEx5.SuspendLayout();
             this.groupPanel12.SuspendLayout();
@@ -244,9 +247,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Load)).BeginInit();
             this.groupPanel8.SuspendLayout();
             this.groupPanel7.SuspendLayout();
-            this.superTabControlPanel1.SuspendLayout();
-            this.panelEx7.SuspendLayout();
-            this.groupPanel9.SuspendLayout();
             this.superTabControlPanel4.SuspendLayout();
             this.panelEx4.SuspendLayout();
             this.superTabControlPanel3.SuspendLayout();
@@ -270,8 +270,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
@@ -294,6 +294,231 @@
             this.superTabItem1,
             this.superTabItem4});
             this.superTabControl1.Text = "superTabControl1";
+            // 
+            // superTabControlPanel1
+            // 
+            this.superTabControlPanel1.Controls.Add(this.panelEx7);
+            this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel1.Name = "superTabControlPanel1";
+            this.superTabControlPanel1.Size = new System.Drawing.Size(554, 569);
+            this.superTabControlPanel1.TabIndex = 0;
+            this.superTabControlPanel1.TabItem = this.superTabItem1;
+            // 
+            // panelEx7
+            // 
+            this.panelEx7.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx7.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx7.Controls.Add(this.groupPanel9);
+            this.panelEx7.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx7.Location = new System.Drawing.Point(0, 0);
+            this.panelEx7.Name = "panelEx7";
+            this.panelEx7.Size = new System.Drawing.Size(554, 571);
+            this.panelEx7.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx7.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx7.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(255)))));
+            this.panelEx7.Style.BorderColor.Color = System.Drawing.Color.Red;
+            this.panelEx7.Style.BorderWidth = 5;
+            this.panelEx7.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx7.Style.GradientAngle = 90;
+            this.panelEx7.TabIndex = 0;
+            // 
+            // groupPanel9
+            // 
+            this.groupPanel9.BackColor = System.Drawing.Color.Transparent;
+            this.groupPanel9.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel9.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel9.Controls.Add(this.tbX_hurrydownval);
+            this.groupPanel9.Controls.Add(this.label42);
+            this.groupPanel9.Controls.Add(this.tbX_downval);
+            this.groupPanel9.Controls.Add(this.label37);
+            this.groupPanel9.Controls.Add(this.label41);
+            this.groupPanel9.Controls.Add(this.tbX_hurryupval);
+            this.groupPanel9.Controls.Add(this.label34);
+            this.groupPanel9.Controls.Add(this.label4);
+            this.groupPanel9.Controls.Add(this.label21);
+            this.groupPanel9.Controls.Add(this.tbX_upval);
+            this.groupPanel9.Controls.Add(this.label40);
+            this.groupPanel9.Controls.Add(this.label44);
+            this.groupPanel9.DisabledBackColor = System.Drawing.Color.Empty;
+            this.groupPanel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupPanel9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupPanel9.Location = new System.Drawing.Point(0, 0);
+            this.groupPanel9.Name = "groupPanel9";
+            this.groupPanel9.Size = new System.Drawing.Size(554, 115);
+            // 
+            // 
+            // 
+            this.groupPanel9.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel9.Style.BackColorGradientAngle = 90;
+            this.groupPanel9.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel9.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel9.Style.BorderBottomWidth = 1;
+            this.groupPanel9.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel9.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel9.Style.BorderLeftWidth = 1;
+            this.groupPanel9.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel9.Style.BorderRightWidth = 1;
+            this.groupPanel9.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel9.Style.BorderTopWidth = 1;
+            this.groupPanel9.Style.CornerDiameter = 4;
+            this.groupPanel9.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel9.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel9.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel9.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.groupPanel9.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanel9.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel9.TabIndex = 4;
+            this.groupPanel9.Text = "移动速度";
+            // 
+            // tbX_hurrydownval
+            // 
+            // 
+            // 
+            // 
+            this.tbX_hurrydownval.Border.Class = "TextBoxBorder";
+            this.tbX_hurrydownval.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_hurrydownval.Location = new System.Drawing.Point(168, 132);
+            this.tbX_hurrydownval.Name = "tbX_hurrydownval";
+            this.tbX_hurrydownval.PreventEnterBeep = true;
+            this.tbX_hurrydownval.Size = new System.Drawing.Size(123, 26);
+            this.tbX_hurrydownval.TabIndex = 5;
+            this.tbX_hurrydownval.Text = "10";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label42.Location = new System.Drawing.Point(309, 137);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(56, 16);
+            this.label42.TabIndex = 3;
+            this.label42.Text = "mm/min";
+            // 
+            // tbX_downval
+            // 
+            // 
+            // 
+            // 
+            this.tbX_downval.Border.Class = "TextBoxBorder";
+            this.tbX_downval.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_downval.Location = new System.Drawing.Point(168, 90);
+            this.tbX_downval.Name = "tbX_downval";
+            this.tbX_downval.PreventEnterBeep = true;
+            this.tbX_downval.Size = new System.Drawing.Size(123, 26);
+            this.tbX_downval.TabIndex = 5;
+            this.tbX_downval.Text = "10";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label37.Location = new System.Drawing.Point(309, 95);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(56, 16);
+            this.label37.TabIndex = 3;
+            this.label37.Text = "mm/min";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label41.Location = new System.Drawing.Point(17, 137);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(104, 16);
+            this.label41.TabIndex = 4;
+            this.label41.Text = "快速向下按钮";
+            // 
+            // tbX_hurryupval
+            // 
+            // 
+            // 
+            // 
+            this.tbX_hurryupval.Border.Class = "TextBoxBorder";
+            this.tbX_hurryupval.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_hurryupval.Location = new System.Drawing.Point(171, 50);
+            this.tbX_hurryupval.Name = "tbX_hurryupval";
+            this.tbX_hurryupval.PreventEnterBeep = true;
+            this.tbX_hurryupval.Size = new System.Drawing.Size(123, 26);
+            this.tbX_hurryupval.TabIndex = 5;
+            this.tbX_hurryupval.Text = "10";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label34.Location = new System.Drawing.Point(17, 95);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(72, 16);
+            this.label34.TabIndex = 4;
+            this.label34.Text = "向下按钮";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(312, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 16);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "mm/min";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label21.Location = new System.Drawing.Point(17, 55);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(144, 16);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "快速向上/向下按钮";
+            // 
+            // tbX_upval
+            // 
+            // 
+            // 
+            // 
+            this.tbX_upval.Border.Class = "TextBoxBorder";
+            this.tbX_upval.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_upval.Location = new System.Drawing.Point(171, 9);
+            this.tbX_upval.Name = "tbX_upval";
+            this.tbX_upval.PreventEnterBeep = true;
+            this.tbX_upval.Size = new System.Drawing.Size(123, 26);
+            this.tbX_upval.TabIndex = 2;
+            this.tbX_upval.Text = "10";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label40.Location = new System.Drawing.Point(312, 14);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(56, 16);
+            this.label40.TabIndex = 0;
+            this.label40.Text = "mm/min";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label44.Location = new System.Drawing.Point(17, 14);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(112, 16);
+            this.label44.TabIndex = 0;
+            this.label44.Text = "向上/向下按钮";
+            // 
+            // superTabItem1
+            // 
+            this.superTabItem1.AttachedControl = this.superTabControlPanel1;
+            this.superTabItem1.GlobalItem = false;
+            this.superTabItem1.Name = "superTabItem1";
+            this.superTabItem1.Text = "移动速度";
             // 
             // superTabControlPanel5
             // 
@@ -2437,231 +2662,6 @@
             this.superTabItem2.Name = "superTabItem2";
             this.superTabItem2.Text = "试验机参数";
             // 
-            // superTabControlPanel1
-            // 
-            this.superTabControlPanel1.Controls.Add(this.panelEx7);
-            this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
-            this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(554, 569);
-            this.superTabControlPanel1.TabIndex = 0;
-            this.superTabControlPanel1.TabItem = this.superTabItem1;
-            // 
-            // panelEx7
-            // 
-            this.panelEx7.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx7.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx7.Controls.Add(this.groupPanel9);
-            this.panelEx7.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx7.Location = new System.Drawing.Point(0, 0);
-            this.panelEx7.Name = "panelEx7";
-            this.panelEx7.Size = new System.Drawing.Size(554, 571);
-            this.panelEx7.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx7.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx7.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(255)))));
-            this.panelEx7.Style.BorderColor.Color = System.Drawing.Color.Red;
-            this.panelEx7.Style.BorderWidth = 5;
-            this.panelEx7.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx7.Style.GradientAngle = 90;
-            this.panelEx7.TabIndex = 0;
-            // 
-            // groupPanel9
-            // 
-            this.groupPanel9.BackColor = System.Drawing.Color.Transparent;
-            this.groupPanel9.CanvasColor = System.Drawing.SystemColors.Control;
-            this.groupPanel9.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel9.Controls.Add(this.tbX_hurrydownval);
-            this.groupPanel9.Controls.Add(this.label42);
-            this.groupPanel9.Controls.Add(this.tbX_downval);
-            this.groupPanel9.Controls.Add(this.label37);
-            this.groupPanel9.Controls.Add(this.label41);
-            this.groupPanel9.Controls.Add(this.tbX_hurryupval);
-            this.groupPanel9.Controls.Add(this.label34);
-            this.groupPanel9.Controls.Add(this.label4);
-            this.groupPanel9.Controls.Add(this.label21);
-            this.groupPanel9.Controls.Add(this.tbX_upval);
-            this.groupPanel9.Controls.Add(this.label40);
-            this.groupPanel9.Controls.Add(this.label44);
-            this.groupPanel9.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupPanel9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel9.Location = new System.Drawing.Point(0, 0);
-            this.groupPanel9.Name = "groupPanel9";
-            this.groupPanel9.Size = new System.Drawing.Size(554, 115);
-            // 
-            // 
-            // 
-            this.groupPanel9.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.groupPanel9.Style.BackColorGradientAngle = 90;
-            this.groupPanel9.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.groupPanel9.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel9.Style.BorderBottomWidth = 1;
-            this.groupPanel9.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.groupPanel9.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel9.Style.BorderLeftWidth = 1;
-            this.groupPanel9.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel9.Style.BorderRightWidth = 1;
-            this.groupPanel9.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel9.Style.BorderTopWidth = 1;
-            this.groupPanel9.Style.CornerDiameter = 4;
-            this.groupPanel9.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.groupPanel9.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.groupPanel9.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.groupPanel9.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
-            // 
-            // 
-            // 
-            this.groupPanel9.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.groupPanel9.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel9.TabIndex = 4;
-            this.groupPanel9.Text = "移动速度";
-            // 
-            // tbX_hurrydownval
-            // 
-            // 
-            // 
-            // 
-            this.tbX_hurrydownval.Border.Class = "TextBoxBorder";
-            this.tbX_hurrydownval.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_hurrydownval.Location = new System.Drawing.Point(168, 132);
-            this.tbX_hurrydownval.Name = "tbX_hurrydownval";
-            this.tbX_hurrydownval.PreventEnterBeep = true;
-            this.tbX_hurrydownval.Size = new System.Drawing.Size(123, 26);
-            this.tbX_hurrydownval.TabIndex = 5;
-            this.tbX_hurrydownval.Text = "10";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label42.Location = new System.Drawing.Point(309, 137);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(56, 16);
-            this.label42.TabIndex = 3;
-            this.label42.Text = "mm/min";
-            // 
-            // tbX_downval
-            // 
-            // 
-            // 
-            // 
-            this.tbX_downval.Border.Class = "TextBoxBorder";
-            this.tbX_downval.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_downval.Location = new System.Drawing.Point(168, 90);
-            this.tbX_downval.Name = "tbX_downval";
-            this.tbX_downval.PreventEnterBeep = true;
-            this.tbX_downval.Size = new System.Drawing.Size(123, 26);
-            this.tbX_downval.TabIndex = 5;
-            this.tbX_downval.Text = "10";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label37.Location = new System.Drawing.Point(309, 95);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(56, 16);
-            this.label37.TabIndex = 3;
-            this.label37.Text = "mm/min";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label41.Location = new System.Drawing.Point(17, 137);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(104, 16);
-            this.label41.TabIndex = 4;
-            this.label41.Text = "快速向下按钮";
-            // 
-            // tbX_hurryupval
-            // 
-            // 
-            // 
-            // 
-            this.tbX_hurryupval.Border.Class = "TextBoxBorder";
-            this.tbX_hurryupval.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_hurryupval.Location = new System.Drawing.Point(171, 50);
-            this.tbX_hurryupval.Name = "tbX_hurryupval";
-            this.tbX_hurryupval.PreventEnterBeep = true;
-            this.tbX_hurryupval.Size = new System.Drawing.Size(123, 26);
-            this.tbX_hurryupval.TabIndex = 5;
-            this.tbX_hurryupval.Text = "10";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label34.Location = new System.Drawing.Point(17, 95);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(72, 16);
-            this.label34.TabIndex = 4;
-            this.label34.Text = "向下按钮";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(312, 55);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 16);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "mm/min";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label21.Location = new System.Drawing.Point(17, 55);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(144, 16);
-            this.label21.TabIndex = 4;
-            this.label21.Text = "快速向上/向下按钮";
-            // 
-            // tbX_upval
-            // 
-            // 
-            // 
-            // 
-            this.tbX_upval.Border.Class = "TextBoxBorder";
-            this.tbX_upval.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_upval.Location = new System.Drawing.Point(171, 9);
-            this.tbX_upval.Name = "tbX_upval";
-            this.tbX_upval.PreventEnterBeep = true;
-            this.tbX_upval.Size = new System.Drawing.Size(123, 26);
-            this.tbX_upval.TabIndex = 2;
-            this.tbX_upval.Text = "10";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label40.Location = new System.Drawing.Point(312, 14);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(56, 16);
-            this.label40.TabIndex = 0;
-            this.label40.Text = "mm/min";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label44.Location = new System.Drawing.Point(17, 14);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(112, 16);
-            this.label44.TabIndex = 0;
-            this.label44.Text = "向上/向下按钮";
-            // 
-            // superTabItem1
-            // 
-            this.superTabItem1.AttachedControl = this.superTabControlPanel1;
-            this.superTabItem1.GlobalItem = false;
-            this.superTabItem1.Name = "superTabItem1";
-            this.superTabItem1.Text = "移动速度";
-            // 
             // superTabControlPanel4
             // 
             this.superTabControlPanel4.Controls.Add(this.panelEx4);
@@ -2825,6 +2825,10 @@
             this.Load += new System.EventHandler(this.FrmSystemSetting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
+            this.superTabControlPanel1.ResumeLayout(false);
+            this.panelEx7.ResumeLayout(false);
+            this.groupPanel9.ResumeLayout(false);
+            this.groupPanel9.PerformLayout();
             this.superTabControlPanel5.ResumeLayout(false);
             this.panelEx5.ResumeLayout(false);
             this.groupPanel12.ResumeLayout(false);
@@ -2859,10 +2863,6 @@
             this.groupPanel8.PerformLayout();
             this.groupPanel7.ResumeLayout(false);
             this.groupPanel7.PerformLayout();
-            this.superTabControlPanel1.ResumeLayout(false);
-            this.panelEx7.ResumeLayout(false);
-            this.groupPanel9.ResumeLayout(false);
-            this.groupPanel9.PerformLayout();
             this.superTabControlPanel4.ResumeLayout(false);
             this.panelEx4.ResumeLayout(false);
             this.superTabControlPanel3.ResumeLayout(false);

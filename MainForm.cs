@@ -142,6 +142,13 @@ namespace DoPENetConnect
         private const string CommandFailedString = "Command failed. Please make sure, that the Edc is successfully initialized. \n";
 
         /// <summary>
+        /// 登录用户名和密码
+        /// </summary>
+        public string strLoginName = "";
+        public string strUserPwd = "";
+
+
+        /// <summary>
         /// 是否已经连接控制器
         /// </summary>
         public bool bConnected = false;
