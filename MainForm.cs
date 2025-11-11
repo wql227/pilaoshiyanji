@@ -3909,14 +3909,14 @@ namespace DoPENetConnect
             //获取EDC设备id
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
-            string idEncry=devIdEncrypted.ToString();
-            //if (idEncry != "0" && idEncry != "")
-            //{
-            //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-            //}
-            devId = new StringBuilder("02132F05");
+            string idEncry = devIdEncrypted.ToString();
+            if (idEncry != "0" && idEncry != "")
+            {
+                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+            }
+            //devId = new StringBuilder("02132F05");
 
-            string aaa = DESEncrypt.Encrypt("0214C55E");
+            //string aaa = DESEncrypt.Encrypt("0214C55E");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);

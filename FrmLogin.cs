@@ -34,7 +34,7 @@ namespace DoPENetConnect
         {
             LoadIni();
 
-            cbX_SelectUser.SelectedIndex = 1;
+            cbX_SelectUser.SelectedIndex = 0;
         }
 
         private void label1_Click(object sender, EventArgs e)

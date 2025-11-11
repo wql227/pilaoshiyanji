@@ -505,6 +505,18 @@ namespace DoPENetConnect
             //IniFileHelper.GetIniString("UIDefault", "cbX_ProtectOption", "0", strTmp, strTmp.Capacity);
             //cbX_ProtectOption.SelectedIndex = int.Parse(strTmp.ToString());
 
+            #region 其他标签
+            IniFileHelper.GetIniString("SoftWareInfo ", "Name", "电液伺服疲劳试验机", strTmp, strTmp.Capacity);
+            tbX_SoftwareName.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("CompanyInfo ", "CompanyName", "有限公司", strTmp, strTmp.Capacity);
+            tbX_CompanyName.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("CompanyInfo ", "CompanyTel", "联系电话", strTmp, strTmp.Capacity);
+            tbX_CompanyTel.Text = strTmp.ToString();
+
+            #endregion
+
         }
 
 
@@ -760,6 +772,19 @@ namespace DoPENetConnect
 
             strTmp = cbX_EnableLow.Checked == false ? "0" : "1";
             IniFileHelper.WriteIniString("Setting ", "EnableLow", strTmp);
+
+
+            #region 其他标签
+            strTmp = tbX_SoftwareName.Text;
+            IniFileHelper.WriteIniString("SoftWareInfo ", "Name", strTmp);
+
+            strTmp = tbX_CompanyName.Text;
+            IniFileHelper.WriteIniString("CompanyInfo ", "CompanyName", strTmp);
+
+            strTmp = tbX_CompanyTel.Text;
+            IniFileHelper.WriteIniString("CompanyInfo ", "CompanyTel", strTmp);
+
+            #endregion
 
         }
 
