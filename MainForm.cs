@@ -1995,6 +1995,8 @@ namespace DoPENetConnect
             Display(string.Format("OnSystemMsg: DoPError={0} MsgNumber={1} Time={2} Text={3} \n",
               SystemMsg.DoPError, SystemMsg.MsgNumber, SystemMsg.Time, SystemMsg.Text));
 
+            floatMenus.SetStateText(SystemMsg.MsgNumber.ToString());
+
             return 0;
         }
 
