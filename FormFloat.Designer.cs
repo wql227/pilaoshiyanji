@@ -96,7 +96,7 @@
             this.buttonX1.Size = new System.Drawing.Size(120, 40);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 102;
-            this.buttonX1.Text = "保    持";
+            this.buttonX1.Text = " 停    止";
             this.buttonX1.Visible = false;
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
@@ -168,7 +168,7 @@
             this.bntX_MoveHalt.Size = new System.Drawing.Size(120, 40);
             this.bntX_MoveHalt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bntX_MoveHalt.TabIndex = 91;
-            this.bntX_MoveHalt.Text = "保    持";
+            this.bntX_MoveHalt.Text = " 停    止";
             this.bntX_MoveHalt.Click += new System.EventHandler(this.bntX_MoveHalt_Click);
             // 
             // btnX_SetLow
