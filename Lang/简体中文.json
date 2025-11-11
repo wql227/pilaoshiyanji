@@ -128,7 +128,7 @@
 	"FrmSystemSetting":{
 		"superTabItem5":"系统设置",
 		"superTabItem6":"动态试验过程保护选项",
-		"superTabItem1":"按键常数",
+		"superTabItem1":"移动速度",
 		"superTabItem2":"试验机参数",		
 		"groupPanel3":"系统保护设置",
 		"checkBoxX3":"试验力超过",
@@ -176,7 +176,7 @@
 		"cbX_FrmProtectOption_ExtMinOut_Effect":"生效",
 		"cbX_FrmProtectOption_ExtMinIn_Effect":"生效",
 		
-		"groupPanel9":"左侧手动操作菜单",
+		"groupPanel9":"移动速度",
 		"labe44":"向上按钮",
 		"labe21":"快速向上按钮",
 		"labe34":"向下按钮",
