@@ -721,11 +721,11 @@ namespace DoPENetConnect
             MainForm.mainform.btnHurryUpConstantVal = double.Parse(strTmp);
             IniFileHelper.WriteIniString("PushButtonFunctionConstant", "HurryUp", strTmp);
 
-            strTmp = tbX_downval.Text;
+            strTmp = tbX_upval.Text;
             MainForm.mainform.btnDownConstantVal = double.Parse(strTmp);
             IniFileHelper.WriteIniString("PushButtonFunctionConstant", "Down", strTmp);
 
-            strTmp = tbX_hurrydownval.Text;
+            strTmp = tbX_hurryupval.Text;
             MainForm.mainform.btnHurryDownConstantVal = double.Parse(strTmp);
             IniFileHelper.WriteIniString("PushButtonFunctionConstant", "HurryDown", strTmp);
 
