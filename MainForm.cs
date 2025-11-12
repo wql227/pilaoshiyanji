@@ -2158,7 +2158,7 @@ namespace DoPENetConnect
             //    axTChart1.Series(1).AddXY(i, 0.3 * i, "", 0);
             //}
 
-            cb_ShowPosition.CheckState = CheckState.Checked;
+            //cb_ShowPosition.CheckState = CheckState.Checked;
 
             //添加皮肤种类
             var skinNames = Enum.GetNames(typeof(eStyle));
@@ -4033,17 +4033,17 @@ namespace DoPENetConnect
             //chart_machine.ChartAreas[0].AxisX.Maximum = AxisXMax;
             axTChart1.Axis.Bottom.Maximum = AxisXMax;
 
-            IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
-            cb_ShowPosition.Checked = true;// strTmp.ToString() == "0" ? false : true;
+            //IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
+            //cb_ShowPosition.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmSetChartAxisY", "LoadEnable", "0", strTmp, strTmp.Capacity);
-            cb_ShowLoad.Checked = true;// strTmp.ToString() == "0" ? false : true;
+            //IniFileHelper.GetIniString("FrmSetChartAxisY", "LoadEnable", "0", strTmp, strTmp.Capacity);
+            //cb_ShowLoad.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmSetChartAxisY", "ExtEnable", "1", strTmp, strTmp.Capacity);
-            cb_ShowExtension.Checked = true;// strTmp.ToString() == "0" ? false : true;
+            //IniFileHelper.GetIniString("FrmSetChartAxisY", "ExtEnable", "1", strTmp, strTmp.Capacity);
+            //cb_ShowExtension.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
-            IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "1", strTmp, strTmp.Capacity);
-            cb_ShowCommand.Checked = true;// strTmp.ToString() == "0" ? false : true;
+            //IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "1", strTmp, strTmp.Capacity);
+            //cb_ShowCommand.Checked = true;// strTmp.ToString() == "0" ? false : true;
 
             //单位切换
             IniFileHelper.GetIniString("UIDefault", "comboBoxEx_ForceUnit", "0", strTmp, strTmp.Capacity);
@@ -5150,30 +5150,30 @@ namespace DoPENetConnect
 
         private void cb_ShowPosition_CheckedChanged(object sender, EventArgs e)
         {
-            bShowPosition = cb_ShowPosition.Checked;
-            //axTChart1.Series(0).Active = bShowPosition;
-            axTChart1.Series(0).Pen.Visible = bShowPosition;
+            //bShowPosition = cb_ShowPosition.Checked;
+            ////axTChart1.Series(0).Active = bShowPosition;
+            //axTChart1.Series(0).Pen.Visible = bShowPosition;
         }
 
         private void cb_ShowLoad_CheckedChanged(object sender, EventArgs e)
         {
-            bShowLoad = cb_ShowLoad.Checked;
-            //axTChart1.Series(1).Active = bShowLoad;
-            axTChart1.Series(1).Pen.Visible = bShowLoad;
+            //bShowLoad = cb_ShowLoad.Checked;
+            ////axTChart1.Series(1).Active = bShowLoad;
+            //axTChart1.Series(1).Pen.Visible = bShowLoad;
         }
 
         private void cb_ShowExtension_CheckedChanged(object sender, EventArgs e)
         {
-            bShowExtension = cb_ShowExtension.Checked;
-            //axTChart1.Series(2).Active = bShowExtension;
-            axTChart1.Series(2).Pen.Visible = bShowExtension;
+            //bShowExtension = cb_ShowExtension.Checked;
+            ////axTChart1.Series(2).Active = bShowExtension;
+            //axTChart1.Series(2).Pen.Visible = bShowExtension;
         }
 
         private void cb_ShowCommand_CheckedChanged(object sender, EventArgs e)
         {
-            bShowCommand = cb_ShowCommand.Checked;
-            //axTChart1.Series(3).Active = bShowLoad;
-            axTChart1.Series(3).Pen.Visible = bShowLoad;
+            //bShowCommand = cb_ShowCommand.Checked;
+            ////axTChart1.Series(3).Active = bShowLoad;
+            //axTChart1.Series(3).Pen.Visible = bShowLoad;
         }
 
 

@@ -291,13 +291,11 @@ namespace DoPENetConnect
                 MainForm.mainform.m_AxTeechart.Axis.Right.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
                 MainForm.mainform.m_AxTeechart.Axis.Right.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
 
-                var theCustomAxis = MainForm.mainform.m_AxTeechart.Axis.Custom[0]; // 直接用 [索引] 访问
+                MainForm.mainform.m_AxTeechart.Axis.Custom[0].Maximum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Max.Text);
+                MainForm.mainform.m_AxTeechart.Axis.Custom[0].Minimum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Min.Text);
 
-                theCustomAxis.Maximum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Max.Text);
-                theCustomAxis.Minimum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Min.Text);
-
-                //MainForm.mainform.m_AxTeechart.Axis..Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
-                //MainForm.mainform.m_AxTeechart.Axis.Custom.Item[0].Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
+                MainForm.mainform.m_AxTeechart.Axis.Custom[1].Maximum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Max.Text);
+                MainForm.mainform.m_AxTeechart.Axis.Custom[1].Minimum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Min.Text);
 
                 MainForm.mainform.m_AxTeechart.Axis.Bottom.Maximum = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
 
