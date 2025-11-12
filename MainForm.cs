@@ -1636,17 +1636,17 @@ namespace DoPENetConnect
                             #endregion 判断变形峰谷值
                         }
 
-                        while (PVExtensionQueue.Count > 100)
+                        while (PVExtensionQueue.Count > 200)
                         {
                             PVExtensionQueue.Dequeue();
                         }
 
-                        if (PVExtensionMaxAverageList.Count > 100)
+                        if (PVExtensionMaxAverageList.Count > 200)
                         {
                             PVExtensionMaxAverageList.RemoveRange(0, PVExtensionMaxAverageList.Count / 2);
                         }
 
-                        if (PVExtensionMinAverageList.Count > 100)
+                        if (PVExtensionMinAverageList.Count > 200)
                         {
                             PVExtensionMinAverageList.RemoveRange(0, PVExtensionMinAverageList.Count / 2);
                         }
