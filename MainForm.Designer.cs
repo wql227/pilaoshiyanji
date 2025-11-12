@@ -336,6 +336,12 @@
             this.timer_ShowWave = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.superTabControl4 = new DevComponents.DotNetBar.SuperTabControl();
+            this.superTabItem8 = new DevComponents.DotNetBar.SuperTabItem();
+            this.superTabControlPanel8 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.superTabItem9 = new DevComponents.DotNetBar.SuperTabItem();
+            this.superTabControlPanel9 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.panelEx13 = new DevComponents.DotNetBar.PanelEx();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -384,6 +390,10 @@
             this.panelEx9.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl4)).BeginInit();
+            this.superTabControl4.SuspendLayout();
+            this.superTabControlPanel8.SuspendLayout();
+            this.panelEx13.SuspendLayout();
             this.SuspendLayout();
             // 
             // StartCommunicationWithEdcTimer
@@ -538,10 +548,7 @@
             // 
             this.panelEx11.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx11.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx11.Controls.Add(this.btnX_ApplyProtection);
-            this.panelEx11.Controls.Add(this.groupPanel7);
-            this.panelEx11.Controls.Add(this.groupPanel6);
-            this.panelEx11.Controls.Add(this.groupPanel13);
+            this.panelEx11.Controls.Add(this.superTabControl4);
             this.panelEx11.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx11.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelEx11.Location = new System.Drawing.Point(1308, 0);
@@ -560,7 +567,7 @@
             // 
             this.btnX_ApplyProtection.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_ApplyProtection.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_ApplyProtection.Location = new System.Drawing.Point(299, 452);
+            this.btnX_ApplyProtection.Location = new System.Drawing.Point(299, 455);
             this.btnX_ApplyProtection.Name = "btnX_ApplyProtection";
             this.btnX_ApplyProtection.Size = new System.Drawing.Size(90, 36);
             this.btnX_ApplyProtection.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -570,6 +577,7 @@
             // 
             // groupPanel7
             // 
+            this.groupPanel7.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel7.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel7.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel7.Controls.Add(this.checkBoxX9);
@@ -590,7 +598,7 @@
             this.groupPanel7.Controls.Add(this.label18);
             this.groupPanel7.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel7.Location = new System.Drawing.Point(14, 309);
+            this.groupPanel7.Location = new System.Drawing.Point(14, 312);
             this.groupPanel7.Name = "groupPanel7";
             this.groupPanel7.Size = new System.Drawing.Size(377, 102);
             // 
@@ -818,6 +826,7 @@
             // 
             // groupPanel6
             // 
+            this.groupPanel6.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel6.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel6.Controls.Add(this.checkBoxX3);
@@ -838,7 +847,7 @@
             this.groupPanel6.Controls.Add(this.label10);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel6.Location = new System.Drawing.Point(14, 166);
+            this.groupPanel6.Location = new System.Drawing.Point(14, 169);
             this.groupPanel6.Name = "groupPanel6";
             this.groupPanel6.Size = new System.Drawing.Size(377, 102);
             // 
@@ -1066,6 +1075,7 @@
             // 
             // groupPanel13
             // 
+            this.groupPanel13.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel13.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel13.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel13.Controls.Add(this.textBoxX14);
@@ -1086,7 +1096,7 @@
             this.groupPanel13.Controls.Add(this.label67);
             this.groupPanel13.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupPanel13.Location = new System.Drawing.Point(14, 23);
+            this.groupPanel13.Location = new System.Drawing.Point(14, 26);
             this.groupPanel13.Name = "groupPanel13";
             this.groupPanel13.Size = new System.Drawing.Size(377, 102);
             // 
@@ -4362,6 +4372,96 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
             // 
+            // superTabControl4
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.superTabControl4.ControlBox.CloseBox.Name = "";
+            // 
+            // 
+            // 
+            this.superTabControl4.ControlBox.MenuBox.Name = "";
+            this.superTabControl4.ControlBox.Name = "";
+            this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.superTabControl4.ControlBox.MenuBox,
+            this.superTabControl4.ControlBox.CloseBox});
+            this.superTabControl4.Controls.Add(this.superTabControlPanel8);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
+            this.superTabControl4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.superTabControl4.Location = new System.Drawing.Point(0, 0);
+            this.superTabControl4.Name = "superTabControl4";
+            this.superTabControl4.ReorderTabsEnabled = true;
+            this.superTabControl4.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.superTabControl4.SelectedTabIndex = 0;
+            this.superTabControl4.Size = new System.Drawing.Size(404, 544);
+            this.superTabControl4.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.superTabControl4.TabIndex = 24;
+            this.superTabControl4.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.superTabItem8,
+            this.superTabItem9});
+            this.superTabControl4.Text = "superTabControl4";
+            // 
+            // superTabItem8
+            // 
+            this.superTabItem8.AttachedControl = this.superTabControlPanel8;
+            this.superTabItem8.GlobalItem = false;
+            this.superTabItem8.Name = "superTabItem8";
+            this.superTabItem8.Text = "保护";
+            // 
+            // superTabControlPanel8
+            // 
+            this.superTabControlPanel8.Controls.Add(this.panelEx13);
+            this.superTabControlPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel8.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel8.Name = "superTabControlPanel8";
+            this.superTabControlPanel8.Size = new System.Drawing.Size(404, 516);
+            this.superTabControlPanel8.TabIndex = 1;
+            this.superTabControlPanel8.TabItem = this.superTabItem8;
+            // 
+            // superTabItem9
+            // 
+            this.superTabItem9.AttachedControl = this.superTabControlPanel9;
+            this.superTabItem9.GlobalItem = false;
+            this.superTabItem9.Name = "superTabItem9";
+            this.superTabItem9.Text = "程控";
+            // 
+            // superTabControlPanel9
+            // 
+            this.superTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel9.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel9.Name = "superTabControlPanel9";
+            this.superTabControlPanel9.Size = new System.Drawing.Size(404, 516);
+            this.superTabControlPanel9.TabIndex = 0;
+            this.superTabControlPanel9.TabItem = this.superTabItem9;
+            // 
+            // panelEx13
+            // 
+            this.panelEx13.AutoScroll = true;
+            this.panelEx13.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx13.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx13.Controls.Add(this.groupPanel13);
+            this.panelEx13.Controls.Add(this.btnX_ApplyProtection);
+            this.panelEx13.Controls.Add(this.groupPanel7);
+            this.panelEx13.Controls.Add(this.groupPanel6);
+            this.panelEx13.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx13.Location = new System.Drawing.Point(0, 0);
+            this.panelEx13.Name = "panelEx13";
+            this.panelEx13.Size = new System.Drawing.Size(404, 516);
+            this.panelEx13.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx13.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx13.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx13.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx13.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx13.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx13.Style.GradientAngle = 90;
+            this.panelEx13.TabIndex = 0;
+            this.panelEx13.Text = "panelEx13";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4440,6 +4540,10 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl4)).EndInit();
+            this.superTabControl4.ResumeLayout(false);
+            this.superTabControlPanel8.ResumeLayout(false);
+            this.panelEx13.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -4756,6 +4860,12 @@
         private DevComponents.DotNetBar.ButtonX buttonX16;
         private DevComponents.DotNetBar.ButtonX buttonX18;
         private DevComponents.DotNetBar.ButtonX buttonX19;
+        private DevComponents.DotNetBar.SuperTabControl superTabControl4;
+        private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel9;
+        private DevComponents.DotNetBar.SuperTabItem superTabItem9;
+        private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel8;
+        private DevComponents.DotNetBar.SuperTabItem superTabItem8;
+        private DevComponents.DotNetBar.PanelEx panelEx13;
     }
 }
 
