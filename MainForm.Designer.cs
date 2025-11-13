@@ -599,8 +599,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel8);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Dock = System.Windows.Forms.DockStyle.Right;
             this.superTabControl4.Location = new System.Drawing.Point(0, 0);
             this.superTabControl4.Name = "superTabControl4";

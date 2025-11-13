@@ -543,12 +543,12 @@ namespace DoPENetConnect
         /// <summary>
         /// 显示变形曲线
         /// </summary>
-        public static bool bShowExtension = false;
+        public static bool bShowExtension = true;
 
         /// <summary>
         /// 显示命令曲线
         /// </summary>
-        public static bool bShowCommand = false;
+        public static bool bShowCommand = true;
 
 
         public AxTeeChart.AxTChart m_AxTeechart
@@ -2141,6 +2141,10 @@ namespace DoPENetConnect
 
             //设置右侧位移轴
             axTChart1.Axis.Right.SetMinMax(-20, 20);
+
+            axTChart1.Axis.Custom[0].SetMinMax(-20, 20);
+
+            axTChart1.Axis.Custom[1].SetMinMax(-20, 20);
 
             axTChart1.Series(0).Color = (uint)(Color.Blue.B << 16) | (ushort)((Color.Blue.G << 8) | Color.Blue.R);
             axTChart1.Series(1).Color = (uint)(Color.Red.B << 16) | (ushort)((Color.Red.G << 8) | Color.Red.R);
@@ -4030,7 +4034,6 @@ namespace DoPENetConnect
 
             IniFileHelper.GetIniString("FrmSetChartAxisY", "TimeX_MAX", "5", strTmp, strTmp.Capacity);
             AxisXMax = double.Parse(strTmp.ToString());
-            //chart_machine.ChartAreas[0].AxisX.Maximum = AxisXMax;
             axTChart1.Axis.Bottom.Maximum = AxisXMax;
 
             //IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);

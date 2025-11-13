@@ -291,7 +291,10 @@
             this.ClientSize = new System.Drawing.Size(628, 278);
             this.Controls.Add(this.panelEx1);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmAbout";
             this.Text = "关于";
             this.Load += new System.EventHandler(this.FrmAbout_Load);
