@@ -29,5 +29,44 @@ namespace DoPENetConnect
             //if(tmpInput.)
             //if(tmpInput)
         }
+
+        private void comboBoxEx3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBoxEx3.Text)
+            {
+                case "定位移动":
+                    panelEx_boxing.Visible = false;
+                    panelEx_delay.Visible = false;
+                    panelEx_Empty.Visible = false;
+                    panelEx_定位移动.Visible = true;
+                    break;
+                case "波形控制":
+                    panelEx_boxing.Visible = true;
+                    panelEx_delay.Visible = false;
+                    panelEx_Empty.Visible = false;
+                    panelEx_定位移动.Visible = false;
+                    break;
+                case "延时":
+                    panelEx_boxing.Visible = false;
+                    panelEx_delay.Visible = true;
+                    panelEx_Empty.Visible = false;
+                    panelEx_定位移动.Visible = false;
+                    break;
+                default:
+                    panelEx_boxing.Visible = false;
+                    panelEx_delay.Visible = false;
+                    panelEx_Empty.Visible = true;
+                    panelEx_定位移动.Visible = false;
+                    break;
+
+
+            }
+        }
+
+        private void FormProgram_Load(object sender, EventArgs e)
+        {
+            comboBoxEx3.SelectedIndex = 0;
+            comboBoxEx3.Text = "1";
+        }
     }
 }
