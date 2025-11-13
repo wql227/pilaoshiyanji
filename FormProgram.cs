@@ -25,9 +25,12 @@ namespace DoPENetConnect
         {
             FormInputBox tmpInput = new FormInputBox();
             tmpInput.Location = new Point(this.Location.X + this.Width / 2, this.Location.Y + 100);
-            tmpInput.Show();
+            tmpInput.ShowDialog();
             //if(tmpInput.)
-            //if(tmpInput)
+            Console.WriteLine(this.Name);
+            if (tmpInput.inputedString != null) {
+                programName = tmpInput.inputedString;
+            }
         }
 
         private void comboBoxEx3_SelectedIndexChanged(object sender, EventArgs e)
