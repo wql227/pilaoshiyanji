@@ -5519,5 +5519,11 @@ namespace DoPENetConnect
         {
             axTChart1.Axis.Bottom.Maximum += Chart_X_Step;
         }
+
+        private void buttonX21_Click(object sender, EventArgs e)
+        {
+            FormProgram tmpProgrammer = new FormProgram();
+            tmpProgrammer.Show();
+        }
     }
 }
