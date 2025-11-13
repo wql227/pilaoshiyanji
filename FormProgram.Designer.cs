@@ -82,14 +82,6 @@
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.stepNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waveform = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.offset = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zhenfu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cycleNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
             this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
@@ -98,6 +90,11 @@
             this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.comboItem6 = new DevComponents.Editors.ComboItem();
+            this.stepNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cycleNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx1.SuspendLayout();
             this.panelEx_delay.SuspendLayout();
             this.panelEx_定位移动.SuspendLayout();
@@ -872,10 +869,7 @@
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.stepNo,
             this.ctrl,
-            this.waveform,
-            this.startSpeed,
-            this.offset,
-            this.zhenfu,
+            this.Column1,
             this.frequency,
             this.cycleNum});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -903,46 +897,6 @@
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(1367, 492);
             this.dataGridViewX1.TabIndex = 7;
-            // 
-            // stepNo
-            // 
-            this.stepNo.HeaderText = "步骤";
-            this.stepNo.Name = "stepNo";
-            // 
-            // ctrl
-            // 
-            this.ctrl.HeaderText = "控制方式";
-            this.ctrl.Name = "ctrl";
-            // 
-            // waveform
-            // 
-            this.waveform.HeaderText = "波形";
-            this.waveform.Name = "waveform";
-            // 
-            // startSpeed
-            // 
-            this.startSpeed.HeaderText = "趋近速度";
-            this.startSpeed.Name = "startSpeed";
-            // 
-            // offset
-            // 
-            this.offset.HeaderText = "偏移量";
-            this.offset.Name = "offset";
-            // 
-            // zhenfu
-            // 
-            this.zhenfu.HeaderText = "振幅";
-            this.zhenfu.Name = "zhenfu";
-            // 
-            // frequency
-            // 
-            this.frequency.HeaderText = "频率";
-            this.frequency.Name = "frequency";
-            // 
-            // cycleNum
-            // 
-            this.cycleNum.HeaderText = "循环次数";
-            this.cycleNum.Name = "cycleNum";
             // 
             // btnX_FrmProtectOption_Cencel
             // 
@@ -993,6 +947,31 @@
             // 
             this.comboItem6.Text = "试验结束";
             // 
+            // stepNo
+            // 
+            this.stepNo.HeaderText = "步骤";
+            this.stepNo.Name = "stepNo";
+            // 
+            // ctrl
+            // 
+            this.ctrl.HeaderText = "指令参数";
+            this.ctrl.Name = "ctrl";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "指令内容";
+            this.Column1.Name = "Column1";
+            // 
+            // frequency
+            // 
+            this.frequency.HeaderText = "跳转到";
+            this.frequency.Name = "frequency";
+            // 
+            // cycleNum
+            // 
+            this.cycleNum.HeaderText = "循环";
+            this.cycleNum.Name = "cycleNum";
+            // 
             // FormProgram
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1040,14 +1019,6 @@
         private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX5;
         private DevComponents.DotNetBar.LabelX labelX9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stepNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ctrl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn waveform;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startSpeed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn offset;
-        private System.Windows.Forms.DataGridViewTextBoxColumn zhenfu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn frequency;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cycleNum;
         private DevComponents.DotNetBar.PanelEx panelEx_boxing;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx5;
         private DevComponents.DotNetBar.LabelX labelX10;
@@ -1080,5 +1051,10 @@
         private DevComponents.Editors.ComboItem comboItem4;
         private DevComponents.Editors.ComboItem comboItem5;
         private DevComponents.Editors.ComboItem comboItem6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stepNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ctrl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn frequency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cycleNum;
     }
 }
