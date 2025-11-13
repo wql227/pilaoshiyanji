@@ -2148,7 +2148,7 @@ namespace DoPENetConnect
 
             axTChart1.Series(0).Color = (uint)(Color.Blue.B << 16) | (ushort)((Color.Blue.G << 8) | Color.Blue.R);
             axTChart1.Series(1).Color = (uint)(Color.Red.B << 16) | (ushort)((Color.Red.G << 8) | Color.Red.R);
-            axTChart1.Series(2).Color = (uint)(Color.DarkOrange.B << 16) | (ushort)((Color.DarkOrange.G << 8) | Color.DarkOrange.R);
+            axTChart1.Series(2).Color = (uint)(Color.Black.B << 16) | (ushort)((Color.Black.G << 8) | Color.Black.R);
             axTChart1.Series(3).Color = (uint)(Color.SeaGreen.B << 16) | (ushort)((Color.SeaGreen.G << 8) | Color.SeaGreen.R);
 
 
