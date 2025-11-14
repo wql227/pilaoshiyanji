@@ -61,24 +61,33 @@ namespace DoPENetConnect
                     panelEx_delay.Visible = false;
                     panelEx_Empty.Visible = false;
                     panelEx_dengsuweiyi.Visible = true;
+
+                    labelX23.Text = "速率mm/min";
+                    labelX24.Text = "mm";
                     break;
                 case "等速力":
                     panelEx_boxing.Visible = false;
                     panelEx_delay.Visible = false;
                     panelEx_Empty.Visible = false;
                     panelEx_dengsuweiyi.Visible = true;
+                    labelX23.Text = "速率kN/s";
+                    labelX24.Text = "kN";
                     break;
                 case "位移保持":
                     panelEx_boxing.Visible = false;
                     panelEx_delay.Visible = false;
                     panelEx_Empty.Visible = false;
                     panelEx_dengsuweiyi.Visible = true;
+                    labelX23.Text = "mm";
+                    labelX24.Text = "s";
                     break;
                 case "力保持":
                     panelEx_boxing.Visible = false;
                     panelEx_delay.Visible = false;
                     panelEx_Empty.Visible = false;
                     panelEx_dengsuweiyi.Visible = true;
+                    textBoxX15.Text = "kN";
+                    labelX24.Text = "s";
                     break;
                 case "波形控制":
                     panelEx_boxing.Visible = true;
