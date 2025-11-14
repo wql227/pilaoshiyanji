@@ -70,7 +70,50 @@ namespace DoPENetConnect
         private void FormProgram_Load(object sender, EventArgs e)
         {
             comboBoxEx3.SelectedIndex = 0;
-            comboBoxEx3.Text = "1";
+            comboBoxEx2.SelectedIndex = 0;
+            comboBoxEx5.SelectedIndex = 1;
         }
+
+        private void btnX_FrmProtectOption_Cencel_Click(object sender, EventArgs e)
+        {
+            switch (comboBoxEx3.Text)
+            {
+                case "定位移动":
+                    break;
+                //case "定位移动":
+                //    break;
+            }
+        }
+
+        //public void InsertOneSteps(void)
+        //{
+        //    var grpControls = groupPanel1.Controls;
+        //    DataGridViewRow newRow = new DataGridViewRow();
+        //    newRow.CreateCells(dataGridViewX1);
+        //    //if (dataGridViewX1.Rows.Count != 0&&isThereOneRows) {
+        //    //    isThereOneRows = false;
+        //    //    dataGridViewX1.Rows.RemoveAt(0);
+        //    //}
+        //    int j = 0;
+        //    for (int i = grpControls.Count - 1; i >= 0; i--)
+        //    {
+        //        if (grpControls[i].Name.Contains("textBox"))
+        //        {
+        //            newRow.Cells[j].Value = grpControls[i].Text;
+        //            j++;
+        //        }
+        //    }
+        //    if (dataGridViewX1.RowCount == 0)
+        //    {
+        //        dataGridViewX1.Rows.Add(newRow);
+        //        newRow.HeaderCell.Value = (dataGridViewX1.Rows.Count).ToString();
+        //    }
+        //    else
+        //    {
+        //        dataGridViewX1.Rows.RemoveAt(0);
+        //        dataGridViewX1.Rows.Add(newRow);
+        //        newRow.HeaderCell.Value = (dataGridViewX1.Rows.Count).ToString();
+        //    }
+        //}
     }
 }
