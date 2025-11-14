@@ -36,7 +36,7 @@
             this.panelEx_delay = new DevComponents.DotNetBar.PanelEx();
             this.labelX20 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.panelEx_定位移动 = new DevComponents.DotNetBar.PanelEx();
+            this.panelEx_dengsuweiyi = new DevComponents.DotNetBar.PanelEx();
             this.labelX18 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx7 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX23 = new DevComponents.DotNetBar.LabelX();
@@ -217,7 +217,7 @@
             this.comboItem126 = new DevComponents.Editors.ComboItem();
             this.panelEx1.SuspendLayout();
             this.panelEx_delay.SuspendLayout();
-            this.panelEx_定位移动.SuspendLayout();
+            this.panelEx_dengsuweiyi.SuspendLayout();
             this.panelEx_boxing.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
@@ -231,7 +231,7 @@
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx1.Controls.Add(this.panelEx_Empty);
             this.panelEx1.Controls.Add(this.panelEx_delay);
-            this.panelEx1.Controls.Add(this.panelEx_定位移动);
+            this.panelEx1.Controls.Add(this.panelEx_dengsuweiyi);
             this.panelEx1.Controls.Add(this.comboBoxEx5);
             this.panelEx1.Controls.Add(this.labelX10);
             this.panelEx1.Controls.Add(this.labelX8);
@@ -269,7 +269,7 @@
             this.panelEx_Empty.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx_Empty.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx_Empty.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx_Empty.Location = new System.Drawing.Point(245, 41);
+            this.panelEx_Empty.Location = new System.Drawing.Point(245, 128);
             this.panelEx_Empty.Name = "panelEx_Empty";
             this.panelEx_Empty.Size = new System.Drawing.Size(956, 66);
             this.panelEx_Empty.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -290,7 +290,7 @@
             this.panelEx_delay.Controls.Add(this.labelX20);
             this.panelEx_delay.Controls.Add(this.textBoxX12);
             this.panelEx_delay.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx_delay.Location = new System.Drawing.Point(245, 41);
+            this.panelEx_delay.Location = new System.Drawing.Point(245, 198);
             this.panelEx_delay.Name = "panelEx_delay";
             this.panelEx_delay.Size = new System.Drawing.Size(956, 66);
             this.panelEx_delay.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -331,32 +331,32 @@
             this.textBoxX12.Size = new System.Drawing.Size(86, 26);
             this.textBoxX12.TabIndex = 27;
             // 
-            // panelEx_定位移动
+            // panelEx_dengsuweiyi
             // 
-            this.panelEx_定位移动.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx_定位移动.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx_定位移动.Controls.Add(this.labelX18);
-            this.panelEx_定位移动.Controls.Add(this.comboBoxEx7);
-            this.panelEx_定位移动.Controls.Add(this.labelX23);
-            this.panelEx_定位移动.Controls.Add(this.textBoxX15);
-            this.panelEx_定位移动.Controls.Add(this.textBoxX16);
-            this.panelEx_定位移动.Controls.Add(this.labelX24);
-            this.panelEx_定位移动.Controls.Add(this.labelX25);
-            this.panelEx_定位移动.Controls.Add(this.textBoxX17);
-            this.panelEx_定位移动.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx_定位移动.Location = new System.Drawing.Point(245, 41);
-            this.panelEx_定位移动.Name = "panelEx_定位移动";
-            this.panelEx_定位移动.Size = new System.Drawing.Size(956, 66);
-            this.panelEx_定位移动.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_定位移动.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
-            this.panelEx_定位移动.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
-            this.panelEx_定位移动.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx_定位移动.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx_定位移动.Style.BorderWidth = 0;
-            this.panelEx_定位移动.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx_定位移动.Style.GradientAngle = 90;
-            this.panelEx_定位移动.TabIndex = 56;
-            this.panelEx_定位移动.Visible = false;
+            this.panelEx_dengsuweiyi.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx_dengsuweiyi.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx_dengsuweiyi.Controls.Add(this.labelX18);
+            this.panelEx_dengsuweiyi.Controls.Add(this.comboBoxEx7);
+            this.panelEx_dengsuweiyi.Controls.Add(this.labelX23);
+            this.panelEx_dengsuweiyi.Controls.Add(this.textBoxX15);
+            this.panelEx_dengsuweiyi.Controls.Add(this.textBoxX16);
+            this.panelEx_dengsuweiyi.Controls.Add(this.labelX24);
+            this.panelEx_dengsuweiyi.Controls.Add(this.labelX25);
+            this.panelEx_dengsuweiyi.Controls.Add(this.textBoxX17);
+            this.panelEx_dengsuweiyi.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx_dengsuweiyi.Location = new System.Drawing.Point(245, 274);
+            this.panelEx_dengsuweiyi.Name = "panelEx_dengsuweiyi";
+            this.panelEx_dengsuweiyi.Size = new System.Drawing.Size(956, 66);
+            this.panelEx_dengsuweiyi.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx_dengsuweiyi.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
+            this.panelEx_dengsuweiyi.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
+            this.panelEx_dengsuweiyi.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx_dengsuweiyi.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx_dengsuweiyi.Style.BorderWidth = 0;
+            this.panelEx_dengsuweiyi.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx_dengsuweiyi.Style.GradientAngle = 90;
+            this.panelEx_dengsuweiyi.TabIndex = 56;
+            this.panelEx_dengsuweiyi.Visible = false;
             // 
             // labelX18
             // 
@@ -912,7 +912,7 @@
             // 
             // comboItem1
             // 
-            this.comboItem1.Text = "定位移动";
+            this.comboItem1.Text = "等速位移";
             // 
             // comboItem2
             // 
@@ -1239,6 +1239,7 @@
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 8;
             this.buttonX1.Text = "添加步骤";
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // dataGridViewX1
             // 
@@ -1706,7 +1707,7 @@
             this.Load += new System.EventHandler(this.FormProgram_Load);
             this.panelEx1.ResumeLayout(false);
             this.panelEx_delay.ResumeLayout(false);
-            this.panelEx_定位移动.ResumeLayout(false);
+            this.panelEx_dengsuweiyi.ResumeLayout(false);
             this.panelEx_boxing.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
@@ -1755,7 +1756,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX8;
         private DevComponents.DotNetBar.LabelX labelX13;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx6;
-        private DevComponents.DotNetBar.PanelEx panelEx_定位移动;
+        private DevComponents.DotNetBar.PanelEx panelEx_dengsuweiyi;
         private DevComponents.DotNetBar.LabelX labelX18;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx7;
         private DevComponents.DotNetBar.LabelX labelX23;

@@ -16,6 +16,24 @@ namespace DoPENetConnect
             get;
             set;
         }
+
+        public string step_No {
+            get;
+            set;
+        }
+        
+        public string cmdParameter {
+            get;
+            set;
+        }
+
+        public string cmdString {
+            get;
+            set;
+        }
+
+
+
         public FormProgram()
         {
             InitializeComponent();
@@ -38,29 +56,29 @@ namespace DoPENetConnect
         {
             switch (comboBoxEx3.Text)
             {
-                case "定位移动":
+                case "等速位移":
                     panelEx_boxing.Visible = false;
                     panelEx_delay.Visible = false;
                     panelEx_Empty.Visible = false;
-                    panelEx_定位移动.Visible = true;
+                    panelEx_dengsuweiyi.Visible = true;
                     break;
                 case "波形控制":
                     panelEx_boxing.Visible = true;
                     panelEx_delay.Visible = false;
                     panelEx_Empty.Visible = false;
-                    panelEx_定位移动.Visible = false;
+                    panelEx_dengsuweiyi.Visible = false;
                     break;
                 case "延时":
                     panelEx_boxing.Visible = false;
                     panelEx_delay.Visible = true;
                     panelEx_Empty.Visible = false;
-                    panelEx_定位移动.Visible = false;
+                    panelEx_dengsuweiyi.Visible = false;
                     break;
                 default:
                     panelEx_boxing.Visible = false;
                     panelEx_delay.Visible = false;
                     panelEx_Empty.Visible = true;
-                    panelEx_定位移动.Visible = false;
+                    panelEx_dengsuweiyi.Visible = false;
                     break;
 
 
@@ -78,14 +96,38 @@ namespace DoPENetConnect
         {
             switch (comboBoxEx3.Text)
             {
-                case "定位移动":
+                case "等速位移":
                     break;
-                //case "定位移动":
+                //case "等速位移":
                 //    break;
             }
         }
 
-        //public void InsertOneSteps(void)
+        public string[] GetInsertStrings() {
+            string[] tmpStrings = new string[] { };
+            tmpStrings[0] = comboBoxEx2.Text;
+            tmpStrings[1] = comboBoxEx3.Text;
+
+            string[] tmpParams1 = new string[] { };
+            switch (comboBoxEx3.Text)
+            {
+                case "等速位移":
+                    //tmpParams1
+                    break;
+                    //case "等速位移":
+                    //    break;
+            }
+            tmpStrings[3] = comboBoxEx5.Text;
+            tmpStrings[4] = textBoxX4.Text;
+            return tmpStrings;
+        }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //public void InsertOneSteps()
         //{
         //    var grpControls = groupPanel1.Controls;
         //    DataGridViewRow newRow = new DataGridViewRow();
