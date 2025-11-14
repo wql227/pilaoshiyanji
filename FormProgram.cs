@@ -62,6 +62,24 @@ namespace DoPENetConnect
                     panelEx_Empty.Visible = false;
                     panelEx_dengsuweiyi.Visible = true;
                     break;
+                case "等速力":
+                    panelEx_boxing.Visible = false;
+                    panelEx_delay.Visible = false;
+                    panelEx_Empty.Visible = false;
+                    panelEx_dengsuweiyi.Visible = true;
+                    break;
+                case "位移保持":
+                    panelEx_boxing.Visible = false;
+                    panelEx_delay.Visible = false;
+                    panelEx_Empty.Visible = false;
+                    panelEx_dengsuweiyi.Visible = true;
+                    break;
+                case "力保持":
+                    panelEx_boxing.Visible = false;
+                    panelEx_delay.Visible = false;
+                    panelEx_Empty.Visible = false;
+                    panelEx_dengsuweiyi.Visible = true;
+                    break;
                 case "波形控制":
                     panelEx_boxing.Visible = true;
                     panelEx_delay.Visible = false;

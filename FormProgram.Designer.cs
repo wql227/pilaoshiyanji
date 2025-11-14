@@ -28,23 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_Empty = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_delay = new DevComponents.DotNetBar.PanelEx();
             this.labelX20 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelEx_dengsuweiyi = new DevComponents.DotNetBar.PanelEx();
-            this.labelX18 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx7 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX23 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.textBoxX16 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX24 = new DevComponents.DotNetBar.LabelX();
-            this.labelX25 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX17 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.comboBoxEx5 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
@@ -215,6 +211,11 @@
             this.comboItem124 = new DevComponents.Editors.ComboItem();
             this.comboItem125 = new DevComponents.Editors.ComboItem();
             this.comboItem126 = new DevComponents.Editors.ComboItem();
+            this.labelX16 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx8 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem127 = new DevComponents.Editors.ComboItem();
+            this.comboItem128 = new DevComponents.Editors.ComboItem();
+            this.comboItem129 = new DevComponents.Editors.ComboItem();
             this.panelEx1.SuspendLayout();
             this.panelEx_delay.SuspendLayout();
             this.panelEx_dengsuweiyi.SuspendLayout();
@@ -281,7 +282,6 @@
             this.panelEx_Empty.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_Empty.Style.GradientAngle = 90;
             this.panelEx_Empty.TabIndex = 64;
-            this.panelEx_Empty.Visible = false;
             // 
             // panelEx_delay
             // 
@@ -302,7 +302,6 @@
             this.panelEx_delay.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_delay.Style.GradientAngle = 90;
             this.panelEx_delay.TabIndex = 60;
-            this.panelEx_delay.Visible = false;
             // 
             // labelX20
             // 
@@ -335,14 +334,12 @@
             // 
             this.panelEx_dengsuweiyi.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx_dengsuweiyi.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx_dengsuweiyi.Controls.Add(this.labelX18);
-            this.panelEx_dengsuweiyi.Controls.Add(this.comboBoxEx7);
+            this.panelEx_dengsuweiyi.Controls.Add(this.labelX16);
+            this.panelEx_dengsuweiyi.Controls.Add(this.comboBoxEx8);
             this.panelEx_dengsuweiyi.Controls.Add(this.labelX23);
             this.panelEx_dengsuweiyi.Controls.Add(this.textBoxX15);
             this.panelEx_dengsuweiyi.Controls.Add(this.textBoxX16);
             this.panelEx_dengsuweiyi.Controls.Add(this.labelX24);
-            this.panelEx_dengsuweiyi.Controls.Add(this.labelX25);
-            this.panelEx_dengsuweiyi.Controls.Add(this.textBoxX17);
             this.panelEx_dengsuweiyi.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx_dengsuweiyi.Location = new System.Drawing.Point(245, 274);
             this.panelEx_dengsuweiyi.Name = "panelEx_dengsuweiyi";
@@ -356,33 +353,6 @@
             this.panelEx_dengsuweiyi.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_dengsuweiyi.Style.GradientAngle = 90;
             this.panelEx_dengsuweiyi.TabIndex = 56;
-            this.panelEx_dengsuweiyi.Visible = false;
-            // 
-            // labelX18
-            // 
-            // 
-            // 
-            // 
-            this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX18.Location = new System.Drawing.Point(263, 3);
-            this.labelX18.Name = "labelX18";
-            this.labelX18.Size = new System.Drawing.Size(91, 23);
-            this.labelX18.TabIndex = 47;
-            this.labelX18.Text = "目标到达后控制";
-            this.labelX18.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // comboBoxEx7
-            // 
-            this.comboBoxEx7.DisplayMember = "Text";
-            this.comboBoxEx7.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx7.Font = new System.Drawing.Font("宋体", 12F);
-            this.comboBoxEx7.FormattingEnabled = true;
-            this.comboBoxEx7.ItemHeight = 21;
-            this.comboBoxEx7.Location = new System.Drawing.Point(263, 26);
-            this.comboBoxEx7.Name = "comboBoxEx7";
-            this.comboBoxEx7.Size = new System.Drawing.Size(91, 27);
-            this.comboBoxEx7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx7.TabIndex = 48;
             // 
             // labelX23
             // 
@@ -420,7 +390,7 @@
             this.textBoxX16.Border.Class = "TextBoxBorder";
             this.textBoxX16.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX16.Font = new System.Drawing.Font("宋体", 12F);
-            this.textBoxX16.Location = new System.Drawing.Point(172, 26);
+            this.textBoxX16.Location = new System.Drawing.Point(180, 26);
             this.textBoxX16.Name = "textBoxX16";
             this.textBoxX16.PreventEnterBeep = true;
             this.textBoxX16.Size = new System.Drawing.Size(86, 26);
@@ -432,39 +402,12 @@
             // 
             // 
             this.labelX24.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX24.Location = new System.Drawing.Point(172, 4);
+            this.labelX24.Location = new System.Drawing.Point(180, 4);
             this.labelX24.Name = "labelX24";
             this.labelX24.Size = new System.Drawing.Size(86, 23);
             this.labelX24.TabIndex = 30;
-            this.labelX24.Text = "目标值";
+            this.labelX24.Text = "判断值";
             this.labelX24.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // labelX25
-            // 
-            // 
-            // 
-            // 
-            this.labelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX25.Location = new System.Drawing.Point(81, 4);
-            this.labelX25.Name = "labelX25";
-            this.labelX25.Size = new System.Drawing.Size(86, 23);
-            this.labelX25.TabIndex = 24;
-            this.labelX25.Text = "振幅";
-            this.labelX25.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // textBoxX17
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX17.Border.Class = "TextBoxBorder";
-            this.textBoxX17.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX17.Font = new System.Drawing.Font("宋体", 12F);
-            this.textBoxX17.Location = new System.Drawing.Point(81, 27);
-            this.textBoxX17.Name = "textBoxX17";
-            this.textBoxX17.PreventEnterBeep = true;
-            this.textBoxX17.Size = new System.Drawing.Size(86, 26);
-            this.textBoxX17.TabIndex = 27;
             // 
             // comboBoxEx5
             // 
@@ -618,7 +561,6 @@
             this.panelEx_boxing.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_boxing.Style.GradientAngle = 90;
             this.panelEx_boxing.TabIndex = 47;
-            this.panelEx_boxing.Visible = false;
             // 
             // labelX15
             // 
@@ -898,6 +840,9 @@
             this.comboBoxEx3.ItemHeight = 21;
             this.comboBoxEx3.Items.AddRange(new object[] {
             this.comboItem1,
+            this.comboItem127,
+            this.comboItem128,
+            this.comboItem129,
             this.comboItem2,
             this.comboItem3,
             this.comboItem4,
@@ -1244,14 +1189,14 @@
             // dataGridViewX1
             // 
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.stepNo,
@@ -1259,27 +1204,27 @@
             this.Column1,
             this.frequency,
             this.cycleNum});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewX1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 108);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(1367, 492);
@@ -1696,6 +1641,44 @@
             // 
             this.comboItem126.Text = "60";
             // 
+            // labelX16
+            // 
+            // 
+            // 
+            // 
+            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX16.Location = new System.Drawing.Point(81, 4);
+            this.labelX16.Name = "labelX16";
+            this.labelX16.Size = new System.Drawing.Size(91, 23);
+            this.labelX16.TabIndex = 49;
+            this.labelX16.Text = "跳转选项";
+            this.labelX16.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // comboBoxEx8
+            // 
+            this.comboBoxEx8.DisplayMember = "Text";
+            this.comboBoxEx8.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx8.Font = new System.Drawing.Font("宋体", 12F);
+            this.comboBoxEx8.FormattingEnabled = true;
+            this.comboBoxEx8.ItemHeight = 21;
+            this.comboBoxEx8.Location = new System.Drawing.Point(81, 27);
+            this.comboBoxEx8.Name = "comboBoxEx8";
+            this.comboBoxEx8.Size = new System.Drawing.Size(91, 27);
+            this.comboBoxEx8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx8.TabIndex = 50;
+            // 
+            // comboItem127
+            // 
+            this.comboItem127.Text = "等速力";
+            // 
+            // comboItem128
+            // 
+            this.comboItem128.Text = "位移保持";
+            // 
+            // comboItem129
+            // 
+            this.comboItem129.Text = "力保持";
+            // 
             // FormProgram
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1757,14 +1740,10 @@
         private DevComponents.DotNetBar.LabelX labelX13;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx6;
         private DevComponents.DotNetBar.PanelEx panelEx_dengsuweiyi;
-        private DevComponents.DotNetBar.LabelX labelX18;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx7;
         private DevComponents.DotNetBar.LabelX labelX23;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX15;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX16;
         private DevComponents.DotNetBar.LabelX labelX24;
-        private DevComponents.DotNetBar.LabelX labelX25;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX17;
         private DevComponents.DotNetBar.PanelEx panelEx_delay;
         private DevComponents.DotNetBar.LabelX labelX20;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX12;
@@ -1900,5 +1879,10 @@
         private DevComponents.Editors.ComboItem comboItem64;
         private DevComponents.Editors.ComboItem comboItem65;
         private DevComponents.Editors.ComboItem comboItem66;
+        private DevComponents.DotNetBar.LabelX labelX16;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx8;
+        private DevComponents.Editors.ComboItem comboItem127;
+        private DevComponents.Editors.ComboItem comboItem128;
+        private DevComponents.Editors.ComboItem comboItem129;
     }
 }
