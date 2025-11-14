@@ -177,12 +177,24 @@ namespace DoPENetConnect
 
         public void InsertOneSteps(string[] cmdParams)
         {
+            //replace&insert
+            foreach (DataGridViewRow tmpRow in dataGridViewX1.Rows)
+            {
+                if (tmpRow.Cells[0].Value.ToString() == cmdParams[0]) {
+                    int tmpIndex = tmpRow.Index;
+                    dataGridViewX1.Rows.RemoveAt(tmpRow.Index);
+                    dataGridViewX1.Rows.Insert(tmpIndex, cmdParams);
+                    return;
+                }
+            }
+
+            //add
             string[] tmpCmdParams = new string[5];
             tmpCmdParams[1] = "等速位移";
             tmpCmdParams[2] = "等速位移,速率:0mm/min,保持时间0s";
             tmpCmdParams[3] = "0";
             tmpCmdParams[4] = "0";
-
+            
             if (dataGridViewX1.Rows.Count > 0)
             {
                 for (int i = int.Parse(dataGridViewX1.Rows[dataGridViewX1.Rows.Count-1].Cells[0].Value.ToString()); i < int.Parse(cmdParams[0])-1; i++)
