@@ -32,11 +32,15 @@ namespace DoPENetConnect
             set;
         }
 
+        public string[] programParams = new string[18] ;
+        
+
 
 
         public FormProgram()
         {
             InitializeComponent();
+
         }
 
         private void btnX_FrmProtectOption_OK_Click(object sender, EventArgs e)
@@ -118,6 +122,7 @@ namespace DoPENetConnect
 
         private void FormProgram_Load(object sender, EventArgs e)
         {
+            RemoveDataGridView();
             comboBoxEx3.SelectedIndex = 0;
             comboBoxEx2.SelectedIndex = 0;
             comboBoxEx5.SelectedIndex = 1;
@@ -135,58 +140,65 @@ namespace DoPENetConnect
         }
 
         public string[] GetInsertStrings() {
-            string[] tmpStrings = new string[] { };
+            string[] tmpStrings = new string[5];
             tmpStrings[0] = comboBoxEx2.Text;
             tmpStrings[1] = comboBoxEx3.Text;
 
-            string[] tmpParams1 = new string[] { };
+            string[] tmpParams1 = new string[18];
             switch (comboBoxEx3.Text)
             {
                 case "等速位移":
-                    //tmpParams1
+                    tmpStrings[2] = string.Format("{3}，速率:{0}mm/min,{1}:{2}mm", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    break;
+                case "等速力":
                     break;
                     //case "等速位移":
                     //    break;
             }
-            tmpStrings[3] = comboBoxEx5.Text;
-            tmpStrings[4] = textBoxX4.Text;
+            tmpStrings[3] = comboBoxEx5.Text;   //存储跳转到第几步
+            tmpStrings[4] = textBoxX4.Text;     //循环多少次
             return tmpStrings;
         }
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-
+            string[] tmpCmdParams = GetInsertStrings();
+            InsertOneSteps(tmpCmdParams);
         }
 
-        //public void InsertOneSteps()
-        //{
-        //    var grpControls = groupPanel1.Controls;
-        //    DataGridViewRow newRow = new DataGridViewRow();
-        //    newRow.CreateCells(dataGridViewX1);
-        //    //if (dataGridViewX1.Rows.Count != 0&&isThereOneRows) {
-        //    //    isThereOneRows = false;
-        //    //    dataGridViewX1.Rows.RemoveAt(0);
-        //    //}
-        //    int j = 0;
-        //    for (int i = grpControls.Count - 1; i >= 0; i--)
-        //    {
-        //        if (grpControls[i].Name.Contains("textBox"))
-        //        {
-        //            newRow.Cells[j].Value = grpControls[i].Text;
-        //            j++;
-        //        }
-        //    }
-        //    if (dataGridViewX1.RowCount == 0)
-        //    {
-        //        dataGridViewX1.Rows.Add(newRow);
-        //        newRow.HeaderCell.Value = (dataGridViewX1.Rows.Count).ToString();
-        //    }
-        //    else
-        //    {
-        //        dataGridViewX1.Rows.RemoveAt(0);
-        //        dataGridViewX1.Rows.Add(newRow);
-        //        newRow.HeaderCell.Value = (dataGridViewX1.Rows.Count).ToString();
-        //    }
-        //}
+        public void RemoveDataGridView()
+        {
+            dataGridViewX1.AllowUserToAddRows = false;
+            while (dataGridViewX1.RowCount > 0)
+            {
+                dataGridViewX1.Rows.RemoveAt(0);
+            }
+        }
+
+        public void InsertOneSteps(string[] cmdParams)
+        {
+            string[] tmpCmdParams = new string[5];
+            tmpCmdParams[1] = "等速位移";
+            tmpCmdParams[2] = "等速位移,速率:0mm/min,保持时间0s";
+            tmpCmdParams[3] = "0";
+            tmpCmdParams[4] = "0";
+
+            if (dataGridViewX1.Rows.Count > 0)
+            {
+                for (int i = int.Parse(dataGridViewX1.Rows[dataGridViewX1.Rows.Count-1].Cells[0].Value.ToString()); i < int.Parse(cmdParams[0])-1; i++)
+                {
+                    tmpCmdParams[0] = (i+1).ToString();
+                    dataGridViewX1.Rows.Add(tmpCmdParams);
+                    //newRow.HeaderCell.Value = (dataGridViewX1.Rows.Count).ToString();
+                }
+            }
+                dataGridViewX1.Rows.Add(cmdParams);
+            
+
+            //for (int i = 0; i < dataGridViewX1.Rows.Count; i++)
+            //{
+            //    Console.WriteLine("glm{0}", dataGridViewX1.Rows[i].Cells[2].Value.ToString());
+            //}
+        }
     }
 }
