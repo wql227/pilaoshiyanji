@@ -218,14 +218,21 @@ namespace DoPENetConnect
             int  needChangeIndex = 0;
             int tmpIndex = 0;
             int tmpIndex1 = 0;
+            string[] cmdParamsExt = new string[5];
+            string[] cmdParamsCurrent = new string[5];
             foreach (DataGridViewRow tmpRow in dataGridViewX1.Rows)
             {
                 if (tmpRow.Cells[0].Value.ToString() == cmdParams[0])   //如果包含这个
                 {
                     tmpIndex = tmpRow.Index;
                     tmpIndex1 = tmpIndex;
-                    dataGridViewX1.Rows.RemoveAt(tmpIndex);
-                    dataGridViewX1.Rows.Insert(tmpIndex, cmdParams);
+                    for (int i = 0; i < cmdParamsExt.Length; i++)
+                    {
+                        cmdParamsExt[i] = dataGridViewX1.Rows[tmpIndex].Cells[i].Value.ToString();
+                        tmpRow.Cells[i].Value = cmdParams[i];
+                    }
+                    //dataGridViewX1.Rows.RemoveAt(tmpIndex);
+                    //dataGridViewX1.Rows.Insert(tmpIndex, cmdParams);
                     needChangeIndex = 1;
                 }
 
@@ -240,10 +247,18 @@ namespace DoPENetConnect
                 else if (needChangeIndex == 2)
                 {
                     tmpIndex += 1;
+                    for (int i = 0; i < cmdParamsCurrent.Length; i++)
+                    {
+                        cmdParamsCurrent[i] = tmpRow.Cells[i].Value.ToString();
+                        tmpRow.Cells[i].Value = cmdParamsExt[i];
+                    }
+                    Array.Copy(cmdParamsCurrent, cmdParamsExt, cmdParamsExt.Length);
                     tmpRow.Cells[0].Value = (tmpIndex+1).ToString();
                 }
 
             }
+            cmdParamsExt[0] = (int.Parse(cmdParamsExt[0]) + 1).ToString();
+            dataGridViewX1.Rows.Add(cmdParamsExt);
         }
 
         private void buttonX2_Click(object sender, EventArgs e)
@@ -256,6 +271,43 @@ namespace DoPENetConnect
         {
             //Console.WriteLine("hello aaabbb{0}",dataGridViewX1.SelectedRows[0].Index);
             comboBoxEx2.Text = (dataGridViewX1.SelectedRows[0].Index + 1).ToString();
+        }
+
+        private void buttonX3_Click(object sender, EventArgs e)
+        {
+            RemoveOneSteps();
+        }
+
+        public void RemoveOneSteps()
+        {
+            int needChangeIndex = 0;
+            int tmpIndex = 0;
+            int tmpIndex1 = 0;
+            foreach (DataGridViewRow tmpRow in dataGridViewX1.Rows)
+            {
+                if (tmpRow.Cells[0].Value.ToString() == comboBoxEx2.Text)   //如果包含这个
+                {
+                    tmpIndex = tmpRow.Index;
+                    tmpIndex1 = tmpIndex;
+                    dataGridViewX1.Rows.RemoveAt(tmpIndex);
+                    needChangeIndex = 1;
+                }
+
+                if (1 == needChangeIndex)
+                {
+                    needChangeIndex = 2;
+                    dataGridViewX1.ClearSelection();
+                    dataGridViewX1.Rows[tmpIndex1].Selected = true;
+                    continue;
+
+                }
+                else if (needChangeIndex == 2)
+                {
+                    //tmpIndex += 1;
+                    tmpRow.Cells[0].Value = (tmpIndex -1).ToString();
+                }
+
+            }
         }
     }
 }

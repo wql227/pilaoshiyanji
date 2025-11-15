@@ -37,120 +37,16 @@
             this.labelX20 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelEx_dengsuweiyi = new DevComponents.DotNetBar.PanelEx();
+            this.labelX16 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx8 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem130 = new DevComponents.Editors.ComboItem();
+            this.comboItem131 = new DevComponents.Editors.ComboItem();
+            this.comboItem132 = new DevComponents.Editors.ComboItem();
             this.labelX23 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.textBoxX16 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX24 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx5 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.panelEx_boxing = new DevComponents.DotNetBar.PanelEx();
-            this.labelX15 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX9 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX14 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX8 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX13 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx6 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX12 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX7 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx4 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.comboBoxEx3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
-            this.comboItem2 = new DevComponents.Editors.ComboItem();
-            this.comboItem3 = new DevComponents.Editors.ComboItem();
-            this.comboItem4 = new DevComponents.Editors.ComboItem();
-            this.comboItem5 = new DevComponents.Editors.ComboItem();
-            this.comboItem6 = new DevComponents.Editors.ComboItem();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem7 = new DevComponents.Editors.ComboItem();
-            this.comboItem8 = new DevComponents.Editors.ComboItem();
-            this.comboItem9 = new DevComponents.Editors.ComboItem();
-            this.comboItem10 = new DevComponents.Editors.ComboItem();
-            this.comboItem11 = new DevComponents.Editors.ComboItem();
-            this.comboItem12 = new DevComponents.Editors.ComboItem();
-            this.comboItem13 = new DevComponents.Editors.ComboItem();
-            this.comboItem14 = new DevComponents.Editors.ComboItem();
-            this.comboItem15 = new DevComponents.Editors.ComboItem();
-            this.comboItem16 = new DevComponents.Editors.ComboItem();
-            this.comboItem17 = new DevComponents.Editors.ComboItem();
-            this.comboItem18 = new DevComponents.Editors.ComboItem();
-            this.comboItem19 = new DevComponents.Editors.ComboItem();
-            this.comboItem20 = new DevComponents.Editors.ComboItem();
-            this.comboItem21 = new DevComponents.Editors.ComboItem();
-            this.comboItem22 = new DevComponents.Editors.ComboItem();
-            this.comboItem23 = new DevComponents.Editors.ComboItem();
-            this.comboItem24 = new DevComponents.Editors.ComboItem();
-            this.comboItem25 = new DevComponents.Editors.ComboItem();
-            this.comboItem26 = new DevComponents.Editors.ComboItem();
-            this.comboItem27 = new DevComponents.Editors.ComboItem();
-            this.comboItem28 = new DevComponents.Editors.ComboItem();
-            this.comboItem29 = new DevComponents.Editors.ComboItem();
-            this.comboItem30 = new DevComponents.Editors.ComboItem();
-            this.comboItem31 = new DevComponents.Editors.ComboItem();
-            this.comboItem32 = new DevComponents.Editors.ComboItem();
-            this.comboItem33 = new DevComponents.Editors.ComboItem();
-            this.comboItem34 = new DevComponents.Editors.ComboItem();
-            this.comboItem35 = new DevComponents.Editors.ComboItem();
-            this.comboItem36 = new DevComponents.Editors.ComboItem();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.buttonX5 = new DevComponents.DotNetBar.ButtonX();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.stepNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cycleNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
-            this.comboItem37 = new DevComponents.Editors.ComboItem();
-            this.comboItem38 = new DevComponents.Editors.ComboItem();
-            this.comboItem39 = new DevComponents.Editors.ComboItem();
-            this.comboItem40 = new DevComponents.Editors.ComboItem();
-            this.comboItem41 = new DevComponents.Editors.ComboItem();
-            this.comboItem42 = new DevComponents.Editors.ComboItem();
-            this.comboItem43 = new DevComponents.Editors.ComboItem();
-            this.comboItem44 = new DevComponents.Editors.ComboItem();
-            this.comboItem45 = new DevComponents.Editors.ComboItem();
-            this.comboItem46 = new DevComponents.Editors.ComboItem();
-            this.comboItem47 = new DevComponents.Editors.ComboItem();
-            this.comboItem48 = new DevComponents.Editors.ComboItem();
-            this.comboItem49 = new DevComponents.Editors.ComboItem();
-            this.comboItem50 = new DevComponents.Editors.ComboItem();
-            this.comboItem51 = new DevComponents.Editors.ComboItem();
-            this.comboItem52 = new DevComponents.Editors.ComboItem();
-            this.comboItem53 = new DevComponents.Editors.ComboItem();
-            this.comboItem54 = new DevComponents.Editors.ComboItem();
-            this.comboItem55 = new DevComponents.Editors.ComboItem();
-            this.comboItem56 = new DevComponents.Editors.ComboItem();
-            this.comboItem57 = new DevComponents.Editors.ComboItem();
-            this.comboItem58 = new DevComponents.Editors.ComboItem();
-            this.comboItem59 = new DevComponents.Editors.ComboItem();
-            this.comboItem60 = new DevComponents.Editors.ComboItem();
-            this.comboItem61 = new DevComponents.Editors.ComboItem();
-            this.comboItem62 = new DevComponents.Editors.ComboItem();
-            this.comboItem63 = new DevComponents.Editors.ComboItem();
-            this.comboItem64 = new DevComponents.Editors.ComboItem();
-            this.comboItem65 = new DevComponents.Editors.ComboItem();
-            this.comboItem66 = new DevComponents.Editors.ComboItem();
             this.comboItem67 = new DevComponents.Editors.ComboItem();
             this.comboItem68 = new DevComponents.Editors.ComboItem();
             this.comboItem69 = new DevComponents.Editors.ComboItem();
@@ -211,14 +107,118 @@
             this.comboItem124 = new DevComponents.Editors.ComboItem();
             this.comboItem125 = new DevComponents.Editors.ComboItem();
             this.comboItem126 = new DevComponents.Editors.ComboItem();
-            this.labelX16 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx8 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.panelEx_boxing = new DevComponents.DotNetBar.PanelEx();
+            this.labelX15 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX9 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX8 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX13 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx6 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX12 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX7 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx4 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.comboBoxEx3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem127 = new DevComponents.Editors.ComboItem();
             this.comboItem128 = new DevComponents.Editors.ComboItem();
             this.comboItem129 = new DevComponents.Editors.ComboItem();
-            this.comboItem130 = new DevComponents.Editors.ComboItem();
-            this.comboItem131 = new DevComponents.Editors.ComboItem();
-            this.comboItem132 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
+            this.comboItem5 = new DevComponents.Editors.ComboItem();
+            this.comboItem6 = new DevComponents.Editors.ComboItem();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem7 = new DevComponents.Editors.ComboItem();
+            this.comboItem8 = new DevComponents.Editors.ComboItem();
+            this.comboItem9 = new DevComponents.Editors.ComboItem();
+            this.comboItem10 = new DevComponents.Editors.ComboItem();
+            this.comboItem11 = new DevComponents.Editors.ComboItem();
+            this.comboItem12 = new DevComponents.Editors.ComboItem();
+            this.comboItem13 = new DevComponents.Editors.ComboItem();
+            this.comboItem14 = new DevComponents.Editors.ComboItem();
+            this.comboItem15 = new DevComponents.Editors.ComboItem();
+            this.comboItem16 = new DevComponents.Editors.ComboItem();
+            this.comboItem17 = new DevComponents.Editors.ComboItem();
+            this.comboItem18 = new DevComponents.Editors.ComboItem();
+            this.comboItem19 = new DevComponents.Editors.ComboItem();
+            this.comboItem20 = new DevComponents.Editors.ComboItem();
+            this.comboItem21 = new DevComponents.Editors.ComboItem();
+            this.comboItem22 = new DevComponents.Editors.ComboItem();
+            this.comboItem23 = new DevComponents.Editors.ComboItem();
+            this.comboItem24 = new DevComponents.Editors.ComboItem();
+            this.comboItem25 = new DevComponents.Editors.ComboItem();
+            this.comboItem26 = new DevComponents.Editors.ComboItem();
+            this.comboItem27 = new DevComponents.Editors.ComboItem();
+            this.comboItem28 = new DevComponents.Editors.ComboItem();
+            this.comboItem29 = new DevComponents.Editors.ComboItem();
+            this.comboItem30 = new DevComponents.Editors.ComboItem();
+            this.comboItem31 = new DevComponents.Editors.ComboItem();
+            this.comboItem32 = new DevComponents.Editors.ComboItem();
+            this.comboItem33 = new DevComponents.Editors.ComboItem();
+            this.comboItem34 = new DevComponents.Editors.ComboItem();
+            this.comboItem35 = new DevComponents.Editors.ComboItem();
+            this.comboItem36 = new DevComponents.Editors.ComboItem();
+            this.comboItem37 = new DevComponents.Editors.ComboItem();
+            this.comboItem38 = new DevComponents.Editors.ComboItem();
+            this.comboItem39 = new DevComponents.Editors.ComboItem();
+            this.comboItem40 = new DevComponents.Editors.ComboItem();
+            this.comboItem41 = new DevComponents.Editors.ComboItem();
+            this.comboItem42 = new DevComponents.Editors.ComboItem();
+            this.comboItem43 = new DevComponents.Editors.ComboItem();
+            this.comboItem44 = new DevComponents.Editors.ComboItem();
+            this.comboItem45 = new DevComponents.Editors.ComboItem();
+            this.comboItem46 = new DevComponents.Editors.ComboItem();
+            this.comboItem47 = new DevComponents.Editors.ComboItem();
+            this.comboItem48 = new DevComponents.Editors.ComboItem();
+            this.comboItem49 = new DevComponents.Editors.ComboItem();
+            this.comboItem50 = new DevComponents.Editors.ComboItem();
+            this.comboItem51 = new DevComponents.Editors.ComboItem();
+            this.comboItem52 = new DevComponents.Editors.ComboItem();
+            this.comboItem53 = new DevComponents.Editors.ComboItem();
+            this.comboItem54 = new DevComponents.Editors.ComboItem();
+            this.comboItem55 = new DevComponents.Editors.ComboItem();
+            this.comboItem56 = new DevComponents.Editors.ComboItem();
+            this.comboItem57 = new DevComponents.Editors.ComboItem();
+            this.comboItem58 = new DevComponents.Editors.ComboItem();
+            this.comboItem59 = new DevComponents.Editors.ComboItem();
+            this.comboItem60 = new DevComponents.Editors.ComboItem();
+            this.comboItem61 = new DevComponents.Editors.ComboItem();
+            this.comboItem62 = new DevComponents.Editors.ComboItem();
+            this.comboItem63 = new DevComponents.Editors.ComboItem();
+            this.comboItem64 = new DevComponents.Editors.ComboItem();
+            this.comboItem65 = new DevComponents.Editors.ComboItem();
+            this.comboItem66 = new DevComponents.Editors.ComboItem();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.buttonX5 = new DevComponents.DotNetBar.ButtonX();
+            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.stepNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cycleNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1.SuspendLayout();
             this.panelEx_delay.SuspendLayout();
             this.panelEx_dengsuweiyi.SuspendLayout();
@@ -357,6 +357,48 @@
             this.panelEx_dengsuweiyi.Style.GradientAngle = 90;
             this.panelEx_dengsuweiyi.TabIndex = 56;
             // 
+            // labelX16
+            // 
+            // 
+            // 
+            // 
+            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX16.Location = new System.Drawing.Point(81, 4);
+            this.labelX16.Name = "labelX16";
+            this.labelX16.Size = new System.Drawing.Size(91, 23);
+            this.labelX16.TabIndex = 49;
+            this.labelX16.Text = "跳转选项";
+            this.labelX16.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // comboBoxEx8
+            // 
+            this.comboBoxEx8.DisplayMember = "Text";
+            this.comboBoxEx8.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx8.Font = new System.Drawing.Font("宋体", 12F);
+            this.comboBoxEx8.FormattingEnabled = true;
+            this.comboBoxEx8.ItemHeight = 21;
+            this.comboBoxEx8.Items.AddRange(new object[] {
+            this.comboItem130,
+            this.comboItem131,
+            this.comboItem132});
+            this.comboBoxEx8.Location = new System.Drawing.Point(81, 27);
+            this.comboBoxEx8.Name = "comboBoxEx8";
+            this.comboBoxEx8.Size = new System.Drawing.Size(91, 27);
+            this.comboBoxEx8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx8.TabIndex = 50;
+            // 
+            // comboItem130
+            // 
+            this.comboItem130.Text = "保持时间";
+            // 
+            // comboItem131
+            // 
+            this.comboItem131.Text = "位移达到";
+            // 
+            // comboItem132
+            // 
+            this.comboItem132.Text = "力达到";
+            // 
             // labelX23
             // 
             // 
@@ -486,6 +528,246 @@
             this.comboBoxEx5.Size = new System.Drawing.Size(59, 27);
             this.comboBoxEx5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx5.TabIndex = 52;
+            // 
+            // comboItem67
+            // 
+            this.comboItem67.Text = "1";
+            // 
+            // comboItem68
+            // 
+            this.comboItem68.Text = "2";
+            // 
+            // comboItem69
+            // 
+            this.comboItem69.Text = "3";
+            // 
+            // comboItem70
+            // 
+            this.comboItem70.Text = "4";
+            // 
+            // comboItem71
+            // 
+            this.comboItem71.Text = "5";
+            // 
+            // comboItem72
+            // 
+            this.comboItem72.Text = "6";
+            // 
+            // comboItem73
+            // 
+            this.comboItem73.Text = "7";
+            // 
+            // comboItem74
+            // 
+            this.comboItem74.Text = "8";
+            // 
+            // comboItem75
+            // 
+            this.comboItem75.Text = "9";
+            // 
+            // comboItem76
+            // 
+            this.comboItem76.Text = "10";
+            // 
+            // comboItem77
+            // 
+            this.comboItem77.Text = "11";
+            // 
+            // comboItem78
+            // 
+            this.comboItem78.Text = "12";
+            // 
+            // comboItem79
+            // 
+            this.comboItem79.Text = "13";
+            // 
+            // comboItem80
+            // 
+            this.comboItem80.Text = "14";
+            // 
+            // comboItem81
+            // 
+            this.comboItem81.Text = "15";
+            // 
+            // comboItem82
+            // 
+            this.comboItem82.Text = "16";
+            // 
+            // comboItem83
+            // 
+            this.comboItem83.Text = "17";
+            // 
+            // comboItem84
+            // 
+            this.comboItem84.Text = "18";
+            // 
+            // comboItem85
+            // 
+            this.comboItem85.Text = "19";
+            // 
+            // comboItem86
+            // 
+            this.comboItem86.Text = "20";
+            // 
+            // comboItem87
+            // 
+            this.comboItem87.Text = "21";
+            // 
+            // comboItem88
+            // 
+            this.comboItem88.Text = "22";
+            // 
+            // comboItem89
+            // 
+            this.comboItem89.Text = "23";
+            // 
+            // comboItem90
+            // 
+            this.comboItem90.Text = "24";
+            // 
+            // comboItem91
+            // 
+            this.comboItem91.Text = "25";
+            // 
+            // comboItem92
+            // 
+            this.comboItem92.Text = "26";
+            // 
+            // comboItem93
+            // 
+            this.comboItem93.Text = "27";
+            // 
+            // comboItem94
+            // 
+            this.comboItem94.Text = "28";
+            // 
+            // comboItem95
+            // 
+            this.comboItem95.Text = "29";
+            // 
+            // comboItem96
+            // 
+            this.comboItem96.Text = "30";
+            // 
+            // comboItem97
+            // 
+            this.comboItem97.Text = "31";
+            // 
+            // comboItem98
+            // 
+            this.comboItem98.Text = "32";
+            // 
+            // comboItem99
+            // 
+            this.comboItem99.Text = "33";
+            // 
+            // comboItem100
+            // 
+            this.comboItem100.Text = "34";
+            // 
+            // comboItem101
+            // 
+            this.comboItem101.Text = "35";
+            // 
+            // comboItem102
+            // 
+            this.comboItem102.Text = "36";
+            // 
+            // comboItem103
+            // 
+            this.comboItem103.Text = "37";
+            // 
+            // comboItem104
+            // 
+            this.comboItem104.Text = "38";
+            // 
+            // comboItem105
+            // 
+            this.comboItem105.Text = "39";
+            // 
+            // comboItem106
+            // 
+            this.comboItem106.Text = "40";
+            // 
+            // comboItem107
+            // 
+            this.comboItem107.Text = "41";
+            // 
+            // comboItem108
+            // 
+            this.comboItem108.Text = "42";
+            // 
+            // comboItem109
+            // 
+            this.comboItem109.Text = "43";
+            // 
+            // comboItem110
+            // 
+            this.comboItem110.Text = "44";
+            // 
+            // comboItem111
+            // 
+            this.comboItem111.Text = "45";
+            // 
+            // comboItem112
+            // 
+            this.comboItem112.Text = "46";
+            // 
+            // comboItem113
+            // 
+            this.comboItem113.Text = "47";
+            // 
+            // comboItem114
+            // 
+            this.comboItem114.Text = "48";
+            // 
+            // comboItem115
+            // 
+            this.comboItem115.Text = "49";
+            // 
+            // comboItem116
+            // 
+            this.comboItem116.Text = "50";
+            // 
+            // comboItem117
+            // 
+            this.comboItem117.Text = "51";
+            // 
+            // comboItem118
+            // 
+            this.comboItem118.Text = "52";
+            // 
+            // comboItem119
+            // 
+            this.comboItem119.Text = "53";
+            // 
+            // comboItem120
+            // 
+            this.comboItem120.Text = "54";
+            // 
+            // comboItem121
+            // 
+            this.comboItem121.Text = "55";
+            // 
+            // comboItem122
+            // 
+            this.comboItem122.Text = "56";
+            // 
+            // comboItem123
+            // 
+            this.comboItem123.Text = "57";
+            // 
+            // comboItem124
+            // 
+            this.comboItem124.Text = "58";
+            // 
+            // comboItem125
+            // 
+            this.comboItem125.Text = "59";
+            // 
+            // comboItem126
+            // 
+            this.comboItem126.Text = "60";
             // 
             // labelX10
             // 
@@ -863,6 +1145,18 @@
             // 
             this.comboItem1.Text = "等速位移";
             // 
+            // comboItem127
+            // 
+            this.comboItem127.Text = "等速力";
+            // 
+            // comboItem128
+            // 
+            this.comboItem128.Text = "位移保持";
+            // 
+            // comboItem129
+            // 
+            this.comboItem129.Text = "力保持";
+            // 
             // comboItem2
             // 
             this.comboItem2.Text = "波形控制";
@@ -1090,6 +1384,126 @@
             // 
             this.comboItem36.Text = "30";
             // 
+            // comboItem37
+            // 
+            this.comboItem37.Text = "31";
+            // 
+            // comboItem38
+            // 
+            this.comboItem38.Text = "32";
+            // 
+            // comboItem39
+            // 
+            this.comboItem39.Text = "33";
+            // 
+            // comboItem40
+            // 
+            this.comboItem40.Text = "34";
+            // 
+            // comboItem41
+            // 
+            this.comboItem41.Text = "35";
+            // 
+            // comboItem42
+            // 
+            this.comboItem42.Text = "36";
+            // 
+            // comboItem43
+            // 
+            this.comboItem43.Text = "37";
+            // 
+            // comboItem44
+            // 
+            this.comboItem44.Text = "38";
+            // 
+            // comboItem45
+            // 
+            this.comboItem45.Text = "39";
+            // 
+            // comboItem46
+            // 
+            this.comboItem46.Text = "40";
+            // 
+            // comboItem47
+            // 
+            this.comboItem47.Text = "41";
+            // 
+            // comboItem48
+            // 
+            this.comboItem48.Text = "42";
+            // 
+            // comboItem49
+            // 
+            this.comboItem49.Text = "43";
+            // 
+            // comboItem50
+            // 
+            this.comboItem50.Text = "44";
+            // 
+            // comboItem51
+            // 
+            this.comboItem51.Text = "45";
+            // 
+            // comboItem52
+            // 
+            this.comboItem52.Text = "46";
+            // 
+            // comboItem53
+            // 
+            this.comboItem53.Text = "47";
+            // 
+            // comboItem54
+            // 
+            this.comboItem54.Text = "48";
+            // 
+            // comboItem55
+            // 
+            this.comboItem55.Text = "49";
+            // 
+            // comboItem56
+            // 
+            this.comboItem56.Text = "50";
+            // 
+            // comboItem57
+            // 
+            this.comboItem57.Text = "51";
+            // 
+            // comboItem58
+            // 
+            this.comboItem58.Text = "52";
+            // 
+            // comboItem59
+            // 
+            this.comboItem59.Text = "53";
+            // 
+            // comboItem60
+            // 
+            this.comboItem60.Text = "54";
+            // 
+            // comboItem61
+            // 
+            this.comboItem61.Text = "55";
+            // 
+            // comboItem62
+            // 
+            this.comboItem62.Text = "56";
+            // 
+            // comboItem63
+            // 
+            this.comboItem63.Text = "57";
+            // 
+            // comboItem64
+            // 
+            this.comboItem64.Text = "58";
+            // 
+            // comboItem65
+            // 
+            this.comboItem65.Text = "59";
+            // 
+            // comboItem66
+            // 
+            this.comboItem66.Text = "60";
+            // 
             // labelX2
             // 
             // 
@@ -1164,6 +1578,7 @@
             this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX3.TabIndex = 10;
             this.buttonX3.Text = "删除步骤";
+            this.buttonX3.Click += new System.EventHandler(this.buttonX3_Click);
             // 
             // buttonX2
             // 
@@ -1286,420 +1701,6 @@
             this.btnX_FrmProtectOption_OK.TabIndex = 6;
             this.btnX_FrmProtectOption_OK.Text = "新建程序";
             this.btnX_FrmProtectOption_OK.Click += new System.EventHandler(this.btnX_FrmProtectOption_OK_Click);
-            // 
-            // comboItem37
-            // 
-            this.comboItem37.Text = "31";
-            // 
-            // comboItem38
-            // 
-            this.comboItem38.Text = "32";
-            // 
-            // comboItem39
-            // 
-            this.comboItem39.Text = "33";
-            // 
-            // comboItem40
-            // 
-            this.comboItem40.Text = "34";
-            // 
-            // comboItem41
-            // 
-            this.comboItem41.Text = "35";
-            // 
-            // comboItem42
-            // 
-            this.comboItem42.Text = "36";
-            // 
-            // comboItem43
-            // 
-            this.comboItem43.Text = "37";
-            // 
-            // comboItem44
-            // 
-            this.comboItem44.Text = "38";
-            // 
-            // comboItem45
-            // 
-            this.comboItem45.Text = "39";
-            // 
-            // comboItem46
-            // 
-            this.comboItem46.Text = "40";
-            // 
-            // comboItem47
-            // 
-            this.comboItem47.Text = "41";
-            // 
-            // comboItem48
-            // 
-            this.comboItem48.Text = "42";
-            // 
-            // comboItem49
-            // 
-            this.comboItem49.Text = "43";
-            // 
-            // comboItem50
-            // 
-            this.comboItem50.Text = "44";
-            // 
-            // comboItem51
-            // 
-            this.comboItem51.Text = "45";
-            // 
-            // comboItem52
-            // 
-            this.comboItem52.Text = "46";
-            // 
-            // comboItem53
-            // 
-            this.comboItem53.Text = "47";
-            // 
-            // comboItem54
-            // 
-            this.comboItem54.Text = "48";
-            // 
-            // comboItem55
-            // 
-            this.comboItem55.Text = "49";
-            // 
-            // comboItem56
-            // 
-            this.comboItem56.Text = "50";
-            // 
-            // comboItem57
-            // 
-            this.comboItem57.Text = "51";
-            // 
-            // comboItem58
-            // 
-            this.comboItem58.Text = "52";
-            // 
-            // comboItem59
-            // 
-            this.comboItem59.Text = "53";
-            // 
-            // comboItem60
-            // 
-            this.comboItem60.Text = "54";
-            // 
-            // comboItem61
-            // 
-            this.comboItem61.Text = "55";
-            // 
-            // comboItem62
-            // 
-            this.comboItem62.Text = "56";
-            // 
-            // comboItem63
-            // 
-            this.comboItem63.Text = "57";
-            // 
-            // comboItem64
-            // 
-            this.comboItem64.Text = "58";
-            // 
-            // comboItem65
-            // 
-            this.comboItem65.Text = "59";
-            // 
-            // comboItem66
-            // 
-            this.comboItem66.Text = "60";
-            // 
-            // comboItem67
-            // 
-            this.comboItem67.Text = "1";
-            // 
-            // comboItem68
-            // 
-            this.comboItem68.Text = "2";
-            // 
-            // comboItem69
-            // 
-            this.comboItem69.Text = "3";
-            // 
-            // comboItem70
-            // 
-            this.comboItem70.Text = "4";
-            // 
-            // comboItem71
-            // 
-            this.comboItem71.Text = "5";
-            // 
-            // comboItem72
-            // 
-            this.comboItem72.Text = "6";
-            // 
-            // comboItem73
-            // 
-            this.comboItem73.Text = "7";
-            // 
-            // comboItem74
-            // 
-            this.comboItem74.Text = "8";
-            // 
-            // comboItem75
-            // 
-            this.comboItem75.Text = "9";
-            // 
-            // comboItem76
-            // 
-            this.comboItem76.Text = "10";
-            // 
-            // comboItem77
-            // 
-            this.comboItem77.Text = "11";
-            // 
-            // comboItem78
-            // 
-            this.comboItem78.Text = "12";
-            // 
-            // comboItem79
-            // 
-            this.comboItem79.Text = "13";
-            // 
-            // comboItem80
-            // 
-            this.comboItem80.Text = "14";
-            // 
-            // comboItem81
-            // 
-            this.comboItem81.Text = "15";
-            // 
-            // comboItem82
-            // 
-            this.comboItem82.Text = "16";
-            // 
-            // comboItem83
-            // 
-            this.comboItem83.Text = "17";
-            // 
-            // comboItem84
-            // 
-            this.comboItem84.Text = "18";
-            // 
-            // comboItem85
-            // 
-            this.comboItem85.Text = "19";
-            // 
-            // comboItem86
-            // 
-            this.comboItem86.Text = "20";
-            // 
-            // comboItem87
-            // 
-            this.comboItem87.Text = "21";
-            // 
-            // comboItem88
-            // 
-            this.comboItem88.Text = "22";
-            // 
-            // comboItem89
-            // 
-            this.comboItem89.Text = "23";
-            // 
-            // comboItem90
-            // 
-            this.comboItem90.Text = "24";
-            // 
-            // comboItem91
-            // 
-            this.comboItem91.Text = "25";
-            // 
-            // comboItem92
-            // 
-            this.comboItem92.Text = "26";
-            // 
-            // comboItem93
-            // 
-            this.comboItem93.Text = "27";
-            // 
-            // comboItem94
-            // 
-            this.comboItem94.Text = "28";
-            // 
-            // comboItem95
-            // 
-            this.comboItem95.Text = "29";
-            // 
-            // comboItem96
-            // 
-            this.comboItem96.Text = "30";
-            // 
-            // comboItem97
-            // 
-            this.comboItem97.Text = "31";
-            // 
-            // comboItem98
-            // 
-            this.comboItem98.Text = "32";
-            // 
-            // comboItem99
-            // 
-            this.comboItem99.Text = "33";
-            // 
-            // comboItem100
-            // 
-            this.comboItem100.Text = "34";
-            // 
-            // comboItem101
-            // 
-            this.comboItem101.Text = "35";
-            // 
-            // comboItem102
-            // 
-            this.comboItem102.Text = "36";
-            // 
-            // comboItem103
-            // 
-            this.comboItem103.Text = "37";
-            // 
-            // comboItem104
-            // 
-            this.comboItem104.Text = "38";
-            // 
-            // comboItem105
-            // 
-            this.comboItem105.Text = "39";
-            // 
-            // comboItem106
-            // 
-            this.comboItem106.Text = "40";
-            // 
-            // comboItem107
-            // 
-            this.comboItem107.Text = "41";
-            // 
-            // comboItem108
-            // 
-            this.comboItem108.Text = "42";
-            // 
-            // comboItem109
-            // 
-            this.comboItem109.Text = "43";
-            // 
-            // comboItem110
-            // 
-            this.comboItem110.Text = "44";
-            // 
-            // comboItem111
-            // 
-            this.comboItem111.Text = "45";
-            // 
-            // comboItem112
-            // 
-            this.comboItem112.Text = "46";
-            // 
-            // comboItem113
-            // 
-            this.comboItem113.Text = "47";
-            // 
-            // comboItem114
-            // 
-            this.comboItem114.Text = "48";
-            // 
-            // comboItem115
-            // 
-            this.comboItem115.Text = "49";
-            // 
-            // comboItem116
-            // 
-            this.comboItem116.Text = "50";
-            // 
-            // comboItem117
-            // 
-            this.comboItem117.Text = "51";
-            // 
-            // comboItem118
-            // 
-            this.comboItem118.Text = "52";
-            // 
-            // comboItem119
-            // 
-            this.comboItem119.Text = "53";
-            // 
-            // comboItem120
-            // 
-            this.comboItem120.Text = "54";
-            // 
-            // comboItem121
-            // 
-            this.comboItem121.Text = "55";
-            // 
-            // comboItem122
-            // 
-            this.comboItem122.Text = "56";
-            // 
-            // comboItem123
-            // 
-            this.comboItem123.Text = "57";
-            // 
-            // comboItem124
-            // 
-            this.comboItem124.Text = "58";
-            // 
-            // comboItem125
-            // 
-            this.comboItem125.Text = "59";
-            // 
-            // comboItem126
-            // 
-            this.comboItem126.Text = "60";
-            // 
-            // labelX16
-            // 
-            // 
-            // 
-            // 
-            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX16.Location = new System.Drawing.Point(81, 4);
-            this.labelX16.Name = "labelX16";
-            this.labelX16.Size = new System.Drawing.Size(91, 23);
-            this.labelX16.TabIndex = 49;
-            this.labelX16.Text = "跳转选项";
-            this.labelX16.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // comboBoxEx8
-            // 
-            this.comboBoxEx8.DisplayMember = "Text";
-            this.comboBoxEx8.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx8.Font = new System.Drawing.Font("宋体", 12F);
-            this.comboBoxEx8.FormattingEnabled = true;
-            this.comboBoxEx8.ItemHeight = 21;
-            this.comboBoxEx8.Items.AddRange(new object[] {
-            this.comboItem130,
-            this.comboItem131,
-            this.comboItem132});
-            this.comboBoxEx8.Location = new System.Drawing.Point(81, 27);
-            this.comboBoxEx8.Name = "comboBoxEx8";
-            this.comboBoxEx8.Size = new System.Drawing.Size(91, 27);
-            this.comboBoxEx8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx8.TabIndex = 50;
-            // 
-            // comboItem127
-            // 
-            this.comboItem127.Text = "等速力";
-            // 
-            // comboItem128
-            // 
-            this.comboItem128.Text = "位移保持";
-            // 
-            // comboItem129
-            // 
-            this.comboItem129.Text = "力保持";
-            // 
-            // comboItem130
-            // 
-            this.comboItem130.Text = "保持时间";
-            // 
-            // comboItem131
-            // 
-            this.comboItem131.Text = "位移达到";
-            // 
-            // comboItem132
-            // 
-            this.comboItem132.Text = "力达到";
             // 
             // FormProgram
             // 
