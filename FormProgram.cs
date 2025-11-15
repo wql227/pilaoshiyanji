@@ -115,6 +115,24 @@ namespace DoPENetConnect
                     panelEx_Empty.Visible = false;
                     panelEx_dengsuweiyi.Visible = false;
                     break;
+                case "高压启动":
+                    panelEx_boxing.Visible = false;
+                    panelEx_delay.Visible = true;
+                    panelEx_Empty.Visible = false;
+                    panelEx_dengsuweiyi.Visible = false;
+                    break;
+                case "切换到低压":
+                    panelEx_boxing.Visible = false;
+                    panelEx_delay.Visible = true;
+                    panelEx_Empty.Visible = false;
+                    panelEx_dengsuweiyi.Visible = false;
+                    break;
+                case "试验结束":
+                    panelEx_boxing.Visible = false;
+                    panelEx_delay.Visible = true;
+                    panelEx_Empty.Visible = false;
+                    panelEx_dengsuweiyi.Visible = false;
+                    break;
                 default:
                     panelEx_boxing.Visible = false;
                     panelEx_delay.Visible = false;
@@ -167,6 +185,15 @@ namespace DoPENetConnect
                     break;
                 case "波形控制":
                     tmpStrings[2] = string.Format("{3}，波形:{0},中值{1}mm,振幅:{2}mm,频率:{4}Hz,试验次数:{5},趋近速度:{6}mm/min,目标值:{7}mm", comboBoxEx4.Text, textBoxX1.Text, textBoxX3.Text, comboBoxEx3.Text, textBoxX2.Text, textBoxX5.Text, textBoxX6.Text, textBoxX7.Text);
+                    break;
+                case "延时":
+                    tmpStrings[2] = string.Format("{1}，延时:{0}s", textBoxX12.Text, comboBoxEx3.Text);
+                    break;
+                case "高压启动":
+                    break;
+                case "切换到低压":
+                    break;
+                case "试验结束":
                     break;
                     //case "等速位移":
                     //    break;
@@ -290,7 +317,10 @@ namespace DoPENetConnect
         private void dataGridViewX1_MouseClick(object sender, MouseEventArgs e)
         {
             //Console.WriteLine("hello aaabbb{0}",dataGridViewX1.SelectedRows[0].Index);
-            comboBoxEx2.Text = (dataGridViewX1.SelectedRows[0].Index + 1).ToString();
+            if (dataGridViewX1.Rows.Count != 0)
+            {
+                comboBoxEx2.Text = (dataGridViewX1.SelectedRows[0].Index + 1).ToString();
+            }
         }
 
         private void buttonX3_Click(object sender, EventArgs e)
