@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_Empty = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_delay = new DevComponents.DotNetBar.PanelEx();
@@ -219,6 +219,12 @@
             this.cycleNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
             this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
+            this.comboItem133 = new DevComponents.Editors.ComboItem();
+            this.comboItem134 = new DevComponents.Editors.ComboItem();
+            this.comboItem135 = new DevComponents.Editors.ComboItem();
+            this.comboItem136 = new DevComponents.Editors.ComboItem();
+            this.comboItem137 = new DevComponents.Editors.ComboItem();
+            this.comboItem138 = new DevComponents.Editors.ComboItem();
             this.panelEx1.SuspendLayout();
             this.panelEx_delay.SuspendLayout();
             this.panelEx_dengsuweiyi.SuspendLayout();
@@ -938,7 +944,7 @@
             this.labelX12.Name = "labelX12";
             this.labelX12.Size = new System.Drawing.Size(68, 23);
             this.labelX12.TabIndex = 45;
-            this.labelX12.Text = "目标值";
+            this.labelX12.Text = "目标值mm";
             this.labelX12.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // textBoxX7
@@ -961,11 +967,11 @@
             // 
             // 
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(488, 3);
+            this.labelX11.Location = new System.Drawing.Point(476, 3);
             this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(68, 23);
+            this.labelX11.Size = new System.Drawing.Size(93, 23);
             this.labelX11.TabIndex = 43;
-            this.labelX11.Text = "起始速度";
+            this.labelX11.Text = "起始速度mm/min";
             this.labelX11.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // textBoxX6
@@ -1002,6 +1008,13 @@
             this.comboBoxEx4.Font = new System.Drawing.Font("宋体", 12F);
             this.comboBoxEx4.FormattingEnabled = true;
             this.comboBoxEx4.ItemHeight = 21;
+            this.comboBoxEx4.Items.AddRange(new object[] {
+            this.comboItem133,
+            this.comboItem134,
+            this.comboItem135,
+            this.comboItem136,
+            this.comboItem137,
+            this.comboItem138});
             this.comboBoxEx4.Location = new System.Drawing.Point(2, 27);
             this.comboBoxEx4.Name = "comboBoxEx4";
             this.comboBoxEx4.Size = new System.Drawing.Size(128, 27);
@@ -1045,7 +1058,7 @@
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(68, 23);
             this.labelX5.TabIndex = 22;
-            this.labelX5.Text = "中值";
+            this.labelX5.Text = "中值mm";
             this.labelX5.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // textBoxX1
@@ -1087,7 +1100,7 @@
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(86, 23);
             this.labelX7.TabIndex = 30;
-            this.labelX7.Text = "频率";
+            this.labelX7.Text = "频率Hz";
             this.labelX7.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // labelX6
@@ -1100,7 +1113,7 @@
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(86, 23);
             this.labelX6.TabIndex = 24;
-            this.labelX6.Text = "振幅";
+            this.labelX6.Text = "振幅mm";
             this.labelX6.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // textBoxX3
@@ -1609,14 +1622,14 @@
             // dataGridViewX1
             // 
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.stepNo,
@@ -1624,27 +1637,27 @@
             this.Column1,
             this.frequency,
             this.cycleNum});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewX1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 356);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(1367, 244);
@@ -1701,6 +1714,30 @@
             this.btnX_FrmProtectOption_OK.TabIndex = 6;
             this.btnX_FrmProtectOption_OK.Text = "新建程序";
             this.btnX_FrmProtectOption_OK.Click += new System.EventHandler(this.btnX_FrmProtectOption_OK_Click);
+            // 
+            // comboItem133
+            // 
+            this.comboItem133.Text = "正弦波";
+            // 
+            // comboItem134
+            // 
+            this.comboItem134.Text = "三角波";
+            // 
+            // comboItem135
+            // 
+            this.comboItem135.Text = "方波";
+            // 
+            // comboItem136
+            // 
+            this.comboItem136.Text = "锯齿波";
+            // 
+            // comboItem137
+            // 
+            this.comboItem137.Text = "反向锯齿波";
+            // 
+            // comboItem138
+            // 
+            this.comboItem138.Text = "脉冲波形";
             // 
             // FormProgram
             // 
@@ -1910,5 +1947,11 @@
         private DevComponents.Editors.ComboItem comboItem130;
         private DevComponents.Editors.ComboItem comboItem131;
         private DevComponents.Editors.ComboItem comboItem132;
+        private DevComponents.Editors.ComboItem comboItem133;
+        private DevComponents.Editors.ComboItem comboItem134;
+        private DevComponents.Editors.ComboItem comboItem135;
+        private DevComponents.Editors.ComboItem comboItem136;
+        private DevComponents.Editors.ComboItem comboItem137;
+        private DevComponents.Editors.ComboItem comboItem138;
     }
 }

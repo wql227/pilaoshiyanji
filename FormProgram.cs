@@ -102,6 +102,12 @@ namespace DoPENetConnect
                     panelEx_delay.Visible = false;
                     panelEx_Empty.Visible = false;
                     panelEx_dengsuweiyi.Visible = false;
+                    labelX5.Text = "中值mm";
+                    labelX6.Text = "振幅mm";
+                    labelX7.Text = "频率Hz";
+                    labelX11.Text = "起始速度mm/min";
+                    labelX12.Text = "目标值mm";
+                    comboBoxEx4.SelectedIndex = 0;
                     break;
                 case "延时":
                     panelEx_boxing.Visible = false;
@@ -158,6 +164,9 @@ namespace DoPENetConnect
                     break;
                 case "力保持":
                     tmpStrings[2] = string.Format("{3}，保持目标:{0}kN,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    break;
+                case "波形控制":
+                    tmpStrings[2] = string.Format("{3}，波形:{0},中值{1}mm,振幅:{2}mm,频率:{4}Hz,试验次数:{5},趋近速度:{6}mm/min,目标值:{7}mm", comboBoxEx4.Text, textBoxX1.Text, textBoxX3.Text, comboBoxEx3.Text, textBoxX2.Text, textBoxX5.Text, textBoxX6.Text, textBoxX7.Text);
                     break;
                     //case "等速位移":
                     //    break;
