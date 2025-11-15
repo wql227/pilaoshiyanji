@@ -163,7 +163,7 @@ namespace DoPENetConnect
         private void buttonX1_Click(object sender, EventArgs e)
         {
             string[] tmpCmdParams = GetInsertStrings();
-            InsertOneSteps(tmpCmdParams);
+            AddOneSteps(tmpCmdParams);
         }
 
         public void RemoveDataGridView()
@@ -175,7 +175,7 @@ namespace DoPENetConnect
             }
         }
 
-        public void InsertOneSteps(string[] cmdParams)
+        public void AddOneSteps(string[] cmdParams)
         {
             //replace&insert
             foreach (DataGridViewRow tmpRow in dataGridViewX1.Rows)
@@ -205,12 +205,57 @@ namespace DoPENetConnect
                 }
             }
                 dataGridViewX1.Rows.Add(cmdParams);
-            
 
+            dataGridViewX1.ClearSelection();
+            dataGridViewX1.Rows[dataGridViewX1.Rows.Count - 1].Selected = true;
             //for (int i = 0; i < dataGridViewX1.Rows.Count; i++)
             //{
             //    Console.WriteLine("glm{0}", dataGridViewX1.Rows[i].Cells[2].Value.ToString());
             //}
+        }
+        public void InsertOneSteps(string[] cmdParams)
+        {
+            int  needChangeIndex = 0;
+            int tmpIndex = 0;
+            int tmpIndex1 = 0;
+            foreach (DataGridViewRow tmpRow in dataGridViewX1.Rows)
+            {
+                if (tmpRow.Cells[0].Value.ToString() == cmdParams[0])   //如果包含这个
+                {
+                    tmpIndex = tmpRow.Index;
+                    tmpIndex1 = tmpIndex;
+                    dataGridViewX1.Rows.RemoveAt(tmpIndex);
+                    dataGridViewX1.Rows.Insert(tmpIndex, cmdParams);
+                    needChangeIndex = 1;
+                }
+
+                if (1 == needChangeIndex)
+                {
+                    needChangeIndex = 2;
+                    dataGridViewX1.ClearSelection();
+                    dataGridViewX1.Rows[tmpIndex1].Selected = true;
+                    continue;
+
+                }
+                else if (needChangeIndex == 2)
+                {
+                    tmpIndex += 1;
+                    tmpRow.Cells[0].Value = (tmpIndex+1).ToString();
+                }
+
+            }
+        }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+            string[] tmpCmdParams = GetInsertStrings();
+            InsertOneSteps(tmpCmdParams);
+        }
+
+        private void dataGridViewX1_MouseClick(object sender, MouseEventArgs e)
+        {
+            //Console.WriteLine("hello aaabbb{0}",dataGridViewX1.SelectedRows[0].Index);
+            comboBoxEx2.Text = (dataGridViewX1.SelectedRows[0].Index + 1).ToString();
         }
     }
 }
