@@ -293,25 +293,44 @@ namespace DoPENetConnect
                 {
                     tmpIndex = tmpRow.Index;
                     tmpIndex1 = tmpIndex;
+                    if (dataGridViewX1.Rows.Count == int.Parse(tmpRow.Cells[0].Value.ToString())){
+                        comboBoxEx2.Text = (tmpIndex).ToString();
+                    }
                     dataGridViewX1.Rows.RemoveAt(tmpIndex);
                     needChangeIndex = 1;
                 }
 
-                if (1 == needChangeIndex)
-                {
-                    needChangeIndex = 2;
-                    dataGridViewX1.ClearSelection();
-                    dataGridViewX1.Rows[tmpIndex1].Selected = true;
-                    continue;
-
-                }
-                else if (needChangeIndex == 2)
-                {
-                    //tmpIndex += 1;
-                    tmpRow.Cells[0].Value = (tmpIndex -2).ToString();
-                }
+                //if (1 == needChangeIndex)
+                //{
+                //    needChangeIndex = 2;
+                //    dataGridViewX1.ClearSelection();
+                //    dataGridViewX1.Rows[tmpIndex1].Selected = true;
+                //    //tmpRow.Cells[0].Value = (tmpIndex-1).ToString();
+                //    //    continue;
+                //}
+                //}
+                //else if (needChangeIndex == 2)
+                //{
+                //    //tmpIndex += 1;
+                //    tmpRow.Cells[0].Value = (int.Parse(tmpRow.Cells[0].Value.ToString())-1).ToString();
+                //    Console.WriteLine("tmpRow:{0}", tmpRow.Index);
+                //}
 
             }
+            for (int i = 0; i < dataGridViewX1.Rows.Count; i++) {
+                if (i == tmpIndex) {
+
+                    dataGridViewX1.ClearSelection();
+                    dataGridViewX1.Rows[tmpIndex1].Selected = true;
+                }
+                if (i>=tmpIndex) {
+                    dataGridViewX1.Rows[i].Cells[0].Value = (i + 1).ToString();
+                }
+            }
+            //for (int i = 0; i < dataGridViewX1.Rows.Count; i++)
+            //{
+                //Console.WriteLine("glmselected{0}", dataGridViewX1.SelectedRows[0].Index);
+            //}
         }
     }
 }
