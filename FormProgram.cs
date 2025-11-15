@@ -264,7 +264,11 @@ namespace DoPENetConnect
         private void buttonX2_Click(object sender, EventArgs e)
         {
             string[] tmpCmdParams = GetInsertStrings();
-            InsertOneSteps(tmpCmdParams);
+            if (dataGridViewX1.RowCount == 0) {    //空表
+                AddOneSteps(tmpCmdParams);
+            }
+            else
+                InsertOneSteps(tmpCmdParams);
         }
 
         private void dataGridViewX1_MouseClick(object sender, MouseEventArgs e)
@@ -304,7 +308,7 @@ namespace DoPENetConnect
                 else if (needChangeIndex == 2)
                 {
                     //tmpIndex += 1;
-                    tmpRow.Cells[0].Value = (tmpIndex -1).ToString();
+                    tmpRow.Cells[0].Value = (tmpIndex -2).ToString();
                 }
 
             }
