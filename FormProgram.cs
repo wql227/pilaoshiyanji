@@ -84,8 +84,8 @@ namespace DoPENetConnect
                     panelEx_delay.Visible = false;
                     panelEx_Empty.Visible = false;
                     panelEx_dengsuweiyi.Visible = true;
-                    labelX23.Text = "mm";
-                    labelX24.Text = "s";
+                    labelX23.Text = "目标mm";
+                    labelX24.Text = "时间s";
                     comboBoxEx8.Text = "保持时间";
                     break;
                 case "力保持":
@@ -93,7 +93,7 @@ namespace DoPENetConnect
                     panelEx_delay.Visible = false;
                     panelEx_Empty.Visible = false;
                     panelEx_dengsuweiyi.Visible = true;
-                    textBoxX15.Text = "kN";
+                    labelX23.Text = "目标kN";
                     labelX24.Text = "s";
                     comboBoxEx8.Text = "保持时间";
                     break;
@@ -151,6 +151,13 @@ namespace DoPENetConnect
                     tmpStrings[2] = string.Format("{3}，速率:{0}mm/min,{1}:{2}mm", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
                     break;
                 case "等速力":
+                    tmpStrings[2] = string.Format("{3}，速率:{0}kN/s,{1}:{2}kN", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    break;
+                case "位移保持":
+                    tmpStrings[2] = string.Format("{3}，保持目标:{0}mm,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    break;
+                case "力保持":
+                    tmpStrings[2] = string.Format("{3}，保持目标:{0}kN,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
                     break;
                     //case "等速位移":
                     //    break;
