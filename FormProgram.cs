@@ -370,7 +370,8 @@ namespace DoPENetConnect
                 {
                     tmpIndex = tmpRow.Index;
                     tmpIndex1 = tmpIndex;
-                    if (dataGridViewX1.Rows.Count == int.Parse(tmpRow.Cells[0].Value.ToString())){
+                    if (dataGridViewX1.Rows.Count == int.Parse(tmpRow.Cells[0].Value.ToString())&& dataGridViewX1.Rows.Count!=1)
+                    {
                         comboBoxEx2.Text = (tmpIndex).ToString();
                     }
                     dataGridViewX1.Rows.RemoveAt(tmpIndex);
