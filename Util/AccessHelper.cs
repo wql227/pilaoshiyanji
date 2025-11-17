@@ -23,7 +23,8 @@ namespace DoPENetConnect.Util
         {
             GetDbName();
             BuildDb();
-            //CreateTable("table1","步骤","指令参数","指令内容","跳转到","循环");
+            CreateTable("table1", "步骤", "指令参数", "指令内容", "跳转到", "循环");
+            AddOneRecord("table1", "1", "2", "3", "4", "5");
         }
         public void BuildDb()
         {
@@ -55,7 +56,26 @@ namespace DoPENetConnect.Util
             }
             conn.Close();
         }
-        public void GetDbName()
+
+        public void AddOneRecord(string programName, string stepNo, string cmdname, string context, string jump, string cycle)
+        {
+            OleDbConnection conn = new OleDbConnection(string.Format(conStr, dbAddress));
+            string dbstr = string.Format("INSERT INTO {0}(步骤,指令参数,指令内容, 跳转到, 循环) VALUES ({1},{2},{3},{4},{5})", programName, stepNo, cmdname, context, jump, cycle);
+            OleDbCommand oleDbCom = new OleDbCommand(dbstr, conn);
+            conn.Open();
+            try
+            {
+                oleDbCom.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            conn.Close();
+        }
+
+
+            public void GetDbName()
         {
             //IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             //StringBuilder strTmp = new StringBuilder(255);
