@@ -156,13 +156,41 @@ namespace DoPENetConnect
 
         private void btnX_FrmProtectOption_Cencel_Click(object sender, EventArgs e)
         {
-            switch (comboBoxEx3.Text)
-            {
-                case "等速位移":
-                    break;
-                //case "等速位移":
-                //    break;
+
+            if (comboBoxEx1.Text == "") {
+                MessageBox.Show("请先点击新建程序按钮新建一个程序！");
+                return;
             }
+            if (!SaveProgram(comboBoxEx1.Text)) {
+                MessageBox.Show("保存失败，请检查程序是否已经存在");
+            };
+        }
+
+        public bool SaveProgram(string programName)
+        {
+            AccessHelper tmpHelper = new AccessHelper();
+            tmpHelper.InitProgramDb();
+            if (tmpHelper.IsTableExists(programName)) {    //程序已经存在
+                tmpHelper.DropTable(programName);
+            };
+
+            tmpHelper.CreateTable(programName, "步骤", "指令参数", "指令内容", "跳转到", "循环");
+
+            if (dataGridViewX1.Rows.Count == 0) {
+                MessageBox.Show("程序内容为空，请先输入程序内容再保存！");
+                return false;
+            }
+            else
+            {
+                foreach (DataGridViewRow tmpRow in dataGridViewX1.Rows)
+                {
+
+                    tmpHelper.AddOneRecord(programName, tmpRow.Cells[0].Value.ToString(), tmpRow.Cells[1].Value.ToString(), tmpRow.Cells[2].Value.ToString(), tmpRow.Cells[3].Value.ToString(), tmpRow.Cells[4].Value.ToString());
+
+                }
+            }
+
+            return true;
         }
 
         public string[] GetInsertStrings() {
@@ -174,22 +202,22 @@ namespace DoPENetConnect
             switch (comboBoxEx3.Text)
             {
                 case "等速位移":
-                    tmpStrings[2] = string.Format("{3}，速率:{0}mm/min,{1}:{2}mm", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    tmpStrings[2] = string.Format("{3},速率:{0}mm/min,{1}:{2}mm", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
                     break;
                 case "等速力":
-                    tmpStrings[2] = string.Format("{3}，速率:{0}kN/s,{1}:{2}kN", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    tmpStrings[2] = string.Format("{3},速率:{0}kN/s,{1}:{2}kN", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
                     break;
                 case "位移保持":
-                    tmpStrings[2] = string.Format("{3}，保持目标:{0}mm,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    tmpStrings[2] = string.Format("{3},保持目标:{0}mm,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
                     break;
                 case "力保持":
-                    tmpStrings[2] = string.Format("{3}，保持目标:{0}kN,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    tmpStrings[2] = string.Format("{3},保持目标:{0}kN,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
                     break;
                 case "波形控制":
-                    tmpStrings[2] = string.Format("{3}，波形:{0},中值{1}mm,振幅:{2}mm,频率:{4}Hz,试验次数:{5},趋近速度:{6}mm/min,目标值:{7}mm", comboBoxEx4.Text, textBoxX1.Text, textBoxX3.Text, comboBoxEx3.Text, textBoxX2.Text, textBoxX5.Text, textBoxX6.Text, textBoxX7.Text);
+                    tmpStrings[2] = string.Format("{3},波形:{0},中值{1}mm,振幅:{2}mm,频率:{4}Hz,试验次数:{5},趋近速度:{6}mm/min,目标值:{7}mm", comboBoxEx4.Text, textBoxX1.Text, textBoxX3.Text, comboBoxEx3.Text, textBoxX2.Text, textBoxX5.Text, textBoxX6.Text, textBoxX7.Text);
                     break;
                 case "延时":
-                    tmpStrings[2] = string.Format("{1}，延时:{0}s", textBoxX12.Text, comboBoxEx3.Text);
+                    tmpStrings[2] = string.Format("{1},延时:{0}s", textBoxX12.Text, comboBoxEx3.Text);
                     break;
                 case "高压启动":
                     break;
@@ -384,7 +412,7 @@ namespace DoPENetConnect
         private void buttonX6_Click(object sender, EventArgs e)
         {
             AccessHelper tmpAccessHelper = new AccessHelper();
-            tmpAccessHelper.TestProgram();
+            tmpAccessHelper.InitProgramDb();
             //dataGridViewX1.DataSource = tmpAccessHelper.viewAccessInfo();
         }
     }

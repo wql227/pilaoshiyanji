@@ -19,12 +19,12 @@ namespace DoPENetConnect.Util
         public AccessHelper()
         {
         }
-        public void TestProgram()
+        public void InitProgramDb()
         {
             GetDbName();
             BuildDb();
-            CreateTable("table1", "步骤", "指令参数", "指令内容", "跳转到", "循环");
-            AddOneRecord("table1", "1", "2", "3", "4", "5");
+            //CreateTable("table1", "步骤", "指令参数", "指令内容", "跳转到", "循环");
+            //AddOneRecord("table1", "11", "2", "3", "4", "5");
         }
         public void BuildDb()
         {
@@ -40,10 +40,36 @@ namespace DoPENetConnect.Util
             }
         }
 
-        public void CreateTable(string programName,string stepNo,string cmdname,string context,string jump,string cycle)
+        public bool IsTableExists(string tableName)
         {
-            OleDbConnection conn = new OleDbConnection(string.Format(conStr,dbAddress));
-            string dbstr = string.Format("CREATE TABLE {0}({1} TEXT,{2} TEXT,{3} TEXT, {4} TEXT, {5} TEXT)", programName, stepNo, cmdname,context,jump,cycle);
+            bool exists = false;
+            string connectionString = string.Format(conStr, dbAddress);
+
+            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            {
+                connection.Open();
+
+                DataTable tables = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+
+                foreach (DataRow row in tables.Rows)
+                {
+                    string name = row.Field<string>("TABLE_NAME");
+                    if (name.Equals(tableName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        exists = true;
+                        break;
+                    }
+                }
+            }
+
+            return exists;
+        }
+
+        public bool DropTable(string programName)
+        {
+            bool res = true;
+            OleDbConnection conn = new OleDbConnection(string.Format(conStr, dbAddress));
+            string dbstr = string.Format("DROP TABLE {0}", programName);
             OleDbCommand oleDbCom = new OleDbCommand(dbstr, conn);
             conn.Open();
             try
@@ -53,14 +79,37 @@ namespace DoPENetConnect.Util
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                res = false;
             }
             conn.Close();
+            return res;
+        }
+
+        public bool CreateTable(string programName,string stepNo,string cmdname,string context,string jump,string cycle)
+        {
+            bool res = true;
+            OleDbConnection conn = new OleDbConnection(string.Format(conStr,dbAddress));
+            string dbstr = string.Format("CREATE TABLE {0}(Id AUTOINCREMENT PRIMARY KEY,{1} TEXT,{2} TEXT,{3} TEXT, {4} TEXT, {5} TEXT)", programName, stepNo, cmdname,context,jump,cycle);
+            OleDbCommand oleDbCom = new OleDbCommand(dbstr, conn);
+            conn.Open();
+            try
+            {
+                oleDbCom.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                res = false;
+            }
+            conn.Close();
+            return res;
         }
 
         public void AddOneRecord(string programName, string stepNo, string cmdname, string context, string jump, string cycle)
         {
             OleDbConnection conn = new OleDbConnection(string.Format(conStr, dbAddress));
-            string dbstr = string.Format("INSERT INTO {0}(步骤,指令参数,指令内容, 跳转到, 循环) VALUES ({1},{2},{3},{4},{5})", programName, stepNo, cmdname, context, jump, cycle);
+           
+            string dbstr = string.Format("INSERT INTO {0}(步骤,指令参数,指令内容, 跳转到, 循环) VALUES (\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\")", programName, stepNo, cmdname, context, jump, cycle);
             OleDbCommand oleDbCom = new OleDbCommand(dbstr, conn);
             conn.Open();
             try
