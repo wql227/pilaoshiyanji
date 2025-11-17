@@ -431,5 +431,26 @@ namespace DoPENetConnect
                 };
             }
         }
+
+        private void buttonX5_Click(object sender, EventArgs e)
+        {
+            //DialogResult res =  MessageBox.Show("确定另存为")
+            FormInputBox tmpInput = new FormInputBox();
+            tmpInput.SetTitle("程序另存为");
+            tmpInput.Location = new Point(this.Location.X + this.Width / 2, this.Location.Y + 100);
+            tmpInput.ShowDialog();
+            //if(tmpInput.)
+            Console.WriteLine(this.Name);
+            if (tmpInput.inputedString != null)
+            {
+                programName = tmpInput.inputedString;
+                if (comboBoxEx1.Text == programName) {
+                    MessageBox.Show("名称与现有程序同名，请重试");
+                    return;
+                }
+                comboBoxEx1.Items.Add(programName);
+                comboBoxEx1.Text = programName;
+            }
+        }
     }
 }
