@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DoPENetConnect.Util;
 
 namespace DoPENetConnect
 {
@@ -146,6 +147,7 @@ namespace DoPENetConnect
 
         private void FormProgram_Load(object sender, EventArgs e)
         {
+            // TODO: 这行代码将数据加载到表“programdb11DataSet.NewTable”中。您可以根据需要移动或删除它。
             RemoveDataGridView();
             comboBoxEx3.SelectedIndex = 0;
             comboBoxEx2.SelectedIndex = 0;
@@ -377,6 +379,13 @@ namespace DoPENetConnect
             //{
                 //Console.WriteLine("glmselected{0}", dataGridViewX1.SelectedRows[0].Index);
             //}
+        }
+
+        private void buttonX6_Click(object sender, EventArgs e)
+        {
+            AccessHelper tmpAccessHelper = new AccessHelper();
+            tmpAccessHelper.TestProgram();
+            //dataGridViewX1.DataSource = tmpAccessHelper.viewAccessInfo();
         }
     }
 }

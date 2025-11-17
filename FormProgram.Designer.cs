@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.buttonX6 = new DevComponents.DotNetBar.ButtonX();
             this.panelEx_Empty = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_delay = new DevComponents.DotNetBar.PanelEx();
             this.labelX20 = new DevComponents.DotNetBar.LabelX();
@@ -123,6 +125,12 @@
             this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx4 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem133 = new DevComponents.Editors.ComboItem();
+            this.comboItem134 = new DevComponents.Editors.ComboItem();
+            this.comboItem135 = new DevComponents.Editors.ComboItem();
+            this.comboItem136 = new DevComponents.Editors.ComboItem();
+            this.comboItem137 = new DevComponents.Editors.ComboItem();
+            this.comboItem138 = new DevComponents.Editors.ComboItem();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
@@ -219,17 +227,15 @@
             this.cycleNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
             this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
-            this.comboItem133 = new DevComponents.Editors.ComboItem();
-            this.comboItem134 = new DevComponents.Editors.ComboItem();
-            this.comboItem135 = new DevComponents.Editors.ComboItem();
-            this.comboItem136 = new DevComponents.Editors.ComboItem();
-            this.comboItem137 = new DevComponents.Editors.ComboItem();
-            this.comboItem138 = new DevComponents.Editors.ComboItem();
+            this.newTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.programDbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
             this.panelEx_delay.SuspendLayout();
             this.panelEx_dengsuweiyi.SuspendLayout();
             this.panelEx_boxing.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programDbDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -239,6 +245,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.buttonX6);
             this.panelEx1.Controls.Add(this.panelEx_Empty);
             this.panelEx1.Controls.Add(this.panelEx_delay);
             this.panelEx1.Controls.Add(this.panelEx_dengsuweiyi);
@@ -273,6 +280,19 @@
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 8;
+            // 
+            // buttonX6
+            // 
+            this.buttonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX6.Location = new System.Drawing.Point(984, 3);
+            this.buttonX6.Name = "buttonX6";
+            this.buttonX6.Size = new System.Drawing.Size(150, 36);
+            this.buttonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX6.TabIndex = 78;
+            this.buttonX6.Text = "testdb";
+            this.buttonX6.Click += new System.EventHandler(this.buttonX6_Click);
             // 
             // panelEx_Empty
             // 
@@ -1021,6 +1041,30 @@
             this.comboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx4.TabIndex = 21;
             // 
+            // comboItem133
+            // 
+            this.comboItem133.Text = "正弦波";
+            // 
+            // comboItem134
+            // 
+            this.comboItem134.Text = "三角波";
+            // 
+            // comboItem135
+            // 
+            this.comboItem135.Text = "方波";
+            // 
+            // comboItem136
+            // 
+            this.comboItem136.Text = "锯齿波";
+            // 
+            // comboItem137
+            // 
+            this.comboItem137.Text = "反向锯齿波";
+            // 
+            // comboItem138
+            // 
+            this.comboItem138.Text = "脉冲波形";
+            // 
             // labelX9
             // 
             // 
@@ -1622,14 +1666,14 @@
             // dataGridViewX1
             // 
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.stepNo,
@@ -1637,27 +1681,27 @@
             this.Column1,
             this.frequency,
             this.cycleNum});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(21)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 356);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(1367, 244);
@@ -1715,29 +1759,10 @@
             this.btnX_FrmProtectOption_OK.Text = "新建程序";
             this.btnX_FrmProtectOption_OK.Click += new System.EventHandler(this.btnX_FrmProtectOption_OK_Click);
             // 
-            // comboItem133
+            // newTableBindingSource
             // 
-            this.comboItem133.Text = "正弦波";
-            // 
-            // comboItem134
-            // 
-            this.comboItem134.Text = "三角波";
-            // 
-            // comboItem135
-            // 
-            this.comboItem135.Text = "方波";
-            // 
-            // comboItem136
-            // 
-            this.comboItem136.Text = "锯齿波";
-            // 
-            // comboItem137
-            // 
-            this.comboItem137.Text = "反向锯齿波";
-            // 
-            // comboItem138
-            // 
-            this.comboItem138.Text = "脉冲波形";
+            this.newTableBindingSource.DataMember = "NewTable";
+            this.programDbDataSetBindingSource.Position = 0;
             // 
             // FormProgram
             // 
@@ -1753,6 +1778,8 @@
             this.panelEx_dengsuweiyi.ResumeLayout(false);
             this.panelEx_boxing.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programDbDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1953,5 +1980,8 @@
         private DevComponents.Editors.ComboItem comboItem136;
         private DevComponents.Editors.ComboItem comboItem137;
         private DevComponents.Editors.ComboItem comboItem138;
+        private DevComponents.DotNetBar.ButtonX buttonX6;
+        private System.Windows.Forms.BindingSource newTableBindingSource;
+        private System.Windows.Forms.BindingSource programDbDataSetBindingSource;
     }
 }
