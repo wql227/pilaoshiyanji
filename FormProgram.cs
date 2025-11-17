@@ -53,6 +53,7 @@ namespace DoPENetConnect
             Console.WriteLine(this.Name);
             if (tmpInput.inputedString != null) {
                 programName = tmpInput.inputedString;
+                comboBoxEx1.Items.Add(programName);
                 comboBoxEx1.Text = programName;
             }
         }
