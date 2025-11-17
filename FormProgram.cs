@@ -415,5 +415,19 @@ namespace DoPENetConnect
             tmpAccessHelper.InitProgramDb();
             //dataGridViewX1.DataSource = tmpAccessHelper.viewAccessInfo();
         }
+
+        private void buttonX4_Click(object sender, EventArgs e)
+        {
+            AccessHelper tmpHelper = new AccessHelper();
+            tmpHelper.BuildDb();
+
+            if (comboBoxEx1.Text != "")
+            {
+                if (tmpHelper.IsTableExists(comboBoxEx1.Text))
+                {    //程序已经存在
+                    tmpHelper.DropTable(comboBoxEx1.Text);
+                };
+            }
+        }
     }
 }
