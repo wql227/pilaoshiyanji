@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.OleDb;
 using ADOX;
+using System.IO;
 
 
 
@@ -187,6 +188,9 @@ namespace DoPENetConnect.Util
             //IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             //StringBuilder strTmp = new StringBuilder(255);
             //string dbAddress = IniFileHelper.GetIniString("DbSetting","ProgramDbAdress",)
+            string dataRoutine = String.Concat(AppDomain.CurrentDomain.BaseDirectory, "data");
+            if (!Directory.Exists(dataRoutine))
+                Directory.CreateDirectory(dataRoutine);
             dbAddress = String.Concat(AppDomain.CurrentDomain.BaseDirectory, "data\\ProgramDb.mdb");
             
         }
