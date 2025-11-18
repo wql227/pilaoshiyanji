@@ -123,8 +123,39 @@ namespace DoPENetConnect.Util
             conn.Close();
         }
 
+        public List<string[]> GetDtas(string programName)
+        {
+            OleDbConnection conn = new OleDbConnection(string.Format(conStr, dbAddress));
 
-            public void GetDbName()
+            string dbstr = string.Format("select * from {0}", programName);
+            OleDbCommand oleDbCom = new OleDbCommand(dbstr, conn);
+            conn.Open();
+            List<string[]> tmpList = new List<string[]>();
+            try
+            {
+                OleDbDataReader myReader = oleDbCom.ExecuteReader();
+                while (myReader.Read())
+                {
+                    string[] tmpStr = new string[5];
+                    tmpStr[0] = myReader[0].ToString();
+                    tmpStr[1] = myReader[1].ToString();
+                    tmpStr[2] = myReader[2].ToString();
+                    tmpStr[3] = myReader[3].ToString();
+                    tmpStr[4] = myReader[4].ToString();
+
+                    tmpList.Add(tmpStr);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            conn.Close();
+            return tmpList;
+        }
+
+
+        public void GetDbName()
         {
             //IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             //StringBuilder strTmp = new StringBuilder(255);
@@ -134,13 +165,13 @@ namespace DoPENetConnect.Util
         }
 
 
-        public DataTable viewAccessInfo()
+        public DataTable viewAccessInfo(string tableName)
         {
             //【1】连接数据库
-            string connect_str = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\projects\\deopmaster\\DoPENet_Connect\\AccessDb\\programdb11.mdb";
+            string connect_str = string.Format(conStr,dbAddress);
             OleDbConnection thisConnection = new OleDbConnection(connect_str);
             //【2】编写SQL指令，星号（*）是选取所有列的快捷方式。
-            string sql = "select * from NewTable";
+            string sql = string.Format("select * from {0}",tableName);
             //OleDbDataAdapter是 DataSet 和数据源之间的桥梁，用于检索和保存数据。
             OleDbDataAdapter thisAdapter = new OleDbDataAdapter(sql, thisConnection);
             //DataSet可以理解成在应用程序中的数据库

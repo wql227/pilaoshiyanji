@@ -413,9 +413,27 @@ namespace DoPENetConnect
 
         private void buttonX6_Click(object sender, EventArgs e)
         {
-            AccessHelper tmpAccessHelper = new AccessHelper();
-            tmpAccessHelper.InitProgramDb();
+            //AccessHelper tmpAccessHelper = new AccessHelper();
+            //tmpAccessHelper.InitProgramDb();
             //dataGridViewX1.DataSource = tmpAccessHelper.viewAccessInfo();
+
+            AccessHelper tmpHelper = new AccessHelper();
+            tmpHelper.InitProgramDb();
+
+            List<string[]> tmpDtas = tmpHelper.GetDtas("12121");
+
+            if (tmpDtas.Count != 0)
+            {
+                while (dataGridViewX1.Rows.Count != 0)
+                {   //清空当前gridview
+                    dataGridViewX1.Rows.RemoveAt(dataGridViewX1.Rows.Count - 1);
+                }
+
+                for(int i=0;i< tmpDtas.Count;i++)
+                {
+                    dataGridViewX1.Rows.Add(tmpDtas[i]);
+                }
+            }
         }
 
         private void buttonX4_Click(object sender, EventArgs e)
@@ -450,7 +468,34 @@ namespace DoPENetConnect
                 }
                 comboBoxEx1.Items.Add(programName);
                 comboBoxEx1.Text = programName;
+
+                if (!SaveProgram(comboBoxEx1.Text))
+                {
+                    MessageBox.Show("保存失败，请检查程序是否已经存在");
+                };
             }
+        }
+
+        private void comboBoxEx1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AccessHelper tmpHelper = new AccessHelper();
+            tmpHelper.BuildDb();
+
+            List<string[]> tmpDtas = tmpHelper.GetDtas(comboBoxEx1.Text);
+
+            if (tmpDtas.Count != 0)
+            {
+                while (dataGridViewX1.Rows.Count != 0)
+                {   //清空当前gridview
+                    dataGridViewX1.Rows.RemoveAt(dataGridViewX1.Rows.Count - 1);
+                }
+
+                for(int i=0;i< tmpDtas.Count;i++){
+                    dataGridViewX1.Rows.Add(tmpDtas[i]);
+                }
+            }
+
+            
         }
     }
 }
