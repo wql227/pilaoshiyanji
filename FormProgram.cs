@@ -512,5 +512,20 @@ namespace DoPENetConnect
 
             
         }
+
+        private void FormProgram_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (comboBoxEx1.Text != "") {
+                AccessHelper tmpHelper = new AccessHelper();
+                tmpHelper.InitProgramDb();
+
+                List<string[]> tmpDtas = tmpHelper.GetDtas(comboBoxEx1.Text);
+
+                if (tmpDtas.Count != 0)
+                {
+                    MainForm.mainform.SetProgramDtas(comboBoxEx1.Text, tmpDtas);
+                }
+            }
+        }
     }
 }

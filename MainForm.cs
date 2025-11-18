@@ -2079,6 +2079,7 @@ namespace DoPENetConnect
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadIni();
+            RemoveDataGridView();
 
             //LoadLanguage();
 
@@ -5527,6 +5528,29 @@ namespace DoPENetConnect
         {
             FormProgram tmpProgrammer = new FormProgram();
             tmpProgrammer.Show();
+        }
+
+        public void SetProgramDtas(string tableName, List<string[]> dtas) {
+            Console.WriteLine(tableName);
+            comboBoxEx7.Text = tableName;
+            for (int i = 0; i < dtas.Count; i++) {
+                dataGridViewX1.Rows.Add(dtas[i]);
+            }
+
+        }
+
+        public void RemoveDataGridView()
+        {
+            dataGridViewX1.AllowUserToAddRows = false;
+            while (dataGridViewX1.RowCount > 0)
+            {
+                dataGridViewX1.Rows.RemoveAt(0);
+            }
+        }
+
+        private void comboBoxEx7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
