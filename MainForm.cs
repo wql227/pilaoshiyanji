@@ -5557,7 +5557,7 @@ namespace DoPENetConnect
             AccessHelper tmpHelper = new AccessHelper();
             tmpHelper.InitProgramDb();
             string[] nameStrs = tmpHelper.GetTableNames();
-            if (nameStrs.Length > 0)
+            if (nameStrs!=null&&nameStrs.Length > 0)
             {
                 comboBoxEx7.Items.Clear();
                 comboBoxEx7.Items.AddRange(nameStrs);

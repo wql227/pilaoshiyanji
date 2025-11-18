@@ -115,7 +115,8 @@ namespace DoPENetConnect.Util
         {
             bool res = true;
             OleDbConnection conn = new OleDbConnection(string.Format(conStr,dbAddress));
-            string dbstr = string.Format("CREATE TABLE {0}(Id AUTOINCREMENT PRIMARY KEY,{1} TEXT,{2} TEXT,{3} TEXT, {4} TEXT, {5} TEXT)", programName, stepNo, cmdname,context,jump,cycle);
+            //string dbstr = string.Format("CREATE TABLE {0}(Id AUTOINCREMENT PRIMARY KEY,{1} TEXT,{2} TEXT,{3} TEXT, {4} TEXT, {5} TEXT)", programName, stepNo, cmdname,context,jump,cycle);    //创建索引
+            string dbstr = string.Format("CREATE TABLE {0}({1} TEXT,{2} TEXT,{3} TEXT, {4} TEXT, {5} TEXT)", programName, stepNo, cmdname, context, jump, cycle);    //不创建索引
             OleDbCommand oleDbCom = new OleDbCommand(dbstr, conn);
             conn.Open();
             try

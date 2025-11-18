@@ -167,7 +167,8 @@ namespace DoPENetConnect
             AccessHelper tmpHelper = new AccessHelper();
             tmpHelper.InitProgramDb();
             string[] tmpTbNames = tmpHelper.GetTableNames();
-            comboBoxEx1.Items.AddRange(tmpTbNames);
+            if(tmpTbNames!=null)
+                comboBoxEx1.Items.AddRange(tmpTbNames);
         }
 
         private void btnX_FrmProtectOption_Cencel_Click(object sender, EventArgs e)
