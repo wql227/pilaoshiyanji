@@ -5535,8 +5535,10 @@ namespace DoPENetConnect
         }
 
         public void SetProgramDtas(string tableName, List<string[]> dtas) {
-            Console.WriteLine(tableName);
+            //Console.WriteLine(tableName);
             comboBoxEx7.Text = tableName;
+            //先清除目前显示的数据
+            dataGridViewX1.Rows.Clear();
             for (int i = 0; i < dtas.Count; i++) {
                 dataGridViewX1.Rows.Add(dtas[i]);
             }
