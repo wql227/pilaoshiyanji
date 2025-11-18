@@ -5566,14 +5566,14 @@ namespace DoPENetConnect
             }
         }
 
-        public void ClearProgramDataGridView()
+        public void ClearProgramDataGridView(string programName)
         {
             //程序名称显示列表处理
             try
             {
-                int index = comboBoxEx7.Items.IndexOf(comboBoxEx7.Text);
-                comboBoxEx7.Items.RemoveAt(index);
                 comboBoxEx7.Text = "";
+                int index = comboBoxEx7.Items.IndexOf(programName);
+                comboBoxEx7.Items.RemoveAt(index);
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.ToString());

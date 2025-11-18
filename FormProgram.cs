@@ -463,6 +463,7 @@ namespace DoPENetConnect
             {
                 if (tmpHelper.IsTableExists(comboBoxEx1.Text))
                 {    //程序已经存在
+                    string program2Del = comboBoxEx1.Text;
                     tmpHelper.DropTable(comboBoxEx1.Text);
                     int index = comboBoxEx1.Items.IndexOf(comboBoxEx1.Text);
                     comboBoxEx1.Items.RemoveAt(index);
@@ -470,7 +471,7 @@ namespace DoPENetConnect
                     dataGridViewX1.Rows.Clear();
 
                     MainForm.mainform.RefreshDbNameList(); //更新主界面程序名称列表控件内容
-                    MainForm.mainform.ClearProgramDataGridView();//清除当前程序显示
+                    MainForm.mainform.ClearProgramDataGridView(program2Del);//清除当前程序显示
                 };
             }
         }
