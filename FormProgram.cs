@@ -56,6 +56,10 @@ namespace DoPENetConnect
                 comboBoxEx1.Items.Add(programName);
                 comboBoxEx1.Text = programName;
             }
+
+            while (dataGridViewX1.Rows.Count > 0) {
+                dataGridViewX1.Rows.RemoveAt(dataGridViewX1.Rows.Count - 1);
+            }
         }
 
         private void comboBoxEx3_SelectedIndexChanged(object sender, EventArgs e)
@@ -153,6 +157,17 @@ namespace DoPENetConnect
             comboBoxEx3.SelectedIndex = 0;
             comboBoxEx2.SelectedIndex = 0;
             comboBoxEx5.SelectedIndex = 1;
+
+            //获取表格并填充至控件
+            FillProgramList();
+        }
+
+        private void FillProgramList()
+        {
+            AccessHelper tmpHelper = new AccessHelper();
+            tmpHelper.InitProgramDb();
+            string[] tmpTbNames = tmpHelper.GetTableNames();
+            comboBoxEx1.Items.AddRange(tmpTbNames);
         }
 
         private void btnX_FrmProtectOption_Cencel_Click(object sender, EventArgs e)
@@ -479,7 +494,7 @@ namespace DoPENetConnect
         private void comboBoxEx1_SelectedIndexChanged(object sender, EventArgs e)
         {
             AccessHelper tmpHelper = new AccessHelper();
-            tmpHelper.BuildDb();
+            tmpHelper.InitProgramDb();
 
             List<string[]> tmpDtas = tmpHelper.GetDtas(comboBoxEx1.Text);
 

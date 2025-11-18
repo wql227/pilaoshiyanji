@@ -65,6 +65,32 @@ namespace DoPENetConnect.Util
             return exists;
         }
 
+        public string[] GetTableNames()
+        {
+            string connectionString = string.Format(conStr, dbAddress);
+            string[] tmpNameStrs=null;
+            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            {
+                connection.Open();
+
+                DataTable tables = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+
+                if (tables.Rows.Count != 0)
+                {
+                    tmpNameStrs = new string[tables.Rows.Count];
+                    int i = 0;
+                    foreach (DataRow row in tables.Rows)
+                    {
+                        string name = row.Field<string>("TABLE_NAME");
+                        tmpNameStrs[i] = name;
+                        i++;
+                    }
+                }
+            }
+
+            return tmpNameStrs;
+        }
+
         public bool DropTable(string programName)
         {
             bool res = true;
