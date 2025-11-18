@@ -18,7 +18,7 @@ namespace DoPENetConnect
         }
         public void SetTitle(string newName)
         {
-            this.Name = newName;
+            this.Text = newName;
         }
         public FormInputBox()
         {

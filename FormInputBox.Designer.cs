@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInputBox));
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,31 +56,6 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
             // 
-            // labelX1
-            // 
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(40, 42);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(61, 23);
-            this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "软件名称";
-            // 
-            // textBoxX1
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(103, 43);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(224, 21);
-            this.textBoxX1.TabIndex = 1;
-            // 
             // buttonX1
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -92,6 +67,31 @@
             this.buttonX1.TabIndex = 2;
             this.buttonX1.Text = "确定";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            // 
+            // textBoxX1
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX1.Location = new System.Drawing.Point(77, 43);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.PreventEnterBeep = true;
+            this.textBoxX1.Size = new System.Drawing.Size(250, 21);
+            this.textBoxX1.TabIndex = 1;
+            // 
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(40, 42);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(37, 23);
+            this.labelX1.TabIndex = 0;
+            this.labelX1.Text = "名称";
             // 
             // FormInputBox
             // 
