@@ -89,6 +89,7 @@ using log4net;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using TeeChart;
+using DoPENetConnect.Util;
 
 namespace DoPENetConnect
 {
@@ -2079,7 +2080,10 @@ namespace DoPENetConnect
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadIni();
+
+            //程控相关
             RemoveDataGridView();
+            RefreshDbNameList();
 
             //LoadLanguage();
 
@@ -5548,9 +5552,34 @@ namespace DoPENetConnect
             }
         }
 
+        public void RefreshDbNameList()
+        {
+            AccessHelper tmpHelper = new AccessHelper();
+            tmpHelper.InitProgramDb();
+            string[] nameStrs = tmpHelper.GetTableNames();
+            if (nameStrs.Length > 0)
+            {
+                comboBoxEx7.Items.Clear();
+                comboBoxEx7.Items.AddRange(nameStrs);
+            }
+        }
+
         private void comboBoxEx7_SelectedIndexChanged(object sender, EventArgs e)
         {
+            AccessHelper tmpHelper = new AccessHelper();
+            tmpHelper.InitProgramDb();
+            List<string[]> tmpDtas = tmpHelper.GetDtas(comboBoxEx7.Text);
+            if (tmpDtas.Count != 0)
+            {
+                while (dataGridViewX1.Rows.Count != 0)
+                {   //清空当前gridview
+                    dataGridViewX1.Rows.RemoveAt(dataGridViewX1.Rows.Count - 1);
+                }
 
+                for (int i = 0; i < tmpDtas.Count; i++) {
+                    dataGridViewX1.Rows.Add(tmpDtas[i]);
+                }
+            }
         }
     }
 }
