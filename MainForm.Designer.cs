@@ -600,14 +600,14 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel8);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Dock = System.Windows.Forms.DockStyle.Right;
             this.superTabControl4.Location = new System.Drawing.Point(0, 0);
             this.superTabControl4.Name = "superTabControl4";
             this.superTabControl4.ReorderTabsEnabled = true;
             this.superTabControl4.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.superTabControl4.SelectedTabIndex = 1;
+            this.superTabControl4.SelectedTabIndex = 0;
             this.superTabControl4.Size = new System.Drawing.Size(404, 544);
             this.superTabControl4.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl4.TabIndex = 24;
@@ -1065,6 +1065,7 @@
             // 
             this.btnX_ApplyProtection.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_ApplyProtection.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_ApplyProtection.Image = ((System.Drawing.Image)(resources.GetObject("btnX_ApplyProtection.Image")));
             this.btnX_ApplyProtection.Location = new System.Drawing.Point(299, 455);
             this.btnX_ApplyProtection.Name = "btnX_ApplyProtection";
             this.btnX_ApplyProtection.Size = new System.Drawing.Size(90, 36);
