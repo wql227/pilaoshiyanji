@@ -5564,6 +5564,17 @@ namespace DoPENetConnect
             }
         }
 
+        public void ClearProgramDataGridView()
+        {
+            //程序名称显示列表处理
+            int index = comboBoxEx7.Items.IndexOf(comboBoxEx7.Text);
+            comboBoxEx7.Items.RemoveAt(index);
+            comboBoxEx7.Text = "";
+
+            //数据显示处理
+            dataGridViewX1.Rows.Clear();
+        }
+
         private void comboBoxEx7_SelectedIndexChanged(object sender, EventArgs e)
         {
             AccessHelper tmpHelper = new AccessHelper();

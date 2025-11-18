@@ -180,7 +180,9 @@ namespace DoPENetConnect
             }
             if (!SaveProgram(comboBoxEx1.Text)) {
                 MessageBox.Show("保存失败，请检查程序是否已经存在");
+                return;
             };
+            MainForm.mainform.RefreshDbNameList();
         }
 
         public bool SaveProgram(string programName)
@@ -455,13 +457,20 @@ namespace DoPENetConnect
         private void buttonX4_Click(object sender, EventArgs e)
         {
             AccessHelper tmpHelper = new AccessHelper();
-            tmpHelper.BuildDb();
+            tmpHelper.InitProgramDb();
 
             if (comboBoxEx1.Text != "")
             {
                 if (tmpHelper.IsTableExists(comboBoxEx1.Text))
                 {    //程序已经存在
                     tmpHelper.DropTable(comboBoxEx1.Text);
+                    int index = comboBoxEx1.Items.IndexOf(comboBoxEx1.Text);
+                    comboBoxEx1.Items.RemoveAt(index);
+                    comboBoxEx1.Text = "";
+                    dataGridViewX1.Rows.Clear();
+
+                    MainForm.mainform.RefreshDbNameList(); //更新主界面程序名称列表控件内容
+                    MainForm.mainform.ClearProgramDataGridView();//清除当前程序显示
                 };
             }
         }
@@ -488,7 +497,10 @@ namespace DoPENetConnect
                 if (!SaveProgram(comboBoxEx1.Text))
                 {
                     MessageBox.Show("保存失败，请检查程序是否已经存在");
+                    return;
                 };
+
+                MainForm.mainform.RefreshDbNameList(); //更新主界面程序名称列表控件内容
             }
         }
 
