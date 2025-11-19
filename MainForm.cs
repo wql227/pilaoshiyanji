@@ -573,6 +573,10 @@ namespace DoPENetConnect
         /// 退出程序
         /// </summary>
         public bool bQuit = false;
+        /// <summary>
+        /// 程序控制
+        /// </summary>
+        FormProgControl progControl=null;
 
         //System.Timers.Timer timer;
 
@@ -692,7 +696,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -5598,6 +5602,33 @@ namespace DoPENetConnect
                 for (int i = 0; i < tmpDtas.Count; i++) {
                     dataGridViewX1.Rows.Add(tmpDtas[i]);
                 }
+            }
+        }
+
+        private void buttonX24_Click(object sender, EventArgs e)
+        {
+            if (isRunning || !bActivated) {
+                MessageBox.Show("有试验正在运行或者控制器未激活，请检查后再试！");
+            }
+
+            if (comboBoxEx7.Text != "")        //确定试验被选中
+            {
+                if(progControl==null)
+                    progControl = new FormProgControl();
+
+                List<string[]> tmpList = new List<string[]>();
+                
+                for (int i = 0; i < dataGridViewX1.Rows.Count; i++)
+                {
+                    string[] tmpStrs = new string[5];
+                    for (int j = 0; j < dataGridViewX1.Rows[i].Cells.Count; j++)
+                    {
+                        tmpStrs[j] = dataGridViewX1.Rows[i].Cells[j].Value.ToString();
+                    }
+                    tmpList.Add(tmpStrs);
+                }
+                progControl.SetCmdParmas(tmpList);
+                progControl.StartRunProgram();
             }
         }
     }

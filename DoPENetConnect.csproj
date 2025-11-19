@@ -166,6 +166,12 @@
     <Compile Include="FormInputBox.designer.cs">
       <DependentUpon>FormInputBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProgControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProgControl.Designer.cs">
+      <DependentUpon>FormProgControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProgram.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormInputBox.resx">
       <DependentUpon>FormInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProgControl.resx">
+      <DependentUpon>FormProgControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProgram.resx">
       <DependentUpon>FormProgram.cs</DependentUpon>
@@ -358,7 +367,7 @@
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Enabled="1" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Deploy="1" />
+      <UserProperties Reactor_Deploy="1" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Configuration="" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

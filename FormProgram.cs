@@ -44,6 +44,7 @@ namespace DoPENetConnect
 
         }
 
+
         private void btnX_FrmProtectOption_OK_Click(object sender, EventArgs e)
         {
             FormInputBox tmpInput = new FormInputBox();
