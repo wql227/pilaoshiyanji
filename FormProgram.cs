@@ -334,6 +334,7 @@ namespace DoPENetConnect
                     //dataGridViewX1.Rows.Insert(tmpIndex, cmdParams);
                     needChangeIndex = 1;
                 }
+                
 
                 if (1 == needChangeIndex)
                 {
@@ -356,8 +357,15 @@ namespace DoPENetConnect
                 }
 
             }
-            cmdParamsExt[0] = (int.Parse(cmdParamsExt[0]) + 1).ToString();
-            dataGridViewX1.Rows.Add(cmdParamsExt);
+
+            if (needChangeIndex != 0)     //符合插入条件
+            {
+                cmdParamsExt[0] = (int.Parse(cmdParamsExt[0]) + 1).ToString();
+                dataGridViewX1.Rows.Add(cmdParamsExt);
+            }
+            else {
+                MessageBox.Show("请选择已经存在的步骤编号");
+            }
         }
 
         private void buttonX2_Click(object sender, EventArgs e)
