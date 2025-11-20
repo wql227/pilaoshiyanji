@@ -189,7 +189,7 @@ namespace DoPENetConnect
                 MessageBox.Show("保存失败，请检查程序是否已经存在");
                 return;
             };
-            MainForm.mainform.RefreshDbNameList();
+            MainForm.mainform.RefreshDbNameList();  //更新主界面中程序名称列表
         }
 
         public bool SaveProgram(string programName)
@@ -246,10 +246,13 @@ namespace DoPENetConnect
                     tmpStrings[2] = string.Format("{1},延时:{0}s", textBoxX12.Text, comboBoxEx3.Text);
                     break;
                 case "高压启动":
+                    tmpStrings[2] = "高压启动...";
                     break;
                 case "切换到低压":
+                    tmpStrings[2] = "低压启动...";
                     break;
                 case "试验结束":
+                    tmpStrings[2] = "试验结束...";
                     break;
                     //case "等速位移":
                     //    break;
