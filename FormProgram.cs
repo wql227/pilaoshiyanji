@@ -234,7 +234,7 @@ namespace DoPENetConnect
                     tmpStrings[2] = string.Format("{3},保持目标:{0}kN,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
                     break;
                 case "波形控制":
-                    tmpStrings[2] = string.Format("{3},波形:{0},中值{1}mm,振幅:{2}mm,频率:{4}Hz,试验次数:{5},趋近速度:{6}mm/min,目标值:{7}mm", comboBoxEx4.Text, textBoxX1.Text, textBoxX3.Text, comboBoxEx3.Text, textBoxX2.Text, textBoxX5.Text, textBoxX6.Text, textBoxX7.Text);
+                    tmpStrings[2] = string.Format("{3},波形:{0},中值:{1}mm,振幅:{2}mm,频率:{4}Hz,试验次数:{5},趋近速度:{6}mm/min,目标值:{7}mm", comboBoxEx4.Text, textBoxX1.Text, textBoxX3.Text, comboBoxEx3.Text, textBoxX2.Text, textBoxX5.Text, textBoxX6.Text, textBoxX7.Text);
                     break;
                 case "延时":
                     tmpStrings[2] = string.Format("{1},延时:{0}s", textBoxX12.Text, comboBoxEx3.Text);

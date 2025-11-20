@@ -3372,6 +3372,17 @@ namespace DoPENetConnect
             }
         }
 
+        public void MoveHaultW(DoPE.CTRL control, double delay)
+        {
+            DoPE.ERR error = MyEdc.Move.HaltW(control, delay, ref MyTan);
+
+            ////正常返回，开始计时
+            //if (error == DoPE.ERR.NOERROR)
+            //{
+            //    //stopwatch.Start();
+            //}
+        }
+
 
         /// <summary>
         /// Move.POS_A
