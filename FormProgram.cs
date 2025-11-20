@@ -158,9 +158,15 @@ namespace DoPENetConnect
             comboBoxEx3.SelectedIndex = 0;
             comboBoxEx2.SelectedIndex = 0;
             comboBoxEx5.SelectedIndex = 1;
+            comboBoxEx6.SelectedIndex = 0;
 
             //获取表格并填充至控件
             FillProgramList();
+
+            //设置panel位置
+            panelEx_delay.Location = new Point(panelEx_boxing.Location.X, 41);
+            panelEx_dengsuweiyi .Location = new Point(panelEx_boxing.Location.X, 41);
+            panelEx_Empty.Location = new Point(panelEx_boxing.Location.X, 41);
         }
 
         private void FillProgramList()

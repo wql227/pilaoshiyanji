@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.buttonX6 = new DevComponents.DotNetBar.ButtonX();
             this.panelEx_Empty = new DevComponents.DotNetBar.PanelEx();
@@ -229,6 +229,8 @@
             this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
             this.newTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.programDbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboItem139 = new DevComponents.Editors.ComboItem();
+            this.comboItem140 = new DevComponents.Editors.ComboItem();
             this.panelEx1.SuspendLayout();
             this.panelEx_delay.SuspendLayout();
             this.panelEx_dengsuweiyi.SuspendLayout();
@@ -299,7 +301,7 @@
             this.panelEx_Empty.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx_Empty.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx_Empty.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx_Empty.Location = new System.Drawing.Point(245, 41);
+            this.panelEx_Empty.Location = new System.Drawing.Point(245, 268);
             this.panelEx_Empty.Name = "panelEx_Empty";
             this.panelEx_Empty.Size = new System.Drawing.Size(956, 66);
             this.panelEx_Empty.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -319,8 +321,7 @@
             this.panelEx_delay.Controls.Add(this.labelX20);
             this.panelEx_delay.Controls.Add(this.textBoxX12);
             this.panelEx_delay.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx_delay.Enabled = false;
-            this.panelEx_delay.Location = new System.Drawing.Point(245, 41);
+            this.panelEx_delay.Location = new System.Drawing.Point(245, 199);
             this.panelEx_delay.Name = "panelEx_delay";
             this.panelEx_delay.Size = new System.Drawing.Size(956, 66);
             this.panelEx_delay.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -359,6 +360,7 @@
             this.textBoxX12.PreventEnterBeep = true;
             this.textBoxX12.Size = new System.Drawing.Size(86, 26);
             this.textBoxX12.TabIndex = 27;
+            this.textBoxX12.Text = "0";
             // 
             // panelEx_dengsuweiyi
             // 
@@ -371,7 +373,7 @@
             this.panelEx_dengsuweiyi.Controls.Add(this.textBoxX16);
             this.panelEx_dengsuweiyi.Controls.Add(this.labelX24);
             this.panelEx_dengsuweiyi.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx_dengsuweiyi.Location = new System.Drawing.Point(245, 41);
+            this.panelEx_dengsuweiyi.Location = new System.Drawing.Point(245, 127);
             this.panelEx_dengsuweiyi.Name = "panelEx_dengsuweiyi";
             this.panelEx_dengsuweiyi.Size = new System.Drawing.Size(956, 66);
             this.panelEx_dengsuweiyi.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -901,6 +903,7 @@
             this.textBoxX9.PreventEnterBeep = true;
             this.textBoxX9.Size = new System.Drawing.Size(86, 26);
             this.textBoxX9.TabIndex = 52;
+            this.textBoxX9.Text = "0";
             // 
             // labelX14
             // 
@@ -928,6 +931,7 @@
             this.textBoxX8.PreventEnterBeep = true;
             this.textBoxX8.Size = new System.Drawing.Size(86, 26);
             this.textBoxX8.TabIndex = 50;
+            this.textBoxX8.Text = "0";
             // 
             // labelX13
             // 
@@ -949,6 +953,9 @@
             this.comboBoxEx6.Font = new System.Drawing.Font("宋体", 12F);
             this.comboBoxEx6.FormattingEnabled = true;
             this.comboBoxEx6.ItemHeight = 21;
+            this.comboBoxEx6.Items.AddRange(new object[] {
+            this.comboItem139,
+            this.comboItem140});
             this.comboBoxEx6.Location = new System.Drawing.Point(659, 26);
             this.comboBoxEx6.Name = "comboBoxEx6";
             this.comboBoxEx6.Size = new System.Drawing.Size(91, 27);
@@ -981,6 +988,7 @@
             this.textBoxX7.PreventEnterBeep = true;
             this.textBoxX7.Size = new System.Drawing.Size(86, 26);
             this.textBoxX7.TabIndex = 46;
+            this.textBoxX7.Text = "0";
             // 
             // labelX11
             // 
@@ -1008,6 +1016,7 @@
             this.textBoxX6.PreventEnterBeep = true;
             this.textBoxX6.Size = new System.Drawing.Size(86, 26);
             this.textBoxX6.TabIndex = 44;
+            this.textBoxX6.Text = "0";
             // 
             // labelX4
             // 
@@ -1092,6 +1101,7 @@
             this.textBoxX5.PreventEnterBeep = true;
             this.textBoxX5.Size = new System.Drawing.Size(86, 26);
             this.textBoxX5.TabIndex = 42;
+            this.textBoxX5.Text = "0";
             // 
             // labelX5
             // 
@@ -1134,6 +1144,7 @@
             this.textBoxX2.PreventEnterBeep = true;
             this.textBoxX2.Size = new System.Drawing.Size(86, 26);
             this.textBoxX2.TabIndex = 29;
+            this.textBoxX2.Text = "0";
             // 
             // labelX7
             // 
@@ -1174,6 +1185,7 @@
             this.textBoxX3.PreventEnterBeep = true;
             this.textBoxX3.Size = new System.Drawing.Size(86, 26);
             this.textBoxX3.TabIndex = 27;
+            this.textBoxX3.Text = "0";
             // 
             // comboBoxEx3
             // 
@@ -1670,14 +1682,14 @@
             // dataGridViewX1
             // 
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.stepNo,
@@ -1685,27 +1697,27 @@
             this.Column1,
             this.frequency,
             this.cycleNum});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(21)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewX1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 113);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(1367, 487);
@@ -1766,6 +1778,14 @@
             // newTableBindingSource
             // 
             this.newTableBindingSource.DataMember = "NewTable";
+            // 
+            // comboItem139
+            // 
+            this.comboItem139.Text = "关闭";
+            // 
+            // comboItem140
+            // 
+            this.comboItem140.Text = "开启";
             // 
             // FormProgram
             // 
@@ -1987,5 +2007,7 @@
         private DevComponents.DotNetBar.ButtonX buttonX6;
         private System.Windows.Forms.BindingSource newTableBindingSource;
         private System.Windows.Forms.BindingSource programDbDataSetBindingSource;
+        private DevComponents.Editors.ComboItem comboItem139;
+        private DevComponents.Editors.ComboItem comboItem140;
     }
 }
