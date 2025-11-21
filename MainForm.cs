@@ -696,7 +696,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -1791,32 +1791,54 @@ namespace DoPENetConnect
                         }
                     }
 
+                    //if (isRunning && progControl!=null) {
+                    //    progControl.CmdSwitch(g_Position, g_Load, g_Extension);
+                    //}
+
                     //试验次数达到指定的试验次数
                     if (isRunning) 
                     {
-                        nCycleCount++;
-
-                        if (nCycleCount > 20 && gSample.Cycles /*>> 1*/ >= nTestCount)
+                        bool isDynamic = false;
+                        if ((progControl!=null && CMDNAMES.WAVE==progControl.ProgStatus.currentCmd)||progControl==null)
                         {
-                            isRunning = false;
-                            bShowSensorData = false;
-                            SetControlEnable(true);
-                            timer_UpdateData.Stop();
+                            isDynamic = true;
+                        }
 
-                            tbX_TestCount.Text = tbX_TestCycles.Text;
-                            if (bSaveStopScreenLog)
+                        if (isDynamic == true)
+                        {
+                            nCycleCount++;
+
+                            if (nCycleCount > 20 && gSample.Cycles /*>> 1*/ >= nTestCount)
                             {
-                                //存储实验停止后的日志
-                                var task1 = Task.Run(() => GetSeriesPoint());
+                                isRunning = false;
+                                bShowSensorData = false;
+                                SetControlEnable(true);
+                                timer_UpdateData.Stop();
+
+                                tbX_TestCount.Text = tbX_TestCycles.Text;
+                                if (bSaveStopScreenLog)
+                                {
+                                    //存储实验停止后的日志
+                                    var task1 = Task.Run(() => GetSeriesPoint());
+                                }
+
+                                //最后一次的试验次数写入配置文件
+                                IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
+
+                                nCycleCount = 0;
+
+                                //清除上次计数
+                                DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
                             }
+                        }
+                        else if(progControl!=null){
+                            if (CMDNAMES.ENDED == progControl.ProgStatus.currentCmd)
+                            {   //程控结束
 
-                            //最后一次的试验次数写入配置文件
-                            IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
-
-                            nCycleCount = 0;
-
-                            //清除上次计数
-                            DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                            }
+                            else {
+                                progControl.CmdSwitch(g_Position, g_Load, g_Extension);
+                            }
                         }
                     }
                 }
@@ -5618,10 +5640,11 @@ namespace DoPENetConnect
 
         private void buttonX24_Click(object sender, EventArgs e)
         {
-            //if (isRunning || !bActivated) {
-            //    MessageBox.Show("有试验正在运行或者控制器未激活，请检查后再试！");
-            //    return;
-            //}
+            if (isRunning || !bActivated)
+            {
+                MessageBox.Show("有试验正在运行或者控制器未激活，请检查后再试！");
+                return;
+            }
 
             if (comboBoxEx7.Text != "")        //确定试验被选中
             {
@@ -5641,6 +5664,8 @@ namespace DoPENetConnect
                 }
                 progControl.SetCmdParmas(tmpList);
                 progControl.StartRunProgram();
+
+                isRunning = true;
             }
         }
     }

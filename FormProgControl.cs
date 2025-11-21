@@ -11,22 +11,23 @@ using Doli.DoPE10;
 
 namespace DoPENetConnect
 {
+    public enum CMDNAMES
+    {
+        POS,
+        LOAD,
+        POSKEEP,
+        POSKEEPW,
+        LOADKEEP,
+        LOADKEEPW,
+        WAVE,
+        DELAY,
+        HIGHPRESSURE,
+        LOWPRESSURE,
+        ENDED
+    }
     public partial class FormProgControl : Form
     {
-        public enum CMDNAMES
-        {
-            POS,
-            LOAD,
-            POSKEEP,
-            POSKEEPW,
-            LOADKEEP,
-            LOADKEEPW,
-            WAVE,
-            DELAY,
-            HIGHPRESSURE,
-            LOWPRESSURE,
-            ENDED
-        }
+        
 
         public Dictionary<string,DoPE.DYN_WAVEFORM> ProgramWaveForm;
         public struct PROGSTATUS
@@ -73,7 +74,7 @@ namespace DoPENetConnect
         }
         public void RunCmd()
         {
-            if (currentCmdIndex >= cmdDta.Count) {    //超出指令当前指令上限
+            if (currentCmdIndex >= cmdDta.Count) {    //超出指令当前指令上限   结束？
                 return;
             }
             string[] cmdParams = cmdDta[currentCmdIndex][2].Split(',');
@@ -152,7 +153,6 @@ namespace DoPENetConnect
                     break;
             }
             ProgStatus.cmdParams = cmd;
-            currentCmdIndex++;    //指令编号索引增加
         }
 
         /// <summary>
@@ -170,6 +170,31 @@ namespace DoPENetConnect
                 ProgStatus.currentCmd = CMDNAMES.LOADKEEPW;
             }
             MainForm.mainform.MoveHaultW(ctrlMode, ProgStatus.IntervalKeepping);   //保持
+        }
+
+        public void CmdSwitch(double pos, double load, double extension)
+        {
+            Console.WriteLine("glm-current params{0}{1}{2}", pos, load, extension);
+            bool switchOrNot = false;
+            switch (ProgStatus.currentCmd) {
+                case CMDNAMES.POS:
+                    if (pos == double.Parse(ProgStatus.cmdParams[1]))   //达到目标
+                    {
+                        switchOrNot = true;
+
+                    }
+                    break;
+                case CMDNAMES.LOAD:
+                    break;
+                case CMDNAMES.LOADKEEP:
+                    break;
+            }
+
+            if (switchOrNot)
+            {
+                currentCmdIndex = int.Parse(cmdDta[currentCmdIndex][3])-1;
+                RunCmd();
+            }
         }
 
     }
