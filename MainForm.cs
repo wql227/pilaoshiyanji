@@ -696,7 +696,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -5618,9 +5618,10 @@ namespace DoPENetConnect
 
         private void buttonX24_Click(object sender, EventArgs e)
         {
-            if (isRunning || !bActivated) {
-                MessageBox.Show("有试验正在运行或者控制器未激活，请检查后再试！");
-            }
+            //if (isRunning || !bActivated) {
+            //    MessageBox.Show("有试验正在运行或者控制器未激活，请检查后再试！");
+            //    return;
+            //}
 
             if (comboBoxEx7.Text != "")        //确定试验被选中
             {

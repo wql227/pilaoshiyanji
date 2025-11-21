@@ -34,6 +34,7 @@ namespace DoPENetConnect
             public CMDNAMES currentCmd;
             public double IntervalKeepping;
             public string[] cmdParams;
+            public string[] endGoal;
         }
         /// <summary>
         /// element 0:cmd name
@@ -68,13 +69,24 @@ namespace DoPENetConnect
 
         public void StartRunProgram()
         {
+            RunCmd();
+        }
+        public void RunCmd()
+        {
+            if (currentCmdIndex >= cmdDta.Count) {    //超出指令当前指令上限
+                return;
+            }
             string[] cmdParams = cmdDta[currentCmdIndex][2].Split(',');
             string[] cmd = new string[20];
             switch (cmdDta[currentCmdIndex][1]) {
                 case "等速位移":
                     ProgStatus.currentCmd = CMDNAMES.POS;
                     cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("mm"));
-                   cmd[1] = cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("mm"));
+                    cmd[1] = cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("mm"));
+                    if (ProgStatus.endGoal == null) {
+                        ProgStatus.endGoal = new string[8];
+                    }                    
+                    ProgStatus.endGoal[0] = cmd[1];
                     //pos 指令
                    MainForm.mainform.MovePos(DoPE.CTRL.POS, double.Parse(cmd[0])/60, double.Parse(cmd[1]));
                     break;
@@ -122,15 +134,25 @@ namespace DoPENetConnect
                     MainForm.mainform.MoveDynCycles(ProgramWaveForm[cmd[0]], false, DoPE.DYN_PEAKCTRL.ONE, DoPE.CTRL.POS, false, double.Parse(cmd[5])/60, double.Parse(cmd[1]), double.Parse(cmd[2]),0, 0, double.Parse(cmd[3]),int.Parse(cmd[4])*2, 0, double.Parse(cmd[1])+ double.Parse(cmd[2]), 0);
                     break;
                 case "延时":
+                    ProgStatus.currentCmd = CMDNAMES.DELAY;
+                    cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("s"));  //延时值
+                    MainForm.mainform.MoveHaultW(DoPE.CTRL.POS, double.Parse(cmd[0]));   //保持
                     break;
                 case "高压启动":
+                    ProgStatus.currentCmd = CMDNAMES.HIGHPRESSURE;
+                    MainForm.mainform.FormFloat_btnX_SetHigh_Click();   //保持
                     break;
                 case "切换到低压":
+                    ProgStatus.currentCmd = CMDNAMES.HIGHPRESSURE;
+                    MainForm.mainform.FormFloat_btnX_SetLow_Click();   //保持
                     break;
                 case "试验结束":
+                    ProgStatus.currentCmd = CMDNAMES.ENDED;
+                    MainForm.mainform.FormFloat_bntX_GUIOff_Click();   //保持
                     break;
             }
             ProgStatus.cmdParams = cmd;
+            currentCmdIndex++;    //指令编号索引增加
         }
 
         /// <summary>
