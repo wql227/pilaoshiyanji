@@ -1799,7 +1799,7 @@ namespace DoPENetConnect
                     if (isRunning) 
                     {
                         bool isDynamic = false;
-                        if ((progControl!=null && CMDNAMES.WAVE==progControl.ProgStatus.currentCmd)||progControl==null)
+                        if (progControl==null)
                         {
                             isDynamic = true;
                         }
@@ -1836,8 +1836,18 @@ namespace DoPENetConnect
                             {   //程控结束
 
                             }
-                            else {
-                                progControl.CmdSwitch(g_Position, g_Load, g_Extension);
+                            else if (CMDNAMES.WAVE == progControl.ProgStatus.currentCmd)
+                            {
+                                nCycleCount++;
+                                if (nCycleCount > 20 && gSample.Cycles /*>> 1*/ >= nTestCount)
+                                {
+                                    progControl.CmdSwitch(g_Position, g_Load, g_Extension, 1);   //当最后一个参数为1表示动态试验完成，结束wave过程
+                                    nCycleCount = 0;
+                                }
+                            }
+                            else
+                            {
+                                progControl.CmdSwitch(g_Position, g_Load, g_Extension,0);
                             }
                         }
                     }
@@ -3479,7 +3489,7 @@ namespace DoPENetConnect
             {
                 Modify = false;
             }
-            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0, 
+            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, false, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0, 
                 0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode, 
                 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
 
@@ -3872,11 +3882,11 @@ namespace DoPENetConnect
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
             string idEncry = devIdEncrypted.ToString();
-            if (idEncry != "0" && idEncry != "")
-            {
-                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-            }
-            //devId = new StringBuilder("02132F05");
+            //if (idEncry != "0" && idEncry != "")
+            //{
+            //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+            //}
+            devId = new StringBuilder("02137E43");
 
             //string aaa = DESEncrypt.Encrypt("0214C55E");
 

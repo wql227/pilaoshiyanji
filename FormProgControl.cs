@@ -36,12 +36,14 @@ namespace DoPENetConnect
             public double IntervalKeepping;
             public string[] cmdParams;
             public string[] endGoal;
+            public DateTime oldDateTime;
+            public int TimesForWave;
         }
         /// <summary>
         /// element 0:cmd name
         /// </summary>
         public List<string[]> cmdDta=null; 
-        public int currentCmdIndex = 0;
+        public int currentCmdIndex = -1;
         public PROGSTATUS ProgStatus;
 
 
@@ -131,12 +133,15 @@ namespace DoPENetConnect
                     cmd[4] = cmdParams[5].Split(':').ElementAt(1);//次数
                     cmd[5] = cmdParams[6].Split(':').ElementAt(1).Substring(0, cmdParams[6].Split(':').ElementAt(1).IndexOf("mm"));//趋近速度
                     cmd[6] = cmdParams[7].Split(':').ElementAt(1).Substring(0, cmdParams[7].Split(':').ElementAt(1).IndexOf("mm"));//目标值
+                    ProgStatus.TimesForWave = 0;//计数器清零
                     //pos 指令
                     MainForm.mainform.MoveDynCycles(ProgramWaveForm[cmd[0]], false, DoPE.DYN_PEAKCTRL.ONE, DoPE.CTRL.POS, false, double.Parse(cmd[5])/60, double.Parse(cmd[1]), double.Parse(cmd[2]),0, 0, double.Parse(cmd[3]),int.Parse(cmd[4])*2, 0, double.Parse(cmd[1])+ double.Parse(cmd[2]), 0);
                     break;
                 case "延时":
                     ProgStatus.currentCmd = CMDNAMES.DELAY;
                     cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("s"));  //延时值
+                    ProgStatus.oldDateTime = DateTime.Now;
+                    ProgStatus.IntervalKeepping = double.Parse(cmd[0]);
                     MainForm.mainform.MoveHaultW(DoPE.CTRL.POS, double.Parse(cmd[0]));   //保持
                     break;
                 case "高压启动":
@@ -153,6 +158,11 @@ namespace DoPENetConnect
                     break;
             }
             ProgStatus.cmdParams = cmd;
+        }
+
+        public void WaveTimesInc()
+        {
+            ProgStatus.TimesForWave++;
         }
 
         /// <summary>
@@ -172,7 +182,11 @@ namespace DoPENetConnect
             MainForm.mainform.MoveHaultW(ctrlMode, ProgStatus.IntervalKeepping);   //保持
         }
 
-        public void CmdSwitch(double pos, double load, double extension)
+        // DateTime oldDataTime;
+        /// <summary>
+        /// 
+        /// </summary>       
+        public void CmdSwitch(double pos, double load, double extension,int dynCycle)
         {
             Console.WriteLine("glm-current params{0}{1}{2}", pos, load, extension);
             bool switchOrNot = false;
@@ -185,8 +199,54 @@ namespace DoPENetConnect
                     }
                     break;
                 case CMDNAMES.LOAD:
+                    if (load == double.Parse(ProgStatus.cmdParams[1]))
+                    {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+                        switchOrNot = true;
+                    }
+                    break;
+                case CMDNAMES.POSKEEP:
+                    if (pos == double.Parse(ProgStatus.cmdParams[0]))
+                    {
+                        ProgStatus.oldDateTime = DateTime.Now;
+                        WaitAfterKeepCmd(DoPE.CTRL.POS);
+                        return;
+                    }
+                    break;
+                case CMDNAMES.POSKEEPW:
+                    DateTime currentDateTime = DateTime.Now;
+                    TimeSpan timeElpse = currentDateTime - ProgStatus.oldDateTime;
+                    int seconds = (int)timeElpse.TotalSeconds;
+                    if (ProgStatus.IntervalKeepping>0&&seconds >= ProgStatus.IntervalKeepping)
+                    {
+                        switchOrNot = true;
+                    }
                     break;
                 case CMDNAMES.LOADKEEP:
+                    if (load == double.Parse(ProgStatus.cmdParams[0]))
+                    {
+                        ProgStatus.oldDateTime = DateTime.Now;
+                        WaitAfterKeepCmd(DoPE.CTRL.LOAD);
+                        return;
+                    }
+                    break;
+                case CMDNAMES.LOADKEEPW:
+                    DateTime currentDateTime1 = DateTime.Now;
+                    TimeSpan timeElpse1 = currentDateTime1 - ProgStatus.oldDateTime;
+                    int seconds1 = (int)timeElpse1.TotalSeconds;
+                    if (ProgStatus.IntervalKeepping > 0 && seconds1 >= ProgStatus.IntervalKeepping)
+                    {
+                        switchOrNot = true;
+                    }
+                    break;
+                case CMDNAMES.WAVE:
+                    if (dynCycle==1)
+                    {
+                        switchOrNot = true;
+                    }
+                    break;
+                case CMDNAMES.ENDED:
+                    MainForm.mainform.FormFloat_bntX_MoveHalt_Click();
+                    currentCmdIndex = -1;
                     break;
             }
 
