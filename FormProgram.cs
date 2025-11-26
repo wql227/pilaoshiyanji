@@ -136,8 +136,8 @@ namespace DoPENetConnect
                 //    break;
                 case "试验结束":
                     panelEx_boxing.Visible = false;
-                    panelEx_delay.Visible = true;
-                    panelEx_Empty.Visible = false;
+                    panelEx_delay.Visible = false;
+                    panelEx_Empty.Visible = true;
                     panelEx_dengsuweiyi.Visible = false;
                     break;
                 default:
