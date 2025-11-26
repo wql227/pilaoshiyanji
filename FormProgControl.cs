@@ -188,7 +188,7 @@ namespace DoPENetConnect
         /// </summary>       
         public void CmdSwitch(double pos, double load, double extension,int dynCycle)
         {
-            Console.WriteLine("glm-current params{0}{1}{2}", pos, load, extension);
+            Console.WriteLine("glm-current params{0}{1}{2}{3}", pos, load, extension,dynCycle);
             bool switchOrNot = false;
             switch (ProgStatus.currentCmd) {
                 case CMDNAMES.POS:
@@ -246,7 +246,7 @@ namespace DoPENetConnect
                     break;
                 case CMDNAMES.ENDED:
                     MainForm.mainform.FormFloat_bntX_MoveHalt_Click();
-                    currentCmdIndex = -1;
+                    currentCmdIndex = -1;    //试验结束后将当前指令索引号置为-1
                     break;
             }
 

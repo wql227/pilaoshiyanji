@@ -1807,7 +1807,7 @@ namespace DoPENetConnect
                         if (isDynamic == true)
                         {
                             nCycleCount++;
-
+                            //Console.WriteLine("glm-programtest{0}-{1}", nCycleCount, gSample.Cycles);
                             if (nCycleCount > 20 && gSample.Cycles /*>> 1*/ >= nTestCount)
                             {
                                 isRunning = false;
@@ -1839,8 +1839,20 @@ namespace DoPENetConnect
                             else if (CMDNAMES.WAVE == progControl.ProgStatus.currentCmd)
                             {
                                 nCycleCount++;
-                                if (nCycleCount > 20 && gSample.Cycles /*>> 1*/ >= nTestCount)
+                                Console.WriteLine("glm-programtest{0}-{1}", nCycleCount, gSample.Cycles);
+                                //if (nCycleCount <= 20 && gSample.Cycles >= nTestCount)
+                                //{
+                                //}
+                                if (nCycleCount > 2000 && gSample.Cycles /*>> 1*/ >= nTestCount)
                                 {
+                                    //清除上次计数
+                                    DoPE.ERR err = MyEdc.Block.Header(3, DoPE.CMD_MODE.MESSAGE); // 3次循环，启用中间消息
+                                                                                                                // 后续添加具体命令（如 DoPEPosExt、DoPEHaltW）
+                                                                                                                // 执行命令块时，Cycles 自动清零
+                                    err = MyEdc.Block.Execute(DoPE.CMD_OPERATION.START, ref MyTan);
+
+                                    err = MyEdc.Move.SHalt(ref MyTan);
+                                    //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
                                     progControl.CmdSwitch(g_Position, g_Load, g_Extension, 1);   //当最后一个参数为1表示动态试验完成，结束wave过程
                                     nCycleCount = 0;
                                 }
