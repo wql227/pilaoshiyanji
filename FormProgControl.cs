@@ -38,6 +38,7 @@ namespace DoPENetConnect
             public string[] endGoal;
             public DateTime oldDateTime;
             public int TimesForWave;
+            public double startPos;
         }
         /// <summary>
         /// element 0:cmd name
@@ -154,7 +155,7 @@ namespace DoPENetConnect
                     break;
                 case "试验结束":
                     ProgStatus.currentCmd = CMDNAMES.ENDED;
-                    MainForm.mainform.FormFloat_bntX_GUIOff_Click();   //保持
+                    MainForm.mainform.FormFloat_bntX_MoveHalt_Click();   //保持
                     break;
             }
             ProgStatus.cmdParams = cmd;
@@ -257,5 +258,13 @@ namespace DoPENetConnect
             }
         }
 
+        public void StopProgram()
+        {
+            currentCmdIndex = -1;
+        }
+        public double GetOriginPos()
+        {
+            return ProgStatus.startPos;
+        }
     }
 }

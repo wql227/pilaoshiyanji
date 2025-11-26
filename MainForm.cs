@@ -1839,7 +1839,7 @@ namespace DoPENetConnect
                             else if (CMDNAMES.WAVE == progControl.ProgStatus.currentCmd)
                             {
                                 nCycleCount++;
-                                Console.WriteLine("glm-programtest{0}-{1}", nCycleCount, gSample.Cycles);
+                                //Console.WriteLine("glm-programtest{0}-{1}", nCycleCount, gSample.Cycles);
                                 //if (nCycleCount <= 20 && gSample.Cycles >= nTestCount)
                                 //{
                                 //}
@@ -5689,6 +5689,19 @@ namespace DoPENetConnect
 
                 isRunning = true;
             }
+        }
+
+        private void buttonX25_Click(object sender, EventArgs e)
+        {
+            if (progControl != null) {
+                OffEDC();
+                progControl.StopProgram();
+            }
+        }
+
+        private void buttonX26_Click(object sender, EventArgs e)
+        {
+            MyEdc.Move.Pos(DoPE.CTRL.POS, 50 / 60, progControl.GetOriginPos(), ref MyTan);
         }
     }
 }
