@@ -65,11 +65,13 @@ namespace DoPENetConnect
             ProgramWaveForm.Add("脉冲波形", DoPE.DYN_WAVEFORM.PULSE);
         }
 
-        public void SetCmdParmas(List<string[]> dta)
+        public void SetCmdParmas(List<string[]> dta, double startPos)
         {
             cmdDta = dta;
             currentCmdIndex = 0;
+            ProgStatus.startPos = startPos;
         }
+
 
         public void StartRunProgram()
         {

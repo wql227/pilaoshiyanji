@@ -3898,6 +3898,7 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             //}
+            //devId = new StringBuilder("02132F05");
             devId = new StringBuilder("02137E43");
 
             //string aaa = DESEncrypt.Encrypt("0214C55E");
@@ -5684,7 +5685,7 @@ namespace DoPENetConnect
                     }
                     tmpList.Add(tmpStrs);
                 }
-                progControl.SetCmdParmas(tmpList);
+                progControl.SetCmdParmas(tmpList,double.Parse(guiPosition.Text));
                 progControl.StartRunProgram();
 
                 isRunning = true;
@@ -5694,14 +5695,15 @@ namespace DoPENetConnect
         private void buttonX25_Click(object sender, EventArgs e)
         {
             if (progControl != null) {
-                OffEDC();
+                DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
                 progControl.StopProgram();
             }
         }
 
         private void buttonX26_Click(object sender, EventArgs e)
         {
-            MyEdc.Move.Pos(DoPE.CTRL.POS, 50 / 60, progControl.GetOriginPos(), ref MyTan);
+            if(progControl!=null)
+                MyEdc.Move.Pos(DoPE.CTRL.POS, 5, progControl.GetOriginPos(), ref MyTan);
         }
     }
 }
