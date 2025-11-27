@@ -39,6 +39,10 @@ namespace DoPENetConnect
             public DateTime oldDateTime;
             public int TimesForWave;
             public double startPos;
+            //current value
+            public double pos;
+            public double load;
+            public double extension;
         }
         /// <summary>
         /// element 0:cmd name
@@ -65,7 +69,7 @@ namespace DoPENetConnect
             ProgramWaveForm.Add("脉冲波形", DoPE.DYN_WAVEFORM.PULSE);
         }
 
-        public void SetCmdParmas(List<string[]> dta, double startPos)
+        public void SetCmdParmas(List<string[]> dta,double startPos)
         {
             cmdDta = dta;
             currentCmdIndex = 0;
@@ -93,6 +97,7 @@ namespace DoPENetConnect
                         ProgStatus.endGoal = new string[8];
                     }                    
                     ProgStatus.endGoal[0] = cmd[1];
+                    direction = DirectionAdjust(ProgStatus.pos, double.Parse(cmd[1]));
                     //pos 指令
                    MainForm.mainform.MovePos(DoPE.CTRL.POS, double.Parse(cmd[0])/60, double.Parse(cmd[1]));
                     break;
@@ -101,6 +106,11 @@ namespace DoPENetConnect
                     cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("kN"));
                     cmd[1] = cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("kN"));
                     //pos 指令
+                    if (ProgStatus.endGoal == null) {
+                    ProgStatus.endGoal = new string[8];
+                    }
+                    ProgStatus.endGoal[0] = cmd[1];
+                    direction = DirectionAdjust(ProgStatus.load, double.Parse(cmd[1]));
                     MainForm.mainform.MovePos(DoPE.CTRL.LOAD, double.Parse(cmd[0])*1000, double.Parse(cmd[1])*1000);
                     break;
                 case "位移保持":
@@ -110,6 +120,7 @@ namespace DoPENetConnect
                         cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("mm"));
                         cmd[1] = cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("s"));
                         //pos 指令
+                        direction = DirectionAdjust(ProgStatus.pos, double.Parse(cmd[0]));
                         MainForm.mainform.MovePos(DoPE.CTRL.POS, speed, double.Parse(cmd[0]));
                         ProgStatus.currentCmd = CMDNAMES.POSKEEP;
                         ProgStatus.IntervalKeepping = double.Parse(cmd[1]);
@@ -122,6 +133,7 @@ namespace DoPENetConnect
                         cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("mm"));
                         cmd[1] = cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("s"));
                         //pos 指令
+                        direction = DirectionAdjust(ProgStatus.load, double.Parse(cmd[0]));
                         MainForm.mainform.MovePos(DoPE.CTRL.LOAD, speed, double.Parse(cmd[0]));
                         ProgStatus.currentCmd = CMDNAMES.LOADKEEP;
                         ProgStatus.IntervalKeepping = double.Parse(cmd[1]);
@@ -137,7 +149,9 @@ namespace DoPENetConnect
                     cmd[5] = cmdParams[6].Split(':').ElementAt(1).Substring(0, cmdParams[6].Split(':').ElementAt(1).IndexOf("mm"));//趋近速度
                     cmd[6] = cmdParams[7].Split(':').ElementAt(1).Substring(0, cmdParams[7].Split(':').ElementAt(1).IndexOf("mm"));//目标值
                     ProgStatus.TimesForWave = 0;//计数器清零
-                    //pos 指令
+                                                //pos 指令
+
+                    direction = DirectionAdjust(ProgStatus.pos, double.Parse(cmd[1]));
                     MainForm.mainform.MoveDynCycles(ProgramWaveForm[cmd[0]], false, DoPE.DYN_PEAKCTRL.ONE, DoPE.CTRL.POS, false, double.Parse(cmd[5])/60, double.Parse(cmd[1]), double.Parse(cmd[2]),0, 0, double.Parse(cmd[3]),int.Parse(cmd[4])*2, 0, double.Parse(cmd[1])+ double.Parse(cmd[2]), 0);
                     break;
                 case "延时":
@@ -185,48 +199,100 @@ namespace DoPENetConnect
             MainForm.mainform.MoveHaultW(ctrlMode, ProgStatus.IntervalKeepping);   //保持
         }
 
+        int direction = 0;
+        public int DirectionAdjust(double origin,double finalval)
+        {
+           // Console.WriteLine("direction：{0}：{1}", origin, finalval);
+            if (finalval > origin)
+                return 0;
+            else if (finalval < origin)
+                return 1;
+            else
+                return 2;
+        }
+
+
         // DateTime oldDataTime;
         /// <summary>
         /// 
-        /// </summary>       
+        /// </summary> 
+        /// 
         public void CmdSwitch(double pos, double load, double extension,int dynCycle)
         {
-            Console.WriteLine("glm-current params{0}{1}{2}{3}", pos, load, extension,dynCycle);
+            ProgStatus.pos = pos;
+            ProgStatus.load = load;
+            ProgStatus.extension = extension;
+
+            Console.WriteLine("glm-current params：{0}：{1}：{2}：{3}", pos, load, extension,dynCycle);
             bool switchOrNot = false;
             switch (ProgStatus.currentCmd) {
                 case CMDNAMES.POS:
-                    if (pos == double.Parse(ProgStatus.cmdParams[1]))   //达到目标
+                    Console.WriteLine("direction-res：{0}", direction);
+                    if (direction==0&&pos >= double.Parse(ProgStatus.cmdParams[1]))   //达到目标
                     {
+                        Console.WriteLine("glm-current params1");
+                        switchOrNot = true;
+
+                    }
+                    else if(direction==1&&pos <= double.Parse(ProgStatus.cmdParams[1]))   //达到目标
+                    {
+                        Console.WriteLine("glm-current params2");
                         switchOrNot = true;
 
                     }
                     break;
                 case CMDNAMES.LOAD:
-                    if (load == double.Parse(ProgStatus.cmdParams[1]))
-                    {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+                    Console.WriteLine("direction-res：{0}", direction);
+                    if (direction==0&&load >= double.Parse(ProgStatus.cmdParams[1]))
+                    {
+                        Console.WriteLine("glm-current params3");
+                        switchOrNot = true;
+                    }
+                    else if (direction == 1 && load <= double.Parse(ProgStatus.cmdParams[1]))
+                    {
+                        Console.WriteLine("glm-current params4");
                         switchOrNot = true;
                     }
                     break;
                 case CMDNAMES.POSKEEP:
-                    if (pos == double.Parse(ProgStatus.cmdParams[0]))
+                    Console.WriteLine("direction-res：{0}", direction);
+                    if (direction == 0 && pos >= double.Parse(ProgStatus.cmdParams[0]))   //达到目标
                     {
+                        Console.WriteLine("glm-current params5");
                         ProgStatus.oldDateTime = DateTime.Now;
                         WaitAfterKeepCmd(DoPE.CTRL.POS);
                         return;
                     }
-                    break;
+                    else if (direction == 1 && pos <= double.Parse(ProgStatus.cmdParams[0]))   //达到目标
+                    {
+                        Console.WriteLine("glm-current params6");
+                        ProgStatus.oldDateTime = DateTime.Now;
+                        WaitAfterKeepCmd(DoPE.CTRL.POS);
+                        return;
+                    }
+                        break;
                 case CMDNAMES.POSKEEPW:
                     DateTime currentDateTime = DateTime.Now;
                     TimeSpan timeElpse = currentDateTime - ProgStatus.oldDateTime;
                     int seconds = (int)timeElpse.TotalSeconds;
                     if (ProgStatus.IntervalKeepping>0&&seconds >= ProgStatus.IntervalKeepping)
                     {
+                        Console.WriteLine("glm-current params7");
                         switchOrNot = true;
                     }
                     break;
                 case CMDNAMES.LOADKEEP:
-                    if (load == double.Parse(ProgStatus.cmdParams[0]))
+                    Console.WriteLine("direction-res：{0}", direction);
+                    if (direction == 0 && load >= double.Parse(ProgStatus.cmdParams[0]))
                     {
+                        Console.WriteLine("glm-current params8");
+                        ProgStatus.oldDateTime = DateTime.Now;
+                        WaitAfterKeepCmd(DoPE.CTRL.LOAD);
+                        return;
+                    }
+                    else if (direction == 1 && load <= double.Parse(ProgStatus.cmdParams[0]))
+                    {
+                        Console.WriteLine("glm-current params9");
                         ProgStatus.oldDateTime = DateTime.Now;
                         WaitAfterKeepCmd(DoPE.CTRL.LOAD);
                         return;

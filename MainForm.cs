@@ -3898,8 +3898,8 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             //}
-            //devId = new StringBuilder("02132F05");
-            devId = new StringBuilder("02137E43");
+            devId = new StringBuilder("02132F05");
+            //devId = new StringBuilder("02137E43");
 
             //string aaa = DESEncrypt.Encrypt("0214C55E");
 
