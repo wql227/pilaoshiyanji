@@ -228,10 +228,10 @@ namespace DoPENetConnect
             switch (comboBoxEx3.Text)
             {
                 case "等速位移":
-                    tmpStrings[2] = string.Format("{3},速率:{0}mm/min,{1}:{2}mm", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    tmpStrings[2] = string.Format("{3},速率:{0}mm/min,{1}:{2}{4}", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text,labelX24.Text.Substring(labelX24.Text.Length-2));
                     break;
                 case "等速力":
-                    tmpStrings[2] = string.Format("{3},速率:{0}kN/s,{1}:{2}kN", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    tmpStrings[2] = string.Format("{3},速率:{0}kN/s,{1}:{2}{4}", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text, labelX24.Text.Substring(labelX24.Text.Length - 2));
                     break;
                 case "位移保持":
                     tmpStrings[2] = string.Format("{3},保持目标:{0}mm,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
@@ -557,6 +557,18 @@ namespace DoPENetConnect
                 {
                     MainForm.mainform.SetProgramDtas(comboBoxEx1.Text, tmpDtas);
                 }
+            }
+        }
+
+        private void comboBoxEx8_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxEx8.Text == "位移达到")
+            {
+                labelX24.Text = "mm";
+            }
+            else if (comboBoxEx8.Text == "力达到")
+            {
+                labelX24.Text = "kN";
             }
         }
     }

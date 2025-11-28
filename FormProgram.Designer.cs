@@ -41,7 +41,6 @@
             this.panelEx_dengsuweiyi = new DevComponents.DotNetBar.PanelEx();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx8 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem130 = new DevComponents.Editors.ComboItem();
             this.comboItem131 = new DevComponents.Editors.ComboItem();
             this.comboItem132 = new DevComponents.Editors.ComboItem();
             this.labelX23 = new DevComponents.DotNetBar.LabelX();
@@ -405,7 +404,6 @@
             this.comboBoxEx8.FormattingEnabled = true;
             this.comboBoxEx8.ItemHeight = 21;
             this.comboBoxEx8.Items.AddRange(new object[] {
-            this.comboItem130,
             this.comboItem131,
             this.comboItem132});
             this.comboBoxEx8.Location = new System.Drawing.Point(81, 27);
@@ -413,10 +411,7 @@
             this.comboBoxEx8.Size = new System.Drawing.Size(91, 27);
             this.comboBoxEx8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx8.TabIndex = 50;
-            // 
-            // comboItem130
-            // 
-            this.comboItem130.Text = "保持时间";
+            this.comboBoxEx8.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx8_SelectedIndexChanged);
             // 
             // comboItem131
             // 
@@ -829,6 +824,7 @@
             // 
             this.textBoxX4.Border.Class = "TextBoxBorder";
             this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX4.Enabled = false;
             this.textBoxX4.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxX4.Location = new System.Drawing.Point(1279, 67);
             this.textBoxX4.Name = "textBoxX4";
@@ -1981,7 +1977,6 @@
         private DevComponents.Editors.ComboItem comboItem127;
         private DevComponents.Editors.ComboItem comboItem128;
         private DevComponents.Editors.ComboItem comboItem129;
-        private DevComponents.Editors.ComboItem comboItem130;
         private DevComponents.Editors.ComboItem comboItem131;
         private DevComponents.Editors.ComboItem comboItem132;
         private DevComponents.Editors.ComboItem comboItem133;

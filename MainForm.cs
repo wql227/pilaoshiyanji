@@ -423,12 +423,12 @@ namespace DoPENetConnect
 
 
         public bool valInScaleSetted2 = false;
-		
+
         /// <summary>
         /// 手动窗口
         /// </summary>
         FormFloat floatMenus;
-		
+
         /// <summary>
         /// 多传感器窗口
         /// </summary>
@@ -576,7 +576,7 @@ namespace DoPENetConnect
         /// <summary>
         /// 程序控制
         /// </summary>
-        FormProgControl progControl=null;
+        FormProgControl progControl = null;
 
         //System.Timers.Timer timer;
 
@@ -658,7 +658,7 @@ namespace DoPENetConnect
             //悬浮工具框
             floatMenus = new FormFloat();
             floatMenus.Owner = this;
-            floatMenus.Location = new Point(this.Location.X+2, 273);
+            floatMenus.Location = new Point(this.Location.X + 2, 273);
             //InitTimer();
 
         }
@@ -706,31 +706,31 @@ namespace DoPENetConnect
 
         private void CreateChart()
         {
-        //    //Disable rendering.
-        //    lightningChart1.BeginUpdate();
+            //    //Disable rendering.
+            //    lightningChart1.BeginUpdate();
 
-        //    //Set V-Sync to prevent 'tearing'
-        //    lightningChart1.RenderOptions.WaitForVSync = true;
+            //    //Set V-Sync to prevent 'tearing'
+            //    lightningChart1.RenderOptions.WaitForVSync = true;
 
-        //    // Change axis layout.
-        //    lightningChart1.ViewXY.AxisLayout.YAxesLayout = YAxesLayout.Stacked;
-        //    lightningChart1.ViewXY.AxisLayout.SegmentsGap = 10;
+            //    // Change axis layout.
+            //    lightningChart1.ViewXY.AxisLayout.YAxesLayout = YAxesLayout.Stacked;
+            //    lightningChart1.ViewXY.AxisLayout.SegmentsGap = 10;
 
-        //    lightningChart1.ViewXY.DropOldSeriesData = true; // Drop old data, increase preformance.
+            //    lightningChart1.ViewXY.DropOldSeriesData = true; // Drop old data, increase preformance.
 
-        //    // Zooming and panning horizontal mode.
-        //    lightningChart1.ViewXY.ZoomPanOptions.RectangleZoomMode = RectangleZoomMode.Horizontal;
-        //    lightningChart1.ViewXY.ZoomPanOptions.PanDirection = PanDirection.Horizontal;
+            //    // Zooming and panning horizontal mode.
+            //    lightningChart1.ViewXY.ZoomPanOptions.RectangleZoomMode = RectangleZoomMode.Horizontal;
+            //    lightningChart1.ViewXY.ZoomPanOptions.PanDirection = PanDirection.Horizontal;
 
-        //    // Configure x-axis
-        //    lightningChart1.ViewXY.XAxes[0].ScrollPosition = 0;
-        //    lightningChart1.ViewXY.XAxes[0].ScrollMode = XAxisScrollMode.Scrolling;
-        //    //Configure legend
-        //    lightningChart1.ViewXY.LegendBoxes[0].Visible = false;
-        //    lightningChart1.ViewXY.AxisLayout.AutoAdjustMargins = false;
+            //    // Configure x-axis
+            //    lightningChart1.ViewXY.XAxes[0].ScrollPosition = 0;
+            //    lightningChart1.ViewXY.XAxes[0].ScrollMode = XAxisScrollMode.Scrolling;
+            //    //Configure legend
+            //    lightningChart1.ViewXY.LegendBoxes[0].Visible = false;
+            //    lightningChart1.ViewXY.AxisLayout.AutoAdjustMargins = false;
 
-        //    //Allow rendering.
-        //    lightningChart1.EndUpdate();
+            //    //Allow rendering.
+            //    lightningChart1.EndUpdate();
         }
 
 
@@ -798,7 +798,7 @@ namespace DoPENetConnect
                 DoPE.Machine Machine = new DoPE.Machine(0);
                 MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
                 //SampleFrequency = 0.2;
-                MyEdc.Eh.SetOnDataBlockSize((Int32)((SampleFrequency / 1000)/ Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2));
+                MyEdc.Eh.SetOnDataBlockSize((Int32)((SampleFrequency / 1000) / Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2));
                 MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
                 MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
                 MyEdc.Eh.OnPosMsgHdlr += new DoPE.OnPosMsgHdlr(OnPosMsg);
@@ -921,7 +921,7 @@ namespace DoPENetConnect
                     bShowSensorData = true;
 
                     //bntX_GUIOn.Checked = true;
-                   // btnX_SetLow.Checked = true;
+                    // btnX_SetLow.Checked = true;
                     //btnX_SetHigh.Checked = false;
 
                     this.MaximizeBox = false;
@@ -1289,9 +1289,9 @@ namespace DoPENetConnect
                     {
                         //if (this.IsHandleCreated)
                         //{
-                            //this.BeginInvoke(new Action(() =>
-                            {
-         
+                        //this.BeginInvoke(new Action(() =>
+                        {
+
                             guiPosition.Text = g_Position.ToString($"F{PosDigit}");
 
                             if (bShowSensorData)
@@ -1313,10 +1313,9 @@ namespace DoPENetConnect
                     strCSVLog += text + ",";
                     text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
                     g_Load = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F];
-
                     //试验力队列
                     PVLoadQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                    if (PVLoadQueue.Count >= 400 )
+                    if (PVLoadQueue.Count >= 400)
                     {
                         PVLoadList = PVLoadQueue.Distinct().ToList();
 
@@ -1796,10 +1795,10 @@ namespace DoPENetConnect
                     //}
 
                     //试验次数达到指定的试验次数
-                    if (isRunning) 
+                    if (isRunning)
                     {
                         bool isDynamic = false;
-                        if (progControl==null)
+                        if (progControl == null)
                         {
                             isDynamic = true;
                         }
@@ -1831,7 +1830,8 @@ namespace DoPENetConnect
                                 DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
                             }
                         }
-                        else if(progControl!=null){
+                        else if (progControl != null)
+                        {
                             if (CMDNAMES.ENDED == progControl.ProgStatus.currentCmd)
                             {   //程控结束
 
@@ -1847,19 +1847,20 @@ namespace DoPENetConnect
                                 {
                                     //清除上次计数
                                     DoPE.ERR err = MyEdc.Block.Header(3, DoPE.CMD_MODE.MESSAGE); // 3次循环，启用中间消息
-                                                                                                                // 后续添加具体命令（如 DoPEPosExt、DoPEHaltW）
-                                                                                                                // 执行命令块时，Cycles 自动清零
+                                                                                                 // 后续添加具体命令（如 DoPEPosExt、DoPEHaltW）
+                                                                                                 // 执行命令块时，Cycles 自动清零
                                     err = MyEdc.Block.Execute(DoPE.CMD_OPERATION.START, ref MyTan);
 
                                     err = MyEdc.Move.SHalt(ref MyTan);
                                     //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-                                    progControl.CmdSwitch(g_Position, g_Load, g_Extension, 1);   //当最后一个参数为1表示动态试验完成，结束wave过程
+
+                                    progControl.CmdSwitch(g_Position, g_Load/1000, g_Extension, 1);   //当最后一个参数为1表示动态试验完成，结束wave过程
                                     nCycleCount = 0;
                                 }
                             }
                             else
                             {
-                                progControl.CmdSwitch(g_Position, g_Load, g_Extension,0);
+                                progControl.CmdSwitch(g_Position, g_Load/1000, g_Extension, 0);
                             }
                         }
                     }
@@ -2174,8 +2175,8 @@ namespace DoPENetConnect
             //}
             //else
             //{
-                //btnX_SetHigh.Visible = true;
-           // }
+            //btnX_SetHigh.Visible = true;
+            // }
 
             //if (EnableLow == "0")
             //{
@@ -2183,7 +2184,7 @@ namespace DoPENetConnect
             //}
             //else
             //{
-                //btnX_SetLow.Visible = true;
+            //btnX_SetLow.Visible = true;
             //}
 
             //设置时间轴
@@ -2379,7 +2380,7 @@ namespace DoPENetConnect
                             }
                         }
                         //二级菜单
-                        if (controlName.Contains("ToolStripMenuItem")&& controlName.Contains("@"))
+                        if (controlName.Contains("ToolStripMenuItem") && controlName.Contains("@"))
                         {
                             string[] realCtrlName = controlName.Split('@');
 
@@ -2640,7 +2641,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnUpConstantVal/60;
+                        speed = btnUpConstantVal / 60;
 
                         //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 2, ref MyTan);
                         DoPE.ERR error = MyEdc.Move.FMove(DoPE.MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
@@ -2679,7 +2680,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnUpConstantVal/60;
+                        speed = btnUpConstantVal / 60;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
@@ -2692,7 +2693,7 @@ namespace DoPENetConnect
             }
         }
 
-       /// 向上移动按钮抬起
+        /// 向上移动按钮抬起
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -2714,7 +2715,7 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         //private void btnX_MoveQuickUp_Click(object sender, EventArgs e)
         //{
-            
+
         //}
 
 
@@ -2730,7 +2731,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnHurryUpConstantVal/60;
+                        speed = btnHurryUpConstantVal / 60;
                         //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_UP, 20, ref MyTan);
                         DoPE.ERR error = MyEdc.Move.FMove(DoPE.MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FDPoti");
@@ -2765,7 +2766,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnHurryUpConstantVal/60;
+                        speed = btnHurryUpConstantVal / 60;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
@@ -2851,7 +2852,7 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void bntX_MoveDown_Click(object sender, EventArgs e)
         {
-  
+
         }
 
 
@@ -2866,7 +2867,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnDownConstantVal/60;
+                        speed = btnDownConstantVal / 60;
 
                         //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
                         DoPE.ERR error = MyEdc.Move.FMove(DoPE.MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
@@ -2899,7 +2900,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnDownConstantVal/60;
+                        speed = btnDownConstantVal / 60;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
@@ -2928,7 +2929,7 @@ namespace DoPENetConnect
         ///----------------------------------------------------------------------
         private void btnX_QuickMoveDown_Click(object sender, EventArgs e)
         {
- 
+
         }
 
 
@@ -2943,7 +2944,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnHurryDownConstantVal/60;
+                        speed = btnHurryDownConstantVal / 60;
 
                         //DoPE.ERR error = MyEdc.Move.FDPoti(DoPE.CTRL.POS, speed, DoPE.SENSOR.SENSOR_DP, 3, DoPE.EXT.SPEED_DOWN, 2, ref MyTan);
                         DoPE.ERR error = MyEdc.Move.FMove(DoPE.MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
@@ -2966,7 +2967,7 @@ namespace DoPENetConnect
             EndQuickDown = false;
 
             MoveHalt();
-         }
+        }
 
         /// <summary>
         /// 
@@ -2982,7 +2983,7 @@ namespace DoPENetConnect
 
                     try
                     {
-                        speed = btnHurryDownConstantVal/60;
+                        speed = btnHurryDownConstantVal / 60;
 
                         DoPE.ERR error = MyEdc.Move.FMove(MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
                         DisplayError(error, "FMove");
@@ -3148,7 +3149,7 @@ namespace DoPENetConnect
         /// <param name="Block"></param>
         private async void ShowWave(DoPE.OnDataBlock Block)
         {
-             //X轴坐标长度 = dStep * nTotal
+            //X轴坐标长度 = dStep * nTotal
             //dStep = 0.01;
             //dStep = 0.001;
             //nTotal = 2000;
@@ -3166,7 +3167,7 @@ namespace DoPENetConnect
                     for (int i = 0; Block.Data.Length > i; i += (int)SampleFrequency * 10/*5 / 2*/)
                     {
                         //绘制Position
-                         y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
+                        y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
 
                         //绘制Load
                         y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
@@ -3176,7 +3177,7 @@ namespace DoPENetConnect
                             y_Load = y_Load / 1000;
                         }
                         //绘制Extension
-                         y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
+                        y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
 
                         //绘制Command
                         y_Command = Block.Data[i].Data.Command;
@@ -3279,15 +3280,15 @@ namespace DoPENetConnect
 
             //Console.WriteLine("glmyyy-{0}-{1}", yAxisMax1, yAxisMin1);
             //力y轴自适应
-             maxSeriesMaxYVal = series1maxY;
-             maxSeriesMinYVal = series1minY;
+            maxSeriesMaxYVal = series1maxY;
+            maxSeriesMinYVal = series1minY;
 
-             range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-             totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-             padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+            range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+            totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+            padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
 
-             yAxisMax1 = maxSeriesMaxYVal + padding1;
-             yAxisMin1 = maxSeriesMinYVal - padding1;
+            yAxisMax1 = maxSeriesMaxYVal + padding1;
+            yAxisMin1 = maxSeriesMinYVal - padding1;
 
             //Console.WriteLine("glmzzz-{0}-{1}", yAxisMax1, yAxisMin1);
         }
@@ -3340,7 +3341,7 @@ namespace DoPENetConnect
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-           LogHelper.ResetLogParamsIni();
+            LogHelper.ResetLogParamsIni();
         }
 
 
@@ -3489,8 +3490,8 @@ namespace DoPENetConnect
         /// <param name="SpeedToDestination"></param>
         /// <param name="Destination"></param>
         /// <param name="SweepFrequencyMode"></param>
-        public void MoveDynCycles(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl, 
-            bool RelativeDestination, double SpeedToStart, double Offset, double Amplitude, double HaltAtPlusAmplitude, double HaltAtMinusAmplitude, 
+        public void MoveDynCycles(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl,
+            bool RelativeDestination, double SpeedToStart, double Offset, double Amplitude, double HaltAtPlusAmplitude, double HaltAtMinusAmplitude,
             double Frequency, int HalfCycles, double SpeedToDestination, double Destination, DoPE.DYN_SWEEP SweepFrequencyMode)
         {
             if (isRunning)
@@ -3501,8 +3502,8 @@ namespace DoPENetConnect
             {
                 Modify = false;
             }
-            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, false, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0, 
-                0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode, 
+            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, false, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0,
+                0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode,
                 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
 
             //正常返回，开始计时
@@ -3545,7 +3546,7 @@ namespace DoPENetConnect
                 StringBuilder strTmp = new StringBuilder(255);
                 IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
                 nPreTestCount = int.Parse(strTmp.ToString());
-         
+
                 //实验开始禁用次数修改
                 tbX_TestCount.Enabled = false;
 
@@ -3585,7 +3586,7 @@ namespace DoPENetConnect
                 //清理位移平均值队列
                 PVExtensionMaxAverageList.Clear();
                 PVExtensionMinAverageList.Clear();
-       
+
             }
 
         }
@@ -3696,7 +3697,8 @@ namespace DoPENetConnect
                     axTChart1.Axis.Bottom.Minimum = 0;
                     axTChart1.Axis.Bottom.Maximum = MainForm.mainform.AxisXMax;
                 }
-                else {
+                else
+                {
                     axTChart1.Axis.Bottom.Maximum = MainForm.mainform.AxisXMax;
                     axTChart1.Axis.Bottom.Minimum = 0;
                 }
@@ -3959,8 +3961,8 @@ namespace DoPENetConnect
             EnableLow = strTmp.ToString();
 
             //主题
-            IniFileHelper.GetIniString("Setting", "Theme", "-1", strTmp, strTmp.Capacity);            
-            themeComboIndex =int.Parse(strTmp.ToString());
+            IniFileHelper.GetIniString("Setting", "Theme", "-1", strTmp, strTmp.Capacity);
+            themeComboIndex = int.Parse(strTmp.ToString());
             if (themeComboIndex == -1) themeComboIndex = 0;
 
             //停机保护选项
@@ -4633,7 +4635,7 @@ namespace DoPENetConnect
             double[] dLoad = new double[STIFF_CORR_MAX];
             double[] dDeformation = new double[STIFF_CORR_MAX];
 
-            for (int i = 0; i < corrNo; i ++)
+            for (int i = 0; i < corrNo; i++)
             {
                 string strLoadIndex = string.Format(@"S1Data_{0}", i);
                 dLoad[i] = double.Parse(section[strLoadIndex] ?? "0") * 1000;
@@ -5085,7 +5087,7 @@ namespace DoPENetConnect
 
         private void MultiSensorToolStripMenuItem_Click(object sender, EventArgs e)
         {
- 
+
         }
 
 
@@ -5112,10 +5114,10 @@ namespace DoPENetConnect
                 List<double> listYPosPoint = new List<double>();
 
                 //试验力
-                List<double> listYLoadPoint= new List<double>();
+                List<double> listYLoadPoint = new List<double>();
 
                 //变形
-                List<double> listYExtPoint= new List<double>();
+                List<double> listYExtPoint = new List<double>();
 
                 //命令
                 List<double> listYCommandPoint = new List<double>();
@@ -5177,12 +5179,12 @@ namespace DoPENetConnect
         private void pl_DataShow_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
-            {                
+            {
                 floatMenus.Location = new Point(System.Windows.Forms.Cursor.Position.X, System.Windows.Forms.Cursor.Position.Y);
                 floatMenus.Visible = true;
             }
         }
-		
+
         /// <summary>
         /// 初始化试验次数判断
         /// </summary>
@@ -5304,7 +5306,7 @@ namespace DoPENetConnect
             多传感器ToolStripMenuItem_Click(this, tmpArgs);
         }
 
-            private void pOSToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void pOSToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             posToolStripMenuItem_Click(sender, e);
         }
@@ -5345,7 +5347,7 @@ namespace DoPENetConnect
             SaveProtect2Ini();
 
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -5558,7 +5560,7 @@ namespace DoPENetConnect
         {
 
             double value = 0;
-            value= axTChart1.Axis.Bottom.Minimum+Chart_X_Step;
+            value = axTChart1.Axis.Bottom.Minimum + Chart_X_Step;
             if (value <= axTChart1.Axis.Bottom.Maximum)
             {
                 axTChart1.Axis.Bottom.Minimum = value;
@@ -5594,12 +5596,14 @@ namespace DoPENetConnect
             tmpProgrammer.Show();
         }
 
-        public void SetProgramDtas(string tableName, List<string[]> dtas) {
+        public void SetProgramDtas(string tableName, List<string[]> dtas)
+        {
             //Console.WriteLine(tableName);
             comboBoxEx7.Text = tableName;
             //先清除目前显示的数据
             dataGridViewX1.Rows.Clear();
-            for (int i = 0; i < dtas.Count; i++) {
+            for (int i = 0; i < dtas.Count; i++)
+            {
                 dataGridViewX1.Rows.Add(dtas[i]);
             }
 
@@ -5619,7 +5623,7 @@ namespace DoPENetConnect
             AccessHelper tmpHelper = new AccessHelper();
             tmpHelper.InitProgramDb();
             string[] nameStrs = tmpHelper.GetTableNames();
-            if (nameStrs!=null&&nameStrs.Length > 0)
+            if (nameStrs != null && nameStrs.Length > 0)
             {
                 comboBoxEx7.Items.Clear();
                 comboBoxEx7.Items.AddRange(nameStrs);
@@ -5635,7 +5639,8 @@ namespace DoPENetConnect
                 int index = comboBoxEx7.Items.IndexOf(programName);
                 comboBoxEx7.Items.RemoveAt(index);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.ToString());
             }
 
@@ -5655,7 +5660,8 @@ namespace DoPENetConnect
                     dataGridViewX1.Rows.RemoveAt(dataGridViewX1.Rows.Count - 1);
                 }
 
-                for (int i = 0; i < tmpDtas.Count; i++) {
+                for (int i = 0; i < tmpDtas.Count; i++)
+                {
                     dataGridViewX1.Rows.Add(tmpDtas[i]);
                 }
             }
@@ -5671,11 +5677,11 @@ namespace DoPENetConnect
 
             if (comboBoxEx7.Text != "")        //确定试验被选中
             {
-                if(progControl==null)
+                if (progControl == null)
                     progControl = new FormProgControl();
 
                 List<string[]> tmpList = new List<string[]>();
-                
+
                 for (int i = 0; i < dataGridViewX1.Rows.Count; i++)
                 {
                     string[] tmpStrs = new string[5];
@@ -5685,7 +5691,7 @@ namespace DoPENetConnect
                     }
                     tmpList.Add(tmpStrs);
                 }
-                progControl.SetCmdParmas(tmpList,double.Parse(guiPosition.Text));
+                progControl.SetCmdParmas(tmpList, double.Parse(guiPosition.Text));
                 progControl.StartRunProgram();
 
                 isRunning = true;
@@ -5694,7 +5700,8 @@ namespace DoPENetConnect
 
         private void buttonX25_Click(object sender, EventArgs e)
         {
-            if (progControl != null) {
+            if (progControl != null)
+            {
                 DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
                 progControl.StopProgram();
             }
@@ -5702,8 +5709,15 @@ namespace DoPENetConnect
 
         private void buttonX26_Click(object sender, EventArgs e)
         {
-            if(progControl!=null)
+            if (progControl != null)
                 MyEdc.Move.Pos(DoPE.CTRL.POS, 5, progControl.GetOriginPos(), ref MyTan);
+        }
+
+        public void MovePosExt(DoPE.CTRL MoveCtrl, double Speed, LIMITMODE LimitMode, double Limit, CTRL DestinationCtrl, double Destination,
+            DESTMODE DestMode)
+        {
+         
+            DoPE.ERR error = MyEdc.Move.PosExt(MoveCtrl, Speed, LimitMode, Limit, DestinationCtrl, Destination, DestMode, ref MyTan);
         }
     }
 }
