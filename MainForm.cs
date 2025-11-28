@@ -5682,7 +5682,7 @@ namespace DoPENetConnect
 
         private void buttonX24_Click(object sender, EventArgs e)
         {
-            if (isRunning || !bActivated)
+            if (isRunning || !bActivated||(progControl!=null&&progControl.isRunning))
             {
                 MessageBox.Show("有试验正在运行或者控制器未激活，请检查后再试！");
                 return;
@@ -5708,6 +5708,7 @@ namespace DoPENetConnect
                 progControl.StartRunProgram();
 
                 isRunning = true;
+                bShowSensorData = true;
             }
         }
 
@@ -5731,6 +5732,11 @@ namespace DoPENetConnect
         {
          
             DoPE.ERR error = MyEdc.Move.PosExt(MoveCtrl, Speed, LimitMode, Limit, DestinationCtrl, Destination, DestMode, ref MyTan);
+        }
+
+        public void SetDataGridViewSelected(int rowNo,bool selectorNo)
+        {
+            dataGridViewX1.Rows[rowNo].Selected = selectorNo;
         }
     }
 }

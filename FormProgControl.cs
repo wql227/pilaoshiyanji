@@ -92,6 +92,7 @@ namespace DoPENetConnect
             if (currentCmdIndex >= cmdDta.Count) {    //超出指令当前指令上限   结束？
                 return;
             }
+            MainForm.mainform.SetDataGridViewSelected(currentCmdIndex, true);
             string[] cmdParams = cmdDta[currentCmdIndex][2].Split(',');
             string[] cmd = new string[20];
             if (ProgStatus.endGoal == null)
@@ -387,6 +388,7 @@ namespace DoPENetConnect
 
             if (switchOrNot)
             {
+                MainForm.mainform.SetDataGridViewSelected(currentCmdIndex, false);
                 currentCmdIndex = int.Parse(cmdDta[currentCmdIndex][3])-1;
                 RunCmd();
             }
