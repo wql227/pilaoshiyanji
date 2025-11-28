@@ -29,9 +29,9 @@ namespace DoPENetConnect
     }
     public partial class FormProgControl : Form
     {
-        
 
-        public Dictionary<string,DoPE.DYN_WAVEFORM> ProgramWaveForm;
+
+        public Dictionary<string, DoPE.DYN_WAVEFORM> ProgramWaveForm;
         public struct PROGSTATUS
         {
             public CMDNAMES currentCmd;
@@ -49,10 +49,10 @@ namespace DoPENetConnect
         /// <summary>
         /// element 0:cmd name
         /// </summary>
-        public List<string[]> cmdDta=null; 
+        public List<string[]> cmdDta = null;
         public int currentCmdIndex = -1;
         public PROGSTATUS ProgStatus;
-
+        public bool isRunning = false;
 
         public FormProgControl()
         {
@@ -84,6 +84,7 @@ namespace DoPENetConnect
 
         public void StartRunProgram()
         {
+            isRunning = true;
             RunCmd();
         }
         public void RunCmd()
@@ -393,6 +394,7 @@ namespace DoPENetConnect
 
         public void StopProgram()
         {
+            isRunning = false;
             currentCmdIndex = -1;
         }
         public double GetOriginPos()

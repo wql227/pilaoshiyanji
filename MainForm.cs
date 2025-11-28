@@ -1798,7 +1798,7 @@ namespace DoPENetConnect
                     if (isRunning)
                     {
                         bool isDynamic = false;
-                        if (progControl == null)
+                        if (progControl == null||!progControl.isRunning)
                         {
                             isDynamic = true;
                         }
@@ -3591,6 +3591,19 @@ namespace DoPENetConnect
 
         }
 
+        public bool isChengkongRunning()
+        {
+
+            //判断是否有程控在运行
+            if (progControl != null && progControl.isRunning)
+            {
+                
+                return true;
+            }
+            else
+                return false;
+        }
+
 
         #region 快捷工具栏消息响应事件
 
@@ -5312,7 +5325,7 @@ namespace DoPENetConnect
         }
 
         private void dynCtrlToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
+        {            
             dynCtrlToolStripMenuItem_Click(sender, e);
         }
         bool floatRunOnce = true;

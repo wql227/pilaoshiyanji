@@ -138,6 +138,12 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_Dyn_Send_Click(object sender, EventArgs e)
         {
+            if (MainForm.mainform.isChengkongRunning())
+            {
+                MessageBox.Show("程控正在运行，请等待程控结束或者手动点击结束按钮后再试！");
+                return;
+            }
+
             MainForm.mainform.currentCmd = cmbX_Dyn_MoveCtrl.SelectedIndex;
             MainForm.mainform.SetCmdSeriesAxisY(cmbX_Dyn_MoveCtrl.SelectedIndex);
             SendCommand();
