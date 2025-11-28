@@ -1853,7 +1853,7 @@ namespace DoPENetConnect
 
                                     err = MyEdc.Move.SHalt(ref MyTan);
                                     //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
-
+                                    //if(LoadUnit == "")
                                     progControl.CmdSwitch(g_Position, g_Load/1000, g_Extension, 1);   //当最后一个参数为1表示动态试验完成，结束wave过程
                                     nCycleCount = 0;
                                 }
@@ -5691,7 +5691,7 @@ namespace DoPENetConnect
                     }
                     tmpList.Add(tmpStrs);
                 }
-                progControl.SetCmdParmas(tmpList, double.Parse(guiPosition.Text));
+                progControl.SetCmdParmas(tmpList, double.Parse(guiPosition.Text), LoadUnit == "kN" ? double.Parse(guiLoad.Text) : double.Parse(guiLoad.Text) / 1000, double.Parse(guiExtension.Text));
                 progControl.StartRunProgram();
 
                 isRunning = true;
