@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -600,8 +600,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel8);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Dock = System.Windows.Forms.DockStyle.Right;
             this.superTabControl4.Location = new System.Drawing.Point(0, 0);
             this.superTabControl4.Name = "superTabControl4";
@@ -1110,7 +1110,7 @@
             this.btnX_ApplyProtection.Size = new System.Drawing.Size(90, 36);
             this.btnX_ApplyProtection.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_ApplyProtection.TabIndex = 23;
-            this.btnX_ApplyProtection.Text = "应用保护";
+            this.btnX_ApplyProtection.Text = "更新保护";
             this.btnX_ApplyProtection.Click += new System.EventHandler(this.btnX_ApplyProtection_Click);
             // 
             // groupPanel7
