@@ -5705,7 +5705,9 @@ namespace DoPENetConnect
                     tmpList.Add(tmpStrs);
                 }
                 progControl.SetCmdParmas(tmpList, double.Parse(guiPosition.Text), LoadUnit == "kN" ? double.Parse(guiLoad.Text) : double.Parse(guiLoad.Text) / 1000, double.Parse(guiExtension.Text));
+                dataGridViewX1.Rows[dataGridViewX1.Rows.Count - 1].Selected = false;
                 progControl.StartRunProgram();
+
 
                 isRunning = true;
                 bShowSensorData = true;

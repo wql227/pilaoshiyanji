@@ -79,6 +79,7 @@ namespace DoPENetConnect
             ProgStatus.pos = startPos;
             ProgStatus.load = startLoad;
             ProgStatus.extension = startExtession;
+            
         }
 
 
@@ -383,6 +384,15 @@ namespace DoPENetConnect
                 case CMDNAMES.ENDED:
                     MainForm.mainform.FormFloat_bntX_MoveHalt_Click();
                     currentCmdIndex = -1;    //试验结束后将当前指令索引号置为-1
+                    break;
+                case CMDNAMES.DELAY:
+                    DateTime currentDateTime2 = DateTime.Now;
+                    TimeSpan timeElpse2 = currentDateTime2 - ProgStatus.oldDateTime;
+                    int seconds2 = (int)timeElpse2.TotalSeconds;
+                    if (ProgStatus.IntervalKeepping > 0 && seconds2 >= ProgStatus.IntervalKeepping)
+                    {
+                        switchOrNot = true;
+                    }
                     break;
             }
 
