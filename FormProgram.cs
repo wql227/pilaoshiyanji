@@ -75,6 +75,7 @@ namespace DoPENetConnect
 
                     labelX23.Text = "速率mm/min";
                     labelX24.Text = "mm";
+                    comboBoxEx8.DataSource = new string[] {"位移达到","力达到"};
                     comboBoxEx8.Text = "位移达到";
                     break;
                 case "等速力":
@@ -84,6 +85,7 @@ namespace DoPENetConnect
                     panelEx_dengsuweiyi.Visible = true;
                     labelX23.Text = "速率kN/s";
                     labelX24.Text = "kN";
+                    comboBoxEx8.DataSource = new string[] { "位移达到", "力达到" };
                     comboBoxEx8.Text = "力达到";
                     break;
                 case "位移保持":
@@ -93,6 +95,7 @@ namespace DoPENetConnect
                     panelEx_dengsuweiyi.Visible = true;
                     labelX23.Text = "目标mm";
                     labelX24.Text = "时间s";
+                    comboBoxEx8.DataSource = new string[] { "保持时间" };
                     comboBoxEx8.Text = "保持时间";
                     break;
                 case "力保持":
@@ -102,6 +105,7 @@ namespace DoPENetConnect
                     panelEx_dengsuweiyi.Visible = true;
                     labelX23.Text = "目标kN";
                     labelX24.Text = "s";
+                    comboBoxEx8.DataSource = new string[] { "保持时间" };
                     comboBoxEx8.Text = "保持时间";
                     break;
                 case "波形控制":

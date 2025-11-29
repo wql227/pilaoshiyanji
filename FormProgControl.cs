@@ -169,7 +169,7 @@ namespace DoPENetConnect
                     {
                         double speed = 0.1;  //定义速度0.1kN/s
                         //此处进行位移保持第一步，移动至指定位置
-                        cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("mm"));
+                        cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("kN"));
                         cmd[1] = cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("s"));
                         //pos 指令
                         direction = DirectionAdjust(ProgStatus.load, double.Parse(cmd[0]));
