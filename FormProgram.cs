@@ -299,7 +299,7 @@ namespace DoPENetConnect
             tmpCmdParams[1] = "等速位移";
             tmpCmdParams[2] = "等速位移,速率:0mm/min,保持时间0s";
             tmpCmdParams[3] = "0";
-            tmpCmdParams[4] = "0";
+            tmpCmdParams[4] = "";
             
             if (dataGridViewX1.Rows.Count > 0)
             {
@@ -574,6 +574,17 @@ namespace DoPENetConnect
             {
                 labelX24.Text = "kN";
             }
+        }
+
+        private void comboBoxEx2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int currentIndex = comboBoxEx5.SelectedIndex;
+            currentIndex = comboBoxEx2.SelectedIndex + 1;
+            if (currentIndex == comboBoxEx5.Items.Count)
+            {
+                currentIndex = 0;
+            }
+            comboBoxEx5.SelectedIndex = currentIndex;
         }
     }
 }
