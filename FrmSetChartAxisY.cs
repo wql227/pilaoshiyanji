@@ -306,6 +306,7 @@ namespace DoPENetConnect
                 MainForm.mainform.Chart_Load_Step = double.Parse(cbX_Load_Range.Text);
                 MainForm.mainform.Chart_Ext_Step = double.Parse(cbX_Ext_Range.Text);
                 MainForm.mainform.Chart_Command_Step = double.Parse(cbX_Command_Range.Text);
+                MainForm.mainform.Chart_X_Step = double.Parse(cbX_Time_Range.Text);
             }
             catch (Exception ex) {
                 MessageBox.Show("设置坐标轴问题:{0}",ex.ToString());
