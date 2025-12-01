@@ -1189,7 +1189,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("位移峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                                     return 0;
                                 }
                             }
@@ -1207,7 +1207,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("位移峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                                     return 0;
                                 }
                             }
@@ -1226,7 +1226,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("位移谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                                     return 0;
                                 }
                             }
@@ -1244,7 +1244,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("位移谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                                     return 0;
                                 }
                             }
@@ -4912,7 +4912,7 @@ namespace DoPENetConnect
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
             if (result == DialogResult.Yes)
             {
@@ -5972,6 +5972,128 @@ namespace DoPENetConnect
             {
                 SaveProtect2Ini();
             }
+        }
+
+
+        /// <summary>
+        /// 变形最大值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisEXTY_MaxDown_Click(object sender, EventArgs e)
+        {
+            if (Chart_Ext_Step >= (axTChart1.Axis.Custom[0].Maximum - axTChart1.Axis.Custom[0].Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                axTChart1.Axis.Custom[0].Maximum -= Chart_Ext_Step;
+            }
+        }
+
+
+        /// <summary>
+        /// 变形最大值增加按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisEXTY_MaxUp_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Custom[0].Maximum += Chart_Ext_Step;
+        }
+
+
+        /// <summary>
+        /// 变形最大值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisEXTY_MinDown_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Custom[0].Minimum -= Chart_Ext_Step;
+        }
+
+
+        /// <summary>
+        /// 变形最小值增加按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisEXTY_MinUp_Click(object sender, EventArgs e)
+        {
+            if (Chart_Ext_Step >= (axTChart1.Axis.Custom[1].Maximum - axTChart1.Axis.Custom[1].Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                axTChart1.Axis.Custom[0].Minimum += Chart_Ext_Step;
+            }
+        }
+
+
+        /// <summary>
+        /// 变形最小值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void btnX_AxisCommandY_MinDown_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Custom[1].Minimum -= Chart_Command_Step;
+        }
+
+
+        /// <summary>
+        /// 变形最大值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisCommandY_MinUp_Click(object sender, EventArgs e)
+        {
+            if (Chart_Command_Step >= (axTChart1.Axis.Custom[1].Maximum - axTChart1.Axis.Custom[1].Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                axTChart1.Axis.Custom[1].Minimum += Chart_Command_Step;
+            }
+        }
+
+
+        /// <summary>
+        /// 变形最大值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisCommandY_MaxDown_Click(object sender, EventArgs e)
+        {
+            if (Chart_Command_Step >= (axTChart1.Axis.Custom[1].Maximum - axTChart1.Axis.Custom[1].Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                axTChart1.Axis.Custom[1].Maximum -= Chart_Command_Step;
+            }
+        }
+
+
+        /// <summary>
+        /// 变形最大值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisCommandY_MaxUp_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Custom[1].Minimum += Chart_Command_Step;
+
         }
     }
 }
