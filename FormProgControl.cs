@@ -45,6 +45,9 @@ namespace DoPENetConnect
             public double pos;
             public double load;
             public double extension;
+            //counter for cycles
+            public int[] currentCycleCountEveryStep;
+            public int currentCycleSet;
         }
         /// <summary>
         /// element 0:cmd name
@@ -79,6 +82,7 @@ namespace DoPENetConnect
             ProgStatus.pos = startPos;
             ProgStatus.load = startLoad;
             ProgStatus.extension = startExtession;
+            ProgStatus.currentCycleCountEveryStep = new int[dta.Count];    //创建每一步对应的循环数存储数组
             
         }
 
@@ -94,12 +98,17 @@ namespace DoPENetConnect
                 return;
             }
             MainForm.mainform.SetDataGridViewSelected(currentCmdIndex, true);
-            string[] cmdParams = cmdDta[currentCmdIndex][2].Split(',');
+            string[] cmdParams = cmdDta[currentCmdIndex][2].Split(',');   //获取指令内容
             string[] cmd = new string[20];
-            if (ProgStatus.endGoal == null)
+            if (ProgStatus.endGoal == null)   //获取最终目标值
             {
                 ProgStatus.endGoal = new string[8];
             }
+            if (cmdDta[currentCmdIndex][4] == "")
+                ProgStatus.currentCycleSet = 0;
+            else
+                ProgStatus.currentCycleSet = int.Parse(cmdDta[currentCmdIndex][4]);   //获取当前步对应的循环次数设置
+
             switch (cmdDta[currentCmdIndex][1]) {
                 case "等速位移":
                     cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("mm"));
@@ -398,8 +407,19 @@ namespace DoPENetConnect
 
             if (switchOrNot)
             {
-                MainForm.mainform.SetDataGridViewSelected(currentCmdIndex, false);
-                currentCmdIndex = int.Parse(cmdDta[currentCmdIndex][3])-1;
+                
+                MainForm.mainform.SetDataGridViewSelected(currentCmdIndex, false); //当前行设为非选中状态
+                ProgStatus.currentCycleCountEveryStep[currentCmdIndex]++;
+
+                if (ProgStatus.currentCycleCountEveryStep[currentCmdIndex] == ProgStatus.currentCycleSet) {   //达到循环次数进入下一步
+                    if (currentCmdIndex + 1 <= cmdDta.Count) {    //不是最后一部直接切换
+                        currentCmdIndex += 1;
+                    }
+
+                    ProgStatus.currentCycleCountEveryStep[currentCmdIndex] = 0;
+                }
+                else    //如果没有达到次数则直接跳转
+                    currentCmdIndex = int.Parse(cmdDta[currentCmdIndex][3])-1;
                 RunCmd();
             }
         }
