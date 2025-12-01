@@ -285,17 +285,49 @@ namespace DoPENetConnect
             WriteIni();
             try
             {
-                MainForm.mainform.m_AxTeechart.Axis.Left.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
-                MainForm.mainform.m_AxTeechart.Axis.Left.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
+                if (double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text) < MainForm.mainform.m_AxTeechart.Axis.Left.Maximum)
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Left.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Left.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
+                }
+                else
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Left.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Left.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
+                }
 
-                MainForm.mainform.m_AxTeechart.Axis.Right.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
-                MainForm.mainform.m_AxTeechart.Axis.Right.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
+                if (double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text) < MainForm.mainform.m_AxTeechart.Axis.Right.Maximum)
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Right.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Right.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
+                }
+                else
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Right.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Right.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
+                }
 
-                MainForm.mainform.m_AxTeechart.Axis.Custom[0].Maximum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Max.Text);
-                MainForm.mainform.m_AxTeechart.Axis.Custom[0].Minimum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Min.Text);
+                if (double.Parse(tbX_FrmSetChartAxisY_ExtY_Max.Text) < MainForm.mainform.m_AxTeechart.Axis.Custom[0].Maximum)
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[0].Minimum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Min.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[0].Maximum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Max.Text);
+                }
+                else
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[0].Maximum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Max.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[0].Minimum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Min.Text);
+                }
 
-                MainForm.mainform.m_AxTeechart.Axis.Custom[1].Maximum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Max.Text);
-                MainForm.mainform.m_AxTeechart.Axis.Custom[1].Minimum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Min.Text);
+                if (double.Parse(tbX_FrmSetChartAxisY_CommandY_Max.Text) < MainForm.mainform.m_AxTeechart.Axis.Custom[1].Maximum)
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[1].Minimum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Min.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[1].Maximum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Max.Text);
+                }
+                else
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[1].Maximum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Max.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[1].Minimum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Min.Text);
+                }
 
                 MainForm.mainform.m_AxTeechart.Axis.Bottom.Maximum = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
 

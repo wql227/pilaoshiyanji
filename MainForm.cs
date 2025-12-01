@@ -3903,14 +3903,10 @@ namespace DoPENetConnect
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
             string idEncry = devIdEncrypted.ToString();
-            //if (idEncry != "0" && idEncry != "")
-            //{
-            //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-            //}
-            devId = new StringBuilder("02146663");
-            //devId = new StringBuilder("02146663");
-
-            //string aaa = DESEncrypt.Encrypt("0214C55E");
+            if (idEncry != "0" && idEncry != "")
+            {
+                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+            }
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
