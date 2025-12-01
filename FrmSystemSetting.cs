@@ -571,6 +571,7 @@ namespace DoPENetConnect
 
             strTmp = cbX_ProtectOption.SelectedIndex.ToString();
             IniFileHelper.WriteIniString(strConfigSetion, "限位保护选项", strTmp);
+            MainForm.mainform.protectOption.ProtectOptionType = strTmp;
 
             ////位移保护选项   ---注销设置页面保护选项
             //strTmp = tbX_FrmProtectOption_PosMaxOut.Text;

@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -45,22 +45,6 @@
             this.line2 = new DevComponents.DotNetBar.Controls.Line();
             this.panelEx11 = new DevComponents.DotNetBar.PanelEx();
             this.superTabControl4 = new DevComponents.DotNetBar.SuperTabControl();
-            this.superTabControlPanel9 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.panelEx14 = new DevComponents.DotNetBar.PanelEx();
-            this.buttonX26 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX25 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX24 = new DevComponents.DotNetBar.ButtonX();
-            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBoxEx7 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX33 = new DevComponents.DotNetBar.LabelX();
-            this.buttonX22 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX21 = new DevComponents.DotNetBar.ButtonX();
-            this.superTabItem9 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel8 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx13 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel13 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -116,6 +100,22 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.superTabItem8 = new DevComponents.DotNetBar.SuperTabItem();
+            this.superTabControlPanel9 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.panelEx14 = new DevComponents.DotNetBar.PanelEx();
+            this.buttonX26 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX25 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX24 = new DevComponents.DotNetBar.ButtonX();
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBoxEx7 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX33 = new DevComponents.DotNetBar.LabelX();
+            this.buttonX22 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX21 = new DevComponents.DotNetBar.ButtonX();
+            this.superTabItem9 = new DevComponents.DotNetBar.SuperTabItem();
             this.panelEx12 = new DevComponents.DotNetBar.PanelEx();
             this.buttonX18 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX19 = new DevComponents.DotNetBar.ButtonX();
@@ -359,6 +359,14 @@
             this.timer_ShowWave = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.btnX_AxisEXTY_MaxDown = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisEXTY_MaxUp = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisCommandY_MaxDown = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisCommandY_MaxUp = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisEXTY_MinDown = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisEXTY_MinUp = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisCommandY_MinDown = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_AxisCommandY_MinUp = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -369,14 +377,14 @@
             this.panelEx11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl4)).BeginInit();
             this.superTabControl4.SuspendLayout();
-            this.superTabControlPanel9.SuspendLayout();
-            this.panelEx14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.superTabControlPanel8.SuspendLayout();
             this.panelEx13.SuspendLayout();
             this.groupPanel13.SuspendLayout();
             this.groupPanel7.SuspendLayout();
             this.groupPanel6.SuspendLayout();
+            this.superTabControlPanel9.SuspendLayout();
+            this.panelEx14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.panelEx12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -600,8 +608,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel8);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Dock = System.Windows.Forms.DockStyle.Right;
             this.superTabControl4.Location = new System.Drawing.Point(0, 0);
             this.superTabControl4.Name = "superTabControl4";
@@ -615,207 +623,6 @@
             this.superTabItem8,
             this.superTabItem9});
             this.superTabControl4.Text = "superTabControl4";
-            // 
-            // superTabControlPanel9
-            // 
-            this.superTabControlPanel9.Controls.Add(this.panelEx14);
-            this.superTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel9.Location = new System.Drawing.Point(0, 28);
-            this.superTabControlPanel9.Name = "superTabControlPanel9";
-            this.superTabControlPanel9.Size = new System.Drawing.Size(404, 516);
-            this.superTabControlPanel9.TabIndex = 0;
-            this.superTabControlPanel9.TabItem = this.superTabItem9;
-            // 
-            // panelEx14
-            // 
-            this.panelEx14.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx14.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx14.Controls.Add(this.buttonX26);
-            this.panelEx14.Controls.Add(this.buttonX25);
-            this.panelEx14.Controls.Add(this.buttonX24);
-            this.panelEx14.Controls.Add(this.dataGridViewX1);
-            this.panelEx14.Controls.Add(this.comboBoxEx7);
-            this.panelEx14.Controls.Add(this.labelX33);
-            this.panelEx14.Controls.Add(this.buttonX22);
-            this.panelEx14.Controls.Add(this.buttonX21);
-            this.panelEx14.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx14.Location = new System.Drawing.Point(0, 0);
-            this.panelEx14.Name = "panelEx14";
-            this.panelEx14.Size = new System.Drawing.Size(404, 516);
-            this.panelEx14.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx14.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx14.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx14.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx14.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx14.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx14.Style.GradientAngle = 90;
-            this.panelEx14.TabIndex = 0;
-            // 
-            // buttonX26
-            // 
-            this.buttonX26.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX26.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX26.Image = ((System.Drawing.Image)(resources.GetObject("buttonX26.Image")));
-            this.buttonX26.Location = new System.Drawing.Point(292, 475);
-            this.buttonX26.Name = "buttonX26";
-            this.buttonX26.Size = new System.Drawing.Size(76, 32);
-            this.buttonX26.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX26.TabIndex = 7;
-            this.buttonX26.Text = "返回";
-            this.buttonX26.Click += new System.EventHandler(this.buttonX26_Click);
-            // 
-            // buttonX25
-            // 
-            this.buttonX25.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX25.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX25.Image = ((System.Drawing.Image)(resources.GetObject("buttonX25.Image")));
-            this.buttonX25.Location = new System.Drawing.Point(164, 475);
-            this.buttonX25.Name = "buttonX25";
-            this.buttonX25.Size = new System.Drawing.Size(76, 32);
-            this.buttonX25.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX25.TabIndex = 6;
-            this.buttonX25.Text = "停止";
-            this.buttonX25.Click += new System.EventHandler(this.buttonX25_Click);
-            // 
-            // buttonX24
-            // 
-            this.buttonX24.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX24.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX24.Image = ((System.Drawing.Image)(resources.GetObject("buttonX24.Image")));
-            this.buttonX24.Location = new System.Drawing.Point(36, 475);
-            this.buttonX24.Name = "buttonX24";
-            this.buttonX24.Size = new System.Drawing.Size(76, 32);
-            this.buttonX24.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX24.TabIndex = 5;
-            this.buttonX24.Text = "开始";
-            this.buttonX24.Click += new System.EventHandler(this.buttonX24_Click);
-            // 
-            // dataGridViewX1
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewX1.EnableHeadersVisualStyles = false;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(3, 94);
-            this.dataGridViewX1.Name = "dataGridViewX1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewX1.RowHeadersVisible = false;
-            this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(398, 363);
-            this.dataGridViewX1.TabIndex = 4;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "步骤";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "指令参数";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "指令内容";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "跳转到";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "循环";
-            this.Column5.Name = "Column5";
-            // 
-            // comboBoxEx7
-            // 
-            this.comboBoxEx7.DisplayMember = "Text";
-            this.comboBoxEx7.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxEx7.FormattingEnabled = true;
-            this.comboBoxEx7.ItemHeight = 21;
-            this.comboBoxEx7.Location = new System.Drawing.Point(108, 57);
-            this.comboBoxEx7.Name = "comboBoxEx7";
-            this.comboBoxEx7.Size = new System.Drawing.Size(261, 27);
-            this.comboBoxEx7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx7.TabIndex = 3;
-            this.comboBoxEx7.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx7_SelectedIndexChanged);
-            // 
-            // labelX33
-            // 
-            // 
-            // 
-            // 
-            this.labelX33.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX33.Location = new System.Drawing.Point(36, 59);
-            this.labelX33.Name = "labelX33";
-            this.labelX33.Size = new System.Drawing.Size(66, 23);
-            this.labelX33.TabIndex = 2;
-            this.labelX33.Text = "控制程序：";
-            this.labelX33.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // buttonX22
-            // 
-            this.buttonX22.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX22.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX22.Image = ((System.Drawing.Image)(resources.GetObject("buttonX22.Image")));
-            this.buttonX22.Location = new System.Drawing.Point(292, 15);
-            this.buttonX22.Name = "buttonX22";
-            this.buttonX22.Size = new System.Drawing.Size(76, 32);
-            this.buttonX22.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX22.TabIndex = 1;
-            this.buttonX22.Text = "下一步";
-            // 
-            // buttonX21
-            // 
-            this.buttonX21.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX21.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX21.Image = ((System.Drawing.Image)(resources.GetObject("buttonX21.Image")));
-            this.buttonX21.Location = new System.Drawing.Point(33, 15);
-            this.buttonX21.Name = "buttonX21";
-            this.buttonX21.Size = new System.Drawing.Size(76, 32);
-            this.buttonX21.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX21.TabIndex = 0;
-            this.buttonX21.Text = "编程器";
-            this.buttonX21.Click += new System.EventHandler(this.buttonX21_Click);
-            // 
-            // superTabItem9
-            // 
-            this.superTabItem9.AttachedControl = this.superTabControlPanel9;
-            this.superTabItem9.GlobalItem = false;
-            this.superTabItem9.Name = "superTabItem9";
-            this.superTabItem9.Text = "程控";
             // 
             // superTabControlPanel8
             // 
@@ -935,6 +742,7 @@
             this.textBoxX15.Size = new System.Drawing.Size(68, 26);
             this.textBoxX15.TabIndex = 2;
             this.textBoxX15.Text = "10";
+            this.textBoxX15.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxX15_KeyPress);
             // 
             // textBoxX16
             // 
@@ -963,6 +771,7 @@
             this.textBoxX17.Size = new System.Drawing.Size(68, 26);
             this.textBoxX17.TabIndex = 2;
             this.textBoxX17.Text = "10";
+            this.textBoxX17.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxX17_KeyPress);
             // 
             // checkBoxX1
             // 
@@ -991,6 +800,7 @@
             this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxX2.TabIndex = 1;
             this.checkBoxX2.Text = "生效";
+            this.checkBoxX2.CheckedChanged += new System.EventHandler(this.checkBoxX2_CheckedChanged);
             // 
             // checkBoxX5
             // 
@@ -1019,6 +829,7 @@
             this.checkBoxX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxX6.TabIndex = 1;
             this.checkBoxX6.Text = "生效";
+            this.checkBoxX6.CheckedChanged += new System.EventHandler(this.checkBoxX6_CheckedChanged);
             // 
             // label60
             // 
@@ -1110,7 +921,7 @@
             this.btnX_ApplyProtection.Size = new System.Drawing.Size(90, 36);
             this.btnX_ApplyProtection.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_ApplyProtection.TabIndex = 23;
-            this.btnX_ApplyProtection.Text = "应用保护";
+            this.btnX_ApplyProtection.Text = "更新保护";
             this.btnX_ApplyProtection.Click += new System.EventHandler(this.btnX_ApplyProtection_Click);
             // 
             // groupPanel7
@@ -1211,6 +1022,7 @@
             this.checkBoxX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxX10.TabIndex = 1;
             this.checkBoxX10.Text = "生效";
+            this.checkBoxX10.CheckedChanged += new System.EventHandler(this.checkBoxX10_CheckedChanged);
             // 
             // textBoxX23
             // 
@@ -1225,6 +1037,7 @@
             this.textBoxX23.Size = new System.Drawing.Size(68, 26);
             this.textBoxX23.TabIndex = 2;
             this.textBoxX23.Text = "10";
+            this.textBoxX23.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxX23_KeyPress);
             // 
             // checkBoxX11
             // 
@@ -1253,6 +1066,7 @@
             this.checkBoxX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxX12.TabIndex = 1;
             this.checkBoxX12.Text = "生效";
+            this.checkBoxX12.CheckedChanged += new System.EventHandler(this.checkBoxX12_CheckedChanged);
             // 
             // textBoxX24
             // 
@@ -1281,6 +1095,7 @@
             this.textBoxX25.Size = new System.Drawing.Size(68, 26);
             this.textBoxX25.TabIndex = 2;
             this.textBoxX25.Text = "10";
+            this.textBoxX25.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxX25_KeyPress);
             // 
             // label11
             // 
@@ -1446,6 +1261,7 @@
             this.checkBoxX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxX4.TabIndex = 1;
             this.checkBoxX4.Text = "生效";
+            this.checkBoxX4.CheckedChanged += new System.EventHandler(this.checkBoxX4_CheckedChanged);
             // 
             // checkBoxX7
             // 
@@ -1474,6 +1290,7 @@
             this.checkBoxX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxX8.TabIndex = 1;
             this.checkBoxX8.Text = "生效";
+            this.checkBoxX8.CheckedChanged += new System.EventHandler(this.checkBoxX8_CheckedChanged);
             // 
             // textBoxX18
             // 
@@ -1516,6 +1333,7 @@
             this.textBoxX20.Size = new System.Drawing.Size(68, 26);
             this.textBoxX20.TabIndex = 2;
             this.textBoxX20.Text = "10";
+            this.textBoxX20.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxX20_KeyPress);
             // 
             // textBoxX21
             // 
@@ -1530,6 +1348,7 @@
             this.textBoxX21.Size = new System.Drawing.Size(68, 26);
             this.textBoxX21.TabIndex = 2;
             this.textBoxX21.Text = "10";
+            this.textBoxX21.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxX21_KeyPress);
             // 
             // label3
             // 
@@ -1618,6 +1437,207 @@
             this.superTabItem8.Name = "superTabItem8";
             this.superTabItem8.Text = "保护";
             // 
+            // superTabControlPanel9
+            // 
+            this.superTabControlPanel9.Controls.Add(this.panelEx14);
+            this.superTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel9.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel9.Name = "superTabControlPanel9";
+            this.superTabControlPanel9.Size = new System.Drawing.Size(404, 516);
+            this.superTabControlPanel9.TabIndex = 0;
+            this.superTabControlPanel9.TabItem = this.superTabItem9;
+            // 
+            // panelEx14
+            // 
+            this.panelEx14.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx14.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx14.Controls.Add(this.buttonX26);
+            this.panelEx14.Controls.Add(this.buttonX25);
+            this.panelEx14.Controls.Add(this.buttonX24);
+            this.panelEx14.Controls.Add(this.dataGridViewX1);
+            this.panelEx14.Controls.Add(this.comboBoxEx7);
+            this.panelEx14.Controls.Add(this.labelX33);
+            this.panelEx14.Controls.Add(this.buttonX22);
+            this.panelEx14.Controls.Add(this.buttonX21);
+            this.panelEx14.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx14.Location = new System.Drawing.Point(0, 0);
+            this.panelEx14.Name = "panelEx14";
+            this.panelEx14.Size = new System.Drawing.Size(404, 516);
+            this.panelEx14.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx14.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx14.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx14.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx14.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx14.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx14.Style.GradientAngle = 90;
+            this.panelEx14.TabIndex = 0;
+            // 
+            // buttonX26
+            // 
+            this.buttonX26.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX26.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX26.Image = ((System.Drawing.Image)(resources.GetObject("buttonX26.Image")));
+            this.buttonX26.Location = new System.Drawing.Point(292, 475);
+            this.buttonX26.Name = "buttonX26";
+            this.buttonX26.Size = new System.Drawing.Size(76, 32);
+            this.buttonX26.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX26.TabIndex = 7;
+            this.buttonX26.Text = "返回";
+            this.buttonX26.Click += new System.EventHandler(this.buttonX26_Click);
+            // 
+            // buttonX25
+            // 
+            this.buttonX25.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX25.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX25.Image = ((System.Drawing.Image)(resources.GetObject("buttonX25.Image")));
+            this.buttonX25.Location = new System.Drawing.Point(164, 475);
+            this.buttonX25.Name = "buttonX25";
+            this.buttonX25.Size = new System.Drawing.Size(76, 32);
+            this.buttonX25.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX25.TabIndex = 6;
+            this.buttonX25.Text = "停止";
+            this.buttonX25.Click += new System.EventHandler(this.buttonX25_Click);
+            // 
+            // buttonX24
+            // 
+            this.buttonX24.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX24.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX24.Image = ((System.Drawing.Image)(resources.GetObject("buttonX24.Image")));
+            this.buttonX24.Location = new System.Drawing.Point(36, 475);
+            this.buttonX24.Name = "buttonX24";
+            this.buttonX24.Size = new System.Drawing.Size(76, 32);
+            this.buttonX24.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX24.TabIndex = 5;
+            this.buttonX24.Text = "开始";
+            this.buttonX24.Click += new System.EventHandler(this.buttonX24_Click);
+            // 
+            // dataGridViewX1
+            // 
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle26;
+            this.dataGridViewX1.EnableHeadersVisualStyles = false;
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(3, 94);
+            this.dataGridViewX1.Name = "dataGridViewX1";
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            this.dataGridViewX1.RowHeadersVisible = false;
+            this.dataGridViewX1.RowTemplate.Height = 23;
+            this.dataGridViewX1.Size = new System.Drawing.Size(398, 363);
+            this.dataGridViewX1.TabIndex = 4;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "步骤";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "指令参数";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "指令内容";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "跳转到";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "循环";
+            this.Column5.Name = "Column5";
+            // 
+            // comboBoxEx7
+            // 
+            this.comboBoxEx7.DisplayMember = "Text";
+            this.comboBoxEx7.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxEx7.FormattingEnabled = true;
+            this.comboBoxEx7.ItemHeight = 21;
+            this.comboBoxEx7.Location = new System.Drawing.Point(108, 57);
+            this.comboBoxEx7.Name = "comboBoxEx7";
+            this.comboBoxEx7.Size = new System.Drawing.Size(261, 27);
+            this.comboBoxEx7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx7.TabIndex = 3;
+            this.comboBoxEx7.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx7_SelectedIndexChanged);
+            // 
+            // labelX33
+            // 
+            // 
+            // 
+            // 
+            this.labelX33.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX33.Location = new System.Drawing.Point(36, 59);
+            this.labelX33.Name = "labelX33";
+            this.labelX33.Size = new System.Drawing.Size(66, 23);
+            this.labelX33.TabIndex = 2;
+            this.labelX33.Text = "控制程序：";
+            this.labelX33.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // buttonX22
+            // 
+            this.buttonX22.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX22.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX22.Image = ((System.Drawing.Image)(resources.GetObject("buttonX22.Image")));
+            this.buttonX22.Location = new System.Drawing.Point(292, 15);
+            this.buttonX22.Name = "buttonX22";
+            this.buttonX22.Size = new System.Drawing.Size(76, 32);
+            this.buttonX22.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX22.TabIndex = 1;
+            this.buttonX22.Text = "下一步";
+            // 
+            // buttonX21
+            // 
+            this.buttonX21.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX21.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX21.Image = ((System.Drawing.Image)(resources.GetObject("buttonX21.Image")));
+            this.buttonX21.Location = new System.Drawing.Point(33, 15);
+            this.buttonX21.Name = "buttonX21";
+            this.buttonX21.Size = new System.Drawing.Size(76, 32);
+            this.buttonX21.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX21.TabIndex = 0;
+            this.buttonX21.Text = "编程器";
+            this.buttonX21.Click += new System.EventHandler(this.buttonX21_Click);
+            // 
+            // superTabItem9
+            // 
+            this.superTabItem9.AttachedControl = this.superTabControlPanel9;
+            this.superTabItem9.GlobalItem = false;
+            this.superTabItem9.Name = "superTabItem9";
+            this.superTabItem9.Text = "程控";
+            // 
             // panelEx12
             // 
             this.panelEx12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1632,9 +1652,17 @@
             this.panelEx12.Controls.Add(this.labelX34);
             this.panelEx12.Controls.Add(this.tb_TestParam);
             this.panelEx12.Controls.Add(this.btnX_AxisLoadY_MaxUp);
+            this.panelEx12.Controls.Add(this.btnX_AxisCommandY_MinUp);
+            this.panelEx12.Controls.Add(this.btnX_AxisEXTY_MinUp);
             this.panelEx12.Controls.Add(this.btnX_AxisYMax);
+            this.panelEx12.Controls.Add(this.btnX_AxisCommandY_MinDown);
+            this.panelEx12.Controls.Add(this.btnX_AxisEXTY_MinDown);
             this.panelEx12.Controls.Add(this.btnX_AsixYMin);
+            this.panelEx12.Controls.Add(this.btnX_AxisCommandY_MaxUp);
+            this.panelEx12.Controls.Add(this.btnX_AxisEXTY_MaxUp);
+            this.panelEx12.Controls.Add(this.btnX_AxisCommandY_MaxDown);
             this.panelEx12.Controls.Add(this.btnX_AxisPOSY_MaxUp);
+            this.panelEx12.Controls.Add(this.btnX_AxisEXTY_MaxDown);
             this.panelEx12.Controls.Add(this.btnX_AxisLoadY_MaxDown);
             this.panelEx12.Controls.Add(this.btnX_AxisPOSY_MaxDown);
             this.panelEx12.Controls.Add(this.btnX_AxisLoadY_MinDown);
@@ -1747,7 +1775,7 @@
             this.btnX_AxisYMax.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisYMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AxisYMax.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisYMax.Location = new System.Drawing.Point(148, 510);
+            this.btnX_AxisYMax.Location = new System.Drawing.Point(128, 510);
             this.btnX_AxisYMax.Name = "btnX_AxisYMax";
             this.btnX_AxisYMax.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisYMax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1760,7 +1788,7 @@
             this.btnX_AsixYMin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AsixYMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AsixYMin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AsixYMin.Location = new System.Drawing.Point(128, 510);
+            this.btnX_AsixYMin.Location = new System.Drawing.Point(148, 510);
             this.btnX_AsixYMin.Name = "btnX_AsixYMin";
             this.btnX_AsixYMin.Size = new System.Drawing.Size(14, 25);
             this.btnX_AsixYMin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -4668,6 +4696,106 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
             // 
+            // btnX_AxisEXTY_MaxDown
+            // 
+            this.btnX_AxisEXTY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisEXTY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisEXTY_MaxDown.Location = new System.Drawing.Point(100, 12);
+            this.btnX_AxisEXTY_MaxDown.Name = "btnX_AxisEXTY_MaxDown";
+            this.btnX_AxisEXTY_MaxDown.Size = new System.Drawing.Size(14, 25);
+            this.btnX_AxisEXTY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisEXTY_MaxDown.TabIndex = 64;
+            this.btnX_AxisEXTY_MaxDown.Text = "▼";
+            this.btnX_AxisEXTY_MaxDown.Click += new System.EventHandler(this.btnX_AxisEXTY_MaxDown_Click);
+            // 
+            // btnX_AxisEXTY_MaxUp
+            // 
+            this.btnX_AxisEXTY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisEXTY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisEXTY_MaxUp.Location = new System.Drawing.Point(80, 12);
+            this.btnX_AxisEXTY_MaxUp.Name = "btnX_AxisEXTY_MaxUp";
+            this.btnX_AxisEXTY_MaxUp.Size = new System.Drawing.Size(14, 25);
+            this.btnX_AxisEXTY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisEXTY_MaxUp.TabIndex = 64;
+            this.btnX_AxisEXTY_MaxUp.Text = "▲";
+            this.btnX_AxisEXTY_MaxUp.Click += new System.EventHandler(this.btnX_AxisEXTY_MaxUp_Click);
+            // 
+            // btnX_AxisCommandY_MaxDown
+            // 
+            this.btnX_AxisCommandY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisCommandY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisCommandY_MaxDown.Location = new System.Drawing.Point(46, 12);
+            this.btnX_AxisCommandY_MaxDown.Name = "btnX_AxisCommandY_MaxDown";
+            this.btnX_AxisCommandY_MaxDown.Size = new System.Drawing.Size(14, 25);
+            this.btnX_AxisCommandY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisCommandY_MaxDown.TabIndex = 64;
+            this.btnX_AxisCommandY_MaxDown.Text = "▼";
+            this.btnX_AxisCommandY_MaxDown.Click += new System.EventHandler(this.btnX_AxisCommandY_MaxDown_Click);
+            // 
+            // btnX_AxisCommandY_MaxUp
+            // 
+            this.btnX_AxisCommandY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisCommandY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisCommandY_MaxUp.Location = new System.Drawing.Point(26, 12);
+            this.btnX_AxisCommandY_MaxUp.Name = "btnX_AxisCommandY_MaxUp";
+            this.btnX_AxisCommandY_MaxUp.Size = new System.Drawing.Size(14, 25);
+            this.btnX_AxisCommandY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisCommandY_MaxUp.TabIndex = 64;
+            this.btnX_AxisCommandY_MaxUp.Text = "▲";
+            this.btnX_AxisCommandY_MaxUp.Click += new System.EventHandler(this.btnX_AxisCommandY_MaxUp_Click);
+            // 
+            // btnX_AxisEXTY_MinDown
+            // 
+            this.btnX_AxisEXTY_MinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisEXTY_MinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnX_AxisEXTY_MinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisEXTY_MinDown.Location = new System.Drawing.Point(100, 510);
+            this.btnX_AxisEXTY_MinDown.Name = "btnX_AxisEXTY_MinDown";
+            this.btnX_AxisEXTY_MinDown.Size = new System.Drawing.Size(14, 25);
+            this.btnX_AxisEXTY_MinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisEXTY_MinDown.TabIndex = 64;
+            this.btnX_AxisEXTY_MinDown.Text = "▼";
+            this.btnX_AxisEXTY_MinDown.Click += new System.EventHandler(this.btnX_AxisEXTY_MinDown_Click);
+            // 
+            // btnX_AxisEXTY_MinUp
+            // 
+            this.btnX_AxisEXTY_MinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisEXTY_MinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnX_AxisEXTY_MinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisEXTY_MinUp.Location = new System.Drawing.Point(80, 510);
+            this.btnX_AxisEXTY_MinUp.Name = "btnX_AxisEXTY_MinUp";
+            this.btnX_AxisEXTY_MinUp.Size = new System.Drawing.Size(14, 25);
+            this.btnX_AxisEXTY_MinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisEXTY_MinUp.TabIndex = 64;
+            this.btnX_AxisEXTY_MinUp.Text = "▲";
+            this.btnX_AxisEXTY_MinUp.Click += new System.EventHandler(this.btnX_AxisEXTY_MinUp_Click);
+            // 
+            // btnX_AxisCommandY_MinDown
+            // 
+            this.btnX_AxisCommandY_MinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisCommandY_MinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnX_AxisCommandY_MinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisCommandY_MinDown.Location = new System.Drawing.Point(46, 510);
+            this.btnX_AxisCommandY_MinDown.Name = "btnX_AxisCommandY_MinDown";
+            this.btnX_AxisCommandY_MinDown.Size = new System.Drawing.Size(14, 25);
+            this.btnX_AxisCommandY_MinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisCommandY_MinDown.TabIndex = 64;
+            this.btnX_AxisCommandY_MinDown.Text = "▼";
+            this.btnX_AxisCommandY_MinDown.Click += new System.EventHandler(this.btnX_AxisCommandY_MinDown_Click);
+            // 
+            // btnX_AxisCommandY_MinUp
+            // 
+            this.btnX_AxisCommandY_MinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnX_AxisCommandY_MinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnX_AxisCommandY_MinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnX_AxisCommandY_MinUp.Location = new System.Drawing.Point(26, 510);
+            this.btnX_AxisCommandY_MinUp.Name = "btnX_AxisCommandY_MinUp";
+            this.btnX_AxisCommandY_MinUp.Size = new System.Drawing.Size(14, 25);
+            this.btnX_AxisCommandY_MinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnX_AxisCommandY_MinUp.TabIndex = 64;
+            this.btnX_AxisCommandY_MinUp.Text = "▲";
+            this.btnX_AxisCommandY_MinUp.Click += new System.EventHandler(this.btnX_AxisCommandY_MinUp_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4697,9 +4825,6 @@
             this.panelEx11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl4)).EndInit();
             this.superTabControl4.ResumeLayout(false);
-            this.superTabControlPanel9.ResumeLayout(false);
-            this.panelEx14.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.superTabControlPanel8.ResumeLayout(false);
             this.panelEx13.ResumeLayout(false);
             this.groupPanel13.ResumeLayout(false);
@@ -4708,6 +4833,9 @@
             this.groupPanel7.PerformLayout();
             this.groupPanel6.ResumeLayout(false);
             this.groupPanel6.PerformLayout();
+            this.superTabControlPanel9.ResumeLayout(false);
+            this.panelEx14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.panelEx12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
@@ -5089,6 +5217,14 @@
         private DevComponents.DotNetBar.ButtonX buttonX26;
         private DevComponents.DotNetBar.ButtonX buttonX25;
         private DevComponents.DotNetBar.ButtonX buttonX24;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisCommandY_MinUp;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisEXTY_MinUp;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisCommandY_MinDown;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisEXTY_MinDown;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisCommandY_MaxUp;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisEXTY_MaxUp;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisCommandY_MaxDown;
+        private DevComponents.DotNetBar.ButtonX btnX_AxisEXTY_MaxDown;
     }
 }
 

@@ -22,12 +22,18 @@ namespace DoPENetConnect
         {
             this.Activate();
             btn_ConState.BackColor = Color.Red;
+
+
+            labelX2.Visible = true;
+            labelX3.Visible = false;
+            this.TopMost = true;
         }
        /// <summary>
        /// 
        /// </summary>
        /// <param name="color"></param>
-        public void btn_ConState_color(Color color) {
+        public void btn_ConState_color(Color color)
+        {
             btn_ConState.BackColor = color;
         }
 
@@ -259,7 +265,8 @@ namespace DoPENetConnect
                 operateFlag = 1;
                 this.Height = 172;
             }
-            else if (operateFlag == 1) {
+            else if (operateFlag == 1)
+            {
                 buttonX1.Visible = false;
                 operateFlag = 0;
                 this.Height = 583;
@@ -277,6 +284,19 @@ namespace DoPENetConnect
             btn_ConState.Text = strStateText;
         }
 
+        private void labelX2_Click(object sender, EventArgs e)
+        {
+            labelX2.Visible = false;
+            labelX3.Visible = true;
+            this.TopMost = false;
+        }
+
+        private void labelX3_Click(object sender, EventArgs e)
+        {
+            labelX2.Visible = true;
+            labelX3.Visible = false;
+            this.TopMost = true;
+        }
     }
     
 }

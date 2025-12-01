@@ -285,17 +285,49 @@ namespace DoPENetConnect
             WriteIni();
             try
             {
-                MainForm.mainform.m_AxTeechart.Axis.Left.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
-                MainForm.mainform.m_AxTeechart.Axis.Left.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
+                if (double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text) < MainForm.mainform.m_AxTeechart.Axis.Left.Maximum)
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Left.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Left.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
+                }
+                else
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Left.Maximum = double.Parse(tbX_FrmSetChartAxisY_PosY_Max.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Left.Minimum = double.Parse(tbX_FrmSetChartAxisY_PosY_Min.Text);
+                }
 
-                MainForm.mainform.m_AxTeechart.Axis.Right.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
-                MainForm.mainform.m_AxTeechart.Axis.Right.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
+                if (double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text) < MainForm.mainform.m_AxTeechart.Axis.Right.Maximum)
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Right.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Right.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
+                }
+                else
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Right.Maximum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Max.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Right.Minimum = double.Parse(tbX_FrmSetChartAxisY_LoadY_Min.Text);
+                }
 
-                MainForm.mainform.m_AxTeechart.Axis.Custom[0].Maximum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Max.Text);
-                MainForm.mainform.m_AxTeechart.Axis.Custom[0].Minimum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Min.Text);
+                if (double.Parse(tbX_FrmSetChartAxisY_ExtY_Max.Text) < MainForm.mainform.m_AxTeechart.Axis.Custom[0].Maximum)
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[0].Minimum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Min.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[0].Maximum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Max.Text);
+                }
+                else
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[0].Maximum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Max.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[0].Minimum = double.Parse(tbX_FrmSetChartAxisY_ExtY_Min.Text);
+                }
 
-                MainForm.mainform.m_AxTeechart.Axis.Custom[1].Maximum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Max.Text);
-                MainForm.mainform.m_AxTeechart.Axis.Custom[1].Minimum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Min.Text);
+                if (double.Parse(tbX_FrmSetChartAxisY_CommandY_Max.Text) < MainForm.mainform.m_AxTeechart.Axis.Custom[1].Maximum)
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[1].Minimum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Min.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[1].Maximum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Max.Text);
+                }
+                else
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[1].Maximum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Max.Text);
+                    MainForm.mainform.m_AxTeechart.Axis.Custom[1].Minimum = double.Parse(tbX_FrmSetChartAxisY_CommandY_Min.Text);
+                }
 
                 MainForm.mainform.m_AxTeechart.Axis.Bottom.Maximum = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
 
@@ -306,6 +338,7 @@ namespace DoPENetConnect
                 MainForm.mainform.Chart_Load_Step = double.Parse(cbX_Load_Range.Text);
                 MainForm.mainform.Chart_Ext_Step = double.Parse(cbX_Ext_Range.Text);
                 MainForm.mainform.Chart_Command_Step = double.Parse(cbX_Command_Range.Text);
+                MainForm.mainform.Chart_X_Step = double.Parse(cbX_Time_Range.Text);
             }
             catch (Exception ex) {
                 MessageBox.Show("设置坐标轴问题:{0}",ex.ToString());

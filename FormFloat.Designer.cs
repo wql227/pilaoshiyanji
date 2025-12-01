@@ -46,6 +46,8 @@
             this.bntX_MoveUp = new DevComponents.DotNetBar.ButtonX();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.SuspendLayout();
@@ -303,6 +305,8 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.labelX3);
+            this.panelEx2.Controls.Add(this.labelX2);
             this.panelEx2.Controls.Add(this.labelX1);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx2.Location = new System.Drawing.Point(-3, -7);
@@ -331,6 +335,32 @@
             this.labelX1.TabIndex = 2;
             this.labelX1.Text = "Min";
             this.labelX1.Click += new System.EventHandler(this.labelX1_Click);
+            // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Image = ((System.Drawing.Image)(resources.GetObject("labelX2.Image")));
+            this.labelX2.Location = new System.Drawing.Point(57, 10);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(25, 24);
+            this.labelX2.TabIndex = 2;
+            this.labelX2.Click += new System.EventHandler(this.labelX2_Click);
+            // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Image = ((System.Drawing.Image)(resources.GetObject("labelX3.Image")));
+            this.labelX3.Location = new System.Drawing.Point(57, 10);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(25, 24);
+            this.labelX3.TabIndex = 2;
+            this.labelX3.Click += new System.EventHandler(this.labelX3_Click);
             // 
             // FormFloat
             // 
@@ -375,5 +405,7 @@
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.LabelX labelX2;
     }
 }

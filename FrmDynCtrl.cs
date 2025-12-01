@@ -18,6 +18,9 @@ namespace DoPENetConnect
     public partial class FrmDynCtrl : Form
     {
 
+        int operateFlag = 0;
+
+
         /// <summary>
         /// 加减系数枚举
         /// </summary>
@@ -666,9 +669,38 @@ namespace DoPENetConnect
 
         private void FrmDynCtrl_Load(object sender, EventArgs e)
         {
-            ReplaceLanguage();
+            //ReplaceLanguage();
             //UiAutoSize();
         }
 
+        private void labelX7_Click(object sender, EventArgs e)
+        {
+            if (operateFlag == 0)
+            {
+                operateFlag = 1;
+                this.Height = 70;
+                labelX7.Text = "Max";
+            }
+            else if (operateFlag == 1)
+            {
+                operateFlag = 0;
+                this.Height = 539;
+                labelX7.Text = "Min";
+            }
+        }
+
+        private void labelX6_Click(object sender, EventArgs e)
+        {
+            labelX6.Visible = false;
+            labelX5.Visible = true;
+            this.TopMost = false;
+        }
+
+        private void labelX5_Click(object sender, EventArgs e)
+        {
+            labelX6.Visible = true;
+            labelX5.Visible = false;
+            this.TopMost = true;
+        }
     }
 }

@@ -90,6 +90,7 @@ using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using TeeChart;
 using DoPENetConnect.Util;
+using System.Text.RegularExpressions;
 
 namespace DoPENetConnect
 {
@@ -696,7 +697,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -887,7 +888,7 @@ namespace DoPENetConnect
                 }
                 else
                 {
-                    guiDebug.AppendText(Text + "\r\n");
+                    guiDebug.AppendText(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "  " + Text /*+ "\r\n"*/);
                     guiDebug.ScrollToCaret(); // 自动滚动到底部
                     //Refresh();
                 }
@@ -1155,14 +1156,8 @@ namespace DoPENetConnect
                                 PVPositionMaxAverageList.Add(PVPositionList[i]);
                                 if (PVPositionMaxAverageList.Count > 0)
                                 {
-                                    //if (PVPositionList[i] > PVPositionMaxAverageList.Average())
-                                    {
-                                        //g_MaxPosition = PVPositionList[i];
-                                        g_MaxPosition = PVPositionMaxAverageList.Max();
-                                    }
+                                    g_MaxPosition = PVPositionMaxAverageList.Max();
                                 }
-
-                                //g_MaxPosition = PVPositionList[i];
                             }
 
                             // 判断是否为谷值：小于左右相邻的数据
@@ -1171,19 +1166,11 @@ namespace DoPENetConnect
                                 PVPositionMinAverageList.Add(PVPositionList[i]);
                                 if (PVPositionMinAverageList.Count > 0)
                                 {
-                                    //if (PVPositionList[i] < PVPositionMinAverageList.Average())
-                                    {
-                                        g_MinPosition = PVPositionList[i];
-                                        g_MinPosition = PVPositionMinAverageList.Min();
-                                    }
+                                    g_MinPosition = PVPositionMinAverageList.Min();
                                 }
 
-                                //g_MinPosition = PVPositionList[i];
                             }
                         }
-
-                        //g_MaxPosition = PVPositionQueue.Max();
-                        //g_MinPosition = PVPositionQueue.Min();
 
                         if (bActivated && isRunning)
                         {
@@ -1202,7 +1189,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("位移峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1220,7 +1207,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("位移峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1239,7 +1226,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("位移谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1257,7 +1244,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("位移谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1379,7 +1366,8 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力峰值区间 峰值外保护
                             if (protectOption.ProtectOption_LoadMaxOut_Effect)
                             {
-                                double ProtectOption_LoadMaxOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMaxOut * 1000 : protectOption.ProtectOption_LoadMaxOut;
+                                //double ProtectOption_LoadMaxOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMaxOut * 1000 : protectOption.ProtectOption_LoadMaxOut;
+                                double ProtectOption_LoadMaxOutReal = protectOption.ProtectOption_LoadMaxOut;
                                 if (g_MaxLoad > ProtectOption_LoadMaxOutReal)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
@@ -1391,7 +1379,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("试验力峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1410,7 +1398,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("试验力峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1418,7 +1406,8 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力谷值区间 谷值外保护
                             if (protectOption.ProtectOption_LoadMinOut_Effect)
                             {
-                                double ProtectOption_LoadMinOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMinOut * 1000 : protectOption.ProtectOption_LoadMinOut;
+                                //double ProtectOption_LoadMinOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMinOut * 1000 : protectOption.ProtectOption_LoadMinOut;
+                                double ProtectOption_LoadMinOutReal = protectOption.ProtectOption_LoadMinOut;
                                 if (g_MinLoad < ProtectOption_LoadMinOutReal)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
@@ -1430,7 +1419,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("试验力谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1449,7 +1438,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("试验力谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1459,7 +1448,6 @@ namespace DoPENetConnect
                         while (PVLoadQueue.Count > 200)
                         {
                             PVLoadQueue.Dequeue();
-                            //PVLoadQueue.Clear();
                         }
 
                         while (PVLoadMaxAverageList.Count > 200)
@@ -1576,7 +1564,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("变形峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1595,7 +1583,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("变形峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1614,7 +1602,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("变形谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1633,7 +1621,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("变形谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -2701,7 +2689,10 @@ namespace DoPENetConnect
         {
             EndUp = false;
 
-            MoveHalt();
+            DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+            DisplayError(error, "Halt");
+
+            //MoveHalt();
         }
 
 
@@ -2784,8 +2775,9 @@ namespace DoPENetConnect
         public void FormFloat_btnX_MoveQuickUp_MouseUp()
         {
             EndQuickUp = false;
-
-            MoveHalt();
+            DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+            DisplayError(error, "Halt");
+            //MoveHalt();
         }
 
 
@@ -2916,8 +2908,9 @@ namespace DoPENetConnect
         public void FormFloat_bntX_MoveDown_MouseUp()
         {
             EndDown = false;
-
-            MoveHalt();
+            DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+            DisplayError(error, "Halt");
+            //MoveHalt();
         }
         /// <summary>
         /// 快速向下
@@ -3003,8 +2996,9 @@ namespace DoPENetConnect
         public void FormFloat_btnX_QuickMoveDown_MouseUp()
         {
             EndQuickDown = false;
-
-            MoveHalt();
+            DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+            DisplayError(error, "Halt");
+            //MoveHalt();
         }
 
 
@@ -3909,14 +3903,10 @@ namespace DoPENetConnect
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
             string idEncry = devIdEncrypted.ToString();
-            //if (idEncry != "0" && idEncry != "")
-            //{
-            //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-            //}
-            devId = new StringBuilder("02132F05");
-            //devId = new StringBuilder("02137E43");
-
-            //string aaa = DESEncrypt.Encrypt("0214C55E");
+            if (idEncry != "0" && idEncry != "")
+            {
+                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+            }
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -4112,9 +4102,28 @@ namespace DoPENetConnect
             btnHurryDownConstantVal = double.Parse(strTmp.ToString());
             #endregion 按键功能常数
 
+
+            #region 坐标调整量程
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "PosRange", "1", strTmp, strTmp.Capacity);
+            MainForm.mainform.Chart_Pos_Step = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "LoadRange", "1", strTmp, strTmp.Capacity);
+            MainForm.mainform.Chart_Load_Step = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "ExtRange", "1", strTmp, strTmp.Capacity);
+            MainForm.mainform.Chart_Ext_Step = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandRange", "1", strTmp, strTmp.Capacity);
+            MainForm.mainform.Chart_Command_Step = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "TimeRange", "1", strTmp, strTmp.Capacity);
+            MainForm.mainform.Chart_X_Step = double.Parse(strTmp.ToString());
+
             IniFileHelper.GetIniString("FrmSetChartAxisY", "TimeX_MAX", "5", strTmp, strTmp.Capacity);
             AxisXMax = double.Parse(strTmp.ToString());
             axTChart1.Axis.Bottom.Maximum = AxisXMax;
+
+            #endregion 坐标调整量程
 
             //IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
             //cb_ShowPosition.Checked = true;// strTmp.ToString() == "0" ? false : true;
@@ -4881,7 +4890,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
             if (result == DialogResult.Yes)
             {
@@ -4901,7 +4910,7 @@ namespace DoPENetConnect
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
             if (result == DialogResult.Yes)
             {
@@ -4934,8 +4943,17 @@ namespace DoPENetConnect
                   !double.TryParse(tb_MinPos.Text, out double minPos))
                 {
                     // 解析失败，使用默认范围或不处理
-                    axTChart1.Axis.Left.Maximum = 0.1;
-                    axTChart1.Axis.Left.Minimum = -0.1;
+                    if (0.1 < axTChart1.Axis.Left.Maximum)
+                    {
+                        axTChart1.Axis.Left.Minimum = -0.1;
+                        axTChart1.Axis.Left.Maximum = 0.1;
+                    }
+                    else
+                    {
+                        axTChart1.Axis.Left.Maximum = 0.1;
+                        axTChart1.Axis.Left.Minimum = -0.1;
+                    }
+
                     axTChart1.Axis.Left.Labels.ValueFormat = "##0.###";
                     return;
                 }
@@ -4943,8 +4961,16 @@ namespace DoPENetConnect
                 // 处理绝对值过小的情况（接近0）
                 if (Math.Abs(maxPos) <= 0.01 && Math.Abs(minPos) <= 0.01)
                 {
-                    axTChart1.Axis.Left.Maximum = 0.1;
-                    axTChart1.Axis.Left.Minimum = -0.1;
+                    if (0.1 < axTChart1.Axis.Left.Maximum)
+                    {
+                        axTChart1.Axis.Left.Minimum = -0.1;
+                        axTChart1.Axis.Left.Maximum = 0.1;
+                    }
+                    else
+                    {
+                        axTChart1.Axis.Left.Maximum = 0.1;
+                        axTChart1.Axis.Left.Minimum = -0.1;
+                    }
                 }
                 else
                 {
@@ -4956,8 +4982,16 @@ namespace DoPENetConnect
                     if (range < epsilon * 100) // 可调阈值
                     {
                         double center = (maxPos + minPos) / 2.0;
-                        axTChart1.Axis.Left.Maximum = center + 0.1;
-                        axTChart1.Axis.Left.Minimum = center - 0.1;
+                        if (center + 0.1 < axTChart1.Axis.Left.Maximum)
+                        {
+                            axTChart1.Axis.Left.Minimum = center - 0.1;
+                            axTChart1.Axis.Left.Maximum = center + 0.1;
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Left.Maximum = center + 0.1;
+                            axTChart1.Axis.Left.Minimum = center - 0.1;
+                        }
                     }
                     else
                     {
@@ -4965,66 +4999,50 @@ namespace DoPENetConnect
                         double totalHeight = range / 0.85;
                         double padding = (totalHeight - range) / 2.0;
 
-                        axTChart1.Axis.Left.Maximum = maxPos + padding;
-                        axTChart1.Axis.Left.Minimum = minPos - padding;
+                        if ((maxPos + padding) < axTChart1.Axis.Left.Maximum)
+                        {
+                            axTChart1.Axis.Left.Minimum = minPos - padding;
+                            axTChart1.Axis.Left.Maximum = maxPos + padding;
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Left.Maximum = maxPos + padding;
+                            axTChart1.Axis.Left.Minimum = minPos - padding;
+                        }
                     }
 
                     // 统一设置标签格式
                     axTChart1.Axis.Left.Labels.ValueFormat = "##0.###";
                 }
 
-
-                //double maxSeriesMaxYValCmd = -1;
-                //double maxSeriesMinYValCmd = -1;
-                //if (chart_machine.Series[3].Points.Count > 0 )
-                //{
-                //    maxSeriesMaxYValCmd = chart_machine.Series[3].Points.Max(point => point.YValues[0]);
-                //    maxSeriesMinYValCmd = chart_machine.Series[3].Points.Min(point => point.YValues[0]);
-                //}
-
-                //if (chart_machine.Series[0].Points.Count > 0)
-                //{
-                //    double maxSeriesMaxYVal = chart_machine.Series[0].Points.Max(point => point.YValues[0]);
-                //    double maxSeriesMinYVal = chart_machine.Series[0].Points.Min(point => point.YValues[0]);
-                //    if (chart_machine.Series[3].YAxisType == chart_machine.Series[0].YAxisType)
-                //    {
-                //        if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
-                //        {
-
-                //            if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
-                //            if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
-                //        }
-                //    }
-
-                //    double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-                //    double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-                //    double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
-
-                //    double yAxisMax1 = maxSeriesMaxYVal + padding1;
-                //    double yAxisMin1 = maxSeriesMinYVal - padding1;
-                //    if (Math.Abs(yAxisMax1 - yAxisMin1)>=0.1)
-                //    {
-                //        chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
-                //        chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
-                //    }
-                //}
-                //#endregion postion axis auto fitting
-
-
-                //试验力曲线自适应
-                //#region load auto fitting
-
+                #region 试验力曲线自适应
                 if (Math.Abs(double.Parse(tb_MaxLoad.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinLoad.Text)) <= 0.01)
                 {
-                    axTChart1.Axis.Right.Maximum = 0.1;
-                    axTChart1.Axis.Right.Minimum = -0.1;
+                    if (0.1 < axTChart1.Axis.Right.Maximum)
+                    {
+                        axTChart1.Axis.Right.Minimum = -0.1;
+                        axTChart1.Axis.Right.Maximum = 0.1;
+                    }
+                    else
+                    {
+                        axTChart1.Axis.Right.Maximum = 0.1;
+                        axTChart1.Axis.Right.Minimum = -0.1;
+                    }
                 }
                 else
                 {
                     if (double.Parse(tb_MaxLoad.Text) == double.Parse(tb_MinLoad.Text))
                     {
-                        axTChart1.Axis.Right.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2 + 1;
-                        axTChart1.Axis.Right.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2 - 1;
+                        if ((Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2 + 1) < axTChart1.Axis.Right.Maximum)
+                        {
+                            axTChart1.Axis.Right.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2 - 1;
+                            axTChart1.Axis.Right.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2 + 1;
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Right.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2 + 1;
+                            axTChart1.Axis.Right.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2 - 1;
+                        }
                     }
                     else
                     {
@@ -5035,41 +5053,130 @@ namespace DoPENetConnect
                         double yAxisMax = double.Parse(tb_MaxLoad.Text) + padding;
                         double yAxisMin = double.Parse(tb_MinLoad.Text) - padding;
 
-                        axTChart1.Axis.Right.Maximum = yAxisMax;
-                        axTChart1.Axis.Right.Minimum = yAxisMin;
+                        if (yAxisMax < axTChart1.Axis.Right.Maximum)
+                        {
+                            axTChart1.Axis.Right.Minimum = yAxisMin;
+                            axTChart1.Axis.Right.Maximum = yAxisMax;
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Right.Maximum = yAxisMax;
+                            axTChart1.Axis.Right.Minimum = yAxisMin;
+                        }
                     }
                     axTChart1.Axis.Right.Labels.ValueFormat = "##0.###";
                 }
+                #endregion 试验力曲线自适应
 
-                //if (chart_machine.Series[1].Points.Count > 0)
+                #region 变形曲线自适应
+                if (Math.Abs(double.Parse(tb_MaxExt.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinExt.Text)) <= 0.01)
+                {
+                    if (0.1 < axTChart1.Axis.Custom[0].Maximum)
+                    {
+                        axTChart1.Axis.Custom[0].Minimum = -0.1;
+                        axTChart1.Axis.Custom[0].Maximum = 0.1;
+                    }
+                    else
+                    {
+                        axTChart1.Axis.Custom[0].Maximum = 0.1;
+                        axTChart1.Axis.Custom[0].Minimum = -0.1;
+                    }
+                }
+                else
+                {
+                    if (double.Parse(tb_MaxExt.Text) == double.Parse(tb_MinExt.Text))
+                    {
+                        if ((Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1) < axTChart1.Axis.Custom[0].Maximum)
+                        {
+                            axTChart1.Axis.Custom[0].Minimum = Math.Round(double.Parse(tb_MinExt.Text), 2) * 1.2 - 1;
+                            axTChart1.Axis.Custom[0].Maximum = Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1;
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Custom[0].Maximum = Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1;
+                            axTChart1.Axis.Custom[0].Minimum = Math.Round(double.Parse(tb_MinExt.Text), 2) * 1.2 - 1;
+                        }
+                    }
+                    else
+                    {
+                        double range = double.Parse(tb_MaxExt.Text) - double.Parse(tb_MinExt.Text);
+                        double totalHeight = range / 0.85;        // Y 轴总高度的85%
+                        double padding = (totalHeight - range) / 2.0;  // 上下留白
+
+                        double yAxisMax = double.Parse(tb_MaxExt.Text) + padding;
+                        double yAxisMin = double.Parse(tb_MinExt.Text) - padding;
+
+                        if (yAxisMax < axTChart1.Axis.Custom[0].Maximum)
+                        {
+                            axTChart1.Axis.Custom[0].Minimum = yAxisMin;
+                            axTChart1.Axis.Custom[0].Maximum = yAxisMax;
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Custom[0].Maximum = yAxisMax;
+                            axTChart1.Axis.Custom[0].Minimum = yAxisMin;
+                        }
+                    }
+                    axTChart1.Axis.Custom[0].Labels.ValueFormat = "##0.###";
+                }
+                #endregion 变形曲线自适应
+
+
+                //// TODO 命令没有数据显示，没法自适应
+                //#region 命令曲线自适应 
+                //if (Math.Abs(double.Parse(tb_MaxCommand.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinCommand.Text)) <= 0.01)
                 //{
-                //    double maxSeriesMaxYVal = chart_machine.Series[1].Points.Max(point => point.YValues[0]);
-                //    double maxSeriesMinYVal = chart_machine.Series[1].Points.Min(point => point.YValues[0]);
-
-                //    if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
+                //    if (0.1 < axTChart1.Axis.Custom[1].Maximum)
                 //    {
-                //        if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
+                //        axTChart1.Axis.Custom[1].Minimum = -0.1;
+                //        axTChart1.Axis.Custom[1].Maximum = 0.1;
+                //    }
+                //    else
+                //    {
+                //        axTChart1.Axis.Custom[0].Maximum = 0.1;
+                //        axTChart1.Axis.Custom[0].Minimum = -0.1;
+                //    }
+                //}
+                //else
+                //{
+                //    if (double.Parse(tb_MaxExt.Text) == double.Parse(tb_MinExt.Text))
+                //    {
+                //        if ((Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1) < axTChart1.Axis.Custom[1].Maximum)
                 //        {
-
-                //            if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
-                //            if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
+                //            axTChart1.Axis.Custom[1].Minimum = Math.Round(double.Parse(tb_MinExt.Text), 2) * 1.2 - 1;
+                //            axTChart1.Axis.Custom[1].Maximum = Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1;
+                //        }
+                //        else
+                //        {
+                //            axTChart1.Axis.Custom[1].Maximum = Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1;
+                //            axTChart1.Axis.Custom[1].Minimum = Math.Round(double.Parse(tb_MinExt.Text), 2) * 1.2 - 1;
                 //        }
                 //    }
-
-                //    double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-                //    double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-                //    double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
-
-                //    double yAxisMax1 = maxSeriesMaxYVal + padding1;
-                //    double yAxisMin1 = maxSeriesMinYVal - padding1;
-                //    if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
+                //    else
                 //    {
-                //        chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
-                //        chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
-                //    }
+                //        double range = double.Parse(tb_MaxExt.Text) - double.Parse(tb_MinExt.Text);
+                //        double totalHeight = range / 0.85;        // Y 轴总高度的85%
+                //        double padding = (totalHeight - range) / 2.0;  // 上下留白
 
+                //        double yAxisMax = double.Parse(tb_MaxExt.Text) + padding;
+                //        double yAxisMin = double.Parse(tb_MinExt.Text) - padding;
+
+                //        if (yAxisMax < axTChart1.Axis.Ext.Maximum)
+                //        {
+                //            axTChart1.Axis.Custom[1].Minimum = yAxisMin;
+                //            axTChart1.Axis.Custom[1].Maximum = yAxisMax;
+                //        }
+                //        else
+                //        {
+                //            axTChart1.Axis.Custom[1].Maximum = yAxisMax;
+                //            axTChart1.Axis.Custom[1].Minimum = yAxisMin;
+                //        }
+                //    }
+                //    axTChart1.Axis.Custom[1].Labels.ValueFormat = "##0.###";
                 //}
-                //#endregion load auto fitting
+                //#endregion 变形曲线自适应
+
+
             }
             catch (Exception ex)
             {
@@ -5358,33 +5465,37 @@ namespace DoPENetConnect
             //    return;
             //}
             SaveProtect2Ini();
-
         }
 
+
         /// <summary>
-        /// 
+        /// 保护量程单位
         /// </summary>
         /// <param name="UnitIndex"></param>
         public void ProtectionUnitModify(int UnitIndex)
         {
             if (UnitIndex == 0)
-            { //kN
+            {
+                //kN
                 label6.Text = "kN";
                 label5.Text = "kN";
                 label4.Text = "kN";
                 label3.Text = "kN";
-
             }
             else
-            { //N
+            {
+                //N
                 label6.Text = "N";
                 label5.Text = "N";
                 label4.Text = "N";
                 label3.Text = "N";
-
             }
         }
 
+
+        /// <summary>
+        /// 保存峰谷值数据到配置文件
+        /// </summary>
         private void SaveProtect2Ini()
         {
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
@@ -5571,7 +5682,6 @@ namespace DoPENetConnect
 
         private void buttonX16_Click(object sender, EventArgs e)
         {
-
             double value = 0;
             value = axTChart1.Axis.Bottom.Minimum + Chart_X_Step;
             if (value <= axTChart1.Axis.Bottom.Maximum)
@@ -5581,6 +5691,7 @@ namespace DoPENetConnect
             else
             {
                 MessageBox.Show("设定值超出x轴最大值范围!");
+                return;
             }
         }
 
@@ -5739,6 +5850,248 @@ namespace DoPENetConnect
         public void SetDataGridViewSelected(int rowNo,bool selectorNo)
         {
             dataGridViewX1.Rows[rowNo].Selected = selectorNo;
+        }
+
+        private void textBoxX17_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void textBoxX15_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void textBoxX21_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void textBoxX20_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void textBoxX25_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void textBoxX23_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void checkBoxX6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX6.Checked)
+            {
+                SaveProtect2Ini();
+            }
+        }
+
+        private void checkBoxX2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX2.Checked)
+            {
+                SaveProtect2Ini();
+            }
+        }
+
+        private void checkBoxX8_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX8.Checked)
+            {
+                SaveProtect2Ini();
+            }
+        }
+
+        private void checkBoxX4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX4.Checked)
+            {
+                SaveProtect2Ini();
+            }
+        }
+
+        private void checkBoxX12_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX12.Checked)
+            {
+                SaveProtect2Ini();
+            }
+        }
+
+        private void checkBoxX10_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX10.Checked)
+            {
+                SaveProtect2Ini();
+            }
+        }
+
+
+        /// <summary>
+        /// 变形最大值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisEXTY_MaxDown_Click(object sender, EventArgs e)
+        {
+            if (Chart_Ext_Step >= (axTChart1.Axis.Custom[0].Maximum - axTChart1.Axis.Custom[0].Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                axTChart1.Axis.Custom[0].Maximum -= Chart_Ext_Step;
+            }
+        }
+
+
+        /// <summary>
+        /// 变形最大值增加按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisEXTY_MaxUp_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Custom[0].Maximum += Chart_Ext_Step;
+        }
+
+
+        /// <summary>
+        /// 变形最大值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisEXTY_MinDown_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Custom[0].Minimum -= Chart_Ext_Step;
+        }
+
+
+        /// <summary>
+        /// 变形最小值增加按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisEXTY_MinUp_Click(object sender, EventArgs e)
+        {
+            if (Chart_Ext_Step >= (axTChart1.Axis.Custom[1].Maximum - axTChart1.Axis.Custom[1].Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                axTChart1.Axis.Custom[0].Minimum += Chart_Ext_Step;
+            }
+        }
+
+
+        /// <summary>
+        /// 变形最小值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void btnX_AxisCommandY_MinDown_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Custom[1].Minimum -= Chart_Command_Step;
+        }
+
+
+        /// <summary>
+        /// 变形最大值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisCommandY_MinUp_Click(object sender, EventArgs e)
+        {
+            if (Chart_Command_Step >= (axTChart1.Axis.Custom[1].Maximum - axTChart1.Axis.Custom[1].Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                axTChart1.Axis.Custom[1].Minimum += Chart_Command_Step;
+            }
+        }
+
+
+        /// <summary>
+        /// 变形最大值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisCommandY_MaxDown_Click(object sender, EventArgs e)
+        {
+            if (Chart_Command_Step >= (axTChart1.Axis.Custom[1].Maximum - axTChart1.Axis.Custom[1].Minimum))
+            {
+                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                axTChart1.Axis.Custom[1].Maximum -= Chart_Command_Step;
+            }
+        }
+
+
+        /// <summary>
+        /// 变形最大值减小按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnX_AxisCommandY_MaxUp_Click(object sender, EventArgs e)
+        {
+            axTChart1.Axis.Custom[1].Minimum += Chart_Command_Step;
+
         }
     }
 }
