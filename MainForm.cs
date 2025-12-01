@@ -90,6 +90,7 @@ using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using TeeChart;
 using DoPENetConnect.Util;
+using System.Text.RegularExpressions;
 
 namespace DoPENetConnect
 {
@@ -4103,9 +4104,28 @@ namespace DoPENetConnect
             btnHurryDownConstantVal = double.Parse(strTmp.ToString());
             #endregion 按键功能常数
 
+
+            #region 坐标调整量程
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "PosRange", "1", strTmp, strTmp.Capacity);
+            MainForm.mainform.Chart_Pos_Step = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "LoadRange", "1", strTmp, strTmp.Capacity);
+            MainForm.mainform.Chart_Load_Step = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "ExtRange", "1", strTmp, strTmp.Capacity);
+            MainForm.mainform.Chart_Ext_Step = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandRange", "1", strTmp, strTmp.Capacity);
+            MainForm.mainform.Chart_Command_Step = double.Parse(strTmp.ToString());
+
+            IniFileHelper.GetIniString("FrmSetChartAxisY", "TimeRange", "1", strTmp, strTmp.Capacity);
+            MainForm.mainform.Chart_X_Step = double.Parse(strTmp.ToString());
+
             IniFileHelper.GetIniString("FrmSetChartAxisY", "TimeX_MAX", "5", strTmp, strTmp.Capacity);
             AxisXMax = double.Parse(strTmp.ToString());
             axTChart1.Axis.Bottom.Maximum = AxisXMax;
+
+            #endregion 坐标调整量程
 
             //IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
             //cb_ShowPosition.Checked = true;// strTmp.ToString() == "0" ? false : true;
@@ -4872,7 +4892,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
             if (result == DialogResult.Yes)
             {
@@ -4997,9 +5017,7 @@ namespace DoPENetConnect
                     axTChart1.Axis.Left.Labels.ValueFormat = "##0.###";
                 }
 
-                //试验力曲线自适应
-                //#region load auto fitting
-
+                #region 试验力曲线自适应
                 if (Math.Abs(double.Parse(tb_MaxLoad.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinLoad.Text)) <= 0.01)
                 {
                     if (0.1 < axTChart1.Axis.Right.Maximum)
@@ -5050,6 +5068,117 @@ namespace DoPENetConnect
                     }
                     axTChart1.Axis.Right.Labels.ValueFormat = "##0.###";
                 }
+                #endregion 试验力曲线自适应
+
+                #region 变形曲线自适应
+                if (Math.Abs(double.Parse(tb_MaxExt.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinExt.Text)) <= 0.01)
+                {
+                    if (0.1 < axTChart1.Axis.Custom[0].Maximum)
+                    {
+                        axTChart1.Axis.Custom[0].Minimum = -0.1;
+                        axTChart1.Axis.Custom[0].Maximum = 0.1;
+                    }
+                    else
+                    {
+                        axTChart1.Axis.Custom[0].Maximum = 0.1;
+                        axTChart1.Axis.Custom[0].Minimum = -0.1;
+                    }
+                }
+                else
+                {
+                    if (double.Parse(tb_MaxExt.Text) == double.Parse(tb_MinExt.Text))
+                    {
+                        if ((Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1) < axTChart1.Axis.Custom[0].Maximum)
+                        {
+                            axTChart1.Axis.Custom[0].Minimum = Math.Round(double.Parse(tb_MinExt.Text), 2) * 1.2 - 1;
+                            axTChart1.Axis.Custom[0].Maximum = Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1;
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Custom[0].Maximum = Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1;
+                            axTChart1.Axis.Custom[0].Minimum = Math.Round(double.Parse(tb_MinExt.Text), 2) * 1.2 - 1;
+                        }
+                    }
+                    else
+                    {
+                        double range = double.Parse(tb_MaxExt.Text) - double.Parse(tb_MinExt.Text);
+                        double totalHeight = range / 0.85;        // Y 轴总高度的85%
+                        double padding = (totalHeight - range) / 2.0;  // 上下留白
+
+                        double yAxisMax = double.Parse(tb_MaxExt.Text) + padding;
+                        double yAxisMin = double.Parse(tb_MinExt.Text) - padding;
+
+                        if (yAxisMax < axTChart1.Axis.Custom[0].Maximum)
+                        {
+                            axTChart1.Axis.Custom[0].Minimum = yAxisMin;
+                            axTChart1.Axis.Custom[0].Maximum = yAxisMax;
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Custom[0].Maximum = yAxisMax;
+                            axTChart1.Axis.Custom[0].Minimum = yAxisMin;
+                        }
+                    }
+                    axTChart1.Axis.Custom[0].Labels.ValueFormat = "##0.###";
+                }
+                #endregion 变形曲线自适应
+
+
+                //// TODO 命令没有数据显示，没法自适应
+                //#region 命令曲线自适应 
+                //if (Math.Abs(double.Parse(tb_MaxCommand.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinCommand.Text)) <= 0.01)
+                //{
+                //    if (0.1 < axTChart1.Axis.Custom[1].Maximum)
+                //    {
+                //        axTChart1.Axis.Custom[1].Minimum = -0.1;
+                //        axTChart1.Axis.Custom[1].Maximum = 0.1;
+                //    }
+                //    else
+                //    {
+                //        axTChart1.Axis.Custom[0].Maximum = 0.1;
+                //        axTChart1.Axis.Custom[0].Minimum = -0.1;
+                //    }
+                //}
+                //else
+                //{
+                //    if (double.Parse(tb_MaxExt.Text) == double.Parse(tb_MinExt.Text))
+                //    {
+                //        if ((Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1) < axTChart1.Axis.Custom[1].Maximum)
+                //        {
+                //            axTChart1.Axis.Custom[1].Minimum = Math.Round(double.Parse(tb_MinExt.Text), 2) * 1.2 - 1;
+                //            axTChart1.Axis.Custom[1].Maximum = Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1;
+                //        }
+                //        else
+                //        {
+                //            axTChart1.Axis.Custom[1].Maximum = Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1;
+                //            axTChart1.Axis.Custom[1].Minimum = Math.Round(double.Parse(tb_MinExt.Text), 2) * 1.2 - 1;
+                //        }
+                //    }
+                //    else
+                //    {
+                //        double range = double.Parse(tb_MaxExt.Text) - double.Parse(tb_MinExt.Text);
+                //        double totalHeight = range / 0.85;        // Y 轴总高度的85%
+                //        double padding = (totalHeight - range) / 2.0;  // 上下留白
+
+                //        double yAxisMax = double.Parse(tb_MaxExt.Text) + padding;
+                //        double yAxisMin = double.Parse(tb_MinExt.Text) - padding;
+
+                //        if (yAxisMax < axTChart1.Axis.Ext.Maximum)
+                //        {
+                //            axTChart1.Axis.Custom[1].Minimum = yAxisMin;
+                //            axTChart1.Axis.Custom[1].Maximum = yAxisMax;
+                //        }
+                //        else
+                //        {
+                //            axTChart1.Axis.Custom[1].Maximum = yAxisMax;
+                //            axTChart1.Axis.Custom[1].Minimum = yAxisMin;
+                //        }
+                //    }
+                //    axTChart1.Axis.Custom[1].Labels.ValueFormat = "##0.###";
+                //}
+                //#endregion 变形曲线自适应
+
+
             }
             catch (Exception ex)
             {
@@ -5338,33 +5467,37 @@ namespace DoPENetConnect
             //    return;
             //}
             SaveProtect2Ini();
-
         }
 
+
         /// <summary>
-        /// 
+        /// 保护量程单位
         /// </summary>
         /// <param name="UnitIndex"></param>
         public void ProtectionUnitModify(int UnitIndex)
         {
             if (UnitIndex == 0)
-            { //kN
+            {
+                //kN
                 label6.Text = "kN";
                 label5.Text = "kN";
                 label4.Text = "kN";
                 label3.Text = "kN";
-
             }
             else
-            { //N
+            {
+                //N
                 label6.Text = "N";
                 label5.Text = "N";
                 label4.Text = "N";
                 label3.Text = "N";
-
             }
         }
 
+
+        /// <summary>
+        /// 保存峰谷值数据到配置文件
+        /// </summary>
         private void SaveProtect2Ini()
         {
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
@@ -5551,7 +5684,6 @@ namespace DoPENetConnect
 
         private void buttonX16_Click(object sender, EventArgs e)
         {
-
             double value = 0;
             value = axTChart1.Axis.Bottom.Minimum + Chart_X_Step;
             if (value <= axTChart1.Axis.Bottom.Maximum)
@@ -5561,6 +5693,7 @@ namespace DoPENetConnect
             else
             {
                 MessageBox.Show("设定值超出x轴最大值范围!");
+                return;
             }
         }
 
@@ -5719,6 +5852,126 @@ namespace DoPENetConnect
         public void SetDataGridViewSelected(int rowNo,bool selectorNo)
         {
             dataGridViewX1.Rows[rowNo].Selected = selectorNo;
+        }
+
+        private void textBoxX17_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void textBoxX15_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void textBoxX21_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void textBoxX20_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void textBoxX25_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void textBoxX23_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            string strTmp = tb.Text.Substring(0, tb.SelectionStart) + e.KeyChar + tb.Text.Substring(tb.SelectionStart + tb.SelectionLength);
+            e.Handled = !Regex.IsMatch(strTmp, @"^-?\d*\.?\d*$");
+        }
+
+        private void checkBoxX6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX6.Checked)
+            {
+                SaveProtect2Ini();
+            }
+        }
+
+        private void checkBoxX2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX2.Checked)
+            {
+                SaveProtect2Ini();
+            }
+        }
+
+        private void checkBoxX8_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX8.Checked)
+            {
+                SaveProtect2Ini();
+            }
+        }
+
+        private void checkBoxX4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX4.Checked)
+            {
+                SaveProtect2Ini();
+            }
+        }
+
+        private void checkBoxX12_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX12.Checked)
+            {
+                SaveProtect2Ini();
+            }
+        }
+
+        private void checkBoxX10_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX10.Checked)
+            {
+                SaveProtect2Ini();
+            }
         }
     }
 }
