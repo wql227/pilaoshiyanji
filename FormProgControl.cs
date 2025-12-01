@@ -83,6 +83,9 @@ namespace DoPENetConnect
             ProgStatus.load = startLoad;
             ProgStatus.extension = startExtession;
             ProgStatus.currentCycleCountEveryStep = new int[dta.Count];    //创建每一步对应的循环数存储数组
+            for(int i=0;i< dta.Count; i++) {
+                ProgStatus.currentCycleCountEveryStep[i] = 0;
+            }
             
         }
 
@@ -409,14 +412,15 @@ namespace DoPENetConnect
             {
                 
                 MainForm.mainform.SetDataGridViewSelected(currentCmdIndex, false); //当前行设为非选中状态
-                ProgStatus.currentCycleCountEveryStep[currentCmdIndex]++;
+                if(ProgStatus.currentCycleCountEveryStep[currentCmdIndex]< ProgStatus.currentCycleSet)
+                    ProgStatus.currentCycleCountEveryStep[currentCmdIndex]++;
 
-                if (ProgStatus.currentCycleCountEveryStep[currentCmdIndex] <= ProgStatus.currentCycleSet) {   //达到循环次数进入下一步
+                if (ProgStatus.currentCycleCountEveryStep[currentCmdIndex] == ProgStatus.currentCycleSet) {   //达到循环次数进入下一步
                     if (currentCmdIndex + 1 <= cmdDta.Count) {    //不是最后一部直接切换
                         currentCmdIndex += 1;
                     }
 
-                    ProgStatus.currentCycleCountEveryStep[currentCmdIndex] = 0;
+                    //ProgStatus.currentCycleCountEveryStep[currentCmdIndex] = 0;     //次数累计清零
                 }
                 else    //如果没有达到次数则直接跳转
                     currentCmdIndex = int.Parse(cmdDta[currentCmdIndex][3])-1;
