@@ -887,7 +887,7 @@ namespace DoPENetConnect
                 }
                 else
                 {
-                    guiDebug.AppendText(Text + "\r\n");
+                    guiDebug.AppendText(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "  " + Text /*+ "\r\n"*/);
                     guiDebug.ScrollToCaret(); // 自动滚动到底部
                     //Refresh();
                 }
@@ -1155,14 +1155,8 @@ namespace DoPENetConnect
                                 PVPositionMaxAverageList.Add(PVPositionList[i]);
                                 if (PVPositionMaxAverageList.Count > 0)
                                 {
-                                    //if (PVPositionList[i] > PVPositionMaxAverageList.Average())
-                                    {
-                                        //g_MaxPosition = PVPositionList[i];
-                                        g_MaxPosition = PVPositionMaxAverageList.Max();
-                                    }
+                                    g_MaxPosition = PVPositionMaxAverageList.Max();
                                 }
-
-                                //g_MaxPosition = PVPositionList[i];
                             }
 
                             // 判断是否为谷值：小于左右相邻的数据
@@ -1171,19 +1165,11 @@ namespace DoPENetConnect
                                 PVPositionMinAverageList.Add(PVPositionList[i]);
                                 if (PVPositionMinAverageList.Count > 0)
                                 {
-                                    //if (PVPositionList[i] < PVPositionMinAverageList.Average())
-                                    {
-                                        g_MinPosition = PVPositionList[i];
-                                        g_MinPosition = PVPositionMinAverageList.Min();
-                                    }
+                                    g_MinPosition = PVPositionMinAverageList.Min();
                                 }
 
-                                //g_MinPosition = PVPositionList[i];
                             }
                         }
-
-                        //g_MaxPosition = PVPositionQueue.Max();
-                        //g_MinPosition = PVPositionQueue.Min();
 
                         if (bActivated && isRunning)
                         {
@@ -1459,7 +1445,6 @@ namespace DoPENetConnect
                         while (PVLoadQueue.Count > 200)
                         {
                             PVLoadQueue.Dequeue();
-                            //PVLoadQueue.Clear();
                         }
 
                         while (PVLoadMaxAverageList.Count > 200)
@@ -2701,7 +2686,10 @@ namespace DoPENetConnect
         {
             EndUp = false;
 
-            MoveHalt();
+            DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+            DisplayError(error, "Halt");
+
+            //MoveHalt();
         }
 
 
@@ -2784,8 +2772,9 @@ namespace DoPENetConnect
         public void FormFloat_btnX_MoveQuickUp_MouseUp()
         {
             EndQuickUp = false;
-
-            MoveHalt();
+            DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+            DisplayError(error, "Halt");
+            //MoveHalt();
         }
 
 
@@ -2916,8 +2905,9 @@ namespace DoPENetConnect
         public void FormFloat_bntX_MoveDown_MouseUp()
         {
             EndDown = false;
-
-            MoveHalt();
+            DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+            DisplayError(error, "Halt");
+            //MoveHalt();
         }
         /// <summary>
         /// 快速向下
@@ -3003,8 +2993,9 @@ namespace DoPENetConnect
         public void FormFloat_btnX_QuickMoveDown_MouseUp()
         {
             EndQuickDown = false;
-
-            MoveHalt();
+            DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+            DisplayError(error, "Halt");
+            //MoveHalt();
         }
 
 
