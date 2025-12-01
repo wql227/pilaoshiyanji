@@ -1189,7 +1189,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                                    MessageBox.Show("位移峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1207,7 +1207,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                                    MessageBox.Show("位移峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1226,7 +1226,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                                    MessageBox.Show("位移谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1244,7 +1244,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("位移谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                                    MessageBox.Show("位移谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1366,7 +1366,8 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力峰值区间 峰值外保护
                             if (protectOption.ProtectOption_LoadMaxOut_Effect)
                             {
-                                double ProtectOption_LoadMaxOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMaxOut * 1000 : protectOption.ProtectOption_LoadMaxOut;
+                                //double ProtectOption_LoadMaxOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMaxOut * 1000 : protectOption.ProtectOption_LoadMaxOut;
+                                double ProtectOption_LoadMaxOutReal = protectOption.ProtectOption_LoadMaxOut;
                                 if (g_MaxLoad > ProtectOption_LoadMaxOutReal)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
@@ -1378,7 +1379,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("试验力峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1397,7 +1398,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("试验力峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1405,7 +1406,8 @@ namespace DoPENetConnect
                             //判断是否处于合理的试验力谷值区间 谷值外保护
                             if (protectOption.ProtectOption_LoadMinOut_Effect)
                             {
-                                double ProtectOption_LoadMinOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMinOut * 1000 : protectOption.ProtectOption_LoadMinOut;
+                                //double ProtectOption_LoadMinOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMinOut * 1000 : protectOption.ProtectOption_LoadMinOut;
+                                double ProtectOption_LoadMinOutReal = protectOption.ProtectOption_LoadMinOut;
                                 if (g_MinLoad < ProtectOption_LoadMinOutReal)
                                 {
                                     if (protectOption.ProtectOptionType == "0")
@@ -1417,7 +1419,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("试验力谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1436,7 +1438,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("试验力谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("试验力谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1562,7 +1564,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("变形峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1581,7 +1583,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("变形峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1600,7 +1602,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("变形谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -1619,7 +1621,7 @@ namespace DoPENetConnect
                                         OffEDC();
                                     }
                                     PauseDrawWave();
-                                    MessageBox.Show("变形谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("变形谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                                     return 0;
                                 }
                             }
@@ -3905,7 +3907,7 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             //}
-            devId = new StringBuilder("02132F05");
+            devId = new StringBuilder("02146663");
             //devId = new StringBuilder("02146663");
 
             //string aaa = DESEncrypt.Encrypt("0214C55E");
