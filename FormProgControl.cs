@@ -411,7 +411,7 @@ namespace DoPENetConnect
                 MainForm.mainform.SetDataGridViewSelected(currentCmdIndex, false); //当前行设为非选中状态
                 ProgStatus.currentCycleCountEveryStep[currentCmdIndex]++;
 
-                if (ProgStatus.currentCycleCountEveryStep[currentCmdIndex] == ProgStatus.currentCycleSet) {   //达到循环次数进入下一步
+                if (ProgStatus.currentCycleCountEveryStep[currentCmdIndex] <= ProgStatus.currentCycleSet) {   //达到循环次数进入下一步
                     if (currentCmdIndex + 1 <= cmdDta.Count) {    //不是最后一部直接切换
                         currentCmdIndex += 1;
                     }
