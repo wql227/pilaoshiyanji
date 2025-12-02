@@ -48,6 +48,7 @@ namespace DoPENetConnect
             //counter for cycles
             public int[] currentCycleCountEveryStep;
             public int currentCycleSet;
+
         }
         /// <summary>
         /// element 0:cmd name
@@ -95,6 +96,7 @@ namespace DoPENetConnect
             isRunning = true;
             RunCmd();
         }
+        int aaa = 0;
         public void RunCmd()
         {
             if (currentCmdIndex >= cmdDta.Count) {    //超出指令当前指令上限   结束？
@@ -202,7 +204,8 @@ namespace DoPENetConnect
                     cmd[6] = cmdParams[7].Split(':').ElementAt(1).Substring(0, cmdParams[7].Split(':').ElementAt(1).IndexOf("mm"));//目标值
                     ProgStatus.TimesForWave = 0;//计数器清零
                                                 //pos 指令
-
+                    aaa++;
+                    Console.WriteLine("wave{0}", aaa);
                     direction = DirectionAdjust(ProgStatus.pos, double.Parse(cmd[1]));
                     MainForm.mainform.MoveDynCycles(ProgramWaveForm[cmd[0]], false, DoPE.DYN_PEAKCTRL.ONE, DoPE.CTRL.POS, false, double.Parse(cmd[5])/60, double.Parse(cmd[1]), double.Parse(cmd[2]),0, 0, double.Parse(cmd[3]),int.Parse(cmd[4])*2, 0, double.Parse(cmd[1])+ double.Parse(cmd[2]), 0);
                     break;
@@ -436,6 +439,82 @@ namespace DoPENetConnect
         public double GetOriginPos()
         {
             return ProgStatus.startPos;
+        }
+
+
+        public void GetMaxAndMinVal(ref double posMax, ref double posMin, ref double loadMax, ref double loadMin, ref double extMax, ref double extMin)
+        {
+            for (int i = 0; i < cmdDta.Count; i++)
+            {
+                string[] cmdParams = cmdDta[i][2].Split(',');   //获取指令内容
+                switch (cmdDta[i][1])
+                {
+                    case "等速位移":                       
+                        if (cmdParams[2].Contains("位移达到"))
+                        {
+                            double posVal = double.Parse( cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("mm")));
+
+                            if (posMax < posVal) posMax = posVal;
+                            if (posMin > posVal) posMin = posVal;
+                        }
+                        else if (cmdParams[2].Contains("力达到"))
+                        {
+                            double loadVal = double.Parse(cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("kN")));
+
+                            if (loadMax < loadVal) loadMax = loadVal;
+                            if (loadMin > loadVal) loadMin = loadVal;
+                        }
+                        break;
+                    case "等速力":                        
+                        if (cmdParams[2].Contains("位移达到"))
+                        {
+                            double posVal = double.Parse(cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("mm")));
+
+                            if (posMax < posVal) posMax = posVal;
+                            if (posMin > posVal) posMin = posVal;
+                        }
+                        else if (cmdParams[2].Contains("力达到"))
+                        {
+                            double loadVal = double.Parse(cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("kN")));
+
+                            if (loadMax < loadVal) loadMax = loadVal;
+                            if (loadMin > loadVal) loadMin = loadVal;
+                        }
+                        break;
+                    case "位移保持":
+                        {
+                            double posVal = double.Parse(cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("mm")));
+                            if (posMax < posVal) posMax = posVal;
+                            if (posMin > posVal) posMin = posVal;
+                            break;
+                        }
+                    case "力保持":
+                        {
+                            double loadVal = double.Parse(cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("kN")));
+                            if (loadMax < loadVal) loadMax = loadVal;
+                            if (loadMin > loadVal) loadMin = loadVal;
+                            break;
+                        }
+                    case "波形控制":
+                        double zhongVal = double.Parse(cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("mm")));//中值
+                        double zhengVal = double.Parse(cmdParams[3].Split(':').ElementAt(1).Substring(0, cmdParams[3].Split(':').ElementAt(1).IndexOf("mm")));//中值
+                        double maxVal = zhongVal + zhengVal;
+                        double minVal = zhongVal - zhengVal;
+
+                        if (posMax < maxVal) posMax = maxVal;
+                        if (posMin > minVal) posMin = minVal;
+                        break;                        
+                    case "延时":                        
+                        break;
+                    case "高压启动":
+                        break;
+                    case "切换到低压":
+                        break;
+                    case "试验结束":
+                        break;
+                }
+            }
+        
         }
     }
 }

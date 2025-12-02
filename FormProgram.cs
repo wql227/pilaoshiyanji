@@ -94,6 +94,7 @@ namespace DoPENetConnect
                     panelEx_Empty.Visible = false;
                     panelEx_dengsuweiyi.Visible = true;
                     labelX23.Text = "目标mm";
+                    //labelX23.Visible = false;
                     labelX24.Text = "时间s";
                     comboBoxEx8.DataSource = new string[] { "保持时间" };
                     comboBoxEx8.Text = "保持时间";
