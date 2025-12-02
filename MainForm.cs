@@ -1759,8 +1759,10 @@ namespace DoPENetConnect
                                 //if (nCycleCount <= 20 && gSample.Cycles >= nTestCount)
                                 //{
                                 //}
+                                Console.WriteLine("glm cyclebefore{0}-{1}-{2}", gSample.Cycles,nCycleCount,nTestCount);
                                 if (nCycleCount > 2000 && gSample.Cycles /*>> 1*/ >= nTestCount)
                                 {
+                                    Console.WriteLine("glm cycleafter{0}", gSample.Cycles);
                                     //清除上次计数
                                     DoPE.ERR err = MyEdc.Block.Header(3, DoPE.CMD_MODE.MESSAGE); // 3次循环，启用中间消息
                                                                                                  // 后续添加具体命令（如 DoPEPosExt、DoPEHaltW）
@@ -3286,8 +3288,10 @@ namespace DoPENetConnect
                         }
 
                         x_Data += dStep;
-                        if(Math.Round(x_Data)%10==0)
+                        if (Math.Round(x_Data) % 10 == 0)
+                        {
                             axTChart1.Axis.Bottom.Maximum = Math.Ceiling(x_Data) + 10;
+                        }
                     }
                 }
             }
@@ -5852,7 +5856,7 @@ namespace DoPENetConnect
                     tmpList.Add(tmpStrs);
                 }
 
-                if (chartX.Count >= nTotal)     //显示清除
+                //if (chartX.Count >= nTotal)     //显示清除
                 {
                     x_Data = 0.0;
 
@@ -5866,6 +5870,7 @@ namespace DoPENetConnect
                 }
 
                 progControl.SetCmdParmas(tmpList, double.Parse(guiPosition.Text), LoadUnit == "kN" ? double.Parse(guiLoad.Text) : double.Parse(guiLoad.Text) / 1000, double.Parse(guiExtension.Text));
+                SetAxisScales();  //设置曲线显示范围
                 dataGridViewX1.Rows[dataGridViewX1.Rows.Count - 1].Selected = false;
                 progControl.StartRunProgram();
 
@@ -5875,6 +5880,31 @@ namespace DoPENetConnect
             }
         }
 
+        public void SetAxisScales()
+        {
+            double posMax = axTChart1.Axis.Left.Maximum;
+            double posMin = axTChart1.Axis.Left.Minimum;
+
+            double loadMax = axTChart1.Axis.Right.Maximum;
+            double loadMin = axTChart1.Axis.Right.Minimum;
+
+            double ExtMax = axTChart1.Axis.Custom[0].Maximum;
+            double ExtMin = axTChart1.Axis.Custom[0].Minimum;
+
+            //double commandMax = axTChart1.Axis.Custom[1].Maximum;
+            //double commandMin = axTChart1.Axis.Custom[1].Minimum;
+            progControl.GetMaxAndMinVal(ref posMax, ref posMin, ref loadMax, ref loadMin, ref ExtMax, ref ExtMin);
+
+            axTChart1.Axis.Left.Maximum = posMax+2;
+            axTChart1.Axis.Left.Minimum = posMin-2;
+
+
+            axTChart1.Axis.Right.Maximum = loadMax+2;
+            axTChart1.Axis.Right.Minimum = loadMin-2;
+
+            axTChart1.Axis.Custom[0].Maximum = ExtMax+2;
+            axTChart1.Axis.Custom[0].Minimum = ExtMin-2;
+        }
         private void buttonX25_Click(object sender, EventArgs e)
         {
             if (progControl != null)
