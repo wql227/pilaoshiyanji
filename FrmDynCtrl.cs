@@ -195,11 +195,13 @@ namespace DoPENetConnect
 
             if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "KN/S")
             {
+                //力控时转换成千牛
                 SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) * 1000;
             }
             else
             {
-                SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text);
+                //位移控时转换成mm/min
+                SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) / 60;
             }
 
             if (cmbX_Dyn_MoveCtrl_Unit.Text.ToUpper() == "KN")
@@ -233,6 +235,11 @@ namespace DoPENetConnect
 
             MainForm.mainform.MoveDynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination, SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode);
 
+            //不在运行时才能修改次数
+            //if (!MainForm.mainform.isRunning)
+            {
+                MainForm.mainform.nPreTestCount = int.Parse(tbX_TestCount.Text);
+            }
             cbX_DynCtrl_ModifyParam.Checked = true;
 
             WriteIni();
