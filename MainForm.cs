@@ -4845,26 +4845,6 @@ namespace DoPENetConnect
         }
 
 
-        //public void QuitApp()
-        //{
-        //    DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-        //    if (result == DialogResult.Yes)
-        //    {
-        //        bQuit = true;
-
-        //        if (bConnected)
-        //        {
-        //            OffEDC();
-        //        }
-        //    }
-        //    else if (result == DialogResult.No)
-        //    {
-        //        e.Cancel = true; // 取消关闭
-        //    }
-        //}
-
-
         /// <summary>
         /// 曲线自适应
         /// </summary>
