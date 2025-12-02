@@ -96,13 +96,13 @@
             this.labelX24 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2.SuspendLayout();
             this.panelEx3.SuspendLayout();
@@ -675,7 +675,7 @@
             this.btnX_Dyn_Send.Location = new System.Drawing.Point(104, 12);
             this.btnX_Dyn_Send.MaximumSize = new System.Drawing.Size(0, 23);
             this.btnX_Dyn_Send.Name = "btnX_Dyn_Send";
-            this.btnX_Dyn_Send.Size = new System.Drawing.Size(75, 23);
+            this.btnX_Dyn_Send.Size = new System.Drawing.Size(75, 27);
             this.btnX_Dyn_Send.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_Dyn_Send.TabIndex = 0;
             this.btnX_Dyn_Send.Text = "发送";
@@ -955,18 +955,18 @@
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 75;
             // 
-            // labelX2
+            // labelX4
             // 
             // 
             // 
             // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX2.Location = new System.Drawing.Point(268, 242);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(72, 23);
-            this.labelX2.TabIndex = 0;
-            this.labelX2.Text = "+1 +0.1";
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX4.Location = new System.Drawing.Point(268, 438);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(33, 23);
+            this.labelX4.TabIndex = 0;
+            this.labelX4.Text = "次";
             // 
             // labelX3
             // 
@@ -981,18 +981,18 @@
             this.labelX3.TabIndex = 0;
             this.labelX3.Text = "初始总计数";
             // 
-            // labelX4
+            // labelX2
             // 
             // 
             // 
             // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX4.Location = new System.Drawing.Point(268, 438);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(33, 23);
-            this.labelX4.TabIndex = 0;
-            this.labelX4.Text = "次";
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX2.Location = new System.Drawing.Point(268, 242);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(72, 23);
+            this.labelX2.TabIndex = 0;
+            this.labelX2.Text = "+0.1 +1";
             // 
             // panelEx3
             // 
@@ -1016,18 +1016,19 @@
             this.panelEx3.Style.GradientAngle = 90;
             this.panelEx3.TabIndex = 117;
             // 
-            // labelX5
+            // labelX7
             // 
             // 
             // 
             // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Image = ((System.Drawing.Image)(resources.GetObject("labelX5.Image")));
-            this.labelX5.Location = new System.Drawing.Point(72, 11);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(25, 24);
-            this.labelX5.TabIndex = 2;
-            this.labelX5.Click += new System.EventHandler(this.labelX5_Click);
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.Image = ((System.Drawing.Image)(resources.GetObject("labelX7.Image")));
+            this.labelX7.Location = new System.Drawing.Point(21, 11);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(45, 24);
+            this.labelX7.TabIndex = 2;
+            this.labelX7.Text = "Min";
+            this.labelX7.Click += new System.EventHandler(this.labelX7_Click);
             // 
             // labelX6
             // 
@@ -1042,19 +1043,18 @@
             this.labelX6.TabIndex = 2;
             this.labelX6.Click += new System.EventHandler(this.labelX6_Click);
             // 
-            // labelX7
+            // labelX5
             // 
             // 
             // 
             // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Image = ((System.Drawing.Image)(resources.GetObject("labelX7.Image")));
-            this.labelX7.Location = new System.Drawing.Point(21, 11);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(45, 24);
-            this.labelX7.TabIndex = 2;
-            this.labelX7.Text = "Min";
-            this.labelX7.Click += new System.EventHandler(this.labelX7_Click);
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Image = ((System.Drawing.Image)(resources.GetObject("labelX5.Image")));
+            this.labelX5.Location = new System.Drawing.Point(72, 11);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(25, 24);
+            this.labelX5.TabIndex = 2;
+            this.labelX5.Click += new System.EventHandler(this.labelX5_Click);
             // 
             // panelEx1
             // 

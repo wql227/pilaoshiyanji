@@ -230,12 +230,12 @@ namespace DoPENetConnect
         /// <summary>
         /// 位移峰值平均值列表
         /// </summary>
-        public List<double> PVPositionMaxAverageList = new List<double>();
+        //public List<double> PVPositionMaxAverageList = new List<double>();
 
         /// <summary>
         /// 位移谷值平均值列表
         /// </summary>
-        public List<double> PVPositionMinAverageList = new List<double>();
+        //public List<double> PVPositionMinAverageList = new List<double>();
 
         /// <summary>
         /// 记录试验力峰谷值的队列
@@ -250,12 +250,12 @@ namespace DoPENetConnect
         /// <summary>
         /// 试验力峰值平均值列表
         /// </summary>
-        public List<double> PVLoadMaxAverageList = new List<double>();
+        //public List<double> PVLoadMaxAverageList = new List<double>();
 
         /// <summary>
         /// 试验力谷值平均值列表
         /// </summary>
-        public List<double> PVLoadMinAverageList = new List<double>();
+        //public List<double> PVLoadMinAverageList = new List<double>();
 
         /// <summary>
         /// 记录变形峰谷值的队列
@@ -270,12 +270,12 @@ namespace DoPENetConnect
         /// <summary>
         /// 变形峰值平均值列表
         /// </summary>
-        public List<double> PVExtensionMaxAverageList = new List<double>();
+        //public List<double> PVExtensionMaxAverageList = new List<double>();
 
         /// <summary>
         /// 变形谷值平均值列表
         /// </summary>
-        public List<double> PVExtensionMinAverageList = new List<double>();
+        //public List<double> PVExtensionMinAverageList = new List<double>();
 
         /// <summary>
         /// 是否按试验次数记录日志
@@ -434,6 +434,9 @@ namespace DoPENetConnect
         /// 多传感器窗口
         /// </summary>
         public FrmMultiSensor frmMultiSensor = null;
+
+        public FrmDynCtrl frmDynCtrl = null;
+
 
         /// <summary>
         /// 试验力单位
@@ -1153,22 +1156,13 @@ namespace DoPENetConnect
 
                             if (PVPositionList[i - 1] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 1])
                             {
-                                PVPositionMaxAverageList.Add(PVPositionList[i]);
-                                if (PVPositionMaxAverageList.Count > 0)
-                                {
-                                    g_MaxPosition = PVPositionMaxAverageList.Max();
-                                }
+                                g_MaxPosition = PVPositionList.Max();
                             }
 
                             // 判断是否为谷值：小于左右相邻的数据
                             if (PVPositionList[i - 1] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 1])
                             {
-                                PVPositionMinAverageList.Add(PVPositionList[i]);
-                                if (PVPositionMinAverageList.Count > 0)
-                                {
-                                    g_MinPosition = PVPositionMinAverageList.Min();
-                                }
-
+                                g_MinPosition = PVPositionList.Min();
                             }
                         }
 
@@ -1257,15 +1251,6 @@ namespace DoPENetConnect
                             PVPositionQueue.Clear();
                         }
 
-                        while (PVPositionMinAverageList.Count > 200)
-                        {
-                            PVPositionMinAverageList.RemoveRange(0, PVPositionMinAverageList.Count / 2);
-                        }
-
-                        while (PVPositionMaxAverageList.Count > 200)
-                        {
-                            PVPositionMaxAverageList.RemoveRange(0, PVPositionMaxAverageList.Count / 2);
-                        }
                     }
 
                     // TODO:判断峰谷值是否超过外保护
@@ -1318,21 +1303,11 @@ namespace DoPENetConnect
                             {
                                 if (LoadUnit.ToUpper() == "KN")
                                 {
-                                    PVLoadMaxAverageList.Add(PVLoadList[i]);
-
-                                    if (PVLoadMaxAverageList.Count > 0)
-                                    {
-                                        g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
-                                    }
+                                    g_MaxLoad = PVLoadList.Max() / 1000;
                                 }
                                 else
                                 {
-                                    PVLoadMaxAverageList.Add(PVLoadList[i]);
-
-                                    if (PVLoadMaxAverageList.Count > 0)
-                                    {
-                                        g_MaxLoad = PVLoadMaxAverageList.Max();
-                                    }
+                                    g_MaxLoad = PVLoadList.Max();
                                 }
                             }
 
@@ -1341,21 +1316,11 @@ namespace DoPENetConnect
                             {
                                 if (LoadUnit.ToUpper() == "KN")
                                 {
-                                    PVLoadMinAverageList.Add(PVLoadList[i]);
-
-                                    if (PVLoadMinAverageList.Count > 0)
-                                    {
-                                        g_MinLoad = PVLoadMinAverageList.Min() / 1000;
-                                    }
+                                    g_MinLoad = PVLoadList.Min() / 1000;
                                 }
                                 else
                                 {
-                                    PVLoadMinAverageList.Add(PVLoadList[i]);
-
-                                    if (PVLoadMinAverageList.Count > 0)
-                                    {
-                                        g_MinLoad = PVLoadMinAverageList.Min();
-                                    }
+                                    g_MinLoad = PVLoadList.Min();
                                 }
                             }
                         }
@@ -1450,16 +1415,6 @@ namespace DoPENetConnect
                             PVLoadQueue.Dequeue();
                         }
 
-                        while (PVLoadMaxAverageList.Count > 200)
-                        {
-                            PVLoadMaxAverageList.RemoveRange(0, PVLoadMaxAverageList.Count / 2);
-                        }
-
-                        while (PVLoadMinAverageList.Count > 200)
-                        {
-                            PVLoadMinAverageList.RemoveRange(0, PVLoadMinAverageList.Count / 2);
-                        }
-
                     }
 
                     //刷新试验力
@@ -1516,34 +1471,16 @@ namespace DoPENetConnect
                             if (PVExtensionList[i - 1] < PVExtensionList[i] && PVExtensionList[i] > PVExtensionList[i + 1] &&
                                 (PVExtensionList[i - 1] + PVExtensionList[i + 1]) / 2 < PVExtensionList[i])
                             {
-                                PVExtensionMaxAverageList.Add(PVExtensionList[i]);
-                                double averageExtension = 0.0d;
-                                if (PVExtensionMaxAverageList.Count > 0)
-                                {
-                                    averageExtension = PVExtensionMaxAverageList.Average();
-                                }
-
-                                if (PVExtensionList[i] >= averageExtension)
-                                {
-                                    g_MaxExtension = PVExtensionList[i];
-                                }
+                                //double averageExtension = 0.0d;
+                                g_MaxExtension = PVExtensionList.Max();
                             }
 
                             // 判断是否为谷值：小于左右相邻的数据
                             if (PVExtensionList[i - 1] > PVExtensionList[i] && PVExtensionList[i] < PVExtensionList[i + 1] &&
                                 (PVExtensionList[i - 1] + PVExtensionList[i + 1]) / 2 > PVExtensionList[i])
                             {
-                                PVExtensionMinAverageList.Add(PVExtensionList[i]);
-                                double averageExtension = 0.0d;
-                                if (PVExtensionMinAverageList.Count > 0)
-                                {
-                                    averageExtension = PVExtensionMinAverageList.Average();
-                                }
-
-                                if (PVExtensionList[i] <= averageExtension)
-                                {
-                                    g_MinExtension = PVExtensionList[i];
-                                }
+                                //double averageExtension = 0.0d;
+                                g_MinExtension = PVExtensionList.Min();
                             }
                         }
 
@@ -1633,15 +1570,6 @@ namespace DoPENetConnect
                             PVExtensionQueue.Dequeue();
                         }
 
-                        if (PVExtensionMaxAverageList.Count > 200)
-                        {
-                            PVExtensionMaxAverageList.RemoveRange(0, PVExtensionMaxAverageList.Count / 2);
-                        }
-
-                        if (PVExtensionMinAverageList.Count > 200)
-                        {
-                            PVExtensionMinAverageList.RemoveRange(0, PVExtensionMinAverageList.Count / 2);
-                        }
                     }
 
                     //刷新变形
@@ -2811,6 +2739,8 @@ namespace DoPENetConnect
         {
             MoveHalt();
         }
+
+
         /// <summary>
         /// MoveHalt 移动停止
         /// </summary>
@@ -2834,6 +2764,8 @@ namespace DoPENetConnect
                     SetControlEnable(true);
 
                     tbX_TestCount.Text = tbX_TestCycles.Text;
+
+                    frmDynCtrl?.SetCountText(tbX_TestCount.Text);
 
                     IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
 
@@ -3622,6 +3554,7 @@ namespace DoPENetConnect
             if (error == DoPE.ERR.NOERROR || error == DoPE.ERR.CMD_PARCORR || error == DoPE.ERR.CMD_PAR)
             {
                 string strtmp = "";
+                string strAmplitude = (Amplitude).ToString(), strOffset = Offset.ToString();
                 //MessageBox.Show(((DoPE.CTRL)MoveCtrl).ToString());
                 if ((DoPE.CTRL)MoveCtrl == DoPE.CTRL.POS)
                 {
@@ -3630,13 +3563,11 @@ namespace DoPENetConnect
                 else if ((DoPE.CTRL)MoveCtrl == DoPE.CTRL.LOAD)
                 {
                     strtmp = "kN";
-                }
-
-                string strAmplitude = "", strOffset = "";
-                if (LoadUnit.ToUpper() == "KN")
-                {
-                    strAmplitude = (Amplitude / 1000).ToString();
-                    strOffset = (Offset / 1000).ToString();
+                    if (LoadUnit.ToUpper() == "KN")
+                    {
+                        strAmplitude = (Amplitude / 1000).ToString();
+                        strOffset = (Offset / 1000).ToString();
+                    }
                 }
 
                 //设置试验参数
@@ -3669,15 +3600,15 @@ namespace DoPENetConnect
                 }
 
                 //清理位移平均值队列
-                if (PVPositionMaxAverageList.Count > 0)
-                {
-                    PVPositionMaxAverageList.Clear();
-                }
+                //if (PVPositionMaxAverageList.Count > 0)
+                //{
+                //    PVPositionMaxAverageList.Clear();
+                //}
 
-                if (PVPositionMinAverageList.Count > 0)
-                {
-                    PVPositionMinAverageList.Clear();
-                }
+                //if (PVPositionMinAverageList.Count > 0)
+                //{
+                //    PVPositionMinAverageList.Clear();
+                //}
 
                 //清理试验力队列
                 if (PVLoadQueue.Count > 0)
@@ -3686,8 +3617,8 @@ namespace DoPENetConnect
                 }
 
                 //清理试验力平均值队列
-                PVLoadMaxAverageList.Clear();
-                PVLoadMinAverageList.Clear();
+                //PVLoadMaxAverageList.Clear();
+                //PVLoadMinAverageList.Clear();
 
                 //清理变形队列
                 if (PVExtensionQueue.Count > 0)
@@ -3696,8 +3627,8 @@ namespace DoPENetConnect
                 }
 
                 //清理位移平均值队列
-                PVExtensionMaxAverageList.Clear();
-                PVExtensionMinAverageList.Clear();
+                //PVExtensionMaxAverageList.Clear();
+                //PVExtensionMinAverageList.Clear();
 
             }
 
@@ -3748,7 +3679,7 @@ namespace DoPENetConnect
         {
             if (bConnected)
             {
-                FrmDynCtrl frmDynCtrl = new FrmDynCtrl();
+                frmDynCtrl = new FrmDynCtrl();
                 frmDynCtrl.SetCountText(tbX_TestCount.Text);
                 frmDynCtrl.Show();
             }
@@ -5009,21 +4940,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("确定要退出程序吗？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-            if (result == DialogResult.Yes)
-            {
-                if (bConnected)
-                {
-                    OffEDC();
-                }
-
-                Application.Exit();
-            }
-            else if (result == DialogResult.Cancel)
-            {
-                return;
-            }
+            this.Close();
         }
 
 
@@ -5241,60 +5158,59 @@ namespace DoPENetConnect
                 #endregion 变形曲线自适应
 
 
-                //// TODO 命令没有数据显示，没法自适应
-                //#region 命令曲线自适应 
-                //if (Math.Abs(double.Parse(tb_MaxCommand.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinCommand.Text)) <= 0.01)
-                //{
-                //    if (0.1 < axTChart1.Axis.Custom[1].Maximum)
-                //    {
-                //        axTChart1.Axis.Custom[1].Minimum = -0.1;
-                //        axTChart1.Axis.Custom[1].Maximum = 0.1;
-                //    }
-                //    else
-                //    {
-                //        axTChart1.Axis.Custom[0].Maximum = 0.1;
-                //        axTChart1.Axis.Custom[0].Minimum = -0.1;
-                //    }
-                //}
-                //else
-                //{
-                //    if (double.Parse(tb_MaxExt.Text) == double.Parse(tb_MinExt.Text))
-                //    {
-                //        if ((Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1) < axTChart1.Axis.Custom[1].Maximum)
-                //        {
-                //            axTChart1.Axis.Custom[1].Minimum = Math.Round(double.Parse(tb_MinExt.Text), 2) * 1.2 - 1;
-                //            axTChart1.Axis.Custom[1].Maximum = Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1;
-                //        }
-                //        else
-                //        {
-                //            axTChart1.Axis.Custom[1].Maximum = Math.Round(double.Parse(tb_MaxExt.Text), 2) * 1.2 + 1;
-                //            axTChart1.Axis.Custom[1].Minimum = Math.Round(double.Parse(tb_MinExt.Text), 2) * 1.2 - 1;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        double range = double.Parse(tb_MaxExt.Text) - double.Parse(tb_MinExt.Text);
-                //        double totalHeight = range / 0.85;        // Y 轴总高度的85%
-                //        double padding = (totalHeight - range) / 2.0;  // 上下留白
+                // TODO 需要修改成位移按位移的自适应，力按照力的自适应
+                #region 命令曲线自适应 
+                if (Math.Abs(double.Parse(tb_MaxPos.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinPos.Text)) <= 0.01)
+                {
+                    if (0.1 < axTChart1.Axis.Custom[1].Maximum)
+                    {
+                        axTChart1.Axis.Custom[1].Minimum = -0.1;
+                        axTChart1.Axis.Custom[1].Maximum = 0.1;
+                    }
+                    else
+                    {
+                        axTChart1.Axis.Custom[1].Maximum = 0.1;
+                        axTChart1.Axis.Custom[1].Minimum = -0.1;
+                    }
+                }
+                else
+                {
+                    if (double.Parse(tb_MaxPos.Text) == double.Parse(tb_MinPos.Text))
+                    {
+                        if ((Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2 + 1) < axTChart1.Axis.Custom[1].Maximum)
+                        {
+                            axTChart1.Axis.Custom[1].Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2 - 1;
+                            axTChart1.Axis.Custom[1].Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2 + 1;
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Custom[1].Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2 + 1;
+                            axTChart1.Axis.Custom[1].Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2 - 1;
+                        }
+                    }
+                    else
+                    {
+                        double range = double.Parse(tb_MaxPos.Text) - double.Parse(tb_MinPos.Text);
+                        double totalHeight = range / 0.85;        // Y 轴总高度的85%
+                        double padding = (totalHeight - range) / 2.0;  // 上下留白
 
-                //        double yAxisMax = double.Parse(tb_MaxExt.Text) + padding;
-                //        double yAxisMin = double.Parse(tb_MinExt.Text) - padding;
+                        double yAxisMax = double.Parse(tb_MaxPos.Text) + padding;
+                        double yAxisMin = double.Parse(tb_MinPos.Text) - padding;
 
-                //        if (yAxisMax < axTChart1.Axis.Ext.Maximum)
-                //        {
-                //            axTChart1.Axis.Custom[1].Minimum = yAxisMin;
-                //            axTChart1.Axis.Custom[1].Maximum = yAxisMax;
-                //        }
-                //        else
-                //        {
-                //            axTChart1.Axis.Custom[1].Maximum = yAxisMax;
-                //            axTChart1.Axis.Custom[1].Minimum = yAxisMin;
-                //        }
-                //    }
-                //    axTChart1.Axis.Custom[1].Labels.ValueFormat = "##0.###";
-                //}
-                //#endregion 变形曲线自适应
-
+                        if (yAxisMax < axTChart1.Axis.Custom[1].Maximum)
+                        {
+                            axTChart1.Axis.Custom[1].Minimum = yAxisMin;
+                            axTChart1.Axis.Custom[1].Maximum = yAxisMax;
+                        }
+                        else
+                        {
+                            axTChart1.Axis.Custom[1].Maximum = yAxisMax;
+                            axTChart1.Axis.Custom[1].Minimum = yAxisMin;
+                        }
+                    }
+                    axTChart1.Axis.Custom[1].Labels.ValueFormat = "##0.###";
+                }
+                #endregion 命令曲线自适应
 
             }
             catch (Exception ex)
@@ -5311,6 +5227,7 @@ namespace DoPENetConnect
                 tbX_TestCycles.Text = "0";
                 tbX_TestCount.Text = "0";
                 nCurrentCount = 0;
+                nPreTestCount = 0;
                 IniFileHelper.WriteIniString("Setting", "TestCount", "0");
 
                 cb_TareTime.Checked = false;
@@ -6223,7 +6140,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_AxisCommandY_MaxUp_Click(object sender, EventArgs e)
         {
-            axTChart1.Axis.Custom[1].Minimum += Chart_Command_Step;
+            axTChart1.Axis.Custom[1].Maximum += Chart_Command_Step;
 
         }
     }
