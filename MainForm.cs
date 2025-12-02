@@ -1316,7 +1316,7 @@ namespace DoPENetConnect
                     //发送数据
                     if (realtimeParams.dataRecvTimes % (realtimeParams.sendInterval / 10) == 0 && serialPort1.IsOpen)
                     {
-                        string sendStr = $"B{realtimeParams.LoadVal.ToString("0.0000")},{realtimeParams.DisplacementVal.ToString("0.0000")}E";
+                        string sendStr = $"B{(realtimeParams.LoadVal/1000).ToString("0.0000")},{realtimeParams.DisplacementVal.ToString("0.0000")}E";
                         serialPort1.Write(sendStr);
                     }
 
@@ -3748,7 +3748,7 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             //}
-            devId = new StringBuilder("021522FB");
+            devId = new StringBuilder("0214C57D");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
