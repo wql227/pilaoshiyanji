@@ -1316,7 +1316,7 @@ namespace DoPENetConnect
                     //发送数据
                     if (realtimeParams.dataRecvTimes % (realtimeParams.sendInterval / 10) == 0 && serialPort1.IsOpen)
                     {
-                        string sendStr = $"B{realtimeParams.DisplacementVal},{realtimeParams.LoadVal}";
+                        string sendStr = $"B{realtimeParams.LoadVal.ToString("0.0000")},{realtimeParams.DisplacementVal.ToString("0.0000")}E";
                         serialPort1.Write(sendStr);
                     }
 
@@ -3059,7 +3059,7 @@ namespace DoPENetConnect
 
         private void timer_UpdateData_Tick(object sender, EventArgs e)
         {
-            this.toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            //this.toolStripStatusLabel_SystemTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             //if (!bConnected)
             //{
@@ -3744,11 +3744,11 @@ namespace DoPENetConnect
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
             string idEncry = devIdEncrypted.ToString();
-            if (idEncry != "0" && idEncry != "")
-            {
-                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-            }
-            //devId = new StringBuilder("02133118");
+            //if (idEncry != "0" && idEncry != "")
+            //{
+            //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+            //}
+            devId = new StringBuilder("021522FB");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -5329,7 +5329,7 @@ namespace DoPENetConnect
                     }
 
                     frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, ctrlSpeed, comboBoxEx7.SelectedIndex, limitValue,
-                                                     (CTRL)comboBoxEx9.SelectedIndex, destinationVal, DESTMODE.DEST_MAINTAIN);
+                                                     (CTRL)comboBoxEx9.SelectedIndex, destinationVal, DESTMODE.DEST_POSITION);
 
                 }
             }
