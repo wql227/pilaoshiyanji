@@ -1780,6 +1780,7 @@ namespace DoPENetConnect
                                     //    //存储实验停止后的日志
                                     //    var task1 = Task.Run(() => GetSeriesPoint());
                                     //}
+                                    tbX_TestCount.Text = tbX_TestCycles.Text;
                                     IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
                                     nCycleCount = 0;
                                 }
