@@ -3586,6 +3586,10 @@ namespace DoPENetConnect
             }
         }
 
+        public string GetCountText()
+        {
+            return tbX_TestCount.Text;
+        }
         /// <summary>
         /// 工具栏POS_A
         /// </summary>
