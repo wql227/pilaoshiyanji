@@ -169,28 +169,32 @@ namespace DoPENetConnect
                     break;
                 case "位移保持":
                     {
-                        double speed = 10;  //定义移动速度为10mm/s
+                        //double speed = 10;  //定义移动速度为10mm/s
                         //此处进行位移保持第一步，移动至指定位置
-                        cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("mm"));
-                        cmd[1] = cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("s"));
+                        cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("s"));
+                        //cmd[1] = cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("s"));
                         //pos 指令
-                        direction = DirectionAdjust(ProgStatus.pos, double.Parse(cmd[0]));
-                        MainForm.mainform.MovePos(DoPE.CTRL.POS, speed, double.Parse(cmd[0]));
+                        //direction = DirectionAdjust(ProgStatus.pos, double.Parse(cmd[0]));
+                        //MainForm.mainform.MovePos(DoPE.CTRL.POS, speed, double.Parse(cmd[0]));
                         ProgStatus.currentCmd = CMDNAMES.POSKEEP;
-                        ProgStatus.IntervalKeepping = double.Parse(cmd[1]);
+                        ProgStatus.IntervalKeepping = double.Parse(cmd[0]);
+                        ProgStatus.oldDateTime = DateTime.Now;
+                        WaitAfterKeepCmd(DoPE.CTRL.POS);
                         break;
                     }
                 case "力保持":
                     {
                         double speed = 0.1;  //定义速度0.1kN/s
                         //此处进行位移保持第一步，移动至指定位置
-                        cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("kN"));
-                        cmd[1] = cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("s"));
+                        cmd[0] = cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("s"));
+                        //cmd[1] = cmdParams[2].Split(':').ElementAt(1).Substring(0, cmdParams[2].Split(':').ElementAt(1).IndexOf("s"));
                         //pos 指令
-                        direction = DirectionAdjust(ProgStatus.load, double.Parse(cmd[0]));
-                        MainForm.mainform.MovePos(DoPE.CTRL.LOAD, speed, double.Parse(cmd[0]));
+                        //direction = DirectionAdjust(ProgStatus.load, double.Parse(cmd[0]));
+                        //MainForm.mainform.MovePos(DoPE.CTRL.LOAD, speed, double.Parse(cmd[0]));
                         ProgStatus.currentCmd = CMDNAMES.LOADKEEP;
                         ProgStatus.IntervalKeepping = double.Parse(cmd[1]);
+                        ProgStatus.oldDateTime = DateTime.Now;
+                        WaitAfterKeepCmd(DoPE.CTRL.LOAD);
                         break;
                     }
                 case "波形控制":
@@ -418,7 +422,7 @@ namespace DoPENetConnect
                 if(ProgStatus.currentCycleCountEveryStep[currentCmdIndex]< ProgStatus.currentCycleSet)
                     ProgStatus.currentCycleCountEveryStep[currentCmdIndex]++;
 
-                if (ProgStatus.currentCycleCountEveryStep[currentCmdIndex] == ProgStatus.currentCycleSet) {   //达到循环次数进入下一步
+                if (ProgStatus.currentCycleSet!=0&&ProgStatus.currentCycleCountEveryStep[currentCmdIndex] == ProgStatus.currentCycleSet) {   //达到循环次数进入下一步
                     if (currentCmdIndex + 1 <= cmdDta.Count) {    //不是最后一部直接切换
                         currentCmdIndex += 1;
                     }
@@ -483,16 +487,16 @@ namespace DoPENetConnect
                         break;
                     case "位移保持":
                         {
-                            double posVal = double.Parse(cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("mm")));
-                            if (posMax < posVal) posMax = posVal;
-                            if (posMin > posVal) posMin = posVal;
+                            //double posVal = double.Parse(cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("mm")));
+                            //if (posMax < posVal) posMax = posVal;
+                            //if (posMin > posVal) posMin = posVal;
                             break;
                         }
                     case "力保持":
                         {
-                            double loadVal = double.Parse(cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("kN")));
-                            if (loadMax < loadVal) loadMax = loadVal;
-                            if (loadMin > loadVal) loadMin = loadVal;
+                            //double loadVal = double.Parse(cmdParams[1].Split(':').ElementAt(1).Substring(0, cmdParams[1].Split(':').ElementAt(1).IndexOf("kN")));
+                            //if (loadMax < loadVal) loadMax = loadVal;
+                            //if (loadMin > loadVal) loadMin = loadVal;
                             break;
                         }
                     case "波形控制":

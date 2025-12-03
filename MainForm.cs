@@ -1780,7 +1780,7 @@ namespace DoPENetConnect
                                     //    //存储实验停止后的日志
                                     //    var task1 = Task.Run(() => GetSeriesPoint());
                                     //}
-                                    //IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
+                                    IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
                                     nCycleCount = 0;
                                 }
                             }
@@ -1798,11 +1798,11 @@ namespace DoPENetConnect
                     //Task.Run(() =>
                     //{
                     // 数据处理逻辑放在这里...
-                    if (progControl != null && progControl.isRunning)   //程控在运行
-                    {
-                        ShowWaveChengKong(Block);
-                    }
-                    else
+                    //if (progControl != null && progControl.isRunning)   //程控在运行
+                    //{
+                    //    ShowWaveChengKong(Block);
+                    //}
+                    //else
                         ShowWave(Block);
 
                     //});
@@ -3189,114 +3189,6 @@ namespace DoPENetConnect
                 }
             }
         }
-
-
-        private async void ShowWaveChengKong(DoPE.OnDataBlock Block)
-        {
-            //X轴坐标长度 = dStep * nTotal
-            //dStep = 0.01;
-            //dStep = 0.001;
-            //nTotal = 2000;
-
-            //if (chart_machine != null)
-            {
-                if (!bPause)
-                {
-                    double y_Position = 0.0d;
-                    double y_Load = 0.0d;
-                    double y_Extension = 0.0d;
-                    double y_Command = 0.0d;
-                    //for (int i = 20; Block.Data.Length > i; i += 200)
-                    //for (int i = 5; Block.Data.Length >= i; i += 50)
-                    for (int i = 0; Block.Data.Length > i; i += (int)SampleFrequency * 10/*5 / 2*/)
-                    {
-                        //绘制Position
-                        y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
-
-                        //绘制Load
-                        y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
-
-                        if (LoadUnit.ToUpper() == "KN")
-                        {
-                            y_Load = y_Load / 1000;
-                        }
-                        //绘制Extension
-                        y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
-
-                        //绘制Command
-                        y_Command = Block.Data[i].Data.Command;
-
-                        chartX.Add(x_Data);
-
-                        //批量添加点
-
-                        //axTChart1.Series(0).BeginUpdate();
-                        //暂停重绘提高性能
-                        chartPosY.Add(y_Position);
-                        chartLoadY.Add(y_Load);
-                        chartExtY.Add(y_Extension);
-                        chartCommandY.Add(y_Command);
-                        try
-                        {
-                            //axTChart1.AutoRepaint = false;
-                            if (chartX.Count % (200/*DataRefreshFrequency / SampleFrequency*/) == 0)
-                            {
-                                //axTChart1.Series(0).AddXY(x_Data, y_Position, null, 0);  // Position
-                                //axTChart1.Series(1).AddXY(x_Data, y_Load, "", 0);   // Load
-                                if (bShowPosition)
-                                {
-                                    axTChart1.Series(0).AddArray(chartX.Count, chartPosY.ToArray(), chartX.ToArray());
-                                }
-
-                                if (bShowLoad)
-                                {
-                                    axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
-                                }
-
-                                if (bShowExtension)
-                                {
-                                    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
-                                }
-
-                                if (bShowCommand)
-                                {
-                                    axTChart1.Series(3).AddArray(chartX.Count, chartCommandY.ToArray(), chartX.ToArray());
-                                }
-                                //axTChart1.AutoRepaint = true; 
-
-                                //axTChart1.Series(0).EndUpdate();
-
-                            }
-
-                            //if (chartX.Count >= nTotal)
-                            //{
-                            //    x_Data = 0.0;
-
-                            //    chartX.Clear();
-                            //    chartPosY.Clear();
-                            //    chartLoadY.Clear();
-                            //    chartExtY.Clear();
-                            //    chartCommandY.Clear();
-                            //    //axTChart1.AutoRepaint = true;
-                            //    //axTChart1.Refresh();
-                            //}
-                        }
-                        finally
-                        {
-                            // 恢复重绘
-                            //chart_machine.ResumeLayout();
-                        }
-
-                        x_Data += dStep;
-                        if (Math.Round(x_Data) % 10 == 0)
-                        {
-                            axTChart1.Axis.Bottom.Maximum = Math.Ceiling(x_Data) + 10;
-                        }
-                    }
-                }
-            }
-        }
-
 
         /// <summary>
         /// 自动调整Y轴的大小
