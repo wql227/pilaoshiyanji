@@ -1796,17 +1796,7 @@ namespace DoPENetConnect
                 //波形图
                 if (bShowSensorData/* && bActivated*/ && !bQuit)
                 {
-                    //Task.Run(() =>
-                    //{
-                    // 数据处理逻辑放在这里...
-                    //if (progControl != null && progControl.isRunning)   //程控在运行
-                    //{
-                    //    ShowWaveChengKong(Block);
-                    //}
-                    //else
                         ShowWave(Block);
-
-                    //});
                 }
 
                 if (nCount >= nCountREfresh)
