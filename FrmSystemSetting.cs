@@ -319,7 +319,7 @@ namespace DoPENetConnect
             MainForm.mainform.bSavePVCountLog = cbk_SavePVCountLog.Checked;
 
             IniFileHelper.GetIniString("Setting", "PVCountLog", "100", strTmp, strTmp.Capacity);
-            cbX_CountLog.Text = strTmp.ToString();
+            cbX_PVCountLog.Text = strTmp.ToString();
             if (string.IsNullOrEmpty(cbX_PVCountLog.Text))
             {
                 cbX_PVCountLog.Text = "100";
