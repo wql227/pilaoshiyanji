@@ -5758,7 +5758,9 @@ namespace DoPENetConnect
 
                 progControl.SetCmdParmas(tmpList, double.Parse(guiPosition.Text), LoadUnit == "kN" ? double.Parse(guiLoad.Text) : double.Parse(guiLoad.Text) / 1000, double.Parse(guiExtension.Text));
                 SetAxisScales();  //设置曲线显示范围
-                dataGridViewX1.Rows[dataGridViewX1.Rows.Count - 1].Selected = false;
+                
+                for(int i=0;i<dataGridViewX1.Rows.Count;i++)
+                    dataGridViewX1.Rows[i].Selected = false;
                 progControl.StartRunProgram();
 
 
@@ -6059,6 +6061,13 @@ namespace DoPENetConnect
         {
             axTChart1.Axis.Custom[1].Maximum += Chart_Command_Step;
 
+        }
+
+        public void CycleNumSet(string totalCycle,string currentCycle)
+        {
+            textBoxX26.Text = totalCycle;
+
+            textBoxX27.Text = currentCycle;
         }
     }
 }

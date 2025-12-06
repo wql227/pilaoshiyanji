@@ -77,7 +77,12 @@ namespace DoPENetConnect
 
         public void SetCmdParmas(List<string[]> dta,double startPos,double startLoad,double startExtession)
         {
+            //次数显示清零
+            MainForm.mainform.CycleNumSet("", "");  
+
+            //参数初始化
             cmdDta = dta;
+            GetCycleList();
             currentCmdIndex = 0;
             ProgStatus.startPos = startPos;
             ProgStatus.pos = startPos;
@@ -87,6 +92,81 @@ namespace DoPENetConnect
             for(int i=0;i< dta.Count; i++) {
                 ProgStatus.currentCycleCountEveryStep[i] = 0;
             }
+            
+        }
+
+
+        ///// <summary>
+        ///// 使用cmdDta获取循环信息
+        ///// 行信息1：总循环数，2起始步数，3中止步数
+        ///// </summary>
+        //List<string[]> cycleInfo = null;
+        //int[,] stepsCycleCounter = null;
+        //public void GetCycleList()
+        //{
+        //    for (int i = 0; i < cmdDta.Count; i++) {
+        //        if (cmdDta[i][4] != "") {
+        //            if (cycleInfo == null) {
+        //                cycleInfo = new List<string[]>();
+        //            }
+
+        //            string[] cycleContext = new string[3];
+        //            cycleContext[0] = cmdDta[i][4];
+        //            cycleContext[1] = cmdDta[i][3];   //开始 
+        //            cycleContext[2] = cmdDta[i][0];  //终止
+
+        //            cycleInfo.Add(cycleContext);
+        //        }
+        //    }
+
+        //    if (stepsCycleCounter == null)
+        //    {
+        //        stepsCycleCounter = new int[cmdDta.Count,2];
+        //    }
+
+        //    for (int i = 0; i < cycleInfo.Count; i++) {
+        //        for (int j = 0; j < cmdDta.Count; j++) {
+        //            if (j >= int.Parse(cycleInfo[i].ElementAt(1)) && j <= int.Parse(cycleInfo[i].ElementAt(2)))
+        //            {
+        //                stepsCycleCounter[j, 0] = int.Parse(cycleInfo[i].ElementAt(0));
+        //                stepsCycleCounter[j, 1] = 0;
+        //            }
+        //            else {
+        //                stepsCycleCounter[j, 0] = 0;
+        //                stepsCycleCounter[j, 1] = 0;
+        //            }
+        //        }
+        //    }
+        //}
+
+        /// <summary>
+        /// 使用cmdDta获取循环信息
+        /// 行信息1：总循环数，2起始步数，3中止步数
+        /// </summary>
+        int[,] stepsCycleCounter = null;
+        public void GetCycleList()
+        {
+            for (int i = 0; i < cmdDta.Count; i++)
+            {
+                if (cmdDta[i][4] != "")
+                {
+                    int totalNum = int.Parse(cmdDta[i][4]);
+                    int startStep = int.Parse(cmdDta[i][3]);   //开始 
+                    int stopStep = int.Parse(cmdDta[i][0]);  //终止
+                    if (stepsCycleCounter == null)
+                    {
+                        stepsCycleCounter = new int[cmdDta.Count, 2];
+                    }
+
+                    for (int j = startStep-1; j <= stopStep-1; j++)
+                    {
+                        stepsCycleCounter[j, 0] = totalNum;
+                        stepsCycleCounter[j, 1] = 0;
+                    }
+                    
+                }
+            }          
+
             
         }
 
@@ -109,10 +189,26 @@ namespace DoPENetConnect
             {
                 ProgStatus.endGoal = new string[8];
             }
+
+            //获取循环设置
             if (cmdDta[currentCmdIndex][4] == "")
                 ProgStatus.currentCycleSet = 0;
             else
                 ProgStatus.currentCycleSet = int.Parse(cmdDta[currentCmdIndex][4]);   //获取当前步对应的循环次数设置
+
+            //获取每一步对应的循环次数并设置当前次数
+            if (stepsCycleCounter[currentCmdIndex, 0] == 0)
+            {
+                //显示设置为零
+                //MainForm.mainform.CycleNumSet("", "");   //循环次数为零的不做设置
+
+            }
+            else
+            {
+                stepsCycleCounter[currentCmdIndex, 1]++;
+                MainForm.mainform.CycleNumSet(stepsCycleCounter[currentCmdIndex, 0].ToString(), stepsCycleCounter[currentCmdIndex, 1].ToString());   //循环次数为零的不做设置
+            }
+
 
             switch (cmdDta[currentCmdIndex][1]) {
                 case "等速位移":
