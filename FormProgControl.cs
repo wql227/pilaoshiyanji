@@ -378,77 +378,77 @@ namespace DoPENetConnect
             ProgStatus.load = load;
             ProgStatus.extension = extension;
 
-            Console.WriteLine("glm-current params：{0}：{1}：{2}：{3}", pos, load, extension,dynCycle);
+            //Console.WriteLine("glm-current params：{0}：{1}：{2}：{3}", pos, load, extension,dynCycle);
             bool switchOrNot = false;
             switch (ProgStatus.currentCmd) {
                 case CMDNAMES.POS:     //等速位移-位移达到
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction==0&&pos >= double.Parse(ProgStatus.cmdParams[1]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params1");
+                        //Console.WriteLine("glm-current params1");
                         switchOrNot = true;
 
                     }
                     else if(direction==1&&pos <= double.Parse(ProgStatus.cmdParams[1]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params2");
+                        //Console.WriteLine("glm-current params2");
                         switchOrNot = true;
 
                     }
                     break;
                 case CMDNAMES.POSLOAD:    //等速位移-力达到
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction == 0 && load >= double.Parse(ProgStatus.cmdParams[1]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params3");
+                        //Console.WriteLine("glm-current params3");
                         switchOrNot = true;
 
                     }
                     else if (direction == 1 && load <= double.Parse(ProgStatus.cmdParams[1]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params4");
+                        //Console.WriteLine("glm-current params4");
                         switchOrNot = true;
 
                     }
                     break;
                 case CMDNAMES.LOAD:       //等速力--力达到
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction==0&&load >= double.Parse(ProgStatus.cmdParams[1]))
                     {
-                        Console.WriteLine("glm-current params5");
+                        //Console.WriteLine("glm-current params5");
                         switchOrNot = true;
                     }
                     else if (direction == 1 && load <= double.Parse(ProgStatus.cmdParams[1]))
                     {
-                        Console.WriteLine("glm-current params6");
+                        //Console.WriteLine("glm-current params6");
                         switchOrNot = true;
                     }
                     break;
                 case CMDNAMES.LOADPOS:   //等速力--位移达到
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction == 0 && pos >= double.Parse(ProgStatus.cmdParams[1]))
                     {
-                        Console.WriteLine("glm-current params7");
+                        //Console.WriteLine("glm-current params7");
                         switchOrNot = true;
                     }
                     else if (direction == 1 && pos <= double.Parse(ProgStatus.cmdParams[1]))
                     {
-                        Console.WriteLine("glm-current params8");
+                        //Console.WriteLine("glm-current params8");
                         switchOrNot = true;
                     }
                     break;
                 case CMDNAMES.POSKEEP:
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction == 0 && pos >= double.Parse(ProgStatus.cmdParams[0]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params9");
+                        //Console.WriteLine("glm-current params9");
                         ProgStatus.oldDateTime = DateTime.Now;
                         WaitAfterKeepCmd(DoPE.CTRL.POS);
                         return;
                     }
                     else if (direction == 1 && pos <= double.Parse(ProgStatus.cmdParams[0]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params10");
+                        //Console.WriteLine("glm-current params10");
                         ProgStatus.oldDateTime = DateTime.Now;
                         WaitAfterKeepCmd(DoPE.CTRL.POS);
                         return;
@@ -460,22 +460,22 @@ namespace DoPENetConnect
                     int seconds = (int)timeElpse.TotalSeconds;
                     if (ProgStatus.IntervalKeepping>0&&seconds >= ProgStatus.IntervalKeepping)
                     {
-                        Console.WriteLine("glm-current params11");
+                        //Console.WriteLine("glm-current params11");
                         switchOrNot = true;
                     }
                     break;
                 case CMDNAMES.LOADKEEP:
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction == 0 && load >= double.Parse(ProgStatus.cmdParams[0]))
                     {
-                        Console.WriteLine("glm-current params12");
+                        //Console.WriteLine("glm-current params12");
                         ProgStatus.oldDateTime = DateTime.Now;
                         WaitAfterKeepCmd(DoPE.CTRL.LOAD);
                         return;
                     }
                     else if (direction == 1 && load <= double.Parse(ProgStatus.cmdParams[0]))
                     {
-                        Console.WriteLine("glm-current params13");
+                        //Console.WriteLine("glm-current params13");
                         ProgStatus.oldDateTime = DateTime.Now;
                         WaitAfterKeepCmd(DoPE.CTRL.LOAD);
                         return;

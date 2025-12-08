@@ -802,6 +802,7 @@ namespace DoPENetConnect
                 DoPE.Machine Machine = new DoPE.Machine(0);
                 MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
                 //SampleFrequency = 0.2;
+                int x = (Int32)((SampleFrequency / 1000) / Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2);
                 MyEdc.Eh.SetOnDataBlockSize((Int32)((SampleFrequency / 1000) / Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2));
                 MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
                 MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
@@ -1635,6 +1636,7 @@ namespace DoPENetConnect
 
                         //按配置的次数存储日志
                         //TODO 修改成 达到nCountLog 次数时只存储当前屏幕数据
+                        //Console.WriteLine("glm-running log{0}-{1}", gSample.Cycles,nCountLog);
                         if ((gSample.Cycles /*>> 1*/) % nCountLog == 0)
                         {
                             if (bSaveRunningLog)
@@ -1759,17 +1761,17 @@ namespace DoPENetConnect
                                 //if (nCycleCount <= 20 && gSample.Cycles >= nTestCount)
                                 //{
                                 //}
-                                Console.WriteLine("glm cyclebefore{0}-{1}-{2}", gSample.Cycles,nCycleCount,nTestCount);
+                                //Console.WriteLine("glm cyclebefore{0}-{1}-{2}", gSample.Cycles,nCycleCount,nTestCount);
                                 if (nCycleCount > 2000 && gSample.Cycles /*>> 1*/ >= nTestCount)
                                 {
-                                    Console.WriteLine("glm cycleafter{0}", gSample.Cycles);
+                                    //Console.WriteLine("glm cycleafter{0}", gSample.Cycles);
                                     //清除上次计数
-                                    DoPE.ERR err = MyEdc.Block.Header(3, DoPE.CMD_MODE.MESSAGE); // 3次循环，启用中间消息
-                                                                                                 // 后续添加具体命令（如 DoPEPosExt、DoPEHaltW）
-                                                                                                 // 执行命令块时，Cycles 自动清零
-                                    err = MyEdc.Block.Execute(DoPE.CMD_OPERATION.START, ref MyTan);
+                                    //DoPE.ERR err = MyEdc.Block.Header(3, DoPE.CMD_MODE.MESSAGE); // 3次循环，启用中间消息
+                                    //                                                             // 后续添加具体命令（如 DoPEPosExt、DoPEHaltW）
+                                    //                                                             // 执行命令块时，Cycles 自动清零
+                                    //err = MyEdc.Block.Execute(DoPE.CMD_OPERATION.START, ref MyTan);
 
-                                    err = MyEdc.Move.SHalt(ref MyTan);
+                                    //err = MyEdc.Move.SHalt(ref MyTan);
                                     //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
                                     //if(LoadUnit == "")
                                     progControl.CmdSwitch(g_Position, g_Load/1000, g_Extension, 1);   //当最后一个参数为1表示动态试验完成，结束wave过程
@@ -3846,8 +3848,9 @@ namespace DoPENetConnect
             //if (idEncry != "0" && idEncry != "")
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-           // }
-           devId = new StringBuilder("02132F05");
+            // }
+            //devId = new StringBuilder("02132F05");
+            devId = new StringBuilder("02137E43");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
