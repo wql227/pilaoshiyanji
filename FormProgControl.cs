@@ -77,7 +77,12 @@ namespace DoPENetConnect
 
         public void SetCmdParmas(List<string[]> dta,double startPos,double startLoad,double startExtession)
         {
+            //次数显示清零
+            MainForm.mainform.CycleNumSet("", "");  
+
+            //参数初始化
             cmdDta = dta;
+            GetCycleList();
             currentCmdIndex = 0;
             ProgStatus.startPos = startPos;
             ProgStatus.pos = startPos;
@@ -87,6 +92,81 @@ namespace DoPENetConnect
             for(int i=0;i< dta.Count; i++) {
                 ProgStatus.currentCycleCountEveryStep[i] = 0;
             }
+            
+        }
+
+
+        ///// <summary>
+        ///// 使用cmdDta获取循环信息
+        ///// 行信息1：总循环数，2起始步数，3中止步数
+        ///// </summary>
+        //List<string[]> cycleInfo = null;
+        //int[,] stepsCycleCounter = null;
+        //public void GetCycleList()
+        //{
+        //    for (int i = 0; i < cmdDta.Count; i++) {
+        //        if (cmdDta[i][4] != "") {
+        //            if (cycleInfo == null) {
+        //                cycleInfo = new List<string[]>();
+        //            }
+
+        //            string[] cycleContext = new string[3];
+        //            cycleContext[0] = cmdDta[i][4];
+        //            cycleContext[1] = cmdDta[i][3];   //开始 
+        //            cycleContext[2] = cmdDta[i][0];  //终止
+
+        //            cycleInfo.Add(cycleContext);
+        //        }
+        //    }
+
+        //    if (stepsCycleCounter == null)
+        //    {
+        //        stepsCycleCounter = new int[cmdDta.Count,2];
+        //    }
+
+        //    for (int i = 0; i < cycleInfo.Count; i++) {
+        //        for (int j = 0; j < cmdDta.Count; j++) {
+        //            if (j >= int.Parse(cycleInfo[i].ElementAt(1)) && j <= int.Parse(cycleInfo[i].ElementAt(2)))
+        //            {
+        //                stepsCycleCounter[j, 0] = int.Parse(cycleInfo[i].ElementAt(0));
+        //                stepsCycleCounter[j, 1] = 0;
+        //            }
+        //            else {
+        //                stepsCycleCounter[j, 0] = 0;
+        //                stepsCycleCounter[j, 1] = 0;
+        //            }
+        //        }
+        //    }
+        //}
+
+        /// <summary>
+        /// 使用cmdDta获取循环信息
+        /// 行信息1：总循环数，2起始步数，3中止步数
+        /// </summary>
+        int[,] stepsCycleCounter = null;
+        public void GetCycleList()
+        {
+            for (int i = 0; i < cmdDta.Count; i++)
+            {
+                if (cmdDta[i][4] != "")
+                {
+                    int totalNum = int.Parse(cmdDta[i][4]);
+                    int startStep = int.Parse(cmdDta[i][3]);   //开始 
+                    int stopStep = int.Parse(cmdDta[i][0]);  //终止
+                    if (stepsCycleCounter == null)
+                    {
+                        stepsCycleCounter = new int[cmdDta.Count, 2];
+                    }
+
+                    for (int j = startStep-1; j <= stopStep-1; j++)
+                    {
+                        stepsCycleCounter[j, 0] = totalNum;
+                        stepsCycleCounter[j, 1] = 0;
+                    }
+                    
+                }
+            }          
+
             
         }
 
@@ -109,10 +189,26 @@ namespace DoPENetConnect
             {
                 ProgStatus.endGoal = new string[8];
             }
+
+            //获取循环设置
             if (cmdDta[currentCmdIndex][4] == "")
                 ProgStatus.currentCycleSet = 0;
             else
                 ProgStatus.currentCycleSet = int.Parse(cmdDta[currentCmdIndex][4]);   //获取当前步对应的循环次数设置
+
+            //获取每一步对应的循环次数并设置当前次数
+            if (stepsCycleCounter[currentCmdIndex, 0] == 0)
+            {
+                //显示设置为零
+                //MainForm.mainform.CycleNumSet("", "");   //循环次数为零的不做设置
+
+            }
+            else
+            {
+                stepsCycleCounter[currentCmdIndex, 1]++;
+                MainForm.mainform.CycleNumSet(stepsCycleCounter[currentCmdIndex, 0].ToString(), stepsCycleCounter[currentCmdIndex, 1].ToString());   //循环次数为零的不做设置
+            }
+
 
             switch (cmdDta[currentCmdIndex][1]) {
                 case "等速位移":
@@ -282,77 +378,77 @@ namespace DoPENetConnect
             ProgStatus.load = load;
             ProgStatus.extension = extension;
 
-            Console.WriteLine("glm-current params：{0}：{1}：{2}：{3}", pos, load, extension,dynCycle);
+            //Console.WriteLine("glm-current params：{0}：{1}：{2}：{3}", pos, load, extension,dynCycle);
             bool switchOrNot = false;
             switch (ProgStatus.currentCmd) {
                 case CMDNAMES.POS:     //等速位移-位移达到
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction==0&&pos >= double.Parse(ProgStatus.cmdParams[1]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params1");
+                        //Console.WriteLine("glm-current params1");
                         switchOrNot = true;
 
                     }
                     else if(direction==1&&pos <= double.Parse(ProgStatus.cmdParams[1]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params2");
+                        //Console.WriteLine("glm-current params2");
                         switchOrNot = true;
 
                     }
                     break;
                 case CMDNAMES.POSLOAD:    //等速位移-力达到
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction == 0 && load >= double.Parse(ProgStatus.cmdParams[1]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params3");
+                        //Console.WriteLine("glm-current params3");
                         switchOrNot = true;
 
                     }
                     else if (direction == 1 && load <= double.Parse(ProgStatus.cmdParams[1]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params4");
+                        //Console.WriteLine("glm-current params4");
                         switchOrNot = true;
 
                     }
                     break;
                 case CMDNAMES.LOAD:       //等速力--力达到
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction==0&&load >= double.Parse(ProgStatus.cmdParams[1]))
                     {
-                        Console.WriteLine("glm-current params5");
+                        //Console.WriteLine("glm-current params5");
                         switchOrNot = true;
                     }
                     else if (direction == 1 && load <= double.Parse(ProgStatus.cmdParams[1]))
                     {
-                        Console.WriteLine("glm-current params6");
+                        //Console.WriteLine("glm-current params6");
                         switchOrNot = true;
                     }
                     break;
                 case CMDNAMES.LOADPOS:   //等速力--位移达到
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction == 0 && pos >= double.Parse(ProgStatus.cmdParams[1]))
                     {
-                        Console.WriteLine("glm-current params7");
+                        //Console.WriteLine("glm-current params7");
                         switchOrNot = true;
                     }
                     else if (direction == 1 && pos <= double.Parse(ProgStatus.cmdParams[1]))
                     {
-                        Console.WriteLine("glm-current params8");
+                        //Console.WriteLine("glm-current params8");
                         switchOrNot = true;
                     }
                     break;
                 case CMDNAMES.POSKEEP:
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction == 0 && pos >= double.Parse(ProgStatus.cmdParams[0]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params9");
+                        //Console.WriteLine("glm-current params9");
                         ProgStatus.oldDateTime = DateTime.Now;
                         WaitAfterKeepCmd(DoPE.CTRL.POS);
                         return;
                     }
                     else if (direction == 1 && pos <= double.Parse(ProgStatus.cmdParams[0]))   //达到目标
                     {
-                        Console.WriteLine("glm-current params10");
+                        //Console.WriteLine("glm-current params10");
                         ProgStatus.oldDateTime = DateTime.Now;
                         WaitAfterKeepCmd(DoPE.CTRL.POS);
                         return;
@@ -364,22 +460,22 @@ namespace DoPENetConnect
                     int seconds = (int)timeElpse.TotalSeconds;
                     if (ProgStatus.IntervalKeepping>0&&seconds >= ProgStatus.IntervalKeepping)
                     {
-                        Console.WriteLine("glm-current params11");
+                        //Console.WriteLine("glm-current params11");
                         switchOrNot = true;
                     }
                     break;
                 case CMDNAMES.LOADKEEP:
-                    Console.WriteLine("direction-res：{0}", direction);
+                    //Console.WriteLine("direction-res：{0}", direction);
                     if (direction == 0 && load >= double.Parse(ProgStatus.cmdParams[0]))
                     {
-                        Console.WriteLine("glm-current params12");
+                        //Console.WriteLine("glm-current params12");
                         ProgStatus.oldDateTime = DateTime.Now;
                         WaitAfterKeepCmd(DoPE.CTRL.LOAD);
                         return;
                     }
                     else if (direction == 1 && load <= double.Parse(ProgStatus.cmdParams[0]))
                     {
-                        Console.WriteLine("glm-current params13");
+                        //Console.WriteLine("glm-current params13");
                         ProgStatus.oldDateTime = DateTime.Now;
                         WaitAfterKeepCmd(DoPE.CTRL.LOAD);
                         return;
