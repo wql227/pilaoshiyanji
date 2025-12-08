@@ -1146,25 +1146,25 @@ namespace DoPENetConnect
                     {
                         PVPositionList = PVPositionQueue.Distinct().ToList();
 
-                        for (int i = 0; i <= PVPositionList.Count; i++)
+                    for (int i = 0; i <= PVPositionList.Count; i++)
+                    {
+                        // 判断是否为峰值： //PVPositionQueue.Count
+                        if (i < 3 || i > PVPositionList.Count - 2)
                         {
-                            // 判断是否为峰值： //PVPositionQueue.Count
-                            if (i < 3 || i > PVPositionList.Count - 2)
-                            {
-                                continue;
-                            }
-
-                            if (PVPositionList[i - 1] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 1])
-                            {
-                                g_MaxPosition = PVPositionList.Max();
-                            }
-
-                            // 判断是否为谷值：小于左右相邻的数据
-                            if (PVPositionList[i - 1] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 1])
-                            {
-                                g_MinPosition = PVPositionList.Min();
-                            }
+                            continue;
                         }
+
+                        if (PVPositionList[i - 1] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 1])
+                        {
+                            g_MaxPosition = PVPositionList.Max();
+                        }
+
+                        // 判断是否为谷值：小于左右相邻的数据
+                        if (PVPositionList[i - 1] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 1])
+                        {
+                            g_MinPosition = PVPositionList.Min();
+                        }
+                    }
 
                         if (bActivated && isRunning)
                         {
@@ -1287,7 +1287,7 @@ namespace DoPENetConnect
                     g_Load = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F];
                     //试验力队列
                     PVLoadQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                    if (PVLoadQueue.Count >= 400)
+                    if (PVLoadQueue.Count >= 1000)
                     {
                         PVLoadList = PVLoadQueue.Distinct().ToList();
 
@@ -1304,13 +1304,13 @@ namespace DoPENetConnect
                                 PVLoadMaxAverageList.Add(PVLoadList[i]);
                                 if (LoadUnit.ToUpper() == "KN")
                                 {
-                                    //g_MaxLoad = PVLoadList.Max() / 1000;
-                                    g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
+                                    g_MaxLoad = PVLoadList.Max() / 1000;
+                                    //g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
                                 }
                                 else
                                 {
-                                    //g_MaxLoad = PVLoadList.Max();
-                                    g_MaxLoad = PVLoadMaxAverageList.Max();
+                                    g_MaxLoad = PVLoadList.Max();
+                                    //g_MaxLoad = PVLoadMaxAverageList.Max();
                                 }
                             }
 
@@ -1320,13 +1320,13 @@ namespace DoPENetConnect
                                 PVLoadMinAverageList.Add(PVLoadList[i]);
                                 if (LoadUnit.ToUpper() == "KN")
                                 {
-                                    //g_MinLoad = PVLoadList.Min() / 1000;
-                                    g_MinLoad = PVLoadMinAverageList.Min() / 1000;
+                                    g_MinLoad = PVLoadList.Min() / 1000;
+                                    //g_MinLoad = PVLoadMinAverageList.Min() / 1000;
                                 }
                                 else
                                 {
-                                    //g_MinLoad = PVLoadList.Min();
-                                    g_MinLoad = PVLoadMinAverageList.Min();
+                                    g_MinLoad = PVLoadList.Min();
+                                    //g_MinLoad = PVLoadMinAverageList.Min();
                                 }
                             }
                         }
@@ -1416,17 +1416,17 @@ namespace DoPENetConnect
                             #endregion 判断试验力峰谷值
                         }
 
-                        while (PVLoadQueue.Count > 400)
+                        while (PVLoadQueue.Count > 1000)
                         {
                             PVLoadQueue.Dequeue();
                         }
 
-                        while (PVLoadMaxAverageList.Count > 400)
+                        while (PVLoadMaxAverageList.Count > 1000)
                         {
                             PVLoadMaxAverageList.RemoveRange(0, PVLoadMaxAverageList.Count / 2);
                         }
 
-                        while (PVLoadMinAverageList.Count > 400)
+                        while (PVLoadMinAverageList.Count > 1000)
                         {
                             PVLoadMinAverageList.RemoveRange(0, PVLoadMinAverageList.Count / 2);
                         }
@@ -1730,7 +1730,7 @@ namespace DoPENetConnect
                     if (isRunning)
                     {
                         bool isDynamic = false;
-                        if (progControl == null||!progControl.isRunning)
+                        if (progControl == null || !progControl.isRunning)
                         {
                             isDynamic = true;
                         }
@@ -1786,13 +1786,13 @@ namespace DoPENetConnect
                                     err = MyEdc.Move.SHalt(ref MyTan);
                                     //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
                                     //if(LoadUnit == "")
-                                    progControl.CmdSwitch(g_Position, g_Load/1000, g_Extension, 1);   //当最后一个参数为1表示动态试验完成，结束wave过程
+                                    progControl.CmdSwitch(g_Position, g_Load / 1000, g_Extension, 1);   //当最后一个参数为1表示动态试验完成，结束wave过程
                                     nCycleCount = 0;
                                 }
                             }
                             else
                             {
-                                progControl.CmdSwitch(g_Position, g_Load/1000, g_Extension, 0);
+                                progControl.CmdSwitch(g_Position, g_Load / 1000, g_Extension, 0);
                             }
                         }
                     }
