@@ -2753,7 +2753,7 @@ namespace DoPENetConnect
             {
                 try
                 {
-                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DoPE.ERR error = MyEdc.Move.SHalt(/*DoPE.CTRL.POS,*/ ref MyTan);
                     DisplayError(error, "Halt");
 
                     isRunning = false;
