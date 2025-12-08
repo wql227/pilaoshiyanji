@@ -153,7 +153,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\AsyncStopLogger.cs" />
     <Compile Include="Entity\ChartAxisYParm.cs" />
+    <Compile Include="Entity\LogDataItem.cs" />
     <Compile Include="FormFloat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +202,7 @@
     <Compile Include="Util\AccessHelper.cs" />
     <Compile Include="Util\DESEncrypt.cs" />
     <Compile Include="Util\ExcelHelper.cs" />
+    <Compile Include="Util\FastLogFormatter.cs" />
     <Compile Include="Util\IniFileHelper.cs" />
     <Compile Include="FrmDynCtrl.cs">
       <SubType>Form</SubType>
@@ -238,6 +241,7 @@
       <DependentUpon>FrmPos_A.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\LanguageLoad.cs" />
+    <Compile Include="Util\LogEntry.cs" />
     <Compile Include="Util\LogHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -367,7 +371,7 @@
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Deploy="1" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Configuration="" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="1" />
+      <UserProperties Reactor_Enabled="1" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Deploy="1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
