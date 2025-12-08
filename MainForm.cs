@@ -707,7 +707,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -1816,8 +1816,10 @@ namespace DoPENetConnect
                                 //if (nCycleCount <= 20 && gSample.Cycles >= nTestCount)
                                 //{
                                 //}
+                                Console.WriteLine("glm cyclebefore{0}-{1}-{2}", gSample.Cycles,nCycleCount,nTestCount);
                                 if (nCycleCount > 2000 && gSample.Cycles /*>> 1*/ >= nTestCount)
                                 {
+                                    Console.WriteLine("glm cycleafter{0}", gSample.Cycles);
                                     //清除上次计数
                                     DoPE.ERR err = MyEdc.Block.Header(3, DoPE.CMD_MODE.MESSAGE); // 3次循环，启用中间消息
                                                                                                  // 后续添加具体命令（如 DoPEPosExt、DoPEHaltW）
@@ -1827,7 +1829,17 @@ namespace DoPENetConnect
                                     err = MyEdc.Move.SHalt(ref MyTan);
                                     //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
                                     //if(LoadUnit == "")
-                                    progControl.CmdSwitch(g_Position, g_Load / 1000, g_Extension, 1);   //当最后一个参数为1表示动态试验完成，结束wave过程
+                                    progControl.CmdSwitch(g_Position, g_Load/1000, g_Extension, 1);   //当最后一个参数为1表示动态试验完成，结束wave过程
+                                                                                                      //最后一次的试验次数写入配置文件
+
+                                    //if (bSaveStopScreenLog)
+                                    //{
+                                    //    //存储实验停止后的日志
+                                    //    var task1 = Task.Run(() => GetSeriesPoint());
+                                    //}
+                                    tbX_TestCount.Text = tbX_TestCycles.Text;
+                                    IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
+
                                     nCycleCount = 0;
                                 }
                             }
@@ -1842,12 +1854,7 @@ namespace DoPENetConnect
                 //波形图
                 if (bShowSensorData/* && bActivated*/ && !bQuit)
                 {
-                    //Task.Run(() =>
-                    //{
-                    // 数据处理逻辑放在这里...
-                    ShowWave(Block);
-
-                    //});
+                        ShowWave(Block);
                 }
 
                 if (nCount >= nCountREfresh)
@@ -3232,7 +3239,6 @@ namespace DoPENetConnect
             }
         }
 
-
         /// <summary>
         /// 自动调整Y轴的大小
         /// </summary>
@@ -3629,6 +3635,10 @@ namespace DoPENetConnect
             }
         }
 
+        public string GetCountText()
+        {
+            return tbX_TestCount.Text;
+        }
         /// <summary>
         /// 工具栏POS_A
         /// </summary>
@@ -3891,10 +3901,11 @@ namespace DoPENetConnect
             StringBuilder devIdEncrypted = new StringBuilder(255);
             bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
             string idEncry = devIdEncrypted.ToString();
-            if (idEncry != "0" && idEncry != "")
-            {
-                devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-            }
+            //if (idEncry != "0" && idEncry != "")
+            //{
+            //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
+           // }
+           devId = new StringBuilder("02132F05");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -5789,7 +5800,22 @@ namespace DoPENetConnect
                     }
                     tmpList.Add(tmpStrs);
                 }
+
+                //if (chartX.Count >= nTotal)     //显示清除
+                {
+                    x_Data = 0.0;
+
+                    chartX.Clear();
+                    chartPosY.Clear();
+                    chartLoadY.Clear();
+                    chartExtY.Clear();
+                    chartCommandY.Clear();
+                    //axTChart1.AutoRepaint = true;
+                    //axTChart1.Refresh();
+                }
+
                 progControl.SetCmdParmas(tmpList, double.Parse(guiPosition.Text), LoadUnit == "kN" ? double.Parse(guiLoad.Text) : double.Parse(guiLoad.Text) / 1000, double.Parse(guiExtension.Text));
+                SetAxisScales();  //设置曲线显示范围
                 dataGridViewX1.Rows[dataGridViewX1.Rows.Count - 1].Selected = false;
                 progControl.StartRunProgram();
 
@@ -5799,6 +5825,31 @@ namespace DoPENetConnect
             }
         }
 
+        public void SetAxisScales()
+        {
+            double posMax = axTChart1.Axis.Left.Maximum;
+            double posMin = axTChart1.Axis.Left.Minimum;
+
+            double loadMax = axTChart1.Axis.Right.Maximum;
+            double loadMin = axTChart1.Axis.Right.Minimum;
+
+            double ExtMax = axTChart1.Axis.Custom[0].Maximum;
+            double ExtMin = axTChart1.Axis.Custom[0].Minimum;
+
+            //double commandMax = axTChart1.Axis.Custom[1].Maximum;
+            //double commandMin = axTChart1.Axis.Custom[1].Minimum;
+            progControl.GetMaxAndMinVal(ref posMax, ref posMin, ref loadMax, ref loadMin, ref ExtMax, ref ExtMin);
+
+            axTChart1.Axis.Left.Maximum = posMax+2;
+            axTChart1.Axis.Left.Minimum = posMin-2;
+
+
+            axTChart1.Axis.Right.Maximum = loadMax+2;
+            axTChart1.Axis.Right.Minimum = loadMin-2;
+
+            axTChart1.Axis.Custom[0].Maximum = ExtMax+2;
+            axTChart1.Axis.Custom[0].Minimum = ExtMin-2;
+        }
         private void buttonX25_Click(object sender, EventArgs e)
         {
             if (progControl != null)

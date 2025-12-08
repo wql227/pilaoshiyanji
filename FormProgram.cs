@@ -75,6 +75,8 @@ namespace DoPENetConnect
 
                     labelX23.Text = "速率mm/min";
                     labelX24.Text = "mm";
+                    labelX23.Visible = true;
+                    textBoxX15.Visible = true;
                     comboBoxEx8.DataSource = new string[] {"位移达到","力达到"};
                     comboBoxEx8.Text = "位移达到";
                     break;
@@ -85,6 +87,8 @@ namespace DoPENetConnect
                     panelEx_dengsuweiyi.Visible = true;
                     labelX23.Text = "速率kN/s";
                     labelX24.Text = "kN";
+                    labelX23.Visible = true;
+                    textBoxX15.Visible = true;
                     comboBoxEx8.DataSource = new string[] { "位移达到", "力达到" };
                     comboBoxEx8.Text = "力达到";
                     break;
@@ -94,6 +98,8 @@ namespace DoPENetConnect
                     panelEx_Empty.Visible = false;
                     panelEx_dengsuweiyi.Visible = true;
                     labelX23.Text = "目标mm";
+                    labelX23.Visible = false;
+                    textBoxX15.Visible = false;
                     labelX24.Text = "时间s";
                     comboBoxEx8.DataSource = new string[] { "保持时间" };
                     comboBoxEx8.Text = "保持时间";
@@ -105,6 +111,8 @@ namespace DoPENetConnect
                     panelEx_dengsuweiyi.Visible = true;
                     labelX23.Text = "目标kN";
                     labelX24.Text = "s";
+                    labelX23.Visible = false;
+                    textBoxX15.Visible = false;
                     comboBoxEx8.DataSource = new string[] { "保持时间" };
                     comboBoxEx8.Text = "保持时间";
                     break;
@@ -238,10 +246,12 @@ namespace DoPENetConnect
                     tmpStrings[2] = string.Format("{3},速率:{0}kN/s,{1}:{2}{4}", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text, labelX24.Text.Substring(labelX24.Text.Length - 2));
                     break;
                 case "位移保持":
-                    tmpStrings[2] = string.Format("{3},保持目标:{0}mm,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    //tmpStrings[2] = string.Format("{3},保持目标:{0}mm,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    tmpStrings[2] = string.Format("{3},{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
                     break;
                 case "力保持":
-                    tmpStrings[2] = string.Format("{3},保持目标:{0}kN,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    //tmpStrings[2] = string.Format("{3},保持目标:{0}kN,{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
+                    tmpStrings[2] = string.Format("{3},{1}:{2}s", textBoxX15.Text, comboBoxEx8.Text, textBoxX16.Text, comboBoxEx3.Text);
                     break;
                 case "波形控制":
                     tmpStrings[2] = string.Format("{3},波形:{0},中值:{1}mm,振幅:{2}mm,频率:{4}Hz,试验次数:{5},趋近速度:{6}mm/min,目标值:{7}mm", comboBoxEx4.Text, textBoxX1.Text, textBoxX3.Text, comboBoxEx3.Text, textBoxX2.Text, textBoxX5.Text, textBoxX6.Text, textBoxX7.Text);
@@ -299,7 +309,7 @@ namespace DoPENetConnect
             tmpCmdParams[1] = "等速位移";
             tmpCmdParams[2] = "等速位移,速率:0mm/min,保持时间0s";
             tmpCmdParams[3] = "0";
-            tmpCmdParams[4] = "0";
+            tmpCmdParams[4] = "";
             
             if (dataGridViewX1.Rows.Count > 0)
             {
@@ -574,6 +584,17 @@ namespace DoPENetConnect
             {
                 labelX24.Text = "kN";
             }
+        }
+
+        private void comboBoxEx2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int currentIndex = comboBoxEx5.SelectedIndex;
+            currentIndex = comboBoxEx2.SelectedIndex + 1;
+            if (currentIndex == comboBoxEx5.Items.Count)
+            {
+                currentIndex = 0;
+            }
+            comboBoxEx5.SelectedIndex = currentIndex;
         }
     }
 }

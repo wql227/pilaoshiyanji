@@ -152,7 +152,6 @@ namespace DoPENetConnect
             SendCommand();
         }
 
-
         /// <summary>
         /// 发送命令
         /// </summary>
@@ -238,6 +237,7 @@ namespace DoPENetConnect
             //不在运行时才能修改次数
             //if (!MainForm.mainform.isRunning)
             {
+                tbX_TestCount.Text = MainForm.mainform.GetCountText();
                 MainForm.mainform.nPreTestCount = int.Parse(tbX_TestCount.Text);
             }
             cbX_DynCtrl_ModifyParam.Checked = true;
