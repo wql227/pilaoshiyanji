@@ -250,12 +250,12 @@ namespace DoPENetConnect
         /// <summary>
         /// 试验力峰值平均值列表
         /// </summary>
-        //public List<double> PVLoadMaxAverageList = new List<double>();
+        public List<double> PVLoadMaxAverageList = new List<double>();
 
         /// <summary>
         /// 试验力谷值平均值列表
         /// </summary>
-        //public List<double> PVLoadMinAverageList = new List<double>();
+        public List<double> PVLoadMinAverageList = new List<double>();
 
         /// <summary>
         /// 记录变形峰谷值的队列
@@ -1146,25 +1146,25 @@ namespace DoPENetConnect
                     {
                         PVPositionList = PVPositionQueue.Distinct().ToList();
 
-                        for (int i = 0; i <= PVPositionList.Count; i++)
+                    for (int i = 0; i <= PVPositionList.Count; i++)
+                    {
+                        // 判断是否为峰值： //PVPositionQueue.Count
+                        if (i < 3 || i > PVPositionList.Count - 2)
                         {
-                            // 判断是否为峰值： //PVPositionQueue.Count
-                            if (i < 3 || i > PVPositionList.Count - 2)
-                            {
-                                continue;
-                            }
-
-                            if (PVPositionList[i - 1] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 1])
-                            {
-                                g_MaxPosition = PVPositionList.Max();
-                            }
-
-                            // 判断是否为谷值：小于左右相邻的数据
-                            if (PVPositionList[i - 1] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 1])
-                            {
-                                g_MinPosition = PVPositionList.Min();
-                            }
+                            continue;
                         }
+
+                        if (PVPositionList[i - 1] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 1])
+                        {
+                            g_MaxPosition = PVPositionList.Max();
+                        }
+
+                        // 判断是否为谷值：小于左右相邻的数据
+                        if (PVPositionList[i - 1] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 1])
+                        {
+                            g_MinPosition = PVPositionList.Min();
+                        }
+                    }
 
                         if (bActivated && isRunning)
                         {
@@ -1287,7 +1287,7 @@ namespace DoPENetConnect
                     g_Load = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F];
                     //试验力队列
                     PVLoadQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                    if (PVLoadQueue.Count >= 400)
+                    if (PVLoadQueue.Count >= 1000)
                     {
                         PVLoadList = PVLoadQueue.Distinct().ToList();
 
@@ -1301,26 +1301,32 @@ namespace DoPENetConnect
                             // 判断是否为峰值：大于左右相邻的数据
                             if (PVLoadList[i - 1] < PVLoadList[i] && PVLoadList[i] > PVLoadList[i + 1])
                             {
+                                PVLoadMaxAverageList.Add(PVLoadList[i]);
                                 if (LoadUnit.ToUpper() == "KN")
                                 {
                                     g_MaxLoad = PVLoadList.Max() / 1000;
+                                    //g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
                                 }
                                 else
                                 {
                                     g_MaxLoad = PVLoadList.Max();
+                                    //g_MaxLoad = PVLoadMaxAverageList.Max();
                                 }
                             }
 
                             // 判断是否为谷值：小于左右相邻的数据
                             if (PVLoadList[i - 1] > PVLoadList[i] && PVLoadList[i] < PVLoadList[i + 1])
                             {
+                                PVLoadMinAverageList.Add(PVLoadList[i]);
                                 if (LoadUnit.ToUpper() == "KN")
                                 {
                                     g_MinLoad = PVLoadList.Min() / 1000;
+                                    //g_MinLoad = PVLoadMinAverageList.Min() / 1000;
                                 }
                                 else
                                 {
                                     g_MinLoad = PVLoadList.Min();
+                                    //g_MinLoad = PVLoadMinAverageList.Min();
                                 }
                             }
                         }
@@ -1410,9 +1416,19 @@ namespace DoPENetConnect
                             #endregion 判断试验力峰谷值
                         }
 
-                        while (PVLoadQueue.Count > 200)
+                        while (PVLoadQueue.Count > 1000)
                         {
                             PVLoadQueue.Dequeue();
+                        }
+
+                        while (PVLoadMaxAverageList.Count > 1000)
+                        {
+                            PVLoadMaxAverageList.RemoveRange(0, PVLoadMaxAverageList.Count / 2);
+                        }
+
+                        while (PVLoadMinAverageList.Count > 1000)
+                        {
+                            PVLoadMinAverageList.RemoveRange(0, PVLoadMinAverageList.Count / 2);
                         }
 
                     }
@@ -1714,7 +1730,7 @@ namespace DoPENetConnect
                     if (isRunning)
                     {
                         bool isDynamic = false;
-                        if (progControl == null||!progControl.isRunning)
+                        if (progControl == null || !progControl.isRunning)
                         {
                             isDynamic = true;
                         }
@@ -1782,12 +1798,13 @@ namespace DoPENetConnect
                                     //}
                                     tbX_TestCount.Text = tbX_TestCycles.Text;
                                     IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
+
                                     nCycleCount = 0;
                                 }
                             }
                             else
                             {
-                                progControl.CmdSwitch(g_Position, g_Load/1000, g_Extension, 0);
+                                progControl.CmdSwitch(g_Position, g_Load / 1000, g_Extension, 0);
                             }
                         }
                     }
@@ -2743,7 +2760,7 @@ namespace DoPENetConnect
             {
                 try
                 {
-                    DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
+                    DoPE.ERR error = MyEdc.Move.SHalt(/*DoPE.CTRL.POS,*/ ref MyTan);
                     DisplayError(error, "Halt");
 
                     isRunning = false;
@@ -3504,8 +3521,8 @@ namespace DoPENetConnect
                 }
 
                 //清理试验力平均值队列
-                //PVLoadMaxAverageList.Clear();
-                //PVLoadMinAverageList.Clear();
+                PVLoadMaxAverageList.Clear();
+                PVLoadMinAverageList.Clear();
 
                 //清理变形队列
                 if (PVExtensionQueue.Count > 0)
