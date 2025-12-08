@@ -386,6 +386,99 @@ namespace DoPENetConnect
         }
 
 
+        /// <summary>
+        /// 保存数值
+        /// </summary>
+        /// <param name="strs">strs为对应的参数字符,值之间用","隔开</param>
+        public static async Task SaveStopData(string strs)
+        {
+            try
+            {
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string logPath = Path.Combine(baseDirectory, "DynmaticStopData");
+                string dateStr = DateTime.Now.ToString("yyyy-MM-dd");
+                string timeStr = DateTime.Now.ToString("yyyy-MM-dd-HHmmss"); // 精确到秒作为文件名
+
+                StringBuilder tmpStr = new StringBuilder(255);
+                IniFileHelper.GetIniString("AppOpenIndex", "IndexVal", "-1", tmpStr, tmpStr.Capacity);
+
+                string experimentIndex = tmpStr.ToString().Trim();
+
+                string channelLogPath = Path.Combine(logPath, dateStr, experimentIndex);
+
+                // 创建目录（如果不存在）
+                if (!Directory.Exists(channelLogPath))
+                {
+                    Directory.CreateDirectory(channelLogPath);
+                }
+
+                string fileName = $"{timeStr}.CSV";
+                string filePath = Path.Combine(channelLogPath, fileName);
+
+                int maxFileSize = 5 * 1024 * 1024; // 5 MB
+                FileInfo fi = new FileInfo(filePath);
+
+                // 如果文件存在且超过最大大小，则进行滚动
+                if (fi.Exists && fi.Length > maxFileSize)
+                {
+                    int maxBackupFiles = 100; // 最多保留 5 个备份文件
+
+                    // 滚动旧文件
+                    for (int i = maxBackupFiles - 1; i >= 1; i--)
+                    {
+                        string oldFile = Path.Combine(logPath, $"{dateStr}.{i}.CSV");
+                        string prevFile = Path.Combine(logPath, $"{dateStr}.{i - 1}.CSV");
+
+                        if (File.Exists(oldFile))
+                        {
+                            File.Delete(oldFile);
+                        }
+
+                        if (File.Exists(prevFile))
+                        {
+                            File.Move(prevFile, oldFile);
+                        }
+                    }
+                    string firstIndex = "0";
+                    string firstBackup = Path.Combine(logPath, $"{dateStr}.{firstIndex}.CSV");
+                    if (File.Exists(firstBackup))
+                    {
+                        File.Delete(firstBackup);
+                    }
+                    File.Move(fileName, firstBackup);
+                }
+
+                // 如果文件不存在，先写入表头
+                bool writeHeader = !File.Exists(filePath);
+                using (StreamWriter sw = new StreamWriter(filePath, true, Encoding.Default))
+                {
+                    if (writeHeader)
+                    {
+                        if (MainForm.mainform.LoadUnit.ToUpper() == "KN")
+                        {
+                            string header = "时间[s], 位移[mm], 试验力[kN], 半循环, 循环";
+                            sw.WriteLine(header);
+                        }
+                        else
+                        {
+                            string header = "时间[s], 位移[mm], 试验力[N], 半循环, 循环";
+                            sw.WriteLine(header);
+                        }
+                    }
+
+                    sw.WriteLine(strs);
+                }
+
+                bLogDirBuildedFlag = true;
+            }
+            catch (Exception ex)
+            {
+                // 可选：记录错误日志或弹出提示
+                // MessageBox.Show(ex.Message);
+            }
+        }
+
+
 
         public void SetLogIndex()
         {

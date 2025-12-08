@@ -91,6 +91,7 @@ using Microsoft.Extensions.Configuration;
 using TeeChart;
 using DoPENetConnect.Util;
 using System.Text.RegularExpressions;
+using System.Buffers;
 
 namespace DoPENetConnect
 {
@@ -586,6 +587,10 @@ namespace DoPENetConnect
 
         //public delegate void SetControlValue(string value);
 
+        /// <summary>
+        /// 程序停止时的日志队列
+        /// </summary>
+        public Queue<LogEntry> StopLogQueues = new Queue<LogEntry>();
 
         ///// <summary>
         ///// 初始化Timer控件
@@ -664,6 +669,8 @@ namespace DoPENetConnect
             floatMenus.Owner = this;
             floatMenus.Location = new Point(this.Location.X + 2, 273);
             //InitTimer();
+
+            StopLogQueues = new Queue<LogEntry>();
 
         }
 
@@ -1632,19 +1639,53 @@ namespace DoPENetConnect
 
                     if (isRunning)
                     {
-                        //保存当前屏幕日志
-                        if (bSavePVCountLog)
+                        //保存停止屏幕日志
+                        if (bSaveStopScreenLog)
                         {
-                            if ((gSample.Cycles >> 1) > 0 && (gSample.Cycles >> 1) % nCountLog == 0 && !isProcessing)
-                            {
-                                int currentHalfCyclez = gSample.Cycles >> 1;
+                            //if ((gSample.Cycles >> 1) > 0 && (gSample.Cycles >> 1) % nCountLog == 0 && !isProcessing)
+                            //{
+                            //    int currentHalfCyclez = gSample.Cycles >> 1;
 
-                                if (currentHalfCyclez != LastRecordedCountHalfCycle)
+                            //    if (currentHalfCyclez != LastRecordedCountHalfCycle)
+                            //    {
+                            //        var task1 = Task.Run(() => GetSeriesPoint());
+                            //        LastRecordedCountHalfCycle = currentHalfCyclez;
+                            //    }
+                            //}
+
+
+                            int halfCycles = gSample.Cycles >> 1;
+
+                            char[] buffer = ArrayPool<char>.Shared.Rent(1024);
+                            bool success = FastLogFormatter.FormatLogLineToCharArray(gSample.Time, gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S], gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F], gSample.Cycles, gSample.Cycles >> 1, buffer, 0, out int len);
+
+                            if (success)
+                            {
+                                string logLine = new string(buffer, 0, len);
+
+                                var queue = StopLogQueues;
+                                queue.Enqueue(new LogEntry { HalfCycle = halfCycles, Line = logLine });
+                                int minHalfCycleToKeep = halfCycles - 49;
+                                while (queue.Count > 2000) // 保留最多 最后两千行
                                 {
-                                    var task1 = Task.Run(() => GetSeriesPoint());
-                                    LastRecordedCountHalfCycle = currentHalfCyclez;
+                                    queue.Dequeue(); // 移除最旧的
+                                }
+
+                                //判断停止条件
+                                if (nCycleCount > 2000 && gSample.Cycles /*>> 1*/ >= nTestCount)
+                                {
+                                    if (halfCycles > 0)
+                                    {
+                                        string logBlock = string.Join(Environment.NewLine, queue.Select(e => e.Line)) + Environment.NewLine;
+
+                                        //提交至日志队列
+                                        AsyncStopLogger.EnqueueLog(logBlock);
+                                    }
                                 }
                             }
+
+                            ArrayPool<char>.Shared.Return(buffer);
+
                         }
 
                         strBlockLog.Append(strCSVLog + "\r\n");
