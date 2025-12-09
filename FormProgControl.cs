@@ -304,8 +304,8 @@ namespace DoPENetConnect
                     cmd[6] = cmdParams[7].Split(':').ElementAt(1).Substring(0, cmdParams[7].Split(':').ElementAt(1).IndexOf("mm"));//目标值
                     ProgStatus.TimesForWave = 0;//计数器清零
                                                 //pos 指令
-                    aaa++;
-                    Console.WriteLine("wave{0}", aaa);
+                    //aaa++;
+                    //Console.WriteLine("wave{0}", aaa);
                     direction = DirectionAdjust(ProgStatus.pos, double.Parse(cmd[1]));
                     MainForm.mainform.MoveDynCycles(ProgramWaveForm[cmd[0]], false, DoPE.DYN_PEAKCTRL.ONE, DoPE.CTRL.POS, false, double.Parse(cmd[5])/60, double.Parse(cmd[1]), double.Parse(cmd[2]),0, 0, double.Parse(cmd[3]),int.Parse(cmd[4])*2, 0, double.Parse(cmd[1])+ double.Parse(cmd[2]), 0);
                     break;

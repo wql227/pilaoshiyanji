@@ -1295,7 +1295,7 @@ namespace DoPENetConnect
                     g_Load = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F];
                     //试验力队列
                     PVLoadQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                    if (PVLoadQueue.Count >= 1000)
+                    if (PVLoadQueue.Count >= 200)
                     {
                         PVLoadList = PVLoadQueue.Distinct().ToList();
 
@@ -1424,17 +1424,17 @@ namespace DoPENetConnect
                             #endregion 判断试验力峰谷值
                         }
 
-                        while (PVLoadQueue.Count > 1000)
+                        while (PVLoadQueue.Count > 200)
                         {
                             PVLoadQueue.Dequeue();
                         }
 
-                        while (PVLoadMaxAverageList.Count > 1000)
+                        while (PVLoadMaxAverageList.Count > 200)
                         {
                             PVLoadMaxAverageList.RemoveRange(0, PVLoadMaxAverageList.Count / 2);
                         }
 
-                        while (PVLoadMinAverageList.Count > 1000)
+                        while (PVLoadMinAverageList.Count > 200)
                         {
                             PVLoadMinAverageList.RemoveRange(0, PVLoadMinAverageList.Count / 2);
                         }
@@ -1823,12 +1823,12 @@ namespace DoPENetConnect
                                 {
                                     //Console.WriteLine("glm cycleafter{0}", gSample.Cycles);
                                     //清除上次计数
-                                    //DoPE.ERR err = MyEdc.Block.Header(3, DoPE.CMD_MODE.MESSAGE); // 3次循环，启用中间消息
-                                    //                                                             // 后续添加具体命令（如 DoPEPosExt、DoPEHaltW）
-                                    //                                                             // 执行命令块时，Cycles 自动清零
-                                    //err = MyEdc.Block.Execute(DoPE.CMD_OPERATION.START, ref MyTan);
+                                    DoPE.ERR err = MyEdc.Block.Header(3, DoPE.CMD_MODE.MESSAGE); // 3次循环，启用中间消息
+                                                                                                 // 后续添加具体命令（如 DoPEPosExt、DoPEHaltW）
+                                                                                                 // 执行命令块时，Cycles 自动清零
+                                    err = MyEdc.Block.Execute(DoPE.CMD_OPERATION.START, ref MyTan);
 
-                                    //err = MyEdc.Move.SHalt(ref MyTan);
+                                    err = MyEdc.Move.SHalt(ref MyTan);
                                     //DoPE.ERR error = MyEdc.Move.Halt(DoPE.CTRL.POS, ref MyTan);
                                     //if(LoadUnit == "")
                                     progControl.CmdSwitch(g_Position, g_Load/1000, g_Extension, 1);   //当最后一个参数为1表示动态试验完成，结束wave过程
@@ -3201,10 +3201,10 @@ namespace DoPENetConnect
                                     axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
                                 }
 
-                                if (bShowExtension)
-                                {
-                                    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
-                                }
+                                //if (bShowExtension)
+                                //{
+                                //    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
+                                //}
 
                                 if (bShowCommand)
                                 {
