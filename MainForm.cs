@@ -809,7 +809,7 @@ namespace DoPENetConnect
                 DoPE.Machine Machine = new DoPE.Machine(0);
                 MyEdc.Setup.RdMachine(DoPE.MACHINE_NUMBER.MACHINE_1, ref Machine);
                 //SampleFrequency = 0.2;
-                int x = (Int32)((SampleFrequency / 1000) / Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2);
+                //int x = (Int32)((SampleFrequency / 1000) / Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2);
                 MyEdc.Eh.SetOnDataBlockSize((Int32)((SampleFrequency / 1000) / Machine.MDef.SystemTime + Machine.MDef.SystemTime / 2));
                 MyEdc.Eh.OnDataBlockHdlr += new DoPE.OnDataBlockHdlr(OnDataBlock);
                 MyEdc.Eh.OnCommandErrorHdlr += new DoPE.OnCommandErrorHdlr(OnCommandError);
