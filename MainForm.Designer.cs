@@ -53,6 +53,7 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbk_Skin = new System.Windows.Forms.ComboBox();
             this.panelEx10 = new DevComponents.DotNetBar.PanelEx();
             this.buttonX22 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX21 = new DevComponents.DotNetBar.ButtonX();
@@ -350,6 +351,7 @@
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timerDataClean = new System.Windows.Forms.Timer(this.components);
             this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -484,6 +486,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cbk_Skin);
             this.groupBox1.Controls.Add(this.panelEx10);
             this.groupBox1.Controls.Add(this.statusStrip1);
             this.groupBox1.Controls.Add(this.menuStrip2);
@@ -495,6 +498,17 @@
             this.groupBox1.Size = new System.Drawing.Size(1582, 697);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
+            // 
+            // cbk_Skin
+            // 
+            this.cbk_Skin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbk_Skin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbk_Skin.FormattingEnabled = true;
+            this.cbk_Skin.Location = new System.Drawing.Point(1462, 674);
+            this.cbk_Skin.Name = "cbk_Skin";
+            this.cbk_Skin.Size = new System.Drawing.Size(118, 20);
+            this.cbk_Skin.TabIndex = 74;
+            this.cbk_Skin.SelectedIndexChanged += new System.EventHandler(this.cbk_Skin_SelectedIndexChanged);
             // 
             // panelEx10
             // 
@@ -4184,6 +4198,11 @@
             // 
             this.comboItem1.Text = "EDC0";
             // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4560,6 +4579,8 @@
         private System.Windows.Forms.ToolStripStatusLabel UnitName;
         private System.Windows.Forms.ToolStripStatusLabel UnitContent;
         private DevComponents.DotNetBar.LabelX labelX33;
+        private System.Windows.Forms.ComboBox cbk_Skin;
+        private DevComponents.DotNetBar.StyleManager styleManager1;
     }
 }
 

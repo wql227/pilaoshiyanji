@@ -1660,6 +1660,7 @@ namespace DoPENetConnect
 
         #endregion 菜单选项响应事件
 
+        public int themeComboIndex = 0;
         //protected override void WndProc(ref Message m)
         //{
         //    if (m.Msg == 0x0014) // 禁掉清除背景消息
@@ -1680,6 +1681,19 @@ namespace DoPENetConnect
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+
+            //添加皮肤种类
+            var skinNames = Enum.GetNames(typeof(eStyle));
+            foreach (string skin in skinNames)
+            {
+                this.cbk_Skin.Items.Add(skin);
+            }
+            this.cbk_Skin.SelectedIndex = themeComboIndex;
+
+            if (Enum.TryParse<eStyle>(this.cbk_Skin.Text, out var result))
+            {
+                this.styleManager1.ManagerStyle = result;
+            }
 
             timer_UpdateData.Interval = 300;
 
@@ -6256,6 +6270,21 @@ namespace DoPENetConnect
             //保存位移时间曲线
             OpenFolder(reportPath);
         }
-		
+
+        private void cbk_Skin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Enum.TryParse<eStyle>(this.cbk_Skin.Text, out var result))
+            {
+                this.styleManager1.ManagerStyle = result;
+            }
+            IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
+            string strTmp = "";
+            string strConfigSetion = this.Name;
+
+
+            //保存选择的皮肤
+            strTmp = cbk_Skin.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("Setting", "Theme", strTmp);
+        }
     }
 }
