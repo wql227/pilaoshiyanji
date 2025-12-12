@@ -518,7 +518,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -4011,6 +4011,7 @@ namespace DoPENetConnect
         private void ToolStripMenuItem_SystemSetting_Click(object sender, EventArgs e)
         {
             FrmSystemSetting frmSystemSetting = new FrmSystemSetting();
+            frmSystemSetting.RefreshColor(cbk_Skin.SelectedIndex);
             frmSystemSetting.Location = new Point(this.Location.X + (this.Width - frmSystemSetting.Width) / 2, 150);
             frmSystemSetting.ShowDialog();
         }
