@@ -6285,6 +6285,17 @@ namespace DoPENetConnect
             //保存选择的皮肤
             strTmp = cbk_Skin.SelectedIndex.ToString();
             IniFileHelper.WriteIniString("Setting", "Theme", strTmp);
+
+            //更新不能更新的皮肤
+            RefreshColor();
+        }
+
+        public void RefreshColor()
+        {
+            //mainform
+            tabControlPanel1.Style.BackColor1.Color = panelEx10.Style.BackColor2.Color;
+            tabControlPanel1.Style.BackColor2.Color = panelEx10.Style.BackColor1.Color;
+            tabControlPanel1.Style.BorderColor.Color = panelEx10.Style.BorderColor.Color;
         }
     }
 }
