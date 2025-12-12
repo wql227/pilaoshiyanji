@@ -28,6 +28,8 @@ namespace DoPENetConnect
             balloonTip1.SetBalloonText(textBoxX1, "输入密码后按回车键登录");
             LoadIni();
             //Console.WriteLine("login shown");
+
+            RefreshColor();
         }
 
         public void LoadIni()
@@ -192,6 +194,12 @@ namespace DoPENetConnect
                     textBoxX3.Enabled = true;
                     break;
             }
+        }
+        
+        public void RefreshColor()
+        {
+            this.BackColor = groupPanel1.Style.BackColor2;
+
         }
     }
 }

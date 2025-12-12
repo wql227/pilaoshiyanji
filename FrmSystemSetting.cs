@@ -853,12 +853,84 @@ namespace DoPENetConnect
 
         }
 
-        public void RefreshColor()
+        public Color GetColorByIndex(int colorIndex)
         {
+            Color color2Set = Color.Red;
+            switch (colorIndex)
+            {
+                case 0:
+                    color2Set = Color.FromArgb(190, 218, 255);
+                    break;
+                case 1:
+                    color2Set = Color.FromArgb(204, 208, 213);
+                    break;
+                case 2:
+                    color2Set = Color.FromArgb(204, 208, 213);
+                    break;
+                case 3:
+                    color2Set = Color.FromArgb(236, 240, 248);
+                    break;
+                case 4:
+                    color2Set = Color.FromArgb(236, 239, 243);
+                    break;
+                case 5:
+                    color2Set = Color.FromArgb(223, 234, 245);
+                    break;
+                case 6:
+                    color2Set = Color.FromArgb(174, 174, 174);
+                    break;
+                case 7:
+                    color2Set = Color.FromArgb(228, 237, 248);
+                    break;
+                case 8:
+                    color2Set = Color.FromArgb(182, 193, 211);
+                    break;
+                case 9:
+                    color2Set = Color.FromArgb(242, 242, 242);
+                    break;
+                case 10:
+                    color2Set = Color.FromArgb(239, 239, 242); //Color.FromArgb(226, 226, 229);
+                    break;
+                case 11:
+                    color2Set = Color.FromArgb(239, 239, 242);
+                    break;
+                case 12:
+                    color2Set = Color.FromArgb(45, 45, 48);
+                    break;
+                case 13:
+                    color2Set = Color.FromArgb(255, 255, 255);
+                    break;
+                case 14:
+                    color2Set = Color.FromArgb(255, 255, 255);
+                    break;
+            }
+            return color2Set;
+        }
 
-            panelEx5.Style.BackColor1.Color = panelEx10.Style.BackColor2.Color;
-            //tabControlPanel1.Style.BackColor2.Color = panelEx10.Style.BackColor1.Color;
-            //tabControlPanel1.Style.BorderColor.Color = panelEx10.Style.BorderColor.Color;
+        public void RefreshColor(int styleIndex)
+        {
+            Color color2Set = GetColorByIndex(styleIndex);
+            panelEx5.Style.BackColor1.Color = color2Set;
+            panelEx5.Style.BackColor2.Color = color2Set;
+
+            panelEx10.Style.BackColor1.Color = color2Set;
+            panelEx10.Style.BackColor2.Color = color2Set;
+
+            panelEx2.Style.BackColor1.Color = color2Set;
+            panelEx2.Style.BackColor2.Color = color2Set;
+
+            panelEx7.Style.BackColor1.Color = color2Set;
+            panelEx7.Style.BackColor2.Color = color2Set;
+
+            panelEx9.Style.BackColor1.Color = color2Set;
+            panelEx9.Style.BackColor2.Color = color2Set;
+
+            panelEx4.Style.BackColor1.Color = color2Set;
+            panelEx4.Style.BackColor2.Color = color2Set;
+
+            panelEx3.Style.BackColor1.Color = color2Set;
+            panelEx3.Style.BackColor2.Color = color2Set;
+
         }
 
         /// <summary>
