@@ -853,6 +853,13 @@ namespace DoPENetConnect
 
         }
 
+        public void RefreshColor()
+        {
+
+            panelEx5.Style.BackColor1.Color = panelEx10.Style.BackColor2.Color;
+            //tabControlPanel1.Style.BackColor2.Color = panelEx10.Style.BackColor1.Color;
+            //tabControlPanel1.Style.BorderColor.Color = panelEx10.Style.BorderColor.Color;
+        }
 
         /// <summary>
         /// 校验各项数据

@@ -1693,6 +1693,8 @@ namespace DoPENetConnect
             if (Enum.TryParse<eStyle>(this.cbk_Skin.Text, out var result))
             {
                 this.styleManager1.ManagerStyle = result;
+                //更新不能更新的皮肤
+                RefreshColor();
             }
 
             timer_UpdateData.Interval = 300;
@@ -3998,6 +4000,11 @@ namespace DoPENetConnect
                 guiExtension.Text = decimalExtenssion; //刚开机按照设置的小数位数来显示数值
                 tb_MaxExt.Text = decimalExtenssion;  //刚开机按照设置的小数位数来显示数值
             }
+
+            //主题
+            IniFileHelper.GetIniString("Setting", "Theme", "-1", strTmp, strTmp.Capacity);
+            themeComboIndex = int.Parse(strTmp.ToString());
+            if (themeComboIndex == -1) themeComboIndex = 0;
 
         }
 
