@@ -3908,7 +3908,8 @@ namespace DoPENetConnect
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             // }
             //devId = new StringBuilder("02132F05");
-            devId = new StringBuilder("02137E43");
+            //devId = new StringBuilder("02137E43");
+            devId = new StringBuilder("007AC88C");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
