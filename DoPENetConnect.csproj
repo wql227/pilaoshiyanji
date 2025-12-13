@@ -76,9 +76,8 @@
       <HintPath>ReferenceAssembly\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.Instrumentation, Version=14.1.0.37, Culture=neutral, PublicKeyToken=f90dc37c26666a67, processorArchitecture=MSIL" />
-    <Reference Include="DoPE10x64Net, Version=10.23.0.0, Culture=neutral, PublicKeyToken=c82e33ffce8aa572, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>ReferenceAssembly\DoPE10x64Net.dll</HintPath>
+    <Reference Include="DoPE10Net">
+      <HintPath>ReferenceAssembly\DoPE10Net.dll</HintPath>
     </Reference>
     <Reference Include="Enums.NET, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7ea1c1650d506225, processorArchitecture=MSIL">
       <HintPath>packages\Enums.NET.5.0.0\lib\net461\Enums.NET.dll</HintPath>
@@ -382,16 +381,6 @@
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <Reference Include="DoPE10Net">
-      <HintPath>$(OutDir)DoPE10Net.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86'">
-    <Reference Include="DoPE10Net">
-      <HintPath>$(OutDir)DoPE10Net.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
     <Content Include="ICON.ico" />
   </ItemGroup>

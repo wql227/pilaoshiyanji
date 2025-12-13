@@ -518,7 +518,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -3764,7 +3764,7 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             //}
-            devId = new StringBuilder("0214C57D");
+            devId = new StringBuilder("02137E43");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
