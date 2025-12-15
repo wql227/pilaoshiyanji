@@ -455,11 +455,9 @@ namespace DoPENetConnect
             //设置曲线初始值
             //CurveSet("时间(s)", " 位 \n\n 移 \n\n(mm)");
             CurveSet("s", "mm", "位移—时间曲线");   //默认显示位移时间曲线
+            
             chart_series_show(0);
             chart_series_show(4);   //不显示命令曲线
-
-            //添加图标滚轮响应事件
-            this.chart_machine.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_machine_MouseWheel);
         }
 
         /// <summary>
@@ -470,20 +468,6 @@ namespace DoPENetConnect
             label1.Text = axisYTitle;
             chart_machine.ChartAreas[0].AxisX.Title = axisXTitle;
             label2.Text = seriesName;
-        }
-
-        private void chart_machine_MouseWheel(object sender, MouseEventArgs e)
-        {            
-            // 实验发现鼠标滚轮滚动一圈时e.Delta = 120，正反转对应正负120
-            if (chart_machine.ChartAreas[0].AxisX.ScaleView.Size > 0) // 防止越过左边界
-            {
-                chart_machine.ChartAreas[0].AxisX.ScaleView.Size += (e.Delta / 120); // 每次缩放1
-            }
-            else if (e.Delta > 0)
-            {
-                //chart_machine.ChartAreas[0].AxisY.ScaleView.Size += (e.Delta*10 / 120); // 每次缩放1
-                chart_machine.ChartAreas[0].AxisX.ScaleView.Size += (e.Delta * 10 / 120); // 每次缩放1
-            }           
         }
 
         public void SetRealtimeParamComParams(string comNo, string interval)
@@ -5165,6 +5149,15 @@ namespace DoPENetConnect
         {
             if (seriesIndex == 0)     //显示位移时间曲线
             {
+                axTChart1.Series(0).Active = true;
+                axTChart1.Series(1).Active = false;
+                axTChart1.Series(2).Active = false;
+                axTChart1.Series(4).Active = false;
+                axTChart1.Series(5).Active = false;
+                axTChart1.Axis.Left.Title.Caption = "mm";
+                axTChart1.Axis.Bottom.Title.Caption = "s";
+                axTChart1.Header.Text.Text = "位移—时间曲线";
+
                 chart_machine.Series[0].Enabled = true;
                 chart_machine.Series[1].Enabled = false;
                 chart_machine.Series[2].Enabled = false;
@@ -5174,6 +5167,15 @@ namespace DoPENetConnect
             }
             else if (seriesIndex == 1) //试验力时间曲线
             {
+                axTChart1.Series(0).Active = false;
+                axTChart1.Series(1).Active = true;
+                axTChart1.Series(2).Active = false;
+                axTChart1.Series(4).Active = false;
+                axTChart1.Series(5).Active = false;
+                axTChart1.Axis.Left.Title.Caption = "kN";
+                axTChart1.Axis.Bottom.Title.Caption = "s";
+                axTChart1.Header.Text.Text = "试验力—时间曲线";
+
                 chart_machine.Series[0].Enabled = false;
                 chart_machine.Series[1].Enabled = true;
                 chart_machine.Series[2].Enabled = false;
@@ -5183,6 +5185,15 @@ namespace DoPENetConnect
             }
             else if (seriesIndex == 2)    //变形时间曲线
             {
+                axTChart1.Series(0).Active = false;
+                axTChart1.Series(1).Active = false;
+                axTChart1.Series(2).Active = true;
+                axTChart1.Series(4).Active = false;
+                axTChart1.Series(5).Active = false;
+                axTChart1.Axis.Left.Title.Caption = "mm";
+                axTChart1.Axis.Bottom.Title.Caption = "s";
+                axTChart1.Header.Text.Text = "变形—时间曲线";
+
                 chart_machine.Series[0].Enabled = false;
                 chart_machine.Series[1].Enabled = false;
                 chart_machine.Series[2].Enabled = true;
@@ -5192,14 +5203,27 @@ namespace DoPENetConnect
             }
             else if (seriesIndex == 3)           //命令曲线显示
             {
+
+                axTChart1.Series(3).Active = true;
                 chart_machine.Series[3].Enabled = true;
             }
             else if (seriesIndex == 4)          //命令曲线不显示
             {
+
+                axTChart1.Series(3).Active = false;
                 chart_machine.Series[3].Enabled = false;
             }
             else if (seriesIndex == 5)    //显示试验力位移曲线
             {
+                axTChart1.Series(0).Active = false;
+                axTChart1.Series(1).Active = false;
+                axTChart1.Series(2).Active = false;
+                axTChart1.Series(4).Active = true;
+                axTChart1.Series(5).Active = false;
+                axTChart1.Axis.Left.Title.Caption = "kN";
+                axTChart1.Axis.Bottom.Title.Caption = "mm";
+                axTChart1.Header.Text.Text = "试验力—位移曲线";
+
                 chart_machine.Series[0].Enabled = false;
                 chart_machine.Series[1].Enabled = false;
                 chart_machine.Series[2].Enabled = false;
@@ -5209,6 +5233,15 @@ namespace DoPENetConnect
             }
             else if (seriesIndex == 6)    //显示试验力变形曲线
             {
+                axTChart1.Series(0).Active = false;
+                axTChart1.Series(1).Active = false;
+                axTChart1.Series(2).Active = false;
+                axTChart1.Series(4).Active = false;
+                axTChart1.Series(5).Active = true;
+                axTChart1.Axis.Left.Title.Caption = "kN";
+                axTChart1.Axis.Bottom.Title.Caption = "mm";
+                axTChart1.Header.Text.Text = "试验力—变形曲线";
+
                 chart_machine.Series[0].Enabled = false;
                 chart_machine.Series[1].Enabled = false;
                 chart_machine.Series[2].Enabled = false;
@@ -6321,7 +6354,7 @@ namespace DoPENetConnect
                     mMouseUpCounter = 0;
                     tStop = DateTime.Now;
                     int mSeconds = (tStop - tStart).Milliseconds;
-                    if (mSeconds < 500) {
+                    if (mSeconds < 300) {
                         contextMenuStrip1.Show(MousePosition);
                     }
                 }
