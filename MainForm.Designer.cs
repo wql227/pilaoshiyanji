@@ -564,12 +564,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.axTChart1.Enabled = true;
-            this.axTChart1.Location = new System.Drawing.Point(-1, 4);
+            this.axTChart1.Location = new System.Drawing.Point(-1, 108);
             this.axTChart1.Margin = new System.Windows.Forms.Padding(0);
             this.axTChart1.Name = "axTChart1";
             this.axTChart1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart1.OcxState")));
-            this.axTChart1.Size = new System.Drawing.Size(1300, 513);
+            this.axTChart1.Size = new System.Drawing.Size(1091, 409);
             this.axTChart1.TabIndex = 94;
+            this.axTChart1.OnMouseUp += new AxTeeChart.ITChartEvents_OnMouseUpEventHandler(this.axTChart1_OnMouseUp);
             // 
             // buttonX22
             // 

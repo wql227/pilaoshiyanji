@@ -518,7 +518,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -6305,5 +6305,28 @@ namespace DoPENetConnect
             tabControlPanel1.Style.BackColor2.Color = panelEx10.Style.BackColor1.Color;
             tabControlPanel1.Style.BorderColor.Color = panelEx10.Style.BorderColor.Color;
         }
+
+        int mMouseUpCounter = 0;
+        DateTime tStart, tStop;
+        private void axTChart1_OnMouseUp(object sender, AxTeeChart.ITChartEvents_OnMouseUpEvent e)
+        {
+            if (e.button == TeeChart.EMouseButton.mbRight)
+            {
+                if (mMouseUpCounter == 0)
+                {
+                    tStart = DateTime.Now;
+                    mMouseUpCounter++;
+                }
+                else if (mMouseUpCounter == 1) {
+                    mMouseUpCounter = 0;
+                    tStop = DateTime.Now;
+                    int mSeconds = (tStop - tStart).Milliseconds;
+                    if (mSeconds < 500) {
+                        contextMenuStrip1.Show(MousePosition);
+                    }
+                }
+            }
+        }
+
     }
 }
