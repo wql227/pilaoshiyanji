@@ -564,11 +564,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.axTChart1.Enabled = true;
-            this.axTChart1.Location = new System.Drawing.Point(-1, 108);
+            this.axTChart1.Location = new System.Drawing.Point(-1, 88);
             this.axTChart1.Margin = new System.Windows.Forms.Padding(0);
             this.axTChart1.Name = "axTChart1";
             this.axTChart1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart1.OcxState")));
-            this.axTChart1.Size = new System.Drawing.Size(1091, 409);
+            this.axTChart1.Size = new System.Drawing.Size(1091, 429);
             this.axTChart1.TabIndex = 94;
             this.axTChart1.OnMouseUp += new AxTeeChart.ITChartEvents_OnMouseUpEventHandler(this.axTChart1_OnMouseUp);
             // 
@@ -794,8 +794,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel10);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Location = new System.Drawing.Point(1301, 3);
             this.superTabControl4.MaximumSize = new System.Drawing.Size(0, 419);
             this.superTabControl4.MinimumSize = new System.Drawing.Size(285, 419);
