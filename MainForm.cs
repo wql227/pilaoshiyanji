@@ -1366,7 +1366,7 @@ namespace DoPENetConnect
             LogHelper.SaveResult(tb_MaxLoad.Text, doTest);    //存取最大力
             dataGridViewX2.Rows[0].Cells[3].Value = tb_MaxLoad.Text;
 
-            chart_machine.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+            //chart_machine.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
 
         }
 
@@ -1752,8 +1752,13 @@ namespace DoPENetConnect
             {
                 axTChart1.Series(i).Clear();
             }
-            //axTChart1.Axis.Left.SetMinMax(-20, 20);
-            //axTChart1.Axis.Bottom.SetMinMax(0, 20);
+            x_Position = 0;
+            x_Extension = 0;
+            x_Load = 0;
+            x_Command = 0;
+
+            axTChart1.Axis.Left.SetMinMax(-10, 10);
+            axTChart1.Axis.Bottom.SetMinMax(0, 10);
             axTChart1.Axis.Left.Automatic = true;
             axTChart1.Axis.Bottom.Automatic = true;
 
@@ -5606,8 +5611,8 @@ namespace DoPENetConnect
             string picName = Path.Combine(path, "tmp.png");
             string chartName = GetCurrentCurveName();
             string picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
-            chart_machine.SaveImage(picName, ChartImageFormat.Png);
-            AddTextToImage(picName, label1.Text, "宋体",12, picName1,label2.Text);
+            axTChart1.Export.asPNG.SaveToFile(picName);
+            ReNameImage(picName,picName1);
         }
 
 
@@ -5640,38 +5645,38 @@ namespace DoPENetConnect
             string picName = Path.Combine(path, "tmp.png");
             string chartName = GetCurrentCurveName();
             string picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
-            chart_machine.SaveImage(picName, ChartImageFormat.Png);
-            AddTextToImage(picName, label1.Text, "宋体", 12, picName1, label2.Text);
+            axTChart1.Export.asPNG.SaveToFile(picName);
+            ReNameImage(picName, picName1);
 
             //保存试验力时间曲线
             toolStripMenuItem1_Click(this, new EventArgs());     //切换至试验力时间曲线
             //string tampName=Path.Combine(path, "StaticData");
             chartName = GetCurrentCurveName();
             picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
-            chart_machine.SaveImage(picName, ChartImageFormat.Png);
-            AddTextToImage(picName, label1.Text, "宋体", 12, picName1, label2.Text);
+            axTChart1.Export.asPNG.SaveToFile(picName);
+            ReNameImage(picName, picName1);
 
             //保存变形时间曲线
             变形时间曲线ToolStripMenuItem_Click(this, new EventArgs());     //切换至变形时间曲线
             //string tampName=Path.Combine(path, "StaticData");
             chartName = GetCurrentCurveName();
             picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
-            chart_machine.SaveImage(picName, ChartImageFormat.Png);
-            AddTextToImage(picName, label1.Text, "宋体", 12, picName1, label2.Text);
+            axTChart1.Export.asPNG.SaveToFile(picName);
+            ReNameImage(picName, picName1);
 
             //保存试验力位移曲线
             ToolStripMenuItemLoardDisplace_Click(this, new EventArgs());     //切换至变形时间曲线
             //string tampName=Path.Combine(path, "StaticData");
             chartName = GetCurrentCurveName();
             picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
-            chart_machine.SaveImage(picName, ChartImageFormat.Png);
-            AddTextToImage(picName, label1.Text, "宋体", 12, picName1, label2.Text);
+            axTChart1.Export.asPNG.SaveToFile(picName);
+            ReNameImage(picName, picName1);
 
             //设回曲线参数
             realtimeParams.CurrentCurveType = currentCurveType;
-            CurveSet(currentXAxisTitle, currentYAxisUnit, curveName);
+            //CurveSet(currentXAxisTitle, currentYAxisUnit, curveName);
             chart_series_show(currentCurveType);
-            AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
+            //AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
 
         }
 
@@ -5722,6 +5727,21 @@ namespace DoPENetConnect
 
             graphics.DrawString(text, font, brush,label1.Location);
             graphics.DrawString(text1, font, brush, label2.Location);
+
+            // 保存修改后的图片
+            bitmap.Save(savePath);
+            //bitmap.Dispose();
+
+            File.Delete(imagePath);
+        }
+
+        public void ReNameImage(string imagePath,string savePath)
+        {
+
+            Image image = Image.FromFile(imagePath);
+
+            Bitmap bitmap = new Bitmap(image);
+            image.Dispose();    //释放图像资源            
 
             // 保存修改后的图片
             bitmap.Save(savePath);
