@@ -1756,7 +1756,6 @@ namespace DoPENetConnect
             x_Extension = 0;
             x_Load = 0;
             x_Command = 0;
-
             axTChart1.Axis.Left.SetMinMax(-10, 10);
             axTChart1.Axis.Bottom.SetMinMax(0, 10);
             axTChart1.Axis.Left.Automatic = true;
@@ -4389,11 +4388,7 @@ namespace DoPENetConnect
                     #endregion
 
                     #region reset chart zoom
-                    while (chart_machine.ChartAreas[0].AxisX.ScaleView.IsZoomed)
-                    {
-                        chart_machine.ChartAreas[0].AxisX.ScaleView.ZoomReset();
-                    }
-
+                    axTChart1.Zoom.Undo();
                     #endregion
 
 
@@ -4409,39 +4404,40 @@ namespace DoPENetConnect
                     DataPoint dpLoadExt = null;
                     DataPoint dpZero = null;
 
-                    //List<DataPoint> points = new List<DataPoint>();
+                    ////List<DataPoint> points = new List<DataPoint>();
 
-                    while(chart_machine.Series[0].Points.Count>0)
+                    //while(chart_machine.Series[0].Points.Count>0)
+                    //{
+                    //    chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
+                    //}
+                    //while (chart_machine.Series[1].Points.Count > 0)
+                    //{
+                    //    chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
+                    //}
+                    //while (chart_machine.Series[2].Points.Count > 0)
+                    //{
+                    //    chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
+                    //}
+                    //while (chart_machine.Series[3].Points.Count > 0)
+                    //{
+                    //    chart_machine.Series[3].Points.RemoveAt(chart_machine.Series[3].Points.Count - 1);
+                    //}
+                    //while (chart_machine.Series[4].Points.Count > 0)
+                    //{
+                    //    chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
+                    //}
+                    //while (chart_machine.Series[5].Points.Count > 0)
+                    //{
+                    //    chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
+                    //}
+
+                    for (int i = 0; i < axTChart1.SeriesCount; i++)
                     {
-                        chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
-                    }
-                    while (chart_machine.Series[1].Points.Count > 0)
-                    {
-                        chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
-                    }
-                    while (chart_machine.Series[2].Points.Count > 0)
-                    {
-                        chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
-                    }
-                    while (chart_machine.Series[3].Points.Count > 0)
-                    {
-                        chart_machine.Series[3].Points.RemoveAt(chart_machine.Series[3].Points.Count - 1);
-                    }
-                    while (chart_machine.Series[4].Points.Count > 0)
-                    {
-                        chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
-                    }
-                    while (chart_machine.Series[5].Points.Count > 0)
-                    {
-                        chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
+                        axTChart1.Series(i).Clear();
                     }
 
-                    //chart_machine.Series[0].Points.Clear();
-                    //chart_machine.Series[1].Points.Clear();
-                    //chart_machine.Series[2].Points.Clear();
-                    //chart_machine.Series[3].Points.Clear();
-                    //chart_machine.Series[4].Points.Clear();
-                    //chart_machine.Series[5].Points.Clear();
+                    axTChart1.Axis.Left.Automatic = true;
+                    axTChart1.Axis.Bottom.Automatic = true;
 
                     if (trCsvData != null && trCsvData.Rows.Count >= 1)
                     {
@@ -4464,22 +4460,17 @@ namespace DoPENetConnect
                             double realX = 0;
                             //if (i != 7)
                             {
-                                realX = strX - double.Parse(trCsvData.Rows[0][0].ToString()); 
+                                realX = strX - double.Parse(trCsvData.Rows[0][0].ToString());
                             }
-                            
-                            dpPos = new DataPoint(realX, strYPos);
-                            dpLoad = new DataPoint(realX, strYLoad);
-                            dpExt = new DataPoint(realX, strYExt);
-                            dpCommand = new DataPoint(realX, strYCommand);
-                            dpLoadPos = new DataPoint(strYPos, strYLoad);
-                            dpLoadExt = new DataPoint(strYExt, strYLoad);
 
-                            chart_machine.Series[0].Points.Add(dpPos);
-                            chart_machine.Series[1].Points.Add(dpLoad);
-                            chart_machine.Series[2].Points.Add(dpExt);
-                            chart_machine.Series[3].Points.Add(dpCommand);
-                            chart_machine.Series[4].Points.Add(dpLoadPos);
-                            chart_machine.Series[5].Points.Add(dpLoadExt);
+                            axTChart1.Series(0).AddXY(realX, strYPos, null, 0);
+                            axTChart1.Series(1).AddXY(realX, strYLoad,null,0);
+                            axTChart1.Series(2).AddXY(realX, strYExt, null, 0);
+                            axTChart1.Series(3).AddXY(realX, strYCommand, null, 0);
+                            axTChart1.Series(4).AddXY(strYPos, strYLoad,null,0);
+                            axTChart1.Series(5).AddXY(strYExt, strYLoad,null,0);
+
+                            
 
                             if (maxSeries0 < strYPos) maxSeries0 = strYPos;
                             if (minSeries0 > strYPos) minSeries0 = strYPos;
@@ -5172,7 +5163,7 @@ namespace DoPENetConnect
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CurveSet("s", " kN",toolStripMenuItem1.Text);
-            chart_series_show(1);
+            chart_series_show(1);            
             AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
 
         }
@@ -5282,6 +5273,16 @@ namespace DoPENetConnect
                 realtimeParams.CurrentCurveType = 5;
             }
 
+            //if (!isRunning) {
+            //    axTChart1.Axis.Left.Automatic = false;
+            //    axTChart1.Axis.Bottom.Automatic = false;
+            //    axTChart1.Axis.Left.Maximum = axTChart1.Axis.Left.Maximum + 10;
+            //    if (axTChart1.Axis.Left.Minimum >= 0)
+            //        axTChart1.Axis.Left.Minimum = 0;
+            //    else
+            //        axTChart1.Axis.Left.Minimum = axTChart1.Axis.Left.Minimum - 10;
+            //}
+
         }
 
         private void chart_machine_MouseClick(object sender, MouseEventArgs e)
@@ -5309,6 +5310,16 @@ namespace DoPENetConnect
                 // CleanChart();
             }
             SaveTestPngs();
+
+            //axTChart1.Axis.Left.Automatic = false;
+            ////axTChart1.Axis.Bottom.Automatic = false;
+            //double s0Max = axTChart1.Series(0).YValues.Maximum;
+            //axTChart1.Axis.Left.Maximum = s0Max+10;
+            //if (axTChart1.Series(0).YValues.Minimum >= 0)
+            //    axTChart1.Axis.Left.Minimum = 0;
+            //else
+            //    axTChart1.Axis.Left.Minimum = axTChart1.Series(0).YValues.Minimum - 10;
+
         }
 
         private void buttonX18_Click(object sender, EventArgs e)
@@ -6392,10 +6403,21 @@ namespace DoPENetConnect
         private void buttonX24_Click(object sender, EventArgs e)
         {
             //axTChart1.Series(0).Clear();
-            for (int i = 0; i < 1000; i++)
-            {
-                axTChart1.Series(0).AddXY(i, i+3, null, 0);
-            }
+            //for (int i = 0; i < 1000; i++)
+            //{
+            //    axTChart1.Series(0).AddXY(i, i+3, null, 0);
+            //}
+
+            //if (axTChart1.Zoom.Zoomed)
+            //{
+            //    axTChart1.Zoom.Undo();
+            //}
+
+            axTChart1.Axis.Left.Automatic = false;
+            axTChart1.Axis.Bottom.Automatic = false;
+            axTChart1.Axis.Left.Maximum = axTChart1.Axis.Left.Maximum + 20;
+            axTChart1.Axis.Left.Minimum = axTChart1.Axis.Left.Minimum - 20;
+
         }
 
         private void axTChart1_OnMouseUp(object sender, AxTeeChart.ITChartEvents_OnMouseUpEvent e)
