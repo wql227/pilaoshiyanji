@@ -1741,6 +1741,19 @@ namespace DoPENetConnect
             //开机登录普通账户
             userInfo.userName = "普通操作者";
             userInfo.isLogged = true;
+
+            //初始化teechart控件
+            InitTeeChart();
+        }
+
+        public void InitTeeChart()
+        {
+            for (int i = 0; i < axTChart1.SeriesCount; i++)
+            {
+                axTChart1.Series(i).Clear();
+            }
+            axTChart1.Axis.Left.SetMinMax(-20, 20);
+            axTChart1.Axis.Bottom.SetMinMax(0, 20);
         }
 
         public bool OpenCom()
@@ -4923,16 +4936,18 @@ namespace DoPENetConnect
                     //}
                     //frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
                     //                                 (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
-                    if (timerDataClean.Enabled)
-                    {
-                        MessageBox.Show("正在清理图标数据，请稍后再试！", "开始试验", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        ResetStartPoindOfSeries();
-                        timerDataClean.Start();
-                        //StartExperment();
-                    }
+
+                    StartExperment();
+                    //if (timerDataClean.Enabled)
+                    //{
+                    //    MessageBox.Show("正在清理图标数据，请稍后再试！", "开始试验", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                    //else
+                    //{
+                    //    ResetStartPoindOfSeries();
+                    //    timerDataClean.Start();
+                    //    //StartExperment();
+                    //}
 
                 }
 
@@ -4960,7 +4975,7 @@ namespace DoPENetConnect
             iLposMsgBox = 0;    //每次开始前清空显示限位信息标志
             realtimeParams.dataRecvTimes = 0;
             originParams = realtimeParams;
-            AutoFitMaxMinValClear();      //曲线参数初始化
+            //AutoFitMaxMinValClear();      //曲线参数初始化
             SetMaxMinControlsZero();
             buttonX15.Checked = true;
             buttonX16.Checked = false;
@@ -6341,6 +6356,12 @@ namespace DoPENetConnect
 
         int mMouseUpCounter = 0;
         DateTime tStart, tStop;
+
+        private void buttonX24_Click(object sender, EventArgs e)
+        {
+            axTChart1.Series(0).Clear();
+        }
+
         private void axTChart1_OnMouseUp(object sender, AxTeeChart.ITChartEvents_OnMouseUpEvent e)
         {
             if (e.button == TeeChart.EMouseButton.mbRight)
