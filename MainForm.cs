@@ -502,7 +502,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -1743,7 +1743,7 @@ namespace DoPENetConnect
             userInfo.isLogged = true;
 
             //初始化teechart控件
-            InitTeeChart();
+            //InitTeeChart();
         }
 
         public void InitTeeChart()
@@ -1752,8 +1752,11 @@ namespace DoPENetConnect
             {
                 axTChart1.Series(i).Clear();
             }
-            axTChart1.Axis.Left.SetMinMax(-20, 20);
-            axTChart1.Axis.Bottom.SetMinMax(0, 20);
+            //axTChart1.Axis.Left.SetMinMax(-20, 20);
+            //axTChart1.Axis.Bottom.SetMinMax(0, 20);
+            axTChart1.Axis.Left.Automatic = true;
+            axTChart1.Axis.Bottom.Automatic = true;
+
         }
 
         public bool OpenCom()
@@ -2704,7 +2707,7 @@ namespace DoPENetConnect
             dStep = 0.01*sampleRate/10;
             //dStep = 0.0005;
             //if (MyEdc.IsConnected() && bConnected)
-            if (chart_machine != null)
+            if (axTChart1 != null)
             {
                 if (!bPause)
                 {
@@ -2741,15 +2744,15 @@ namespace DoPENetConnect
                         if (minSeries0 > y_Position) minSeries0 = y_Position;
 
                         // Console.WriteLine("glm-{0}-{1}-{2}-{3}", y_Position, i,maxSeries0,minSeries0);
-                        if (chart_machine.Series == null)
+                        if (axTChart1.SeriesCount == 0)
                         {
                             return;
                         }
 
-                        if (chart_machine.Series[0] != null)
+                        if (axTChart1.Series(0) != null)
                         {
-                            chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
-
+                            //chart_machine.Series[0].Points.AddXY(x_Position, y_Position);
+                            axTChart1.Series(0).AddXY(x_Position, y_Position,null,0);
                             x_Position += dStep;
 
                             //if (chart_machine.Series[0].Points.Count >= nTotal )
@@ -2775,10 +2778,12 @@ namespace DoPENetConnect
                         if (maxSeries1 < y_Load) maxSeries1 = y_Load;
                         if (minSeries1 > y_Load) minSeries1 = y_Load;
 
-                        if (chart_machine.Series[1] != null)
+                        if (axTChart1.Series(1) != null)
                         {
-                            chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
-                           // Console.WriteLine("loadpoints-{0}-{1}", x_Load, y_Load);
+                            //chart_machine.Series[1].Points.AddXY(x_Load, y_Load);
+
+                            axTChart1.Series(1).AddXY(x_Load, y_Load, null, 0);
+                            // Console.WriteLine("loadpoints-{0}-{1}", x_Load, y_Load);
                             x_Load += dStep;
                             //if (chart_machine.Series[1].Points.Count >= nTotal)
                             //{
@@ -2803,9 +2808,11 @@ namespace DoPENetConnect
                         //}
                         if (maxSeries2 < y_Extension) maxSeries2 = y_Extension;
                         if (minSeries2 > y_Extension) minSeries2 = y_Extension;
-                        if (chart_machine.Series[2] != null)
+                        if (axTChart1.Series(2)!= null)
                         {
-                            chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
+                            //chart_machine.Series[2].Points.AddXY(x_Extension, y_Extension);
+
+                            axTChart1.Series(2).AddXY(x_Extension, y_Extension, null, 0);
                             x_Extension += dStep;
                             //if (chart_machine.Series[2].Points.Count >= nTotal)
                             //{
@@ -2834,9 +2841,10 @@ namespace DoPENetConnect
                         double minValue = Axis.Minimum;
                         double maxValue = Axis.Maximum;
 
-                        if (chart_machine.Series[3] != null)
+                        if (axTChart1.Series(3) != null)
                         {
-                            chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
+                            //chart_machine.Series[3].Points.AddXY(x_Command, y_Command);
+                            axTChart1.Series(3).AddXY(x_Command, y_Command, null, 0);
                             x_Command += dStep;
                             //if (chart_machine.Series[3].Points.Count >= nTotal)
                             //{
@@ -2847,15 +2855,19 @@ namespace DoPENetConnect
                             //}
                         }
 
-                        if (chart_machine.Series[4] != null)          //试验力-位移曲线添加数据
+                        if (axTChart1.Series(4) != null)          //试验力-位移曲线添加数据
                         {
-                            chart_machine.Series[4].Points.AddXY(y_Position, y_Load);
+                           // chart_machine.Series[4].Points.AddXY(y_Position, y_Load);
+
+                            axTChart1.Series(4).AddXY(y_Position, y_Load, null, 0);
 
                         }
 
-                        if (chart_machine.Series[5] != null)            //试验力-位移变形曲线添加数据
+                        if (axTChart1.Series(5) != null)            //试验力-位移变形曲线添加数据
                         {
-                            chart_machine.Series[5].Points.AddXY(y_Extension, y_Load);
+                            //chart_machine.Series[5].Points.AddXY(y_Extension, y_Load);
+
+                            axTChart1.Series(5).AddXY(y_Extension, y_Load, null, 0);
 
                         }
 
@@ -2868,7 +2880,7 @@ namespace DoPENetConnect
                     {
 
                         //autoFittingFlag = 0;
-                        AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);
+                       // AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);
                     }
                 }
 
@@ -4936,7 +4948,7 @@ namespace DoPENetConnect
                     //}
                     //frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
                     //                                 (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
-
+                    InitTeeChart();
                     StartExperment();
                     //if (timerDataClean.Enabled)
                     //{
@@ -6359,7 +6371,11 @@ namespace DoPENetConnect
 
         private void buttonX24_Click(object sender, EventArgs e)
         {
-            axTChart1.Series(0).Clear();
+            //axTChart1.Series(0).Clear();
+            for (int i = 0; i < 1000; i++)
+            {
+                axTChart1.Series(0).AddXY(i, i+3, null, 0);
+            }
         }
 
         private void axTChart1_OnMouseUp(object sender, AxTeeChart.ITChartEvents_OnMouseUpEvent e)
