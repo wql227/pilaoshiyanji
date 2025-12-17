@@ -5007,7 +5007,7 @@ namespace DoPENetConnect
                 //else if (comboBoxEx10.Text == "kN")
                 {
 
-                    lblLoad.Text = string.Format("试验力{0}", comboBoxEx10.Text);
+                    lblLoad.Text = string.Format("试验力[{0}]", comboBoxEx10.Text);
                 }
             }
             else if (comboBoxEx9.Text == "POS")
