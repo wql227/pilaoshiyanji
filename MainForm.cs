@@ -1621,7 +1621,9 @@ namespace DoPENetConnect
         private void ToolStripMenuItem_Login_Click(object sender, EventArgs e)
         {
             FrmLogin frmLogin = new FrmLogin();
+            
             frmLogin.Show();
+            frmLogin.SetLoginFormLocation(this.Location.X+300, this.Location.Y+200);
         }
 
 

@@ -32,6 +32,11 @@ namespace DoPENetConnect
             RefreshColor();
         }
 
+        public void SetLoginFormLocation(int x,int y)
+        {
+            this.Location = new Point(x, y);
+        }
+
         public void LoadIni()
         {
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
