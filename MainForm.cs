@@ -3466,8 +3466,8 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             //}02132F05
-            devId = new StringBuilder("02137E43");
-            //devId = new StringBuilder("02132F05");
+            //devId = new StringBuilder("02137E43");
+            devId = new StringBuilder("02132F05");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -5678,24 +5678,24 @@ namespace DoPENetConnect
             switch (realtimeParams.CurrentCurveType)
             {
                 case 0:     //位移时间
-                    picName = $"位移时间{dataTimeStr}.png";
+                    picName = $"位移时间{dataTimeStr}.bmp";
                     break;
                 case 1:     //力时间
-                    picName = $"试验力时间{dataTimeStr}.png";
+                    picName = $"试验力时间{dataTimeStr}.bmp";
                     break;
                 case 2:     //变形时间
-                    picName = $"变形时间{dataTimeStr}.png";
+                    picName = $"变形时间{dataTimeStr}.bmp";
                     break;
                 case 3:     //命令
                     break;
                 case 4:     //试验力位移
-                    picName = $"试验力位移{dataTimeStr}.png";
+                    picName = $"试验力位移{dataTimeStr}.bmp";
                     break;
                 case 5:    //试验力变形
-                    picName = $"试验力变形{dataTimeStr}.png";
+                    picName = $"试验力变形{dataTimeStr}.bmp";
                     break;
                 default:
-                    picName = $"试验力时间{dataTimeStr}.png";
+                    picName = $"试验力时间{dataTimeStr}.bmp";
                     break;
             }
 
