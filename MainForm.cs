@@ -454,7 +454,7 @@ namespace DoPENetConnect
 
             //设置曲线初始值
             //CurveSet("时间(s)", " 位 \n\n 移 \n\n(mm)");
-            CurveSet("s", "mm", "位移—时间曲线");   //默认显示位移时间曲线
+            //CurveSet("s", "mm", "位移—时间曲线");   //默认显示位移时间曲线
             
             chart_series_show(0);
             chart_series_show(4);   //不显示命令曲线
@@ -463,12 +463,12 @@ namespace DoPENetConnect
         /// <summary>
         /// 设置曲线初始值
         /// </summary>
-        public void CurveSet(string axisXTitle,string axisYTitle,string seriesName)
-        {
-            label1.Text = axisYTitle;
-            chart_machine.ChartAreas[0].AxisX.Title = axisXTitle;
-            label2.Text = seriesName;
-        }
+        //public void CurveSet(string axisXTitle,string axisYTitle,string seriesName)
+        //{
+        //    label1.Text = axisYTitle;
+        //    chart_machine.ChartAreas[0].AxisX.Title = axisXTitle;
+        //    label2.Text = seriesName;
+        //}
 
         public void SetRealtimeParamComParams(string comNo, string interval)
         {
@@ -1683,57 +1683,7 @@ namespace DoPENetConnect
 
             timer_UpdateData.Interval = 300;
 
-            btn_ConState.BackColor = Color.Red;
-            //取消平滑
-            //chart_DrawGraph.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-
-            //lightningChart1.ColorTheme = ColorTheme.SkyBlue;
-
-            //初始化chart控件
-            chart_machine.Series[0].Points.Clear();
-            //x_Position = 0.0;
-            chart_machine.Series[0].Points.AddXY(0.0, 0.0);
-
-            //试验力
-            chart_machine.Series[1].Points.Clear();
-            //x_Load = 0.0;
-            chart_machine.Series[1].Points.AddXY(0.0, 0.0);
-
-            //变形
-            chart_machine.Series[2].Points.Clear();
-            //x_Extenssion= 0.0;
-            chart_machine.Series[2].Points.AddXY(0.0, 0.0);
-
-            //试验力位移
-            chart_machine.Series[4].Points.Clear();
-            //x_Extenssion= 0.0;
-            chart_machine.Series[4].Points.AddXY(0.0, 0.0);
-
-
-
-            //// 获取或创建 ChartArea
-            //ChartArea chartArea = chart_machine.ChartAreas[0];
-
-            //// 设置主 Y 轴（左边）
-            //chartArea.AxisY.Title = "Position";
-
-            //// 添加副 Y 轴（右边）
-            //chartArea.AxisY2.Enabled = AxisEnabled.True;
-            //chartArea.AxisY2.Title = "Load";
-            //chartArea.AxisY2.LabelStyle.Enabled = true;
-
-            //// 为 Series[0] 设置使用主 Y 轴（AxisY）
-            //chart_machine.Series[0].YAxisType = AxisType.Primary;
-
-            //// 为 Series[1] 设置使用副 Y 轴（AxisY2）
-            //chart_machine.Series[1].YAxisType = AxisType.Secondary;
-
-            //// 可选：设置样式以区分两个系列
-            //chart_machine.Series[0].Color = Color.Blue;
-            //chart_machine.Series[1].Color = Color.Red;
-
-            chart_machine.ChartAreas[0].AxisX.Minimum = 0;
-            //chart_machine.ChartAreas[0].AxisX.Maximum = 5;
+            btn_ConState.BackColor = Color.Red;            
 
             //开串口
             OpenCom();
@@ -1896,26 +1846,7 @@ namespace DoPENetConnect
                                 break;
                             }
                         }
-                        for (int i = 0; i < chart_machine.ChartAreas[0].Axes.Count(); i++)
-                        {
-                            if (chart_machine.ChartAreas[0].Axes[i].Name == controlName)
-                            {
-                                //chart_machine.ChartAreas[0].Axes[i].Title = textValue;               //去掉Title的命名
-                                break;
-                            }
-                        }
-
-                        if (controlName.Contains("chartSeries"))
-                        {
-                            for (int i = 0; i < chart_machine.Series.Count(); i++)
-                            {
-                                if (controlName.Contains(i.ToString()))
-                                {
-                                    chart_machine.Series[i].Name = textValue;
-                                    break;
-                                }
-                            }
-                        }
+                        
                         if (controlName.Contains("toolStripStatusLabel"))
                         {
                             for (int i = 0; i < this.statusStrip1.Items.Count; i++)
@@ -2840,10 +2771,6 @@ namespace DoPENetConnect
                         //}
                         if (maxSeries3 < y_Command) maxSeries3 = y_Command;
                         if (minSeries3 > y_Command) minSeries3 = y_Command;
-                        var Axis = chart_machine.ChartAreas[0].AxisX;
-                        // 获取X轴的最小值和最大值
-                        double minValue = Axis.Minimum;
-                        double maxValue = Axis.Maximum;
 
                         if (axTChart1.Series(3) != null)
                         {
@@ -2900,139 +2827,139 @@ namespace DoPENetConnect
         }
         public void AutoFittingCurve(double series0maxY, double series0minY, double series1maxY, double series1minY, double series2maxY, double series2minY, double series3maxY, double series3minY)
         {
-            //Console.WriteLine("glmxxx-{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}-{8}",x_Position, series0maxY, series0minY, series1maxY, series1minY, series2maxY, series2minY, series3maxY, series3minY);
-            //适应参数修改
-            int xMax = (int)Math.Ceiling(x_Position);
-            double currentX_Position=x_Position;
-            double maxY = series0maxY;
-            double minY = series0minY;
-            switch (realtimeParams.CurrentCurveType) {
-                case 0:     //位移时间
-                    //x轴
-                    xMax = (int)Math.Ceiling(x_Position);
-                    currentX_Position = x_Position;
-                    //y轴
-                    maxY = series0maxY;
-                    minY = series0minY;
-                    break;
-                case 1:     //力时间
-                    xMax = (int)Math.Ceiling(x_Position);
-                    currentX_Position = x_Position;
-                    //y轴
-                    maxY = series1maxY;
-                    minY = series1minY;
-                    break;
-                case 2:     //变形时间
-                    xMax = (int)Math.Ceiling(x_Position);
-                    currentX_Position = x_Position;
-                    //y轴
-                    maxY = series2maxY;
-                    minY = series2minY;
-                    break;
-                case 3:     //命令
-                    break;
-                case 4:     //试验力位移
-                    xMax = (int)Math.Ceiling(series0maxY);
-                    currentX_Position = series0maxY;
-                    //y轴
-                    maxY = series1maxY;
-                    minY = series1minY;
-                    break;
-                case 5:    //试验力变形
-                    xMax = (int)Math.Ceiling(series2maxY);
-                    currentX_Position = series2maxY;
-                    //y轴
-                    maxY = series1maxY;
-                    minY = series1minY;
-                    break;
-                default:
-                    xMax = (int)Math.Ceiling(x_Position);
-                    currentX_Position = x_Position;
-                    //y轴
-                    maxY = series0maxY;
-                    minY = series0minY;
-                    break;
-            }
+            ////Console.WriteLine("glmxxx-{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}-{8}",x_Position, series0maxY, series0minY, series1maxY, series1minY, series2maxY, series2minY, series3maxY, series3minY);
+            ////适应参数修改
+            //int xMax = (int)Math.Ceiling(x_Position);
+            //double currentX_Position=x_Position;
+            //double maxY = series0maxY;
+            //double minY = series0minY;
+            //switch (realtimeParams.CurrentCurveType) {
+            //    case 0:     //位移时间
+            //        //x轴
+            //        xMax = (int)Math.Ceiling(x_Position);
+            //        currentX_Position = x_Position;
+            //        //y轴
+            //        maxY = series0maxY;
+            //        minY = series0minY;
+            //        break;
+            //    case 1:     //力时间
+            //        xMax = (int)Math.Ceiling(x_Position);
+            //        currentX_Position = x_Position;
+            //        //y轴
+            //        maxY = series1maxY;
+            //        minY = series1minY;
+            //        break;
+            //    case 2:     //变形时间
+            //        xMax = (int)Math.Ceiling(x_Position);
+            //        currentX_Position = x_Position;
+            //        //y轴
+            //        maxY = series2maxY;
+            //        minY = series2minY;
+            //        break;
+            //    case 3:     //命令
+            //        break;
+            //    case 4:     //试验力位移
+            //        xMax = (int)Math.Ceiling(series0maxY);
+            //        currentX_Position = series0maxY;
+            //        //y轴
+            //        maxY = series1maxY;
+            //        minY = series1minY;
+            //        break;
+            //    case 5:    //试验力变形
+            //        xMax = (int)Math.Ceiling(series2maxY);
+            //        currentX_Position = series2maxY;
+            //        //y轴
+            //        maxY = series1maxY;
+            //        minY = series1minY;
+            //        break;
+            //    default:
+            //        xMax = (int)Math.Ceiling(x_Position);
+            //        currentX_Position = x_Position;
+            //        //y轴
+            //        maxY = series0maxY;
+            //        minY = series0minY;
+            //        break;
+            //}
 
-            int dynInterval;
-            if (currentX_Position > 999)
-            {
-                dynInterval = (int)Math.Ceiling((double)xMax / tickNumAfter1k);
-            }
-            else
-                dynInterval = (int)Math.Ceiling((double)xMax / tickNum);
+            //int dynInterval;
+            //if (currentX_Position > 999)
+            //{
+            //    dynInterval = (int)Math.Ceiling((double)xMax / tickNumAfter1k);
+            //}
+            //else
+            //    dynInterval = (int)Math.Ceiling((double)xMax / tickNum);
  
-            int finalInterval = (int)Math.Ceiling((double)xMax / dynInterval);
+            //int finalInterval = (int)Math.Ceiling((double)xMax / dynInterval);
 
-            int finalMax = finalInterval * dynInterval;
+            //int finalMax = finalInterval * dynInterval;
 
-            chart_machine.ChartAreas[0].AxisX.Maximum = finalMax;
+            //chart_machine.ChartAreas[0].AxisX.Maximum = finalMax;
 
-            chart_machine.ChartAreas[0].AxisX.Interval = dynInterval;
+            //chart_machine.ChartAreas[0].AxisX.Interval = dynInterval;
 
 
-            //位移y轴自适应
-            //double series02MaxY = series0maxY;// series0maxY >= series2maxY ? series0maxY : series2maxY;
-            //double series02minY = series0minY;// series0minY >= series2minY ? series2minY : series0minY;
-            double series02MaxY = maxY;// series0maxY >= series2maxY ? series0maxY : series2maxY;
-            double series02minY = minY;// series0minY >= series2minY ? series2minY : series0minY;
+            ////位移y轴自适应
+            ////double series02MaxY = series0maxY;// series0maxY >= series2maxY ? series0maxY : series2maxY;
+            ////double series02minY = series0minY;// series0minY >= series2minY ? series2minY : series0minY;
+            //double series02MaxY = maxY;// series0maxY >= series2maxY ? series0maxY : series2maxY;
+            //double series02minY = minY;// series0minY >= series2minY ? series2minY : series0minY;
 
-            double maxSeriesMaxYVal = series02MaxY;
-            double maxSeriesMinYVal = series02minY;
-            if (chart_machine.Series[3].YAxisType == chart_machine.Series[0].YAxisType)
-            {
-                if (cb_DrawCommand.Checked)
-                {
-
-                    //if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
-                    //if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
-                }
-            }
-
-            double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-            double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-            double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
-
-            if (padding1 < 0.5) padding1 = 0.5;   //限制最小适应单位0.5
-
-            double yAxisMax1 = maxSeriesMaxYVal + padding1;
-            double yAxisMin1 = maxSeriesMinYVal - padding1;
-            if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
-            {
-
-                chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "N2";
-                chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 0);
-                chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 0);
-            }
-
-            #region load auto fit
-            ////Console.WriteLine("glmyyy-{0}-{1}", yAxisMax1, yAxisMin1);
-            ////力y轴自适应
-            //maxSeriesMaxYVal = series1maxY;
-            //maxSeriesMinYVal = series1minY;
-
-            //if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
+            //double maxSeriesMaxYVal = series02MaxY;
+            //double maxSeriesMinYVal = series02minY;
+            //if (chart_machine.Series[3].YAxisType == chart_machine.Series[0].YAxisType)
             //{
             //    if (cb_DrawCommand.Checked)
             //    {
-            //        if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
-            //        if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
+
+            //        //if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
+            //        //if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
             //    }
             //}
 
-            //range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-            //totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-            //padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+            //double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+            //double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+            //double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
 
-            //yAxisMax1 = maxSeriesMaxYVal + padding1;
-            //yAxisMin1 = maxSeriesMinYVal - padding1;
+            //if (padding1 < 0.5) padding1 = 0.5;   //限制最小适应单位0.5
+
+            //double yAxisMax1 = maxSeriesMaxYVal + padding1;
+            //double yAxisMin1 = maxSeriesMinYVal - padding1;
             //if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
             //{
-            //    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
-            //    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
+
+            //    chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "N2";
+            //    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 0);
+            //    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 0);
             //}
-            ////Console.WriteLine("glmzzz-{0}-{1}", yAxisMax1, yAxisMin1);
-            #endregion load auto fit
+
+            //#region load auto fit
+            //////Console.WriteLine("glmyyy-{0}-{1}", yAxisMax1, yAxisMin1);
+            //////力y轴自适应
+            ////maxSeriesMaxYVal = series1maxY;
+            ////maxSeriesMinYVal = series1minY;
+
+            ////if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
+            ////{
+            ////    if (cb_DrawCommand.Checked)
+            ////    {
+            ////        if (maxSeriesMaxYVal < series3maxY) maxSeriesMaxYVal = series3maxY;
+            ////        if (maxSeriesMinYVal > series3minY) maxSeriesMinYVal = series3minY;
+            ////    }
+            ////}
+
+            ////range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+            ////totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+            ////padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+
+            ////yAxisMax1 = maxSeriesMaxYVal + padding1;
+            ////yAxisMin1 = maxSeriesMinYVal - padding1;
+            ////if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
+            ////{
+            ////    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
+            ////    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
+            ////}
+            //////Console.WriteLine("glmzzz-{0}-{1}", yAxisMax1, yAxisMin1);
+            //#endregion load auto fit
         }
 
         /// <summary>
@@ -3176,16 +3103,16 @@ namespace DoPENetConnect
             switch (cmdType)
             {
                 case 0:            //position
-                    chart_machine.Series[3].YAxisType = AxisType.Primary;
+                    //chart_machine.Series[3].YAxisType = AxisType.Primary;
                     break;
                 case 1:            //Load
-                    chart_machine.Series[3].YAxisType = AxisType.Secondary;
+                    //chart_machine.Series[3].YAxisType = AxisType.Secondary;
                     break;
                 case 2:           //Extension
-                    chart_machine.Series[3].YAxisType = AxisType.Primary;
+                    //chart_machine.Series[3].YAxisType = AxisType.Primary;
                     break;
                 default:      //position
-                    chart_machine.Series[3].YAxisType = AxisType.Primary;
+                    //chart_machine.Series[3].YAxisType = AxisType.Primary;
                     break;
             }
         }
@@ -3265,61 +3192,7 @@ namespace DoPENetConnect
             }
         }
 
-        public void AutoFitMaxMinValClear()
-        {
-            x_Position = 0;
-             maxSeries0 = 1;
-             maxSeries1 = 1;
-             maxSeries2 = 1;
-             maxSeries3 = 1;
 
-             minSeries0 = -1;
-             minSeries1 = -1;
-             minSeries2 = -1;
-             minSeries3 = -1;
-
-            chart_machine.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
-            while (chart_machine.ChartAreas[0].AxisX.ScaleView.IsZoomed)
-            {
-                chart_machine.ChartAreas[0].AxisX.ScaleView.ZoomReset();
-            }
-           
-        }
-
-        public void CleanChart()
-        {
-            x_Position = 0;
-            //chart_machine.Series[0].Points.Clear();
-            x_Load = 0;
-            //chart_machine.Series[1].Points.Clear();
-            x_Extension = 0;
-            //chart_machine.Series[2].Points.Clear();
-            x_Command = 0;
-            //chart_machine.Series[3].Points.Clear();
-
-            //chart_machine.Series[4].Points.Clear();
-
-            //chart_machine.Series[5].Points.Clear();
-            int j = chart_machine.Series[0].Points.Count;
-            if (j < chart_machine.Series[1].Points.Count) j = chart_machine.Series[1].Points.Count;
-
-            if (j < chart_machine.Series[2].Points.Count) j = chart_machine.Series[2].Points.Count;
-
-            if (j < chart_machine.Series[3].Points.Count) j = chart_machine.Series[3].Points.Count;
-
-            if (j < chart_machine.Series[4].Points.Count) j = chart_machine.Series[4].Points.Count;
-
-            if (j < chart_machine.Series[5].Points.Count) j = chart_machine.Series[5].Points.Count;
-
-            for (int i = 0; i < j; i++) {
-                if (chart_machine.Series[0].Points.Count > 0) chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
-                if (chart_machine.Series[1].Points.Count > 0) chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
-                if (chart_machine.Series[2].Points.Count > 0) chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
-                if (chart_machine.Series[3].Points.Count > 0) chart_machine.Series[3].Points.RemoveAt(chart_machine.Series[3].Points.Count - 1);
-                if (chart_machine.Series[4].Points.Count > 0) chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
-                if (chart_machine.Series[5].Points.Count > 0) chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
-            }
-        }
 
         public void SetupResetXHead()
         {
@@ -3420,7 +3293,6 @@ namespace DoPENetConnect
                 startStopDrawToolStripMenuItem.Text = GetValueFromLanguageFile("startStopDrawToolStripMenuItem");
             }
 
-            chart_machine.Enabled = false;
         }
 
 
@@ -3548,24 +3420,6 @@ namespace DoPENetConnect
         }
 
 
-        public void GetXaxisScale()
-        {
-            if (chart_machine != null)
-            {
-                double dMax = chart_machine.ChartAreas[0].AxisX.Maximum;
-                double dMin = chart_machine.ChartAreas[0].AxisX.Minimum;
-                if ((dMax - dMin) > 0)
-                {
-                    nAxisStep = 1 / ((dMax - dMin) /** 2*/);
-                }
-                else
-                {
-                    nAxisStep = 0.1;
-                }
-            }
-        }
-
-
 
         //测试寻峰算法
         public static List<double> FindPeaks(int[] data)
@@ -3587,173 +3441,6 @@ namespace DoPENetConnect
             }
 
             return peaks;
-        }
-
-        private void cb_DrawPosition_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_DrawPosition.Checked)
-            {
-                chart_machine.Series[0].Enabled = true;
-            }
-            else
-            {
-                chart_machine.Series[0].Enabled = false;
-            }
-
-            //int selectConut = 0;
-            //while (chart_machine.Series.Count > 7)
-            //{
-            //    chart_machine.Series.RemoveAt((chart_machine.Series.Count - 1));
-            //}
-
-            //while (chart_machine.ChartAreas.Count > 1)
-            //{
-            //    chart_machine.ChartAreas.RemoveAt((chart_machine.ChartAreas.Count - 1));
-            //}
-
-            //foreach (Control c in this.Controls)
-            //{
-            //    if (c is CheckBox && ((CheckBox)c).Checked == true)
-            //    {
-            //        selectConut++;
-            //    }
-            //}
-
-            //chart_machine.Series[cb_DrawPosition.Text].Enabled = cb_DrawPosition.Checked;
-
-            //float axisOffset = 12;
-            //CreateYAxis(chart_machine, chart_machine.ChartAreas["ChartArea1"], chart_machine.Series["变形"], axisOffset, 3);
-            //axisOffset += 6;
-
-        }
-
-        private void cb_DrawLoad_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_DrawLoad.Checked)
-            {
-                chart_machine.Series[1].Enabled = true;
-            }
-            else
-            {
-                chart_machine.Series[1].Enabled = false;
-            }
-        }
-
-        private void cb_DrawExtension_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_DrawExtension.Checked)
-            {
-                chart_machine.Series[2].Enabled = true;
-            }
-            else
-            {
-                chart_machine.Series[2].Enabled = false;
-            }
-
-            //int selectConut = 0;
-            //while (chart_machine.Series.Count > 4)
-            //{
-            //    chart_machine.Series.RemoveAt((chart_machine.Series.Count - 1));
-            //}
-
-            //while (chart_machine.ChartAreas.Count > 1)
-            //{
-            //    chart_machine.ChartAreas.RemoveAt((chart_machine.ChartAreas.Count - 1));
-            //}
-
-            //foreach (Control c in this.Controls)
-            //{
-            //    if (c is CheckBox && ((CheckBox)c).Checked == true)
-            //    {
-            //        selectConut++;
-            //    }
-            //}
-
-            //chart_machine.Series[cb_DrawPosition.Text].Enabled = cb_DrawExtension.Checked;
-
-            //if (cb_DrawExtension.Checked)
-            //{
-            //    //x坐标点
-            //    int positionx = 0;
-            //    //char宽度计数
-            //    int charWith = 0;
-            //    positionx = positionx == 1 ? positionx += 10 : positionx += 10;
-            //    charWith += 5;
-
-            //    //chart_machine.ChartAreas["ChartArea1"].Position = new ElementPosition(positionx, 10, 100 - charWith, 85);
-            //    chart_machine.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 100 - charWith - 1, 90);
-
-            //    float axisOffset = 12;
-            //    CreateYAxis(chart_machine, chart_machine.ChartAreas["ChartArea1"], chart_machine.Series["变形"], axisOffset, 3);
-            //    axisOffset += 6;
-            //}
-        }
-
-        private void cb_DrawCommand_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_DrawCommand.Checked)
-            {
-                chart_machine.Series[3].Enabled = cb_DrawCommand.Checked;
-            }
-            else
-            {
-                chart_machine.Series[3].Enabled = false;
-            }
-
-            //int selectConut = 0;
-            //while (chart_machine.Series.Count > 4)
-            //{
-            //    chart_machine.Series.RemoveAt((chart_machine.Series.Count - 1));
-            //}
-
-            //while (chart_machine.ChartAreas.Count > 1)
-            //{
-            //    chart_machine.ChartAreas.RemoveAt((chart_machine.ChartAreas.Count - 1));
-            //}
-
-            //foreach (Control c in this.Controls)
-            //{
-            //    if (c is CheckBox && ((CheckBox)c).Checked == true)
-            //    {
-            //        selectConut++;
-            //    }
-            //}
-
-            //chart_machine.Series[cb_DrawCommand.Text].Enabled = cb_DrawCommand.Checked;
-
-            //if (cb_DrawCommand.Checked)
-            //{
-            //    //x坐标点
-            //    int positionx = 0;
-            //    //char宽度计数
-            //    int charWith = 0;
-            //    positionx = positionx == 1 ? positionx += 11 : positionx += 8;
-            //    charWith += 6;
-
-            //    chart_machine.ChartAreas["ChartArea1"].Position = new ElementPosition(positionx, 10, 100 - charWith, 85);
-            //    chart_machine.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 50 - charWith, 90);
-
-            //    float axisOffset = 2;
-            //    CreateYAxis_New(chart_machine, chart_machine.ChartAreas["ChartArea1"], chart_machine.Series["命令"], axisOffset, 1);
-            //    axisOffset += 3;
-            //}
-
-        }
-
-
-        public void SeriesCheckChanged()
-        {
-
-
-        }
-
-
-
-        //运行时才能决定是否执行内联
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public ushort setUInt16(float src, ushort k = 1)
-        {
-            return (ushort)(src * k);
         }
 
 
@@ -3917,23 +3604,7 @@ namespace DoPENetConnect
             btnHurryDownConstantVal = double.Parse(strTmp.ToString());
             #endregion 按键功能常数
 
-            IniFileHelper.GetIniString("FrmSetChartAxisY", "TimeX_MAX", "5", strTmp, strTmp.Capacity);
-            AxisXMax = double.Parse(strTmp.ToString());
-            chart_machine.ChartAreas[0].AxisX.Maximum = AxisXMax;
-
-            IniFileHelper.GetIniString("FrmSetChartAxisY", "PositionEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawPosition.Checked = true;// strTmp.ToString() == "0" ? false : true;
-
-            IniFileHelper.GetIniString("FrmSetChartAxisY", "LoadEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawLoad.Checked = true;// strTmp.ToString() == "0" ? false : true;
-
-            IniFileHelper.GetIniString("FrmSetChartAxisY", "ExtEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawExtension.Checked = true;// strTmp.ToString() == "0" ? false : true;
-
-            IniFileHelper.GetIniString("FrmSetChartAxisY", "CommandEnable", "0", strTmp, strTmp.Capacity);
-            cb_DrawCommand.Checked = true;// strTmp.ToString() == "0" ? false : true;
-
-
+           
             //tongxin
             IniFileHelper.GetIniString("Communication", "Com", "0", strTmp, strTmp.Capacity);
             string comNo = strTmp.ToString();
@@ -4541,75 +4212,75 @@ namespace DoPENetConnect
 
         private void btnX_AxisPOSY_MinUp_Click(object sender, EventArgs e)
         {
-            if (Chart_Pos_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
-            {
-                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                chart_machine.ChartAreas[0].AxisY.Minimum += Chart_Pos_Step;
-            }
+            //if (Chart_Pos_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
+            //{
+            //    MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            //else
+            //{
+            //    chart_machine.ChartAreas[0].AxisY.Minimum += Chart_Pos_Step;
+            //}
         }
 
         private void btnX_AsixPOSY_MinDown_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Minimum -= Chart_Pos_Step;
+           // chart_machine.ChartAreas[0].AxisY.Minimum -= Chart_Pos_Step;
         }
 
         private void btnX_AxisPOSY_MaxUp_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY.Maximum += Chart_Pos_Step;
+            //chart_machine.ChartAreas[0].AxisY.Maximum += Chart_Pos_Step;
         }
 
         private void btnX_AxisPOSY_MaxDown_Click(object sender, EventArgs e)
         {
-            if (Chart_Pos_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
-            {
-                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                chart_machine.ChartAreas[0].AxisY.Maximum -= Chart_Pos_Step;
-            }
+            //if (Chart_Pos_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
+            //{
+            //    MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            //else
+            //{
+            //    chart_machine.ChartAreas[0].AxisY.Maximum -= Chart_Pos_Step;
+            //}
 
         }
 
         private void btnX_AxisLoadY_MaxUp_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY2.Maximum += Chart_Load_Step;
+           // chart_machine.ChartAreas[0].AxisY2.Maximum += Chart_Load_Step;
         }
 
         private void btnX_AxisLoadY_MaxDown_Click(object sender, EventArgs e)
         {
-            if (Chart_Load_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
-            {
-                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                chart_machine.ChartAreas[0].AxisY2.Maximum -= Chart_Load_Step;
-            }
+            //if (Chart_Load_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
+            //{
+            //    MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            //else
+            //{
+            //    chart_machine.ChartAreas[0].AxisY2.Maximum -= Chart_Load_Step;
+            //}
         }
 
         private void btnX_AxisLoadY_MinUp_Click(object sender, EventArgs e)
         {
-            if (Chart_Load_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
-            {
-                MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                chart_machine.ChartAreas[0].AxisY2.Minimum += Chart_Load_Step;
-            }
+            //if (Chart_Load_Step >= (chart_machine.ChartAreas[0].AxisY.Maximum - chart_machine.ChartAreas[0].AxisY.Minimum))
+            //{
+            //    MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            //else
+            //{
+            //    chart_machine.ChartAreas[0].AxisY2.Minimum += Chart_Load_Step;
+            //}
         }
 
         private void btnX_AxisLoadY_MinDown_Click(object sender, EventArgs e)
         {
-            chart_machine.ChartAreas[0].AxisY2.Minimum -= Chart_Load_Step;
+            //chart_machine.ChartAreas[0].AxisY2.Minimum -= Chart_Load_Step;
         }
 
 
@@ -4761,135 +4432,135 @@ namespace DoPENetConnect
         private void AutoSetYAxisToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            #region postion axis auto fitting
-            //位移曲线自适应
-            /*
-            if (Math.Abs(double.Parse(tb_MaxPos.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinPos.Text)) <= 0.01)
-            {
-                chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
-                chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
-            }
-            else 
-            {
-                if (double.Parse(tb_MaxPos.Text) == double.Parse(tb_MinPos.Text))
-                {
-                    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2 + 1;
-                    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2 - 1;
-                }
-                else
-                {
-                    double range = double.Parse(tb_MaxPos.Text) - double.Parse(tb_MinPos.Text);
-                    double totalHeight = range / 0.85;        // Y 轴总高度的85%
-                    double padding = (totalHeight - range) / 2.0;  // 上下留白
+//            #region postion axis auto fitting
+//            //位移曲线自适应
+//            /*
+//            if (Math.Abs(double.Parse(tb_MaxPos.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinPos.Text)) <= 0.01)
+//            {
+//                chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
+//                chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
+//            }
+//            else 
+//            {
+//                if (double.Parse(tb_MaxPos.Text) == double.Parse(tb_MinPos.Text))
+//                {
+//                    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2 + 1;
+//                    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2 - 1;
+//                }
+//                else
+//                {
+//                    double range = double.Parse(tb_MaxPos.Text) - double.Parse(tb_MinPos.Text);
+//                    double totalHeight = range / 0.85;        // Y 轴总高度的85%
+//                    double padding = (totalHeight - range) / 2.0;  // 上下留白
 
-                    double yAxisMax = double.Parse(tb_MaxPos.Text) + padding;
-                    double yAxisMin = double.Parse(tb_MinPos.Text) - padding;
+//                    double yAxisMax = double.Parse(tb_MaxPos.Text) + padding;
+//                    double yAxisMin = double.Parse(tb_MinPos.Text) - padding;
 
-                    chart_machine.ChartAreas[0].AxisY.Maximum = yAxisMax;
-                    chart_machine.ChartAreas[0].AxisY.Minimum = yAxisMin;
-                }
+//                    chart_machine.ChartAreas[0].AxisY.Maximum = yAxisMax;
+//                    chart_machine.ChartAreas[0].AxisY.Minimum = yAxisMin;
+//                }
     
-                chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "F2";
+//                chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "F2";
 
-            }
-*/
+//            }
+//*/
 
-            double maxSeriesMaxYValCmd = -1;
-            double maxSeriesMinYValCmd = -1;
-            if (chart_machine.Series[3].Points.Count > 0)
-            {
-                maxSeriesMaxYValCmd = chart_machine.Series[3].Points.Max(point => point.YValues[0]);
-                maxSeriesMinYValCmd = chart_machine.Series[3].Points.Min(point => point.YValues[0]);
-            }
+//            double maxSeriesMaxYValCmd = -1;
+//            double maxSeriesMinYValCmd = -1;
+//            if (chart_machine.Series[3].Points.Count > 0)
+//            {
+//                maxSeriesMaxYValCmd = chart_machine.Series[3].Points.Max(point => point.YValues[0]);
+//                maxSeriesMinYValCmd = chart_machine.Series[3].Points.Min(point => point.YValues[0]);
+//            }
 
-            if (chart_machine.Series[0].Points.Count > 0)
-            {
-                double maxSeriesMaxYVal = chart_machine.Series[0].Points.Max(point => point.YValues[0]);
-                double maxSeriesMinYVal = chart_machine.Series[0].Points.Min(point => point.YValues[0]);
-                if (chart_machine.Series[3].YAxisType == chart_machine.Series[0].YAxisType)
-                {
-                    if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
-                    {
+//            if (chart_machine.Series[0].Points.Count > 0)
+//            {
+//                double maxSeriesMaxYVal = chart_machine.Series[0].Points.Max(point => point.YValues[0]);
+//                double maxSeriesMinYVal = chart_machine.Series[0].Points.Min(point => point.YValues[0]);
+//                if (chart_machine.Series[3].YAxisType == chart_machine.Series[0].YAxisType)
+//                {
+//                    if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
+//                    {
 
-                        if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
-                        if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
-                    }
-                }
+//                        if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
+//                        if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
+//                    }
+//                }
 
-                double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-                double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-                double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+//                double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+//                double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+//                double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
 
-                double yAxisMax1 = maxSeriesMaxYVal + padding1;
-                double yAxisMin1 = maxSeriesMinYVal - padding1;
-                if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
-                {
-                    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
-                    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
-                }
-            }
-            #endregion postion axis auto fitting
+//                double yAxisMax1 = maxSeriesMaxYVal + padding1;
+//                double yAxisMin1 = maxSeriesMinYVal - padding1;
+//                if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
+//                {
+//                    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
+//                    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
+//                }
+//            }
+//            #endregion postion axis auto fitting
 
 
-            //试验力曲线自适应
-            #region load auto fitting
-            /*
-            if (Math.Abs(double.Parse(tb_MaxLoad.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinLoad.Text)) <= 0.01)
-            {
-                chart_machine.ChartAreas[0].AxisY2.Maximum = 0.1;
-                chart_machine.ChartAreas[0].AxisY2.Minimum = -0.1;
-            }
-            else
-            {
-                if (double.Parse(tb_MaxLoad.Text) == double.Parse(tb_MinLoad.Text))
-                {
-                    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2 + 1;
-                    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2 - 1;
-                }
-                else
-                {
-                    double range = double.Parse(tb_MaxLoad.Text) - double.Parse(tb_MinLoad.Text);
-                    double totalHeight = range / 0.85;        // Y 轴总高度的85%
-                    double padding = (totalHeight - range) / 2.0;  // 上下留白
+//            //试验力曲线自适应
+//            #region load auto fitting
+//            /*
+//            if (Math.Abs(double.Parse(tb_MaxLoad.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinLoad.Text)) <= 0.01)
+//            {
+//                chart_machine.ChartAreas[0].AxisY2.Maximum = 0.1;
+//                chart_machine.ChartAreas[0].AxisY2.Minimum = -0.1;
+//            }
+//            else
+//            {
+//                if (double.Parse(tb_MaxLoad.Text) == double.Parse(tb_MinLoad.Text))
+//                {
+//                    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2 + 1;
+//                    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2 - 1;
+//                }
+//                else
+//                {
+//                    double range = double.Parse(tb_MaxLoad.Text) - double.Parse(tb_MinLoad.Text);
+//                    double totalHeight = range / 0.85;        // Y 轴总高度的85%
+//                    double padding = (totalHeight - range) / 2.0;  // 上下留白
 
-                    double yAxisMax = double.Parse(tb_MaxLoad.Text) + padding;
-                    double yAxisMin = double.Parse(tb_MinLoad.Text) - padding;
+//                    double yAxisMax = double.Parse(tb_MaxLoad.Text) + padding;
+//                    double yAxisMin = double.Parse(tb_MinLoad.Text) - padding;
 
-                    chart_machine.ChartAreas[0].AxisY2.Maximum = yAxisMax;
-                    chart_machine.ChartAreas[0].AxisY2.Minimum = yAxisMin;
-                }
-                chart_machine.ChartAreas[0].AxisY2.LabelStyle.Format = "F2";
-            }
-            */
-            if (chart_machine.Series[1].Points.Count > 0)
-            {
-                double maxSeriesMaxYVal = chart_machine.Series[1].Points.Max(point => point.YValues[0]);
-                double maxSeriesMinYVal = chart_machine.Series[1].Points.Min(point => point.YValues[0]);
+//                    chart_machine.ChartAreas[0].AxisY2.Maximum = yAxisMax;
+//                    chart_machine.ChartAreas[0].AxisY2.Minimum = yAxisMin;
+//                }
+//                chart_machine.ChartAreas[0].AxisY2.LabelStyle.Format = "F2";
+//            }
+//            */
+//            if (chart_machine.Series[1].Points.Count > 0)
+//            {
+//                double maxSeriesMaxYVal = chart_machine.Series[1].Points.Max(point => point.YValues[0]);
+//                double maxSeriesMinYVal = chart_machine.Series[1].Points.Min(point => point.YValues[0]);
 
-                if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
-                {
-                    if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
-                    {
+//                if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
+//                {
+//                    if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
+//                    {
 
-                        if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
-                        if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
-                    }
-                }
+//                        if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
+//                        if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
+//                    }
+//                }
 
-                double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-                double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-                double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+//                double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+//                double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+//                double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
 
-                double yAxisMax1 = maxSeriesMaxYVal + padding1;
-                double yAxisMin1 = maxSeriesMinYVal - padding1;
-                if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
-                {
-                    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
-                    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
-                }
+//                double yAxisMax1 = maxSeriesMaxYVal + padding1;
+//                double yAxisMin1 = maxSeriesMinYVal - padding1;
+//                if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
+//                {
+//                    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
+//                    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
+//                }
 
-            }
-            #endregion load auto fitting
+//            }
+//            #endregion load auto fitting
 
         }
 
@@ -5162,7 +4833,7 @@ namespace DoPENetConnect
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            CurveSet("s", " kN",toolStripMenuItem1.Text);
+            //CurveSet("s", " kN",toolStripMenuItem1.Text);
             chart_series_show(1);            
             AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
 
@@ -5181,11 +4852,6 @@ namespace DoPENetConnect
                 axTChart1.Axis.Bottom.Title.Caption = "s";
                 axTChart1.Header.Text.Text = "位移—时间曲线";
 
-                chart_machine.Series[0].Enabled = true;
-                chart_machine.Series[1].Enabled = false;
-                chart_machine.Series[2].Enabled = false;
-                chart_machine.Series[4].Enabled = false;
-                chart_machine.Series[5].Enabled = false;
                 realtimeParams.CurrentCurveType = 0;
             }
             else if (seriesIndex == 1) //试验力时间曲线
@@ -5199,11 +4865,6 @@ namespace DoPENetConnect
                 axTChart1.Axis.Bottom.Title.Caption = "s";
                 axTChart1.Header.Text.Text = "试验力—时间曲线";
 
-                chart_machine.Series[0].Enabled = false;
-                chart_machine.Series[1].Enabled = true;
-                chart_machine.Series[2].Enabled = false;
-                chart_machine.Series[4].Enabled = false;
-                chart_machine.Series[5].Enabled = false;
                 realtimeParams.CurrentCurveType = 1;
             }
             else if (seriesIndex == 2)    //变形时间曲线
@@ -5217,24 +4878,19 @@ namespace DoPENetConnect
                 axTChart1.Axis.Bottom.Title.Caption = "s";
                 axTChart1.Header.Text.Text = "变形—时间曲线";
 
-                chart_machine.Series[0].Enabled = false;
-                chart_machine.Series[1].Enabled = false;
-                chart_machine.Series[2].Enabled = true;
-                chart_machine.Series[4].Enabled = false;
-                chart_machine.Series[5].Enabled = false;
                 realtimeParams.CurrentCurveType = 2;
             }
             else if (seriesIndex == 3)           //命令曲线显示
             {
 
                 axTChart1.Series(3).Active = true;
-                chart_machine.Series[3].Enabled = true;
+               
             }
             else if (seriesIndex == 4)          //命令曲线不显示
             {
 
                 axTChart1.Series(3).Active = false;
-                chart_machine.Series[3].Enabled = false;
+                
             }
             else if (seriesIndex == 5)    //显示试验力位移曲线
             {
@@ -5247,11 +4903,7 @@ namespace DoPENetConnect
                 axTChart1.Axis.Bottom.Title.Caption = "mm";
                 axTChart1.Header.Text.Text = "试验力—位移曲线";
 
-                chart_machine.Series[0].Enabled = false;
-                chart_machine.Series[1].Enabled = false;
-                chart_machine.Series[2].Enabled = false;
-                chart_machine.Series[4].Enabled = true;
-                chart_machine.Series[5].Enabled = false;
+                
                 realtimeParams.CurrentCurveType = 4;
             }
             else if (seriesIndex == 6)    //显示试验力变形曲线
@@ -5265,23 +4917,8 @@ namespace DoPENetConnect
                 axTChart1.Axis.Bottom.Title.Caption = "mm";
                 axTChart1.Header.Text.Text = "试验力—变形曲线";
 
-                chart_machine.Series[0].Enabled = false;
-                chart_machine.Series[1].Enabled = false;
-                chart_machine.Series[2].Enabled = false;
-                chart_machine.Series[4].Enabled = false;
-                chart_machine.Series[5].Enabled = true;
                 realtimeParams.CurrentCurveType = 5;
-            }
-
-            //if (!isRunning) {
-            //    axTChart1.Axis.Left.Automatic = false;
-            //    axTChart1.Axis.Bottom.Automatic = false;
-            //    axTChart1.Axis.Left.Maximum = axTChart1.Axis.Left.Maximum + 10;
-            //    if (axTChart1.Axis.Left.Minimum >= 0)
-            //        axTChart1.Axis.Left.Minimum = 0;
-            //    else
-            //        axTChart1.Axis.Left.Minimum = axTChart1.Axis.Left.Minimum - 10;
-            //}
+            }          
 
         }
 
@@ -5440,27 +5077,27 @@ namespace DoPENetConnect
 
         private void 位移ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CurveSet("s", " mm", 位移ToolStripMenuItem.Text);
+            //CurveSet("s", " mm", 位移ToolStripMenuItem.Text);
             chart_series_show(0);
             AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
         }
 
         private void 变形时间曲线ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CurveSet("s", "mm",变形时间曲线ToolStripMenuItem.Text);
+           // CurveSet("s", "mm",变形时间曲线ToolStripMenuItem.Text);
             chart_series_show(2);
         }
 
         private void ToolStripMenuItemLoardDisplace_Click(object sender, EventArgs e)
         {
-            CurveSet("mm", "kN", ToolStripMenuItemLoardDisplace.Text);
+            //CurveSet("mm", "kN", ToolStripMenuItemLoardDisplace.Text);
             chart_series_show(5);
             AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
         }
 
         private void toolStripMenuItemLoardExtenssion_Click(object sender, EventArgs e)
         {
-             CurveSet("mm", "kN", toolStripMenuItemLoardExtenssion.Text);
+             //CurveSet("mm", "kN", toolStripMenuItemLoardExtenssion.Text);
             chart_series_show(6);
             AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);   //切换曲线后进行曲线xy轴适应
         }
@@ -5600,12 +5237,6 @@ namespace DoPENetConnect
             return isEmpty;
         }
 
-        private void chart_machine_Paint(object sender, PaintEventArgs e)
-        {
-            label1.Location = new Point(label1.Location.X ,(int)52.5*chart_machine.Height /120+chart_machine.Location.Y);
-            label2.Location = new Point((int)(9.5 * chart_machine.Width / 20), label2.Location.Y);
-        }
-
         private void buttonX21_Click(object sender, EventArgs e)
         {
             string path = doTest.sampleLogPath;
@@ -5633,21 +5264,13 @@ namespace DoPENetConnect
         public void SaveTestPngs()
         {
             int currentCurveType = realtimeParams.CurrentCurveType;
-            string currentYAxisUnit = label1.Text;
-            string currentXAxisTitle = chart_machine.ChartAreas[0].AxisX.Title;
-            string curveName = label2.Text;
 
             string path = doTest.sampleLogPath;
             if (path == null)
             {
                 MessageBox.Show("路径为空，请在载入试验或者完成试验后进行该操作", "图像保存", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            }
-            //DialogResult = MessageBox.Show($"确定将图片保存至：{path}?", "图像保存", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            //if (DialogResult == DialogResult.Cancel)
-            //{
-            //    return;
-            //}
+            }           
 
 
             //保存位移时间曲线
@@ -5782,85 +5405,85 @@ namespace DoPENetConnect
         private void timerDataClean_Tick(object sender, EventArgs e)
         {
 
-            if (chart_machine.Series[0].Points.Count == 1
-                && chart_machine.Series[1].Points.Count == 1
-                && chart_machine.Series[2].Points.Count == 1 
-                && chart_machine.Series[3].Points.Count == 0
-                && chart_machine.Series[4].Points.Count == 0
-                && chart_machine.Series[5].Points.Count == 0)
-            {
-                timerDataClean.Stop();
-                StartExperment();
-                return;
-            }
+            //if (chart_machine.Series[0].Points.Count == 1
+            //    && chart_machine.Series[1].Points.Count == 1
+            //    && chart_machine.Series[2].Points.Count == 1 
+            //    && chart_machine.Series[3].Points.Count == 0
+            //    && chart_machine.Series[4].Points.Count == 0
+            //    && chart_machine.Series[5].Points.Count == 0)
+            //{
+            //    timerDataClean.Stop();
+            //    StartExperment();
+            //    return;
+            //}
 
-            for (int i = 0; i < 30000; i++)
-            {
-                if (chart_machine.Series[0].Points.Count > 1)
-                {
-                    chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
-                }
-                else if (chart_machine.Series[0].Points.Count == 1)
-                {
-                    chart_machine.Series[0].Points[0].XValue = 0;
-                    chart_machine.Series[0].Points[0].YValues[0] = 0;
-                }
+            //for (int i = 0; i < 30000; i++)
+            //{
+            //    if (chart_machine.Series[0].Points.Count > 1)
+            //    {
+            //        chart_machine.Series[0].Points.RemoveAt(chart_machine.Series[0].Points.Count - 1);
+            //    }
+            //    else if (chart_machine.Series[0].Points.Count == 1)
+            //    {
+            //        chart_machine.Series[0].Points[0].XValue = 0;
+            //        chart_machine.Series[0].Points[0].YValues[0] = 0;
+            //    }
 
-                if (chart_machine.Series[1].Points.Count > 1)
-                {
-                    chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
-                }
-                else if (chart_machine.Series[1].Points.Count == 1)
-                {
-                    chart_machine.Series[1].Points[0].XValue = 0;
-                    chart_machine.Series[1].Points[0].YValues[0] = 0;
-                }
+            //    if (chart_machine.Series[1].Points.Count > 1)
+            //    {
+            //        chart_machine.Series[1].Points.RemoveAt(chart_machine.Series[1].Points.Count - 1);
+            //    }
+            //    else if (chart_machine.Series[1].Points.Count == 1)
+            //    {
+            //        chart_machine.Series[1].Points[0].XValue = 0;
+            //        chart_machine.Series[1].Points[0].YValues[0] = 0;
+            //    }
 
-                if (chart_machine.Series[2].Points.Count > 1)
-                {
-                    chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
-                }
-                else if (chart_machine.Series[2].Points.Count == 1)
-                {
-                    chart_machine.Series[2].Points[0].XValue = 0;
-                    chart_machine.Series[2].Points[0].YValues[0] = 0;
-                }
+            //    if (chart_machine.Series[2].Points.Count > 1)
+            //    {
+            //        chart_machine.Series[2].Points.RemoveAt(chart_machine.Series[2].Points.Count - 1);
+            //    }
+            //    else if (chart_machine.Series[2].Points.Count == 1)
+            //    {
+            //        chart_machine.Series[2].Points[0].XValue = 0;
+            //        chart_machine.Series[2].Points[0].YValues[0] = 0;
+            //    }
 
 
-                if (chart_machine.Series[3].Points.Count > 0)
-                {
-                    chart_machine.Series[3].Points.RemoveAt(chart_machine.Series[3].Points.Count - 1);
-                }
-                //else if (chart_machine.Series[3].Points.Count == 0)
-                //{
-                //    chart_machine.Series[3].Points[0].XValue = 0;
-                //    chart_machine.Series[3].Points[0].YValues[0] = 0;
-                //}
+            //    if (chart_machine.Series[3].Points.Count > 0)
+            //    {
+            //        chart_machine.Series[3].Points.RemoveAt(chart_machine.Series[3].Points.Count - 1);
+            //    }
+            //    //else if (chart_machine.Series[3].Points.Count == 0)
+            //    //{
+            //    //    chart_machine.Series[3].Points[0].XValue = 0;
+            //    //    chart_machine.Series[3].Points[0].YValues[0] = 0;
+            //    //}
 
-                if (chart_machine.Series[4].Points.Count > 1)
-                {
-                    chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
-                }
-                else if (chart_machine.Series[4].Points.Count == 1)
-                {
-                    //chart_machine.Series[4].Points[0].XValue = 0;
-                    //chart_machine.Series[4].Points[0].YValues[0] = 0;
-                    chart_machine.Series[4].Points.Clear();
-                }
+            //    if (chart_machine.Series[4].Points.Count > 1)
+            //    {
+            //        chart_machine.Series[4].Points.RemoveAt(chart_machine.Series[4].Points.Count - 1);
+            //    }
+            //    else if (chart_machine.Series[4].Points.Count == 1)
+            //    {
+            //        //chart_machine.Series[4].Points[0].XValue = 0;
+            //        //chart_machine.Series[4].Points[0].YValues[0] = 0;
+            //        chart_machine.Series[4].Points.Clear();
+            //    }
 
-                if (chart_machine.Series[5].Points.Count > 1)
-                {
-                    chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
-                }
-                else if (chart_machine.Series[5].Points.Count == 1)
-                {
-                    //chart_machine.Series[5].Points[0].XValue = 0;
-                    //chart_machine.Series[5].Points[0].YValues[0] = 0;
+            //    if (chart_machine.Series[5].Points.Count > 1)
+            //    {
+            //        chart_machine.Series[5].Points.RemoveAt(chart_machine.Series[5].Points.Count - 1);
+            //    }
+            //    else if (chart_machine.Series[5].Points.Count == 1)
+            //    {
+            //        //chart_machine.Series[5].Points[0].XValue = 0;
+            //        //chart_machine.Series[5].Points[0].YValues[0] = 0;
 
-                    chart_machine.Series[5].Points.Clear();
-                }
+            //        chart_machine.Series[5].Points.Clear();
+            //    }
 
-            }
+            //}
 
         }
 
@@ -5869,26 +5492,6 @@ namespace DoPENetConnect
         {
             if(e.Button == MouseButtons.Left)
                 posMouseDown = e.Location.X;
-        }
-
-        private void chart_machine_MouseUp(object sender, MouseEventArgs e)
-        {
-            double posMouseUp = e.Location.X;
-            if (posMouseUp - posMouseDown < 0&& e.Button == MouseButtons.Left) {
-                while (chart_machine.ChartAreas[0].AxisX.ScaleView.IsZoomed)
-                {
-                    chart_machine.ChartAreas[0].AxisX.ScaleView.ZoomReset();
-                }
-            }
-        }
-
-        private void chart_machine_MouseMove(object sender, MouseEventArgs e)
-        {
-            double posMouseUp = e.Location.X;
-            if ((posMouseUp - posMouseDown < 0)&&(e.Button==MouseButtons.Left))
-            {
-                chart_machine.ChartAreas[0].AxisX.ScaleView.ZoomReset();
-            }
         }
 
         bool floatRunOnce = true;

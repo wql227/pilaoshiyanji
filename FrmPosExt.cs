@@ -144,7 +144,7 @@ namespace DoPENetConnect
 
 
             MainForm.mainform.currentCmd = cmbX_Dyn_MoveCtrl.SelectedIndex;
-            MainForm.mainform.SetCmdSeriesAxisY(cmbX_Dyn_MoveCtrl.SelectedIndex);
+            //MainForm.mainform.SetCmdSeriesAxisY(cmbX_Dyn_MoveCtrl.SelectedIndex);
             SendCommand();
         }
 
