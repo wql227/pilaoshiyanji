@@ -3465,8 +3465,9 @@ namespace DoPENetConnect
             //if (idEncry != "0" && idEncry != "")
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
-            //}
+            //}02132F05
             devId = new StringBuilder("02137E43");
+            //devId = new StringBuilder("02132F05");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -5278,34 +5279,34 @@ namespace DoPENetConnect
             //保存位移时间曲线
             位移ToolStripMenuItem_Click(this, new EventArgs());     //切换至位移时间曲线
             //string tampName=Path.Combine(path, "StaticData");
-            string picName = Path.Combine(path, "tmp.png");
+            string picName = Path.Combine(path, "tmp.bmp");
             string chartName = GetCurrentCurveName();
-            string picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
-            axTChart1.Export.asPNG.SaveToFile(picName);
+            string picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.bmp");            
+            axTChart1.Export.asBMP.SaveToFile(picName);
             ReNameImage(picName, picName1);
 
             //保存试验力时间曲线
             toolStripMenuItem1_Click(this, new EventArgs());     //切换至试验力时间曲线
             //string tampName=Path.Combine(path, "StaticData");
             chartName = GetCurrentCurveName();
-            picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
-            axTChart1.Export.asPNG.SaveToFile(picName);
+            picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.bmp");
+            axTChart1.Export.asBMP.SaveToFile(picName);
             ReNameImage(picName, picName1);
 
             //保存变形时间曲线
             变形时间曲线ToolStripMenuItem_Click(this, new EventArgs());     //切换至变形时间曲线
             //string tampName=Path.Combine(path, "StaticData");
             chartName = GetCurrentCurveName();
-            picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
-            axTChart1.Export.asPNG.SaveToFile(picName);
+            picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.bmp");
+            axTChart1.Export.asBMP.SaveToFile(picName);
             ReNameImage(picName, picName1);
 
             //保存试验力位移曲线
             ToolStripMenuItemLoardDisplace_Click(this, new EventArgs());     //切换至变形时间曲线
             //string tampName=Path.Combine(path, "StaticData");
             chartName = GetCurrentCurveName();
-            picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.png");
-            axTChart1.Export.asPNG.SaveToFile(picName);
+            picName1 = Path.Combine(path, $"{chartName}{doTest.sampleImageName}.bmp");
+            axTChart1.Export.asBMP.SaveToFile(picName);
             ReNameImage(picName, picName1);
 
             //设回曲线参数
