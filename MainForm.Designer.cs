@@ -177,7 +177,6 @@
             this.ChartSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutoSetYAxisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pl_DataShow = new System.Windows.Forms.Panel();
-            this.buttonX24 = new DevComponents.DotNetBar.ButtonX();
             this.cb_TareExt = new System.Windows.Forms.CheckBox();
             this.cb_TareLoad = new System.Windows.Forms.CheckBox();
             this.cb_TarePos = new System.Windows.Forms.CheckBox();
@@ -2003,7 +2002,6 @@
             // 
             // pl_DataShow
             // 
-            this.pl_DataShow.Controls.Add(this.buttonX24);
             this.pl_DataShow.Controls.Add(this.cb_TareExt);
             this.pl_DataShow.Controls.Add(this.cb_TareLoad);
             this.pl_DataShow.Controls.Add(this.cb_TarePos);
@@ -2027,18 +2025,6 @@
             this.pl_DataShow.Size = new System.Drawing.Size(1584, 82);
             this.pl_DataShow.TabIndex = 56;
             this.pl_DataShow.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pl_DataShow_MouseClick);
-            // 
-            // buttonX24
-            // 
-            this.buttonX24.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX24.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX24.Location = new System.Drawing.Point(1236, 28);
-            this.buttonX24.Name = "buttonX24";
-            this.buttonX24.Size = new System.Drawing.Size(75, 23);
-            this.buttonX24.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX24.TabIndex = 43;
-            this.buttonX24.Text = "buttonX24";
-            this.buttonX24.Click += new System.EventHandler(this.buttonX24_Click);
             // 
             // cb_TareExt
             // 
@@ -4342,7 +4328,6 @@
         private System.Windows.Forms.ToolStripStatusLabel UnitContent;
         private System.Windows.Forms.ComboBox cbk_Skin;
         private DevComponents.DotNetBar.StyleManager styleManager1;
-        private DevComponents.DotNetBar.ButtonX buttonX24;
         private DevComponents.DotNetBar.PanelEx panelEx10;
         private AxTeeChart.AxTChart axTChart1;
         private DevComponents.DotNetBar.ButtonX buttonX22;
