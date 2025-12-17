@@ -30,9 +30,9 @@
     {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -185,15 +185,8 @@
             this.lblPositionMaxMin = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblExtension = new System.Windows.Forms.Label();
-            this.tb_MaxExt = new System.Windows.Forms.TextBox();
             this.lblLoad = new System.Windows.Forms.Label();
-            this.tb_MaxLoad = new System.Windows.Forms.TextBox();
-            this.tb_MaxPos = new System.Windows.Forms.TextBox();
-            this.guiPosition = new System.Windows.Forms.TextBox();
-            this.guiExtension = new System.Windows.Forms.TextBox();
             this.lblPosition = new System.Windows.Forms.Label();
-            this.guiTime = new System.Windows.Forms.TextBox();
-            this.guiLoad = new System.Windows.Forms.TextBox();
             this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel7 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx9 = new DevComponents.DotNetBar.PanelEx();
@@ -334,6 +327,13 @@
             this.timerDataClean = new System.Windows.Forms.Timer(this.components);
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.guiTime = new DevComponents.DotNetBar.LabelX();
+            this.guiPosition = new DevComponents.DotNetBar.LabelX();
+            this.tb_MaxPos = new DevComponents.DotNetBar.LabelX();
+            this.guiLoad = new DevComponents.DotNetBar.LabelX();
+            this.tb_MaxLoad = new DevComponents.DotNetBar.LabelX();
+            this.guiExtension = new DevComponents.DotNetBar.LabelX();
+            this.tb_MaxExt = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -580,14 +580,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewX2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewX2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sampleCode,
@@ -598,28 +598,28 @@
             this.sampleChecker,
             this.sampleDependation,
             this.sampleNotes});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewX2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewX2.EnableHeadersVisualStyles = false;
             this.dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX2.Location = new System.Drawing.Point(0, 517);
             this.dataGridViewX2.MultiSelect = false;
             this.dataGridViewX2.Name = "dataGridViewX2";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX2.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewX2.RowTemplate.Height = 23;
             this.dataGridViewX2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX2.Size = new System.Drawing.Size(1299, 140);
@@ -2002,6 +2002,13 @@
             // 
             // pl_DataShow
             // 
+            this.pl_DataShow.Controls.Add(this.tb_MaxExt);
+            this.pl_DataShow.Controls.Add(this.guiExtension);
+            this.pl_DataShow.Controls.Add(this.tb_MaxLoad);
+            this.pl_DataShow.Controls.Add(this.guiLoad);
+            this.pl_DataShow.Controls.Add(this.tb_MaxPos);
+            this.pl_DataShow.Controls.Add(this.guiPosition);
+            this.pl_DataShow.Controls.Add(this.guiTime);
             this.pl_DataShow.Controls.Add(this.cb_TareExt);
             this.pl_DataShow.Controls.Add(this.cb_TareLoad);
             this.pl_DataShow.Controls.Add(this.cb_TarePos);
@@ -2010,15 +2017,8 @@
             this.pl_DataShow.Controls.Add(this.lblPositionMaxMin);
             this.pl_DataShow.Controls.Add(this.lblTime);
             this.pl_DataShow.Controls.Add(this.lblExtension);
-            this.pl_DataShow.Controls.Add(this.tb_MaxExt);
             this.pl_DataShow.Controls.Add(this.lblLoad);
-            this.pl_DataShow.Controls.Add(this.tb_MaxLoad);
-            this.pl_DataShow.Controls.Add(this.tb_MaxPos);
-            this.pl_DataShow.Controls.Add(this.guiPosition);
-            this.pl_DataShow.Controls.Add(this.guiExtension);
             this.pl_DataShow.Controls.Add(this.lblPosition);
-            this.pl_DataShow.Controls.Add(this.guiTime);
-            this.pl_DataShow.Controls.Add(this.guiLoad);
             this.pl_DataShow.Dock = System.Windows.Forms.DockStyle.Top;
             this.pl_DataShow.Location = new System.Drawing.Point(0, 0);
             this.pl_DataShow.Name = "pl_DataShow";
@@ -2030,7 +2030,7 @@
             // 
             this.cb_TareExt.AutoSize = true;
             this.cb_TareExt.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cb_TareExt.Location = new System.Drawing.Point(834, 4);
+            this.cb_TareExt.Location = new System.Drawing.Point(941, 8);
             this.cb_TareExt.Name = "cb_TareExt";
             this.cb_TareExt.Size = new System.Drawing.Size(35, 20);
             this.cb_TareExt.TabIndex = 42;
@@ -2042,7 +2042,7 @@
             // 
             this.cb_TareLoad.AutoSize = true;
             this.cb_TareLoad.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cb_TareLoad.Location = new System.Drawing.Point(505, 4);
+            this.cb_TareLoad.Location = new System.Drawing.Point(562, 8);
             this.cb_TareLoad.Name = "cb_TareLoad";
             this.cb_TareLoad.Size = new System.Drawing.Size(35, 20);
             this.cb_TareLoad.TabIndex = 42;
@@ -2054,7 +2054,7 @@
             // 
             this.cb_TarePos.AutoSize = true;
             this.cb_TarePos.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cb_TarePos.Location = new System.Drawing.Point(176, 2);
+            this.cb_TarePos.Location = new System.Drawing.Point(182, 8);
             this.cb_TarePos.Name = "cb_TarePos";
             this.cb_TarePos.Size = new System.Drawing.Size(35, 20);
             this.cb_TarePos.TabIndex = 42;
@@ -2066,7 +2066,7 @@
             // 
             this.lblExtensionMaxMin.AutoSize = true;
             this.lblExtensionMaxMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtensionMaxMin.Location = new System.Drawing.Point(1032, 1);
+            this.lblExtensionMaxMin.Location = new System.Drawing.Point(1182, 8);
             this.lblExtensionMaxMin.Name = "lblExtensionMaxMin";
             this.lblExtensionMaxMin.Size = new System.Drawing.Size(77, 20);
             this.lblExtensionMaxMin.TabIndex = 26;
@@ -2077,7 +2077,7 @@
             // 
             this.lblLoadMaxMin.AutoSize = true;
             this.lblLoadMaxMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoadMaxMin.Location = new System.Drawing.Point(695, 2);
+            this.lblLoadMaxMin.Location = new System.Drawing.Point(793, 8);
             this.lblLoadMaxMin.Name = "lblLoadMaxMin";
             this.lblLoadMaxMin.Size = new System.Drawing.Size(94, 20);
             this.lblLoadMaxMin.TabIndex = 26;
@@ -2088,7 +2088,7 @@
             // 
             this.lblPositionMaxMin.AutoSize = true;
             this.lblPositionMaxMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPositionMaxMin.Location = new System.Drawing.Point(371, 2);
+            this.lblPositionMaxMin.Location = new System.Drawing.Point(422, 8);
             this.lblPositionMaxMin.Name = "lblPositionMaxMin";
             this.lblPositionMaxMin.Size = new System.Drawing.Size(77, 20);
             this.lblPositionMaxMin.TabIndex = 26;
@@ -2099,7 +2099,7 @@
             // 
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(12, 2);
+            this.lblTime.Location = new System.Drawing.Point(12, 8);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(101, 20);
             this.lblTime.TabIndex = 26;
@@ -2110,115 +2110,31 @@
             // 
             this.lblExtension.AutoSize = true;
             this.lblExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtension.Location = new System.Drawing.Point(906, 4);
+            this.lblExtension.Location = new System.Drawing.Point(1030, 8);
             this.lblExtension.Name = "lblExtension";
             this.lblExtension.Size = new System.Drawing.Size(86, 20);
             this.lblExtension.TabIndex = 32;
             this.lblExtension.Text = "变形 [mm]";
             // 
-            // tb_MaxExt
-            // 
-            this.tb_MaxExt.BackColor = System.Drawing.Color.Black;
-            this.tb_MaxExt.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold);
-            this.tb_MaxExt.ForeColor = System.Drawing.Color.Lime;
-            this.tb_MaxExt.Location = new System.Drawing.Point(995, 25);
-            this.tb_MaxExt.Name = "tb_MaxExt";
-            this.tb_MaxExt.Size = new System.Drawing.Size(157, 47);
-            this.tb_MaxExt.TabIndex = 39;
-            this.tb_MaxExt.Text = "0.000";
-            this.tb_MaxExt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // lblLoad
             // 
             this.lblLoad.AutoSize = true;
             this.lblLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoad.Location = new System.Drawing.Point(573, 1);
+            this.lblLoad.Location = new System.Drawing.Point(649, 8);
             this.lblLoad.Name = "lblLoad";
             this.lblLoad.Size = new System.Drawing.Size(87, 20);
             this.lblLoad.TabIndex = 30;
             this.lblLoad.Text = "试验力 [N]";
             // 
-            // tb_MaxLoad
-            // 
-            this.tb_MaxLoad.BackColor = System.Drawing.Color.Black;
-            this.tb_MaxLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold);
-            this.tb_MaxLoad.ForeColor = System.Drawing.Color.Lime;
-            this.tb_MaxLoad.Location = new System.Drawing.Point(666, 25);
-            this.tb_MaxLoad.Name = "tb_MaxLoad";
-            this.tb_MaxLoad.Size = new System.Drawing.Size(157, 47);
-            this.tb_MaxLoad.TabIndex = 39;
-            this.tb_MaxLoad.Text = "0.000";
-            this.tb_MaxLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tb_MaxPos
-            // 
-            this.tb_MaxPos.BackColor = System.Drawing.Color.Black;
-            this.tb_MaxPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_MaxPos.ForeColor = System.Drawing.Color.Lime;
-            this.tb_MaxPos.Location = new System.Drawing.Point(337, 25);
-            this.tb_MaxPos.Name = "tb_MaxPos";
-            this.tb_MaxPos.Size = new System.Drawing.Size(157, 47);
-            this.tb_MaxPos.TabIndex = 39;
-            this.tb_MaxPos.Text = "0.000";
-            this.tb_MaxPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // guiPosition
-            // 
-            this.guiPosition.BackColor = System.Drawing.Color.Black;
-            this.guiPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiPosition.ForeColor = System.Drawing.Color.Lime;
-            this.guiPosition.Location = new System.Drawing.Point(174, 25);
-            this.guiPosition.Name = "guiPosition";
-            this.guiPosition.Size = new System.Drawing.Size(157, 47);
-            this.guiPosition.TabIndex = 39;
-            this.guiPosition.Text = "0.000";
-            this.guiPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // guiExtension
-            // 
-            this.guiExtension.BackColor = System.Drawing.Color.Black;
-            this.guiExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiExtension.ForeColor = System.Drawing.Color.Lime;
-            this.guiExtension.Location = new System.Drawing.Point(832, 25);
-            this.guiExtension.Name = "guiExtension";
-            this.guiExtension.Size = new System.Drawing.Size(157, 47);
-            this.guiExtension.TabIndex = 41;
-            this.guiExtension.Text = "0.000";
-            this.guiExtension.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
             this.lblPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPosition.Location = new System.Drawing.Point(245, 2);
+            this.lblPosition.Location = new System.Drawing.Point(272, 8);
             this.lblPosition.Name = "lblPosition";
             this.lblPosition.Size = new System.Drawing.Size(86, 20);
             this.lblPosition.TabIndex = 28;
             this.lblPosition.Text = "位移 [mm]";
-            // 
-            // guiTime
-            // 
-            this.guiTime.BackColor = System.Drawing.Color.Black;
-            this.guiTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiTime.ForeColor = System.Drawing.Color.Lime;
-            this.guiTime.Location = new System.Drawing.Point(11, 25);
-            this.guiTime.Name = "guiTime";
-            this.guiTime.Size = new System.Drawing.Size(157, 47);
-            this.guiTime.TabIndex = 25;
-            this.guiTime.Text = "00:00:00";
-            this.guiTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // guiLoad
-            // 
-            this.guiLoad.BackColor = System.Drawing.Color.Black;
-            this.guiLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guiLoad.ForeColor = System.Drawing.Color.Lime;
-            this.guiLoad.Location = new System.Drawing.Point(503, 25);
-            this.guiLoad.Name = "guiLoad";
-            this.guiLoad.Size = new System.Drawing.Size(157, 47);
-            this.guiLoad.TabIndex = 40;
-            this.guiLoad.Text = "0.000";
-            this.guiLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // superTabItem2
             // 
@@ -4024,6 +3940,167 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
             // 
+            // guiTime
+            // 
+            this.guiTime.BackColor = System.Drawing.Color.Black;
+            // 
+            // 
+            // 
+            this.guiTime.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiTime.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiTime.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiTime.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiTime.BackgroundStyle.Class = "TextBoxBorder";
+            this.guiTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.guiTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiTime.FontBold = true;
+            this.guiTime.ForeColor = System.Drawing.Color.Lime;
+            this.guiTime.Location = new System.Drawing.Point(13, 31);
+            this.guiTime.Margin = new System.Windows.Forms.Padding(0);
+            this.guiTime.Name = "guiTime";
+            this.guiTime.Size = new System.Drawing.Size(157, 47);
+            this.guiTime.TabIndex = 95;
+            this.guiTime.Text = "00:00:00";
+            this.guiTime.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // guiPosition
+            // 
+            this.guiPosition.BackColor = System.Drawing.Color.Black;
+            // 
+            // 
+            // 
+            this.guiPosition.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiPosition.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiPosition.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiPosition.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiPosition.BackgroundStyle.Class = "TextBoxBorder";
+            this.guiPosition.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.guiPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiPosition.FontBold = true;
+            this.guiPosition.ForeColor = System.Drawing.Color.Lime;
+            this.guiPosition.Location = new System.Drawing.Point(180, 31);
+            this.guiPosition.Margin = new System.Windows.Forms.Padding(0);
+            this.guiPosition.Name = "guiPosition";
+            this.guiPosition.Size = new System.Drawing.Size(180, 47);
+            this.guiPosition.TabIndex = 95;
+            this.guiPosition.Text = "0.00";
+            this.guiPosition.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // tb_MaxPos
+            // 
+            this.tb_MaxPos.BackColor = System.Drawing.Color.Black;
+            // 
+            // 
+            // 
+            this.tb_MaxPos.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxPos.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxPos.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxPos.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxPos.BackgroundStyle.Class = "TextBoxBorder";
+            this.tb_MaxPos.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_MaxPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_MaxPos.FontBold = true;
+            this.tb_MaxPos.ForeColor = System.Drawing.Color.Lime;
+            this.tb_MaxPos.Location = new System.Drawing.Point(370, 31);
+            this.tb_MaxPos.Margin = new System.Windows.Forms.Padding(0);
+            this.tb_MaxPos.Name = "tb_MaxPos";
+            this.tb_MaxPos.Size = new System.Drawing.Size(180, 47);
+            this.tb_MaxPos.TabIndex = 96;
+            this.tb_MaxPos.Text = "0.00";
+            this.tb_MaxPos.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // guiLoad
+            // 
+            this.guiLoad.BackColor = System.Drawing.Color.Black;
+            // 
+            // 
+            // 
+            this.guiLoad.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiLoad.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiLoad.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiLoad.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiLoad.BackgroundStyle.Class = "TextBoxBorder";
+            this.guiLoad.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.guiLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiLoad.FontBold = true;
+            this.guiLoad.ForeColor = System.Drawing.Color.Lime;
+            this.guiLoad.Location = new System.Drawing.Point(560, 31);
+            this.guiLoad.Margin = new System.Windows.Forms.Padding(0);
+            this.guiLoad.Name = "guiLoad";
+            this.guiLoad.Size = new System.Drawing.Size(180, 47);
+            this.guiLoad.TabIndex = 97;
+            this.guiLoad.Text = "0.00";
+            this.guiLoad.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // tb_MaxLoad
+            // 
+            this.tb_MaxLoad.BackColor = System.Drawing.Color.Black;
+            // 
+            // 
+            // 
+            this.tb_MaxLoad.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxLoad.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxLoad.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxLoad.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxLoad.BackgroundStyle.Class = "TextBoxBorder";
+            this.tb_MaxLoad.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_MaxLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_MaxLoad.FontBold = true;
+            this.tb_MaxLoad.ForeColor = System.Drawing.Color.Lime;
+            this.tb_MaxLoad.Location = new System.Drawing.Point(750, 31);
+            this.tb_MaxLoad.Margin = new System.Windows.Forms.Padding(0);
+            this.tb_MaxLoad.Name = "tb_MaxLoad";
+            this.tb_MaxLoad.Size = new System.Drawing.Size(180, 47);
+            this.tb_MaxLoad.TabIndex = 98;
+            this.tb_MaxLoad.Text = "0.00";
+            this.tb_MaxLoad.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // guiExtension
+            // 
+            this.guiExtension.BackColor = System.Drawing.Color.Black;
+            // 
+            // 
+            // 
+            this.guiExtension.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiExtension.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiExtension.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiExtension.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.guiExtension.BackgroundStyle.Class = "TextBoxBorder";
+            this.guiExtension.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.guiExtension.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guiExtension.FontBold = true;
+            this.guiExtension.ForeColor = System.Drawing.Color.Lime;
+            this.guiExtension.Location = new System.Drawing.Point(940, 31);
+            this.guiExtension.Margin = new System.Windows.Forms.Padding(0);
+            this.guiExtension.Name = "guiExtension";
+            this.guiExtension.Size = new System.Drawing.Size(180, 47);
+            this.guiExtension.TabIndex = 99;
+            this.guiExtension.Text = "0.00";
+            this.guiExtension.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // tb_MaxExt
+            // 
+            this.tb_MaxExt.BackColor = System.Drawing.Color.Black;
+            // 
+            // 
+            // 
+            this.tb_MaxExt.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxExt.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxExt.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxExt.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Double;
+            this.tb_MaxExt.BackgroundStyle.Class = "TextBoxBorder";
+            this.tb_MaxExt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_MaxExt.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_MaxExt.FontBold = true;
+            this.tb_MaxExt.ForeColor = System.Drawing.Color.Lime;
+            this.tb_MaxExt.Location = new System.Drawing.Point(1130, 31);
+            this.tb_MaxExt.Margin = new System.Windows.Forms.Padding(0);
+            this.tb_MaxExt.Name = "tb_MaxExt";
+            this.tb_MaxExt.Size = new System.Drawing.Size(180, 47);
+            this.tb_MaxExt.TabIndex = 100;
+            this.tb_MaxExt.Text = "0.00";
+            this.tb_MaxExt.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4105,10 +4182,7 @@
         private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel2;
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox guiExtension;
-        private System.Windows.Forms.TextBox guiLoad;
         private System.Windows.Forms.Label lblPosition;
-        private System.Windows.Forms.TextBox guiPosition;
         private System.Windows.Forms.Label lblLoad;
         private System.Windows.Forms.Label lblExtension;
         private DevComponents.DotNetBar.SuperTabItem superTabItem2;
@@ -4227,11 +4301,8 @@
         private System.Windows.Forms.CheckBox cb_TareExt;
         private System.Windows.Forms.CheckBox cb_TareLoad;
         private System.Windows.Forms.Label lblPositionMaxMin;
-        private System.Windows.Forms.TextBox tb_MaxPos;
         private System.Windows.Forms.Label lblLoadMaxMin;
-        private System.Windows.Forms.TextBox tb_MaxLoad;
         private System.Windows.Forms.Label lblExtensionMaxMin;
-        private System.Windows.Forms.TextBox tb_MaxExt;
         private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel7;
         private DevComponents.DotNetBar.PanelEx panelEx9;
         private DevComponents.DotNetBar.SuperTabItem superTabItem7;
@@ -4306,7 +4377,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Label lblTime;
-        private System.Windows.Forms.TextBox guiTime;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem 位移ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
@@ -4397,6 +4467,13 @@
         private DevComponents.DotNetBar.ButtonX btnX_AxisYMax;
         private DevComponents.DotNetBar.ButtonX btnX_Connect;
         private DevComponents.DotNetBar.ButtonX btnX_Disconnect;
+        private DevComponents.DotNetBar.LabelX guiTime;
+        private DevComponents.DotNetBar.LabelX guiPosition;
+        private DevComponents.DotNetBar.LabelX guiLoad;
+        private DevComponents.DotNetBar.LabelX tb_MaxPos;
+        private DevComponents.DotNetBar.LabelX tb_MaxLoad;
+        private DevComponents.DotNetBar.LabelX tb_MaxExt;
+        private DevComponents.DotNetBar.LabelX guiExtension;
     }
 }
 
