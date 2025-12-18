@@ -12,6 +12,7 @@ namespace DoPENetConnect
 {
     public partial class FormFloat : Form
     {
+        int operateFlag = 0;
         public FormFloat()
         {
             InitializeComponent();
@@ -242,6 +243,42 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDownText", "0", strTmp, strTmp.Capacity);
             btnX_QuickMoveDown.Text = strTmp.ToString();
         }
+
+        private void labelX1_Click(object sender, EventArgs e)
+        {
+            if (operateFlag == 0)
+            {
+                buttonX1.Visible = true;
+                operateFlag = 1;
+                this.Height = 165;
+            }
+            else if (operateFlag == 1)
+            {
+                buttonX1.Visible = false;
+                operateFlag = 0;
+                this.Height = 520;
+            }
+        }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            MainForm.mainform.FormFloat_bntX_MoveHalt_Click();
+        }
+
+
+        //private void labelX2_Click(object sender, EventArgs e)
+        //{
+        //    labelX2.Visible = false;
+        //    labelX3.Visible = true;
+        //    this.TopMost = false;
+        //}
+
+        //private void labelX3_Click(object sender, EventArgs e)
+        //{
+        //    labelX2.Visible = true;
+        //    labelX3.Visible = false;
+        //    this.TopMost = true;
+        //}
     }
     
 }
