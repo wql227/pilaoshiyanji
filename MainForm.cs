@@ -4100,16 +4100,16 @@ namespace DoPENetConnect
 
             #region 按键功能常数
             IniFileHelper.GetIniString("PushButtonFunctionConstant", "Up", "1", strTmp, strTmp.Capacity);
-            btnUpConstantVal = double.Parse(strTmp.ToString());
+            btnUpConstantVal = double.Parse(strTmp.ToString()) / MainForm.mainform.posDtaRatio;
 
             IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryUp", "10", strTmp, strTmp.Capacity);
-            btnHurryUpConstantVal = double.Parse(strTmp.ToString());
+            btnHurryUpConstantVal = double.Parse(strTmp.ToString()) / MainForm.mainform.posDtaRatio;
 
             IniFileHelper.GetIniString("PushButtonFunctionConstant", "Down", "1", strTmp, strTmp.Capacity);
-            btnDownConstantVal = double.Parse(strTmp.ToString());
+            btnDownConstantVal = double.Parse(strTmp.ToString()) / MainForm.mainform.posDtaRatio;
 
             IniFileHelper.GetIniString("PushButtonFunctionConstant", "HurryDown", "10", strTmp, strTmp.Capacity);
-            btnHurryDownConstantVal = double.Parse(strTmp.ToString());
+            btnHurryDownConstantVal = double.Parse(strTmp.ToString()) / MainForm.mainform.posDtaRatio;
             #endregion 按键功能常数
 
 

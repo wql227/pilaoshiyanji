@@ -758,19 +758,19 @@ namespace DoPENetConnect
 
             //按钮常量设置
             strTmp = tbX_upval.Text;
-            MainForm.mainform.btnUpConstantVal = double.Parse(strTmp);
+            MainForm.mainform.btnUpConstantVal = double.Parse(strTmp) / MainForm.mainform.posDtaRatio;
             IniFileHelper.WriteIniString("PushButtonFunctionConstant", "Up", strTmp);
 
             strTmp = tbX_hurryupval.Text;
-            MainForm.mainform.btnHurryUpConstantVal = double.Parse(strTmp);
+            MainForm.mainform.btnHurryUpConstantVal = double.Parse(strTmp) / MainForm.mainform.posDtaRatio;
             IniFileHelper.WriteIniString("PushButtonFunctionConstant", "HurryUp", strTmp);
 
             strTmp = tbX_upval.Text;
-            MainForm.mainform.btnDownConstantVal = double.Parse(strTmp);
+            MainForm.mainform.btnDownConstantVal = double.Parse(strTmp)/MainForm.mainform.posDtaRatio;
             IniFileHelper.WriteIniString("PushButtonFunctionConstant", "Down", strTmp);
 
             strTmp = tbX_hurryupval.Text;
-            MainForm.mainform.btnHurryDownConstantVal = double.Parse(strTmp);
+            MainForm.mainform.btnHurryDownConstantVal = double.Parse(strTmp) / MainForm.mainform.posDtaRatio;
             IniFileHelper.WriteIniString("PushButtonFunctionConstant", "HurryDown", strTmp);
 
             #endregion 按键常数
