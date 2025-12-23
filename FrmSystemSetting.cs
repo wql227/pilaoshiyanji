@@ -520,6 +520,27 @@ namespace DoPENetConnect
 
             #endregion
 
+
+            #region 试验机参数
+            //测量数据系数                                         
+            //位移
+            IniFileHelper.GetIniString("DataRatio", "Pos", "1", strTmp, strTmp.Capacity);
+            textBoxX2.Text = strTmp.ToString();
+
+           //试验力
+            IniFileHelper.GetIniString("DataRatio", "Load", "1",strTmp,strTmp.Capacity);
+            textBoxX1.Text = strTmp.ToString();
+
+
+            IniFileHelper.GetIniString("DataRatio", "Ext", "1", strTmp, strTmp.Capacity);
+            textBoxX3.Text = strTmp.ToString();
+
+
+            IniFileHelper.GetIniString("DataRatio", "Cmd", "1", strTmp, strTmp.Capacity);
+            textBoxX4.Text = strTmp.ToString();
+
+            #endregion
+
         }
 
 
@@ -791,11 +812,23 @@ namespace DoPENetConnect
             #endregion
             #region 试验机参数
             //测量数据系数
-            strTmp = textBoxX1.Text;
+            strTmp = textBoxX2.Text;                                          //位移
             IniFileHelper.WriteIniString("DataRatio", "Pos", strTmp);
-            MainForm.mainform.ProtectionUnitModify(comboBoxEx_ForceUnit.SelectedIndex);
+            MainForm.mainform.posDtaRatio = double.Parse(strTmp);
 
-            #endregion 
+            strTmp = textBoxX1.Text;                                          //试验力
+            IniFileHelper.WriteIniString("DataRatio", "Load", strTmp);
+            MainForm.mainform.loadDtaRatio = double.Parse(strTmp);
+            
+            strTmp = textBoxX3.Text;
+            IniFileHelper.WriteIniString("DataRatio", "Ext", strTmp);
+            MainForm.mainform.extDtaRatio = double.Parse(strTmp);
+
+            strTmp = textBoxX4.Text;
+            IniFileHelper.WriteIniString("DataRatio", "Cmd", strTmp);
+            MainForm.mainform.cmdDtaRatio = double.Parse(strTmp);
+
+            #endregion
 
 
         }

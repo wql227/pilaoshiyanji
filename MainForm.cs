@@ -592,6 +592,13 @@ namespace DoPENetConnect
         /// </summary>
         public Queue<LogEntry> StopLogQueues = new Queue<LogEntry>();
 
+        //测量数据系数
+        public double posDtaRatio = 1;
+        public double loadDtaRatio = 1;
+        public double extDtaRatio = 1;
+        public double cmdDtaRatio = 1;
+
+
         ///// <summary>
         ///// 初始化Timer控件
         ///// </summary>
@@ -3907,8 +3914,8 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             // }
-            //devId = new StringBuilder("02132F05");
             devId = new StringBuilder("02137E43");
+            //devId = new StringBuilder("0214B8ED");
             //devId = new StringBuilder("007AC88C");
 
             //读取上次的试验次数
@@ -4155,6 +4162,27 @@ namespace DoPENetConnect
             lbX_CompanyTel.Text = strTmp.ToString();
 
             #endregion
+            
+            #region 试验机参数
+            //测量数据系数                                         
+            //位移
+            IniFileHelper.GetIniString("DataRatio", "Pos", "1", strTmp, strTmp.Capacity);
+            posDtaRatio = double.Parse(strTmp.ToString());
+
+            //试验力
+            IniFileHelper.GetIniString("DataRatio", "Load", "1", strTmp, strTmp.Capacity);
+            loadDtaRatio = double.Parse(strTmp.ToString());
+
+
+            IniFileHelper.GetIniString("DataRatio", "Ext", "1", strTmp, strTmp.Capacity);
+            extDtaRatio = double.Parse(strTmp.ToString());
+
+
+            IniFileHelper.GetIniString("DataRatio", "Cmd", "1", strTmp, strTmp.Capacity);
+            cmdDtaRatio = double.Parse(strTmp.ToString());
+
+            #endregion
+
         }
 
 
