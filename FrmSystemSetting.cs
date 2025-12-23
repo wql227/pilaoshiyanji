@@ -789,6 +789,14 @@ namespace DoPENetConnect
             IniFileHelper.WriteIniString("CompanyInfo ", "CompanyTel", strTmp);
 
             #endregion
+            #region 试验机参数
+            //测量数据系数
+            strTmp = textBoxX1.Text;
+            IniFileHelper.WriteIniString("DataRatio", "Pos", strTmp);
+            MainForm.mainform.ProtectionUnitModify(comboBoxEx_ForceUnit.SelectedIndex);
+
+            #endregion 
+
 
         }
 
