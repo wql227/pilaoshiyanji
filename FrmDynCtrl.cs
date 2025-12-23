@@ -195,23 +195,23 @@ namespace DoPENetConnect
             if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "KN/S")
             {
                 //力控时转换成千牛
-                SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) * 1000;
+                SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) * 1000 / MainForm.mainform.loadDtaRatio;
             }
             else
             {
                 //位移控时转换成mm/min
-                SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) / 60;
+                SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) / 60 / MainForm.mainform.posDtaRatio;
             }
 
             if (cmbX_Dyn_MoveCtrl_Unit.Text.ToUpper() == "KN")
             {
-                Offset = double.Parse(tbX_Dyn_Offset.Text) * 1000;
-                Amplitude = double.Parse(tbX_Dyn_Amplitude.Text) * 1000;
+                Offset = double.Parse(tbX_Dyn_Offset.Text) * 1000 / MainForm.mainform.loadDtaRatio;
+                Amplitude = double.Parse(tbX_Dyn_Amplitude.Text) * 1000 / MainForm.mainform.loadDtaRatio;
             }
             else
             {
-                Offset = double.Parse(tbX_Dyn_Offset.Text);
-                Amplitude = double.Parse(tbX_Dyn_Amplitude.Text);
+                Offset = double.Parse(tbX_Dyn_Offset.Text) / MainForm.mainform.posDtaRatio; 
+                Amplitude = double.Parse(tbX_Dyn_Amplitude.Text) / MainForm.mainform.posDtaRatio; 
             }
 
             Frequency = double.Parse(tbX_Dyn_Frequency.Text);
@@ -227,7 +227,7 @@ namespace DoPENetConnect
             HaltAtPlusAmplitude = 0.0;
             HaltAtMinusAmplitude = 0.0;
             SpeedToDestination = 0.0;
-            Destination = double.Parse(tbX_Dyn_Offset.Text) + double.Parse(tbX_Dyn_Amplitude.Text);
+            Destination = Offset + Amplitude;
             SweepFrequencyMode = 0;
 
             //MainForm.mainform.PVPositionQueue.Clear();
