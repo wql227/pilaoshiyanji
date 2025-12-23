@@ -1149,14 +1149,14 @@ namespace DoPENetConnect
 
                 //记录位移
                 strCSVLog += text + ",";
-                text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S].ToString("0.000"));
-                g_Position = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S];
+                text = String.Format("{0}", (posDtaRatio*gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]).ToString("0.000"));
+                g_Position = posDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S];
 
                 if (bConnected)
                 {
                     //TODO
                     //位移队列
-                    PVPositionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
+                    PVPositionQueue.Enqueue(posDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
                     if (PVPositionQueue.Count >= 200)
                     {
                         PVPositionList = PVPositionQueue.Distinct().ToList();
@@ -1298,10 +1298,10 @@ namespace DoPENetConnect
 
                     //记录试验力
                     strCSVLog += text + ",";
-                    text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F].ToString("0.000"));
-                    g_Load = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F];
+                    text = String.Format("{0}", (loadDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]).ToString("0.000"));
+                    g_Load = loadDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F];
                     //试验力队列
-                    PVLoadQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
+                    PVLoadQueue.Enqueue(loadDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
                     if (PVLoadQueue.Count >= 200)
                     {
                         PVLoadList = PVLoadQueue.Distinct().ToList();
@@ -1483,11 +1483,11 @@ namespace DoPENetConnect
                     //记录变形
                     strCSVLog += text + ",";
                     //data_display2 = decimal.Parse(guiLoad.Text);
-                    text = String.Format("{0}", gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E].ToString("0.000"));
-                    g_Extension = gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E];
+                    text = String.Format("{0}", (extDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]).ToString("0.000"));
+                    g_Extension = extDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E];
 
                     //变形队列
-                    PVExtensionQueue.Enqueue(gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
+                    PVExtensionQueue.Enqueue(extDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
                     if (PVExtensionQueue.Count >= 200)
                     {
                         PVExtensionList = PVExtensionQueue.Distinct().ToList();
@@ -1623,7 +1623,7 @@ namespace DoPENetConnect
 
                     //记录命令
                     strCSVLog += text + ",";
-                    text = String.Format("{0}", gSample.Sensor[(int)DoPE.OUT.COMMAND].ToString("0.000"));
+                    text = String.Format("{0}", (cmdDtaRatio * gSample.Sensor[(int)DoPE.OUT.COMMAND]).ToString("0.000"));
 
                     //记录半周期
                     strCSVLog += text + ",";
@@ -1665,7 +1665,7 @@ namespace DoPENetConnect
                             int halfCycles = gSample.Cycles >> 1;
 
                             char[] buffer = ArrayPool<char>.Shared.Rent(1024);
-                            bool success = FastLogFormatter.FormatLogLineToCharArray(gSample.Time, gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S], gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F], gSample.Cycles, gSample.Cycles >> 1, buffer, 0, out int len);
+                            bool success = FastLogFormatter.FormatLogLineToCharArray(gSample.Time, posDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S], loadDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F], gSample.Cycles, gSample.Cycles >> 1, buffer, 0, out int len);
 
                             if (success)
                             {
@@ -3166,20 +3166,20 @@ namespace DoPENetConnect
                     for (int i = 0; Block.Data.Length > i; i += (int)SampleFrequency * 10/*5 / 2*/)
                     {
                         //绘制Position
-                        y_Position = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
+                        y_Position = posDtaRatio*Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_S];
 
                         //绘制Load
-                        y_Load = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
+                        y_Load = loadDtaRatio * Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_F];
 
                         if (LoadUnit.ToUpper() == "KN")
                         {
                             y_Load = y_Load / 1000;
                         }
                         //绘制Extension
-                        y_Extension = Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
+                        y_Extension = extDtaRatio * Block.Data[i].Data.Sensor[(int)DoPE.SENSOR.SENSOR_E];
 
                         //绘制Command
-                        y_Command = Block.Data[i].Data.Command;
+                        y_Command = cmdDtaRatio * Block.Data[i].Data.Command;
 
                         chartX.Add(x_Data);
 
