@@ -37,7 +37,11 @@ namespace DoPENetConnect
             }
 
             //初始化移动控制选项
-            cmbX_Pos_MoveCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+            if (MainForm.mainform.currentMachineType == "0")
+                cmbX_Pos_MoveCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+            else {
+                cmbX_Pos_MoveCtrl.DataSource = new string[]{"角度","扭矩" };
+            }
 
             LoadIni();
         }
@@ -90,22 +94,32 @@ namespace DoPENetConnect
 
             double Pos_SpeedCtrl = 0.0d;
             double Pos_Destnation = 0.0d;
-            if (cmbX_Pos_SpeedUnit.Text == "kN/s")
+            if (cmbX_Pos_SpeedUnit.Text == "kN/s"|| cmbX_Pos_SpeedUnit.Text == "kNm/s")
             {
                 Pos_SpeedCtrl = double.Parse(tbX_Pos_SpeedCtrl.Text) * 1000 / MainForm.mainform.loadDtaRatio;
             }
-            else
+            else if (cmbX_Pos_SpeedUnit.Text == "mm/min"|| cmbX_Pos_SpeedUnit.Text == "deg/min")
             {
                 //mm/min
-                Pos_SpeedCtrl = double.Parse(tbX_Pos_SpeedCtrl.Text) / 60/MainForm.mainform.posDtaRatio;
+                Pos_SpeedCtrl = double.Parse(tbX_Pos_SpeedCtrl.Text) / 60 / MainForm.mainform.posDtaRatio;
             }
+            else if(cmbX_Pos_SpeedUnit.Text == "N/s")
+            {
+                Pos_SpeedCtrl = double.Parse(tbX_Pos_SpeedCtrl.Text) / MainForm.mainform.loadDtaRatio;
+            }
+            else
+                Pos_SpeedCtrl = double.Parse(tbX_Pos_SpeedCtrl.Text)/ MainForm.mainform.posDtaRatio;
 
-            if (cmbX_Pos_DestnationUnit.Text == "kN")
+            if (cmbX_Pos_DestnationUnit.Text == "kN" || cmbX_Pos_DestnationUnit.Text == "kNm")
             {
                 Pos_Destnation = double.Parse(tbX_Pos_Destnation.Text) * 1000 / MainForm.mainform.loadDtaRatio;
             }
-            else
+            else if (cmbX_Pos_DestnationUnit.Text == "N" )
             {
+                Pos_Destnation = double.Parse(tbX_Pos_Destnation.Text) / MainForm.mainform.loadDtaRatio;
+            }
+            else
+            { 
                 Pos_Destnation = double.Parse(tbX_Pos_Destnation.Text) / MainForm.mainform.posDtaRatio;
             }
 
@@ -122,7 +136,11 @@ namespace DoPENetConnect
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             StringBuilder strTmp = new StringBuilder(255);
             IniFileHelper.GetIniString("POS", "MoveCtrl", "0", strTmp, strTmp.Capacity);
-            cmbX_Pos_MoveCtrl.SelectedIndex = int.Parse(strTmp.ToString());
+            if (MainForm.mainform.currentMachineType == "1" && int.Parse(strTmp.ToString()) > 1){
+                cmbX_Pos_MoveCtrl.SelectedIndex = 0;
+            }
+            else
+                cmbX_Pos_MoveCtrl.SelectedIndex = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("POS", "SpeedCtrl", "0", strTmp, strTmp.Capacity);
             tbX_Pos_SpeedCtrl.Text = strTmp.ToString();
@@ -173,6 +191,12 @@ namespace DoPENetConnect
                         cmbX_Pos_DestnationUnit.DataSource = new string[] { "mm" };
                         break;
                     }
+                case "角度":
+                    {
+                        cmbX_Pos_SpeedUnit.DataSource = new string[] { "deg/min" };
+                        cmbX_Pos_DestnationUnit.DataSource = new string[] { "deg" };
+                        break;
+                    }
                 case "LOAD":
                     {
                         if (MainForm.mainform.LoadUnit.ToUpper() == "KN")
@@ -184,6 +208,20 @@ namespace DoPENetConnect
                         {
                             cmbX_Pos_SpeedUnit.DataSource = new string[] { "N/s" };
                             cmbX_Pos_DestnationUnit.DataSource = new string[] { "N" };
+                        }
+                        break;
+                    }
+                case "扭矩":
+                    {
+                        if (MainForm.mainform.LoadUnit.ToUpper() == "KN")
+                        {
+                            cmbX_Pos_SpeedUnit.DataSource = new string[] { "kNm/s" };
+                            cmbX_Pos_DestnationUnit.DataSource = new string[] { "kNm" };
+                        }
+                        else
+                        {
+                            cmbX_Pos_SpeedUnit.DataSource = new string[] { "Nm/s" };
+                            cmbX_Pos_DestnationUnit.DataSource = new string[] { "Nm" };
                         }
                         break;
                     }
@@ -206,6 +244,31 @@ namespace DoPENetConnect
         private void FrmPos_Load(object sender, EventArgs e)
         {
             ReplaceLanguage();
+
+            SetUnitbySystemType(MainForm.mainform.currentMachineType);
+        }
+
+
+        public void SetUnitbySystemType(string type)
+        {
+            switch (type)
+            {
+                case "0":
+                    break;
+                case "1":
+                    //label17.Text = "kNm";
+                    //label10.Text = "deg";
+                    //label15.Text = "deg/min";
+                    //label48.Text = "扭矩";
+                    //label49.Text = "角度";
+                    //label40.Text = "deg/min";
+                    //label4.Text = "deg/min";
+                    //lbX_MaxForce.Text = "系统最大试验扭矩";
+                    //lbX_MaxTrip.Text = "系统最大试验角度";
+                    //label29.Text = "最大角速度";
+                    //label33.Text = "角度测量采用";
+                    break;
+            }
         }
     }
 }
