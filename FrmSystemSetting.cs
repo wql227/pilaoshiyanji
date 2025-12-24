@@ -539,6 +539,10 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("DataRatio", "Cmd", "1", strTmp, strTmp.Capacity);
             textBoxX4.Text = strTmp.ToString();
 
+            IniFileHelper.GetIniString("MachineType", "Type", "0", strTmp, strTmp.Capacity);
+            MainForm.mainform.currentMachineType = strTmp.ToString();
+            comboBoxEx2.SelectedIndex = int.Parse(strTmp.ToString());
+
             #endregion
 
         }
@@ -827,6 +831,10 @@ namespace DoPENetConnect
             strTmp = textBoxX4.Text;
             IniFileHelper.WriteIniString("DataRatio", "Cmd", strTmp);
             MainForm.mainform.cmdDtaRatio = double.Parse(strTmp);
+
+            strTmp = comboBoxEx2.SelectedIndex.ToString();
+            IniFileHelper.WriteIniString("MachineType", "Type", strTmp);
+            MainForm.mainform.currentMachineType = strTmp;
 
             #endregion
 

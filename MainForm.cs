@@ -597,6 +597,7 @@ namespace DoPENetConnect
         public double loadDtaRatio = 1;
         public double extDtaRatio = 1;
         public double cmdDtaRatio = 1;
+        public string currentMachineType = "0";
 
 
         ///// <summary>
@@ -4180,6 +4181,10 @@ namespace DoPENetConnect
 
             IniFileHelper.GetIniString("DataRatio", "Cmd", "1", strTmp, strTmp.Capacity);
             cmdDtaRatio = double.Parse(strTmp.ToString());
+
+
+            IniFileHelper.GetIniString("MachineType", "Type", "1", strTmp, strTmp.Capacity);
+            currentMachineType = strTmp.ToString();
 
             #endregion
 
