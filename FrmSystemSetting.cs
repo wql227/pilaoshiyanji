@@ -1230,5 +1230,6 @@ namespace DoPENetConnect
         {
             MainForm.mainform.多传感器ToolStripMenuItem_Click();
         }
+
     }
 }
