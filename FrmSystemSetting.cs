@@ -34,6 +34,8 @@ namespace DoPENetConnect
                 groupPanel12.Visible = true;
             }
 
+            SetUnitbySystemType(MainForm.mainform.currentMachineType);
+
         }
 
         /// <summary>
@@ -1177,8 +1179,10 @@ namespace DoPENetConnect
             //}
 
             WriteIni();
-
-            MainForm.mainform.SetMemberParam();
+            if (MainForm.mainform.currentMachineType == "0")
+            {
+                MainForm.mainform.SetMemberParam();
+            }
 
             this.Close();
         }
@@ -1237,6 +1241,28 @@ namespace DoPENetConnect
         private void buttonX2_Click(object sender, EventArgs e)
         {
             MainForm.mainform.多传感器ToolStripMenuItem_Click();
+        }
+
+        public void SetUnitbySystemType(string type)
+        {
+            switch (type)
+            {
+                case "0":
+                    break;
+                case "1":
+                    label17.Text = "kNm";
+                    label10.Text = "deg";
+                    label15.Text = "deg/min";
+                    label48.Text = "扭矩";
+                    label49.Text = "角度";
+                    label40.Text = "deg/min";
+                    label4.Text = "deg/min";
+                    lbX_MaxForce.Text = "系统最大试验扭矩";
+                    lbX_MaxTrip.Text = "系统最大试验角度";
+                    label29.Text = "最大角速度";
+                    label33.Text = "角度测量采用";
+                    break;
+            }
         }
 
     }

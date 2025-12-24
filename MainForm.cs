@@ -715,7 +715,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -2220,6 +2220,9 @@ namespace DoPENetConnect
             {
                 this.styleManager1.ManagerStyle = result;
             }
+
+            //更换试验机类型
+            SetUnitbySystemType(currentMachineType);
         }
 
 
@@ -4189,6 +4192,29 @@ namespace DoPENetConnect
             #endregion
 
         }
+
+        public void SetUnitbySystemType(string type)
+        {
+            switch (type)
+            {
+                case "0":
+                    break;
+                case "1":
+                    gp_Position.Text = "角度[deg]";
+                    gp_Load.Text = "扭矩[Nm]";
+                    axTChart1.Axis.Left.Title.Caption= "角度(deg)";
+                    axTChart1.Axis.Right.Title.Caption = "扭矩(Nm)";
+                    axTChart1.Axis.Custom[0].Title.Caption = "变形(Nm)";
+                    label61.Text = "deg";
+                    label63.Text = "deg";
+                    label5.Text = "Nm";
+                    label6.Text = "Nm";
+                    label13.Text = "deg";
+                    label14.Text = "deg";
+                    break;
+            }
+        }
+       
 
 
         /// <summary>
