@@ -32,6 +32,7 @@ namespace DoPENetConnect
                 groupPanel6.Visible = true;
                 groupPanel11.Visible = true;
                 groupPanel12.Visible = true;
+                superTabItem7.Visible = true;
             }
 
             SetUnitbySystemType(MainForm.mainform.currentMachineType);

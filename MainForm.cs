@@ -715,7 +715,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            ConnectToEdc();
+            //ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -4203,17 +4203,37 @@ namespace DoPENetConnect
                 case "0":
                     break;
                 case "1":
-                    gp_Position.Text = "角度[deg]";
-                    gp_Load.Text = "扭矩[Nm]";
-                    axTChart1.Axis.Left.Title.Caption= "角度(deg)";
-                    axTChart1.Axis.Right.Title.Caption = "扭矩(Nm)";
-                    axTChart1.Axis.Custom[0].Title.Caption = "变形(Nm)";
-                    label61.Text = "deg";
-                    label63.Text = "deg";
-                    label5.Text = "Nm";
-                    label6.Text = "Nm";
-                    label13.Text = "deg";
-                    label14.Text = "deg";
+                    if (LoadUnit.ToUpper() == "N")
+                    {
+                        gp_Position.Text = "角度[deg]";
+                        gp_Load.Text = "扭矩[Nm]";
+                        groupPanel13.Text = "角度保护设置";
+                        groupPanel6.Text = "扭矩保护设置";
+                        axTChart1.Axis.Left.Title.Caption = "角度(deg)";
+                        axTChart1.Axis.Right.Title.Caption = "扭矩(Nm)";
+                        axTChart1.Axis.Custom[0].Title.Caption = "变形(Nm)";
+                        label61.Text = "deg";
+                        label63.Text = "deg";
+                        label5.Text = "Nm";
+                        label6.Text = "Nm";
+                        label13.Text = "deg";
+                        label14.Text = "deg";
+                    }
+                    else if (LoadUnit.ToUpper() == "KN") {
+                        gp_Position.Text = "角度[deg]";
+                        gp_Load.Text = "扭矩[kNm]";
+                        groupPanel13.Text = "角度保护设置";
+                        groupPanel6.Text = "扭矩保护设置";
+                        axTChart1.Axis.Left.Title.Caption = "角度(deg)";
+                        axTChart1.Axis.Right.Title.Caption = "扭矩(kNm)";
+                        axTChart1.Axis.Custom[0].Title.Caption = "变形(kNm)";
+                        label61.Text = "deg";
+                        label63.Text = "deg";
+                        label5.Text = "kNm";
+                        label6.Text = "kNm";
+                        label13.Text = "deg";
+                        label14.Text = "deg";
+                    }
                     break;
             }
         }
