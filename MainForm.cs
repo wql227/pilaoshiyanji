@@ -1646,6 +1646,7 @@ namespace DoPENetConnect
                     //var yval = axTChart1.Series(0).YValues;
                     //double fdsfsdf = yval.Maximum;
 
+                    #region marker
                     if (isRunning)
                     {
                         //保存停止屏幕日志
@@ -1859,6 +1860,8 @@ namespace DoPENetConnect
                             }
                         }
                     }
+                    #endregion maker
+
                 }
 
                 //波形图
