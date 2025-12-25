@@ -672,10 +672,10 @@
             this.btnX_Dyn_Send.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Dyn_Send.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Dyn_Send.Image = ((System.Drawing.Image)(resources.GetObject("btnX_Dyn_Send.Image")));
-            this.btnX_Dyn_Send.Location = new System.Drawing.Point(104, 12);
+            this.btnX_Dyn_Send.Location = new System.Drawing.Point(104, 11);
             this.btnX_Dyn_Send.MaximumSize = new System.Drawing.Size(0, 23);
             this.btnX_Dyn_Send.Name = "btnX_Dyn_Send";
-            this.btnX_Dyn_Send.Size = new System.Drawing.Size(75, 27);
+            this.btnX_Dyn_Send.Size = new System.Drawing.Size(75, 23);
             this.btnX_Dyn_Send.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_Dyn_Send.TabIndex = 0;
             this.btnX_Dyn_Send.Text = "发送";

@@ -50,11 +50,26 @@ namespace DoPENetConnect
             cmbX_Dyn_PeakCtrl.Visible = true;
             tbX_Dyn_PeakCtrl.Visible = false;
 
-            cmbX_Dyn_StartCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+            if (MainForm.mainform.currentMachineType == "0")
+            {
+                cmbX_Dyn_StartCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+            }
+            else
+            {
+                cmbX_Dyn_StartCtrl.DataSource = new string[] { "角度", "扭矩" };
+            }
 
             cmbX_Dyn_WaveFrom.DataSource = System.Enum.GetNames(typeof(DoPE.DYN_WAVEFORM));
 
-            cmbX_Dyn_MoveCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+            if (MainForm.mainform.currentMachineType == "0")
+            {
+
+                cmbX_Dyn_MoveCtrl.DataSource = System.Enum.GetNames(typeof(DoPE.CTRL));
+            }
+            else
+            {
+                cmbX_Dyn_MoveCtrl.DataSource = new string[] { "角度", "扭矩" };
+            }
 
             if (MainForm.mainform.isRunning)
             {
@@ -168,9 +183,9 @@ namespace DoPENetConnect
             DoPE.DYN_PEAKCTRL PeakCtrl;
             DoPE.CTRL MoveCtrl;
             bool RelativeDestination;
-            double SpeedToStart;
-            double Offset;
-            double Amplitude;
+            double SpeedToStart=0;
+            double Offset=0;
+            double Amplitude=0;
             double HaltAtPlusAmplitude;
             double HaltAtMinusAmplitude;
             double Frequency;
@@ -191,27 +206,83 @@ namespace DoPENetConnect
             }
 
             MoveCtrl = (DoPE.CTRL)cmbX_Dyn_MoveCtrl.SelectedIndex;
+            if (MainForm.mainform.currentMachineType == "0")    //疲劳
+            {
+                if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "KN/S")
+                {
+                    //力控时转换成千牛
+                    SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) * 1000 / MainForm.mainform.loadDtaRatio;
+                }
+                else if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "MM/MIN")
+                {
+                    //位移控时转换成mm/min
+                    SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) / 60 / MainForm.mainform.posDtaRatio;
+                }
+                else if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "N/S")
+                {
+                    //力控时转换成千牛
+                    SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) / MainForm.mainform.loadDtaRatio;
+                }
+                else                   //mm/s
+                {
+                    //力控时转换成千牛
+                    SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) / MainForm.mainform.posDtaRatio;
+                }
+                
 
-            if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "KN/S")
-            {
-                //力控时转换成千牛
-                SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) * 1000 / MainForm.mainform.loadDtaRatio;
+                if (cmbX_Dyn_MoveCtrl_Unit.Text.ToUpper() == "KN")
+                {
+                    Offset = double.Parse(tbX_Dyn_Offset.Text) * 1000 / MainForm.mainform.loadDtaRatio;
+                    Amplitude = double.Parse(tbX_Dyn_Amplitude.Text) * 1000 / MainForm.mainform.loadDtaRatio;
+                }
+                else if(cmbX_Dyn_MoveCtrl_Unit.Text.ToUpper() == "N")
+                {
+                    Offset = double.Parse(tbX_Dyn_Offset.Text)/ MainForm.mainform.loadDtaRatio;
+                    Amplitude = double.Parse(tbX_Dyn_Amplitude.Text)/ MainForm.mainform.loadDtaRatio;
+                }
+                else   //mm
+                {
+                    Offset = double.Parse(tbX_Dyn_Offset.Text) / MainForm.mainform.posDtaRatio;
+                    Amplitude = double.Parse(tbX_Dyn_Amplitude.Text) / MainForm.mainform.posDtaRatio;
+                }
             }
-            else
+            else if(MainForm.mainform.currentMachineType == "1")     //扭转
             {
-                //位移控时转换成mm/min
-                SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) / 60 / MainForm.mainform.posDtaRatio;
-            }
+                if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "KNM/S")
+                {
+                    //力控时转换成千牛
+                    SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) * 1000 / MainForm.mainform.loadDtaRatio;
+                }
+                else if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "NM/S")
+                {
+                    //力控时转换成千牛
+                    SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) / MainForm.mainform.loadDtaRatio;
+                }
+                else if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "MM/MIN")
+                {
+                    //位移控时转换成mm/min
+                    SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) / 60 / MainForm.mainform.posDtaRatio;
+                }
+                else       //MM/S
+                {
+                    SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text)/ MainForm.mainform.posDtaRatio;
+                }
 
-            if (cmbX_Dyn_MoveCtrl_Unit.Text.ToUpper() == "KN")
-            {
-                Offset = double.Parse(tbX_Dyn_Offset.Text) * 1000 / MainForm.mainform.loadDtaRatio;
-                Amplitude = double.Parse(tbX_Dyn_Amplitude.Text) * 1000 / MainForm.mainform.loadDtaRatio;
-            }
-            else
-            {
-                Offset = double.Parse(tbX_Dyn_Offset.Text) / MainForm.mainform.posDtaRatio; 
-                Amplitude = double.Parse(tbX_Dyn_Amplitude.Text) / MainForm.mainform.posDtaRatio; 
+                if (cmbX_Dyn_MoveCtrl_Unit.Text.ToUpper() == "KNM")
+                {
+                    Offset = double.Parse(tbX_Dyn_Offset.Text) * 1000 / MainForm.mainform.loadDtaRatio;
+                    Amplitude = double.Parse(tbX_Dyn_Amplitude.Text) * 1000 / MainForm.mainform.loadDtaRatio;
+                }
+                else if (cmbX_Dyn_MoveCtrl_Unit.Text.ToUpper() == "NM")
+                {
+                    Offset = double.Parse(tbX_Dyn_Offset.Text)/ MainForm.mainform.loadDtaRatio;
+                    Amplitude = double.Parse(tbX_Dyn_Amplitude.Text)/ MainForm.mainform.loadDtaRatio;
+                }
+                else    //MM
+                {
+                    Offset = double.Parse(tbX_Dyn_Offset.Text) / MainForm.mainform.posDtaRatio;
+                    Amplitude = double.Parse(tbX_Dyn_Amplitude.Text) / MainForm.mainform.posDtaRatio;
+                }
             }
 
             Frequency = double.Parse(tbX_Dyn_Frequency.Text);
@@ -498,7 +569,12 @@ namespace DoPENetConnect
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             StringBuilder strTmp = new StringBuilder(255);
             IniFileHelper.GetIniString("DynCtrl", "StartCtrl", "0", strTmp, strTmp.Capacity);
-            cmbX_Dyn_StartCtrl.SelectedIndex = int.Parse(strTmp.ToString());
+            if(MainForm.mainform.currentMachineType == "1"&& int.Parse(strTmp.ToString()) > 1)
+            {
+                cmbX_Dyn_StartCtrl.SelectedIndex = 0;
+            }
+            else
+                cmbX_Dyn_StartCtrl.SelectedIndex = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("DynCtrl", "StartSpeed", "0", strTmp, strTmp.Capacity);
             tbX_Dyn_StartSpeed.Text = strTmp.ToString();
@@ -507,7 +583,12 @@ namespace DoPENetConnect
             cmbX_Dyn_StartSpeed_Unit.SelectedIndex = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("DynCtrl", "MoveCtrl", "0", strTmp, strTmp.Capacity);
-            cmbX_Dyn_MoveCtrl.SelectedIndex = int.Parse(strTmp.ToString());
+            if (MainForm.mainform.currentMachineType == "1" && int.Parse(strTmp.ToString()) > 1)
+            {
+                cmbX_Dyn_MoveCtrl.SelectedIndex = 0;
+            }
+            else
+                cmbX_Dyn_MoveCtrl.SelectedIndex = int.Parse(strTmp.ToString());
 
             IniFileHelper.GetIniString("DynCtrl", "MoveCtrlUnit", "0", strTmp, strTmp.Capacity);
             cmbX_Dyn_MoveCtrl_Unit.SelectedIndex = int.Parse(strTmp.ToString());
@@ -604,6 +685,11 @@ namespace DoPENetConnect
                         cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "mm/min" };
                         break;
                     }
+                case "角度":
+                    {
+                        cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "deg/min" };
+                        break;
+                    }
                 case "LOAD":
                     {
                         if (MainForm.mainform.LoadUnit.ToUpper() == "KN")
@@ -613,6 +699,18 @@ namespace DoPENetConnect
                         else
                         {
                             cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "N/s" };
+                        }
+                        break;
+                    }
+                case "扭矩":
+                    {
+                        if (MainForm.mainform.LoadUnit.ToUpper() == "KN")
+                        {
+                            cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "kNm/s" };
+                        }
+                        else
+                        {
+                            cmbX_Dyn_StartSpeed_Unit.DataSource = new string[] { "Nm/s" };
                         }
                         break;
                     }
@@ -641,6 +739,13 @@ namespace DoPENetConnect
                         labelX11.Text = "mm";
                         break;
                     }
+                case "角度":
+                    {
+                        cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "deg" };
+                        labelX9.Text = "deg";
+                        labelX11.Text = "deg";
+                        break;
+                    }
                 case "LOAD":
                     {
 
@@ -657,6 +762,24 @@ namespace DoPENetConnect
                             labelX11.Text = "N";
                         }
       
+                        break;
+                    }
+                case "扭矩":
+                    {
+
+                        if (MainForm.mainform.LoadUnit.ToUpper() == "KN")
+                        {
+                            cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "kNm" };
+                            labelX9.Text = "kNm";
+                            labelX11.Text = "kNm";
+                        }
+                        else
+                        {
+                            cmbX_Dyn_MoveCtrl_Unit.DataSource = new string[] { "Nm" };
+                            labelX9.Text = "Nm";
+                            labelX11.Text = "Nm";
+                        }
+
                         break;
                     }
                 case "EXTENSION":
