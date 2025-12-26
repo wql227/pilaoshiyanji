@@ -715,7 +715,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -4201,8 +4201,22 @@ namespace DoPENetConnect
             switch (type)
             {
                 case "0":
+                    //groupPanel4.Visible = true;
+                    btnX_AxisEXTY_MaxUp.Visible = true;
+                    btnX_AxisEXTY_MaxDown.Visible = true;
+                    btnX_AxisEXTY_MinUp.Visible = true;
+                    btnX_AxisEXTY_MinDown.Visible = true;
+                    groupPanel7.Visible = true;
+                    axTChart1.Axis.Custom[0].Visible = true;
                     break;
                 case "1":
+                    //groupPanel4.Visible = false;
+                    btnX_AxisEXTY_MaxUp.Visible = false;
+                    btnX_AxisEXTY_MaxDown.Visible = false;
+                    btnX_AxisEXTY_MinUp.Visible = false;
+                    btnX_AxisEXTY_MinDown.Visible = false;
+                    groupPanel7.Visible = false;
+                    axTChart1.Axis.Custom[0].Visible = false;
                     if (LoadUnit.ToUpper() == "N")
                     {
                         gp_Position.Text = "角度[deg]";
@@ -5783,6 +5797,7 @@ namespace DoPENetConnect
         private void buttonX19_Click(object sender, EventArgs e)
         {
             axTChart1.Axis.Bottom.Maximum += Chart_X_Step;
+            //nTotal = axTChart1.Axis.Bottom.Maximum / MainForm.mainform.dStep;
         }
 
         private void buttonX21_Click(object sender, EventArgs e)
