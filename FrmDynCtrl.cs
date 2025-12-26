@@ -258,7 +258,7 @@ namespace DoPENetConnect
                     //力控时转换成千牛
                     SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) / MainForm.mainform.loadDtaRatio;
                 }
-                else if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "deg/MIN")
+                else if (cmbX_Dyn_StartSpeed_Unit.Text.ToUpper() == "DEG/MIN")
                 {
                     //位移控时转换成mm/min
                     SpeedToStart = double.Parse(tbX_Dyn_StartSpeed.Text) / 60 / MainForm.mainform.posDtaRatio;
