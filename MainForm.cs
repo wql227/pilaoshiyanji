@@ -4210,7 +4210,7 @@ namespace DoPENetConnect
                     axTChart1.Axis.Custom[0].Visible = true;
                     break;
                 case "1":
-                    //groupPanel4.Visible = false;
+                    groupPanel4.Text = "变形[deg]";
                     btnX_AxisEXTY_MaxUp.Visible = false;
                     btnX_AxisEXTY_MaxDown.Visible = false;
                     btnX_AxisEXTY_MinUp.Visible = false;
