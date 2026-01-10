@@ -3921,8 +3921,8 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             // }
-            devId = new StringBuilder("02137E43");
-            //devId = new StringBuilder("0214B8ED");
+            devId = new StringBuilder("02132F05");
+            //devId = new StringBuilder("02146663");
             //devId = new StringBuilder("007AC88C");
 
             //读取上次的试验次数
@@ -4139,6 +4139,17 @@ namespace DoPENetConnect
             IniFileHelper.GetIniString("FrmSetChartAxisY", "TimeX_MAX", "5", strTmp, strTmp.Capacity);
             AxisXMax = double.Parse(strTmp.ToString());
             axTChart1.Axis.Bottom.Maximum = AxisXMax;
+            if (axTChart1.Axis.Bottom.Maximum > 1)
+            {
+                
+                axTChart1.Axis.Bottom.Increment = 0;
+            }
+            else
+            {
+                axTChart1.Axis.Bottom.Increment = 0.1;
+                
+            }
+
 
             #endregion 坐标调整量程
 

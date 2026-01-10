@@ -331,6 +331,18 @@ namespace DoPENetConnect
 
                 MainForm.mainform.m_AxTeechart.Axis.Bottom.Maximum = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
 
+                if (MainForm.mainform.m_AxTeechart.Axis.Bottom.Maximum > 1)
+                {
+
+                    MainForm.mainform.m_AxTeechart.Axis.Bottom.Increment = 0;
+                }
+                else
+                {
+                    MainForm.mainform.m_AxTeechart.Axis.Bottom.Increment = 0.05;
+
+                }
+
+
                 MainForm.mainform.AxisXMax = double.Parse(tbX_FrmSetChartAxisY_TimeY_Max.Text);
                 MainForm.mainform.nTotal = MainForm.mainform.AxisXMax / MainForm.mainform.dStep;
 
