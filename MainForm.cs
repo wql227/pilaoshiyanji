@@ -306,7 +306,7 @@ namespace DoPENetConnect
         /// <summary>
         /// 存储试验过程的数据
         /// </summary>
-        public bool bSaveRunningLog = false;
+        public bool bSaveRunningLog = true;
 
         /// <summary>
         /// 日志试验记录次数
@@ -1689,7 +1689,7 @@ namespace DoPENetConnect
                                         string logBlock = string.Join(Environment.NewLine, queue.Select(e => e.Line)) + Environment.NewLine;
 
                                         //提交至日志队列
-                                        AsyncStopLogger.EnqueueLog(logBlock);
+                                        //AsyncStopLogger.EnqueueLog(logBlock);
                                     }
                                 }
                             }
@@ -1703,16 +1703,16 @@ namespace DoPENetConnect
                         //按配置的次数存储日志
                         //TODO 修改成 达到nCountLog 次数时只存储当前屏幕数据
                         //Console.WriteLine("glm-running log{0}-{1}", gSample.Cycles,nCountLog);
-                        if ((gSample.Cycles /*>> 1*/) % nCountLog == 0)
+                        if ((gSample.Cycles >> 1) % nCountLog == 0)
                         {
+                            
                             if (bSaveRunningLog)
                             {
-                                LogHelper.SaveCsvData(strBlockLog.ToString());
+                                //LogHelper.SaveCsvData(strBlockLog.ToString());
                             }
 
-                            strBlockLog.Clear();
                         }
-
+                        strBlockLog.Clear();
                         int currentHalfCycle = gSample.Cycles >> 1;
 
                         //按配置的次数存储峰谷值日志
@@ -1745,7 +1745,7 @@ namespace DoPENetConnect
                                 if (currentHalfCycle != LastRecordedHalfCycle)
                                 {
                                     strPVLog = g_MaxPosition.ToString("F6") + "," + g_MinPosition.ToString("F6") + "," + g_MaxLoad.ToString("F6") + "," + g_MinLoad.ToString("F6") + "," + g_MaxExtension.ToString("F6") + "," + g_MinExtension.ToString("F6") + "," + (gSample.Cycles >> 1);
-                                    LogHelper.SavePeakValleyData(strPVLog);
+                                   // LogHelper.SavePeakValleyData(strPVLog);
                                     LastRecordedHalfCycle = currentHalfCycle;
                                 }
                             }
@@ -3921,8 +3921,8 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             // }
-            devId = new StringBuilder("02132F05");
-            //devId = new StringBuilder("02146663");
+            devId = new StringBuilder("0214C59A");
+            //devId = new StringBuilder("02132F05");
             //devId = new StringBuilder("007AC88C");
 
             //读取上次的试验次数
@@ -3950,7 +3950,7 @@ namespace DoPENetConnect
 
             //自动存储试验过程数据
             IniFileHelper.GetIniString("Setting", "SaveRunningLog", "0", strTmp, strTmp.Capacity);
-            bSaveRunningLog = strTmp.ToString() == "0" ? false : true;
+            //bSaveRunningLog = strTmp.ToString() == "0" ? false : true;
 
             //语言
             IniFileHelper.GetIniString("Setting", "Language", "简体中文", strTmp, strTmp.Capacity);

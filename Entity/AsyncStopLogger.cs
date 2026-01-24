@@ -16,7 +16,7 @@ namespace DoPENetConnect
 
         static AsyncStopLogger()
         {
-            StartWorker();
+            //StartWorker();
         }
 
         public static void EnqueueLog(string logLine)
