@@ -403,6 +403,8 @@ namespace DoPENetConnect
         /// </summary>
         public int currentCmd;
 
+        public bool isDynStart = false;
+
         public int autoFittingFlag = 0;
 
         /// <summary>
@@ -1131,7 +1133,7 @@ namespace DoPENetConnect
 
             return 0;
         }
-
+        public double? offsetDyn = null;
         private int OnDataBlock(ref DoPE.OnDataBlock Block, object Parameter)
         {
             //CSV日志
@@ -1703,12 +1705,46 @@ namespace DoPENetConnect
                         //按配置的次数存储日志
                         //TODO 修改成 达到nCountLog 次数时只存储当前屏幕数据
                         //Console.WriteLine("glm-running log{0}-{1}", gSample.Cycles,nCountLog);
+                        
+                        double realLoad = g_Load;
+                        if (LoadUnit.ToUpper() == "KN") {
+                            realLoad = g_Load / 1000;
+                        }
+                        //LogHelper.Info($"{isDynStart},{offsetDyn},{bSaveRunningLog}");
+                        if (isDynStart) {
+                            switch (currentCmd) {
+                                case 0:
+                                    if (Math.Abs(Math.Abs(g_Position) - Math.Abs(offsetDyn.Value))<1) {
+                                        bSaveRunningLog = true;
+                                        offsetDyn = null;
+                                        isDynStart = false;
+                                    }
+                                    break;
+                                case 1:
+                                    if (Math.Abs(Math.Abs(realLoad) - Math.Abs(offsetDyn.Value)) < 1)
+                                    {
+                                        bSaveRunningLog = true;
+                                        offsetDyn = null;
+                                        isDynStart = false;
+                                    }
+                                    break;
+                                case 2:
+                                    if (Math.Abs(Math.Abs(g_Extension) - Math.Abs(offsetDyn.Value)) < 1)
+                                    {
+                                        bSaveRunningLog = true;
+                                        offsetDyn = null;
+                                        isDynStart = false;
+                                    }
+                                    break;
+                            }
+                        }
+                       
                         if ((gSample.Cycles >> 1) % nCountLog == 0)
                         {
                             
                             if (bSaveRunningLog)
                             {
-                                //LogHelper.SaveCsvData(strBlockLog.ToString());
+                                LogHelper.SaveCsvData(strBlockLog.ToString());
                             }
 
                         }
@@ -3921,9 +3957,9 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             // }
-            devId = new StringBuilder("0214C59A");
-            //devId = new StringBuilder("02132F05");
-            //devId = new StringBuilder("007AC88C");
+            //devId = new StringBuilder("0214C59A");
+            devId = new StringBuilder("02132F05");
+            //devId = new StringBuilder("0214C686");
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -3933,7 +3969,7 @@ namespace DoPENetConnect
 
             //按试验次数记录日志
             IniFileHelper.GetIniString("Setting", "SaveCountLog", "0", strTmp, strTmp.Capacity);
-            bSaveCountLog = strTmp.ToString() == "0" ? false : true;
+            //bSaveCountLog = strTmp.ToString() == "0" ? false : true;
 
             IniFileHelper.GetIniString("Setting", "CountLog", "100", strTmp, strTmp.Capacity);
             nCountLog = int.Parse(strTmp.ToString());

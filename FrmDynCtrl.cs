@@ -302,7 +302,9 @@ namespace DoPENetConnect
             SweepFrequencyMode = 0;
 
             //MainForm.mainform.PVPositionQueue.Clear();
-
+            MainForm.mainform.bSaveRunningLog = false;
+            MainForm.mainform.isDynStart = true;
+            MainForm.mainform.offsetDyn = Offset;
             MainForm.mainform.MoveDynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination, SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode);
 
             //不在运行时才能修改次数
