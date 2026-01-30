@@ -3960,8 +3960,8 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             // }
-            //devId = new StringBuilder("0214C59A");
-            devId = new StringBuilder("02132F05");
+            devId = new StringBuilder("0212AD05");
+            //devId = new StringBuilder("02132F05");
             //devId = new StringBuilder("0214C686");
 
             //读取上次的试验次数

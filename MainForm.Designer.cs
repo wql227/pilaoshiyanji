@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -1585,14 +1585,14 @@
             // 
             // dataGridViewX1
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -1600,26 +1600,26 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(3, 94);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(398, 363);
@@ -1825,7 +1825,7 @@
             this.btnX_AxisLoadY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MaxUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MaxUp.Location = new System.Drawing.Point(1226, 10);
+            this.btnX_AxisLoadY_MaxUp.Location = new System.Drawing.Point(1261, 12);
             this.btnX_AxisLoadY_MaxUp.Name = "btnX_AxisLoadY_MaxUp";
             this.btnX_AxisLoadY_MaxUp.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisLoadY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1838,7 +1838,7 @@
             this.btnX_AxisCommandY_MinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisCommandY_MinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AxisCommandY_MinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisCommandY_MinUp.Location = new System.Drawing.Point(26, 510);
+            this.btnX_AxisCommandY_MinUp.Location = new System.Drawing.Point(10, 484);
             this.btnX_AxisCommandY_MinUp.Name = "btnX_AxisCommandY_MinUp";
             this.btnX_AxisCommandY_MinUp.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisCommandY_MinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1851,7 +1851,7 @@
             this.btnX_AxisEXTY_MinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisEXTY_MinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AxisEXTY_MinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisEXTY_MinUp.Location = new System.Drawing.Point(80, 510);
+            this.btnX_AxisEXTY_MinUp.Location = new System.Drawing.Point(70, 484);
             this.btnX_AxisEXTY_MinUp.Name = "btnX_AxisEXTY_MinUp";
             this.btnX_AxisEXTY_MinUp.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisEXTY_MinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1864,7 +1864,7 @@
             this.btnX_AxisYMax.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisYMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AxisYMax.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisYMax.Location = new System.Drawing.Point(128, 510);
+            this.btnX_AxisYMax.Location = new System.Drawing.Point(126, 484);
             this.btnX_AxisYMax.Name = "btnX_AxisYMax";
             this.btnX_AxisYMax.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisYMax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1877,7 +1877,7 @@
             this.btnX_AxisCommandY_MinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisCommandY_MinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AxisCommandY_MinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisCommandY_MinDown.Location = new System.Drawing.Point(46, 510);
+            this.btnX_AxisCommandY_MinDown.Location = new System.Drawing.Point(10, 510);
             this.btnX_AxisCommandY_MinDown.Name = "btnX_AxisCommandY_MinDown";
             this.btnX_AxisCommandY_MinDown.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisCommandY_MinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1890,7 +1890,7 @@
             this.btnX_AxisEXTY_MinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisEXTY_MinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AxisEXTY_MinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisEXTY_MinDown.Location = new System.Drawing.Point(100, 510);
+            this.btnX_AxisEXTY_MinDown.Location = new System.Drawing.Point(70, 510);
             this.btnX_AxisEXTY_MinDown.Name = "btnX_AxisEXTY_MinDown";
             this.btnX_AxisEXTY_MinDown.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisEXTY_MinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1903,7 +1903,7 @@
             this.btnX_AsixYMin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AsixYMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX_AsixYMin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AsixYMin.Location = new System.Drawing.Point(148, 510);
+            this.btnX_AsixYMin.Location = new System.Drawing.Point(126, 510);
             this.btnX_AsixYMin.Name = "btnX_AsixYMin";
             this.btnX_AsixYMin.Size = new System.Drawing.Size(14, 25);
             this.btnX_AsixYMin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1915,7 +1915,7 @@
             // 
             this.btnX_AxisCommandY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisCommandY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisCommandY_MaxUp.Location = new System.Drawing.Point(26, 12);
+            this.btnX_AxisCommandY_MaxUp.Location = new System.Drawing.Point(10, 12);
             this.btnX_AxisCommandY_MaxUp.Name = "btnX_AxisCommandY_MaxUp";
             this.btnX_AxisCommandY_MaxUp.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisCommandY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1927,7 +1927,7 @@
             // 
             this.btnX_AxisEXTY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisEXTY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisEXTY_MaxUp.Location = new System.Drawing.Point(80, 12);
+            this.btnX_AxisEXTY_MaxUp.Location = new System.Drawing.Point(70, 12);
             this.btnX_AxisEXTY_MaxUp.Name = "btnX_AxisEXTY_MaxUp";
             this.btnX_AxisEXTY_MaxUp.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisEXTY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1939,7 +1939,7 @@
             // 
             this.btnX_AxisCommandY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisCommandY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisCommandY_MaxDown.Location = new System.Drawing.Point(46, 12);
+            this.btnX_AxisCommandY_MaxDown.Location = new System.Drawing.Point(10, 38);
             this.btnX_AxisCommandY_MaxDown.Name = "btnX_AxisCommandY_MaxDown";
             this.btnX_AxisCommandY_MaxDown.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisCommandY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1951,7 +1951,7 @@
             // 
             this.btnX_AxisPOSY_MaxUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisPOSY_MaxUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisPOSY_MaxUp.Location = new System.Drawing.Point(128, 12);
+            this.btnX_AxisPOSY_MaxUp.Location = new System.Drawing.Point(126, 12);
             this.btnX_AxisPOSY_MaxUp.Name = "btnX_AxisPOSY_MaxUp";
             this.btnX_AxisPOSY_MaxUp.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisPOSY_MaxUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1963,7 +1963,7 @@
             // 
             this.btnX_AxisEXTY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisEXTY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisEXTY_MaxDown.Location = new System.Drawing.Point(100, 12);
+            this.btnX_AxisEXTY_MaxDown.Location = new System.Drawing.Point(70, 38);
             this.btnX_AxisEXTY_MaxDown.Name = "btnX_AxisEXTY_MaxDown";
             this.btnX_AxisEXTY_MaxDown.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisEXTY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1976,7 +1976,7 @@
             this.btnX_AxisLoadY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MaxDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MaxDown.Location = new System.Drawing.Point(1246, 10);
+            this.btnX_AxisLoadY_MaxDown.Location = new System.Drawing.Point(1261, 38);
             this.btnX_AxisLoadY_MaxDown.Name = "btnX_AxisLoadY_MaxDown";
             this.btnX_AxisLoadY_MaxDown.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisLoadY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1988,7 +1988,7 @@
             // 
             this.btnX_AxisPOSY_MaxDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisPOSY_MaxDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisPOSY_MaxDown.Location = new System.Drawing.Point(148, 12);
+            this.btnX_AxisPOSY_MaxDown.Location = new System.Drawing.Point(126, 38);
             this.btnX_AxisPOSY_MaxDown.Name = "btnX_AxisPOSY_MaxDown";
             this.btnX_AxisPOSY_MaxDown.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisPOSY_MaxDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -2001,7 +2001,7 @@
             this.btnX_AxisLoadY_MinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MinDown.Location = new System.Drawing.Point(1246, 510);
+            this.btnX_AxisLoadY_MinDown.Location = new System.Drawing.Point(1261, 510);
             this.btnX_AxisLoadY_MinDown.Name = "btnX_AxisLoadY_MinDown";
             this.btnX_AxisLoadY_MinDown.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisLoadY_MinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -2014,7 +2014,7 @@
             this.btnX_AxisLoadY_MinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MinUp.Location = new System.Drawing.Point(1226, 510);
+            this.btnX_AxisLoadY_MinUp.Location = new System.Drawing.Point(1261, 484);
             this.btnX_AxisLoadY_MinUp.Name = "btnX_AxisLoadY_MinUp";
             this.btnX_AxisLoadY_MinUp.Size = new System.Drawing.Size(14, 25);
             this.btnX_AxisLoadY_MinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
