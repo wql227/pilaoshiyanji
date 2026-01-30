@@ -1752,6 +1752,7 @@
             this.buttonX18.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX18.TabIndex = 74;
             this.buttonX18.Text = "◀";
+            this.buttonX18.Visible = false;
             this.buttonX18.Click += new System.EventHandler(this.buttonX18_Click);
             // 
             // buttonX19
@@ -1765,6 +1766,7 @@
             this.buttonX19.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX19.TabIndex = 75;
             this.buttonX19.Text = "▶";
+            this.buttonX19.Visible = false;
             this.buttonX19.Click += new System.EventHandler(this.buttonX19_Click);
             // 
             // buttonX15
@@ -1778,6 +1780,7 @@
             this.buttonX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX15.TabIndex = 72;
             this.buttonX15.Text = "◀";
+            this.buttonX15.Visible = false;
             this.buttonX15.Click += new System.EventHandler(this.buttonX15_Click);
             // 
             // buttonX16
@@ -1791,6 +1794,7 @@
             this.buttonX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX16.TabIndex = 73;
             this.buttonX16.Text = "▶";
+            this.buttonX16.Visible = false;
             this.buttonX16.Click += new System.EventHandler(this.buttonX16_Click);
             // 
             // labelX34
