@@ -2157,6 +2157,9 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //UI
+            this.WindowState = FormWindowState.Maximized;
+
             LoadIni();
 
             //程控相关
