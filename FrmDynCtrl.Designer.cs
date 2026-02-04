@@ -675,7 +675,7 @@
             this.btnX_Dyn_Send.Location = new System.Drawing.Point(104, 11);
             this.btnX_Dyn_Send.MaximumSize = new System.Drawing.Size(0, 23);
             this.btnX_Dyn_Send.Name = "btnX_Dyn_Send";
-            this.btnX_Dyn_Send.Size = new System.Drawing.Size(75, 23);
+            this.btnX_Dyn_Send.Size = new System.Drawing.Size(75, 27);
             this.btnX_Dyn_Send.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnX_Dyn_Send.TabIndex = 0;
             this.btnX_Dyn_Send.Text = "发送";
@@ -811,6 +811,7 @@
             this.tbX_TestCount.PreventEnterBeep = true;
             this.tbX_TestCount.Size = new System.Drawing.Size(103, 26);
             this.tbX_TestCount.TabIndex = 71;
+            this.tbX_TestCount.Visible = false;
             // 
             // labelX18
             // 
@@ -967,6 +968,7 @@
             this.labelX4.Size = new System.Drawing.Size(33, 23);
             this.labelX4.TabIndex = 0;
             this.labelX4.Text = "次";
+            this.labelX4.Visible = false;
             // 
             // labelX3
             // 
@@ -980,6 +982,7 @@
             this.labelX3.Size = new System.Drawing.Size(100, 23);
             this.labelX3.TabIndex = 0;
             this.labelX3.Text = "初始总计数";
+            this.labelX3.Visible = false;
             // 
             // labelX2
             // 

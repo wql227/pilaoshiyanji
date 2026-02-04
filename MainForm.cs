@@ -1835,6 +1835,7 @@ namespace DoPENetConnect
                                 timer_UpdateData.Stop();
 
                                 tbX_TestCount.Text = tbX_TestCycles.Text;
+                                //frmDynCtrl?.SetCountText(tbX_TestCount.Text);
                                 if (bSaveStopScreenLog)
                                 {
                                     //存储实验停止后的日志
@@ -1885,6 +1886,7 @@ namespace DoPENetConnect
                                     //    var task1 = Task.Run(() => GetSeriesPoint());
                                     //}
                                     tbX_TestCount.Text = tbX_TestCycles.Text;
+                                    //frmDynCtrl?.SetCountText(tbX_TestCount.Text);
                                     IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
 
                                     nCycleCount = 0;
@@ -2871,7 +2873,7 @@ namespace DoPENetConnect
 
                     tbX_TestCount.Text = tbX_TestCycles.Text;
 
-                    frmDynCtrl?.SetCountText(tbX_TestCount.Text);
+                    //frmDynCtrl?.SetCountText(tbX_TestCount.Text);
 
                     IniFileHelper.WriteIniString("Setting", "TestCount", tbX_TestCycles.Text);
 
@@ -3960,8 +3962,8 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             // }
-            devId = new StringBuilder("0212AD05");
-            //devId = new StringBuilder("02132F05");
+            //devId = new StringBuilder("0212AD05");
+            devId = new StringBuilder("02132F05");
             //devId = new StringBuilder("0214C686");
 
             //读取上次的试验次数
@@ -5330,6 +5332,8 @@ namespace DoPENetConnect
                 IniFileHelper.WriteIniString("Setting", "TestCount", "0");
 
                 cb_TareTime.Checked = false;
+
+                stopwatch.Reset();
             }
 
         }
@@ -6277,6 +6281,11 @@ namespace DoPENetConnect
             textBoxX26.Text = totalCycle;
 
             textBoxX27.Text = currentCycle;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
