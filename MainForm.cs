@@ -3538,8 +3538,14 @@ namespace DoPENetConnect
         /// <param name="SweepFrequencyMode"></param>
         public void MoveDynCycles(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl,
             bool RelativeDestination, double SpeedToStart, double Offset, double Amplitude, double HaltAtPlusAmplitude, double HaltAtMinusAmplitude,
-            double Frequency, int HalfCycles, double SpeedToDestination, double Destination, DoPE.DYN_SWEEP SweepFrequencyMode)
+            double Frequency, int HalfCycles_Rcv, double SpeedToDestination, double Destination, DoPE.DYN_SWEEP SweepFrequencyMode)
         {
+            if (HalfCycles_Rcv / 2 <= int.Parse(tbX_TestCycles.Text)) {
+                MessageBox.Show("设置次数低于当前计数值，请先清除计数后再开始试验！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int HalfCycles = HalfCycles_Rcv-2* int.Parse(tbX_TestCycles.Text);
             if (isRunning)
             {
                 Modify = true;
@@ -3574,7 +3580,7 @@ namespace DoPENetConnect
 
                 //设置试验参数
                 tb_TestParam.Text = string.Format("控制方式：{0}，波形方式：{1}，循环次数：{2} 次，偏移:{3} {6}, 振幅:{4} {6}, 频率:{5} Hz",
-               MoveCtrl, WaveForm, HalfCycles / 2, strOffset, strAmplitude, Frequency, strtmp);
+               MoveCtrl, WaveForm, HalfCycles_Rcv / 2, strOffset, strAmplitude, Frequency, strtmp);
 
                 //开始计时
                 timer_UpdateData.Start();
