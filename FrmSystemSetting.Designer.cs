@@ -511,7 +511,7 @@
             this.groupPanel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupPanel6.Location = new System.Drawing.Point(11, 162);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(554, 178);
+            this.groupPanel6.Size = new System.Drawing.Size(554, 111);
             // 
             // 
             // 
