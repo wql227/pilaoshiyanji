@@ -381,6 +381,8 @@ namespace DoPENetConnect
             }
             IniFileHelper.GetIniString("UIDefault", "comboBoxEx_ForceUnit", "0", strTmp, strTmp.Capacity);
             comboBoxEx_ForceUnit.SelectedIndex = int.Parse(strTmp.ToString());
+            label28.Text = comboBoxEx_ForceUnit.Text;
+            label31.Text = comboBoxEx_ForceUnit.Text;
 
             //位移小数位数
             IniFileHelper.GetIniString("Setting", "numericUpDown_Pos", "0", strTmp, strTmp.Capacity);
