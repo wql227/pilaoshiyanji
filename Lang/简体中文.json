@@ -101,14 +101,14 @@
 		},
 	
 	"FrmAbout":{
-		"labelX9":"程序名称",
-		"labelX10":"程序版本",
-		"labelX11":"程序标识",
-		"labelX12":"计算机用户",
-		"labelX13":"操作系统",
-		"labelX14":"运行时库",
-		"labelX15":"文件名称",
-		"labelX16":"内存使用"
+		"labelX9":"程序内存使用",
+		"labelX10":"程序名称",
+		"labelX11":"程序版本",
+		"labelX12":"程序标识",
+		"labelX13":"计算机用户",
+		"labelX14":"操作系统",
+		"labelX15":"CLR",
+		"labelX16":"程序内存使用"
 		},
 	
 	"FrmSetChartAxisY":{
@@ -135,8 +135,8 @@
 		"label12":"% 满量程时，自动停机",
 		"checkBoxX4":"试验力超过",
 		"label11":"N，自动停机",
-		"groupPanel5":"日志记录",
-		"label2":"次波形记录日志",
+		"groupPanel5":"数据记录",
+		"label2":"次波形记录1个波形数据",
 		"groupPanel6":"控制器连接设置",
 		"label3":"设备ID",
         "btnX_FrmProtectOption_OK":"确定",

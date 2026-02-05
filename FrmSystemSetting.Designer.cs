@@ -301,8 +301,8 @@
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Controls.Add(this.superTabControlPanel7);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
@@ -716,7 +716,7 @@
             this.groupPanel5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupPanel5.Location = new System.Drawing.Point(11, 6);
             this.groupPanel5.Name = "groupPanel5";
-            this.groupPanel5.Size = new System.Drawing.Size(554, 140);
+            this.groupPanel5.Size = new System.Drawing.Size(554, 150);
             // 
             // 
             // 
@@ -746,7 +746,7 @@
             // 
             this.groupPanel5.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel5.TabIndex = 4;
-            this.groupPanel5.Text = "日志记录";
+            this.groupPanel5.Text = "数据记录";
             // 
             // cbX_PVCountLog
             // 
@@ -802,7 +802,7 @@
             this.comboItem29,
             this.comboItem30,
             this.comboItem39});
-            this.cbX_CountLog.Location = new System.Drawing.Point(247, 4);
+            this.cbX_CountLog.Location = new System.Drawing.Point(271, 4);
             this.cbX_CountLog.Name = "cbX_CountLog";
             this.cbX_CountLog.Size = new System.Drawing.Size(121, 27);
             this.cbX_CountLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;

@@ -3256,10 +3256,10 @@ namespace DoPENetConnect
                                     axTChart1.Series(1).AddArray(chartX.Count, chartLoadY.ToArray(), chartX.ToArray());
                                 }
 
-                                //if (bShowExtension)
-                                //{
-                                //    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
-                                //}
+                                if (bShowExtension)
+                                {
+                                    axTChart1.Series(2).AddArray(chartX.Count, chartExtY.ToArray(), chartX.ToArray());
+                                }
 
                                 if (bShowCommand)
                                 {
