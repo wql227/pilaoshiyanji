@@ -722,6 +722,8 @@ namespace DoPENetConnect
             //设置lightningchart参数
             CreateChart();
 
+            WriteCorrFile();
+
         }
 
 
@@ -3428,13 +3430,13 @@ namespace DoPENetConnect
             {
                 //chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(kN)";
                 axTChart1.Axis.Right.Title.Caption = "试验力(kN)";
-                gp_Load.Text = "试验力(kN)";
+                gp_Load.Text = "试验力[kN]";
             }
             else
             {
                 //chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(N)";
                 axTChart1.Axis.Right.Title.Caption = "试验力(N)";
-                gp_Load.Text = "试验力(N)";
+                gp_Load.Text = "试验力[N]";
             }
 
             //axTChart1.Chart.AnimatedUpdate = true;
@@ -5540,6 +5542,25 @@ namespace DoPENetConnect
             }
         }
 
+        public void WriteCorrFile()
+        {
+            string fileName = "stiffness.corr";
+
+            FileInfo tmpInfo = new FileInfo(Directory.GetCurrentDirectory() + "\\Stiffness\\" + fileName);
+            if (!tmpInfo.Exists) {
+                MessageBox.Show("刚度修正文件不存在！","提示");
+                return;
+            }
+            var builder = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory()+"\\Stiffness")
+                    .AddIniFile(fileName);
+
+            IConfiguration config = builder.Build();
+            var correctionTable = ParseStiffnessCorrection(config.GetSection("SensorCorrection"));
+
+            DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetSensorCorrection(DoPE.SENSOR.SENSOR_E, ref correctionTable);
+        }
+
         public void 校正ToolStripMenuItem_Click()
         {
             EventArgs tmpArg = new EventArgs();
@@ -6291,7 +6312,17 @@ namespace DoPENetConnect
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            //StringBuilder devIdEncrypted = new StringBuilder("6EE5AC5D6083E583ABAE9E8233105A7B");
+            ////bool idRet = IniFileHelper.GetIniString("Device", "DeviceID", "0", devIdEncrypted, devIdEncrypted.Capacity);
+            //string idEncry = devIdEncrypted.ToString();
+            ////if (idEncry != "0" && idEncry != "")
+            ////{
+            //String   devId = DESEncrypt.Decrypt(idEncry);
+            //// }
+            ///
+
+
+            WriteCorrFile();
         }
     }
 }
