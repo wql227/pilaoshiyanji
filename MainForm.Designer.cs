@@ -613,8 +613,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel8);
             this.superTabControl4.Controls.Add(this.superTabControlPanel9);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel8);
             this.superTabControl4.Dock = System.Windows.Forms.DockStyle.Right;
             this.superTabControl4.Location = new System.Drawing.Point(0, 0);
             this.superTabControl4.Name = "superTabControl4";
@@ -1697,6 +1697,7 @@
             this.superTabItem9.GlobalItem = false;
             this.superTabItem9.Name = "superTabItem9";
             this.superTabItem9.Text = "程控";
+            this.superTabItem9.Visible = false;
             // 
             // panelEx12
             // 
