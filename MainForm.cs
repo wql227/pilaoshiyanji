@@ -6236,7 +6236,7 @@ namespace DoPENetConnect
         /// <param name="e"></param>
         private void btnX_AxisEXTY_MinUp_Click(object sender, EventArgs e)
         {
-            if (Chart_Ext_Step >= (axTChart1.Axis.Custom[1].Maximum - axTChart1.Axis.Custom[1].Minimum))
+            if (Chart_Ext_Step >= (axTChart1.Axis.Custom[0].Maximum - axTChart1.Axis.Custom[0].Minimum))
             {
                 MessageBox.Show("移动量程超过最大最小值!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
