@@ -5563,7 +5563,7 @@ namespace DoPENetConnect
                 DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetSensorCorrection(DoPE.SENSOR.SENSOR_E, ref correctionTable);
             }
             catch (Exception ex) {
-                LogHelper.Error(ex.ToString());
+                LogHelper.Info(ex.ToString());
             }
         }
 
