@@ -5543,7 +5543,7 @@ namespace DoPENetConnect
         }
 
         public void WriteCorrFile()
-        {
+        {           
             string fileName = "stiffness.corr";
 
             FileInfo tmpInfo = new FileInfo(Directory.GetCurrentDirectory() + "\\Stiffness\\" + fileName);
@@ -5558,7 +5558,13 @@ namespace DoPENetConnect
             IConfiguration config = builder.Build();
             var correctionTable = ParseStiffnessCorrection(config.GetSection("SensorCorrection"));
 
-            DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetSensorCorrection(DoPE.SENSOR.SENSOR_E, ref correctionTable);
+            try
+            {
+                DoPE.ERR SSCStatre = mainform.MyEdc.Corr.SetSensorCorrection(DoPE.SENSOR.SENSOR_E, ref correctionTable);
+            }
+            catch (Exception ex) {
+                LogHelper.Error(ex.ToString());
+            }
         }
 
         public void 校正ToolStripMenuItem_Click()
