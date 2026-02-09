@@ -6331,7 +6331,8 @@ namespace DoPENetConnect
             ///
 
 
-            WriteCorrFile();
+            //WriteCorrFile();
+            LogHelper.Error("some wrong!");
         }
     }
 }

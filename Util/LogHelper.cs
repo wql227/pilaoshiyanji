@@ -175,7 +175,7 @@ namespace DoPENetConnect
                     Directory.CreateDirectory(logPath);
                 }
 
-                int maxFileSize = 1 * 1024 * 1024; // 10 MB
+                int maxFileSize = 5 * 1024 * 1024; // 10 MB
                 FileInfo fi = new FileInfo(filename);
 
                 // 如果文件存在且超过最大大小，则进行滚动
