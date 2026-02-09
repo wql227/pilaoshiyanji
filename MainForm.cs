@@ -1783,7 +1783,7 @@ namespace DoPENetConnect
                                 if (currentHalfCycle != LastRecordedHalfCycle)
                                 {
                                     strPVLog = g_MaxPosition.ToString("F6") + "," + g_MinPosition.ToString("F6") + "," + g_MaxLoad.ToString("F6") + "," + g_MinLoad.ToString("F6") + "," + g_MaxExtension.ToString("F6") + "," + g_MinExtension.ToString("F6") + "," + (gSample.Cycles >> 1);
-                                   // LogHelper.SavePeakValleyData(strPVLog);
+                                    LogHelper.SavePeakValleyData(strPVLog);
                                     LastRecordedHalfCycle = currentHalfCycle;
                                 }
                             }
@@ -3970,9 +3970,12 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             // }
-            devId = new StringBuilder("0212AD05");
+            devId = new StringBuilder("0212AD05");    //小电缸
             //devId = new StringBuilder("02132F05");
-            //devId = new StringBuilder("0214C686");
+            #region 厦门 
+            //更新 20260209 
+            //devId = new StringBuilder("0214B900");    //厦门
+            #endregion 厦门
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
