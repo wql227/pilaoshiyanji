@@ -334,7 +334,7 @@ namespace DoPENetConnect
                 if (MainForm.mainform.m_AxTeechart.Axis.Bottom.Maximum > 1)
                 {
 
-                    MainForm.mainform.m_AxTeechart.Axis.Bottom.Increment = 0;
+                    MainForm.mainform.m_AxTeechart.Axis.Bottom.Increment = 1;
                 }
                 else
                 {

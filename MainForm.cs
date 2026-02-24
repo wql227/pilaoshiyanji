@@ -4196,7 +4196,7 @@ namespace DoPENetConnect
             if (axTChart1.Axis.Bottom.Maximum > 1)
             {
                 
-                axTChart1.Axis.Bottom.Increment = 0;
+                axTChart1.Axis.Bottom.Increment = 1;
             }
             else
             {
@@ -6335,6 +6335,7 @@ namespace DoPENetConnect
 
             //WriteCorrFile();
             LogHelper.Error("some wrong!");
+           
         }
 
         private void cb_pos_CheckStateChanged(object sender, EventArgs e)
@@ -6345,7 +6346,7 @@ namespace DoPENetConnect
             }
             else {
                 bShowPosition = false;
-                axTChart1.Series(0).Clear();   //位移曲线清除，再设置为不显示该曲线时去除曲线上的数据
+                axTChart1.Series(0).Clear();   //位移曲线清除，在设置为不显示该曲线时去除曲线上的数据
             }
         }
 
@@ -6358,7 +6359,7 @@ namespace DoPENetConnect
             else
             {
                 bShowLoad = false;
-                axTChart1.Series(1).Clear();   //试验力曲线清除，再设置为不显示该曲线时去除曲线上的数据
+                axTChart1.Series(1).Clear();   //试验力曲线清除，在设置为不显示该曲线时去除曲线上的数据
             }
         }
 
@@ -6371,7 +6372,7 @@ namespace DoPENetConnect
             else
             {
                 bShowExtension = false;
-                axTChart1.Series(2).Clear();   //变形曲线清除，再设置为不显示该曲线时去除曲线上的数据
+                axTChart1.Series(2).Clear();   //变形曲线清除，在设置为不显示该曲线时去除曲线上的数据
             }
         }
 
@@ -6384,7 +6385,7 @@ namespace DoPENetConnect
             else
             {
                 bShowCommand = false;
-                axTChart1.Series(3).Clear();   //变形曲线清除，再设置为不显示该曲线时去除曲线上的数据
+                axTChart1.Series(3).Clear();   //变形曲线清除，在设置为不显示该曲线时去除曲线上的数据
             }
         }
     }
