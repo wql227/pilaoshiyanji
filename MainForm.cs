@@ -4259,6 +4259,19 @@ namespace DoPENetConnect
 
             #endregion
 
+            //曲线显示
+            IniFileHelper.GetIniString("Setting", "ShowPosition", "1", strTmp, strTmp.Capacity);
+            cb_pos.Checked = strTmp.ToString() == "1" ? true : false;
+
+            IniFileHelper.GetIniString("Setting", "ShowLoad", "1", strTmp, strTmp.Capacity);
+            cb_load.Checked = strTmp.ToString() == "1" ? true : false;
+
+            IniFileHelper.GetIniString("Setting", "ShowExtension", "1", strTmp, strTmp.Capacity);
+            cb_ext.Checked = strTmp.ToString() == "1" ? true : false;
+
+            IniFileHelper.GetIniString("Setting", "ShowCommand", "1", strTmp, strTmp.Capacity);
+            cb_cmd.Checked = strTmp.ToString() == "1" ? true : false;
+
         }
 
         public void SetUnitbySystemType(string type)
@@ -6340,6 +6353,12 @@ namespace DoPENetConnect
 
         private void cb_pos_CheckStateChanged(object sender, EventArgs e)
         {
+            string strConfigSetion = "Setting";
+
+            string strTmp = "";
+            strTmp = cb_pos.Checked == false ? "0" : "1";
+            IniFileHelper.WriteIniString(strConfigSetion, "ShowPosition", strTmp);
+
             if (cb_pos.Checked)
             {
                 bShowPosition = true;
@@ -6352,6 +6371,12 @@ namespace DoPENetConnect
 
         private void cb_load_CheckStateChanged(object sender, EventArgs e)
         {
+            string strConfigSetion = "Setting";
+
+            string strTmp = "";
+            strTmp = cb_load.Checked == false ? "0" : "1";
+            IniFileHelper.WriteIniString(strConfigSetion, "ShowLoad", strTmp);
+
             if (cb_load.Checked)
             {
                 bShowLoad = true;
@@ -6365,6 +6390,12 @@ namespace DoPENetConnect
 
         private void cb_ext_CheckStateChanged(object sender, EventArgs e)
         {
+            string strConfigSetion = "Setting";
+
+            string strTmp = "";
+            strTmp = cb_ext.Checked == false ? "0" : "1";
+            IniFileHelper.WriteIniString(strConfigSetion, "ShowExtension", strTmp);
+
             if (cb_ext.Checked)
             {
                 bShowExtension = true;
@@ -6378,6 +6409,12 @@ namespace DoPENetConnect
 
         private void cb_cmd_CheckStateChanged(object sender, EventArgs e)
         {
+            string strConfigSetion = "Setting";
+
+            string strTmp = "";
+            strTmp = cb_cmd.Checked == false ? "0" : "1";
+            IniFileHelper.WriteIniString(strConfigSetion, "ShowCommand", strTmp);
+
             if (cb_cmd.Checked)
             {
                 bShowCommand = true;
