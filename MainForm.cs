@@ -3970,7 +3970,9 @@ namespace DoPENetConnect
             //{
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             // }
-            devId = new StringBuilder("0212AD05");    //小电缸
+            #region 办公室小电缸
+            devId = new StringBuilder("0212AD05");    //小电缸 测试用
+            #endregion
             //devId = new StringBuilder("02132F05");
             #region 厦门 
             //更新 20260209 
@@ -6333,6 +6335,57 @@ namespace DoPENetConnect
 
             //WriteCorrFile();
             LogHelper.Error("some wrong!");
+        }
+
+        private void cb_pos_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (cb_pos.Checked)
+            {
+                bShowPosition = true;
+            }
+            else {
+                bShowPosition = false;
+                axTChart1.Series(0).Clear();   //位移曲线清除，再设置为不显示该曲线时去除曲线上的数据
+            }
+        }
+
+        private void cb_load_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (cb_load.Checked)
+            {
+                bShowLoad = true;
+            }
+            else
+            {
+                bShowLoad = false;
+                axTChart1.Series(1).Clear();   //试验力曲线清除，再设置为不显示该曲线时去除曲线上的数据
+            }
+        }
+
+        private void cb_ext_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (cb_ext.Checked)
+            {
+                bShowExtension = true;
+            }
+            else
+            {
+                bShowExtension = false;
+                axTChart1.Series(2).Clear();   //变形曲线清除，再设置为不显示该曲线时去除曲线上的数据
+            }
+        }
+
+        private void cb_cmd_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (cb_cmd.Checked)
+            {
+                bShowCommand = true;
+            }
+            else
+            {
+                bShowCommand = false;
+                axTChart1.Series(3).Clear();   //变形曲线清除，再设置为不显示该曲线时去除曲线上的数据
+            }
         }
     }
 }

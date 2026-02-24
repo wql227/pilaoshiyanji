@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -120,12 +120,13 @@
             this.buttonX21 = new DevComponents.DotNetBar.ButtonX();
             this.superTabItem9 = new DevComponents.DotNetBar.SuperTabItem();
             this.panelEx12 = new DevComponents.DotNetBar.PanelEx();
+            this.cb_pos = new System.Windows.Forms.CheckBox();
+            this.tb_TestParam = new DevComponents.DotNetBar.LabelX();
             this.buttonX18 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX19 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX15 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX16 = new DevComponents.DotNetBar.ButtonX();
             this.labelX34 = new DevComponents.DotNetBar.LabelX();
-            this.tb_TestParam = new DevComponents.DotNetBar.LabelX();
             this.btnX_AxisLoadY_MaxUp = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisCommandY_MinUp = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisEXTY_MinUp = new DevComponents.DotNetBar.ButtonX();
@@ -142,6 +143,7 @@
             this.btnX_AxisPOSY_MaxDown = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisLoadY_MinDown = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisLoadY_MinUp = new DevComponents.DotNetBar.ButtonX();
+            this.axTChart1 = new AxTeeChart.AxTChart();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbX_CompanyName = new System.Windows.Forms.ToolStripStatusLabel();
@@ -370,7 +372,9 @@
             this.timer_ShowWave = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.axTChart1 = new AxTeeChart.AxTChart();
+            this.cb_load = new System.Windows.Forms.CheckBox();
+            this.cb_ext = new System.Windows.Forms.CheckBox();
+            this.cb_cmd = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -390,6 +394,7 @@
             this.panelEx14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.panelEx12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.pl_DataShow.SuspendLayout();
@@ -425,7 +430,6 @@
             this.panelEx9.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
             this.SuspendLayout();
             // 
             // StartCommunicationWithEdcTimer
@@ -1586,14 +1590,14 @@
             // 
             // dataGridViewX1
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -1601,26 +1605,26 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(21)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(3, 94);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(398, 363);
@@ -1706,6 +1710,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelEx12.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx12.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx12.Controls.Add(this.cb_cmd);
+            this.panelEx12.Controls.Add(this.cb_ext);
+            this.panelEx12.Controls.Add(this.cb_load);
+            this.panelEx12.Controls.Add(this.cb_pos);
             this.panelEx12.Controls.Add(this.tb_TestParam);
             this.panelEx12.Controls.Add(this.buttonX18);
             this.panelEx12.Controls.Add(this.buttonX19);
@@ -1742,6 +1750,29 @@
             this.panelEx12.Style.GradientAngle = 90;
             this.panelEx12.TabIndex = 74;
             this.panelEx12.Text = "panelEx12";
+            // 
+            // cb_pos
+            // 
+            this.cb_pos.AutoSize = true;
+            this.cb_pos.Checked = true;
+            this.cb_pos.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_pos.Location = new System.Drawing.Point(169, 15);
+            this.cb_pos.Name = "cb_pos";
+            this.cb_pos.Size = new System.Drawing.Size(15, 14);
+            this.cb_pos.TabIndex = 76;
+            this.cb_pos.UseVisualStyleBackColor = true;
+            this.cb_pos.CheckStateChanged += new System.EventHandler(this.cb_pos_CheckStateChanged);
+            // 
+            // tb_TestParam
+            // 
+            // 
+            // 
+            // 
+            this.tb_TestParam.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_TestParam.Location = new System.Drawing.Point(521, 12);
+            this.tb_TestParam.Name = "tb_TestParam";
+            this.tb_TestParam.Size = new System.Drawing.Size(668, 23);
+            this.tb_TestParam.TabIndex = 71;
             // 
             // buttonX18
             // 
@@ -1810,17 +1841,6 @@
             this.labelX34.Size = new System.Drawing.Size(66, 23);
             this.labelX34.TabIndex = 71;
             this.labelX34.Text = "试验参数：";
-            // 
-            // tb_TestParam
-            // 
-            // 
-            // 
-            // 
-            this.tb_TestParam.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tb_TestParam.Location = new System.Drawing.Point(521, 12);
-            this.tb_TestParam.Name = "tb_TestParam";
-            this.tb_TestParam.Size = new System.Drawing.Size(668, 23);
-            this.tb_TestParam.TabIndex = 71;
             // 
             // btnX_AxisLoadY_MaxUp
             // 
@@ -2023,6 +2043,16 @@
             this.btnX_AxisLoadY_MinUp.TabIndex = 64;
             this.btnX_AxisLoadY_MinUp.Text = "▲";
             this.btnX_AxisLoadY_MinUp.Click += new System.EventHandler(this.btnX_AxisLoadY_MinUp_Click);
+            // 
+            // axTChart1
+            // 
+            this.axTChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axTChart1.Enabled = true;
+            this.axTChart1.Location = new System.Drawing.Point(0, 0);
+            this.axTChart1.Name = "axTChart1";
+            this.axTChart1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart1.OcxState")));
+            this.axTChart1.Size = new System.Drawing.Size(1302, 544);
+            this.axTChart1.TabIndex = 69;
             // 
             // statusStrip1
             // 
@@ -3799,9 +3829,9 @@
             // 
             this.superTabControlPanel3.Controls.Add(this.panelEx3);
             this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 25);
             this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(303, 679);
+            this.superTabControlPanel3.Size = new System.Drawing.Size(303, 682);
             this.superTabControlPanel3.TabIndex = 1;
             this.superTabControlPanel3.TabItem = this.superTabItem3;
             // 
@@ -3825,7 +3855,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 0);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(303, 679);
+            this.panelEx3.Size = new System.Drawing.Size(303, 682);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -3867,7 +3897,7 @@
             this.superTabControl3.ControlBox.CloseBox});
             this.superTabControl3.Controls.Add(this.superTabControlPanel6);
             this.superTabControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.superTabControl3.Location = new System.Drawing.Point(0, 569);
+            this.superTabControl3.Location = new System.Drawing.Point(0, 572);
             this.superTabControl3.Name = "superTabControl3";
             this.superTabControl3.ReorderTabsEnabled = false;
             this.superTabControl3.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
@@ -3886,7 +3916,7 @@
             this.superTabControlPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel6.Location = new System.Drawing.Point(0, 0);
             this.superTabControlPanel6.Name = "superTabControlPanel6";
-            this.superTabControlPanel6.Size = new System.Drawing.Size(303, 82);
+            this.superTabControlPanel6.Size = new System.Drawing.Size(303, 85);
             this.superTabControlPanel6.TabIndex = 1;
             this.superTabControlPanel6.TabItem = this.superTabItem6;
             // 
@@ -3904,7 +3934,7 @@
             this.panelEx8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx8.Location = new System.Drawing.Point(0, 0);
             this.panelEx8.Name = "panelEx8";
-            this.panelEx8.Size = new System.Drawing.Size(303, 82);
+            this.panelEx8.Size = new System.Drawing.Size(303, 85);
             this.panelEx8.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx8.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx8.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -4862,15 +4892,41 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
             // 
-            // axTChart1
+            // cb_load
             // 
-            this.axTChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axTChart1.Enabled = true;
-            this.axTChart1.Location = new System.Drawing.Point(0, 0);
-            this.axTChart1.Name = "axTChart1";
-            this.axTChart1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart1.OcxState")));
-            this.axTChart1.Size = new System.Drawing.Size(1302, 544);
-            this.axTChart1.TabIndex = 69;
+            this.cb_load.AutoSize = true;
+            this.cb_load.Checked = true;
+            this.cb_load.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_load.Location = new System.Drawing.Point(236, 15);
+            this.cb_load.Name = "cb_load";
+            this.cb_load.Size = new System.Drawing.Size(15, 14);
+            this.cb_load.TabIndex = 77;
+            this.cb_load.UseVisualStyleBackColor = true;
+            this.cb_load.CheckStateChanged += new System.EventHandler(this.cb_load_CheckStateChanged);
+            // 
+            // cb_ext
+            // 
+            this.cb_ext.AutoSize = true;
+            this.cb_ext.Checked = true;
+            this.cb_ext.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_ext.Location = new System.Drawing.Point(307, 15);
+            this.cb_ext.Name = "cb_ext";
+            this.cb_ext.Size = new System.Drawing.Size(15, 14);
+            this.cb_ext.TabIndex = 78;
+            this.cb_ext.UseVisualStyleBackColor = true;
+            this.cb_ext.CheckStateChanged += new System.EventHandler(this.cb_ext_CheckStateChanged);
+            // 
+            // cb_cmd
+            // 
+            this.cb_cmd.AutoSize = true;
+            this.cb_cmd.Checked = true;
+            this.cb_cmd.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_cmd.Location = new System.Drawing.Point(373, 15);
+            this.cb_cmd.Name = "cb_cmd";
+            this.cb_cmd.Size = new System.Drawing.Size(15, 14);
+            this.cb_cmd.TabIndex = 79;
+            this.cb_cmd.UseVisualStyleBackColor = true;
+            this.cb_cmd.CheckStateChanged += new System.EventHandler(this.cb_cmd_CheckStateChanged);
             // 
             // MainForm
             // 
@@ -4913,6 +4969,8 @@
             this.panelEx14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.panelEx12.ResumeLayout(false);
+            this.panelEx12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
@@ -4956,7 +5014,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -5305,6 +5362,10 @@
         private DevComponents.DotNetBar.LabelX labelX35;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX26;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox cb_pos;
+        private System.Windows.Forms.CheckBox cb_load;
+        private System.Windows.Forms.CheckBox cb_ext;
+        private System.Windows.Forms.CheckBox cb_cmd;
     }
 }
 
