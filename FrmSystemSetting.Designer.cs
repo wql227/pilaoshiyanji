@@ -766,6 +766,7 @@
             this.cbX_PVCountLog.Size = new System.Drawing.Size(121, 27);
             this.cbX_PVCountLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_PVCountLog.TabIndex = 3;
+            this.cbX_PVCountLog.Visible = false;
             // 
             // comboItem31
             // 
@@ -801,7 +802,7 @@
             this.comboItem29,
             this.comboItem30,
             this.comboItem39});
-            this.cbX_CountLog.Location = new System.Drawing.Point(271, 4);
+            this.cbX_CountLog.Location = new System.Drawing.Point(271, 24);
             this.cbX_CountLog.Name = "cbX_CountLog";
             this.cbX_CountLog.Size = new System.Drawing.Size(121, 27);
             this.cbX_CountLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -862,12 +863,13 @@
             this.label55.Size = new System.Drawing.Size(168, 16);
             this.label55.TabIndex = 0;
             this.label55.Text = "存储峰谷值 计数间隔 ";
+            this.label55.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(79, 8);
+            this.label2.Location = new System.Drawing.Point(79, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(160, 16);
             this.label2.TabIndex = 0;
@@ -916,6 +918,7 @@
             this.cbk_SavePVCountLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbk_SavePVCountLog.TabIndex = 1;
             this.cbk_SavePVCountLog.Text = "启用";
+            this.cbk_SavePVCountLog.Visible = false;
             // 
             // cbk_SaveCountLog
             // 
@@ -924,7 +927,7 @@
             // 
             // 
             this.cbk_SaveCountLog.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbk_SaveCountLog.Location = new System.Drawing.Point(13, 8);
+            this.cbk_SaveCountLog.Location = new System.Drawing.Point(13, 26);
             this.cbk_SaveCountLog.Name = "cbk_SaveCountLog";
             this.cbk_SaveCountLog.Size = new System.Drawing.Size(61, 23);
             this.cbk_SaveCountLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
