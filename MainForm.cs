@@ -6425,5 +6425,6 @@ namespace DoPENetConnect
                 axTChart1.Series(3).Clear();   //变形曲线清除，在设置为不显示该曲线时去除曲线上的数据
             }
         }
+
     }
 }

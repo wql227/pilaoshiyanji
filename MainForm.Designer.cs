@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -120,6 +120,9 @@
             this.buttonX21 = new DevComponents.DotNetBar.ButtonX();
             this.superTabItem9 = new DevComponents.DotNetBar.SuperTabItem();
             this.panelEx12 = new DevComponents.DotNetBar.PanelEx();
+            this.cb_cmd = new System.Windows.Forms.CheckBox();
+            this.cb_ext = new System.Windows.Forms.CheckBox();
+            this.cb_load = new System.Windows.Forms.CheckBox();
             this.cb_pos = new System.Windows.Forms.CheckBox();
             this.tb_TestParam = new DevComponents.DotNetBar.LabelX();
             this.buttonX18 = new DevComponents.DotNetBar.ButtonX();
@@ -372,9 +375,6 @@
             this.timer_ShowWave = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.cb_load = new System.Windows.Forms.CheckBox();
-            this.cb_ext = new System.Windows.Forms.CheckBox();
-            this.cb_cmd = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -617,8 +617,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel8);
             this.superTabControl4.Controls.Add(this.superTabControlPanel9);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel8);
             this.superTabControl4.Dock = System.Windows.Forms.DockStyle.Right;
             this.superTabControl4.Location = new System.Drawing.Point(0, 0);
             this.superTabControl4.Name = "superTabControl4";
@@ -1590,14 +1590,14 @@
             // 
             // dataGridViewX1
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -1605,26 +1605,26 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(3, 94);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(398, 363);
@@ -1701,7 +1701,6 @@
             this.superTabItem9.GlobalItem = false;
             this.superTabItem9.Name = "superTabItem9";
             this.superTabItem9.Text = "程控";
-            this.superTabItem9.Visible = false;
             // 
             // panelEx12
             // 
@@ -1751,16 +1750,74 @@
             this.panelEx12.TabIndex = 74;
             this.panelEx12.Text = "panelEx12";
             // 
+            // cb_cmd
+            // 
+            this.cb_cmd.AutoSize = true;
+            this.cb_cmd.BackColor = System.Drawing.Color.White;
+            this.cb_cmd.Checked = true;
+            this.cb_cmd.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_cmd.Font = new System.Drawing.Font("宋体", 10F);
+            this.cb_cmd.Image = ((System.Drawing.Image)(resources.GetObject("cb_cmd.Image")));
+            this.cb_cmd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cb_cmd.Location = new System.Drawing.Point(381, 14);
+            this.cb_cmd.Name = "cb_cmd";
+            this.cb_cmd.Size = new System.Drawing.Size(68, 18);
+            this.cb_cmd.TabIndex = 101;
+            this.cb_cmd.Text = "  命令";
+            this.cb_cmd.UseVisualStyleBackColor = false;
+            this.cb_cmd.CheckStateChanged += new System.EventHandler(this.cb_cmd_CheckStateChanged);
+            // 
+            // cb_ext
+            // 
+            this.cb_ext.AutoSize = true;
+            this.cb_ext.BackColor = System.Drawing.Color.White;
+            this.cb_ext.Checked = true;
+            this.cb_ext.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_ext.Font = new System.Drawing.Font("宋体", 10F);
+            this.cb_ext.Image = ((System.Drawing.Image)(resources.GetObject("cb_ext.Image")));
+            this.cb_ext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cb_ext.Location = new System.Drawing.Point(313, 14);
+            this.cb_ext.Name = "cb_ext";
+            this.cb_ext.Size = new System.Drawing.Size(68, 18);
+            this.cb_ext.TabIndex = 100;
+            this.cb_ext.Text = "  变形";
+            this.cb_ext.UseVisualStyleBackColor = false;
+            this.cb_ext.CheckStateChanged += new System.EventHandler(this.cb_ext_CheckStateChanged);
+            // 
+            // cb_load
+            // 
+            this.cb_load.AutoSize = true;
+            this.cb_load.BackColor = System.Drawing.Color.White;
+            this.cb_load.Checked = true;
+            this.cb_load.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_load.Font = new System.Drawing.Font("宋体", 10F);
+            this.cb_load.Image = ((System.Drawing.Image)(resources.GetObject("cb_load.Image")));
+            this.cb_load.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cb_load.Location = new System.Drawing.Point(234, 14);
+            this.cb_load.Name = "cb_load";
+            this.cb_load.Size = new System.Drawing.Size(82, 18);
+            this.cb_load.TabIndex = 99;
+            this.cb_load.Text = "  试验力";
+            this.cb_load.UseVisualStyleBackColor = false;
+            this.cb_load.CheckStateChanged += new System.EventHandler(this.cb_load_CheckStateChanged);
+            // 
             // cb_pos
             // 
             this.cb_pos.AutoSize = true;
+            this.cb_pos.BackColor = System.Drawing.Color.White;
             this.cb_pos.Checked = true;
             this.cb_pos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_pos.Location = new System.Drawing.Point(169, 15);
+            this.cb_pos.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cb_pos.ForeColor = System.Drawing.Color.Black;
+            this.cb_pos.Image = ((System.Drawing.Image)(resources.GetObject("cb_pos.Image")));
+            this.cb_pos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cb_pos.Location = new System.Drawing.Point(166, 14);
             this.cb_pos.Name = "cb_pos";
-            this.cb_pos.Size = new System.Drawing.Size(15, 14);
-            this.cb_pos.TabIndex = 76;
-            this.cb_pos.UseVisualStyleBackColor = true;
+            this.cb_pos.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.cb_pos.Size = new System.Drawing.Size(71, 18);
+            this.cb_pos.TabIndex = 98;
+            this.cb_pos.Text = "  位移";
+            this.cb_pos.UseVisualStyleBackColor = false;
             this.cb_pos.CheckStateChanged += new System.EventHandler(this.cb_pos_CheckStateChanged);
             // 
             // tb_TestParam
@@ -4892,42 +4949,6 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
             // 
-            // cb_load
-            // 
-            this.cb_load.AutoSize = true;
-            this.cb_load.Checked = true;
-            this.cb_load.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_load.Location = new System.Drawing.Point(236, 15);
-            this.cb_load.Name = "cb_load";
-            this.cb_load.Size = new System.Drawing.Size(15, 14);
-            this.cb_load.TabIndex = 77;
-            this.cb_load.UseVisualStyleBackColor = true;
-            this.cb_load.CheckStateChanged += new System.EventHandler(this.cb_load_CheckStateChanged);
-            // 
-            // cb_ext
-            // 
-            this.cb_ext.AutoSize = true;
-            this.cb_ext.Checked = true;
-            this.cb_ext.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_ext.Location = new System.Drawing.Point(307, 15);
-            this.cb_ext.Name = "cb_ext";
-            this.cb_ext.Size = new System.Drawing.Size(15, 14);
-            this.cb_ext.TabIndex = 78;
-            this.cb_ext.UseVisualStyleBackColor = true;
-            this.cb_ext.CheckStateChanged += new System.EventHandler(this.cb_ext_CheckStateChanged);
-            // 
-            // cb_cmd
-            // 
-            this.cb_cmd.AutoSize = true;
-            this.cb_cmd.Checked = true;
-            this.cb_cmd.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_cmd.Location = new System.Drawing.Point(373, 15);
-            this.cb_cmd.Name = "cb_cmd";
-            this.cb_cmd.Size = new System.Drawing.Size(15, 14);
-            this.cb_cmd.TabIndex = 79;
-            this.cb_cmd.UseVisualStyleBackColor = true;
-            this.cb_cmd.CheckStateChanged += new System.EventHandler(this.cb_cmd_CheckStateChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -5362,10 +5383,10 @@
         private DevComponents.DotNetBar.LabelX labelX35;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX26;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox cb_pos;
-        private System.Windows.Forms.CheckBox cb_load;
-        private System.Windows.Forms.CheckBox cb_ext;
         private System.Windows.Forms.CheckBox cb_cmd;
+        private System.Windows.Forms.CheckBox cb_ext;
+        private System.Windows.Forms.CheckBox cb_load;
+        private System.Windows.Forms.CheckBox cb_pos;
     }
 }
 
