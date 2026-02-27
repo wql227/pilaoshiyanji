@@ -379,6 +379,11 @@ namespace DoPENetConnect
         public double nTotal = 500;
 
         /// <summary>
+        /// 试验&试验信息
+        /// </summary>
+        FormTest doTest;
+
+        /// <summary>
         /// 单次实验记录循环次数
         /// </summary>
         public long nTotalTestCount = 0;
@@ -671,6 +676,10 @@ namespace DoPENetConnect
 
             //传递当前实例
             mainform = this;
+
+            //初始化试验信息
+            doTest = new FormTest();
+            doTest.Owner = this;
 
             //updateTextBox += new UpdateDataToTextBox(UpdateData);
 
@@ -3973,7 +3982,9 @@ namespace DoPENetConnect
             #region 办公室小电缸
             devId = new StringBuilder("0212AD05");    //小电缸 测试用
             #endregion
+            #region 临时测试
             //devId = new StringBuilder("02132F05");
+            #endregion
             #region 厦门 
             //更新 20260209 
             //devId = new StringBuilder("0214B900");    //厦门
@@ -6426,5 +6437,18 @@ namespace DoPENetConnect
             }
         }
 
+        private void 试样信息SToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            if (isRunning) {
+                MessageBox.Show("试验运行中不能填写试验信息，请等待试验结束后再试！");                
+            }
+
+            if (doTest != null) {
+                doTest.RemoveDataGridView();
+                doTest.Show();
+            }
+
+        }
     }
 }
