@@ -33,6 +33,7 @@ namespace DoPENetConnect
                 groupPanel11.Visible = true;
                 groupPanel12.Visible = true;
                 superTabItem7.Visible = true;
+                groupPanel16.Visible = true;
             }
 
             SetUnitbySystemType(MainForm.mainform.currentMachineType);
@@ -304,6 +305,10 @@ namespace DoPENetConnect
             //IniFileHelper.GetIniString("Device", "DeviceID", "0", strTmp, strTmp.Capacity);
             //tbX_DeviceID.Text = strTmp.ToString();
 
+
+            IniFileHelper.GetIniString("Setting", "ShowChengkong", "0", strTmp, strTmp.Capacity);
+            switchButton1.Value = strTmp.ToString() == "0" ? false : true;
+
             //是否按次数存储日志
             IniFileHelper.GetIniString("Setting", "SaveCountLog", "0", strTmp, strTmp.Capacity);
             cbk_SaveCountLog.Checked = strTmp.ToString() == "0" ? false : true;
@@ -561,6 +566,12 @@ namespace DoPENetConnect
             IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
             string strTmp = "";
             string strConfigSetion = this.Name;
+
+
+            //按试验次数记录日志            
+            strTmp = switchButton1.Value == false ? "0" : "1";
+            MainForm.mainform.ShowChengkong(switchButton1.Value);
+            IniFileHelper.WriteIniString("Setting", "ShowChengkong", strTmp);
 
             //按试验次数记录日志
             strTmp = cbk_SaveCountLog.Checked == false ? "0" : "1";
@@ -1267,6 +1278,5 @@ namespace DoPENetConnect
                     break;
             }
         }
-
     }
 }

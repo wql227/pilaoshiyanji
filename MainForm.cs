@@ -3994,6 +3994,10 @@ namespace DoPENetConnect
             //devId = new StringBuilder("0214B900");    //厦门
             #endregion 厦门
 
+            IniFileHelper.GetIniString("Setting", "ShowChengkong", "0", strTmp, strTmp.Capacity);
+            bool showChengkong = strTmp.ToString() == "0" ? false : true;
+            ShowChengkong(showChengkong);
+
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
             nPreTestCount = int.Parse(strTmp.ToString());
@@ -6453,6 +6457,10 @@ namespace DoPENetConnect
                 doTest.Show();
             }
 
+        }
+
+        public void ShowChengkong(bool value) {
+            superTabItem9.Visible = value;
         }
     }
 }
