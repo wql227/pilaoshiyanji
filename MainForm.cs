@@ -3285,6 +3285,10 @@ namespace DoPENetConnect
                             if (chartX.Count >= nTotal)
                             {
                                 x_Data = 0.0;
+                                axTChart1.Series(0).Clear();
+                                axTChart1.Series(1).Clear();
+                                axTChart1.Series(2).Clear();
+                                axTChart1.Series(3).Clear();
 
                                 chartX.Clear();
                                 chartPosY.Clear();
