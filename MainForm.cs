@@ -3437,7 +3437,7 @@ namespace DoPENetConnect
         /// </summary>
         public void SetMemberParam()
         {
-            nCountREfresh = DataRefreshFrequency / (double)SampleFrequency - 1;
+            nCountREfresh = 153;// DataRefreshFrequency / (double)SampleFrequency - 1; //153;//
 
             if (LoadUnit.ToUpper() == "KN")
             {
