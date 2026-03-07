@@ -91,6 +91,11 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,6 +118,11 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.labelX9);
+            this.panelEx1.Controls.Add(this.labelX8);
+            this.panelEx1.Controls.Add(this.labelX7);
+            this.panelEx1.Controls.Add(this.labelX6);
+            this.panelEx1.Controls.Add(this.labelX5);
             this.panelEx1.Controls.Add(this.cbX_Command_Range);
             this.panelEx1.Controls.Add(this.cbX_Ext_Range);
             this.panelEx1.Controls.Add(this.cbX_Load_Range);
@@ -426,12 +436,13 @@
             // 
             this.cbX_FrmSetChartAxisY_CommandEnable.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmSetChartAxisY_CommandEnable.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_FrmSetChartAxisY_CommandEnable.Location = new System.Drawing.Point(472, 12);
+            this.cbX_FrmSetChartAxisY_CommandEnable.Location = new System.Drawing.Point(472, 137);
             this.cbX_FrmSetChartAxisY_CommandEnable.Name = "cbX_FrmSetChartAxisY_CommandEnable";
             this.cbX_FrmSetChartAxisY_CommandEnable.Size = new System.Drawing.Size(67, 23);
             this.cbX_FrmSetChartAxisY_CommandEnable.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmSetChartAxisY_CommandEnable.TabIndex = 3;
             this.cbX_FrmSetChartAxisY_CommandEnable.Text = "命令";
+            this.cbX_FrmSetChartAxisY_CommandEnable.Visible = false;
             // 
             // cbX_FrmSetChartAxisY_ExtEnable
             // 
@@ -441,12 +452,13 @@
             // 
             this.cbX_FrmSetChartAxisY_ExtEnable.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmSetChartAxisY_ExtEnable.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_FrmSetChartAxisY_ExtEnable.Location = new System.Drawing.Point(399, 12);
+            this.cbX_FrmSetChartAxisY_ExtEnable.Location = new System.Drawing.Point(399, 137);
             this.cbX_FrmSetChartAxisY_ExtEnable.Name = "cbX_FrmSetChartAxisY_ExtEnable";
             this.cbX_FrmSetChartAxisY_ExtEnable.Size = new System.Drawing.Size(67, 23);
             this.cbX_FrmSetChartAxisY_ExtEnable.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmSetChartAxisY_ExtEnable.TabIndex = 3;
             this.cbX_FrmSetChartAxisY_ExtEnable.Text = "变形";
+            this.cbX_FrmSetChartAxisY_ExtEnable.Visible = false;
             // 
             // cbX_FrmSetChartAxisY_LoadEnable
             // 
@@ -456,12 +468,13 @@
             // 
             this.cbX_FrmSetChartAxisY_LoadEnable.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmSetChartAxisY_LoadEnable.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_FrmSetChartAxisY_LoadEnable.Location = new System.Drawing.Point(314, 12);
+            this.cbX_FrmSetChartAxisY_LoadEnable.Location = new System.Drawing.Point(314, 137);
             this.cbX_FrmSetChartAxisY_LoadEnable.Name = "cbX_FrmSetChartAxisY_LoadEnable";
             this.cbX_FrmSetChartAxisY_LoadEnable.Size = new System.Drawing.Size(79, 23);
             this.cbX_FrmSetChartAxisY_LoadEnable.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmSetChartAxisY_LoadEnable.TabIndex = 3;
             this.cbX_FrmSetChartAxisY_LoadEnable.Text = "试验力";
+            this.cbX_FrmSetChartAxisY_LoadEnable.Visible = false;
             // 
             // cbX_FrmSetChartAxisY_TimeEnable
             // 
@@ -475,12 +488,13 @@
             this.cbX_FrmSetChartAxisY_TimeEnable.CheckValue = "Y";
             this.cbX_FrmSetChartAxisY_TimeEnable.Enabled = false;
             this.cbX_FrmSetChartAxisY_TimeEnable.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_FrmSetChartAxisY_TimeEnable.Location = new System.Drawing.Point(119, 12);
+            this.cbX_FrmSetChartAxisY_TimeEnable.Location = new System.Drawing.Point(119, 137);
             this.cbX_FrmSetChartAxisY_TimeEnable.Name = "cbX_FrmSetChartAxisY_TimeEnable";
             this.cbX_FrmSetChartAxisY_TimeEnable.Size = new System.Drawing.Size(67, 23);
             this.cbX_FrmSetChartAxisY_TimeEnable.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmSetChartAxisY_TimeEnable.TabIndex = 3;
             this.cbX_FrmSetChartAxisY_TimeEnable.Text = "时间";
+            this.cbX_FrmSetChartAxisY_TimeEnable.Visible = false;
             // 
             // cbX_FrmSetChartAxisY_PosEnable
             // 
@@ -491,12 +505,13 @@
             // 
             this.cbX_FrmSetChartAxisY_PosEnable.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbX_FrmSetChartAxisY_PosEnable.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbX_FrmSetChartAxisY_PosEnable.Location = new System.Drawing.Point(211, 12);
+            this.cbX_FrmSetChartAxisY_PosEnable.Location = new System.Drawing.Point(211, 137);
             this.cbX_FrmSetChartAxisY_PosEnable.Name = "cbX_FrmSetChartAxisY_PosEnable";
             this.cbX_FrmSetChartAxisY_PosEnable.Size = new System.Drawing.Size(61, 23);
             this.cbX_FrmSetChartAxisY_PosEnable.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbX_FrmSetChartAxisY_PosEnable.TabIndex = 3;
             this.cbX_FrmSetChartAxisY_PosEnable.Text = "位移";
+            this.cbX_FrmSetChartAxisY_PosEnable.Visible = false;
             // 
             // btn_FrmSerAxisY_Cancel
             // 
@@ -708,6 +723,71 @@
             this.labelX2.TabIndex = 0;
             this.labelX2.Text = "最小值";
             // 
+            // labelX5
+            // 
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Font = new System.Drawing.Font("宋体", 12F);
+            this.labelX5.Location = new System.Drawing.Point(134, 12);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(40, 23);
+            this.labelX5.TabIndex = 5;
+            this.labelX5.Text = "时间";
+            // 
+            // labelX6
+            // 
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Font = new System.Drawing.Font("宋体", 12F);
+            this.labelX6.Location = new System.Drawing.Point(222, 12);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(40, 23);
+            this.labelX6.TabIndex = 6;
+            this.labelX6.Text = "位移";
+            // 
+            // labelX7
+            // 
+            // 
+            // 
+            // 
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.Font = new System.Drawing.Font("宋体", 12F);
+            this.labelX7.Location = new System.Drawing.Point(323, 12);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(65, 23);
+            this.labelX7.TabIndex = 7;
+            this.labelX7.Text = "试验力";
+            // 
+            // labelX8
+            // 
+            // 
+            // 
+            // 
+            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX8.Font = new System.Drawing.Font("宋体", 12F);
+            this.labelX8.Location = new System.Drawing.Point(415, 12);
+            this.labelX8.Name = "labelX8";
+            this.labelX8.Size = new System.Drawing.Size(40, 23);
+            this.labelX8.TabIndex = 8;
+            this.labelX8.Text = "变形";
+            // 
+            // labelX9
+            // 
+            // 
+            // 
+            // 
+            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX9.Font = new System.Drawing.Font("宋体", 12F);
+            this.labelX9.Location = new System.Drawing.Point(485, 12);
+            this.labelX9.Name = "labelX9";
+            this.labelX9.Size = new System.Drawing.Size(40, 23);
+            this.labelX9.TabIndex = 9;
+            this.labelX9.Text = "命令";
+            // 
             // FrmSetChartAxisY
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -791,5 +871,10 @@
         private DevComponents.Editors.ComboItem comboItem35;
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmSetChartAxisY_TimeY_Max;
         private DevComponents.DotNetBar.Controls.TextBoxX tbX_FrmSetChartAxisY_TimeY_Min;
+        private DevComponents.DotNetBar.LabelX labelX9;
+        private DevComponents.DotNetBar.LabelX labelX8;
+        private DevComponents.DotNetBar.LabelX labelX7;
+        private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.LabelX labelX5;
     }
 }
