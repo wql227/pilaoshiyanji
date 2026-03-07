@@ -6366,6 +6366,7 @@ namespace DoPENetConnect
 
 
             //WriteCorrFile();
+            MyEdc.Ctrl.Sft(CTRL.POS, 10, -10, REACT.ACTION);
             LogHelper.Error("some wrong!");
            
         }
