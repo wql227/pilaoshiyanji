@@ -97,5 +97,81 @@ namespace DoPENetConnect
             return dtResult;
         }
 
+
+        public DataTable CSVToDataTableStatic(bool isFirstRowColumn, string[] testInfo)
+        {
+            DataTable dataTable = new DataTable();
+            string text = "H";
+            DataTable dtResult;
+            try
+            {
+                fs = new FileStream(_fileName, FileMode.Open, FileAccess.Read);
+                StreamReader streamReader = new StreamReader(fs, Encoding.Default);
+                fs.Seek(0L, SeekOrigin.Begin);
+                int num = 0;
+                while (text != null)
+                {
+                    text = streamReader.ReadLine();
+                    //if (text.Contains("破坏载荷"))
+                    //{
+                    //    testInfo[7] = text.Split(',').ElementAt(1);
+                    //    break;
+                    //}
+                    num++;
+                    //if (num < 8)
+                    //{
+                    //    testInfo[num - 1] = text.Split(',').ElementAt(1);                       
+                    //    continue;
+                    //}
+
+                    if (text != null)
+                    {
+                        if (1 == num)
+                        {
+                            string[] array = text.Split(',');
+                            for (int i = 0; i < array.Length; i++)
+                            {
+                                DataColumn dataColumn = new DataColumn(array[i]);
+                                dataTable.Columns.Add(dataColumn);
+                            }
+                        }
+                        else
+                        {
+                            string[] array2 = text.Split(',');
+
+                            if (array2.Length <= 1)
+                            {
+                                continue;
+                            }
+
+                            DataRow dataRow = dataTable.NewRow();
+                            for (int j = 0; j < dataTable.Columns.Count; j++)
+                            {
+                                dataRow[j] = array2[j];
+                            }
+                            dataTable.Rows.Add(dataRow);
+                        }
+                    }
+                }
+                //foreach (DataRow dr2 in dataTable.Rows)
+                //{
+                //    Console.WriteLine(dr2["Time [s]"].ToString() + "<br>");
+                //}
+
+                if (streamReader != null)
+                {
+                    streamReader.Close();
+                }
+                dtResult = dataTable;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+                MessageBox.Show("Exception: " + ex.Message);
+                dtResult = null;
+            }
+            return dtResult;
+        }
+
     }
 }

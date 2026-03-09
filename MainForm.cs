@@ -6366,7 +6366,9 @@ namespace DoPENetConnect
 
 
             //WriteCorrFile();
-            MyEdc.Ctrl.Sft(CTRL.POS, 10, -10, REACT.ACTION);
+            //MyEdc.Ctrl.Sft(CTRL.POS, 10, -10, REACT.ACTION);
+            FormPVPlot tmpProgrammer = new FormPVPlot();
+            tmpProgrammer.Show();
             LogHelper.Error("some wrong!");
            
         }
