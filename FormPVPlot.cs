@@ -27,7 +27,12 @@ namespace DoPENetConnect
             InitializeComponent();
         }
 
-        public void InitPVchartArea()
+        protected override void Dispose(bool disposing)
+        {
+            Hide();
+        }
+
+            public void InitPVchartArea()
         {
             chartX.Clear();
             chartPosPeak.Clear();
@@ -36,13 +41,24 @@ namespace DoPENetConnect
             chartLoadValley.Clear();
         }
 
-        public void AddPVData(double xdta, double pos_pdta, double pos_vdta, double load_pdta, double load_vdta)
+        public void AddPVData(int xdta, double pos_pdta, double pos_vdta, double load_pdta, double load_vdta)
         {
             chartX.Add(xdta);
             chartPosPeak.Add(pos_pdta);
             chartPosValley.Add(pos_vdta);
             chartLoadPeak.Add(load_pdta);
             chartLoadValley.Add(load_vdta);
+        }
+
+        public void ShowPvDtas()
+        {
+            if (chartX.Count > 0)
+            {
+                axTChart1.Series(0).AddArray(chartX.Count, chartPosPeak.ToArray(), chartX.ToArray());
+                axTChart1.Series(1).AddArray(chartX.Count, chartPosValley.ToArray(), chartX.ToArray());
+                axTChart1.Series(2).AddArray(chartX.Count, chartLoadPeak.ToArray(), chartX.ToArray());
+                axTChart1.Series(3).AddArray(chartX.Count, chartLoadValley.ToArray(), chartX.ToArray());
+            }
         }
 
         private void FormDensity_Load(object sender, EventArgs e)
@@ -158,6 +174,14 @@ namespace DoPENetConnect
         private void FormDensity_Shown(object sender, EventArgs e)
         {
             //ShowDensity();
+            ShowPvDtas();
+        }
+
+        private void FormPVPlot_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible) {
+                ShowPvDtas();
+            }
         }
     }
 }

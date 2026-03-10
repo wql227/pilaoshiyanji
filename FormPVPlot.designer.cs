@@ -11,14 +11,14 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing && (components != null))
+        //    {
+        //        components.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
         #region Windows Form Designer generated code
 
@@ -49,6 +49,7 @@
             this.cb_ShowPosition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cb_ShowPosition.TabIndex = 72;
             this.cb_ShowPosition.Text = "峰谷值";
+            this.cb_ShowPosition.Visible = false;
             this.cb_ShowPosition.CheckedChanged += new System.EventHandler(this.cb_ShowPosition_CheckedChanged);
             // 
             // axTChart1
@@ -73,6 +74,7 @@
             this.Text = "峰谷值曲线";
             this.Load += new System.EventHandler(this.FormDensity_Load);
             this.Shown += new System.EventHandler(this.FormDensity_Shown);
+            this.VisibleChanged += new System.EventHandler(this.FormPVPlot_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).EndInit();
             this.ResumeLayout(false);
 

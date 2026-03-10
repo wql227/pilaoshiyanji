@@ -526,6 +526,8 @@ namespace DoPENetConnect
         /// </summary>
         public List<double> chartCommandY = new List<double>();
 
+        FormPVPlot pvPlotor;
+
         /// <summary>
         /// 变形Y轴列表
         /// </summary>
@@ -726,7 +728,7 @@ namespace DoPENetConnect
             EnableButton();
 
             // Connect to EDC
-            //ConnectToEdc();
+            ConnectToEdc();
 
             //设置lightningchart参数
             CreateChart();
@@ -1794,6 +1796,7 @@ namespace DoPENetConnect
                                     strPVLog = g_MaxPosition.ToString("F6") + "," + g_MinPosition.ToString("F6") + "," + g_MaxLoad.ToString("F6") + "," + g_MinLoad.ToString("F6") + "," + g_MaxExtension.ToString("F6") + "," + g_MinExtension.ToString("F6") + "," + (gSample.Cycles >> 1);
                                     LogHelper.SavePeakValleyData(strPVLog);
                                     LastRecordedHalfCycle = currentHalfCycle;
+                                    pvPlotor?.AddPVData(gSample.Cycles >> 1,g_MaxPosition,g_MinPosition,g_MaxLoad,g_MinLoad);
                                 }
                             }
                         }
@@ -2278,6 +2281,11 @@ namespace DoPENetConnect
 
             //更换试验机类型
             SetUnitbySystemType(currentMachineType);
+
+            //峰谷值显示曲线
+            if (pvPlotor == null) {
+                pvPlotor = new FormPVPlot();
+            }
         }
 
 
@@ -6367,8 +6375,10 @@ namespace DoPENetConnect
 
             //WriteCorrFile();
             //MyEdc.Ctrl.Sft(CTRL.POS, 10, -10, REACT.ACTION);
-            FormPVPlot tmpProgrammer = new FormPVPlot();
-            tmpProgrammer.Show();
+            //FormPVPlot tmpProgrammer = new FormPVPlot();
+            //tmpProgrammer.Show();
+
+            pvPlotor.Show();
             LogHelper.Error("some wrong!");
            
         }
