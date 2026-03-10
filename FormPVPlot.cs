@@ -18,10 +18,31 @@ namespace DoPENetConnect
 
         public List<double> chartX = new List<double>();
         public List<double> chartPosPeak = new List<double>();
+        public List<double> chartPosValley = new List<double>();
+        public List<double> chartLoadPeak = new List<double>();
+        public List<double> chartLoadValley = new List<double>();
 
         public FormPVPlot()
         {
             InitializeComponent();
+        }
+
+        public void InitPVchartArea()
+        {
+            chartX.Clear();
+            chartPosPeak.Clear();
+            chartPosValley.Clear();
+            chartLoadPeak.Clear();
+            chartLoadValley.Clear();
+        }
+
+        public void AddPVData(double xdta, double pos_pdta, double pos_vdta, double load_pdta, double load_vdta)
+        {
+            chartX.Add(xdta);
+            chartPosPeak.Add(pos_pdta);
+            chartPosValley.Add(pos_vdta);
+            chartLoadPeak.Add(load_pdta);
+            chartLoadValley.Add(load_vdta);
         }
 
         private void FormDensity_Load(object sender, EventArgs e)
