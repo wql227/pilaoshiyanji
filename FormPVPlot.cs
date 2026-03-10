@@ -17,7 +17,7 @@ namespace DoPENetConnect
         public double AxisXMax = 5;
 
         public List<double> chartX = new List<double>();
-        public List<double> chartDensityY = new List<double>();
+        public List<double> chartPosPeak = new List<double>();
 
         public FormPVPlot()
         {
@@ -27,12 +27,12 @@ namespace DoPENetConnect
         private void FormDensity_Load(object sender, EventArgs e)
         {
             axTChart1.Axis.Bottom.Minimum = 0;
-            axTChart1.Axis.Bottom.SetMinMax(0, AxisXMax);
-            axTChart1.Axis.Left.SetMinMax(0,10);
-            axTChart1.Axis.Right.SetMinMax(0,10);
+            //axTChart1.Axis.Bottom.SetMinMax(0, AxisXMax);
+            //axTChart1.Axis.Left.SetMinMax(0,10);
+            //axTChart1.Axis.Right.SetMinMax(0,10);
 
-            axTChart1.Series(0).Color = (uint)(Color.Blue.B << 16) | (ushort)((Color.Blue.G << 8) | Color.Blue.R);
-            axTChart1.Series(1).Color = (uint)(Color.Red.B << 16) | (ushort)((Color.Red.G << 8) | Color.Red.R);
+            //axTChart1.Series(0).Color = (uint)(Color.Blue.B << 16) | (ushort)((Color.Blue.G << 8) | Color.Blue.R);
+           // axTChart1.Series(1).Color = (uint)(Color.Red.B << 16) | (ushort)((Color.Red.G << 8) | Color.Red.R);
 
             axTChart1.Repaint();
             
@@ -83,7 +83,7 @@ namespace DoPENetConnect
                     axTChart1.Axis.Bottom.Automatic = true;
 
                     chartX.Clear();
-                    chartDensityY.Clear();
+                    chartPosPeak.Clear();
 
                     if (trCsvData != null && trCsvData.Rows.Count >= 1)
                     {
@@ -111,7 +111,7 @@ namespace DoPENetConnect
                             }
 
                             chartX.Add(strX);
-                            chartDensityY.Add(strYPos);
+                            chartPosPeak.Add(strYPos);
                             //axTChart1.Series(0).AddXY(strX, strYPos, null, 0);
                             //axTChart1.Series(1).AddXY(realX, strYLoad, null, 0);
                             //axTChart1.Series(2).AddXY(realX, strYExt, null, 0);
@@ -121,7 +121,7 @@ namespace DoPENetConnect
 
 
                         }
-                        axTChart1.Series(0).AddArray(chartX.Count, chartDensityY.ToArray(), chartX.ToArray());
+                        axTChart1.Series(0).AddArray(chartX.Count, chartPosPeak.ToArray(), chartX.ToArray());
                         //AutoFittingCurve(maxSeries0, minSeries0, maxSeries1, minSeries1, maxSeries2, minSeries2, maxSeries3, minSeries3);
                         //chart_machine.Invalidate();
                     }
@@ -136,7 +136,7 @@ namespace DoPENetConnect
 
         private void FormDensity_Shown(object sender, EventArgs e)
         {
-            ShowDensity();
+            //ShowDensity();
         }
     }
 }

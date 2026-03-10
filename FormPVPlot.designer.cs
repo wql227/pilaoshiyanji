@@ -43,7 +43,7 @@
             this.cb_ShowPosition.Checked = true;
             this.cb_ShowPosition.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_ShowPosition.CheckValue = "Y";
-            this.cb_ShowPosition.Location = new System.Drawing.Point(426, 12);
+            this.cb_ShowPosition.Location = new System.Drawing.Point(496, 12);
             this.cb_ShowPosition.Name = "cb_ShowPosition";
             this.cb_ShowPosition.Size = new System.Drawing.Size(102, 23);
             this.cb_ShowPosition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
