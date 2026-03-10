@@ -43,12 +43,12 @@
             this.cb_ShowPosition.Checked = true;
             this.cb_ShowPosition.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_ShowPosition.CheckValue = "Y";
-            this.cb_ShowPosition.Location = new System.Drawing.Point(134, 10);
+            this.cb_ShowPosition.Location = new System.Drawing.Point(426, 12);
             this.cb_ShowPosition.Name = "cb_ShowPosition";
-            this.cb_ShowPosition.Size = new System.Drawing.Size(58, 23);
+            this.cb_ShowPosition.Size = new System.Drawing.Size(102, 23);
             this.cb_ShowPosition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cb_ShowPosition.TabIndex = 72;
-            this.cb_ShowPosition.Text = "密度";
+            this.cb_ShowPosition.Text = "峰谷值";
             this.cb_ShowPosition.CheckedChanged += new System.EventHandler(this.cb_ShowPosition_CheckedChanged);
             // 
             // axTChart1
@@ -61,7 +61,7 @@
             this.axTChart1.Size = new System.Drawing.Size(1325, 563);
             this.axTChart1.TabIndex = 70;
             // 
-            // FormDensity
+            // FormPVPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -69,8 +69,8 @@
             this.Controls.Add(this.cb_ShowPosition);
             this.Controls.Add(this.axTChart1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormDensity";
-            this.Text = "密度曲线";
+            this.Name = "FormPVPlot";
+            this.Text = "峰谷值曲线";
             this.Load += new System.EventHandler(this.FormDensity_Load);
             this.Shown += new System.EventHandler(this.FormDensity_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).EndInit();
