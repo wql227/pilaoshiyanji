@@ -526,6 +526,7 @@ namespace DoPENetConnect
         /// </summary>
         public List<double> chartCommandY = new List<double>();
 
+        //绘制峰谷值曲线
         FormPVPlot pvPlotor;
 
         /// <summary>
