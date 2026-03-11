@@ -5630,10 +5630,13 @@ namespace DoPENetConnect
             if (frmMultiSensor == null || frmMultiSensor.IsDisposed)
             {
                 frmMultiSensor = new FrmMultiSensor(this); // 传入父窗口引用
+                frmMultiSensor.LoadSettings();
                 frmMultiSensor.Show();
             }
             else
             {
+
+                frmMultiSensor.LoadSettings();
                 frmMultiSensor.BringToFront();
             }
         }

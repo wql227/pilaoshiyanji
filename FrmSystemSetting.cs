@@ -555,6 +555,34 @@ namespace DoPENetConnect
 
             #endregion
 
+            //多传感器   
+            IniFileHelper.GetIniString("MultiSensor", "MainParam", "蓄能器压力显示", strTmp, strTmp.Capacity);
+            textBoxX5.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para1Name", "蓄能器1", strTmp, strTmp.Capacity);
+            textBoxX6.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para1Unit", "MPa", strTmp, strTmp.Capacity);
+            textBoxX7.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para2Name", "蓄能器2", strTmp, strTmp.Capacity);
+            textBoxX9.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para2Unit", "MPa", strTmp, strTmp.Capacity);
+            textBoxX8.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para3Name", "蓄能器3", strTmp, strTmp.Capacity);
+            textBoxX11.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para3Unit", "MPa", strTmp, strTmp.Capacity);
+            textBoxX10.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para4Name", "蓄能器4", strTmp, strTmp.Capacity);
+            textBoxX13.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para4Unit", "MPa", strTmp, strTmp.Capacity);
+            textBoxX12.Text = strTmp.ToString();
+
         }
 
 
@@ -851,6 +879,41 @@ namespace DoPENetConnect
             strTmp = comboBoxEx2.SelectedIndex.ToString();
             IniFileHelper.WriteIniString("MachineType", "Type", strTmp);
             MainForm.mainform.currentMachineType = strTmp;
+
+            #endregion
+
+            #region 其他
+
+            //多传感器            
+            strTmp = textBoxX5.Text;
+            IniFileHelper.WriteIniString("MultiSensor", "MainParam", strTmp);
+
+            strTmp = textBoxX6.Text;
+            IniFileHelper.WriteIniString("MultiSensor", "Para1Name", strTmp);
+
+            strTmp = textBoxX7.Text;
+            IniFileHelper.WriteIniString("MultiSensor", "Para1Unit", strTmp);
+
+            strTmp = textBoxX9.Text;
+            IniFileHelper.WriteIniString("MultiSensor", "Para2Name", strTmp);
+
+            strTmp = textBoxX8.Text;
+            IniFileHelper.WriteIniString("MultiSensor", "Para2Unit", strTmp);
+
+            strTmp = textBoxX11.Text;
+            IniFileHelper.WriteIniString("MultiSensor", "Para3Name", strTmp);
+
+            strTmp = textBoxX10.Text;
+            IniFileHelper.WriteIniString("MultiSensor", "Para3Unit", strTmp);
+
+            strTmp = textBoxX13.Text;
+            IniFileHelper.WriteIniString("MultiSensor", "Para4Name", strTmp);
+
+            strTmp = textBoxX12.Text;
+            IniFileHelper.WriteIniString("MultiSensor", "Para4Unit", strTmp);
+
+
+
 
             #endregion
 
@@ -1277,6 +1340,11 @@ namespace DoPENetConnect
                     label33.Text = "角度测量采用";
                     break;
             }
+        }
+
+        private void switchButton2_ValueChanged(object sender, EventArgs e)
+        {
+            MainForm.mainform.多传感器ToolStripMenuItem_Click();
         }
     }
 }

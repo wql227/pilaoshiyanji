@@ -51,6 +51,41 @@ namespace DoPENetConnect
         {
             timer_ShowData.Stop();
         }
+
+        public void LoadSettings()
+        {
+
+            IniFileHelper iniFileHelper = new IniFileHelper(@"Config.ini");
+            StringBuilder strTmp = new StringBuilder(255);
+
+            //多传感器   
+            IniFileHelper.GetIniString("MultiSensor", "MainParam", "蓄能器压力显示", strTmp, strTmp.Capacity);
+            this.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para1Name", "蓄能器1", strTmp, strTmp.Capacity);
+            labelX8.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para1Unit", "MPa", strTmp, strTmp.Capacity);
+            labelX20.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para2Name", "蓄能器2", strTmp, strTmp.Capacity);
+            labelX1.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para2Unit", "MPa", strTmp, strTmp.Capacity);
+            labelX21.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para3Name", "蓄能器3", strTmp, strTmp.Capacity);
+            labelX2.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para3Unit", "MPa", strTmp, strTmp.Capacity);
+            labelX23.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para4Name", "蓄能器4", strTmp, strTmp.Capacity);
+            labelX3.Text = strTmp.ToString();
+
+            IniFileHelper.GetIniString("MultiSensor", "Para4Unit", "MPa", strTmp, strTmp.Capacity);
+            labelX24.Text = strTmp.ToString();
+        }
     }
 
 }
