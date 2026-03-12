@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPVPlot));
             this.cb_ShowPosition = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.axTChart1 = new AxTeeChart.AxTChart();
+            this.datarefresh_timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +64,12 @@
             this.axTChart1.Size = new System.Drawing.Size(1325, 563);
             this.axTChart1.TabIndex = 70;
             // 
+            // datarefresh_timer
+            // 
+            this.datarefresh_timer.Enabled = true;
+            this.datarefresh_timer.Interval = 500;
+            this.datarefresh_timer.Tick += new System.EventHandler(this.datarefresh_timer_Tick);
+            // 
             // FormPVPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -84,5 +92,6 @@
 
         private AxTeeChart.AxTChart axTChart1;
         private DevComponents.DotNetBar.Controls.CheckBoxX cb_ShowPosition;
+        private System.Windows.Forms.Timer datarefresh_timer;
     }
 }

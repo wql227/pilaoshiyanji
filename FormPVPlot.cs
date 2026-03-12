@@ -179,7 +179,20 @@ namespace DoPENetConnect
 
         private void FormPVPlot_VisibleChanged(object sender, EventArgs e)
         {
-            if (this.Visible) {
+            if (this.Visible)
+            {
+                datarefresh_timer.Start();
+                ShowPvDtas();
+            }
+            else if (!this.Visible) {
+                datarefresh_timer.Stop();
+            }
+        }
+
+        private void datarefresh_timer_Tick(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
                 ShowPvDtas();
             }
         }
