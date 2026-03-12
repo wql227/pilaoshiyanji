@@ -33,6 +33,7 @@
             this.cb_ShowPosition = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.axTChart1 = new AxTeeChart.AxTChart();
             this.datarefresh_timer = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +64,7 @@
             this.axTChart1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTChart1.OcxState")));
             this.axTChart1.Size = new System.Drawing.Size(1325, 563);
             this.axTChart1.TabIndex = 70;
+            this.axTChart1.OnClickLegend += new AxTeeChart.ITChartEvents_OnClickLegendEventHandler(this.axTChart1_OnClickLegend);
             // 
             // datarefresh_timer
             // 
@@ -70,11 +72,21 @@
             this.datarefresh_timer.Interval = 500;
             this.datarefresh_timer.Tick += new System.EventHandler(this.datarefresh_timer_Tick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(672, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 73;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FormPVPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1325, 563);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cb_ShowPosition);
             this.Controls.Add(this.axTChart1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -93,5 +105,6 @@
         private AxTeeChart.AxTChart axTChart1;
         private DevComponents.DotNetBar.Controls.CheckBoxX cb_ShowPosition;
         private System.Windows.Forms.Timer datarefresh_timer;
+        private System.Windows.Forms.Button button1;
     }
 }

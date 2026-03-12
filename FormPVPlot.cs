@@ -196,5 +196,11 @@ namespace DoPENetConnect
                 ShowPvDtas();
             }
         }
+
+        private void axTChart1_OnClickLegend(object sender, AxTeeChart.ITChartEvents_OnClickLegendEvent e)
+        {
+            axTChart1.Series(1).Active = axTChart1.Series(0).Active;
+            axTChart1.Series(3).Active = axTChart1.Series(2).Active;
+        }
     }
 }
