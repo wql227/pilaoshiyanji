@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPVPlot));
             this.cb_ShowPosition = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.axTChart1 = new AxTeeChart.AxTChart();
             this.datarefresh_timer = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.axTChart1 = new AxTeeChart.AxTChart();
             ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +46,7 @@
             this.cb_ShowPosition.Checked = true;
             this.cb_ShowPosition.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_ShowPosition.CheckValue = "Y";
-            this.cb_ShowPosition.Location = new System.Drawing.Point(496, 12);
+            this.cb_ShowPosition.Location = new System.Drawing.Point(375, 12);
             this.cb_ShowPosition.Name = "cb_ShowPosition";
             this.cb_ShowPosition.Size = new System.Drawing.Size(102, 23);
             this.cb_ShowPosition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -54,6 +54,21 @@
             this.cb_ShowPosition.Text = "峰谷值";
             this.cb_ShowPosition.Visible = false;
             this.cb_ShowPosition.CheckedChanged += new System.EventHandler(this.cb_ShowPosition_CheckedChanged);
+            // 
+            // datarefresh_timer
+            // 
+            this.datarefresh_timer.Enabled = true;
+            this.datarefresh_timer.Interval = 500;
+            this.datarefresh_timer.Tick += new System.EventHandler(this.datarefresh_timer_Tick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(375, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 73;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // axTChart1
             // 
@@ -65,21 +80,6 @@
             this.axTChart1.Size = new System.Drawing.Size(1325, 563);
             this.axTChart1.TabIndex = 70;
             this.axTChart1.OnClickLegend += new AxTeeChart.ITChartEvents_OnClickLegendEventHandler(this.axTChart1_OnClickLegend);
-            // 
-            // datarefresh_timer
-            // 
-            this.datarefresh_timer.Enabled = true;
-            this.datarefresh_timer.Interval = 500;
-            this.datarefresh_timer.Tick += new System.EventHandler(this.datarefresh_timer_Tick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(672, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 73;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // FormPVPlot
             // 

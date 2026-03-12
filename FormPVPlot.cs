@@ -32,7 +32,7 @@ namespace DoPENetConnect
             Hide();
         }
 
-            public void InitPVchartArea()
+        public void InitPVchartArea()
         {
             chartX.Clear();
             chartPosPeak.Clear();
@@ -72,7 +72,10 @@ namespace DoPENetConnect
            // axTChart1.Series(1).Color = (uint)(Color.Red.B << 16) | (ushort)((Color.Red.G << 8) | Color.Red.R);
 
             axTChart1.Repaint();
-            
+            for (int i = 0; i < axTChart1.SeriesCount; i++) {
+                axTChart1.Series(i).Clear();
+            }
+
         }
 
         private void cb_ShowPosition_CheckedChanged(object sender, EventArgs e)
