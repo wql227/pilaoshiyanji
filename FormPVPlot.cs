@@ -339,5 +339,35 @@ namespace DoPENetConnect
                 axTChart1.Series(i).Clear();
             ShowPvData();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string logPath = Path.Combine(baseDirectory, "DynmaticPVData");
+            string dateStr = DateTime.Now.ToString("yyyy-MM-dd");
+
+            StringBuilder tmpStr = new StringBuilder(255);
+            IniFileHelper.GetIniString("AppOpenIndex", "IndexVal", "-1", tmpStr, tmpStr.Capacity);
+
+            logPath = Path.Combine(logPath, dateStr);        //添加日期文件夹
+            logPath = Path.Combine(logPath, tmpStr.ToString());
+            string filename = Path.Combine(logPath, $"{dateStr}.pv");
+
+            SaveFileDialog openFileDialog = new SaveFileDialog();
+            openFileDialog.InitialDirectory = logPath;
+            openFileDialog.Filter = "BMP文件 (*.bmp)|*.bmp"; // 如果需要筛选特定类型的文件，如CSV
+
+            openFileDialog.FileName = tmpStr.ToString();
+            string selectedFilePath;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                selectedFilePath = openFileDialog.FileName;
+                // 使用选中的文件路径进行操作
+            }
+            else
+                return;
+
+            axTChart1.Export.asBMP.SaveToFile(selectedFilePath);
+        }
     }
 }

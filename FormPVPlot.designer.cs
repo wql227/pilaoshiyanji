@@ -34,6 +34,7 @@
             this.datarefresh_timer = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.axTChart1 = new AxTeeChart.AxTChart();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axTChart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,11 +83,22 @@
             this.axTChart1.TabIndex = 70;
             this.axTChart1.OnClickLegend += new AxTeeChart.ITChartEvents_OnClickLegendEventHandler(this.axTChart1_OnClickLegend);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(447, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(91, 23);
+            this.button2.TabIndex = 74;
+            this.button2.Text = "保存图片";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // FormPVPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1325, 563);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cb_ShowPosition);
             this.Controls.Add(this.axTChart1);
@@ -107,5 +119,6 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX cb_ShowPosition;
         private System.Windows.Forms.Timer datarefresh_timer;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

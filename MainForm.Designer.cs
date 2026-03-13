@@ -369,6 +369,8 @@
             this.试样信息SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pOSToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dynCtrlToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.试验曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.峰谷值曲线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Adout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
@@ -3120,6 +3122,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // superTabControlPanel1
@@ -4613,6 +4616,7 @@
             this.试样信息SToolStripMenuItem,
             this.pOSToolStripMenuItem1,
             this.dynCtrlToolStripMenuItem1,
+            this.试验曲线ToolStripMenuItem,
             this.ToolStripMenuItem_Help});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -4915,6 +4919,22 @@
             this.dynCtrlToolStripMenuItem1.Size = new System.Drawing.Size(92, 20);
             this.dynCtrlToolStripMenuItem1.Text = "DynCtrl";
             this.dynCtrlToolStripMenuItem1.Click += new System.EventHandler(this.dynCtrlToolStripMenuItem1_Click);
+            // 
+            // 试验曲线ToolStripMenuItem
+            // 
+            this.试验曲线ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.峰谷值曲线ToolStripMenuItem});
+            this.试验曲线ToolStripMenuItem.Name = "试验曲线ToolStripMenuItem";
+            this.试验曲线ToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.试验曲线ToolStripMenuItem.Text = "试验曲线";
+            // 
+            // 峰谷值曲线ToolStripMenuItem
+            // 
+            this.峰谷值曲线ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("峰谷值曲线ToolStripMenuItem.Image")));
+            this.峰谷值曲线ToolStripMenuItem.Name = "峰谷值曲线ToolStripMenuItem";
+            this.峰谷值曲线ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.峰谷值曲线ToolStripMenuItem.Text = "峰谷值曲线";
+            this.峰谷值曲线ToolStripMenuItem.Click += new System.EventHandler(this.峰谷值曲线ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem_Help
             // 
@@ -5397,6 +5417,8 @@
         private System.Windows.Forms.CheckBox cb_load;
         private System.Windows.Forms.CheckBox cb_pos;
         private System.Windows.Forms.ToolStripMenuItem 试样信息SToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 试验曲线ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 峰谷值曲线ToolStripMenuItem;
     }
 }
 

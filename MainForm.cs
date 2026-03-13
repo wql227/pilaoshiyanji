@@ -6484,5 +6484,10 @@ namespace DoPENetConnect
         public void ShowChengkong(bool value) {
             superTabItem9.Visible = value;
         }
+
+        private void 峰谷值曲线ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pvPlotor.Show();
+        }
     }
 }
