@@ -60,6 +60,11 @@ namespace DoPENetConnect
             }
         }
 
+        public void ChartLoadUnitSet(string unitOfLoad)
+        {
+            axTChart1.Axis.Right.Title.Caption = $"试验力峰谷值({unitOfLoad})";
+        }
+
         public void ShowPvDtas()
         {
             if (chartX.Count > 0)

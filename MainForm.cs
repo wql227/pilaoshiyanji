@@ -2208,6 +2208,13 @@ namespace DoPENetConnect
             //初始化chart控件
             //x_Position = 0.0;
 
+
+            //峰谷值显示曲线
+            if (pvPlotor == null)
+            {
+                pvPlotor = new FormPVPlot();
+            }
+
             SetMemberParam();
 
             //试验力
@@ -2283,10 +2290,6 @@ namespace DoPENetConnect
             //更换试验机类型
             SetUnitbySystemType(currentMachineType);
 
-            //峰谷值显示曲线
-            if (pvPlotor == null) {
-                pvPlotor = new FormPVPlot();
-            }
         }
 
 
@@ -3452,12 +3455,14 @@ namespace DoPENetConnect
             {
                 //chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(kN)";
                 axTChart1.Axis.Right.Title.Caption = "试验力(kN)";
+                pvPlotor?.ChartLoadUnitSet("kN");
                 gp_Load.Text = "试验力[kN]";
             }
             else
             {
                 //chart_machine.ChartAreas[0].AxisY2.Title = "试 \n\n验\n\n力\n\n(N)";
                 axTChart1.Axis.Right.Title.Caption = "试验力(N)";
+                pvPlotor?.ChartLoadUnitSet("N");
                 gp_Load.Text = "试验力[N]";
             }
 
