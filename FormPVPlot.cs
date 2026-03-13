@@ -51,6 +51,15 @@ namespace DoPENetConnect
             chartLoadValley.Add(load_vdta);
         }
 
+
+        public void ClearPvDataShowArea()
+        {
+            for (int i = 0; i < axTChart1.SeriesCount; i++)
+            {
+                axTChart1.Series(i).Clear();
+            }
+        }
+
         public void ShowPvDtas()
         {
             if (chartX.Count > 0)

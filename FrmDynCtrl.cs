@@ -316,7 +316,8 @@ namespace DoPENetConnect
             cbX_DynCtrl_ModifyParam.Checked = true;
 
             WriteIni();
-
+            MainForm.mainform.pvPlotor.InitPVchartArea();
+            //MainForm.mainform.pvPlotor.ClearPvDataShowArea();
             MainForm.mainform.PVPositionQueue.Clear();
         }
 
