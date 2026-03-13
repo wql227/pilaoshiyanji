@@ -4897,6 +4897,7 @@
             this.试样信息SToolStripMenuItem.Name = "试样信息SToolStripMenuItem";
             this.试样信息SToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
             this.试样信息SToolStripMenuItem.Text = "试样信息(&S)";
+            this.试样信息SToolStripMenuItem.Visible = false;
             this.试样信息SToolStripMenuItem.Click += new System.EventHandler(this.试样信息SToolStripMenuItem_Click);
             // 
             // pOSToolStripMenuItem1
