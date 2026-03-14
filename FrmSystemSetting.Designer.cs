@@ -33,6 +33,18 @@
             this.superTabControlPanel4 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel12 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label76 = new System.Windows.Forms.Label();
+            this.textBoxX13 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label77 = new System.Windows.Forms.Label();
+            this.textBoxX10 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label74 = new System.Windows.Forms.Label();
+            this.textBoxX11 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label75 = new System.Windows.Forms.Label();
+            this.textBoxX8 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label72 = new System.Windows.Forms.Label();
+            this.textBoxX9 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label73 = new System.Windows.Forms.Label();
             this.textBoxX7 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label71 = new System.Windows.Forms.Label();
             this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -255,18 +267,6 @@
             this.btnX_FrmProtectOption_OK = new DevComponents.DotNetBar.ButtonX();
             this.btnX_FrmProtectOption_Cencel = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.textBoxX8 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label72 = new System.Windows.Forms.Label();
-            this.textBoxX9 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label73 = new System.Windows.Forms.Label();
-            this.textBoxX10 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label74 = new System.Windows.Forms.Label();
-            this.textBoxX11 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label75 = new System.Windows.Forms.Label();
-            this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label76 = new System.Windows.Forms.Label();
-            this.textBoxX13 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label77 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel4.SuspendLayout();
@@ -323,8 +323,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel7);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
@@ -444,6 +444,150 @@
             this.groupPanel12.TabIndex = 8;
             this.groupPanel12.Text = "多传感器";
             this.groupPanel12.Visible = false;
+            // 
+            // textBoxX12
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX12.Border.Class = "TextBoxBorder";
+            this.textBoxX12.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX12.Location = new System.Drawing.Point(397, 168);
+            this.textBoxX12.Name = "textBoxX12";
+            this.textBoxX12.PreventEnterBeep = true;
+            this.textBoxX12.Size = new System.Drawing.Size(115, 26);
+            this.textBoxX12.TabIndex = 25;
+            this.textBoxX12.Text = "10";
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label76.Location = new System.Drawing.Point(290, 173);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(96, 16);
+            this.label76.TabIndex = 24;
+            this.label76.Text = "参数4单位：";
+            // 
+            // textBoxX13
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX13.Border.Class = "TextBoxBorder";
+            this.textBoxX13.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX13.Location = new System.Drawing.Point(142, 168);
+            this.textBoxX13.Name = "textBoxX13";
+            this.textBoxX13.PreventEnterBeep = true;
+            this.textBoxX13.Size = new System.Drawing.Size(115, 26);
+            this.textBoxX13.TabIndex = 23;
+            this.textBoxX13.Text = "10";
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label77.Location = new System.Drawing.Point(18, 173);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(96, 16);
+            this.label77.TabIndex = 22;
+            this.label77.Text = "参数4名称：";
+            // 
+            // textBoxX10
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX10.Border.Class = "TextBoxBorder";
+            this.textBoxX10.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX10.Location = new System.Drawing.Point(397, 136);
+            this.textBoxX10.Name = "textBoxX10";
+            this.textBoxX10.PreventEnterBeep = true;
+            this.textBoxX10.Size = new System.Drawing.Size(115, 26);
+            this.textBoxX10.TabIndex = 21;
+            this.textBoxX10.Text = "10";
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label74.Location = new System.Drawing.Point(290, 141);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(96, 16);
+            this.label74.TabIndex = 20;
+            this.label74.Text = "参数3单位：";
+            // 
+            // textBoxX11
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX11.Border.Class = "TextBoxBorder";
+            this.textBoxX11.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX11.Location = new System.Drawing.Point(142, 136);
+            this.textBoxX11.Name = "textBoxX11";
+            this.textBoxX11.PreventEnterBeep = true;
+            this.textBoxX11.Size = new System.Drawing.Size(115, 26);
+            this.textBoxX11.TabIndex = 19;
+            this.textBoxX11.Text = "10";
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label75.Location = new System.Drawing.Point(18, 141);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(96, 16);
+            this.label75.TabIndex = 18;
+            this.label75.Text = "参数3名称：";
+            // 
+            // textBoxX8
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX8.Border.Class = "TextBoxBorder";
+            this.textBoxX8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX8.Location = new System.Drawing.Point(397, 104);
+            this.textBoxX8.Name = "textBoxX8";
+            this.textBoxX8.PreventEnterBeep = true;
+            this.textBoxX8.Size = new System.Drawing.Size(115, 26);
+            this.textBoxX8.TabIndex = 17;
+            this.textBoxX8.Text = "10";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label72.Location = new System.Drawing.Point(290, 109);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(96, 16);
+            this.label72.TabIndex = 16;
+            this.label72.Text = "参数2单位：";
+            // 
+            // textBoxX9
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX9.Border.Class = "TextBoxBorder";
+            this.textBoxX9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX9.Location = new System.Drawing.Point(142, 104);
+            this.textBoxX9.Name = "textBoxX9";
+            this.textBoxX9.PreventEnterBeep = true;
+            this.textBoxX9.Size = new System.Drawing.Size(115, 26);
+            this.textBoxX9.TabIndex = 15;
+            this.textBoxX9.Text = "10";
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label73.Location = new System.Drawing.Point(18, 109);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(96, 16);
+            this.label73.TabIndex = 14;
+            this.label73.Text = "参数2名称：";
             // 
             // textBoxX7
             // 
@@ -3441,150 +3585,6 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 4;
             this.panelEx1.Text = "panelEx1";
-            // 
-            // textBoxX8
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX8.Border.Class = "TextBoxBorder";
-            this.textBoxX8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX8.Location = new System.Drawing.Point(397, 104);
-            this.textBoxX8.Name = "textBoxX8";
-            this.textBoxX8.PreventEnterBeep = true;
-            this.textBoxX8.Size = new System.Drawing.Size(115, 26);
-            this.textBoxX8.TabIndex = 17;
-            this.textBoxX8.Text = "10";
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label72.Location = new System.Drawing.Point(290, 109);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(96, 16);
-            this.label72.TabIndex = 16;
-            this.label72.Text = "参数2单位：";
-            // 
-            // textBoxX9
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX9.Border.Class = "TextBoxBorder";
-            this.textBoxX9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX9.Location = new System.Drawing.Point(142, 104);
-            this.textBoxX9.Name = "textBoxX9";
-            this.textBoxX9.PreventEnterBeep = true;
-            this.textBoxX9.Size = new System.Drawing.Size(115, 26);
-            this.textBoxX9.TabIndex = 15;
-            this.textBoxX9.Text = "10";
-            // 
-            // label73
-            // 
-            this.label73.AutoSize = true;
-            this.label73.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label73.Location = new System.Drawing.Point(18, 109);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(96, 16);
-            this.label73.TabIndex = 14;
-            this.label73.Text = "参数2名称：";
-            // 
-            // textBoxX10
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX10.Border.Class = "TextBoxBorder";
-            this.textBoxX10.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX10.Location = new System.Drawing.Point(397, 136);
-            this.textBoxX10.Name = "textBoxX10";
-            this.textBoxX10.PreventEnterBeep = true;
-            this.textBoxX10.Size = new System.Drawing.Size(115, 26);
-            this.textBoxX10.TabIndex = 21;
-            this.textBoxX10.Text = "10";
-            // 
-            // label74
-            // 
-            this.label74.AutoSize = true;
-            this.label74.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label74.Location = new System.Drawing.Point(290, 141);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(96, 16);
-            this.label74.TabIndex = 20;
-            this.label74.Text = "参数3单位：";
-            // 
-            // textBoxX11
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX11.Border.Class = "TextBoxBorder";
-            this.textBoxX11.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX11.Location = new System.Drawing.Point(142, 136);
-            this.textBoxX11.Name = "textBoxX11";
-            this.textBoxX11.PreventEnterBeep = true;
-            this.textBoxX11.Size = new System.Drawing.Size(115, 26);
-            this.textBoxX11.TabIndex = 19;
-            this.textBoxX11.Text = "10";
-            // 
-            // label75
-            // 
-            this.label75.AutoSize = true;
-            this.label75.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label75.Location = new System.Drawing.Point(18, 141);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(96, 16);
-            this.label75.TabIndex = 18;
-            this.label75.Text = "参数3名称：";
-            // 
-            // textBoxX12
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX12.Border.Class = "TextBoxBorder";
-            this.textBoxX12.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX12.Location = new System.Drawing.Point(397, 168);
-            this.textBoxX12.Name = "textBoxX12";
-            this.textBoxX12.PreventEnterBeep = true;
-            this.textBoxX12.Size = new System.Drawing.Size(115, 26);
-            this.textBoxX12.TabIndex = 25;
-            this.textBoxX12.Text = "10";
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label76.Location = new System.Drawing.Point(290, 173);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(96, 16);
-            this.label76.TabIndex = 24;
-            this.label76.Text = "参数4单位：";
-            // 
-            // textBoxX13
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX13.Border.Class = "TextBoxBorder";
-            this.textBoxX13.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX13.Location = new System.Drawing.Point(142, 168);
-            this.textBoxX13.Name = "textBoxX13";
-            this.textBoxX13.PreventEnterBeep = true;
-            this.textBoxX13.Size = new System.Drawing.Size(115, 26);
-            this.textBoxX13.TabIndex = 23;
-            this.textBoxX13.Text = "10";
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label77.Location = new System.Drawing.Point(18, 173);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(96, 16);
-            this.label77.TabIndex = 22;
-            this.label77.Text = "参数4名称：";
             // 
             // FrmSystemSetting
             // 

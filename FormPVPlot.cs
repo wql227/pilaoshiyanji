@@ -195,6 +195,10 @@ namespace DoPENetConnect
             openFileDialog.Filter = "Pv文件 (*.pv)|*.pv"; // 如果需要筛选特定类型的文件，如CSV
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                InitPVchartArea();
+                for (int i = 0; i < 4; i++)
+                    axTChart1.Series(i).Clear();
+
                 string selectedFilePath = openFileDialog.FileName;
                 // 使用选中的文件路径进行操作
 
@@ -334,9 +338,9 @@ namespace DoPENetConnect
                 return;
             }
 
-            InitPVchartArea();
-            for (int i = 0; i < 4; i++)
-                axTChart1.Series(i).Clear();
+            //InitPVchartArea();
+            //for (int i = 0; i < 4; i++)
+            //    axTChart1.Series(i).Clear();
             ShowPvData();
         }
 
