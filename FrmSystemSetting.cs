@@ -697,7 +697,7 @@ namespace DoPENetConnect
             IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值内保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_LoadMaxIn_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_LoadMaxIn_Effect = false;// cbX_FrmProtectOption_LoadMaxIn_Effect.Checked;
+            MainForm.mainform.protectOption.ProtectOption_LoadMaxIn_Effect = cbX_FrmProtectOption_LoadMaxIn_Effect.Checked;  //false;// 
             IniFileHelper.WriteIniString(strConfigSetion, "试验力峰值内保护生效", strTmp);
 
             strTmp = tbX_FrmProtectOption_LoadMinIn.Text;
@@ -705,7 +705,7 @@ namespace DoPENetConnect
             IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值内保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_LoadMinIn_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_LoadMinIn_Effect = false; // cbX_FrmProtectOption_LoadMinIn_Effect.Checked;
+            MainForm.mainform.protectOption.ProtectOption_LoadMinIn_Effect = cbX_FrmProtectOption_LoadMinIn_Effect.Checked;   //false; // 
             IniFileHelper.WriteIniString(strConfigSetion, "试验力谷值内保护生效", strTmp);
 
             ////变形保护选项
@@ -730,7 +730,7 @@ namespace DoPENetConnect
             IniFileHelper.WriteIniString(strConfigSetion, "变形峰值内保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_ExtMaxIn_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_ExtMaxIn_Effect = false;// cbX_FrmProtectOption_ExtMaxIn_Effect.Checked;
+            MainForm.mainform.protectOption.ProtectOption_ExtMaxIn_Effect = cbX_FrmProtectOption_ExtMaxIn_Effect.Checked;   //false;// 
             IniFileHelper.WriteIniString(strConfigSetion, "变形峰值内保护生效", strTmp);
 
             strTmp = tbX_FrmProtectOption_ExtMinIn.Text;
@@ -738,7 +738,7 @@ namespace DoPENetConnect
             IniFileHelper.WriteIniString(strConfigSetion, "变形谷值内保护", strTmp);
 
             strTmp = cbX_FrmProtectOption_ExtMinIn_Effect.Checked == false ? "0" : "1";
-            MainForm.mainform.protectOption.ProtectOption_ExtMinIn_Effect = false; // cbX_FrmProtectOption_ExtMinIn_Effect.Checked;
+            MainForm.mainform.protectOption.ProtectOption_ExtMinIn_Effect =  cbX_FrmProtectOption_ExtMinIn_Effect.Checked;   //false; //
             IniFileHelper.WriteIniString(strConfigSetion, "变形谷值内保护生效", strTmp);
 
             //系统保护设置  section=SysProtectSetting numericUpDown1: key=OverLoad_Percent=10; numericUpDown2:OverLoad_Force = 10;

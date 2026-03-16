@@ -1341,7 +1341,7 @@ namespace DoPENetConnect
                                 }
                                 else
                                 {
-                                    g_MaxLoad = PVLoadList.Max();
+                                    g_MaxLoad = PVLoadList.Max();                                    
                                     //g_MaxLoad = PVLoadMaxAverageList.Max();
                                 }
                             }
@@ -3998,10 +3998,10 @@ namespace DoPENetConnect
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             // }
             #region 办公室小电缸
-            devId = new StringBuilder("0212AD05");    //小电缸 测试用
+            //devId = new StringBuilder("0212AD05");    //小电缸 测试用
             #endregion
-            #region 临时测试
-            //devId = new StringBuilder("02132F05");
+            #region 办公室测试机
+            devId = new StringBuilder("02132F05");
             #endregion
             #region 厦门 
             //更新 20260209 
