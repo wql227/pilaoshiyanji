@@ -15,7 +15,7 @@ namespace DoPENetConnect
     public partial class FrmLogin : Office2007Form
     {
         public string sysSuperPasswd = "NEWTEST";
-        public string sysCommonPasswd = "1234";
+        public string sysCommonPasswd = "NEWTEST";
         public FrmLogin()
         {
             InitializeComponent();
