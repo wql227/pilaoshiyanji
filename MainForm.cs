@@ -1148,6 +1148,8 @@ namespace DoPENetConnect
             return 0;
         }
         public double? offsetDyn = null;
+        int cycleTimesOdd = 0;
+        int cycleTimesEven = 0;
         private int OnDataBlock(ref DoPE.OnDataBlock Block, object Parameter)
         {
             //CSV日志
@@ -1318,152 +1320,137 @@ namespace DoPENetConnect
                     text = String.Format("{0}", (loadDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]).ToString("0.000"));
                     g_Load = loadDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F];
                     //试验力队列
+
                     PVLoadQueue.Enqueue(loadDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
-                    if (PVLoadQueue.Count >= 200)
+                    if ((gSample.Cycles >> 1) % 2 == 0)
                     {
-                        PVLoadList = PVLoadQueue.Distinct().ToList();
-
-                        for (int i = 0; i < PVLoadList.Count; i++)
+                        cycleTimesEven = gSample.Cycles >> 1;
+                        if (cycleTimesOdd != cycleTimesEven)
                         {
-                            if (i < 3 || i > PVLoadList.Count - 2)
+                            cycleTimesOdd = cycleTimesEven;
+                            if (LoadUnit.ToUpper() == "KN")
                             {
-                                continue;
+                                g_MaxLoad = PVLoadQueue.Max() / 1000;
+                                g_MinLoad = PVLoadQueue.Min() / 1000;
+                                //g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
+                            }
+                            else
+                            {
+                                g_MaxLoad = PVLoadQueue.Max();
+                                g_MinLoad = PVLoadQueue.Min();
+                                //g_MaxLoad = PVLoadMaxAverageList.Max();
                             }
 
-                            // 判断是否为峰值：大于左右相邻的数据
-                            if (PVLoadList[i - 1] < PVLoadList[i] && PVLoadList[i] > PVLoadList[i + 1])
-                            {
-                                PVLoadMaxAverageList.Add(PVLoadList[i]);
-                                if (LoadUnit.ToUpper() == "KN")
-                                {
-                                    g_MaxLoad = PVLoadList.Max() / 1000;
-                                    //g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
-                                }
-                                else
-                                {
-                                    g_MaxLoad = PVLoadList.Max();                                    
-                                    //g_MaxLoad = PVLoadMaxAverageList.Max();
-                                }
-                            }
-
-                            // 判断是否为谷值：小于左右相邻的数据
-                            if (PVLoadList[i - 1] > PVLoadList[i] && PVLoadList[i] < PVLoadList[i + 1])
-                            {
-                                PVLoadMinAverageList.Add(PVLoadList[i]);
-                                if (LoadUnit.ToUpper() == "KN")
-                                {
-                                    g_MinLoad = PVLoadList.Min() / 1000;
-                                    //g_MinLoad = PVLoadMinAverageList.Min() / 1000;
-                                }
-                                else
-                                {
-                                    g_MinLoad = PVLoadList.Min();
-                                    //g_MinLoad = PVLoadMinAverageList.Min();
-                                }
-                            }
-                        }
-
-                        if (bActivated && isRunning)
-                        {
-                            #region 判断试验力峰谷值
-                            //判断是否处于合理的试验力峰值区间 峰值外保护
-                            if (protectOption.ProtectOption_LoadMaxOut_Effect)
-                            {
-                                //double ProtectOption_LoadMaxOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMaxOut * 1000 : protectOption.ProtectOption_LoadMaxOut;
-                                double ProtectOption_LoadMaxOutReal = protectOption.ProtectOption_LoadMaxOut;
-                                if (g_MaxLoad > ProtectOption_LoadMaxOutReal)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("试验力峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-
-                            //判断是否处于合理的试验力峰值区间 峰值内保护
-                            if (protectOption.ProtectOption_LoadMaxIn_Effect)
-                            {
-                                if (g_MaxLoad < protectOption.ProtectOption_LoadMaxIn)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("试验力峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-
-                            //判断是否处于合理的试验力谷值区间 谷值外保护
-                            if (protectOption.ProtectOption_LoadMinOut_Effect)
-                            {
-                                //double ProtectOption_LoadMinOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMinOut * 1000 : protectOption.ProtectOption_LoadMinOut;
-                                double ProtectOption_LoadMinOutReal = protectOption.ProtectOption_LoadMinOut;
-                                if (g_MinLoad < ProtectOption_LoadMinOutReal)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("试验力谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-
-                            //判断是否处于合理的试验力谷值区间 谷值内保护
-                            if (protectOption.ProtectOption_LoadMinIn_Effect)
-                            {
-                                if (g_MinLoad > protectOption.ProtectOption_LoadMinIn)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("试验力谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-                            #endregion 判断试验力峰谷值
-                        }
-
-                        while (PVLoadQueue.Count > 200)
-                        {
-                            PVLoadQueue.Dequeue();
-                        }
-
-                        while (PVLoadMaxAverageList.Count > 200)
-                        {
-                            PVLoadMaxAverageList.RemoveRange(0, PVLoadMaxAverageList.Count / 2);
-                        }
-
-                        while (PVLoadMinAverageList.Count > 200)
-                        {
-                            PVLoadMinAverageList.RemoveRange(0, PVLoadMinAverageList.Count / 2);
+                            PVLoadQueue.Clear();
                         }
 
                     }
+                    else {
+                        cycleTimesOdd = gSample.Cycles >> 1;
+                        if (cycleTimesOdd != cycleTimesEven) {
+                            cycleTimesEven = cycleTimesOdd;
+                            //cycleTimesEven = cycleTimesOdd;
+                            if (LoadUnit.ToUpper() == "KN")
+                            {
+                                g_MaxLoad = PVLoadQueue.Max() / 1000;
+                                g_MinLoad = PVLoadQueue.Min() / 1000;
+                                //g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
+                            }
+                            else
+                            {
+                                g_MaxLoad = PVLoadQueue.Max();
+                                g_MinLoad = PVLoadQueue.Min();
+                                //g_MaxLoad = PVLoadMaxAverageList.Max();
+                            }
+
+                            PVLoadQueue.Clear();
+                        }
+                    }
+
+                    if (bActivated && isRunning)
+                    {
+                        #region 判断试验力峰谷值
+                        //判断是否处于合理的试验力峰值区间 峰值外保护
+                        if (protectOption.ProtectOption_LoadMaxOut_Effect)
+                        {
+                            //double ProtectOption_LoadMaxOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMaxOut * 1000 : protectOption.ProtectOption_LoadMaxOut;
+                            double ProtectOption_LoadMaxOutReal = protectOption.ProtectOption_LoadMaxOut;
+                            if (g_MaxLoad > ProtectOption_LoadMaxOutReal)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("试验力峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
+
+                        //判断是否处于合理的试验力峰值区间 峰值内保护
+                        if (protectOption.ProtectOption_LoadMaxIn_Effect)
+                        {
+                            if (g_MaxLoad < protectOption.ProtectOption_LoadMaxIn)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("试验力峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
+
+                        //判断是否处于合理的试验力谷值区间 谷值外保护
+                        if (protectOption.ProtectOption_LoadMinOut_Effect)
+                        {
+                            //double ProtectOption_LoadMinOutReal = LoadUnit.ToUpper() == "KN" ? protectOption.ProtectOption_LoadMinOut * 1000 : protectOption.ProtectOption_LoadMinOut;
+                            double ProtectOption_LoadMinOutReal = protectOption.ProtectOption_LoadMinOut;
+                            if (g_MinLoad < ProtectOption_LoadMinOutReal)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("试验力谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
+
+                        //判断是否处于合理的试验力谷值区间 谷值内保护
+                        if (protectOption.ProtectOption_LoadMinIn_Effect)
+                        {
+                            if (g_MinLoad > protectOption.ProtectOption_LoadMinIn)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("试验力谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
+                        #endregion 判断试验力峰谷值
+                    }                    
 
                     //刷新试验力
                     if (nCount >= nCountREfresh /*&& bActivated*/ )
@@ -1755,7 +1742,8 @@ namespace DoPENetConnect
                        
                         if ((gSample.Cycles >> 1) % nCountLog == 0)
                         {
-                            
+
+                            bSaveRunningLog = false;
                             if (bSaveRunningLog)
                             {
                                 LogHelper.SaveCsvData(strBlockLog.ToString());
@@ -1766,6 +1754,7 @@ namespace DoPENetConnect
                         int currentHalfCycle = gSample.Cycles >> 1;
 
                         //按配置的次数存储峰谷值日志
+                        bSavePVCountLog = true;
                         if (bSavePVCountLog)
                         {
                             int halfCyclesCompleted = gSample.Cycles >> 1; // 计算已完成的半周期数
@@ -1795,7 +1784,7 @@ namespace DoPENetConnect
                                 if (currentHalfCycle != LastRecordedHalfCycle)
                                 {
                                     strPVLog = g_MaxPosition.ToString("F6") + "," + g_MinPosition.ToString("F6") + "," + g_MaxLoad.ToString("F6") + "," + g_MinLoad.ToString("F6") + "," + g_MaxExtension.ToString("F6") + "," + g_MinExtension.ToString("F6") + "," + (gSample.Cycles >> 1);
-                                    LogHelper.SavePeakValleyData(strPVLog);
+                                   // LogHelper.SavePeakValleyData(strPVLog);
                                     LastRecordedHalfCycle = currentHalfCycle;
                                     pvPlotor?.AddPVData(gSample.Cycles >> 1,g_MaxPosition,g_MinPosition,g_MaxLoad,g_MinLoad);
                                 }
