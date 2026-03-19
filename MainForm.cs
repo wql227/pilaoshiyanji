@@ -1166,155 +1166,18 @@ namespace DoPENetConnect
 
                 text = String.Format("{0}", gSample.Time.ToString("0.000"));
 
-                //记录位移
-                strCSVLog += text + ",";
-                text = String.Format("{0}", (posDtaRatio*gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]).ToString("0.000"));
-                g_Position = posDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S];
+                
 
                 if (bConnected)
                 {
+                    //记录位移
+                    strCSVLog += text + ",";
+                    text = String.Format("{0}", (posDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]).ToString("0.000"));
+                    g_Position = posDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S];
                     //TODO
                     //位移队列
                     PVPositionQueue.Enqueue(posDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_S]);
-                    if (PVPositionQueue.Count >= 200)
-                    {
-                        PVPositionList = PVPositionQueue.Distinct().ToList();
-
-                    for (int i = 0; i <= PVPositionList.Count; i++)
-                    {
-                        // 判断是否为峰值： //PVPositionQueue.Count
-                        if (i < 3 || i > PVPositionList.Count - 2)
-                        {
-                            continue;
-                        }
-
-                        if (PVPositionList[i - 1] < PVPositionList[i] && PVPositionList[i] > PVPositionList[i + 1])
-                        {
-                            g_MaxPosition = PVPositionList.Max();
-                        }
-
-                        // 判断是否为谷值：小于左右相邻的数据
-                        if (PVPositionList[i - 1] > PVPositionList[i] && PVPositionList[i] < PVPositionList[i + 1])
-                        {
-                            g_MinPosition = PVPositionList.Min();
-                        }
-                    }
-
-                        if (bActivated && isRunning)
-                        {
-                            #region 判断位移峰谷值
-                            //判断是否处于正常峰值区间
-                            if (protectOption.ProtectOption_PosMaxOut_Effect)
-                            {
-                                if (g_MaxPosition > protectOption.ProtectOption_PosMaxOut)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("位移峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-
-                            if (protectOption.ProtectOption_PosMaxIn_Effect)
-                            {
-                                if (g_MaxPosition < protectOption.ProtectOption_PosMaxIn)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("位移峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-
-                            //判断是否处于正常谷值区间
-                            if (protectOption.ProtectOption_PosMinOut_Effect)
-                            {
-                                if (g_MinPosition < protectOption.ProtectOption_PosMinOut)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("位移谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-
-                            if (protectOption.ProtectOption_PosMinIn_Effect)
-                            {
-                                if (g_MinPosition > protectOption.ProtectOption_PosMinIn)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("位移谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-                            #endregion 判断位移峰谷值
-                        }
-
-                        while (PVPositionQueue.Count > 200)
-                        {
-                            //PVPositionQueue.Dequeue();
-                            PVPositionQueue.Clear();
-                        }
-
-                    }
-
-                    // TODO:判断峰谷值是否超过外保护
-                    double dPosition = 0;
-
-                    //刷新位移
-                    if (nCount >= nCountREfresh /*&& bActivated*/ )
-                    {
-                        //if (this.IsHandleCreated)
-                        //{
-                        //this.BeginInvoke(new Action(() =>
-                        {
-
-                            guiPosition.Text = g_Position.ToString($"F{PosDigit}");
-
-                            if (bShowSensorData)
-                            {
-                                tb_MaxPos.Text = g_MaxPosition.ToString($"F{PosDigit}");
-                                tb_MinPos.Text = g_MinPosition.ToString($"F{PosDigit}");
-                                Invalidate(tb_MaxPos.Bounds);
-                                Invalidate(tb_MinPos.Bounds);
-                            }
-                            Invalidate(guiPosition.Bounds);
-
-                        }
-                        //));
-                        //}
-                        //Invalidate();
-                    }
-
+                    
                     //记录试验力
                     strCSVLog += text + ",";
                     text = String.Format("{0}", (loadDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]).ToString("0.000"));
@@ -1322,6 +1185,17 @@ namespace DoPENetConnect
                     //试验力队列
 
                     PVLoadQueue.Enqueue(loadDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_F]);
+                    
+                    //记录变形
+                    strCSVLog += text + ",";
+                    //data_display2 = decimal.Parse(guiLoad.Text);
+                    text = String.Format("{0}", (extDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]).ToString("0.000"));
+                    g_Extension = extDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E];
+
+                    //变形队列
+                    PVExtensionQueue.Enqueue(extDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
+
+
                     if ((gSample.Cycles >> 1) % 2 == 0)
                     {
                         cycleTimesEven = gSample.Cycles >> 1;
@@ -1330,18 +1204,33 @@ namespace DoPENetConnect
                             cycleTimesOdd = cycleTimesEven;
                             if (LoadUnit.ToUpper() == "KN")
                             {
+                                //位移
+                                g_MaxPosition = PVPositionQueue.Max() / 1000;
+                                g_MinPosition = PVPositionQueue.Min() / 1000;
+                                //试验力
                                 g_MaxLoad = PVLoadQueue.Max() / 1000;
                                 g_MinLoad = PVLoadQueue.Min() / 1000;
-                                //g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
+                                //变形
+                                g_MaxExtension = PVExtensionQueue.Max() / 1000;
+                                g_MinExtension = PVExtensionQueue.Min() / 1000;
+
                             }
                             else
                             {
+                                //位移
+                                g_MaxPosition = PVPositionQueue.Max();
+                                g_MinPosition = PVPositionQueue.Min();
+                                //试验力
                                 g_MaxLoad = PVLoadQueue.Max();
                                 g_MinLoad = PVLoadQueue.Min();
-                                //g_MaxLoad = PVLoadMaxAverageList.Max();
+                          
+                                //变形
+                                g_MaxExtension = PVExtensionQueue.Max();
+                                g_MinExtension = PVExtensionQueue.Min();
                             }
-
+                            PVPositionQueue.Clear();
                             PVLoadQueue.Clear();
+                            PVExtensionQueue.Clear();
                         }
 
                     }
@@ -1352,23 +1241,116 @@ namespace DoPENetConnect
                             //cycleTimesEven = cycleTimesOdd;
                             if (LoadUnit.ToUpper() == "KN")
                             {
+                                //位移
+                                g_MaxPosition = PVPositionQueue.Max() / 1000;
+                                g_MinPosition = PVPositionQueue.Min() / 1000;
+                                //试验力
                                 g_MaxLoad = PVLoadQueue.Max() / 1000;
                                 g_MinLoad = PVLoadQueue.Min() / 1000;
-                                //g_MaxLoad = PVLoadMaxAverageList.Max() / 1000;
+                                //变形
+                                g_MaxExtension = PVExtensionQueue.Max() / 1000;
+                                g_MinExtension = PVExtensionQueue.Min() / 1000;
+
                             }
                             else
                             {
+                                //位移
+                                g_MaxPosition = PVPositionQueue.Max();
+                                g_MinPosition = PVPositionQueue.Min();
+                                //试验力
                                 g_MaxLoad = PVLoadQueue.Max();
                                 g_MinLoad = PVLoadQueue.Min();
-                                //g_MaxLoad = PVLoadMaxAverageList.Max();
+
+                                //变形
+                                g_MaxExtension = PVExtensionQueue.Max();
+                                g_MinExtension = PVExtensionQueue.Min();
                             }
 
+                            PVPositionQueue.Clear();
                             PVLoadQueue.Clear();
+                            PVExtensionQueue.Clear();
                         }
                     }
 
                     if (bActivated && isRunning)
                     {
+
+                        #region 判断位移峰谷值
+                        //判断是否处于正常峰值区间
+                        if (protectOption.ProtectOption_PosMaxOut_Effect)
+                        {
+                            if (g_MaxPosition > protectOption.ProtectOption_PosMaxOut)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("位移峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
+
+                        if (protectOption.ProtectOption_PosMaxIn_Effect)
+                        {
+                            if (g_MaxPosition < protectOption.ProtectOption_PosMaxIn)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("位移峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
+
+                        //判断是否处于正常谷值区间
+                        if (protectOption.ProtectOption_PosMinOut_Effect)
+                        {
+                            if (g_MinPosition < protectOption.ProtectOption_PosMinOut)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("位移谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
+
+                        if (protectOption.ProtectOption_PosMinIn_Effect)
+                        {
+                            if (g_MinPosition > protectOption.ProtectOption_PosMinIn)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("位移谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
+                        #endregion 判断位移峰谷值
+
                         #region 判断试验力峰谷值
                         //判断是否处于合理的试验力峰值区间 峰值外保护
                         if (protectOption.ProtectOption_LoadMaxOut_Effect)
@@ -1450,11 +1432,110 @@ namespace DoPENetConnect
                             }
                         }
                         #endregion 判断试验力峰谷值
-                    }                    
+                        
+                        #region 判断变形峰谷值
+                        //判断是否处于合理的变形峰值区间 峰值外保护
+                        if (protectOption.ProtectOption_ExtMaxOut_Effect)
+                        {
+                            if (g_MaxExtension > protectOption.ProtectOption_ExtMaxOut)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("变形峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
 
-                    //刷新试验力
+                        //判断是否处于合理的变形峰值区间 峰值内保护
+                        if (protectOption.ProtectOption_ExtMaxIn_Effect)
+                        {
+                            if (g_MaxExtension < protectOption.ProtectOption_ExtMaxIn)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("变形峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
+
+                        //判断是否处于合理的变形谷值区间 谷值外保护
+                        if (protectOption.ProtectOption_ExtMinOut_Effect)
+                        {
+                            if (g_MinExtension < protectOption.ProtectOption_ExtMinOut)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("变形谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
+
+                        //判断是否处于合理的变形谷值区间 谷值内保护
+                        if (protectOption.ProtectOption_ExtMinIn_Effect)
+                        {
+                            if (g_MinExtension > protectOption.ProtectOption_ExtMinIn)
+                            {
+                                if (protectOption.ProtectOptionType == "0")
+                                {
+                                    MoveHalt();
+                                }
+                                else
+                                {
+                                    OffEDC();
+                                }
+                                PauseDrawWave();
+                                MessageBox.Show("变形谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return 0;
+                            }
+                        }
+                        #endregion 判断变形峰谷值
+
+                    }
+
+                    //刷新位移试验力变形
                     if (nCount >= nCountREfresh /*&& bActivated*/ )
                     {
+
+                        //刷新位移
+                        //if (this.IsHandleCreated)
+                        //{
+                        //this.BeginInvoke(new Action(() =>
+                        {
+
+                            guiPosition.Text = g_Position.ToString($"F{PosDigit}");
+
+                            if (bShowSensorData)
+                            {
+                                tb_MaxPos.Text = g_MaxPosition.ToString($"F{PosDigit}");
+                                tb_MinPos.Text = g_MinPosition.ToString($"F{PosDigit}");
+                                Invalidate(tb_MaxPos.Bounds);
+                                Invalidate(tb_MinPos.Bounds);
+                            }
+                            Invalidate(guiPosition.Bounds);
+
+                        }
+
                         //if (this.IsHandleCreated)
                         {
                             //this.BeginInvoke(new Action(() =>
@@ -1482,134 +1563,6 @@ namespace DoPENetConnect
                             //}
                             //));
                         }
-                    }
-
-                    //记录变形
-                    strCSVLog += text + ",";
-                    //data_display2 = decimal.Parse(guiLoad.Text);
-                    text = String.Format("{0}", (extDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]).ToString("0.000"));
-                    g_Extension = extDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E];
-
-                    //变形队列
-                    PVExtensionQueue.Enqueue(extDtaRatio * gSample.Sensor[(int)DoPE.SENSOR.SENSOR_E]);
-                    if (PVExtensionQueue.Count >= 200)
-                    {
-                        PVExtensionList = PVExtensionQueue.Distinct().ToList();
-                        for (int i = 0; i <= PVExtensionList.Count; i++)
-                        {
-                            // 判断是否为峰值： //PVPositionQueue.Count
-                            if (i < 3 || i > PVExtensionList.Count - 2)
-                            {
-                                continue;
-                            }
-
-                            if (PVExtensionList[i - 1] < PVExtensionList[i] && PVExtensionList[i] > PVExtensionList[i + 1] &&
-                                (PVExtensionList[i - 1] + PVExtensionList[i + 1]) / 2 < PVExtensionList[i])
-                            {
-                                //double averageExtension = 0.0d;
-                                g_MaxExtension = PVExtensionList.Max();
-                            }
-
-                            // 判断是否为谷值：小于左右相邻的数据
-                            if (PVExtensionList[i - 1] > PVExtensionList[i] && PVExtensionList[i] < PVExtensionList[i + 1] &&
-                                (PVExtensionList[i - 1] + PVExtensionList[i + 1]) / 2 > PVExtensionList[i])
-                            {
-                                //double averageExtension = 0.0d;
-                                g_MinExtension = PVExtensionList.Min();
-                            }
-                        }
-
-                        if (bActivated && isRunning)
-                        {
-                            #region 判断变形峰谷值
-                            //判断是否处于合理的变形峰值区间 峰值外保护
-                            if (protectOption.ProtectOption_ExtMaxOut_Effect)
-                            {
-                                if (g_MaxExtension > protectOption.ProtectOption_ExtMaxOut)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("变形峰值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-
-                            //判断是否处于合理的变形峰值区间 峰值内保护
-                            if (protectOption.ProtectOption_ExtMaxIn_Effect)
-                            {
-                                if (g_MaxExtension < protectOption.ProtectOption_ExtMaxIn)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("变形峰值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-
-                            //判断是否处于合理的变形谷值区间 谷值外保护
-                            if (protectOption.ProtectOption_ExtMinOut_Effect)
-                            {
-                                if (g_MinExtension < protectOption.ProtectOption_ExtMinOut)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("变形谷值触发外保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-
-                            //判断是否处于合理的变形谷值区间 谷值内保护
-                            if (protectOption.ProtectOption_ExtMinIn_Effect)
-                            {
-                                if (g_MinExtension > protectOption.ProtectOption_ExtMinIn)
-                                {
-                                    if (protectOption.ProtectOptionType == "0")
-                                    {
-                                        MoveHalt();
-                                    }
-                                    else
-                                    {
-                                        OffEDC();
-                                    }
-                                    PauseDrawWave();
-                                    MessageBox.Show("变形谷值触发内保护限制", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                                    return 0;
-                                }
-                            }
-                            #endregion 判断变形峰谷值
-                        }
-
-                        while (PVExtensionQueue.Count > 200)
-                        {
-                            PVExtensionQueue.Dequeue();
-                        }
-
-                    }
-
-                    //刷新变形
-                    if (nCount >= nCountREfresh /*&& bActivated*/ )
-                    {
                         guiExtension.Text = g_Extension.ToString($"F{ExtDigit}");
                         Invalidate(guiExtension.Bounds);
 
@@ -1622,8 +1575,10 @@ namespace DoPENetConnect
                             Invalidate(tb_MinExt.Bounds);
                         }
 
-                        Update();
+                        //Update();
                     }
+                    
+
 
                     //记录命令
                     strCSVLog += text + ",";
@@ -1784,7 +1739,7 @@ namespace DoPENetConnect
                                 if (currentHalfCycle != LastRecordedHalfCycle)
                                 {
                                     strPVLog = g_MaxPosition.ToString("F6") + "," + g_MinPosition.ToString("F6") + "," + g_MaxLoad.ToString("F6") + "," + g_MinLoad.ToString("F6") + "," + g_MaxExtension.ToString("F6") + "," + g_MinExtension.ToString("F6") + "," + (gSample.Cycles >> 1);
-                                   // LogHelper.SavePeakValleyData(strPVLog);
+                                    //LogHelper.SavePeakValleyData(strPVLog);
                                     LastRecordedHalfCycle = currentHalfCycle;
                                     pvPlotor?.AddPVData(gSample.Cycles >> 1,g_MaxPosition,g_MinPosition,g_MaxLoad,g_MinLoad);
                                 }
