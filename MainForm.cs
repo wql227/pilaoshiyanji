@@ -1202,31 +1202,29 @@ namespace DoPENetConnect
                         if (cycleTimesOdd != cycleTimesEven)
                         {
                             cycleTimesOdd = cycleTimesEven;
+
+                            //位移
+                            g_MaxPosition = PVPositionQueue.Max();
+                            g_MinPosition = PVPositionQueue.Min();
+                            //变形
+                            g_MaxExtension = PVExtensionQueue.Max();
+                            g_MinExtension = PVExtensionQueue.Min();
                             if (LoadUnit.ToUpper() == "KN")
                             {
-                                //位移
-                                g_MaxPosition = PVPositionQueue.Max() / 1000;
-                                g_MinPosition = PVPositionQueue.Min() / 1000;
+                               
                                 //试验力
                                 g_MaxLoad = PVLoadQueue.Max() / 1000;
                                 g_MinLoad = PVLoadQueue.Min() / 1000;
-                                //变形
-                                g_MaxExtension = PVExtensionQueue.Max() / 1000;
-                                g_MinExtension = PVExtensionQueue.Min() / 1000;
+                                
 
                             }
                             else
                             {
-                                //位移
-                                g_MaxPosition = PVPositionQueue.Max();
-                                g_MinPosition = PVPositionQueue.Min();
+                              
                                 //试验力
                                 g_MaxLoad = PVLoadQueue.Max();
                                 g_MinLoad = PVLoadQueue.Min();
                           
-                                //变形
-                                g_MaxExtension = PVExtensionQueue.Max();
-                                g_MinExtension = PVExtensionQueue.Min();
                             }
                             PVPositionQueue.Clear();
                             PVLoadQueue.Clear();
@@ -1239,31 +1237,27 @@ namespace DoPENetConnect
                         if (cycleTimesOdd != cycleTimesEven) {
                             cycleTimesEven = cycleTimesOdd;
                             //cycleTimesEven = cycleTimesOdd;
+
+                            //位移
+                            g_MaxPosition = PVPositionQueue.Max();
+                            g_MinPosition = PVPositionQueue.Min();
+                            //变形
+                            g_MaxExtension = PVExtensionQueue.Max();
+                            g_MinExtension = PVExtensionQueue.Min();
+
                             if (LoadUnit.ToUpper() == "KN")
                             {
-                                //位移
-                                g_MaxPosition = PVPositionQueue.Max() / 1000;
-                                g_MinPosition = PVPositionQueue.Min() / 1000;
                                 //试验力
                                 g_MaxLoad = PVLoadQueue.Max() / 1000;
                                 g_MinLoad = PVLoadQueue.Min() / 1000;
-                                //变形
-                                g_MaxExtension = PVExtensionQueue.Max() / 1000;
-                                g_MinExtension = PVExtensionQueue.Min() / 1000;
 
                             }
                             else
                             {
-                                //位移
-                                g_MaxPosition = PVPositionQueue.Max();
-                                g_MinPosition = PVPositionQueue.Min();
                                 //试验力
                                 g_MaxLoad = PVLoadQueue.Max();
                                 g_MinLoad = PVLoadQueue.Min();
 
-                                //变形
-                                g_MaxExtension = PVExtensionQueue.Max();
-                                g_MinExtension = PVExtensionQueue.Min();
                             }
 
                             PVPositionQueue.Clear();
