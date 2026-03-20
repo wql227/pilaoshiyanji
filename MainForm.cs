@@ -1741,7 +1741,7 @@ namespace DoPENetConnect
                                     strPVLog = g_MaxPosition.ToString("F6") + "," + g_MinPosition.ToString("F6") + "," + g_MaxLoad.ToString("F6") + "," + g_MinLoad.ToString("F6") + "," + g_MaxExtension.ToString("F6") + "," + g_MinExtension.ToString("F6") + "," + (gSample.Cycles >> 1);
                                     //LogHelper.SavePeakValleyData(strPVLog);
                                     LastRecordedHalfCycle = currentHalfCycle;
-                                    pvPlotor?.AddPVData(gSample.Cycles >> 1,g_MaxPosition,g_MinPosition,g_MaxLoad,g_MinLoad);
+                                   //pvPlotor?.AddPVData(gSample.Cycles >> 1,g_MaxPosition,g_MinPosition,g_MaxLoad,g_MinLoad);
                                 }
                             }
                         }
@@ -3951,6 +3951,10 @@ namespace DoPENetConnect
             //更新 20260209 
             //devId = new StringBuilder("0214B900");    //厦门
             #endregion 厦门
+            #region 弹簧李工
+            //更新 20260209 
+            //devId = new StringBuilder("0214C59A");    //厦门
+            #endregion 
 
             IniFileHelper.GetIniString("Setting", "ShowChengkong", "0", strTmp, strTmp.Capacity);
             bool showChengkong = strTmp.ToString() == "0" ? false : true;
