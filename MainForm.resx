@@ -248,6 +248,16 @@
         AAAASUVORK5CYII=
 </value>
   </data>
+  <data name="buttonX19.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAARxJREFUOE+F
+        kr1OwzAURr3VNqKobAgGBmYW2BASMxusjEwMFU2dRIxdu3ZjQJUQKPGlHXgHBoRYkBjgNfoC7bXzJXFR
+        U450pdzz+co/iviPdkTbspfto21G96Y7sp8NlLEf2tAYej0yeTnlgV+uuU7sObSnFdGB6D610dYok18q
+        QzM35HaE9uh0cuw816fojlrQBdLQN8I5H/EIWoj0ddMNlJk0+T0SHorpugxcQXu0sQ9hVhTd+hCPUQVe
+        MjLOzkIfFt9tdeCGML+0prq/7tNNGBRFjz4EYcZ3vIL+e9T8C9qzEU8O64zeoWvKYbQVwePMVJRdQC+j
+        0ukePj3B4/yoxJ5Ar4cXD1Vs39xJ3G8I3YyKaHfr7rmDtgEhFmD8sQQpWMWUAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btnX_Connect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAfJJREFUWEft
@@ -351,16 +361,6 @@
         z75AvJa9czCX5Uz5I16c7/3lVoycUlkBdz6M7n0cE6zIjOBwUrWOHD+8fO7A4KdUi3wwBWMq+fVTFw7O
         iFvkhTk+WJkZr5r0hP3zjAdeZ8TnwABnyC5NLyaXmfAtYCAbM7uaeY8ktpVyP+ehQuGzb6/0z9+o6l/N
         UmiJJifeWEbct/nl9BzGH53C/XI9h408rzR6vR8wR6qXIoqWxAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="buttonX19.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAARxJREFUOE+F
-        kr1OwzAURr3VNqKobAgGBmYW2BASMxusjEwMFU2dRIxdu3ZjQJUQKPGlHXgHBoRYkBjgNfoC7bXzJXFR
-        U450pdzz+co/iviPdkTbspfto21G96Y7sp8NlLEf2tAYej0yeTnlgV+uuU7sObSnFdGB6D610dYok18q
-        QzM35HaE9uh0cuw816fojlrQBdLQN8I5H/EIWoj0ddMNlJk0+T0SHorpugxcQXu0sQ9hVhTd+hCPUQVe
-        MjLOzkIfFt9tdeCGML+0prq/7tNNGBRFjz4EYcZ3vIL+e9T8C9qzEU8O64zeoWvKYbQVwePMVJRdQC+j
-        0ukePj3B4/yoxJ5Ar4cXD1Vs39xJ3G8I3YyKaHfr7rmDtgEhFmD8sQQpWMWUAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="commandsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
