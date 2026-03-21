@@ -4927,7 +4927,6 @@
             this.试验曲线ToolStripMenuItem.Name = "试验曲线ToolStripMenuItem";
             this.试验曲线ToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.试验曲线ToolStripMenuItem.Text = "试验曲线";
-            this.试验曲线ToolStripMenuItem.Visible = false;
             // 
             // 峰谷值曲线ToolStripMenuItem
             // 

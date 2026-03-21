@@ -1735,7 +1735,7 @@ namespace DoPENetConnect
                                     strPVLog = g_MaxPosition.ToString("F6") + "," + g_MinPosition.ToString("F6") + "," + g_MaxLoad.ToString("F6") + "," + g_MinLoad.ToString("F6") + "," + g_MaxExtension.ToString("F6") + "," + g_MinExtension.ToString("F6") + "," + (gSample.Cycles >> 1);
                                     //LogHelper.SavePeakValleyData(strPVLog);
                                     LastRecordedHalfCycle = currentHalfCycle;
-                                   //pvPlotor?.AddPVData(gSample.Cycles >> 1,g_MaxPosition,g_MinPosition,g_MaxLoad,g_MinLoad);
+                                   pvPlotor?.AddPVData(gSample.Cycles >> 1,g_MaxPosition,g_MinPosition,g_MaxLoad,g_MinLoad);
                                 }
                             }
                         }
