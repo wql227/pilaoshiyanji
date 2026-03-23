@@ -228,6 +228,18 @@
     <Compile Include="FormInputBox.Designer.cs">
       <DependentUpon>FormInputBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProgControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProgControl.designer.cs">
+      <DependentUpon>FormProgControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProgram.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProgram.designer.cs">
+      <DependentUpon>FormProgram.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +271,7 @@
       <DependentUpon>FrmTestOperatorSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Impl\ProtectOption.cs" />
+    <Compile Include="Util\AccessHelper.cs" />
     <Compile Include="Util\DESEncrypt.cs" />
     <Compile Include="Util\ExcelHelper.cs" />
     <Compile Include="Util\IniFileHelper.cs" />
@@ -313,6 +326,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormInputBox.resx">
       <DependentUpon>FormInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProgControl.resx">
+      <DependentUpon>FormProgControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProgram.resx">
+      <DependentUpon>FormProgram.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTest.resx">
       <DependentUpon>FormTest.cs</DependentUpon>
@@ -385,6 +404,24 @@
     <Content Include="ICON.ico" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{00000205-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ADOX">
+      <Guid>{00000600-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="AxTeeChart">
       <Guid>{EB7A6012-79A9-4A1A-91AF-F2A92FCA3406}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -392,6 +429,15 @@
       <Lcid>0</Lcid>
       <WrapperTool>aximp</WrapperTool>
       <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="MSAdodcLib">
+      <Guid>{67397AA1-7FB1-11D0-B148-00A0C922E820}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="stdole">
       <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
@@ -414,7 +460,7 @@
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Deploy="1" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Configuration="" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="1" />
+      <UserProperties Reactor_Enabled="1" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Deploy="1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
