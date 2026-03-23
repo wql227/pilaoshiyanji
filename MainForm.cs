@@ -94,6 +94,7 @@ using NPOI.HSSF.UserModel;
 using NPOI.HSSF.Util;
 using NPOI.XWPF.UserModel;
 using NPOI.OpenXmlFormats.Wordprocessing;
+using DoPENetConnect.Util;
 
 namespace DoPENetConnect
 {
@@ -6033,6 +6034,71 @@ namespace DoPENetConnect
                 }
             }
         }
+        #region 程控
+        public void CycleNumSet(string totalCycle, string currentCycle)
+        {
+            textBoxX26.Text = totalCycle;
+
+            textBoxX27.Text = currentCycle;
+        }
+        public void SetDataGridViewSelected(int rowNo, bool selectorNo)
+        {
+            dataGridViewX1.Rows[rowNo].Selected = selectorNo;
+        }
+        public void MoveHaultW(DoPE.CTRL control, double delay)
+        {
+            DoPE.ERR error = MyEdc.Move.HaltW(control, delay, ref MyTan);
+
+            ////正常返回，开始计时
+            //if (error == DoPE.ERR.NOERROR)
+            //{
+            //    //stopwatch.Start();
+            //}
+        }
+        public void RefreshDbNameList()
+        {
+            AccessHelper tmpHelper = new AccessHelper();
+            tmpHelper.InitProgramDb();
+            string[] nameStrs = tmpHelper.GetTableNames();
+            if (nameStrs != null && nameStrs.Length > 0)
+            {
+                comboBoxEx7.Items.Clear();
+                comboBoxEx7.Items.AddRange(nameStrs);
+            }
+        }
+        public void ClearProgramDataGridView(string programName)
+        {
+            //程序名称显示列表处理
+            try
+            {
+                comboBoxEx7.Text = "";
+                int index = comboBoxEx7.Items.IndexOf(programName);
+                comboBoxEx7.Items.RemoveAt(index);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            //数据显示处理
+            dataGridViewX1.Rows.Clear();
+        }
+
+
+        public void SetProgramDtas(string tableName, List<string[]> dtas)
+        {
+            //Console.WriteLine(tableName);
+            comboBoxEx7.Text = tableName;
+            //先清除目前显示的数据
+            dataGridViewX1.Rows.Clear();
+            for (int i = 0; i < dtas.Count; i++)
+            {
+                dataGridViewX1.Rows.Add(dtas[i]);
+            }
+
+        }
+
+        #endregion
 
     }
 }
