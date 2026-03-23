@@ -30,9 +30,12 @@
     {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StartCommunicationWithEdcTimer = new System.Windows.Forms.Timer(this.components);
             this.试验数据 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
@@ -61,6 +64,21 @@
             this.buttonX16 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX15 = new DevComponents.DotNetBar.ButtonX();
             this.superTabControl4 = new DevComponents.DotNetBar.SuperTabControl();
+            this.superTabControlPanel8 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.superTabItem8 = new DevComponents.DotNetBar.SuperTabItem();
+            this.superTabControlPanel9 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.panelEx11 = new DevComponents.DotNetBar.PanelEx();
+            this.btn_ConState = new System.Windows.Forms.Button();
+            this.btnX_SetLow = new DevComponents.DotNetBar.ButtonX();
+            this.bntX_GUIOn = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_SetHigh = new DevComponents.DotNetBar.ButtonX();
+            this.bntX_GUIOff = new DevComponents.DotNetBar.ButtonX();
+            this.bntX_MoveUp = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_QuickMoveDown = new DevComponents.DotNetBar.ButtonX();
+            this.btnX_MoveQuickUp = new DevComponents.DotNetBar.ButtonX();
+            this.bntX_MoveDown = new DevComponents.DotNetBar.ButtonX();
+            this.bntX_MoveHalt = new DevComponents.DotNetBar.ButtonX();
+            this.superTabItem9 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel10 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.tabControl1 = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
@@ -101,21 +119,6 @@
             this.labelX34 = new DevComponents.DotNetBar.LabelX();
             this.tabItem1 = new DevComponents.DotNetBar.TabItem(this.components);
             this.superTabItem10 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel9 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.panelEx11 = new DevComponents.DotNetBar.PanelEx();
-            this.btn_ConState = new System.Windows.Forms.Button();
-            this.btnX_SetLow = new DevComponents.DotNetBar.ButtonX();
-            this.bntX_GUIOn = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_SetHigh = new DevComponents.DotNetBar.ButtonX();
-            this.bntX_GUIOff = new DevComponents.DotNetBar.ButtonX();
-            this.bntX_MoveUp = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_QuickMoveDown = new DevComponents.DotNetBar.ButtonX();
-            this.btnX_MoveQuickUp = new DevComponents.DotNetBar.ButtonX();
-            this.bntX_MoveDown = new DevComponents.DotNetBar.ButtonX();
-            this.bntX_MoveHalt = new DevComponents.DotNetBar.ButtonX();
-            this.superTabItem9 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel8 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.superTabItem8 = new DevComponents.DotNetBar.SuperTabItem();
             this.line2 = new DevComponents.DotNetBar.Controls.Line();
             this.btnX_AxisPOSY_MaxUp = new DevComponents.DotNetBar.ButtonX();
             this.btnX_AxisLoadY_MaxUp = new DevComponents.DotNetBar.ButtonX();
@@ -336,6 +339,20 @@
             this.timerDataClean = new System.Windows.Forms.Timer(this.components);
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.panelEx14 = new DevComponents.DotNetBar.PanelEx();
+            this.textBoxX27 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX26 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX33 = new DevComponents.DotNetBar.LabelX();
+            this.labelX42 = new DevComponents.DotNetBar.LabelX();
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBoxEx12 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX43 = new DevComponents.DotNetBar.LabelX();
+            this.buttonX27 = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
@@ -347,12 +364,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl4)).BeginInit();
             this.superTabControl4.SuspendLayout();
+            this.superTabControlPanel8.SuspendLayout();
+            this.superTabControlPanel9.SuspendLayout();
+            this.panelEx11.SuspendLayout();
             this.superTabControlPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabControlPanel1.SuspendLayout();
-            this.superTabControlPanel9.SuspendLayout();
-            this.panelEx11.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.pl_DataShow.SuspendLayout();
@@ -378,6 +396,8 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            this.panelEx14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
             // StartCommunicationWithEdcTimer
@@ -555,7 +575,7 @@
             this.buttonX22.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX22.Image = ((System.Drawing.Image)(resources.GetObject("buttonX22.Image")));
             this.buttonX22.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonX22.Location = new System.Drawing.Point(1488, 490);
+            this.buttonX22.Location = new System.Drawing.Point(1484, 555);
             this.buttonX22.Name = "buttonX22";
             this.buttonX22.Size = new System.Drawing.Size(62, 41);
             this.buttonX22.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -567,7 +587,7 @@
             // 
             this.buttonX21.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX21.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX21.Location = new System.Drawing.Point(1406, 494);
+            this.buttonX21.Location = new System.Drawing.Point(1406, 596);
             this.buttonX21.Name = "buttonX21";
             this.buttonX21.Size = new System.Drawing.Size(91, 35);
             this.buttonX21.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -582,14 +602,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewX2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewX2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sampleCode,
@@ -600,28 +620,28 @@
             this.sampleChecker,
             this.sampleDependation,
             this.sampleNotes});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewX2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewX2.EnableHeadersVisualStyles = false;
             this.dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX2.Location = new System.Drawing.Point(0, 517);
             this.dataGridViewX2.MultiSelect = false;
             this.dataGridViewX2.Name = "dataGridViewX2";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX2.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX2.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewX2.RowTemplate.Height = 23;
             this.dataGridViewX2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX2.Size = new System.Drawing.Size(1299, 140);
@@ -711,7 +731,7 @@
             this.buttonX18.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX18.Image = ((System.Drawing.Image)(resources.GetObject("buttonX18.Image")));
             this.buttonX18.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX18.Location = new System.Drawing.Point(1578, 433);
+            this.buttonX18.Location = new System.Drawing.Point(1574, 498);
             this.buttonX18.Name = "buttonX18";
             this.buttonX18.Size = new System.Drawing.Size(62, 40);
             this.buttonX18.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -727,7 +747,7 @@
             this.buttonX16.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX16.Image = ((System.Drawing.Image)(resources.GetObject("buttonX16.Image")));
             this.buttonX16.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX16.Location = new System.Drawing.Point(1488, 433);
+            this.buttonX16.Location = new System.Drawing.Point(1484, 498);
             this.buttonX16.Name = "buttonX16";
             this.buttonX16.Size = new System.Drawing.Size(62, 40);
             this.buttonX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -743,7 +763,7 @@
             this.buttonX15.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonX15.Image = ((System.Drawing.Image)(resources.GetObject("buttonX15.Image")));
             this.buttonX15.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.buttonX15.Location = new System.Drawing.Point(1396, 433);
+            this.buttonX15.Location = new System.Drawing.Point(1392, 498);
             this.buttonX15.Name = "buttonX15";
             this.buttonX15.Size = new System.Drawing.Size(62, 40);
             this.buttonX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -775,12 +795,12 @@
             this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Location = new System.Drawing.Point(1300, 3);
             this.superTabControl4.MaximumSize = new System.Drawing.Size(0, 419);
-            this.superTabControl4.MinimumSize = new System.Drawing.Size(404, 419);
+            this.superTabControl4.MinimumSize = new System.Drawing.Size(404, 485);
             this.superTabControl4.Name = "superTabControl4";
             this.superTabControl4.ReorderTabsEnabled = true;
             this.superTabControl4.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl4.SelectedTabIndex = 0;
-            this.superTabControl4.Size = new System.Drawing.Size(404, 419);
+            this.superTabControl4.Size = new System.Drawing.Size(404, 485);
             this.superTabControl4.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl4.TabIndex = 69;
             this.superTabControl4.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -790,459 +810,22 @@
             this.superTabControl4.Text = "superTabControl4";
             this.superTabControl4.SelectedTabChanged += new System.EventHandler<DevComponents.DotNetBar.SuperTabStripSelectedTabChangedEventArgs>(this.superTabControl4_SelectedTabChanged);
             // 
-            // superTabControlPanel10
-            // 
-            this.superTabControlPanel10.Controls.Add(this.tabControl1);
-            this.superTabControlPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel10.Location = new System.Drawing.Point(0, 28);
-            this.superTabControlPanel10.Name = "superTabControlPanel10";
-            this.superTabControlPanel10.Size = new System.Drawing.Size(404, 391);
-            this.superTabControlPanel10.TabIndex = 0;
-            this.superTabControlPanel10.TabItem = this.superTabItem10;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.BackColor = System.Drawing.Color.Transparent;
-            this.tabControl1.CanReorderTabs = true;
-            this.tabControl1.Controls.Add(this.tabControlPanel1);
-            this.tabControl1.Location = new System.Drawing.Point(0, -24);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.tabControl1.SelectedTabIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(402, 413);
-            this.tabControl1.TabIndex = 0;
-            this.tabControl1.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
-            this.tabControl1.Tabs.Add(this.tabItem1);
-            this.tabControl1.Text = "tabControl1";
-            // 
-            // tabControlPanel1
-            // 
-            this.tabControlPanel1.Controls.Add(this.buttonX19);
-            this.tabControlPanel1.Controls.Add(this.comboBoxEx11);
-            this.tabControlPanel1.Controls.Add(this.labelX41);
-            this.tabControlPanel1.Controls.Add(this.comboBoxEx10);
-            this.tabControlPanel1.Controls.Add(this.textBoxX15);
-            this.tabControlPanel1.Controls.Add(this.labelX40);
-            this.tabControlPanel1.Controls.Add(this.comboBoxEx8);
-            this.tabControlPanel1.Controls.Add(this.cmbX_Dyn_StartSpeed_Unit);
-            this.tabControlPanel1.Controls.Add(this.textBoxX14);
-            this.tabControlPanel1.Controls.Add(this.labelX38);
-            this.tabControlPanel1.Controls.Add(this.tbX_Dyn_StartSpeed);
-            this.tabControlPanel1.Controls.Add(this.labelX36);
-            this.tabControlPanel1.Controls.Add(this.comboBoxEx9);
-            this.tabControlPanel1.Controls.Add(this.comboBoxEx7);
-            this.tabControlPanel1.Controls.Add(this.cmbX_Dyn_StartCtrl);
-            this.tabControlPanel1.Controls.Add(this.labelX39);
-            this.tabControlPanel1.Controls.Add(this.labelX37);
-            this.tabControlPanel1.Controls.Add(this.labelX35);
-            this.tabControlPanel1.Controls.Add(this.cmbX_Dyn_EDC);
-            this.tabControlPanel1.Controls.Add(this.labelX34);
-            this.tabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel1.Location = new System.Drawing.Point(0, 26);
-            this.tabControlPanel1.Name = "tabControlPanel1";
-            this.tabControlPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel1.Size = new System.Drawing.Size(402, 387);
-            this.tabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
-            this.tabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
-            this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
-            this.tabControlPanel1.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel1.Style.GradientAngle = 90;
-            this.tabControlPanel1.TabIndex = 1;
-            this.tabControlPanel1.TabItem = this.tabItem1;
-            // 
-            // buttonX19
-            // 
-            this.buttonX19.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX19.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX19.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX19.Image = ((System.Drawing.Image)(resources.GetObject("buttonX19.Image")));
-            this.buttonX19.Location = new System.Drawing.Point(169, 313);
-            this.buttonX19.Name = "buttonX19";
-            this.buttonX19.Size = new System.Drawing.Size(90, 35);
-            this.buttonX19.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX19.TabIndex = 76;
-            this.buttonX19.Text = "更新";
-            this.buttonX19.Click += new System.EventHandler(this.buttonX19_Click);
-            // 
-            // comboBoxEx11
-            // 
-            this.comboBoxEx11.DisplayMember = "Text";
-            this.comboBoxEx11.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxEx11.FormattingEnabled = true;
-            this.comboBoxEx11.ItemHeight = 21;
-            this.comboBoxEx11.Location = new System.Drawing.Point(146, 264);
-            this.comboBoxEx11.Name = "comboBoxEx11";
-            this.comboBoxEx11.Size = new System.Drawing.Size(196, 27);
-            this.comboBoxEx11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx11.TabIndex = 12;
-            // 
-            // labelX41
-            // 
-            this.labelX41.AutoSize = true;
-            this.labelX41.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX41.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX41.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX41.Location = new System.Drawing.Point(71, 268);
-            this.labelX41.Name = "labelX41";
-            this.labelX41.Size = new System.Drawing.Size(74, 23);
-            this.labelX41.TabIndex = 11;
-            this.labelX41.Text = "保持模式";
-            // 
-            // comboBoxEx10
-            // 
-            this.comboBoxEx10.DisplayMember = "Text";
-            this.comboBoxEx10.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxEx10.FormattingEnabled = true;
-            this.comboBoxEx10.ItemHeight = 21;
-            this.comboBoxEx10.Items.AddRange(new object[] {
-            this.comboItem12,
-            this.comboItem13,
-            this.comboItem14,
-            this.comboItem15,
-            this.comboItem16});
-            this.comboBoxEx10.Location = new System.Drawing.Point(265, 224);
-            this.comboBoxEx10.Name = "comboBoxEx10";
-            this.comboBoxEx10.Size = new System.Drawing.Size(77, 27);
-            this.comboBoxEx10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx10.TabIndex = 10;
-            this.comboBoxEx10.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx10_SelectedIndexChanged);
-            // 
-            // comboItem12
-            // 
-            this.comboItem12.Text = "mm/min";
-            // 
-            // comboItem13
-            // 
-            this.comboItem13.Text = "mm/s";
-            // 
-            // comboItem14
-            // 
-            this.comboItem14.Text = "µm/min";
-            // 
-            // comboItem15
-            // 
-            this.comboItem15.Text = "µm/s";
-            // 
-            // comboItem16
-            // 
-            this.comboItem16.Text = "m/s";
-            // 
-            // textBoxX15
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX15.Border.Class = "TextBoxBorder";
-            this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX15.Location = new System.Drawing.Point(147, 224);
-            this.textBoxX15.MinimumSize = new System.Drawing.Size(0, 27);
-            this.textBoxX15.Name = "textBoxX15";
-            this.textBoxX15.PreventEnterBeep = true;
-            this.textBoxX15.Size = new System.Drawing.Size(117, 27);
-            this.textBoxX15.TabIndex = 9;
-            this.textBoxX15.Text = "100";
-            // 
-            // labelX40
-            // 
-            this.labelX40.AutoSize = true;
-            this.labelX40.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX40.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX40.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX40.Location = new System.Drawing.Point(70, 228);
-            this.labelX40.Name = "labelX40";
-            this.labelX40.Size = new System.Drawing.Size(57, 23);
-            this.labelX40.TabIndex = 8;
-            this.labelX40.Text = "目标值";
-            // 
-            // comboBoxEx8
-            // 
-            this.comboBoxEx8.DisplayMember = "Text";
-            this.comboBoxEx8.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxEx8.FormattingEnabled = true;
-            this.comboBoxEx8.ItemHeight = 21;
-            this.comboBoxEx8.Items.AddRange(new object[] {
-            this.comboItem7,
-            this.comboItem8,
-            this.comboItem9,
-            this.comboItem10,
-            this.comboItem11});
-            this.comboBoxEx8.Location = new System.Drawing.Point(265, 144);
-            this.comboBoxEx8.Name = "comboBoxEx8";
-            this.comboBoxEx8.Size = new System.Drawing.Size(77, 27);
-            this.comboBoxEx8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx8.TabIndex = 7;
-            // 
-            // comboItem7
-            // 
-            this.comboItem7.Text = "mm/min";
-            // 
-            // comboItem8
-            // 
-            this.comboItem8.Text = "mm/s";
-            // 
-            // comboItem9
-            // 
-            this.comboItem9.Text = "µm/min";
-            // 
-            // comboItem10
-            // 
-            this.comboItem10.Text = "µm/s";
-            // 
-            // comboItem11
-            // 
-            this.comboItem11.Text = "m/s";
-            // 
-            // cmbX_Dyn_StartSpeed_Unit
-            // 
-            this.cmbX_Dyn_StartSpeed_Unit.DisplayMember = "Text";
-            this.cmbX_Dyn_StartSpeed_Unit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbX_Dyn_StartSpeed_Unit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbX_Dyn_StartSpeed_Unit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbX_Dyn_StartSpeed_Unit.FormattingEnabled = true;
-            this.cmbX_Dyn_StartSpeed_Unit.ItemHeight = 21;
-            this.cmbX_Dyn_StartSpeed_Unit.Items.AddRange(new object[] {
-            this.comboItem2,
-            this.comboItem3,
-            this.comboItem4,
-            this.comboItem5,
-            this.comboItem6});
-            this.cmbX_Dyn_StartSpeed_Unit.Location = new System.Drawing.Point(265, 64);
-            this.cmbX_Dyn_StartSpeed_Unit.Name = "cmbX_Dyn_StartSpeed_Unit";
-            this.cmbX_Dyn_StartSpeed_Unit.Size = new System.Drawing.Size(79, 27);
-            this.cmbX_Dyn_StartSpeed_Unit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbX_Dyn_StartSpeed_Unit.TabIndex = 7;
-            // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "mm/min";
-            // 
-            // comboItem3
-            // 
-            this.comboItem3.Text = "mm/s";
-            // 
-            // comboItem4
-            // 
-            this.comboItem4.Text = "µm/min";
-            // 
-            // comboItem5
-            // 
-            this.comboItem5.Text = "µm/s";
-            // 
-            // comboItem6
-            // 
-            this.comboItem6.Text = "m/s";
-            // 
-            // textBoxX14
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX14.Border.Class = "TextBoxBorder";
-            this.textBoxX14.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX14.Location = new System.Drawing.Point(146, 144);
-            this.textBoxX14.MinimumSize = new System.Drawing.Size(0, 27);
-            this.textBoxX14.Name = "textBoxX14";
-            this.textBoxX14.PreventEnterBeep = true;
-            this.textBoxX14.Size = new System.Drawing.Size(117, 27);
-            this.textBoxX14.TabIndex = 6;
-            this.textBoxX14.Text = "0";
-            // 
-            // labelX38
-            // 
-            this.labelX38.AutoSize = true;
-            this.labelX38.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX38.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX38.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX38.Location = new System.Drawing.Point(70, 148);
-            this.labelX38.Name = "labelX38";
-            this.labelX38.Size = new System.Drawing.Size(41, 23);
-            this.labelX38.TabIndex = 5;
-            this.labelX38.Text = "限位";
-            // 
-            // tbX_Dyn_StartSpeed
-            // 
-            // 
-            // 
-            // 
-            this.tbX_Dyn_StartSpeed.Border.Class = "TextBoxBorder";
-            this.tbX_Dyn_StartSpeed.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbX_Dyn_StartSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbX_Dyn_StartSpeed.Location = new System.Drawing.Point(146, 64);
-            this.tbX_Dyn_StartSpeed.MinimumSize = new System.Drawing.Size(0, 27);
-            this.tbX_Dyn_StartSpeed.Name = "tbX_Dyn_StartSpeed";
-            this.tbX_Dyn_StartSpeed.PreventEnterBeep = true;
-            this.tbX_Dyn_StartSpeed.Size = new System.Drawing.Size(117, 27);
-            this.tbX_Dyn_StartSpeed.TabIndex = 6;
-            this.tbX_Dyn_StartSpeed.Text = "10";
-            // 
-            // labelX36
-            // 
-            this.labelX36.AutoSize = true;
-            this.labelX36.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX36.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX36.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX36.Location = new System.Drawing.Point(71, 68);
-            this.labelX36.Name = "labelX36";
-            this.labelX36.Size = new System.Drawing.Size(74, 23);
-            this.labelX36.TabIndex = 5;
-            this.labelX36.Text = "控制速度";
-            // 
-            // comboBoxEx9
-            // 
-            this.comboBoxEx9.DisplayMember = "Text";
-            this.comboBoxEx9.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxEx9.FormattingEnabled = true;
-            this.comboBoxEx9.ItemHeight = 21;
-            this.comboBoxEx9.Location = new System.Drawing.Point(146, 184);
-            this.comboBoxEx9.Name = "comboBoxEx9";
-            this.comboBoxEx9.Size = new System.Drawing.Size(117, 27);
-            this.comboBoxEx9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx9.TabIndex = 4;
-            this.comboBoxEx9.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx9_SelectedIndexChanged);
-            // 
-            // comboBoxEx7
-            // 
-            this.comboBoxEx7.DisplayMember = "Text";
-            this.comboBoxEx7.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxEx7.FormattingEnabled = true;
-            this.comboBoxEx7.ItemHeight = 21;
-            this.comboBoxEx7.Location = new System.Drawing.Point(146, 104);
-            this.comboBoxEx7.Name = "comboBoxEx7";
-            this.comboBoxEx7.Size = new System.Drawing.Size(117, 27);
-            this.comboBoxEx7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx7.TabIndex = 4;
-            // 
-            // cmbX_Dyn_StartCtrl
-            // 
-            this.cmbX_Dyn_StartCtrl.DisplayMember = "Text";
-            this.cmbX_Dyn_StartCtrl.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbX_Dyn_StartCtrl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbX_Dyn_StartCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbX_Dyn_StartCtrl.FormattingEnabled = true;
-            this.cmbX_Dyn_StartCtrl.ItemHeight = 21;
-            this.cmbX_Dyn_StartCtrl.Location = new System.Drawing.Point(146, 24);
-            this.cmbX_Dyn_StartCtrl.Name = "cmbX_Dyn_StartCtrl";
-            this.cmbX_Dyn_StartCtrl.Size = new System.Drawing.Size(117, 27);
-            this.cmbX_Dyn_StartCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbX_Dyn_StartCtrl.TabIndex = 4;
-            this.cmbX_Dyn_StartCtrl.SelectedIndexChanged += new System.EventHandler(this.cmbX_Dyn_StartCtrl_SelectedIndexChanged);
-            // 
-            // labelX39
-            // 
-            this.labelX39.AutoSize = true;
-            this.labelX39.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX39.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX39.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX39.Location = new System.Drawing.Point(70, 188);
-            this.labelX39.Name = "labelX39";
-            this.labelX39.Size = new System.Drawing.Size(74, 23);
-            this.labelX39.TabIndex = 3;
-            this.labelX39.Text = "目标模式";
-            // 
-            // labelX37
-            // 
-            this.labelX37.AutoSize = true;
-            this.labelX37.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX37.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX37.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX37.Location = new System.Drawing.Point(70, 108);
-            this.labelX37.Name = "labelX37";
-            this.labelX37.Size = new System.Drawing.Size(74, 23);
-            this.labelX37.TabIndex = 3;
-            this.labelX37.Text = "限位模式";
-            // 
-            // labelX35
-            // 
-            this.labelX35.AutoSize = true;
-            this.labelX35.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX35.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX35.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX35.Location = new System.Drawing.Point(70, 28);
-            this.labelX35.Name = "labelX35";
-            this.labelX35.Size = new System.Drawing.Size(74, 23);
-            this.labelX35.TabIndex = 3;
-            this.labelX35.Text = "控制模式";
-            // 
-            // cmbX_Dyn_EDC
-            // 
-            this.cmbX_Dyn_EDC.DisplayMember = "Text";
-            this.cmbX_Dyn_EDC.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbX_Dyn_EDC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbX_Dyn_EDC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbX_Dyn_EDC.FormattingEnabled = true;
-            this.cmbX_Dyn_EDC.ItemHeight = 21;
-            this.cmbX_Dyn_EDC.Location = new System.Drawing.Point(146, 22);
-            this.cmbX_Dyn_EDC.Name = "cmbX_Dyn_EDC";
-            this.cmbX_Dyn_EDC.Size = new System.Drawing.Size(118, 27);
-            this.cmbX_Dyn_EDC.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbX_Dyn_EDC.TabIndex = 2;
-            this.cmbX_Dyn_EDC.Visible = false;
-            // 
-            // labelX34
-            // 
-            this.labelX34.AutoSize = true;
-            this.labelX34.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX34.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX34.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX34.Location = new System.Drawing.Point(70, 24);
-            this.labelX34.Name = "labelX34";
-            this.labelX34.Size = new System.Drawing.Size(57, 23);
-            this.labelX34.TabIndex = 1;
-            this.labelX34.Text = "控制器";
-            this.labelX34.Visible = false;
-            // 
-            // tabItem1
-            // 
-            this.tabItem1.AttachedControl = this.tabControlPanel1;
-            this.tabItem1.Name = "tabItem1";
-            this.tabItem1.Text = "单步";
-            // 
-            // superTabItem10
-            // 
-            this.superTabItem10.AttachedControl = this.superTabControlPanel10;
-            this.superTabItem10.GlobalItem = false;
-            this.superTabItem10.Name = "superTabItem10";
-            this.superTabItem10.Text = "试验";
+            // superTabControlPanel8
+            // 
+            this.superTabControlPanel8.Controls.Add(this.panelEx14);
+            this.superTabControlPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel8.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel8.Name = "superTabControlPanel8";
+            this.superTabControlPanel8.Size = new System.Drawing.Size(404, 457);
+            this.superTabControlPanel8.TabIndex = 0;
+            this.superTabControlPanel8.TabItem = this.superTabItem8;
+            // 
+            // superTabItem8
+            // 
+            this.superTabItem8.AttachedControl = this.superTabControlPanel8;
+            this.superTabItem8.GlobalItem = false;
+            this.superTabItem8.Name = "superTabItem8";
+            this.superTabItem8.Text = "程控";
             // 
             // superTabControlPanel9
             // 
@@ -1439,21 +1022,459 @@
             this.superTabItem9.Text = "调整";
             this.superTabItem9.Visible = false;
             // 
-            // superTabControlPanel8
+            // superTabControlPanel10
             // 
-            this.superTabControlPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel8.Location = new System.Drawing.Point(0, 28);
-            this.superTabControlPanel8.Name = "superTabControlPanel8";
-            this.superTabControlPanel8.Size = new System.Drawing.Size(404, 391);
-            this.superTabControlPanel8.TabIndex = 0;
-            this.superTabControlPanel8.TabItem = this.superTabItem8;
+            this.superTabControlPanel10.Controls.Add(this.tabControl1);
+            this.superTabControlPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel10.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel10.Name = "superTabControlPanel10";
+            this.superTabControlPanel10.Size = new System.Drawing.Size(404, 457);
+            this.superTabControlPanel10.TabIndex = 0;
+            this.superTabControlPanel10.TabItem = this.superTabItem10;
             // 
-            // superTabItem8
+            // tabControl1
             // 
-            this.superTabItem8.AttachedControl = this.superTabControlPanel8;
-            this.superTabItem8.GlobalItem = false;
-            this.superTabItem8.Name = "superTabItem8";
-            this.superTabItem8.Text = "程控";
+            this.tabControl1.BackColor = System.Drawing.Color.Transparent;
+            this.tabControl1.CanReorderTabs = true;
+            this.tabControl1.Controls.Add(this.tabControlPanel1);
+            this.tabControl1.Location = new System.Drawing.Point(0, -24);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.tabControl1.SelectedTabIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(402, 481);
+            this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
+            this.tabControl1.Tabs.Add(this.tabItem1);
+            this.tabControl1.Text = "tabControl1";
+            // 
+            // tabControlPanel1
+            // 
+            this.tabControlPanel1.Controls.Add(this.buttonX19);
+            this.tabControlPanel1.Controls.Add(this.comboBoxEx11);
+            this.tabControlPanel1.Controls.Add(this.labelX41);
+            this.tabControlPanel1.Controls.Add(this.comboBoxEx10);
+            this.tabControlPanel1.Controls.Add(this.textBoxX15);
+            this.tabControlPanel1.Controls.Add(this.labelX40);
+            this.tabControlPanel1.Controls.Add(this.comboBoxEx8);
+            this.tabControlPanel1.Controls.Add(this.cmbX_Dyn_StartSpeed_Unit);
+            this.tabControlPanel1.Controls.Add(this.textBoxX14);
+            this.tabControlPanel1.Controls.Add(this.labelX38);
+            this.tabControlPanel1.Controls.Add(this.tbX_Dyn_StartSpeed);
+            this.tabControlPanel1.Controls.Add(this.labelX36);
+            this.tabControlPanel1.Controls.Add(this.comboBoxEx9);
+            this.tabControlPanel1.Controls.Add(this.comboBoxEx7);
+            this.tabControlPanel1.Controls.Add(this.cmbX_Dyn_StartCtrl);
+            this.tabControlPanel1.Controls.Add(this.labelX39);
+            this.tabControlPanel1.Controls.Add(this.labelX37);
+            this.tabControlPanel1.Controls.Add(this.labelX35);
+            this.tabControlPanel1.Controls.Add(this.cmbX_Dyn_EDC);
+            this.tabControlPanel1.Controls.Add(this.labelX34);
+            this.tabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel1.Location = new System.Drawing.Point(0, 26);
+            this.tabControlPanel1.Name = "tabControlPanel1";
+            this.tabControlPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel1.Size = new System.Drawing.Size(402, 455);
+            this.tabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
+            this.tabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
+            this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel1.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel1.Style.GradientAngle = 90;
+            this.tabControlPanel1.TabIndex = 1;
+            this.tabControlPanel1.TabItem = this.tabItem1;
+            // 
+            // buttonX19
+            // 
+            this.buttonX19.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX19.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX19.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX19.Image = ((System.Drawing.Image)(resources.GetObject("buttonX19.Image")));
+            this.buttonX19.Location = new System.Drawing.Point(169, 362);
+            this.buttonX19.Name = "buttonX19";
+            this.buttonX19.Size = new System.Drawing.Size(90, 35);
+            this.buttonX19.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX19.TabIndex = 76;
+            this.buttonX19.Text = "更新";
+            this.buttonX19.Click += new System.EventHandler(this.buttonX19_Click);
+            // 
+            // comboBoxEx11
+            // 
+            this.comboBoxEx11.DisplayMember = "Text";
+            this.comboBoxEx11.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxEx11.FormattingEnabled = true;
+            this.comboBoxEx11.ItemHeight = 21;
+            this.comboBoxEx11.Location = new System.Drawing.Point(146, 311);
+            this.comboBoxEx11.Name = "comboBoxEx11";
+            this.comboBoxEx11.Size = new System.Drawing.Size(196, 27);
+            this.comboBoxEx11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx11.TabIndex = 12;
+            // 
+            // labelX41
+            // 
+            this.labelX41.AutoSize = true;
+            this.labelX41.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX41.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX41.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX41.Location = new System.Drawing.Point(71, 315);
+            this.labelX41.Name = "labelX41";
+            this.labelX41.Size = new System.Drawing.Size(74, 23);
+            this.labelX41.TabIndex = 11;
+            this.labelX41.Text = "保持模式";
+            // 
+            // comboBoxEx10
+            // 
+            this.comboBoxEx10.DisplayMember = "Text";
+            this.comboBoxEx10.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxEx10.FormattingEnabled = true;
+            this.comboBoxEx10.ItemHeight = 21;
+            this.comboBoxEx10.Items.AddRange(new object[] {
+            this.comboItem12,
+            this.comboItem13,
+            this.comboItem14,
+            this.comboItem15,
+            this.comboItem16});
+            this.comboBoxEx10.Location = new System.Drawing.Point(265, 265);
+            this.comboBoxEx10.Name = "comboBoxEx10";
+            this.comboBoxEx10.Size = new System.Drawing.Size(77, 27);
+            this.comboBoxEx10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx10.TabIndex = 10;
+            this.comboBoxEx10.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx10_SelectedIndexChanged);
+            // 
+            // comboItem12
+            // 
+            this.comboItem12.Text = "mm/min";
+            // 
+            // comboItem13
+            // 
+            this.comboItem13.Text = "mm/s";
+            // 
+            // comboItem14
+            // 
+            this.comboItem14.Text = "µm/min";
+            // 
+            // comboItem15
+            // 
+            this.comboItem15.Text = "µm/s";
+            // 
+            // comboItem16
+            // 
+            this.comboItem16.Text = "m/s";
+            // 
+            // textBoxX15
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX15.Border.Class = "TextBoxBorder";
+            this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxX15.Location = new System.Drawing.Point(147, 265);
+            this.textBoxX15.MinimumSize = new System.Drawing.Size(0, 27);
+            this.textBoxX15.Name = "textBoxX15";
+            this.textBoxX15.PreventEnterBeep = true;
+            this.textBoxX15.Size = new System.Drawing.Size(117, 27);
+            this.textBoxX15.TabIndex = 9;
+            this.textBoxX15.Text = "100";
+            // 
+            // labelX40
+            // 
+            this.labelX40.AutoSize = true;
+            this.labelX40.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX40.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX40.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX40.Location = new System.Drawing.Point(70, 269);
+            this.labelX40.Name = "labelX40";
+            this.labelX40.Size = new System.Drawing.Size(57, 23);
+            this.labelX40.TabIndex = 8;
+            this.labelX40.Text = "目标值";
+            // 
+            // comboBoxEx8
+            // 
+            this.comboBoxEx8.DisplayMember = "Text";
+            this.comboBoxEx8.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxEx8.FormattingEnabled = true;
+            this.comboBoxEx8.ItemHeight = 21;
+            this.comboBoxEx8.Items.AddRange(new object[] {
+            this.comboItem7,
+            this.comboItem8,
+            this.comboItem9,
+            this.comboItem10,
+            this.comboItem11});
+            this.comboBoxEx8.Location = new System.Drawing.Point(265, 176);
+            this.comboBoxEx8.Name = "comboBoxEx8";
+            this.comboBoxEx8.Size = new System.Drawing.Size(77, 27);
+            this.comboBoxEx8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx8.TabIndex = 7;
+            // 
+            // comboItem7
+            // 
+            this.comboItem7.Text = "mm/min";
+            // 
+            // comboItem8
+            // 
+            this.comboItem8.Text = "mm/s";
+            // 
+            // comboItem9
+            // 
+            this.comboItem9.Text = "µm/min";
+            // 
+            // comboItem10
+            // 
+            this.comboItem10.Text = "µm/s";
+            // 
+            // comboItem11
+            // 
+            this.comboItem11.Text = "m/s";
+            // 
+            // cmbX_Dyn_StartSpeed_Unit
+            // 
+            this.cmbX_Dyn_StartSpeed_Unit.DisplayMember = "Text";
+            this.cmbX_Dyn_StartSpeed_Unit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Dyn_StartSpeed_Unit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbX_Dyn_StartSpeed_Unit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_Dyn_StartSpeed_Unit.FormattingEnabled = true;
+            this.cmbX_Dyn_StartSpeed_Unit.ItemHeight = 21;
+            this.cmbX_Dyn_StartSpeed_Unit.Items.AddRange(new object[] {
+            this.comboItem2,
+            this.comboItem3,
+            this.comboItem4,
+            this.comboItem5,
+            this.comboItem6});
+            this.cmbX_Dyn_StartSpeed_Unit.Location = new System.Drawing.Point(265, 89);
+            this.cmbX_Dyn_StartSpeed_Unit.Name = "cmbX_Dyn_StartSpeed_Unit";
+            this.cmbX_Dyn_StartSpeed_Unit.Size = new System.Drawing.Size(79, 27);
+            this.cmbX_Dyn_StartSpeed_Unit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_Dyn_StartSpeed_Unit.TabIndex = 7;
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "mm/min";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "mm/s";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "µm/min";
+            // 
+            // comboItem5
+            // 
+            this.comboItem5.Text = "µm/s";
+            // 
+            // comboItem6
+            // 
+            this.comboItem6.Text = "m/s";
+            // 
+            // textBoxX14
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX14.Border.Class = "TextBoxBorder";
+            this.textBoxX14.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxX14.Location = new System.Drawing.Point(146, 176);
+            this.textBoxX14.MinimumSize = new System.Drawing.Size(0, 27);
+            this.textBoxX14.Name = "textBoxX14";
+            this.textBoxX14.PreventEnterBeep = true;
+            this.textBoxX14.Size = new System.Drawing.Size(117, 27);
+            this.textBoxX14.TabIndex = 6;
+            this.textBoxX14.Text = "0";
+            // 
+            // labelX38
+            // 
+            this.labelX38.AutoSize = true;
+            this.labelX38.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX38.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX38.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX38.Location = new System.Drawing.Point(71, 180);
+            this.labelX38.Name = "labelX38";
+            this.labelX38.Size = new System.Drawing.Size(41, 23);
+            this.labelX38.TabIndex = 5;
+            this.labelX38.Text = "限位";
+            // 
+            // tbX_Dyn_StartSpeed
+            // 
+            // 
+            // 
+            // 
+            this.tbX_Dyn_StartSpeed.Border.Class = "TextBoxBorder";
+            this.tbX_Dyn_StartSpeed.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbX_Dyn_StartSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbX_Dyn_StartSpeed.Location = new System.Drawing.Point(146, 89);
+            this.tbX_Dyn_StartSpeed.MinimumSize = new System.Drawing.Size(0, 27);
+            this.tbX_Dyn_StartSpeed.Name = "tbX_Dyn_StartSpeed";
+            this.tbX_Dyn_StartSpeed.PreventEnterBeep = true;
+            this.tbX_Dyn_StartSpeed.Size = new System.Drawing.Size(117, 27);
+            this.tbX_Dyn_StartSpeed.TabIndex = 6;
+            this.tbX_Dyn_StartSpeed.Text = "10";
+            // 
+            // labelX36
+            // 
+            this.labelX36.AutoSize = true;
+            this.labelX36.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX36.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX36.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX36.Location = new System.Drawing.Point(71, 93);
+            this.labelX36.Name = "labelX36";
+            this.labelX36.Size = new System.Drawing.Size(74, 23);
+            this.labelX36.TabIndex = 5;
+            this.labelX36.Text = "控制速度";
+            // 
+            // comboBoxEx9
+            // 
+            this.comboBoxEx9.DisplayMember = "Text";
+            this.comboBoxEx9.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxEx9.FormattingEnabled = true;
+            this.comboBoxEx9.ItemHeight = 21;
+            this.comboBoxEx9.Location = new System.Drawing.Point(146, 220);
+            this.comboBoxEx9.Name = "comboBoxEx9";
+            this.comboBoxEx9.Size = new System.Drawing.Size(117, 27);
+            this.comboBoxEx9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx9.TabIndex = 4;
+            this.comboBoxEx9.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx9_SelectedIndexChanged);
+            // 
+            // comboBoxEx7
+            // 
+            this.comboBoxEx7.DisplayMember = "Text";
+            this.comboBoxEx7.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxEx7.FormattingEnabled = true;
+            this.comboBoxEx7.ItemHeight = 21;
+            this.comboBoxEx7.Location = new System.Drawing.Point(146, 133);
+            this.comboBoxEx7.Name = "comboBoxEx7";
+            this.comboBoxEx7.Size = new System.Drawing.Size(117, 27);
+            this.comboBoxEx7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx7.TabIndex = 4;
+            // 
+            // cmbX_Dyn_StartCtrl
+            // 
+            this.cmbX_Dyn_StartCtrl.DisplayMember = "Text";
+            this.cmbX_Dyn_StartCtrl.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Dyn_StartCtrl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbX_Dyn_StartCtrl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_Dyn_StartCtrl.FormattingEnabled = true;
+            this.cmbX_Dyn_StartCtrl.ItemHeight = 21;
+            this.cmbX_Dyn_StartCtrl.Location = new System.Drawing.Point(146, 40);
+            this.cmbX_Dyn_StartCtrl.Name = "cmbX_Dyn_StartCtrl";
+            this.cmbX_Dyn_StartCtrl.Size = new System.Drawing.Size(117, 27);
+            this.cmbX_Dyn_StartCtrl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_Dyn_StartCtrl.TabIndex = 4;
+            this.cmbX_Dyn_StartCtrl.SelectedIndexChanged += new System.EventHandler(this.cmbX_Dyn_StartCtrl_SelectedIndexChanged);
+            // 
+            // labelX39
+            // 
+            this.labelX39.AutoSize = true;
+            this.labelX39.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX39.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX39.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX39.Location = new System.Drawing.Point(70, 224);
+            this.labelX39.Name = "labelX39";
+            this.labelX39.Size = new System.Drawing.Size(74, 23);
+            this.labelX39.TabIndex = 3;
+            this.labelX39.Text = "目标模式";
+            // 
+            // labelX37
+            // 
+            this.labelX37.AutoSize = true;
+            this.labelX37.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX37.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX37.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX37.Location = new System.Drawing.Point(71, 137);
+            this.labelX37.Name = "labelX37";
+            this.labelX37.Size = new System.Drawing.Size(74, 23);
+            this.labelX37.TabIndex = 3;
+            this.labelX37.Text = "限位模式";
+            // 
+            // labelX35
+            // 
+            this.labelX35.AutoSize = true;
+            this.labelX35.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX35.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX35.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX35.Location = new System.Drawing.Point(70, 44);
+            this.labelX35.Name = "labelX35";
+            this.labelX35.Size = new System.Drawing.Size(74, 23);
+            this.labelX35.TabIndex = 3;
+            this.labelX35.Text = "控制模式";
+            // 
+            // cmbX_Dyn_EDC
+            // 
+            this.cmbX_Dyn_EDC.DisplayMember = "Text";
+            this.cmbX_Dyn_EDC.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbX_Dyn_EDC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbX_Dyn_EDC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbX_Dyn_EDC.FormattingEnabled = true;
+            this.cmbX_Dyn_EDC.ItemHeight = 21;
+            this.cmbX_Dyn_EDC.Location = new System.Drawing.Point(146, 39);
+            this.cmbX_Dyn_EDC.Name = "cmbX_Dyn_EDC";
+            this.cmbX_Dyn_EDC.Size = new System.Drawing.Size(118, 27);
+            this.cmbX_Dyn_EDC.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbX_Dyn_EDC.TabIndex = 2;
+            this.cmbX_Dyn_EDC.Visible = false;
+            // 
+            // labelX34
+            // 
+            this.labelX34.AutoSize = true;
+            this.labelX34.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX34.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX34.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX34.Location = new System.Drawing.Point(70, 41);
+            this.labelX34.Name = "labelX34";
+            this.labelX34.Size = new System.Drawing.Size(57, 23);
+            this.labelX34.TabIndex = 1;
+            this.labelX34.Text = "控制器";
+            this.labelX34.Visible = false;
+            // 
+            // tabItem1
+            // 
+            this.tabItem1.AttachedControl = this.tabControlPanel1;
+            this.tabItem1.Name = "tabItem1";
+            this.tabItem1.Text = "单步";
+            // 
+            // superTabItem10
+            // 
+            this.superTabItem10.AttachedControl = this.superTabControlPanel10;
+            this.superTabItem10.GlobalItem = false;
+            this.superTabItem10.Name = "superTabItem10";
+            this.superTabItem10.Text = "试验";
             // 
             // line2
             // 
@@ -1513,7 +1534,7 @@
             this.btnX_AxisLoadY_MinUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MinUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MinUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MinUp.Location = new System.Drawing.Point(1388, 434);
+            this.btnX_AxisLoadY_MinUp.Location = new System.Drawing.Point(1388, 536);
             this.btnX_AxisLoadY_MinUp.Name = "btnX_AxisLoadY_MinUp";
             this.btnX_AxisLoadY_MinUp.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MinUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1555,7 +1576,7 @@
             this.btnX_AxisLoadY_MinDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnX_AxisLoadY_MinDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnX_AxisLoadY_MinDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnX_AxisLoadY_MinDown.Location = new System.Drawing.Point(1388, 465);
+            this.btnX_AxisLoadY_MinDown.Location = new System.Drawing.Point(1388, 567);
             this.btnX_AxisLoadY_MinDown.Name = "btnX_AxisLoadY_MinDown";
             this.btnX_AxisLoadY_MinDown.Size = new System.Drawing.Size(25, 25);
             this.btnX_AxisLoadY_MinDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1586,7 +1607,7 @@
             this.btnX_Connect.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Connect.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Connect.Image = ((System.Drawing.Image)(resources.GetObject("btnX_Connect.Image")));
-            this.btnX_Connect.Location = new System.Drawing.Point(1508, 504);
+            this.btnX_Connect.Location = new System.Drawing.Point(1508, 606);
             this.btnX_Connect.Name = "btnX_Connect";
             this.btnX_Connect.Size = new System.Drawing.Size(120, 39);
             this.btnX_Connect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1603,7 +1624,7 @@
             this.btnX_Disconnect.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnX_Disconnect.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnX_Disconnect.Image = ((System.Drawing.Image)(resources.GetObject("btnX_Disconnect.Image")));
-            this.btnX_Disconnect.Location = new System.Drawing.Point(1508, 549);
+            this.btnX_Disconnect.Location = new System.Drawing.Point(1508, 651);
             this.btnX_Disconnect.Name = "btnX_Disconnect";
             this.btnX_Disconnect.Size = new System.Drawing.Size(120, 40);
             this.btnX_Disconnect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -4121,6 +4142,202 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Blue;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
             // 
+            // panelEx14
+            // 
+            this.panelEx14.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx14.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx14.Controls.Add(this.textBoxX27);
+            this.panelEx14.Controls.Add(this.textBoxX26);
+            this.panelEx14.Controls.Add(this.labelX33);
+            this.panelEx14.Controls.Add(this.labelX42);
+            this.panelEx14.Controls.Add(this.dataGridViewX1);
+            this.panelEx14.Controls.Add(this.comboBoxEx12);
+            this.panelEx14.Controls.Add(this.labelX43);
+            this.panelEx14.Controls.Add(this.buttonX27);
+            this.panelEx14.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx14.Location = new System.Drawing.Point(0, 0);
+            this.panelEx14.Name = "panelEx14";
+            this.panelEx14.Size = new System.Drawing.Size(404, 457);
+            this.panelEx14.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx14.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx14.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx14.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx14.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx14.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx14.Style.GradientAngle = 90;
+            this.panelEx14.TabIndex = 4;
+            // 
+            // textBoxX27
+            // 
+            this.textBoxX27.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.textBoxX27.Border.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.textBoxX27.Border.Class = "TextBoxBorder";
+            this.textBoxX27.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX27.Enabled = false;
+            this.textBoxX27.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxX27.Location = new System.Drawing.Point(319, 16);
+            this.textBoxX27.Name = "textBoxX27";
+            this.textBoxX27.PreventEnterBeep = true;
+            this.textBoxX27.Size = new System.Drawing.Size(65, 26);
+            this.textBoxX27.TabIndex = 10;
+            // 
+            // textBoxX26
+            // 
+            this.textBoxX26.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.textBoxX26.Border.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.textBoxX26.Border.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.DockSiteBackColor2;
+            this.textBoxX26.Border.BorderBottomWidth = 1;
+            this.textBoxX26.Border.BorderLeftWidth = 1;
+            this.textBoxX26.Border.BorderRightWidth = 1;
+            this.textBoxX26.Border.BorderTopWidth = 1;
+            this.textBoxX26.Border.Class = "TextBoxBorder";
+            this.textBoxX26.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX26.Enabled = false;
+            this.textBoxX26.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxX26.Location = new System.Drawing.Point(182, 16);
+            this.textBoxX26.Name = "textBoxX26";
+            this.textBoxX26.PreventEnterBeep = true;
+            this.textBoxX26.Size = new System.Drawing.Size(65, 26);
+            this.textBoxX26.TabIndex = 8;
+            // 
+            // labelX33
+            // 
+            // 
+            // 
+            // 
+            this.labelX33.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX33.Font = new System.Drawing.Font("宋体", 9F);
+            this.labelX33.Location = new System.Drawing.Point(257, 18);
+            this.labelX33.Name = "labelX33";
+            this.labelX33.Size = new System.Drawing.Size(70, 23);
+            this.labelX33.TabIndex = 11;
+            this.labelX33.Text = "当前次数：";
+            // 
+            // labelX42
+            // 
+            // 
+            // 
+            // 
+            this.labelX42.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX42.Font = new System.Drawing.Font("宋体", 9F);
+            this.labelX42.Location = new System.Drawing.Point(108, 18);
+            this.labelX42.Name = "labelX42";
+            this.labelX42.Size = new System.Drawing.Size(95, 23);
+            this.labelX42.TabIndex = 9;
+            this.labelX42.Text = "总循环次数：";
+            // 
+            // dataGridViewX1
+            // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dataGridViewX1.EnableHeadersVisualStyles = false;
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(3, 94);
+            this.dataGridViewX1.Name = "dataGridViewX1";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            this.dataGridViewX1.RowHeadersVisible = false;
+            this.dataGridViewX1.RowTemplate.Height = 23;
+            this.dataGridViewX1.Size = new System.Drawing.Size(398, 363);
+            this.dataGridViewX1.TabIndex = 4;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "步骤";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "指令参数";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "指令内容";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "跳转到";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "循环";
+            this.Column5.Name = "Column5";
+            // 
+            // comboBoxEx12
+            // 
+            this.comboBoxEx12.DisplayMember = "Text";
+            this.comboBoxEx12.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxEx12.FormattingEnabled = true;
+            this.comboBoxEx12.ItemHeight = 21;
+            this.comboBoxEx12.Location = new System.Drawing.Point(108, 57);
+            this.comboBoxEx12.Name = "comboBoxEx12";
+            this.comboBoxEx12.Size = new System.Drawing.Size(261, 27);
+            this.comboBoxEx12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx12.TabIndex = 3;
+            // 
+            // labelX43
+            // 
+            // 
+            // 
+            // 
+            this.labelX43.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX43.Location = new System.Drawing.Point(36, 59);
+            this.labelX43.Name = "labelX43";
+            this.labelX43.Size = new System.Drawing.Size(66, 23);
+            this.labelX43.TabIndex = 2;
+            this.labelX43.Text = "控制程序：";
+            this.labelX43.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // buttonX27
+            // 
+            this.buttonX27.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX27.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX27.Image = ((System.Drawing.Image)(resources.GetObject("buttonX27.Image")));
+            this.buttonX27.Location = new System.Drawing.Point(18, 13);
+            this.buttonX27.Name = "buttonX27";
+            this.buttonX27.Size = new System.Drawing.Size(76, 32);
+            this.buttonX27.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX27.TabIndex = 0;
+            this.buttonX27.Text = "编程器";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4151,13 +4368,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl4)).EndInit();
             this.superTabControl4.ResumeLayout(false);
+            this.superTabControlPanel8.ResumeLayout(false);
+            this.superTabControlPanel9.ResumeLayout(false);
+            this.panelEx11.ResumeLayout(false);
             this.superTabControlPanel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabControlPanel1.ResumeLayout(false);
             this.tabControlPanel1.PerformLayout();
-            this.superTabControlPanel9.ResumeLayout(false);
-            this.panelEx11.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
@@ -4187,6 +4405,8 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.panelEx14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
 
     }
@@ -4496,6 +4716,20 @@
         private DevComponents.DotNetBar.LabelX guiExtension;
         private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel8;
         private DevComponents.DotNetBar.SuperTabItem superTabItem8;
+        private DevComponents.DotNetBar.PanelEx panelEx14;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX27;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX26;
+        private DevComponents.DotNetBar.LabelX labelX33;
+        private DevComponents.DotNetBar.LabelX labelX42;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx12;
+        private DevComponents.DotNetBar.LabelX labelX43;
+        private DevComponents.DotNetBar.ButtonX buttonX27;
     }
 }
 

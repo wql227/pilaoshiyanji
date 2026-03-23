@@ -3467,7 +3467,10 @@ namespace DoPENetConnect
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             //}02132F05
             //devId = new StringBuilder("02137E43");
-            devId = new StringBuilder("02146663");
+            //devId = new StringBuilder("02146663");
+            #region 办公室测试机
+            devId = new StringBuilder("02132F05");
+            #endregion
 
             //读取上次的试验次数
             IniFileHelper.GetIniString("Setting", "TestCount", "0", strTmp, strTmp.Capacity);
@@ -6008,21 +6011,6 @@ namespace DoPENetConnect
 
         private void buttonX24_Click(object sender, EventArgs e)
         {
-            //axTChart1.Series(0).Clear();
-            //for (int i = 0; i < 1000; i++)
-            //{
-            //    axTChart1.Series(0).AddXY(i, i+3, null, 0);
-            //}
-
-            //if (axTChart1.Zoom.Zoomed)
-            //{
-            //    axTChart1.Zoom.Undo();
-            //}
-
-            axTChart1.Axis.Left.Automatic = false;
-            axTChart1.Axis.Bottom.Automatic = false;
-            axTChart1.Axis.Left.Maximum = axTChart1.Axis.Left.Maximum + 20;
-            axTChart1.Axis.Left.Minimum = axTChart1.Axis.Left.Minimum - 20;
 
         }
 
