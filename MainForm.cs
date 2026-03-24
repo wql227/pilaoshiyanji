@@ -416,6 +416,11 @@ namespace DoPENetConnect
         /// </summary>
         public UserInfo userInfo;
 
+        /// <summary>
+        /// 程序控制
+        /// </summary>
+        FormProgControl progControl = null;
+
         ///----------------------------------------------------------------------
         /// <summary>Constructor</summary>
         ///----------------------------------------------------------------------
