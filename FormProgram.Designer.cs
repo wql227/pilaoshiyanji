@@ -291,6 +291,7 @@
             this.buttonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX6.TabIndex = 78;
             this.buttonX6.Text = "testdb";
+            this.buttonX6.Visible = false;
             this.buttonX6.Click += new System.EventHandler(this.buttonX6_Click);
             // 
             // panelEx_Empty
