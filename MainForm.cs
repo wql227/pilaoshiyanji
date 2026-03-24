@@ -6084,6 +6084,11 @@ namespace DoPENetConnect
             dataGridViewX1.Rows.Clear();
         }
 
+        private void buttonX27_Click(object sender, EventArgs e)
+        {
+            FormProgram tmpProgrammer = new FormProgram();
+            tmpProgrammer.Show();
+        }
 
         public void SetProgramDtas(string tableName, List<string[]> dtas)
         {
