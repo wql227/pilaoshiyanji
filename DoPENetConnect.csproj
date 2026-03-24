@@ -222,11 +222,17 @@
     <Compile Include="FormFloat.Designer.cs">
       <DependentUpon>FormFloat.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormInputBox.cs">
+    <Compile Include="FormInputBoxChengKong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormInputBox.Designer.cs">
-      <DependentUpon>FormInputBox.cs</DependentUpon>
+    <Compile Include="FormInputBoxChengKong.designer.cs">
+      <DependentUpon>FormInputBoxChengKong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInputBoxStatic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInputBoxStatic.Designer.cs">
+      <DependentUpon>FormInputBoxStatic.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProgControl.cs">
       <SubType>Form</SubType>
@@ -324,8 +330,11 @@
     <EmbeddedResource Include="FormFloat.resx">
       <DependentUpon>FormFloat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormInputBox.resx">
-      <DependentUpon>FormInputBox.cs</DependentUpon>
+    <EmbeddedResource Include="FormInputBoxChengKong.resx">
+      <DependentUpon>FormInputBoxChengKong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInputBoxStatic.resx">
+      <DependentUpon>FormInputBoxStatic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProgControl.resx">
       <DependentUpon>FormProgControl.cs</DependentUpon>
@@ -460,7 +469,7 @@
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Enabled="1" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Deploy="1" />
+      <UserProperties Reactor_Deploy="1" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Configuration="" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

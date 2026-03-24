@@ -47,7 +47,7 @@ namespace DoPENetConnect
 
         private void btnX_FrmProtectOption_OK_Click(object sender, EventArgs e)
         {
-            FormInputBox tmpInput = new FormInputBox();
+            FormInputBoxChengKong tmpInput = new FormInputBoxChengKong();
             tmpInput.Location = new Point(this.Location.X + this.Width / 2, this.Location.Y + 100);
             tmpInput.ShowDialog();
             //if(tmpInput.)
@@ -511,7 +511,7 @@ namespace DoPENetConnect
         private void buttonX5_Click(object sender, EventArgs e)
         {
             //DialogResult res =  MessageBox.Show("确定另存为")
-            FormInputBox tmpInput = new FormInputBox();
+            FormInputBoxChengKong tmpInput = new FormInputBoxChengKong();
             tmpInput.SetTitle("程序另存为");
             tmpInput.Location = new Point(this.Location.X + this.Width / 2, this.Location.Y + 100);
             tmpInput.ShowDialog();

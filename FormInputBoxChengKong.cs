@@ -10,18 +10,32 @@ using System.Windows.Forms;
 
 namespace DoPENetConnect
 {
-    public partial class FormInputBox : Form
+    public partial class FormInputBoxChengKong : Form
     {
-        public FormInputBox()
+        public string inputedString{
+            get;
+            set;
+        }
+        public void SetTitle(string newName)
+        {
+            this.Text = newName;
+        }
+        public FormInputBoxChengKong()
         {
             InitializeComponent();
-            Loadini();
+            inputedString = null;
+            //Loadini();
             this.StartPosition = FormStartPosition.Manual;
         }
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            IniFileHelper.WriteIniString("SoftWareInfo", "Name", textBoxX1.Text);
+            //IniFileHelper.WriteIniString("SoftWareInfo", "Name", textBoxX1.Text);
+            if (textBoxX1.Text == "") {
+                MessageBox.Show("输入为空，请重新输入");
+                return;
+            }
+            inputedString = textBoxX1.Text;
             this.Close();
         }
 

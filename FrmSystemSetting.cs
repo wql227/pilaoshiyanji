@@ -1324,7 +1324,7 @@ namespace DoPENetConnect
 
         private void superTabItem5_DoubleClick(object sender, EventArgs e)
         {
-            FormInputBox tmpInput = new FormInputBox();
+            FormInputBoxStatic tmpInput = new FormInputBoxStatic();
             tmpInput.Location = new Point(this.Location.X + 100, this.Location.Y + 100);
             tmpInput.Show();
             //IniFileHelper.WriteIniString("")
