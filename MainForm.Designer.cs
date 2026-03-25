@@ -790,8 +790,8 @@
             this.superTabControl4.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl4.ControlBox.MenuBox,
             this.superTabControl4.ControlBox.CloseBox});
-            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel8);
+            this.superTabControl4.Controls.Add(this.superTabControlPanel9);
             this.superTabControl4.Controls.Add(this.superTabControlPanel10);
             this.superTabControl4.Location = new System.Drawing.Point(1300, 3);
             this.superTabControl4.MaximumSize = new System.Drawing.Size(0, 419);
@@ -990,6 +990,7 @@
             this.comboBoxEx12.Size = new System.Drawing.Size(261, 27);
             this.comboBoxEx12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx12.TabIndex = 3;
+            this.comboBoxEx12.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx12_SelectedIndexChanged);
             // 
             // labelX43
             // 

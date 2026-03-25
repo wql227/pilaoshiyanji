@@ -1687,6 +1687,10 @@ namespace DoPENetConnect
 
             ReplaceLanguage();
 
+            //程控相关
+            RemoveDataGridViewChengKong();
+            RefreshDbNameList();
+
             this.DoubleBuffered = true;//设置本窗体
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
@@ -3209,7 +3213,9 @@ namespace DoPENetConnect
                 isRunning = true;
                 SetControlEnable(false);
                 //nTestCount = HalfCycles;
-                stopwatch.Restart();
+                if (progControl!=null&&!progControl.isRunning) { 
+                      stopwatch.Restart();
+                }
 
                 //读取最后一次实验次数
                 StringBuilder strTmp = new StringBuilder(255);
@@ -3493,7 +3499,10 @@ namespace DoPENetConnect
             //devId = new StringBuilder("02137E43");
             //devId = new StringBuilder("02146663");
             #region 办公室测试机
-            devId = new StringBuilder("02132F05");
+            //devId = new StringBuilder("02132F05");
+            #endregion 
+            #region 办公室小电缸
+            devId = new StringBuilder("02146663");    //小电缸 测试用
             #endregion
 
             //读取上次的试验次数
@@ -4682,8 +4691,10 @@ namespace DoPENetConnect
 
                     if (!isRunning)
                     {
-                        
-                        if (comboBoxEx7.Text != "")        //确定试验被选中
+                        //初始化 stopwatch
+                        stopwatch.Restart();
+
+                        if (comboBoxEx12.Text != "")        //确定试验被选中
                         {
                             if (progControl == null)
                                 progControl = new FormProgControl();
@@ -5208,6 +5219,15 @@ namespace DoPENetConnect
             {
                 doTest.RemoveDataGridView();
                 doTest.Show();
+            }
+        }
+
+        public void RemoveDataGridViewChengKong()
+        {
+            dataGridViewX1.AllowUserToAddRows = false;
+            while (dataGridViewX1.RowCount > 0)
+            {
+                dataGridViewX1.Rows.RemoveAt(0);
             }
         }
 
@@ -6141,8 +6161,8 @@ namespace DoPENetConnect
             string[] nameStrs = tmpHelper.GetTableNames();
             if (nameStrs != null && nameStrs.Length > 0)
             {
-                comboBoxEx7.Items.Clear();
-                comboBoxEx7.Items.AddRange(nameStrs);
+                comboBoxEx12.Items.Clear();
+                comboBoxEx12.Items.AddRange(nameStrs);
             }
         }
         public void ClearProgramDataGridView(string programName)
@@ -6150,9 +6170,9 @@ namespace DoPENetConnect
             //程序名称显示列表处理
             try
             {
-                comboBoxEx7.Text = "";
-                int index = comboBoxEx7.Items.IndexOf(programName);
-                comboBoxEx7.Items.RemoveAt(index);
+                comboBoxEx12.Text = "";
+                int index = comboBoxEx12.Items.IndexOf(programName);
+                comboBoxEx12.Items.RemoveAt(index);
             }
             catch (Exception ex)
             {
@@ -6169,10 +6189,29 @@ namespace DoPENetConnect
             tmpProgrammer.Show();
         }
 
+        private void comboBoxEx12_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AccessHelper tmpHelper = new AccessHelper();
+            tmpHelper.InitProgramDb();
+            List<string[]> tmpDtas = tmpHelper.GetDtas(comboBoxEx12.Text);
+            if (tmpDtas.Count != 0)
+            {
+                while (dataGridViewX1.Rows.Count != 0)
+                {   //清空当前gridview
+                    dataGridViewX1.Rows.RemoveAt(dataGridViewX1.Rows.Count - 1);
+                }
+
+                for (int i = 0; i < tmpDtas.Count; i++)
+                {
+                    dataGridViewX1.Rows.Add(tmpDtas[i]);
+                }
+            }
+        }
+
         public void SetProgramDtas(string tableName, List<string[]> dtas)
         {
             //Console.WriteLine(tableName);
-            comboBoxEx7.Text = tableName;
+            comboBoxEx12.Text = tableName;
             //先清除目前显示的数据
             dataGridViewX1.Rows.Clear();
             for (int i = 0; i < dtas.Count; i++)

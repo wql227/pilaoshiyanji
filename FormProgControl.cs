@@ -146,6 +146,11 @@ namespace DoPENetConnect
         int[,] stepsCycleCounter = null;
         public void GetCycleList()
         {
+            //if (stepsCycleCounter == null)
+            {
+                stepsCycleCounter = new int[cmdDta.Count, 2];
+            }
+
             for (int i = 0; i < cmdDta.Count; i++)
             {
                 if (cmdDta[i][4] != "")
@@ -153,10 +158,10 @@ namespace DoPENetConnect
                     int totalNum = int.Parse(cmdDta[i][4]);
                     int startStep = int.Parse(cmdDta[i][3]);   //开始 
                     int stopStep = int.Parse(cmdDta[i][0]);  //终止
-                    if (stepsCycleCounter == null)
-                    {
-                        stepsCycleCounter = new int[cmdDta.Count, 2];
-                    }
+                    //if (stepsCycleCounter == null)
+                    //{
+                    //    stepsCycleCounter = new int[cmdDta.Count, 2];
+                    //}
 
                     for (int j = startStep-1; j <= stopStep-1; j++)
                     {
