@@ -463,7 +463,7 @@ namespace DoPENetConnect
             //CurveSet("s", "mm", "位移—时间曲线");   //默认显示位移时间曲线
             
             chart_series_show(0);
-            chart_series_show(4);   //不显示命令曲线
+            chart_series_show(4);   //不显示命令曲线           
         }
 
         /// <summary>
@@ -1285,6 +1285,24 @@ namespace DoPENetConnect
                             strBlockLog = "";
                         }
                     }
+
+                    if (progControl != null && progControl.isRunning)
+                    {
+                        //Console.WriteLine("glm-2616-{0}-{1}", channelNo, progControl.ProgStatus.channelNo);
+                        if (CMDNAMES.ENDED == progControl.ProgStatus.currentCmd)
+                        {   //程控结束
+
+                        }
+                        else if (CMDNAMES.WAVE == progControl.ProgStatus.currentCmd)
+                        {
+
+                        }
+                        else
+                        {
+                            progControl.CmdSwitch(realtimeParams.DisplacementVal, realtimeParams.LoadVal / 1000, realtimeParams.ExtenssionVal, 0);
+                        }
+
+                    }
                 }
 
                 //波形图
@@ -2041,7 +2059,7 @@ namespace DoPENetConnect
                 btnX_QuickMoveDown.Enabled = true;
                 bntX_GUIOn.Enabled = true;
                 bntX_GUIOff.Enabled = true;
-
+                
                 //floatMenus
                 floatMenus.EnableButton(true);
             }
@@ -4444,136 +4462,136 @@ namespace DoPENetConnect
         private void AutoSetYAxisToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-//            #region postion axis auto fitting
-//            //位移曲线自适应
-//            /*
-//            if (Math.Abs(double.Parse(tb_MaxPos.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinPos.Text)) <= 0.01)
-//            {
-//                chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
-//                chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
-//            }
-//            else 
-//            {
-//                if (double.Parse(tb_MaxPos.Text) == double.Parse(tb_MinPos.Text))
-//                {
-//                    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2 + 1;
-//                    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2 - 1;
-//                }
-//                else
-//                {
-//                    double range = double.Parse(tb_MaxPos.Text) - double.Parse(tb_MinPos.Text);
-//                    double totalHeight = range / 0.85;        // Y 轴总高度的85%
-//                    double padding = (totalHeight - range) / 2.0;  // 上下留白
+            //            #region postion axis auto fitting
+            //            //位移曲线自适应
+            //            /*
+            //            if (Math.Abs(double.Parse(tb_MaxPos.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinPos.Text)) <= 0.01)
+            //            {
+            //                chart_machine.ChartAreas[0].AxisY.Maximum = 0.1;
+            //                chart_machine.ChartAreas[0].AxisY.Minimum = -0.1;
+            //            }
+            //            else 
+            //            {
+            //                if (double.Parse(tb_MaxPos.Text) == double.Parse(tb_MinPos.Text))
+            //                {
+            //                    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(double.Parse(tb_MaxPos.Text), 2) * 1.2 + 1;
+            //                    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(double.Parse(tb_MinPos.Text), 2) * 1.2 - 1;
+            //                }
+            //                else
+            //                {
+            //                    double range = double.Parse(tb_MaxPos.Text) - double.Parse(tb_MinPos.Text);
+            //                    double totalHeight = range / 0.85;        // Y 轴总高度的85%
+            //                    double padding = (totalHeight - range) / 2.0;  // 上下留白
 
-//                    double yAxisMax = double.Parse(tb_MaxPos.Text) + padding;
-//                    double yAxisMin = double.Parse(tb_MinPos.Text) - padding;
+            //                    double yAxisMax = double.Parse(tb_MaxPos.Text) + padding;
+            //                    double yAxisMin = double.Parse(tb_MinPos.Text) - padding;
 
-//                    chart_machine.ChartAreas[0].AxisY.Maximum = yAxisMax;
-//                    chart_machine.ChartAreas[0].AxisY.Minimum = yAxisMin;
-//                }
-    
-//                chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "F2";
+            //                    chart_machine.ChartAreas[0].AxisY.Maximum = yAxisMax;
+            //                    chart_machine.ChartAreas[0].AxisY.Minimum = yAxisMin;
+            //                }
 
-//            }
-//*/
+            //                chart_machine.ChartAreas[0].AxisY.LabelStyle.Format = "F2";
 
-//            double maxSeriesMaxYValCmd = -1;
-//            double maxSeriesMinYValCmd = -1;
-//            if (chart_machine.Series[3].Points.Count > 0)
-//            {
-//                maxSeriesMaxYValCmd = chart_machine.Series[3].Points.Max(point => point.YValues[0]);
-//                maxSeriesMinYValCmd = chart_machine.Series[3].Points.Min(point => point.YValues[0]);
-//            }
+            //            }
+            //*/
 
-//            if (chart_machine.Series[0].Points.Count > 0)
-//            {
-//                double maxSeriesMaxYVal = chart_machine.Series[0].Points.Max(point => point.YValues[0]);
-//                double maxSeriesMinYVal = chart_machine.Series[0].Points.Min(point => point.YValues[0]);
-//                if (chart_machine.Series[3].YAxisType == chart_machine.Series[0].YAxisType)
-//                {
-//                    if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
-//                    {
+            //            double maxSeriesMaxYValCmd = -1;
+            //            double maxSeriesMinYValCmd = -1;
+            //            if (chart_machine.Series[3].Points.Count > 0)
+            //            {
+            //                maxSeriesMaxYValCmd = chart_machine.Series[3].Points.Max(point => point.YValues[0]);
+            //                maxSeriesMinYValCmd = chart_machine.Series[3].Points.Min(point => point.YValues[0]);
+            //            }
 
-//                        if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
-//                        if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
-//                    }
-//                }
+            //            if (chart_machine.Series[0].Points.Count > 0)
+            //            {
+            //                double maxSeriesMaxYVal = chart_machine.Series[0].Points.Max(point => point.YValues[0]);
+            //                double maxSeriesMinYVal = chart_machine.Series[0].Points.Min(point => point.YValues[0]);
+            //                if (chart_machine.Series[3].YAxisType == chart_machine.Series[0].YAxisType)
+            //                {
+            //                    if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
+            //                    {
 
-//                double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-//                double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-//                double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+            //                        if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
+            //                        if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
+            //                    }
+            //                }
 
-//                double yAxisMax1 = maxSeriesMaxYVal + padding1;
-//                double yAxisMin1 = maxSeriesMinYVal - padding1;
-//                if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
-//                {
-//                    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
-//                    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
-//                }
-//            }
-//            #endregion postion axis auto fitting
+            //                double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+            //                double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+            //                double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+
+            //                double yAxisMax1 = maxSeriesMaxYVal + padding1;
+            //                double yAxisMin1 = maxSeriesMinYVal - padding1;
+            //                if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
+            //                {
+            //                    chart_machine.ChartAreas[0].AxisY.Maximum = Math.Round(yAxisMax1, 2);
+            //                    chart_machine.ChartAreas[0].AxisY.Minimum = Math.Round(yAxisMin1, 2);
+            //                }
+            //            }
+            //            #endregion postion axis auto fitting
 
 
-//            //试验力曲线自适应
-//            #region load auto fitting
-//            /*
-//            if (Math.Abs(double.Parse(tb_MaxLoad.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinLoad.Text)) <= 0.01)
-//            {
-//                chart_machine.ChartAreas[0].AxisY2.Maximum = 0.1;
-//                chart_machine.ChartAreas[0].AxisY2.Minimum = -0.1;
-//            }
-//            else
-//            {
-//                if (double.Parse(tb_MaxLoad.Text) == double.Parse(tb_MinLoad.Text))
-//                {
-//                    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2 + 1;
-//                    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2 - 1;
-//                }
-//                else
-//                {
-//                    double range = double.Parse(tb_MaxLoad.Text) - double.Parse(tb_MinLoad.Text);
-//                    double totalHeight = range / 0.85;        // Y 轴总高度的85%
-//                    double padding = (totalHeight - range) / 2.0;  // 上下留白
+            //            //试验力曲线自适应
+            //            #region load auto fitting
+            //            /*
+            //            if (Math.Abs(double.Parse(tb_MaxLoad.Text)) <= 0.01 || Math.Abs(double.Parse(tb_MinLoad.Text)) <= 0.01)
+            //            {
+            //                chart_machine.ChartAreas[0].AxisY2.Maximum = 0.1;
+            //                chart_machine.ChartAreas[0].AxisY2.Minimum = -0.1;
+            //            }
+            //            else
+            //            {
+            //                if (double.Parse(tb_MaxLoad.Text) == double.Parse(tb_MinLoad.Text))
+            //                {
+            //                    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(double.Parse(tb_MaxLoad.Text), 2) * 1.2 + 1;
+            //                    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(double.Parse(tb_MinLoad.Text), 2) * 1.2 - 1;
+            //                }
+            //                else
+            //                {
+            //                    double range = double.Parse(tb_MaxLoad.Text) - double.Parse(tb_MinLoad.Text);
+            //                    double totalHeight = range / 0.85;        // Y 轴总高度的85%
+            //                    double padding = (totalHeight - range) / 2.0;  // 上下留白
 
-//                    double yAxisMax = double.Parse(tb_MaxLoad.Text) + padding;
-//                    double yAxisMin = double.Parse(tb_MinLoad.Text) - padding;
+            //                    double yAxisMax = double.Parse(tb_MaxLoad.Text) + padding;
+            //                    double yAxisMin = double.Parse(tb_MinLoad.Text) - padding;
 
-//                    chart_machine.ChartAreas[0].AxisY2.Maximum = yAxisMax;
-//                    chart_machine.ChartAreas[0].AxisY2.Minimum = yAxisMin;
-//                }
-//                chart_machine.ChartAreas[0].AxisY2.LabelStyle.Format = "F2";
-//            }
-//            */
-//            if (chart_machine.Series[1].Points.Count > 0)
-//            {
-//                double maxSeriesMaxYVal = chart_machine.Series[1].Points.Max(point => point.YValues[0]);
-//                double maxSeriesMinYVal = chart_machine.Series[1].Points.Min(point => point.YValues[0]);
+            //                    chart_machine.ChartAreas[0].AxisY2.Maximum = yAxisMax;
+            //                    chart_machine.ChartAreas[0].AxisY2.Minimum = yAxisMin;
+            //                }
+            //                chart_machine.ChartAreas[0].AxisY2.LabelStyle.Format = "F2";
+            //            }
+            //            */
+            //            if (chart_machine.Series[1].Points.Count > 0)
+            //            {
+            //                double maxSeriesMaxYVal = chart_machine.Series[1].Points.Max(point => point.YValues[0]);
+            //                double maxSeriesMinYVal = chart_machine.Series[1].Points.Min(point => point.YValues[0]);
 
-//                if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
-//                {
-//                    if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
-//                    {
+            //                if (chart_machine.Series[3].YAxisType == chart_machine.Series[1].YAxisType)
+            //                {
+            //                    if (maxSeriesMaxYValCmd != -1 && maxSeriesMinYValCmd != -1 && cb_DrawCommand.Checked)
+            //                    {
 
-//                        if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
-//                        if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
-//                    }
-//                }
+            //                        if (maxSeriesMaxYVal < maxSeriesMaxYValCmd) maxSeriesMaxYVal = maxSeriesMaxYValCmd;
+            //                        if (maxSeriesMinYVal > maxSeriesMinYValCmd) maxSeriesMinYVal = maxSeriesMinYValCmd;
+            //                    }
+            //                }
 
-//                double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
-//                double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
-//                double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
+            //                double range1 = maxSeriesMaxYVal - maxSeriesMinYVal;
+            //                double totalHeight1 = range1 / 0.85;        // Y 轴总高度的85%
+            //                double padding1 = (totalHeight1 - range1) / 2.0;  // 上下留白
 
-//                double yAxisMax1 = maxSeriesMaxYVal + padding1;
-//                double yAxisMin1 = maxSeriesMinYVal - padding1;
-//                if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
-//                {
-//                    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
-//                    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
-//                }
+            //                double yAxisMax1 = maxSeriesMaxYVal + padding1;
+            //                double yAxisMin1 = maxSeriesMinYVal - padding1;
+            //                if (Math.Abs(yAxisMax1 - yAxisMin1) >= 0.1)
+            //                {
+            //                    chart_machine.ChartAreas[0].AxisY2.Maximum = Math.Round(yAxisMax1, 2);
+            //                    chart_machine.ChartAreas[0].AxisY2.Minimum = Math.Round(yAxisMin1, 2);
+            //                }
 
-//            }
-//            #endregion load auto fitting
-
+            //            }
+            //            #endregion load auto fitting
+            
         }
 
         private void buttonX15_Click(object sender, EventArgs e)
@@ -4581,64 +4599,120 @@ namespace DoPENetConnect
             if (bActivated)
             {
 
-                if (this.tbX_Dyn_StartSpeed.Text == "" || this.textBoxX14.Text == "" || this.textBoxX15.Text == "")
+                if (superTabControl4.SelectedTabIndex == 1)
                 {
-                    MessageBox.Show("输入不能为空，请重新输入！");
-                    return;
-                }
-                double tmpDobleNum;
-
-                if (!double.TryParse(this.tbX_Dyn_StartSpeed.Text, out tmpDobleNum) || !double.TryParse(this.textBoxX14.Text, out tmpDobleNum) || !double.TryParse(this.textBoxX15.Text, out tmpDobleNum))
-                {
-                    MessageBox.Show("请输入数字！");
-                    return;
-                }
-
-                if (dataGridViewX2.RowCount != 0 && !DtaGridViewIsSelectedEmpty())
-                {
-                    if (doTest.sampleFinished == true) {
-                        MessageBox.Show("这个试验已经结束，请重新填写试验信息后开始试验！");
+                    if (this.tbX_Dyn_StartSpeed.Text == "" || this.textBoxX14.Text == "" || this.textBoxX15.Text == "")
+                    {
+                        MessageBox.Show("输入不能为空，请重新输入！");
                         return;
                     }
-                    else
-                        SetExpertmentParams();     //设置试验参数
-                }
-                else
-                {
-                    MessageBox.Show("未选中或试验列表为空，请新建试验后再开始试验！");
-                    return;
-                }
+                    double tmpDobleNum;
 
-                if (!isRunning)
-                {
-                    //CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
-                    //iLposMsgBox = 0;    //每次开始前清空显示限位信息标志
-                    //realtimeParams.dataRecvTimes = 0;
-                    //originParams = realtimeParams;
-                    //AutoFitMaxMinValClear();      //曲线参数初始化
-                    //SetMaxMinControlsZero();
-                    //buttonX15.Checked = true;
-                    //buttonX16.Checked = false;
-                    //FrmPosExt frmPosExt = new FrmPosExt();
-                    //double destinationVal = double.Parse(textBoxX15.Text);
-                    //if (comboBoxEx10.Text == "kN")
-                    //{
-                    //    destinationVal = double.Parse(textBoxX15.Text) * 1000;
-                    //}
-                    //frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
-                    //                                 (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
-                    InitTeeChart();
-                    StartExperment();
-                    //if (timerDataClean.Enabled)
-                    //{
-                    //    MessageBox.Show("正在清理图标数据，请稍后再试！", "开始试验", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //}
-                    //else
-                    //{
-                    //    ResetStartPoindOfSeries();
-                    //    timerDataClean.Start();
-                    //    //StartExperment();
-                    //}
+                    if (!double.TryParse(this.tbX_Dyn_StartSpeed.Text, out tmpDobleNum) || !double.TryParse(this.textBoxX14.Text, out tmpDobleNum) || !double.TryParse(this.textBoxX15.Text, out tmpDobleNum))
+                    {
+                        MessageBox.Show("请输入数字！");
+                        return;
+                    }
+
+                    if (dataGridViewX2.RowCount != 0 && !DtaGridViewIsSelectedEmpty())
+                    {
+                        if (doTest.sampleFinished == true)
+                        {
+                            MessageBox.Show("这个试验已经结束，请重新填写试验信息后开始试验！");
+                            return;
+                        }
+                        else
+                            SetExpertmentParams();     //设置试验参数
+                    }
+                    else
+                    {
+                        MessageBox.Show("未选中或试验列表为空，请新建试验后再开始试验！");
+                        return;
+                    }
+
+                    if (!isRunning)
+                    {
+                        //CleanChart();           //开始实验前初始化绘图，包括x轴调整至0点
+                        //iLposMsgBox = 0;    //每次开始前清空显示限位信息标志
+                        //realtimeParams.dataRecvTimes = 0;
+                        //originParams = realtimeParams;
+                        //AutoFitMaxMinValClear();      //曲线参数初始化
+                        //SetMaxMinControlsZero();
+                        //buttonX15.Checked = true;
+                        //buttonX16.Checked = false;
+                        //FrmPosExt frmPosExt = new FrmPosExt();
+                        //double destinationVal = double.Parse(textBoxX15.Text);
+                        //if (comboBoxEx10.Text == "kN")
+                        //{
+                        //    destinationVal = double.Parse(textBoxX15.Text) * 1000;
+                        //}
+                        //frmPosExt.send_FrmPosExts_command((DoPE.CTRL)cmbX_Dyn_StartCtrl.SelectedIndex, double.Parse(tbX_Dyn_StartSpeed.Text), comboBoxEx7.SelectedIndex, double.Parse(textBoxX14.Text),
+                        //                                 (CTRL)comboBoxEx9.SelectedIndex, destinationVal, (DESTMODE)comboBoxEx11.SelectedIndex);
+                        InitTeeChart();
+                        StartExperment();
+                        //if (timerDataClean.Enabled)
+                        //{
+                        //    MessageBox.Show("正在清理图标数据，请稍后再试！", "开始试验", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //}
+                        //else
+                        //{
+                        //    ResetStartPoindOfSeries();
+                        //    timerDataClean.Start();
+                        //    //StartExperment();
+                        //}
+
+                    }
+                }
+                else if (superTabControl4.SelectedTabIndex == 2) {    //程控
+                    if (dataGridViewX2.RowCount != 0 && !DtaGridViewIsSelectedEmpty())
+                    {
+                        if (doTest.sampleFinished == true)
+                        {
+                            MessageBox.Show("这个试验已经结束，请重新填写试验信息后开始试验！");
+                            return;
+                        }
+                        else
+                            SetExpertmentParams();     //设置试验参数
+                    }
+                    else
+                    {
+                        MessageBox.Show("未选中或试验列表为空，请新建试验后再开始试验！");
+                        return;
+                    }
+
+                    if (!isRunning)
+                    {
+                        
+                        if (comboBoxEx7.Text != "")        //确定试验被选中
+                        {
+                            if (progControl == null)
+                                progControl = new FormProgControl();
+
+                            List<string[]> tmpList = new List<string[]>();
+
+                            for (int i = 0; i < dataGridViewX1.Rows.Count; i++)
+                            {
+                                string[] tmpStrs = new string[5];
+                                for (int j = 0; j < dataGridViewX1.Rows[i].Cells.Count; j++)
+                                {
+                                    tmpStrs[j] = dataGridViewX1.Rows[i].Cells[j].Value.ToString();
+                                }
+                                tmpList.Add(tmpStrs);
+                            }
+
+                            InitTeeChart();
+                            progControl.SetCmdParmas(tmpList, double.Parse(guiPosition.Text),  double.Parse(guiLoad.Text), double.Parse(guiExtension.Text));
+                       
+
+                            for (int i = 0; i < dataGridViewX1.Rows.Count; i++)
+                                dataGridViewX1.Rows[i].Selected = false;
+                            progControl.StartRunProgram();
+
+
+                            isRunning = true;
+                        }
+
+                    }
 
                 }
 
@@ -4714,7 +4788,7 @@ namespace DoPENetConnect
 
         private void superTabControl4_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
         {
-            // Console.WriteLine("glm{0}", superTabControl4.SelectedTabIndex);
+             //Console.WriteLine("glm{0}", superTabControl4.SelectedTabIndex);
             //if (superTabControl4.SelectedTabIndex == 1)
             {
                 if (cmbX_Dyn_EDC.Items.Count >= 1)
