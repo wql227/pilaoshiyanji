@@ -98,12 +98,164 @@ namespace DoPENetConnect
     /// <summary>
     /// Demo-application for the DoPE .NET library.
     /// </summary>
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IRmcCommandExecutor
     {
+
+        #region IRmcCommandExecutor 接口实现
+
+        void IRmcCommandExecutor.MoveUp(double speed)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => MoveUpInternal(speed)));
+                return;
+            }
+            MoveUpInternal(speed);
+        }
+
+        void IRmcCommandExecutor.AdjustSpeed(double delta)
+        {
+            // 线程安全
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => AdjustSpeedInternal(delta)));
+                return;
+            }
+            AdjustSpeedInternal(delta);
+        }
+
+        private void AdjustSpeedInternal(double delta)
+        {
+            lock (_rmcSpeedLock)
+            {
+                _rmcSpeed += delta;
+                if (_rmcSpeed < _rmcSpeedMin) _rmcSpeed = _rmcSpeedMin;
+                if (_rmcSpeed > _rmcSpeedMax) _rmcSpeed = _rmcSpeedMax;
+            }
+
+            // 可选：在 RMC 上短暂显示速度
+            if (MyEdc != null && bConnected)
+            {
+                try
+                {
+                    MyEdc.Display.HeadLine($"Speed:{_rmcSpeed:F1}mm/s");
+                }
+                catch { }
+            }
+        }
+        private void MoveUpInternal(double speed)
+        {
+            if (!bConnected) return;
+            try
+            {
+                DoPE.ERR error = MyEdc.Move.FMove(DoPE.MOVE.UP, DoPE.CTRL.POS, speed, ref MyTan);
+                if (error != DoPE.ERR.NOERROR)
+                    DisplayError(error, "RMC MoveUp");
+            }
+            catch (Exception ex)
+            {
+                Display($"RMC MoveUp error: {ex.Message}");
+            }
+        }
+
+        void IRmcCommandExecutor.MoveDown(double speed)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => MoveDownInternal(speed)));
+                return;
+            }
+            MoveDownInternal(speed);
+        }
+
+        private void MoveDownInternal(double speed)
+        {
+            if (!bConnected) return;
+            try
+            {
+                DoPE.ERR error = MyEdc.Move.FMove(DoPE.MOVE.DOWN, DoPE.CTRL.POS, speed, ref MyTan);
+                if (error != DoPE.ERR.NOERROR)
+                    DisplayError(error, "RMC MoveDown");
+            }
+            catch (Exception ex)
+            {
+                Display($"RMC MoveDown error: {ex.Message}");
+            }
+        }
+
+        void IRmcCommandExecutor.Stop()
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(StopInternal));
+                return;
+            }
+            StopInternal();
+        }
+
+        private void StopInternal()
+        {
+            if (!bConnected) return;
+            try
+            {
+                DoPE.ERR error = MyEdc.Move.SHalt(ref MyTan);
+                if (error != DoPE.ERR.NOERROR)
+                    DisplayError(error, "RMC Stop");
+            }
+            catch (Exception ex)
+            {
+                Display($"RMC Stop error: {ex.Message}");
+            }
+        }
+
+        void IRmcCommandExecutor.Activate()
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(OnEDC));
+                return;
+            }
+            OnEDC();
+        }
+
+        void IRmcCommandExecutor.Deactivate()
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(OffEDC));
+                return;
+            }
+            OffEDC();
+        }
+        double IRmcCommandExecutor.GetCurrentSpeed()
+        {
+            lock (_rmcSpeedLock)
+            {
+                return _rmcSpeed;
+            }
+        }
+        bool IRmcCommandExecutor.IsActivated => bActivated;
+
+        #endregion
+
+
         #region Initialization
 
 
         public static MainForm mainform = null;
+
+        /// <summary>
+        /// 手控盒命令执行器接口（用于与控制器交互）
+        /// </summary>
+
+        // 手控盒相关
+        private const double SPEED_STEP = 0.5;   // 每次旋钮旋转的速度变化量 (mm/s)
+        private  double _rmcSpeed = 2.0;            // 当前速度 (mm/s)
+        private double _rmcSpeedMin = 0.5;          // 最小速度
+        private double _rmcSpeedMax = 20.0;          // 最大速度
+        //private const double SPEED_STEP = 0.5;       // 每次旋钮旋转的速度步长
+        private System.Windows.Forms.Timer _rmcDisplayTimer;  // 定时刷新显示
+        private RmcHandler _rmcHandler;
 
         /// <summary>
         /// 保护配置
@@ -781,6 +933,7 @@ namespace DoPENetConnect
             if (bConnected)
             {
                 MessageBox.Show("已经连接控制器！");
+                UpdateRmcDisplay();  // 立即更新显示
                 return;
             }
 
@@ -1125,6 +1278,7 @@ namespace DoPENetConnect
             {
                 //btn_ConState.BackColor = Color.Red;
                 //btn_ConState.Text = "OFFLINE";
+                bConnected = false;//手控盒显示
 
                 floatMenus.btn_ConState_color(Color.Red);
                 floatMenus.btn_ConState_Text("OFFLINE");
@@ -1134,6 +1288,8 @@ namespace DoPENetConnect
             {
                 //btn_ConState.BackColor = Color.Lime;
                 //btn_ConState.Text = "ONLINE";
+                bConnected = true;//手控盒显示
+
                 floatMenus.btn_ConState_color(Color.Lime);
                 floatMenus.btn_ConState_Text("ONLINE");
             }
@@ -1141,9 +1297,13 @@ namespace DoPENetConnect
             {
                 //btn_ConState.BackColor = Color.Yellow;
                 //btn_ConState.Text = "RESTART";
+                bConnected = false;//手控盒显示
+
                 floatMenus.btn_ConState_color(Color.Yellow);
                 floatMenus.btn_ConState_Text("RESTART");
             }
+            // 更新 RMC 显示（标题行会立即改变）
+            UpdateRmcDisplay();
 
             return 0;
         }
@@ -1996,6 +2156,11 @@ namespace DoPENetConnect
             Display(string.Format("OnKeyMsg: DoPError={0} Time={1} Keys={2} NewKeys={3} GoneKeys={4} OemKeys={5} NewOemKeys={6} GoneOemKeys={7} usTAN={8} \n",
               KeyMsg.DoPError, KeyMsg.Time, KeyMsg.Keys, KeyMsg.NewKeys, KeyMsg.GoneKeys, KeyMsg.OemKeys, KeyMsg.NewOemKeys, KeyMsg.GoneOemKeys, KeyMsg.usTAN));
 
+            // 调用手控盒处理器
+            if (_rmcHandler != null)
+                _rmcHandler.HandleKeyMsg(KeyMsg);
+
+
             return 0;
         }
 
@@ -2228,9 +2393,59 @@ namespace DoPENetConnect
             //更换试验机类型
             SetUnitbySystemType(currentMachineType);
 
+            // 读取手控盒速度配置
+            double rmcSpeed = 2.0;
+            StringBuilder strTmp = new StringBuilder(255);
+            IniFileHelper.GetIniString("Setting", "RMC_Speed", "2", strTmp, strTmp.Capacity);
+            double.TryParse(strTmp.ToString(), out rmcSpeed);
+
+            _rmcDisplayTimer = new System.Windows.Forms.Timer();
+            _rmcDisplayTimer.Interval = 500; // 每 500 ms 更新一次显示（避免过于频繁）
+            _rmcDisplayTimer.Tick += delegate { UpdateRmcDisplay(); };
+            _rmcDisplayTimer.Start();
+
+            _rmcHandler = new RmcHandler(this, rmcSpeed);
+
         }
+        private readonly object _rmcSpeedLock = new object();
+        private void UpdateRmcDisplay()
+        {
+            if (MyEdc == null || !bConnected) return;
 
+            try
+            {
+                // 1. 更新标题行：显示 EDC 连接状态
+                string statusText = bConnected ? "ONLINE" : "OFFLINE";
+                MyEdc.Display.HeadLine(statusText);
 
+                // 位移值处理
+                double dispPos = g_Position;          // 单位 mm
+                string posValue = dispPos.ToString($"F{PosDigit}");
+                // 组合：字母 's' + 空格 + 数值（确保总长度不超过 10）
+                string posDisplay = $"s {posValue}";
+                if (posDisplay.Length > 10) posDisplay = posDisplay.Substring(0, 10); // 截断以防溢出
+                string posUnit = "mm";
+
+                // 力值处理
+                double dispLoad = g_Load;
+                if (LoadUnit.ToUpper() == "KN")
+                {
+                    dispLoad = g_Load / 1000;   // 转换为 kN
+                }
+                string loadValue = dispLoad.ToString($"F{LoadDigit}");
+                string loadDisplay = $"F {loadValue}";
+                if (loadDisplay.Length > 10) loadDisplay = loadDisplay.Substring(0, 10);
+                string loadUnit = LoadUnit.ToUpper() == "KN" ? "kN" : "N";
+
+                // 更新 RMC 显示
+                MyEdc.Display.MValue(posDisplay, loadDisplay, posUnit, loadUnit);
+            }
+            catch (Exception ex)
+            {
+                // 忽略显示错误，避免频繁弹窗
+                LogHelper.Error($"RMC 显示更新失败: {ex.Message}");
+            }
+        }
         /// <summary>
         /// 加载语言项菜单
         /// </summary>
@@ -3342,6 +3557,7 @@ namespace DoPENetConnect
             {
                 MyEdc.Dispose();
                 bConnected = false;
+                UpdateRmcDisplay();  // 更新显示为 OFFLINE
 
                 SetControlEnable(true);
 
@@ -3505,7 +3721,26 @@ namespace DoPENetConnect
         /// <param name="SweepFrequencyMode"></param>
         public void MoveDynCycles(DoPE.DYN_WAVEFORM WaveForm, bool Modify, DoPE.DYN_PEAKCTRL PeakCtrl, DoPE.CTRL MoveCtrl,
             bool RelativeDestination, double SpeedToStart, double Offset, double Amplitude, double HaltAtPlusAmplitude, double HaltAtMinusAmplitude,
-            double Frequency, int HalfCycles_Rcv, double SpeedToDestination, double Destination, DoPE.DYN_SWEEP SweepFrequencyMode)
+            double Frequency, int HalfCycles_Rcv, double SpeedToDestination, double Destination, DoPE.DYN_SWEEP SweepFrequencyMode = DoPE.DYN_SWEEP.OFF,
+    double SweepEndFrequency = 0,
+    double SweepFrequencyTime = 0,
+    int SweepFrequencyCount = 0,
+    DoPE.DYN_SWEEP SweepOffsetMode = DoPE.DYN_SWEEP.OFF,
+    double SweepEndOffset = 0,
+    double SweepOffsetTime = 0,
+    int SweepOffsetCount = 0,
+    DoPE.DYN_SWEEP SweepAmplitudeMode = DoPE.DYN_SWEEP.OFF,
+    double SweepEndAmplitude = 0,
+    double SweepAmplitudeTime = 0,
+    int SweepAmplitudeCount = 0,
+    DoPE.DYN_SUPERPOS SuperpositionMode = DoPE.DYN_SUPERPOS.OFF,
+    double SuperpositionFrequency = 0,
+    double SuperpositionAmplitude = 0,
+    DoPE.DYN_BIMODAL BimodalCtrlMode = DoPE.DYN_BIMODAL.CTRL_OFF,
+    DoPE.SENSOR BimodalCtrlSensor = DoPE.SENSOR.SENSOR_S,
+    double BimodalValue1 = 0,
+    double BimodalValue2 = 0,
+    double BimodalScale = 1)
         {
             if (HalfCycles_Rcv / 2 <= int.Parse(tbX_TestCycles.Text)) {
                 MessageBox.Show("设置次数低于当前计数值，请先清除计数后再开始试验！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -3521,9 +3756,22 @@ namespace DoPENetConnect
             {
                 Modify = false;
             }
-            DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, false, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0,
-                0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode,
-                0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
+
+            // 调用底层 API 时传入所有参数
+            DoPE.ERR error = MyEdc.Move.DynCycles(
+                WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination,
+                SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude,
+                Frequency, HalfCycles, SpeedToDestination, Destination,
+                SweepFrequencyMode, SweepEndFrequency, SweepFrequencyTime, SweepFrequencyCount,
+                SweepOffsetMode, SweepEndOffset, SweepOffsetTime, SweepOffsetCount,
+                SweepAmplitudeMode, SweepEndAmplitude, SweepAmplitudeTime, SweepAmplitudeCount,
+                SuperpositionMode, SuperpositionFrequency, SuperpositionAmplitude,
+                BimodalCtrlMode, BimodalCtrlSensor, BimodalValue1, BimodalValue2, BimodalScale,
+                ref MyTan);
+
+            //DoPE.ERR error = MyEdc.Move.DynCycles(WaveForm, false, PeakCtrl, MoveCtrl, false, SpeedToStart, Offset, Amplitude, 0.0,
+            //    0.0, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode,
+            //    0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0, 0, 0.0, 0.0, 0.0, ref MyTan);
 
             //正常返回，开始计时
             if (error == DoPE.ERR.NOERROR || error == DoPE.ERR.CMD_PARCORR || error == DoPE.ERR.CMD_PAR)
@@ -3936,10 +4184,10 @@ namespace DoPENetConnect
             //    devId = new StringBuilder(DESEncrypt.Decrypt(idEncry));
             // }
             #region 办公室小电缸
-            //devId = new StringBuilder("0212AD05");    //小电缸 测试用
+            devId = new StringBuilder("02146663");    //小电缸 测试用
             #endregion
             #region 办公室测试机
-            devId = new StringBuilder("02132F05");
+            //devId = new StringBuilder("02132F05");
             #endregion
             #region 厦门 
             //更新 20260209 

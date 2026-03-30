@@ -20,7 +20,8 @@ namespace DoPENetConnect
 
         int operateFlag = 0;
 
-
+        private double _lastFrequency = 0;   // 新增
+        private double _lastAmplitude = 0;   // 新增
         /// <summary>
         /// 加减系数枚举
         /// </summary>
@@ -193,6 +194,7 @@ namespace DoPENetConnect
             double SpeedToDestination;
             double Destination;
             DoPE.DYN_SWEEP SweepFrequencyMode;
+            DoPE.DYN_SWEEP SweepAmplitudeMode;
 
             WaveForm = (DoPE.DYN_WAVEFORM)cmbX_Dyn_WaveFrom.SelectedIndex;
 
@@ -288,10 +290,54 @@ namespace DoPENetConnect
             Frequency = double.Parse(tbX_Dyn_Frequency.Text);
             HalfCycles = int.Parse(tbX_Cycles.Text) * 2;
 
-            if (MainForm.mainform.isRunning)
+            bool isRunning = MainForm.mainform.isRunning;
+            bool freqChanged = isRunning && Math.Abs(Frequency - _lastFrequency) > 1e-6;
+            bool ampChanged = isRunning && Math.Abs(Amplitude - _lastAmplitude) > 1e-6;
+
+            // 初始化 Sweep 变量（默认关闭）
+            DoPE.DYN_SWEEP SweepFrequencyModeVar = DoPE.DYN_SWEEP.OFF;   // 新变量
+            double SweepEndFrequency = 0;
+            double SweepFrequencyTime = 0;
+            int SweepFrequencyCount = 0;
+
+            DoPE.DYN_SWEEP SweepAmplitudeModeVar = DoPE.DYN_SWEEP.OFF;
+            double SweepEndAmplitude = 0;
+            double SweepAmplitudeTime = 0;
+            int SweepAmplitudeCount = 0;
+
+            if (isRunning && (freqChanged || ampChanged))
             {
-                cbX_DynCtrl_ModifyParam.Checked = true;
+                // 参数发生变化：启用 Sweep
+                if (freqChanged)
+                {
+                    SweepFrequencyModeVar = DoPE.DYN_SWEEP.LINEAR;
+                    SweepEndFrequency = Frequency;
+                    SweepFrequencyTime = 0.5;   // 过渡时间（秒），可根据需要调整
+                    SweepFrequencyCount = 1;
+                }
+                if (ampChanged)
+                {
+                    SweepAmplitudeModeVar = DoPE.DYN_SWEEP.LINEAR;
+                    SweepEndAmplitude = Amplitude;
+                    SweepAmplitudeTime = 0.5;
+                    SweepAmplitudeCount = 1;
+
+                    //MessageBox.Show($"振幅变化: {_lastAmplitude} -> {Amplitude}");
+                }
+                // 使用 Sweep 时必须关闭 Modify
+                Modify = false;
+                cbX_DynCtrl_ModifyParam.Checked = false;
             }
+            else
+            {
+                // 参数未变或未运行时，使用原有的 Modify 逻辑
+                Modify = cbX_DynCtrl_ModifyParam.Checked;
+            }
+
+            // 更新记录
+            _lastFrequency = Frequency;
+            _lastAmplitude = Amplitude;
+
 
             Modify = cbX_DynCtrl_ModifyParam.Checked;
             RelativeDestination = cbX_DynCtrl_RelativeDestinations.Checked;
@@ -300,12 +346,24 @@ namespace DoPENetConnect
             SpeedToDestination = 0.0;
             Destination = Offset + Amplitude;
             SweepFrequencyMode = 0;
+            SweepAmplitudeMode = 0;
 
             //MainForm.mainform.PVPositionQueue.Clear();
             MainForm.mainform.bSaveRunningLog = false;
             MainForm.mainform.isDynStart = true;
             MainForm.mainform.offsetDyn = Offset;
-            MainForm.mainform.MoveDynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination, SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode);
+            //MainForm.mainform.MoveDynCycles(WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination, SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude, Frequency, HalfCycles, SpeedToDestination, Destination, SweepFrequencyMode);
+
+            MainForm.mainform.MoveDynCycles(
+    WaveForm, Modify, PeakCtrl, MoveCtrl, RelativeDestination,
+    SpeedToStart, Offset, Amplitude, HaltAtPlusAmplitude, HaltAtMinusAmplitude,
+    Frequency, HalfCycles, SpeedToDestination, Destination,
+    SweepFrequencyMode, SweepEndFrequency, SweepFrequencyTime, SweepFrequencyCount,
+    DoPE.DYN_SWEEP.OFF, 0, 0, 0,
+    SweepAmplitudeMode, SweepEndAmplitude, SweepAmplitudeTime, SweepAmplitudeCount,
+    DoPE.DYN_SUPERPOS.OFF, 0, 0,
+    DoPE.DYN_BIMODAL.CTRL_OFF, DoPE.SENSOR.SENSOR_S, 0, 0, 1);
+
 
             //不在运行时才能修改次数
             //if (!MainForm.mainform.isRunning)
@@ -834,6 +892,11 @@ namespace DoPENetConnect
             labelX6.Visible = true;
             labelX5.Visible = false;
             this.TopMost = true;
+        }
+
+        private void cbX_Dyn_FadeInOut_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
