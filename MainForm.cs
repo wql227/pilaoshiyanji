@@ -3499,10 +3499,10 @@ namespace DoPENetConnect
             //devId = new StringBuilder("02137E43");
             //devId = new StringBuilder("02146663");
             #region 办公室测试机
-            //devId = new StringBuilder("02132F05");
+            devId = new StringBuilder("02132F05");
             #endregion 
             #region 办公室小电缸
-            devId = new StringBuilder("02146663");    //小电缸 测试用
+           //devId = new StringBuilder("02146663");    //小电缸 测试用
             #endregion
 
             //读取上次的试验次数
@@ -4712,6 +4712,7 @@ namespace DoPENetConnect
                             }
 
                             InitTeeChart();
+                            InitBeforeChengKong();
                             progControl.SetCmdParmas(tmpList, double.Parse(guiPosition.Text),  double.Parse(guiLoad.Text), double.Parse(guiExtension.Text));
                        
 
@@ -4733,6 +4734,11 @@ namespace DoPENetConnect
                 MessageBox.Show("请先激活控制器!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        public void InitBeforeChengKong()
+        {
+            originParams = realtimeParams;
         }
 
         public void ResetStartPoindOfSeries()
